@@ -1,0 +1,454 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-SVC-01",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 3,
+      "passed": 2,
+      "failed": 1,
+      "warnings": 0
+    },
+    "networkHardeningChecks": [
+      {
+        "checkId": "SVC-01-001",
+        "name": "Virtual Network Security Configuration",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Virtual Network should be properly segmented with hardened security controls",
+        "findings": {
+          "networkSegmentation": {
+            "subnets": [
+              {
+                "name": "web-tier",
+                "addressPrefix": "10.0.1.0/24",
+                "purpose": "Frontend web applications",
+                "nsgAssociated": true,
+                "routeTableAssociated": true
+              },
+              {
+                "name": "app-tier",
+                "addressPrefix": "10.0.2.0/24",
+                "purpose": "Application servers",
+                "nsgAssociated": true,
+                "routeTableAssociated": true
+              },
+              {
+                "name": "data-tier",
+                "addressPrefix": "10.0.3.0/24",
+                "purpose": "Database and storage",
+                "nsgAssociated": true,
+                "routeTableAssociated": true
+              },
+              {
+                "name": "mgmt-tier",
+                "addressPrefix": "10.0.4.0/24",
+                "purpose": "Management and monitoring",
+                "nsgAssociated": true,
+                "routeTableAssociated": true
+              }
+            ]
+          },
+          "networkSecurityGroups": {
+            "webTierNSG": {
+              "inboundRules": [
+                {
+                  "name": "AllowHTTPS",
+                  "priority": 100,
+                  "access": "Allow",
+                  "protocol": "Tcp",
+                  "sourceAddressPrefix": "Internet",
+                  "destinationPortRange": "443",
+                  "justification": "Required for HTTPS traffic"
+                },
+                {
+                  "name": "DenyAll",
+                  "priority": 4096,
+                  "access": "Deny",
+                  "protocol": "*",
+                  "sourceAddressPrefix": "*",
+                  "destinationPortRange": "*"
+                }
+              ],
+              "outboundRules": [
+                {
+                  "name": "AllowAppTier",
+                  "priority": 100,
+                  "access": "Allow",
+                  "protocol": "Tcp",
+                  "destinationAddressPrefix": "10.0.2.0/24",
+                  "destinationPortRange": "8080"
+                }
+              ]
+            },
+            "appTierNSG": {
+              "inboundRules": [
+                {
+                  "name": "AllowWebTier",
+                  "priority": 100,
+                  "access": "Allow",
+                  "protocol": "Tcp",
+                  "sourceAddressPrefix": "10.0.1.0/24",
+                  "destinationPortRange": "8080"
+                }
+              ],
+              "outboundRules": [
+                {
+                  "name": "AllowDataTier",
+                  "priority": 100,
+                  "access": "Allow",
+                  "protocol": "Tcp",
+                  "destinationAddressPrefix": "10.0.3.0/24",
+                  "destinationPortRange": "1433"
+                }
+              ]
+            }
+          },
+          "routingConfiguration": {
+            "userDefinedRoutes": [
+              {
+                "name": "ForceInternetTrafficThroughFirewall",
+                "addressPrefix": "0.0.0.0/0",
+                "nextHopType": "VirtualAppliance",
+                "nextHopIpAddress": "10.0.5.4"
+              }
+            ]
+          },
+          "privateEndpoints": [
+            {
+              "service": "Azure Storage",
+              "subnet": "data-tier",
+              "privateDnsZone": "privatelink.blob.core.windows.net"
+            },
+            {
+              "service": "Azure Key Vault",
+              "subnet": "app-tier",
+              "privateDnsZone": "privatelink.vaultcore.azure.net"
+            }
+          ]
+        },
+        "securityValidation": {
+          "lateralMovementPrevented": true,
+          "zeroTrustImplementation": true,
+          "networkIsolation": true,
+          "trafficEncryption": true
+        },
+        "remediation": "Virtual Network properly segmented and hardened"
+      },
+      {
+        "checkId": "SVC-01-002",
+        "name": "Azure Firewall Advanced Security Configuration",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Azure Firewall should be configured with advanced security features and threat intelligence",
+        "findings": {
+          "firewallTier": {
+            "sku": "Premium",
+            "features": [
+              "IDPS (Intrusion Detection and Prevention)",
+              "TLS Inspection",
+              "URL Filtering",
+              "Web Categories Filtering"
+            ]
+          },
+          "threatIntelligence": {
+            "enabled": true,
+            "mode": "Alert and Deny",
+            "customIndicators": true,
+            "microsoftThreatIntelligence": true
+          },
+          "networkRules": [
+            {
+              "name": "AllowOutboundHTTPS",
+              "priority": 100,
+              "action": "Allow",
+              "sourceAddresses": ["10.0.0.0/16"],
+              "destinationPorts": ["443"],
+              "protocols": ["TCP"],
+              "destinationAddresses": ["*"]
+            },
+            {
+              "name": "AllowDNS",
+              "priority": 200,
+              "action": "Allow",
+              "sourceAddresses": ["10.0.0.0/16"],
+              "destinationPorts": ["53"],
+              "protocols": ["UDP"],
+              "destinationAddresses": ["168.63.129.16"]
+            }
+          ],
+          "applicationRules": [
+            {
+              "name": "AllowAzureServices",
+              "priority": 100,
+              "action": "Allow",
+              "sourceAddresses": ["10.0.0.0/16"],
+              "targetFqdns": ["*.azure.com", "*.microsoft.com", "*.windows.net"],
+              "protocols": [
+                {
+                  "protocolType": "Https",
+                  "port": 443
+                }
+              ]
+            }
+          ],
+          "dnatRules": [],
+          "logging": {
+            "enabled": true,
+            "destinations": ["Log Analytics Workspace", "Storage Account", "Event Hub"],
+            "categories": [
+              "AzureFirewallApplicationRule",
+              "AzureFirewallNetworkRule",
+              "AzureFirewallDnsProxy"
+            ]
+          },
+          "monitoring": {
+            "metricsEnabled": true,
+            "alertRules": [
+              {
+                "name": "ThreatDetected",
+                "condition": "IDPS alerts > 0",
+                "action": "Immediate notification"
+              },
+              {
+                "name": "HighTrafficVolume",
+                "condition": "Data processed > 10GB/hour",
+                "action": "Scale up alert"
+              }
+            ]
+          }
+        },
+        "securityFeatures": {
+          "idpsConfiguration": {
+            "mode": "Alert and Deny",
+            "signatureOverrides": [
+              {
+                "id": "2832000",
+                "mode": "Deny"
+              }
+            ]
+          },
+          "tlsInspection": {
+            "enabled": true,
+            "certificateAuthority": "Internal CA",
+            "excludedDomains": ["*.microsoft.com", "*.azure.com"]
+          }
+        },
+        "remediation": "Azure Firewall properly configured with advanced security features"
+      },
+      {
+        "checkId": "SVC-01-003",
+        "name": "Network Security Group Misconfigurations",
+        "status": "FAIL",
+        "severity": "CRITICAL",
+        "description": "Network Security Groups should follow least privilege principle and deny unnecessary traffic",
+        "findings": {
+          "riskAssessment": {
+            "riskLevel": "CRITICAL",
+            "vulnerableRules": 5,
+            "complianceScore": 25
+          },
+          "insecureRules": [
+            {
+              "ruleName": "AllowAnyInbound",
+              "priority": 100,
+              "direction": "Inbound",
+              "access": "Allow",
+              "protocol": "*",
+              "sourceAddressPrefix": "*",
+              "sourcePortRange": "*",
+              "destinationAddressPrefix": "*",
+              "destinationPortRange": "*",
+              "issues": [
+                "Allows any protocol from any source",
+                "No port restrictions",
+                "Violates principle of least privilege"
+              ],
+              "severity": "CRITICAL"
+            },
+            {
+              "ruleName": "AllowRDPFromInternet",
+              "priority": 200,
+              "direction": "Inbound",
+              "access": "Allow",
+              "protocol": "Tcp",
+              "sourceAddressPrefix": "Internet",
+              "destinationPortRange": "3389",
+              "issues": [
+                "RDP exposed to internet",
+                "High risk for brute force attacks",
+                "Should use VPN or bastion host"
+              ],
+              "severity": "HIGH"
+            },
+            {
+              "ruleName": "AllowSSHFromInternet",
+              "priority": 300,
+              "direction": "Inbound",
+              "access": "Allow",
+              "protocol": "Tcp",
+              "sourceAddressPrefix": "0.0.0.0/0",
+              "destinationPortRange": "22",
+              "issues": [
+                "SSH exposed to internet",
+                "Potential for automated attacks",
+                "Should restrict to specific IPs"
+              ],
+              "severity": "HIGH"
+            },
+            {
+              "ruleName": "AllowDatabaseFromInternet",
+              "priority": 400,
+              "direction": "Inbound",
+              "access": "Allow",
+              "protocol": "Tcp",
+              "sourceAddressPrefix": "*",
+              "destinationPortRange": "1433",
+              "issues": [
+                "Database port exposed publicly",
+                "Data exposure risk",
+                "Should only allow from application tier"
+              ],
+              "severity": "CRITICAL"
+            },
+            {
+              "ruleName": "AllowAnyOutbound",
+              "priority": 100,
+              "direction": "Outbound",
+              "access": "Allow",
+              "protocol": "*",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "Internet",
+              "destinationPortRange": "*",
+              "issues": [
+                "Unrestricted outbound access",
+                "Data exfiltration risk",
+                "Should whitelist specific destinations"
+              ],
+              "severity": "MEDIUM"
+            }
+          ],
+          "missingSecurityFeatures": [
+            "No application security groups",
+            "No service tags utilization",
+            "No flow logs enabled",
+            "No traffic analytics"
+          ],
+          "complianceViolations": [
+            {
+              "framework": "FedRAMP",
+              "control": "SC-7 (Boundary Protection)",
+              "violation": "Network boundaries not properly controlled"
+            },
+            {
+              "framework": "NIST 800-53",
+              "control": "AC-4 (Information Flow Enforcement)",
+              "violation": "Information flow not properly enforced"
+            }
+          ]
+        },
+        "attackVectors": [
+          {
+            "vector": "Direct Internet RDP Access",
+            "likelihood": "HIGH",
+            "impact": "CRITICAL",
+            "description": "Attackers can attempt brute force on RDP"
+          },
+          {
+            "vector": "Database Port Scanning",
+            "likelihood": "HIGH",
+            "impact": "CRITICAL",
+            "description": "Database directly accessible from internet"
+          },
+          {
+            "vector": "Lateral Movement",
+            "likelihood": "MEDIUM",
+            "impact": "HIGH",
+            "description": "Overly permissive rules allow lateral movement"
+          }
+        ],
+        "testResults": {
+          "penetrationTests": [
+            {
+              "test": "Port scan from internet",
+              "result": "VULNERABLE",
+              "portsFound": ["22", "3389", "1433", "8080"]
+            },
+            {
+              "test": "RDP brute force simulation",
+              "result": "ACCESSIBLE",
+              "timeToAccess": "< 1 hour with common passwords"
+            },
+            {
+              "test": "Database connection attempt",
+              "result": "REACHABLE",
+              "exposure": "Database port accessible from internet"
+            }
+          ]
+        },
+        "remediation": "IMMEDIATE ACTION REQUIRED: 1) Remove wildcard allow rules, 2) Restrict RDP/SSH to management subnet or VPN, 3) Block database access from internet, 4) Implement application security groups, 5) Enable NSG flow logs, 6) Configure service tags for Azure services, 7) Apply principle of least privilege to all rules, 8) Conduct security review of all NSG rules"
+      }
+    ],
+    "networkHardeningBestPractices": {
+      "segmentation": [
+        "Implement network micro-segmentation",
+        "Use separate subnets for different tiers",
+        "Apply NSGs at subnet and NIC level",
+        "Implement application security groups",
+        "Use private endpoints for Azure services"
+      ],
+      "accessControl": [
+        "Follow principle of least privilege",
+        "Use service tags instead of IP ranges",
+        "Implement just-in-time access",
+        "Restrict management ports to specific networks",
+        "Use Azure Bastion for secure RDP/SSH access"
+      ],
+      "monitoring": [
+        "Enable NSG flow logs",
+        "Configure traffic analytics",
+        "Implement network monitoring alerts",
+        "Use Azure Network Watcher for diagnostics",
+        "Monitor for suspicious network activity"
+      ],
+      "encryption": [
+        "Enforce TLS for all communications",
+        "Use IPSec for site-to-site connections",
+        "Implement certificate-based authentication",
+        "Enable encryption in transit for all services"
+      ]
+    },
+    "complianceMapping": {
+      "fedrampControls": [
+        {
+          "control": "SC-7 (Boundary Protection)",
+          "implementation": "Network segmentation with NSGs and firewalls"
+        },
+        {
+          "control": "AC-4 (Information Flow Enforcement)",
+          "implementation": "Traffic flow control through routing and filtering"
+        },
+        {
+          "control": "SI-4 (Information System Monitoring)",
+          "implementation": "Network monitoring and logging"
+        }
+      ]
+    },
+    "detectionMethods": {
+      "azureNativeTools": [
+        "Azure Security Center network recommendations",
+        "Azure Network Watcher topology view",
+        "NSG diagnostics and flow logs",
+        "Azure Firewall analytics"
+      ],
+      "automatedScanning": [
+        "Azure Resource Graph queries for NSG rules",
+        "PowerShell scripts for rule analysis",
+        "Azure Policy for compliance validation",
+        "Third-party network scanning tools"
+      ]
+    }
+  }
+}

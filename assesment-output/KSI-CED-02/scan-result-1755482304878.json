@@ -1,0 +1,589 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-CED-02",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 6,
+      "passed": 2,
+      "failed": 4,
+      "warnings": 0
+    },
+    "roleSpecificTrainingChecks": [
+      {
+        "checkId": "CED-02-001",
+        "name": "Privileged User Training Coverage",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Users with privileged access should receive specialized security training appropriate to their access levels",
+        "findings": {
+          "privilegedUserIdentification": {
+            "totalPrivilegedUsers": 67,
+            "globalAdministrators": 8,
+            "subscriptionOwners": 12,
+            "resourceAdministrators": 23,
+            "applicationAdministrators": 15,
+            "securityAdministrators": 9,
+            "identificationAccuracy": "98.5%",
+            "lastUserAudit": "2025-07-15T00:00:00.000Z"
+          },
+          "specializedTrainingEnrollment": {
+            "privilegedUsersEnrolled": 64,
+            "enrollmentCoverage": "95.5%",
+            "unenrolledUsers": 3,
+            "automaticEnrollment": true,
+            "enrollmentTriggers": [
+              "Role assignment",
+              "Privilege elevation",
+              "Annual recertification"
+            ]
+          },
+          "trainingContentSpecialization": {
+            "privilegedAccessSecurity": {
+              "coverage": "Comprehensive",
+              "topics": [
+                "Privileged account management",
+                "Multi-factor authentication for admin accounts",
+                "Just-in-time access principles",
+                "Privilege escalation prevention",
+                "Administrative credential protection"
+              ],
+              "lastContentUpdate": "2025-06-01T00:00:00.000Z"
+            },
+            "azureAdministratorTraining": {
+              "coverage": "Comprehensive",
+              "topics": [
+                "Azure AD security best practices",
+                "Conditional access policies",
+                "Identity governance",
+                "Privileged Identity Management (PIM)",
+                "Azure security center administration"
+              ],
+              "handsOnLabs": true,
+              "certificationAlignment": "AZ-104, AZ-500, SC-300"
+            },
+            "incidentResponseTraining": {
+              "coverage": "Advanced",
+              "topics": [
+                "Security incident detection and analysis",
+                "Containment and eradication procedures",
+                "Forensic evidence preservation",
+                "Communication and escalation protocols",
+                "Recovery and lessons learned processes"
+              ],
+              "simulationExercises": "Quarterly",
+              "tabletopExercises": "Bi-annual"
+            }
+          },
+          "trainingCompletionMetrics": {
+            "overallCompletionRate": "95.5%",
+            "onTimeCompletionRate": "89.6%",
+            "averageTrainingDuration": "8.5 hours",
+            "averageScores": "91.7%",
+            "certificationPassRate": "87.3%"
+          },
+          "continuousEducationProgram": {
+            "quarterlyUpdates": true,
+            "emergingThreatTraining": true,
+            "vendorSpecificTraining": true,
+            "industryConferenceAttendance": "Encouraged",
+            "professionalCertificationSupport": true
+          }
+        },
+        "testResults": [
+          {
+            "test": "Privileged user identification and enrollment assessment",
+            "result": "COMPREHENSIVE",
+            "details": "95.5% enrollment coverage for 67 privileged users with automated enrollment triggers"
+          },
+          {
+            "test": "Specialized training content evaluation",
+            "result": "ADVANCED",
+            "details": "Comprehensive coverage of privileged access security, Azure administration, and incident response"
+          },
+          {
+            "test": "Training completion and effectiveness validation",
+            "result": "EFFECTIVE",
+            "details": "95.5% completion rate with 91.7% average scores and 87.3% certification pass rate"
+          }
+        ],
+        "remediation": "Privileged user training comprehensively implemented with advanced content and strong completion rates"
+      },
+      {
+        "checkId": "CED-02-002",
+        "name": "High-Risk Role Training Matrix",
+        "status": "PASS",
+        "severity": "MEDIUM",
+        "description": "High-risk roles should be systematically identified with appropriate specialized training requirements",
+        "findings": {
+          "highRiskRoleIdentification": {
+            "roleRiskAssessmentFramework": true,
+            "lastRiskAssessment": "2025-05-15T00:00:00.000Z",
+            "riskAssessmentFrequency": "Annual with quarterly reviews",
+            "riskCriteria": [
+              "Access to sensitive data",
+              "System administration privileges",
+              "Financial transaction authority",
+              "External network access",
+              "Customer data handling"
+            ]
+          },
+          "identifiedHighRiskRoles": {
+            "systemAdministrators": {
+              "riskLevel": "Critical",
+              "userCount": 15,
+              "specializedTraining": "Advanced technical security",
+              "trainingHours": "40 hours annually",
+              "certificationRequirements": ["Security+", "CISSP", "GSEC"]
+            },
+            "databaseAdministrators": {
+              "riskLevel": "High",
+              "userCount": 8,
+              "specializedTraining": "Database security and privacy",
+              "trainingHours": "24 hours annually",
+              "certificationRequirements": ["Database security certifications"]
+            },
+            "financialProcessors": {
+              "riskLevel": "High",
+              "userCount": 12,
+              "specializedTraining": "Financial fraud prevention",
+              "trainingHours": "16 hours annually",
+              "certificationRequirements": ["Anti-fraud certification"]
+            },
+            "developmentTeam": {
+              "riskLevel": "Medium-High",
+              "userCount": 34,
+              "specializedTraining": "Secure coding and DevSecOps",
+              "trainingHours": "20 hours annually",
+              "certificationRequirements": ["Certified Secure Software Lifecycle Professional"]
+            },
+            "humanResourcesStaff": {
+              "riskLevel": "Medium-High",
+              "userCount": 7,
+              "specializedTraining": "Privacy and social engineering awareness",
+              "trainingHours": "12 hours annually",
+              "certificationRequirements": ["Privacy certification"]
+            }
+          },
+          "trainingMatrixImplementation": {
+            "roleBasedTrainingPaths": true,
+            "automaticAssignment": true,
+            "progressTracking": true,
+            "competencyValidation": true,
+            "recertificationScheduling": true
+          },
+          "specializedTrainingMetrics": {
+            "highRiskRolesCovered": 76,
+            "trainingPathsDeployed": 12,
+            "completionRateByRole": {
+              "systemAdministrators": "93.3%",
+              "databaseAdministrators": "100%",
+              "financialProcessors": "91.7%",
+              "developmentTeam": "88.2%",
+              "humanResourcesStaff": "100%"
+            },
+            "averageCompetencyScores": "89.4%"
+          }
+        },
+        "testResults": [
+          {
+            "test": "High-risk role identification and assessment framework",
+            "result": "SYSTEMATIC",
+            "details": "Comprehensive risk assessment framework with annual reviews and quarterly updates"
+          },
+          {
+            "test": "Role-based training matrix implementation",
+            "result": "COMPREHENSIVE",
+            "details": "76 high-risk roles covered with 12 specialized training paths and automatic assignment"
+          },
+          {
+            "test": "Specialized training effectiveness by role",
+            "result": "EFFECTIVE",
+            "details": "Strong completion rates across all high-risk roles with 89.4% average competency scores"
+          }
+        ],
+        "remediation": "High-risk role training matrix comprehensively implemented with systematic identification and effective specialized training"
+      },
+      {
+        "checkId": "CED-02-003",
+        "name": "Incomplete Developer Security Training",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Development team lacks comprehensive secure coding and DevSecOps training coverage",
+        "findings": {
+          "developmentTeamAnalysis": {
+            "totalDevelopers": 34,
+            "frontEndDevelopers": 12,
+            "backEndDevelopers": 15,
+            "fullStackDevelopers": 7,
+            "secureCodeTrainingEnrollment": 28,
+            "enrollmentGap": 6,
+            "enrollmentRate": "82.4%"
+          },
+          "securecodingTrainingGaps": {
+            "owaspTop10Coverage": "Basic implementation",
+            "frameworkSpecificSecurity": {
+              "netCoreSecurity": "Limited coverage",
+              "reactSecurityBestPractices": "Not covered",
+              "nodeJsSecurityPractices": "Basic coverage",
+              "pythonSecurityGuidelines": "Not covered"
+            },
+            "vulnerabilityCategories": {
+              "injectionAttacks": "Covered",
+              "authenticationFlaws": "Covered",
+              "sensitiveDataExposure": "Limited coverage",
+              "xmlExternalEntities": "Not covered",
+              "brokenAccessControl": "Basic coverage",
+              "securityMisconfiguration": "Limited coverage",
+              "crossSiteScripting": "Covered",
+              "insecureDeserialization": "Not covered",
+              "componentVulnerabilities": "Basic coverage",
+              "insufficientLogging": "Not covered"
+            }
+          },
+          "devsecopsTrainingDeficiencies": {
+            "securityInCicd": "Basic implementation",
+            "containerSecurityPractices": "Limited coverage",
+            "infrastructureAsCodeSecurity": "Not covered",
+            "secretsManagement": "Basic coverage",
+            "staticApplicationSecurityTesting": "Limited hands-on experience",
+            "dynamicApplicationSecurityTesting": "Not covered",
+            "interactiveApplicationSecurityTesting": "Not covered",
+            "softwareCompositionAnalysis": "Basic coverage"
+          },
+          "handsOnTrainingLimitations": {
+            "codingLabs": "Limited availability",
+            "captureTheFlagExercises": "Not implemented",
+            "vulnearbleApplicationTesting": "Basic implementation",
+            "peerCodeReviews": "Not security-focused",
+            "threatModelingExercises": "Not conducted"
+          },
+          "businessImpactOfGaps": {
+            "secureCodeCommitRate": "67.8%",
+            "securityVulnerabilitiesInProduction": 23,
+            "averageRemediationTime": "8.3 days",
+            "securityDebtAccumulation": "Increasing trend"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Developer secure coding training coverage assessment",
+            "result": "INCOMPLETE",
+            "details": "82.4% enrollment with significant gaps in framework-specific security and vulnerability categories"
+          },
+          {
+            "test": "DevSecOps training implementation evaluation",
+            "result": "LIMITED",
+            "details": "Basic CI/CD security with missing coverage in container security and IaC security"
+          },
+          {
+            "test": "Hands-on training and practical application check",
+            "result": "INSUFFICIENT",
+            "details": "Limited coding labs and no capture-the-flag exercises or threat modeling training"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Achieve 100% developer enrollment in secure coding training with mandatory participation, 2) Develop comprehensive framework-specific security training for .NET Core, React, Node.js, and Python, 3) Implement complete OWASP Top 10 coverage with hands-on vulnerable application testing, 4) Deploy comprehensive DevSecOps training including container security, IaC security, and advanced SAST/DAST tools, 5) Establish regular capture-the-flag exercises and threat modeling workshops, 6) Implement security-focused peer code review training and practices, 7) Create security coding labs with real-world vulnerability scenarios"
+      },
+      {
+        "checkId": "CED-02-004",
+        "name": "Missing Incident Response Team Training",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Incident response team lacks comprehensive specialized training for security incident handling",
+        "findings": {
+          "incidentResponseTeamAnalysis": {
+            "incidentResponseTeamSize": 12,
+            "primaryIncidentHandlers": 6,
+            "secondaryIncidentHandlers": 6,
+            "onCallRotationParticipants": 8,
+            "crossTrainedPersonnel": 4,
+            "trainingCoverage": "58.3%"
+          },
+          "incidentHandlingTrainingGaps": {
+            "incidentClassificationAndSeverity": "Basic coverage",
+            "digitalForensicsAndEvidence": "Limited training",
+            "malwareAnalysis": "Not covered",
+            "networkForensics": "Basic coverage",
+            "cloudIncidentResponse": {
+              "azureIncidentResponse": "Limited coverage",
+              "awsIncidentResponse": "Not covered",
+              "multiCloudIncidentHandling": "Not covered"
+            },
+            "threatHuntingTechniques": "Not covered",
+            "legalAndRegulatoryRequirements": "Basic coverage"
+          },
+          "technicalSkillsGaps": {
+            "logAnalysisAndCorrelation": "Basic skills",
+            "siemToolProficiency": "Limited to basic queries",
+            "scriptingForAutomation": "Minimal capability",
+            "communicationDuringIncidents": "Informal training",
+            "stressManagementAndDecisionMaking": "Not addressed"
+          },
+          "simulationAndTabletopExercises": {
+            "lastTabletopExercise": "2024-08-15T00:00:00.000Z",
+            "exerciseFrequency": "Bi-annual",
+            "scenarioCoverage": ["Basic phishing incident", "Ransomware attack (limited scope)"],
+            "missingScenarios": [
+              "Advanced persistent threat (APT)",
+              "Supply chain compromise",
+              "Insider threat",
+              "Cloud-specific incidents",
+              "Multi-vector attacks"
+            ],
+            "exerciseParticipationRate": "75%"
+          },
+          "certificationAndExternalTraining": {
+            "giacCertifications": 2,
+            "cisaCertifications": 1,
+            "vendorSpecificTraining": "Limited",
+            "industryConferencesAttended": 1,
+            "professionalDevelopmentBudget": "Insufficient"
+          },
+          "incidentResponsePerformanceImpact": {
+            "averageIncidentDetectionTime": "4.2 hours",
+            "averageContainmentTime": "8.7 hours",
+            "averageRecoveryTime": "2.3 days",
+            "incidentEscalationRate": "34.2%",
+            "lessonsLearnedImplementation": "Inconsistent"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Incident response team training coverage assessment",
+            "result": "INADEQUATE",
+            "details": "58.3% training coverage with significant gaps in malware analysis and cloud incident response"
+          },
+          {
+            "test": "Technical skills and simulation training evaluation",
+            "result": "LIMITED",
+            "details": "Basic SIEM skills with missing threat hunting and automation capabilities"
+          },
+          {
+            "test": "Incident response performance and readiness check",
+            "result": "BELOW_TARGET",
+            "details": "34.2% escalation rate with 4.2-hour average detection time indicating training gaps"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Achieve 100% incident response team training coverage with comprehensive incident handling procedures, 2) Implement advanced technical training for malware analysis, cloud incident response, and threat hunting, 3) Deploy monthly simulation exercises covering APT, supply chain, and multi-vector attack scenarios, 4) Establish digital forensics and evidence handling certification requirements, 5) Provide comprehensive SIEM tool training with advanced query and automation capabilities, 6) Implement stress management and communication training for high-pressure incident situations, 7) Increase professional development budget for industry certifications and conference attendance"
+      },
+      {
+        "checkId": "CED-02-005",
+        "name": "Inadequate Third-Party Vendor Training Requirements",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Third-party vendors and contractors lack standardized security training requirements and verification",
+        "findings": {
+          "vendorAndContractorAnalysis": {
+            "totalVendors": 34,
+            "vendorsWithSystemAccess": 18,
+            "contractorsWithPrivilegedAccess": 8,
+            "temporaryStaffWithAccess": 6,
+            "vendorsWithTrainingRequirements": 12,
+            "trainingRequirementCoverage": "35.3%"
+          },
+          "contractualTrainingRequirements": {
+            "securityTrainingClauses": {
+              "presentInContracts": 12,
+              "missingFromContracts": 22,
+              "clauseComprehensiveness": "Basic requirements only",
+              "enforcementMechanisms": "Limited"
+            },
+            "trainingStandardsSpecification": {
+              "minimumTrainingHours": "Not specified",
+              "trainingTopicRequirements": "Generic security awareness only",
+              "certificationRequirements": "Not required",
+              "refresherTrainingFrequency": "Not specified"
+            }
+          },
+          "vendorTrainingVerification": {
+            "trainingCompletionVerification": "Self-attestation only",
+            "certificateValidation": "Not performed",
+            "competencyTesting": "Not required",
+            "ongoingMonitoring": "Not implemented",
+            "trainingRecordMaintenance": "Vendor responsibility only"
+          },
+          "riskBasedTrainingGaps": {
+            "highRiskVendorIdentification": "Not systematic",
+            "accessLevelBasedRequirements": "Not implemented",
+            "dataClassificationBasedTraining": "Not required",
+            "roleSpecificVendorTraining": "Not defined"
+          },
+          "organizationalTrainingProvision": {
+            "organizationSpecificTraining": "Not provided",
+            "systemSpecificTraining": "Limited",
+            "policyAndProcedureTraining": "Basic orientation only",
+            "incidentReportingTraining": "Not comprehensive"
+          },
+          "complianceAndAuditGaps": {
+            "vendorTrainingAudits": "Not conducted",
+            "complianceVerification": "Self-reporting",
+            "penaltyEnforcement": "Not implemented",
+            "trainingDeficiencyRemediation": "Ad-hoc"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Vendor training requirement coverage assessment",
+            "result": "INADEQUATE",
+            "details": "35.3% vendor training requirement coverage with 22 contracts missing security training clauses"
+          },
+          {
+            "test": "Training verification and compliance evaluation",
+            "result": "INSUFFICIENT",
+            "details": "Self-attestation only with no competency testing or ongoing monitoring"
+          },
+          {
+            "test": "Risk-based vendor training implementation check",
+            "result": "NOT_IMPLEMENTED",
+            "details": "No systematic high-risk vendor identification or access-level based training requirements"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Implement standardized security training clauses in all vendor contracts with specific hour and topic requirements, 2) Establish risk-based vendor training requirements based on access levels and data classification, 3) Deploy vendor training verification system with competency testing and certificate validation, 4) Provide organization-specific training for all vendors with system access including policies and incident reporting, 5) Implement ongoing vendor training monitoring with compliance audits and penalty enforcement, 6) Create vendor training scorecard with performance tracking and deficiency remediation procedures"
+      },
+      {
+        "checkId": "CED-02-006",
+        "name": "Insufficient Training for Emerging Technologies",
+        "status": "FAIL",
+        "severity": "LOW",
+        "description": "High-risk roles lack specialized training for emerging technologies and evolving threat landscapes",
+        "findings": {
+          "emergingTechnologyTrainingGaps": {
+            "artificialIntelligenceAndMachineLearning": {
+              "aiMlSecurityTraining": "Not provided",
+              "aiEthicsAndBiasTraining": "Not covered",
+              "adversarialMachineLearning": "Not addressed",
+              "aiGovernanceAndRiskManagement": "Not implemented"
+            },
+            "cloudNativeSecurityAdvanced": {
+              "containerOrchestrationSecurity": "Basic coverage",
+              "serverlessSecurityTraining": "Not covered",
+              "microservicesSecurityArchitecture": "Limited coverage",
+              "cloudNativeDeploymentSecurity": "Basic implementation"
+            },
+            "zeroTrustArchitecture": {
+              "zeroTrustPrincipleTraining": "Basic awareness",
+              "identityAndAccessManagementAdvanced": "Limited coverage",
+              "networkSegmentationAndMicrosegmentation": "Not covered",
+              "zeroTrustImplementationMethodologies": "Not provided"
+            },
+            "quantumComputingPreparedness": {
+              "postQuantumCryptography": "Not addressed",
+              "quantumThreatAssessment": "Not covered",
+              "cryptographicAgilityPlanning": "Not implemented"
+            }
+          },
+          "emergingThreatLandscapeTraining": {
+            "supplyChainSecurityAdvanced": {
+              "softwareSupplyChainAttacks": "Basic coverage",
+              "hardwareSupplyChainSecurity": "Not covered",
+              "thirdPartyRiskManagementAdvanced": "Limited coverage"
+            },
+            "socialEngineeringEvolution": {
+              "deepfakeAndSyntheticMedia": "Not covered",
+              "aiPoweredSocialEngineering": "Not addressed",
+              "psychologicalManipulationTechniques": "Basic coverage"
+            },
+            "hybridWorkforceSecurity": {
+              "remoteWorkSecurityAdvanced": "Basic coverage",
+              "byodSecurityManagement": "Limited coverage",
+              "collaborationToolsSecurity": "Not comprehensive"
+            }
+          },
+          "specializedRoleTrainingDeficiencies": {
+            "cloudArchitects": {
+              "requiredEmergingTechTraining": "High",
+              "currentTrainingLevel": "Basic",
+              "trainingGap": "Significant"
+            },
+            "dataScientists": {
+              "requiredEmergingTechTraining": "High",
+              "currentTrainingLevel": "None",
+              "trainingGap": "Critical"
+            },
+            "iotAndEdgeComputingTeam": {
+              "requiredEmergingTechTraining": "Medium-High",
+              "currentTrainingLevel": "Limited",
+              "trainingGap": "Moderate"
+            }
+          },
+          "trainingDeliveryAndInfrastructure": {
+            "emergingTechTrainingProviders": "Limited partnerships",
+            "internalExpertiseCapability": "Insufficient",
+            "handsOnLabsAndSimulations": "Not available",
+            "industryCollaborationForTraining": "Minimal"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Emerging technology training coverage assessment",
+            "result": "MINIMAL",
+            "details": "Limited coverage of AI/ML security, serverless security, and zero trust architecture"
+          },
+          {
+            "test": "Emerging threat landscape training evaluation",
+            "result": "INADEQUATE",
+            "details": "Basic coverage with missing deepfake, AI-powered social engineering, and quantum threat training"
+          },
+          {
+            "test": "Specialized role emerging tech training alignment",
+            "result": "MISALIGNED",
+            "details": "Significant training gaps for cloud architects and critical gaps for data scientists"
+          }
+        ],
+        "remediation": "LOW PRIORITY: 1) Develop comprehensive AI/ML security training program including adversarial machine learning and AI governance, 2) Implement advanced cloud-native security training covering serverless, microservices, and container orchestration security, 3) Establish zero trust architecture training with hands-on implementation methodologies, 4) Create emerging threat training modules for deepfakes, AI-powered attacks, and quantum computing threats, 5) Partner with specialized training providers for cutting-edge technology security education, 6) Develop role-specific emerging technology training paths for cloud architects, data scientists, and IoT teams"
+      }
+    ],
+    "roleSpecificTrainingVerificationMethods": {
+      "privilegedUserTrainingTracking": [
+        "Identity and Access Management integration: Azure AD PIM role assignment correlation with training requirements",
+        "Privileged account discovery: Automated identification of users with elevated privileges requiring specialized training",
+        "Training completion correlation: Cross-reference training records with current privilege levels and role assignments",
+        "Certification tracking: Monitor security certifications and professional development for privileged users",
+        "Risk-based training assignment: Automatic enrollment triggers based on privilege escalation and role changes"
+      ],
+      "highRiskRoleIdentification": [
+        "Role risk assessment automation: Regular automated analysis of job functions and access patterns to identify high-risk roles",
+        "Access pattern analysis: Behavioral analytics to identify roles with high-risk access patterns requiring specialized training",
+        "Business impact assessment: Correlation of roles with business-critical functions and data access requiring enhanced training",
+        "Regulatory compliance mapping: Automatic identification of roles subject to specific compliance training requirements",
+        "Training matrix automation: Dynamic assignment of specialized training based on role risk assessment results"
+      ],
+      "specializationTrainingEffectiveness": [
+        "Competency assessment platforms: Skills validation and practical demonstration of security knowledge for specialized roles",
+        "Simulation and lab environments: Hands-on training effectiveness measurement through practical exercises",
+        "Incident response correlation: Analysis of training effectiveness through incident response performance measurement",
+        "Certification achievement tracking: Monitor professional certification completion rates and ongoing maintenance",
+        "Peer assessment and validation: Cross-training verification and knowledge sharing effectiveness measurement"
+      ],
+      "continuousSkillsDevelopment": [
+        "Learning path analytics: Automated tracking of individual learning progression and skill development",
+        "Industry trend integration: Monitoring of emerging threats and technologies requiring updated training content",
+        "Training content currency monitoring: Automated alerts for outdated training materials and curriculum updates",
+        "Professional development planning: Individual development plan tracking with career progression alignment",
+        "External training integration: Coordination with vendor training, conferences, and industry certification programs"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "AT-3": "Role-Based Security Training",
+        "AT-2": "Security Awareness Training",
+        "AT-4": "Security Training Records",
+        "PM-13": "Information Security Workforce"
+      },
+      "nist80053": {
+        "AT-3": "Role-Based Security Training",
+        "AT-2": "Security Awareness Training",
+        "AT-4": "Security Training Records",
+        "PM-13": "Information Security Workforce",
+        "PM-14": "Testing, Training, and Monitoring"
+      },
+      "iso27001": {
+        "A.7.2.2": "Information security awareness, education and training",
+        "A.6.1.1": "Information security roles and responsibilities",
+        "A.13.2.1": "Information transfer policies and procedures"
+      }
+    }
+  }
+}

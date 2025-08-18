@@ -1,0 +1,868 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-PIY-02",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 7,
+      "passed": 3,
+      "failed": 4,
+      "warnings": 0
+    },
+    "securityPolicyChecks": [
+      {
+        "checkId": "PIY-02-001",
+        "name": "Comprehensive Security Policy Framework",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Organization should have a comprehensive security policy framework covering all aspects of information security",
+        "findings": {
+          "securityPolicyFramework": {
+            "policyHierarchy": {
+              "executiveSecurityPolicy": {
+                "documented": true,
+                "lastUpdated": "2025-06-15T00:00:00.000Z",
+                "approvedBy": "Chief Executive Officer",
+                "nextReviewDate": "2025-12-15T00:00:00.000Z",
+                "boardApproval": "2025-06-20T00:00:00.000Z"
+              },
+              "informationSecurityPolicy": {
+                "documented": true,
+                "version": "4.2",
+                "lastUpdated": "2025-07-01T00:00:00.000Z",
+                "approvedBy": "Chief Information Security Officer",
+                "policyScope": "Organization-wide",
+                "applicability": "All employees, contractors, and third parties"
+              },
+              "operationalSecurityPolicies": {
+                "totalPolicies": 23,
+                "documentsInScope": 21,
+                "documentationCompleteness": "91.3%",
+                "policyCategories": [
+                  "Access Management",
+                  "Data Protection",
+                  "Network Security",
+                  "Incident Response",
+                  "Change Management",
+                  "Physical Security",
+                  "Third-Party Management"
+                ]
+              }
+            },
+            "policyDevelopmentProcess": {
+              "policyDevelopmentMethodology": {
+                "stakeholderEngagement": "Multi-stakeholder review process",
+                "riskBasedPolicyDevelopment": "Risk assessment drives policy requirements",
+                "regulatoryComplianceIntegration": "FedRAMP, SOX, and GDPR requirements integrated",
+                "industrybBestPracticeIntegration": "NIST, ISO 27001, and CIS frameworks referenced",
+                "businessRequirementAlignment": "Business impact analysis conducted"
+              },
+              "policyApprovalWorkflow": {
+                "policyOwnerReview": "Policy owner approval required",
+                "legalReview": "Legal department review for compliance",
+                "securityReview": "Security team technical review",
+                "businessStakeholderReview": "Business unit impact assessment",
+                "executiveApproval": "C-level approval for major policies"
+              }
+            }
+          },
+          "policyContentComprehensiveness": {
+            "accessControlPolicies": {
+              "userAccessManagement": "Comprehensive user lifecycle management",
+              "privilegedAccessManagement": "Detailed privileged access controls",
+              "roleBasedAccessControl": "RBAC implementation guidelines",
+              "accessReviewProcedures": "Quarterly access review requirements",
+              "identityGovernance": "Identity governance framework defined"
+            },
+            "dataProtectionPolicies": {
+              "dataClassification": "Four-tier classification scheme",
+              "dataHandling": "Data handling procedures by classification",
+              "dataRetention": "Retention schedules by data type",
+              "dataDestruction": "Secure destruction procedures",
+              "dataPrivacy": "Privacy protection requirements"
+            },
+            "networkSecurityPolicies": {
+              "networkSegmentation": "Network segmentation requirements",
+              "firewallManagement": "Firewall rule management procedures",
+              "remoteAccess": "VPN and remote access requirements",
+              "wirelessSecurity": "Wireless network security standards",
+              "networkMonitoring": "Network monitoring and logging requirements"
+            },
+            "cloudSecurityPolicies": {
+              "cloudGovernance": "Cloud service governance framework",
+              "cloudConfiguration": "Secure cloud configuration standards",
+              "cloudDataProtection": "Cloud data protection requirements",
+              "cloudAccessManagement": "Cloud access management policies",
+              "multiCloudSecurity": "Multi-cloud security coordination"
+            }
+          },
+          "policyGovernanceAndMaintenance": {
+            "policyLifecycleManagement": {
+              "policyCreation": "Standardized policy creation process",
+              "policyUpdate": "Change management for policy updates",
+              "policyRetirement": "Policy retirement and archival process",
+              "policyVersionControl": "Version control for all policy documents",
+              "policyDistribution": "Automated policy distribution system"
+            },
+            "policyReviewAndUpdate": {
+              "annualPolicyReview": "Annual comprehensive policy review",
+              "triggerBasedReviews": "Event-triggered policy reviews",
+              "regulatoryChangeReviews": "Regulatory change impact assessment",
+              "incidentDrivenReviews": "Security incident-driven policy updates",
+              "stakeholderFeedbackIntegration": "Systematic stakeholder feedback collection"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Security policy framework comprehensiveness assessment",
+            "result": "COMPREHENSIVE",
+            "details": "Complete policy hierarchy with 23 operational policies covering all security domains"
+          },
+          {
+            "test": "Policy development and approval process validation",
+            "result": "ROBUST",
+            "details": "Multi-stakeholder review process with risk-based development and executive approval"
+          },
+          {
+            "test": "Policy governance and lifecycle management verification",
+            "result": "MATURE",
+            "details": "Systematic lifecycle management with annual reviews and automated distribution"
+          }
+        ],
+        "remediation": "Security policy framework comprehensively implemented with robust governance and lifecycle management"
+      },
+      {
+        "checkId": "PIY-02-002",
+        "name": "Azure Policy and Governance Implementation",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Azure policies should be implemented to enforce security objectives and compliance requirements across all cloud resources",
+        "findings": {
+          "azurePolicyImplementation": {
+            "policyDefinitions": {
+              "totalPolicyDefinitions": 127,
+              "builtInPolicies": 89,
+              "customPolicies": 38,
+              "securityFocusedPolicies": 76,
+              "complianceFocusedPolicies": 45,
+              "operationalPolicies": 34
+            },
+            "policyAssignments": {
+              "managementGroupAssignments": 12,
+              "subscriptionAssignments": 23,
+              "resourceGroupAssignments": 45,
+              "policyInitiatives": 8,
+              "exemptions": 6,
+              "exemptionJustifications": "Documented business justifications"
+            },
+            "policyEnforcement": {
+              "enforcementMode": "Enabled for 94% of policies",
+              "auditMode": "6% in audit-only mode",
+              "denyActions": 234,
+              "modifyActions": 67,
+              "appendActions": 23,
+              "deployIfNotExistsActions": 45
+            }
+          },
+          "securityObjectiveEnforcement": {
+            "accessControlEnforcement": {
+              "roleBasedAccessPolicies": "Enforced",
+              "privilegedAccessPolicies": "Enforced",
+              "serviceAccountPolicies": "Enforced",
+              "guestUserPolicies": "Enforced",
+              "administrativeAccessPolicies": "Enforced"
+            },
+            "dataProtectionEnforcement": {
+              "encryptionAtRestPolicies": "Enforced",
+              "encryptionInTransitPolicies": "Enforced",
+              "keyManagementPolicies": "Enforced",
+              "dataClassificationPolicies": "Partially enforced",
+              "dataRetentionPolicies": "Enforced"
+            },
+            "networkSecurityEnforcement": {
+              "networkSegmentationPolicies": "Enforced",
+              "firewallRulePolicies": "Enforced",
+              "networkSecurityGroupPolicies": "Enforced",
+              "bastionHostPolicies": "Enforced",
+              "vpnConfigurationPolicies": "Enforced"
+            }
+          },
+          "complianceAndGovernance": {
+            "regulatoryComplianceInitiatives": {
+              "fedRampCompliance": "92% compliant",
+              "sox404Compliance": "89% compliant",
+              "iso27001Compliance": "94% compliant",
+              "nist800853Compliance": "91% compliant",
+              "pcidssCompliance": "88% compliant"
+            },
+            "governanceDashboards": {
+              "policyComplianceDashboard": "Real-time compliance tracking",
+              "securityPostureDashboard": "Security score monitoring",
+              "costGovernanceDashboard": "Cost optimization tracking",
+              "resourceGovernanceDashboard": "Resource deployment governance",
+              "complianceReporting": "Automated monthly reports"
+            }
+          },
+          "policyMonitoringAndRemediation": {
+            "complianceMonitoring": {
+              "realTimeCompliance": "Continuous monitoring enabled",
+              "complianceScore": "91.7%",
+              "nonCompliantResources": 47,
+              "policyViolationAlerts": "Automated alerting enabled",
+              "escalationProcedures": "Defined escalation matrix"
+            },
+            "automatedRemediation": {
+              "autoRemediationPolicies": 23,
+              "remediationSuccess": "94.2%",
+              "manualRemediationRequired": 12,
+              "remediationTracking": "Comprehensive tracking system",
+              "remediationTimeframes": "SLA-based remediation"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Azure policy implementation and coverage assessment",
+            "result": "COMPREHENSIVE",
+            "details": "127 policy definitions with 94% enforcement mode and comprehensive security coverage"
+          },
+          {
+            "test": "Security objective enforcement validation",
+            "result": "EFFECTIVE",
+            "details": "Comprehensive enforcement across access control, data protection, and network security domains"
+          },
+          {
+            "test": "Compliance monitoring and remediation effectiveness check",
+            "result": "MATURE",
+            "details": "91.7% compliance score with automated remediation and real-time monitoring"
+          }
+        ],
+        "remediation": "Azure policy implementation comprehensive with effective enforcement and automated compliance monitoring"
+      },
+      {
+        "checkId": "PIY-02-003",
+        "name": "Security Awareness and Training Policy Implementation",
+        "status": "PASS",
+        "severity": "MEDIUM",
+        "description": "Security awareness and training policies should be implemented to ensure all personnel understand their security responsibilities",
+        "findings": {
+          "securityAwarenessProgram": {
+            "trainingPolicyFramework": {
+              "securityAwarenessPolicy": "Comprehensive policy documented",
+              "trainingRequirements": "Role-based training requirements defined",
+              "trainingFrequency": "Annual general training, quarterly specialized training",
+              "trainingCompletionRequirements": "100% completion required",
+              "trainingTrackingMethods": "LMS-based tracking and reporting"
+            },
+            "trainingContentAndDelivery": {
+              "generalSecurityAwareness": {
+                "phishingAwareness": "Interactive phishing simulation training",
+                "passwordSecurity": "Password and MFA best practices",
+                "socialEngineering": "Social engineering awareness training",
+                "physicalSecurity": "Physical security awareness",
+                "incidentReporting": "Security incident reporting procedures"
+              },
+              "roleSpecificTraining": {
+                "developerSecurityTraining": "Secure coding practices and OWASP Top 10",
+                "administratorSecurityTraining": "Privileged access and system hardening",
+                "managementSecurityTraining": "Security governance and risk management",
+                "hrSecurityTraining": "Personnel security and background checks",
+                "vendorSecurityTraining": "Third-party security requirements"
+              }
+            }
+          },
+          "trainingComplianceAndEffectiveness": {
+            "trainingParticipationMetrics": {
+              "totalEmployees": 456,
+              "trainingCompletionRate": "97.8%",
+              "onTimeCompletionRate": "94.3%",
+              "newHireTrainingCompletion": "100% within 30 days",
+              "refresherTrainingCompliance": "96.1%"
+            },
+            "trainingEffectivenessAssessment": {
+              "knowledgeAssessmentScores": "Average 87.3% pass rate",
+              "phishingSimulationResults": "Click rate reduced from 23% to 8%",
+              "securityIncidentCorrelation": "45% reduction in security incidents",
+              "behavioralChangeTracking": "Improved security practices observed",
+              "feedbackAndImprovementTracking": "Systematic feedback collection and analysis"
+            }
+          },
+          "specializedTrainingPrograms": {
+            "privilegedUserTraining": {
+              "privilegedAccessTraining": "Comprehensive privileged access training",
+              "systemAdministratorTraining": "Advanced security configuration training",
+              "securityTeamTraining": "Professional security certifications supported",
+              "incidentResponseTraining": "Tabletop exercises and simulation training",
+              "emergencyResponseTraining": "Crisis management and communication training"
+            },
+            "complianceAndRegulatoryTraining": {
+              "fedRampTraining": "FedRAMP compliance and requirements training",
+              "privacyTraining": "Data privacy and GDPR compliance training",
+              "soxTraining": "SOX compliance and financial controls training",
+              "industrySpecificTraining": "Sector-specific compliance requirements",
+              "regulatoryUpdateTraining": "Ongoing regulatory change training"
+            }
+          },
+          "trainingGovernanceAndManagement": {
+            "trainingProgramManagement": {
+              "trainingCoordinator": "Dedicated training coordinator assigned",
+              "trainingBudget": "Adequate training budget allocated",
+              "trainingVendorManagement": "Qualified training provider partnerships",
+              "trainingContentManagement": "Regular content updates and reviews",
+              "trainingTechnologyPlatform": "Modern LMS with analytics capabilities"
+            },
+            "continuousImprovementProcess": {
+              "trainingNeedsAssessment": "Annual training needs analysis",
+              "trainingContentUpdates": "Quarterly content review and updates",
+              "emergingThreatTraining": "Rapid deployment of threat-specific training",
+              "trainingInnovation": "Gamification and interactive training methods",
+              "benchmarkingAndBestPractices": "Industry benchmarking and best practice adoption"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Security awareness program comprehensiveness and policy framework assessment",
+            "result": "COMPREHENSIVE",
+            "details": "Complete training policy with role-specific requirements and 97.8% completion rate"
+          },
+          {
+            "test": "Training effectiveness and behavioral impact validation",
+            "result": "EFFECTIVE",
+            "details": "87.3% assessment pass rate with 45% security incident reduction and improved phishing resistance"
+          },
+          {
+            "test": "Training governance and continuous improvement evaluation",
+            "result": "MATURE",
+            "details": "Dedicated coordinator with systematic needs assessment and quarterly content updates"
+          }
+        ],
+        "remediation": "Security awareness and training policy comprehensively implemented with effective delivery and measurable outcomes"
+      },
+      {
+        "checkId": "PIY-02-004",
+        "name": "Incomplete Policy Documentation and Standards",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Security policy documentation lacks comprehensive technical standards and implementation guidance",
+        "findings": {
+          "policyDocumentationGaps": {
+            "technicalStandardsDocumentation": {
+              "securityConfigurationStandards": {
+                "windowsServerHardeningStandards": "Basic guidelines only",
+                "linuxServerHardeningStandards": "Incomplete documentation",
+                "networkDeviceConfigurationStandards": "Limited standards",
+                "cloudServiceConfigurationStandards": "Inconsistent documentation",
+                "applicationSecurityStandards": "Basic requirements only"
+              },
+              "encryptionAndCryptographyStandards": {
+                "encryptionAlgorithmStandards": "Basic requirements",
+                "keyManagementStandards": "Limited implementation guidance",
+                "cryptographicControlsDocumentation": "Incomplete specifications",
+                "digitalSignatureStandards": "Not comprehensively documented",
+                "cryptographicKeyLifecycleManagement": "Basic procedures only"
+              }
+            },
+            "implementationGuidanceGaps": {
+              "policyImplementationProcedures": {
+                "stepByStepImplementationGuides": "Limited availability",
+                "configurationBaselines": "Inconsistent baselines",
+                "complianceChecklists": "Basic checklists only",
+                "validationProcedures": "Manual validation procedures",
+                "troubleshootingGuides": "Limited troubleshooting documentation"
+              },
+              "roleSpecificGuidance": {
+                "administratorImplementationGuides": "Basic guidance",
+                "developerSecurityGuidelines": "Limited secure coding standards",
+                "businessUserGuidelines": "Inconsistent user guidance",
+                "thirdPartyImplementationRequirements": "Basic requirements only",
+                "vendorSecurityRequirements": "Limited vendor guidance"
+              }
+            }
+          },
+          "policyIntegrationAndConsistency": {
+            "crossFunctionalPolicyAlignment": {
+              "itSecurityPolicyAlignment": "Limited alignment",
+              "businessContinuityPolicyAlignment": "Basic alignment",
+              "humanResourcesPolicyAlignment": "Inconsistent alignment",
+              "procurementPolicyAlignment": "Limited integration",
+              "legalAndCompliancePolicyAlignment": "Basic integration"
+            },
+            "policyConsistencyIssues": {
+              "conflictingPolicyRequirements": 8,
+              "ambiguousPolicyLanguage": 12,
+              "outdatedPolicyReferences": 15,
+              "inconsistentTerminology": "Multiple terminology conflicts",
+              "gapsBetweenPolicies": "Coverage gaps identified"
+            }
+          },
+          "policyAccessibilityAndUsability": {
+            "policyAccessGaps": {
+              "policyRepositoryAccess": "Limited centralized access",
+              "policySearchCapabilities": "Basic search functionality",
+              "mobileAccessToPolicies": "Not available",
+              "offlineAccessToPolicies": "Limited offline access",
+              "multiLanguagePolicySupport": "English only"
+            },
+            "policyUsabilityIssues": {
+              "policyComplexity": "High complexity for non-technical users",
+              "policyLength": "Excessively lengthy documents",
+              "policyNavigation": "Poor document structure",
+              "visualAidsAndDiagrams": "Limited visual documentation",
+              "policyExamplesAndScenarios": "Insufficient practical examples"
+            }
+          },
+          "policyTrainingAndCommunication": {
+            "policyAwarenessGaps": {
+              "policyAwarenessLevel": "67% awareness across organization",
+              "policyUnderstandingLevel": "54% comprehension rate",
+              "policyComplianceAwareness": "Limited compliance understanding",
+              "policyChangeNotification": "Inconsistent change communication",
+              "policyTrainingEffectiveness": "Basic training effectiveness"
+            },
+            "policyCommunicationChannels": {
+              "formalCommunicationChannels": "Email and intranet only",
+              "informalCommunicationChannels": "Limited informal channels",
+              "policyTownHalls": "Irregular town hall meetings",
+              "policyQuestionAndAnswerSessions": "Not regularly scheduled",
+              "policyFeedbackMechanisms": "Limited feedback collection"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Policy documentation completeness and technical standards assessment",
+            "result": "INADEQUATE",
+            "details": "Basic technical standards with incomplete implementation guidance and limited configuration baselines"
+          },
+          {
+            "test": "Policy integration, consistency, and conflict resolution validation",
+            "result": "INCONSISTENT",
+            "details": "8 conflicting requirements with 15 outdated references and multiple terminology conflicts"
+          },
+          {
+            "test": "Policy accessibility, usability, and communication effectiveness check",
+            "result": "LIMITED",
+            "details": "67% awareness with 54% comprehension rate and basic access mechanisms"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Develop comprehensive technical implementation standards with step-by-step guides, 2) Create detailed configuration baselines and compliance checklists for all systems, 3) Resolve policy conflicts and establish consistent terminology framework, 4) Implement centralized policy repository with enhanced search and mobile access, 5) Simplify policy language and add visual aids and practical examples, 6) Establish systematic policy awareness and training programs, 7) Implement regular policy communication channels and feedback mechanisms"
+      },
+      {
+        "checkId": "PIY-02-005",
+        "name": "Inadequate Third-Party and Vendor Security Policies",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Third-party and vendor security policies lack comprehensive requirements and enforcement mechanisms",
+        "findings": {
+          "vendorSecurityPolicyGaps": {
+            "vendorSecurityRequirements": {
+              "vendorSecurityStandards": {
+                "minimumSecurityRequirements": "Basic requirements defined",
+                "vendorSecurityAssessmentRequirements": "Limited assessment procedures",
+                "vendorCertificationRequirements": "Basic certification requirements",
+                "vendorSecurityControlRequirements": "Insufficient control specifications",
+                "vendorIncidentReportingRequirements": "Basic reporting requirements"
+              },
+              "vendorOnboardingSecurityProcess": {
+                "securityDueDiligenceProcess": "Basic due diligence",
+                "vendorRiskAssessmentProcedures": "Limited risk assessment",
+                "securityControlValidation": "Manual validation only",
+                "contractualSecurityRequirements": "Standard clauses only",
+                "vendorSecurityTrainingRequirements": "Not systematically required"
+              }
+            },
+            "thirdPartyAccessManagement": {
+              "vendorAccessControlPolicies": {
+                "vendorAccessProvisioningProcedures": "Manual provisioning process",
+                "vendorAccessReviewProcedures": "Annual reviews only",
+                "vendorPrivilegedAccessManagement": "Limited privileged access controls",
+                "vendorRemoteAccessRequirements": "Basic remote access policies",
+                "vendorAccountManagementProcedures": "Manual account management"
+              },
+              "dataAccessAndHandlingPolicies": {
+                "vendorDataAccessLimitations": "Basic access limitations",
+                "dataHandlingRequirements": "Standard data handling clauses",
+                "dataRetentionAndDestructionPolicies": "Basic retention policies",
+                "crossBorderDataTransferRestrictions": "Limited restrictions",
+                "vendorDataEncryptionRequirements": "Basic encryption requirements"
+              }
+            }
+          },
+          "vendorSecurityMonitoringAndOversight": {
+            "continuousVendorSecurityMonitoring": {
+              "vendorSecurityPostureMonitoring": "Limited monitoring",
+              "vendorComplianceMonitoring": "Basic compliance checks",
+              "vendorIncidentMonitoring": "Reactive monitoring only",
+              "vendorPerformanceMonitoring": "Basic performance tracking",
+              "vendorRiskContinuousAssessment": "Annual assessments only"
+            },
+            "vendorSecurityGovernance": {
+              "vendorSecurityCommittees": "No dedicated committees",
+              "vendorSecurityReviewMeetings": "Irregular meetings",
+              "vendorSecurityEscalationProcedures": "Basic escalation procedures",
+              "vendorContractSecurityReview": "Annual contract reviews",
+              "vendorRelationshipManagement": "Basic relationship management"
+            }
+          },
+          "supplyChainSecurityPolicies": {
+            "supplyChainRiskManagement": {
+              "supplyChainSecurityAssessment": "Limited assessment procedures",
+              "subcontractorSecurityRequirements": "Basic requirements",
+              "supplyChainTransparencyRequirements": "Limited transparency requirements",
+              "supplyChainResilienceRequirements": "Basic resilience planning",
+              "supplyChainIncidentResponseRequirements": "Limited incident response coordination"
+            },
+            "softwareSupplyChainSecurity": {
+              "softwareVendorSecurityRequirements": "Basic software security requirements",
+              "sourceCodeSecurityRequirements": "Limited source code review requirements",
+              "softwareBuildPipelineSecurityRequirements": "Basic build security requirements",
+              "softwareVulnerabilityManagementRequirements": "Standard vulnerability management clauses",
+              "softwareLicensingAndIntellectualPropertyRequirements": "Basic licensing requirements"
+            }
+          },
+          "vendorSecurityIncidentManagement": {
+            "vendorIncidentReportingPolicies": {
+              "incidentNotificationTimelines": "24-48 hour notification requirements",
+              "incidentSeverityClassification": "Basic severity classification",
+              "incidentReportingChannels": "Email-based reporting",
+              "incidentDocumentationRequirements": "Basic documentation requirements",
+              "incidentEscalationProcedures": "Limited escalation procedures"
+            },
+            "vendorIncidentResponseCoordination": {
+              "jointIncidentResponseProcedures": "Basic coordination procedures",
+              "vendorIncidentResponseCapabilities": "Limited capability assessment",
+              "incidentCommunicationProtocols": "Basic communication protocols",
+              "incidentContainmentAndRecoveryProcedures": "Standard containment procedures",
+              "postIncidentReviewRequirements": "Basic post-incident review requirements"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Vendor security requirements and onboarding process assessment",
+            "result": "BASIC",
+            "details": "Basic security requirements with limited assessment procedures and manual validation processes"
+          },
+          {
+            "test": "Third-party access management and data handling policy validation",
+            "result": "INADEQUATE",
+            "details": "Manual provisioning with basic access limitations and limited privileged access controls"
+          },
+          {
+            "test": "Supply chain security and incident management capability evaluation",
+            "result": "LIMITED",
+            "details": "Basic supply chain assessment with limited incident response coordination and transparency"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Develop comprehensive vendor security requirements with detailed assessment procedures, 2) Implement automated vendor access management with privileged access controls, 3) Establish continuous vendor security monitoring with real-time compliance checking, 4) Create dedicated vendor security governance committees with regular review meetings, 5) Implement comprehensive supply chain security assessment and transparency requirements, 6) Establish joint incident response procedures with automated notification and escalation, 7) Deploy vendor risk management platform with continuous risk assessment capabilities"
+      },
+      {
+        "checkId": "PIY-02-006",
+        "name": "Limited Security Policy Enforcement and Monitoring",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Security policy enforcement mechanisms lack automated monitoring and consistent violation response procedures",
+        "findings": {
+          "policyEnforcementGaps": {
+            "automatedPolicyEnforcement": {
+              "technicalControlsEnforcement": {
+                "accessControlEnforcement": "Partially automated",
+                "encryptionEnforcement": "Basic enforcement",
+                "networkSecurityEnforcement": "Manual enforcement",
+                "systemConfigurationEnforcement": "Limited automation",
+                "applicationSecurityEnforcement": "Manual enforcement"
+              },
+              "policyViolationDetection": {
+                "realTimePolicyViolationDetection": "Limited real-time detection",
+                "automatedComplianceMonitoring": "Basic monitoring",
+                "policyViolationAlerting": "Manual alerting",
+                "violationSeverityClassification": "Basic classification",
+                "violationTrendAnalysis": "Limited trending"
+              }
+            },
+            "proceduralControlsEnforcement": {
+              "policyAwarenessEnforcement": {
+                "mandatoryTrainingCompletion": "89% completion rate",
+                "policyAcknowledgmentTracking": "Manual tracking",
+                "policyComprehensionTesting": "Basic testing",
+                "policyUpdateNotification": "Email-based notifications",
+                "policyAccessTracking": "Limited access tracking"
+              },
+              "behavioralComplianceMonitoring": {
+                "securityBehaviorMonitoring": "Limited behavioral monitoring",
+                "policyAdherenceAssessment": "Annual assessments only",
+                "complianceCultureAssessment": "Basic culture assessment",
+                "policyViolationPatternAnalysis": "Manual analysis",
+                "continuousImprovementFeedback": "Limited feedback mechanisms"
+              }
+            }
+          },
+          "policyViolationResponse": {
+            "violationResponseProcedures": {
+              "violationInvestigationProcedures": {
+                "investigationInitiation": "Manual initiation",
+                "evidenceCollection": "Manual collection",
+                "investigationDocumentation": "Basic documentation",
+                "investigationTimelines": "Inconsistent timelines",
+                "investigationQualityAssurance": "Limited quality assurance"
+              },
+              "correctiveActionProcedures": {
+                "correctiveActionPlanning": "Basic planning",
+                "correctiveActionImplementation": "Manual implementation",
+                "correctiveActionTracking": "Spreadsheet-based tracking",
+                "correctiveActionEffectivenessAssessment": "Limited assessment",
+                "preventiveActionPlanning": "Basic prevention planning"
+              }
+            },
+            "disciplinaryActionFramework": {
+              "violationSeverityMatrix": "Basic severity matrix",
+              "disciplinaryActionGuidelines": "Standard HR guidelines",
+              "progressiveDisciplinaryProcess": "Basic progressive process",
+              "documentationRequirements": "Standard documentation",
+              "appealProcess": "Standard appeal process"
+            }
+          },
+          "complianceMetricsAndReporting": {
+            "policyComplianceMetrics": {
+              "overallComplianceRate": "78.3%",
+              "policySpecificComplianceRates": "Varies by policy (45-95%)",
+              "departmentalComplianceVariance": "Significant variance",
+              "complianceTrendAnalysis": "Limited trending",
+              "benchmarkingAgainstIndustry": "Not conducted"
+            },
+            "complianceReporting": {
+              "regulatoryComplianceReporting": "Quarterly reports",
+              "executiveComplianceReporting": "Basic executive summaries",
+              "boardLevelComplianceReporting": "Annual board reports",
+              "stakeholderComplianceReporting": "Limited stakeholder reporting",
+              "complianceMetricsDashboards": "Basic dashboards"
+            }
+          },
+          "continuousPolicyImprovement": {
+            "policyEffectivenessAssessment": {
+              "policyImpactAnalysis": "Limited impact analysis",
+              "policyGapAnalysis": "Annual gap analysis",
+              "policyBenchmarking": "Limited benchmarking",
+              "stakeholderFeedbackIntegration": "Basic feedback integration",
+              "policyOptimizationOpportunities": "Not systematically identified"
+            },
+            "policyEnforcementOptimization": {
+              "enforcementEfficiencyAnalysis": "Limited efficiency analysis",
+              "automationOpportunityIdentification": "Not systematically identified",
+              "enforcementProcessOptimization": "Basic optimization",
+              "technologyEnhancementOpportunities": "Limited technology enhancement",
+              "enforcementCostOptimization": "Not systematically conducted"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Policy enforcement automation and violation detection assessment",
+            "result": "LIMITED",
+            "details": "Partially automated enforcement with basic monitoring and manual alerting mechanisms"
+          },
+          {
+            "test": "Policy violation response and corrective action evaluation",
+            "result": "BASIC",
+            "details": "Manual investigation and corrective action processes with spreadsheet-based tracking"
+          },
+          {
+            "test": "Compliance metrics, reporting, and continuous improvement validation",
+            "result": "INSUFFICIENT",
+            "details": "78.3% compliance rate with limited trending analysis and basic improvement processes"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Implement automated policy enforcement and real-time violation detection systems, 2) Deploy compliance monitoring platform with automated alerting and escalation, 3) Establish systematic policy violation investigation and response procedures, 4) Implement comprehensive compliance metrics and analytics with trend analysis, 5) Deploy automated corrective action tracking and effectiveness assessment, 6) Establish continuous policy improvement framework with systematic gap analysis, 7) Implement advanced compliance dashboards and stakeholder reporting capabilities"
+      },
+      {
+        "checkId": "PIY-02-007",
+        "name": "Insufficient Privacy and Data Protection Policy Implementation",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Privacy and data protection policies lack comprehensive implementation and automated privacy controls",
+        "findings": {
+          "privacyPolicyImplementationGaps": {
+            "dataPrivacyPolicyFramework": {
+              "privacyPolicyComprehensiveness": {
+                "personalDataDefinitions": "Basic definitions",
+                "dataProcessingLegalBasis": "Limited legal basis documentation",
+                "dataSubjectRightsDocumentation": "Basic rights documentation",
+                "consentManagementFramework": "Manual consent management",
+                "privacyByDesignImplementation": "Limited implementation"
+              },
+              "dataClassificationAndInventory": {
+                "personalDataInventory": "43% inventory completeness",
+                "sensitiveDataClassification": "Basic classification scheme",
+                "dataFlowMapping": "Manual mapping process",
+                "dataRetentionSchedules": "Inconsistent retention schedules",
+                "dataMinimizationPractices": "Limited minimization practices"
+              }
+            },
+            "regulatoryComplianceGaps": {
+              "gdprComplianceImplementation": {
+                "gdprComplianceAssessment": "Basic compliance assessment",
+                "dataProtectionImpactAssessments": "Manual DPIA process",
+                "dataBreachNotificationProcedures": "Basic notification procedures",
+                "dataProtectionOfficerRoles": "DPO role defined but limited resources",
+                "recordsOfProcessingActivities": "Incomplete records"
+              },
+              "otherPrivacyRegulationCompliance": {
+                "ccpaComplianceImplementation": "Limited CCPA compliance",
+                "hipaComplianceForHealthData": "Basic HIPAA compliance",
+                "ferpaComplianceForEducationData": "Not systematically addressed",
+                "statePrivacyLawCompliance": "Limited state law compliance",
+                "sectorSpecificPrivacyCompliance": "Basic sector compliance"
+              }
+            }
+          },
+          "automatedPrivacyControls": {
+            "dataDiscoveryAndClassification": {
+              "automatedDataDiscovery": "Limited automated discovery",
+              "dataClassificationAutomation": "Rule-based classification only",
+              "personalDataDetection": "Basic pattern matching",
+              "sensitiveDataTagging": "Manual tagging process",
+              "dataInventoryAutomation": "Limited automation"
+            },
+            "privacyControlsAutomation": {
+              "automatedConsentManagement": "Not implemented",
+              "dataSubjectRequestAutomation": "Manual request processing",
+              "dataRetentionAutomation": "Limited automated retention",
+              "dataAnonymizationAutomation": "Not implemented",
+              "privacyViolationDetection": "Manual detection only"
+            }
+          },
+          "dataSubjectRightsManagement": {
+            "dataSubjectRequestProcessing": {
+              "requestIntakeProcess": "Email-based intake",
+              "requestValidationProcedures": "Manual validation",
+              "responseTimelinecompliance": "67% timeline compliance",
+              "requestFulfillmentTracking": "Spreadsheet-based tracking",
+              "requestAppealProcess": "Basic appeal process"
+            },
+            "dataPortabilityAndErasure": {
+              "dataPortabilityImplementation": "Manual data export",
+              "rightToErasureImplementation": "Manual deletion process",
+              "dataRectificationProcedures": "Manual correction process",
+              "dataProcessingRestriction": "Manual restriction implementation",
+              "objectionToProcessingHandling": "Manual objection handling"
+            }
+          },
+          "privacyRiskManagement": {
+            "privacyRiskAssessment": {
+              "privacyImpactAssessments": "Manual PIA process",
+              "privacyRiskIdentification": "Basic risk identification",
+              "privacyRiskMitigation": "Manual mitigation planning",
+              "privacyRiskMonitoring": "Limited risk monitoring",
+              "privacyRiskReporting": "Basic risk reporting"
+            },
+            "privacyIncidentManagement": {
+              "privacyIncidentDetection": "Manual detection",
+              "incidentResponseProcedures": "Basic response procedures",
+              "breachNotificationCompliance": "Manual notification process",
+              "incidentDocumentationRequirements": "Basic documentation",
+              "postIncidentPrivacyReview": "Limited post-incident review"
+            }
+          },
+          "privacyGovernanceAndOversight": {
+            "privacyGovernanceFramework": {
+              "privacyGovernanceCommittee": "No dedicated committee",
+              "privacyPolicyOversight": "Limited oversight",
+              "privacyComplianceMonitoring": "Basic monitoring",
+              "privacyTrainingAndAwareness": "Limited privacy training",
+              "privacyVendorManagement": "Basic vendor privacy requirements"
+            },
+            "privacyMetricsAndReporting": {
+              "privacyComplianceMetrics": "Basic metrics",
+              "privacyDashboards": "No privacy dashboards",
+              "regulatoryReporting": "Manual regulatory reporting",
+              "stakeholderPrivacyReporting": "Limited stakeholder reporting",
+              "privacyAuditAndAssessment": "Annual assessments only"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Privacy policy framework and regulatory compliance assessment",
+            "result": "BASIC",
+            "details": "43% data inventory completeness with manual DPIA process and basic GDPR compliance"
+          },
+          {
+            "test": "Automated privacy controls and data subject rights management validation",
+            "result": "MANUAL",
+            "details": "Manual consent management with 67% timeline compliance and email-based request intake"
+          },
+          {
+            "test": "Privacy risk management and governance framework evaluation",
+            "result": "LIMITED",
+            "details": "Manual privacy risk assessment with basic incident response and no dedicated governance committee"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive automated data discovery and classification with ML-based personal data detection, 2) Deploy automated privacy controls including consent management and data subject request processing, 3) Establish automated data retention and anonymization capabilities, 4) Implement comprehensive privacy risk assessment and monitoring framework, 5) Deploy privacy governance committee with dedicated resources and oversight, 6) Implement privacy compliance dashboards with real-time metrics and automated reporting, 7) Establish comprehensive privacy training and awareness programs with specialized privacy team training"
+      }
+    ],
+    "securityPolicyVerificationMethods": {
+      "policyDocumentationSystems": [
+        "Document management systems: SharePoint policy libraries and version control",
+        "Policy management platforms: MetricStream, ServiceNow GRC policy modules",
+        "Compliance platforms: Archer, Thomson Reuters compliance management",
+        "Quality management systems: ISO 9001 document control systems",
+        "Legal document management: Contract and legal document repositories"
+      ],
+      "azurePolicyImplementation": [
+        "Azure Policy: Policy definitions, assignments, and compliance reporting",
+        "Azure Security Center: Security policy recommendations and compliance scoring",
+        "Azure Blueprints: Policy blueprint assignments and governance frameworks",
+        "Azure Management Groups: Hierarchical policy assignment and inheritance",
+        "Azure Resource Graph: Policy compliance queries and resource analysis"
+      ],
+      "policyEnforcementMonitoring": [
+        "Compliance monitoring tools: RSA Archer, ServiceNow GRC compliance dashboards",
+        "Security information management: SIEM policy violation detection and alerting",
+        "Identity governance platforms: SailPoint, Okta policy compliance monitoring",
+        "Configuration management: Chef, Puppet, Ansible compliance automation",
+        "Vulnerability management: Nessus, Qualys policy compliance scanning"
+      ],
+      "trainingAndAwarenessTracking": [
+        "Learning management systems: LMS training completion and assessment tracking",
+        "Security awareness platforms: KnowBe4, Proofpoint security awareness training",
+        "HR systems: Employee training record integration and compliance tracking",
+        "Phishing simulation tools: Simulated phishing campaign results and improvement tracking",
+        "Compliance training platforms: Specialized compliance and regulatory training systems"
+      ],
+      "privacyAndDataProtection": [
+        "Privacy management platforms: OneTrust, TrustArc privacy program management",
+        "Data discovery tools: Microsoft Purview, Varonis data classification and discovery",
+        "Consent management platforms: Automated consent collection and preference management",
+        "Data subject request management: Automated GDPR/CCPA request processing systems",
+        "Privacy impact assessment tools: Automated privacy risk assessment and documentation"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "PL-1": "Security Planning Policy and Procedures",
+        "PM-1": "Information Security Program Plan",
+        "SA-5": "Information System Documentation",
+        "AT-1": "Security Awareness and Training Policy and Procedures",
+        "SI-5": "Security Alerts, Advisories, and Directives"
+      },
+      "nist80053": {
+        "PL-1": "Security Planning Policy and Procedures",
+        "PM-1": "Information Security Program Plan",
+        "SA-5": "Information System Documentation",
+        "AT-1": "Security Awareness and Training Policy and Procedures",
+        "SI-5": "Security Alerts, Advisories, and Directives",
+        "PT-1": "Privacy Authorization"
+      },
+      "iso27001": {
+        "A.5.1.1": "Policies for information security",
+        "A.5.1.2": "Review of the policies for information security",
+        "A.7.2.2": "Information security awareness, education and training",
+        "A.18.1.1": "Identification of applicable legislation and contractual requirements"
+      }
+    }
+  }
+}

@@ -1,0 +1,806 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-SVC-07",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 8,
+      "passed": 3,
+      "failed": 5,
+      "warnings": 0
+    },
+    "resourcePatchingChecks": [
+      {
+        "checkId": "SVC-07-001",
+        "name": "Azure Update Management Automation",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Virtual machines should use Azure Update Management for consistent patching",
+        "findings": {
+          "updateManagementConfiguration": {
+            "enabled": true,
+            "automationAccount": "fedramp-automation",
+            "logAnalyticsWorkspace": "fedramp-logs",
+            "managedVMs": 24,
+            "patchingSchedules": [
+              {
+                "name": "Critical-Production-Patches",
+                "frequency": "Weekly",
+                "dayOfWeek": "Sunday",
+                "startTime": "02:00 UTC",
+                "duration": "PT4H",
+                "rebootOption": "RebootIfRequired",
+                "classifications": ["Critical", "Security"],
+                "targetVMs": 12
+              },
+              {
+                "name": "Standard-Updates",
+                "frequency": "Monthly",
+                "dayOfWeek": "Saturday",
+                "startTime": "01:00 UTC",
+                "duration": "PT6H",
+                "rebootOption": "RebootIfRequired",
+                "classifications": ["Updates", "UpdateRollups", "FeaturePacks"],
+                "targetVMs": 24
+              }
+            ]
+          },
+          "patchCompliance": {
+            "overallCompliance": "94%",
+            "criticalPatchCompliance": "98%",
+            "securityPatchCompliance": "96%",
+            "lastAssessment": "2025-08-16T06:00:00.000Z",
+            "complianceByClassification": [
+              {
+                "classification": "Critical",
+                "totalPatches": 47,
+                "installedPatches": 46,
+                "compliance": "98%"
+              },
+              {
+                "classification": "Security",
+                "totalPatches": 89,
+                "installedPatches": 85,
+                "compliance": "96%"
+              },
+              {
+                "classification": "Updates",
+                "totalPatches": 156,
+                "installedPatches": 142,
+                "compliance": "91%"
+              }
+            ]
+          },
+          "automationFeatures": {
+            "scheduledDeployments": true,
+            "maintenanceWindows": true,
+            "rollbackCapability": true,
+            "prePostScripts": {
+              "preUpdateScript": "VM-health-check.ps1",
+              "postUpdateScript": "service-validation.ps1"
+            },
+            "notificationSettings": {
+              "emailNotifications": true,
+              "teamsNotifications": true,
+              "recipients": ["platform-team", "security-team"]
+            }
+          },
+          "reportingAndMonitoring": {
+            "complianceDashboard": true,
+            "updateHistory": "Complete",
+            "failureTracking": true,
+            "patchInventory": "Real-time",
+            "alertingRules": [
+              {
+                "trigger": "Patch deployment failure",
+                "severity": "High",
+                "action": "Immediate notification"
+              },
+              {
+                "trigger": "Compliance below 95%",
+                "severity": "Medium",
+                "action": "Weekly report"
+              }
+            ]
+          }
+        },
+        "testResults": [
+          {
+            "test": "Update management configuration verification",
+            "result": "CONFIGURED",
+            "details": "All VMs enrolled in automated update management"
+          },
+          {
+            "test": "Patch compliance assessment",
+            "result": "COMPLIANT",
+            "details": "94% overall compliance, 98% critical patch compliance"
+          },
+          {
+            "test": "Automation capability check",
+            "result": "FUNCTIONAL",
+            "details": "Scheduled deployments and monitoring active"
+          }
+        ],
+        "remediation": "Update management properly configured with high compliance rates"
+      },
+      {
+        "checkId": "SVC-07-002",
+        "name": "Container Image Vulnerability Management",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Container images should be regularly scanned and updated for vulnerabilities",
+        "findings": {
+          "vulnerabilityScanning": {
+            "scanningEnabled": true,
+            "scanningService": "Microsoft Defender for Containers",
+            "scanFrequency": "On push and daily",
+            "totalImages": 45,
+            "scannedImages": 45,
+            "lastScanDate": "2025-08-17T00:00:00.000Z"
+          },
+          "vulnerabilityStatus": {
+            "criticalVulnerabilities": 0,
+            "highVulnerabilities": 2,
+            "mediumVulnerabilities": 15,
+            "lowVulnerabilities": 34,
+            "informationalVulnerabilities": 67,
+            "patchableVulnerabilities": 12,
+            "vulnerabilityTrend": "Decreasing"
+          },
+          "imageUpdatePolicies": {
+            "baseImageUpdates": {
+              "automated": true,
+              "frequency": "Weekly",
+              "triggerRebuild": true,
+              "testingRequired": true
+            },
+            "dependencyUpdates": {
+              "scanningEnabled": true,
+              "automaticPRs": true,
+              "securityUpdatesOnly": false,
+              "approvalRequired": true
+            },
+            "patchingWorkflow": {
+              "vulnerabilityDetection": "Automatic",
+              "patchAvailabilityCheck": "Automated",
+              "buildTrigger": "Automatic for critical/high",
+              "deploymentApproval": "Required",
+              "rollbackCapability": true
+            }
+          },
+          "complianceTracking": {
+            "policyEnforcement": true,
+            "blockedDeployments": 3,
+            "exemptionsGranted": 1,
+            "complianceReporting": "Automated",
+            "auditTrail": "Complete"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Vulnerability scanning verification",
+            "result": "ACTIVE",
+            "details": "All images scanned, no critical vulnerabilities"
+          },
+          {
+            "test": "Update automation assessment",
+            "result": "AUTOMATED",
+            "details": "Base image and dependency updates automated"
+          },
+          {
+            "test": "Policy enforcement check",
+            "result": "ENFORCED",
+            "details": "Vulnerable images blocked from deployment"
+          }
+        ],
+        "remediation": "Container vulnerability management properly implemented"
+      },
+      {
+        "checkId": "SVC-07-003",
+        "name": "Azure PaaS Service Auto-Updates",
+        "status": "PASS",
+        "severity": "MEDIUM",
+        "description": "PaaS services should have automatic updates enabled where available",
+        "findings": {
+          "paasServiceUpdates": {
+            "appService": {
+              "autoUpdate": true,
+              "runtimeVersion": ".NET 8.0 (Latest)",
+              "platformUpdates": "Automatic",
+              "securityPatches": "Automatic",
+              "lastUpdate": "2025-08-10T12:00:00.000Z"
+            },
+            "sqlDatabase": {
+              "autoUpdate": true,
+              "serviceLevel": "S2 Standard",
+              "maintenanceWindow": "Sunday 02:00-06:00 UTC",
+              "lastUpdate": "2025-08-04T03:30:00.000Z"
+            },
+            "keyVault": {
+              "autoUpdate": true,
+              "managedByMicrosoft": true,
+              "lastUpdate": "2025-07-28T00:00:00.000Z"
+            },
+            "storageAccount": {
+              "autoUpdate": true,
+              "storageVersion": "2023-08-03",
+              "lastUpdate": "2025-08-01T00:00:00.000Z"
+            }
+          },
+          "updateConfiguration": {
+            "maintenanceWindows": {
+              "configured": true,
+              "preferredTime": "Sunday 02:00-06:00 UTC",
+              "notificationEnabled": true,
+              "rollbackPlan": "Automatic"
+            },
+            "updateNotifications": {
+              "enabled": true,
+              "channels": ["Email", "Service Health", "Azure Monitor"],
+              "recipients": ["platform-team@company.com"]
+            },
+            "testingProcedures": {
+              "preProductionTesting": true,
+              "healthChecks": true,
+              "rollbackTriggers": "Automatic on failure"
+            }
+          },
+          "complianceMonitoring": {
+            "updateCompliance": "100%",
+            "serviceHealthMonitoring": true,
+            "updateHistory": "Tracked",
+            "impactAssessment": "Automated"
+          }
+        },
+        "testResults": [
+          {
+            "test": "PaaS auto-update verification",
+            "result": "ENABLED",
+            "details": "All PaaS services have automatic updates enabled"
+          },
+          {
+            "test": "Maintenance window configuration",
+            "result": "CONFIGURED",
+            "details": "Maintenance windows properly configured"
+          },
+          {
+            "test": "Update compliance check",
+            "result": "COMPLIANT",
+            "details": "100% compliance with available updates"
+          }
+        ],
+        "remediation": "PaaS service auto-updates properly configured"
+      },
+      {
+        "checkId": "SVC-07-004",
+        "name": "Legacy System Patching Inconsistencies",
+        "status": "FAIL",
+        "severity": "CRITICAL",
+        "description": "Legacy systems show inconsistent and outdated patching practices",
+        "findings": {
+          "patchingGaps": {
+            "totalLegacySystems": 8,
+            "managedByUpdateManagement": 2,
+            "manualPatchingOnly": 6,
+            "patchComplianceIssues": [
+              {
+                "serverName": "legacy-db-01",
+                "operatingSystem": "Windows Server 2016",
+                "lastPatched": "2025-03-15T00:00:00.000Z",
+                "daysSinceLastPatch": 155,
+                "missedCriticalPatches": 23,
+                "missedSecurityPatches": 41,
+                "complianceStatus": "CRITICAL"
+              },
+              {
+                "serverName": "legacy-app-02",
+                "operatingSystem": "Windows Server 2019",
+                "lastPatched": "2025-06-01T00:00:00.000Z",
+                "daysSinceLastPatch": 77,
+                "missedCriticalPatches": 8,
+                "missedSecurityPatches": 15,
+                "complianceStatus": "HIGH_RISK"
+              },
+              {
+                "serverName": "legacy-file-01",
+                "operatingSystem": "Windows Server 2012 R2",
+                "lastPatched": "2024-12-10T00:00:00.000Z",
+                "daysSinceLastPatch": 250,
+                "missedCriticalPatches": 67,
+                "missedSecurityPatches": 134,
+                "complianceStatus": "CRITICAL"
+              }
+            ]
+          },
+          "patchingProcessIssues": {
+            "automation": "None",
+            "scheduling": "Ad-hoc",
+            "testing": "Limited",
+            "documentation": "Outdated",
+            "rollback": "Manual only",
+            "coordination": "Poor",
+            "approvalProcess": "Informal"
+          },
+          "vulnerabilityExposure": {
+            "knownVulnerabilities": 89,
+            "criticalVulnerabilities": 12,
+            "exploitableVulnerabilities": 7,
+            "complianceRisk": "CRITICAL",
+            "securityRisk": "HIGH",
+            "businessRisk": "HIGH"
+          },
+          "maintenanceWindowIssues": {
+            "scheduledWindows": false,
+            "businessAlignment": "Poor",
+            "notification": "Insufficient",
+            "coordination": "Manual",
+            "rollback": "Unplanned"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Patch compliance assessment",
+            "result": "NON_COMPLIANT",
+            "details": "6/8 legacy systems critically behind on patches"
+          },
+          {
+            "test": "Vulnerability exposure check",
+            "result": "HIGH_RISK",
+            "details": "89 known vulnerabilities, 12 critical"
+          },
+          {
+            "test": "Patching process evaluation",
+            "result": "INADEQUATE",
+            "details": "No automated patching, poor documentation"
+          }
+        ],
+        "complianceGaps": [
+          {
+            "requirement": "FedRAMP SI-2 (Flaw Remediation)",
+            "status": "NON_COMPLIANT",
+            "issue": "Critical security patches not installed within required timeframes"
+          }
+        ],
+        "remediation": "CRITICAL: 1) Immediately apply critical security patches, 2) Enroll all systems in Azure Update Management, 3) Establish automated patching schedules, 4) Create maintenance windows and procedures, 5) Implement vulnerability scanning, 6) Establish patch testing procedures, 7) Create rollback and recovery plans"
+      },
+      {
+        "checkId": "SVC-07-005",
+        "name": "Third-Party Software Update Management Gaps",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Third-party software lacks consistent update management and vulnerability tracking",
+        "findings": {
+          "thirdPartySoftwareInventory": {
+            "totalApplications": 47,
+            "managedUpdates": 12,
+            "manualUpdates": 35,
+            "criticalApplications": [
+              {
+                "name": "Apache Tomcat",
+                "version": "9.0.65",
+                "latestVersion": "9.0.84",
+                "versionsBehind": 19,
+                "lastUpdate": "2024-11-20T00:00:00.000Z",
+                "knownVulnerabilities": 8,
+                "criticalVulnerabilities": 2,
+                "updateComplexity": "Medium"
+              },
+              {
+                "name": "Java Runtime Environment",
+                "version": "11.0.16",
+                "latestVersion": "11.0.24",
+                "versionsBehind": 8,
+                "lastUpdate": "2024-09-15T00:00:00.000Z",
+                "knownVulnerabilities": 15,
+                "criticalVulnerabilities": 4,
+                "updateComplexity": "High"
+              },
+              {
+                "name": "PostgreSQL",
+                "version": "13.7",
+                "latestVersion": "13.16",
+                "versionsBehind": 9,
+                "lastUpdate": "2024-08-10T00:00:00.000Z",
+                "knownVulnerabilities": 6,
+                "criticalVulnerabilities": 1,
+                "updateComplexity": "High"
+              }
+            ]
+          },
+          "updateManagementChallenges": {
+            "automationGaps": {
+              "autoUpdateSupport": "25%",
+              "packageManagers": "Limited coverage",
+              "customApplications": "Manual only",
+              "legacyApplications": "No update path"
+            },
+            "testingComplexity": {
+              "compatibilityTesting": "Manual",
+              "regressionTesting": "Limited",
+              "rollbackTesting": "Rare",
+              "productionValidation": "Minimal"
+            },
+            "coordinationIssues": {
+              "applicationDependencies": "Complex",
+              "multiSystemUpdates": "Uncoordinated",
+              "businessProcessImpact": "Unassessed",
+              "communicationGaps": "Significant"
+            }
+          },
+          "vulnerabilityTracking": {
+            "centralizedInventory": false,
+            "vulnerabilityDatabase": "Incomplete",
+            "riskAssessment": "Manual",
+            "prioritizationProcess": "Informal",
+            "remediationTracking": "Limited"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Third-party software inventory check",
+            "result": "INCOMPLETE",
+            "details": "No comprehensive inventory of third-party software"
+          },
+          {
+            "test": "Update automation assessment",
+            "result": "MINIMAL",
+            "details": "Only 25% of applications support automated updates"
+          },
+          {
+            "test": "Vulnerability tracking evaluation",
+            "result": "INADEQUATE",
+            "details": "No centralized vulnerability tracking for third-party software"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Create comprehensive software inventory, 2) Implement vulnerability scanning for third-party applications, 3) Establish update prioritization process, 4) Deploy package management solutions, 5) Create testing and rollback procedures, 6) Implement coordinated update scheduling, 7) Establish vendor relationship management for security updates"
+      },
+      {
+        "checkId": "SVC-07-006",
+        "name": "Database and Middleware Patching Delays",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Database and middleware systems show significant patching delays",
+        "findings": {
+          "databasePatchingStatus": {
+            "sqlServerInstances": [
+              {
+                "serverName": "fedramp-sql-01",
+                "version": "SQL Server 2019 CU15",
+                "latestVersion": "SQL Server 2019 CU28",
+                "cumulativeUpdatesBehind": 13,
+                "lastPatched": "2024-10-15T00:00:00.000Z",
+                "daysSinceLastPatch": 306,
+                "criticalSecurityFixes": 8,
+                "patchingSchedule": "None defined"
+              },
+              {
+                "serverName": "fedramp-reporting-db",
+                "version": "SQL Server 2017 CU31",
+                "latestVersion": "SQL Server 2017 CU31-GDR3",
+                "cumulativeUpdatesBehind": 1,
+                "lastPatched": "2025-05-20T00:00:00.000Z",
+                "daysSinceLastPatch": 89,
+                "criticalSecurityFixes": 2,
+                "patchingSchedule": "Quarterly"
+              }
+            ],
+            "azureSqlDatabases": [
+              {
+                "databaseName": "customer-db",
+                "serviceLevel": "S3 Standard",
+                "automaticUpdates": true,
+                "lastUpdate": "2025-08-05T00:00:00.000Z",
+                "complianceStatus": "COMPLIANT"
+              }
+            ]
+          },
+          "middlewarePatchingStatus": {
+            "webServers": [
+              {
+                "serverType": "IIS",
+                "version": "IIS 10.0.17763.1",
+                "latestVersion": "IIS 10.0.17763.5936",
+                "patchLevel": "Outdated",
+                "lastPatched": "2025-02-28T00:00:00.000Z",
+                "criticalVulnerabilities": 3
+              }
+            ],
+            "applicationServers": [
+              {
+                "serverType": "Apache Tomcat",
+                "version": "9.0.65",
+                "latestVersion": "9.0.84",
+                "securityUpdates": "Behind",
+                "lastPatched": "2024-11-20T00:00:00.000Z",
+                "criticalVulnerabilities": 2
+              }
+            ]
+          },
+          "patchingChallenges": {
+            "downtime": {
+              "maintenanceWindows": "Infrequent",
+              "businessImpact": "High",
+              "coordination": "Complex",
+              "duration": "Extended"
+            },
+            "testing": {
+              "preProductionTesting": "Limited",
+              "rollbackTesting": "Minimal",
+              "performanceValidation": "Basic",
+              "applicationCompatibility": "Manual"
+            },
+            "coordination": {
+              "multiTierUpdates": "Uncoordinated",
+              "dependencyMapping": "Incomplete",
+              "sequencing": "Manual",
+              "rollback": "Complex"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Database patch level assessment",
+            "result": "OUTDATED",
+            "details": "Critical databases significantly behind on patches"
+          },
+          {
+            "test": "Middleware update status check",
+            "result": "BEHIND",
+            "details": "Web and application servers have outdated patches"
+          },
+          {
+            "test": "Patching process evaluation",
+            "result": "INADEQUATE",
+            "details": "No structured patching process for middleware"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Apply critical database and middleware patches immediately, 2) Establish regular maintenance windows, 3) Implement staged patching procedures, 4) Create comprehensive testing protocols, 5) Develop rollback procedures, 6) Coordinate multi-tier update sequences, 7) Migrate to Azure PaaS services where possible"
+      },
+      {
+        "checkId": "SVC-07-007",
+        "name": "Network Device Firmware Management Deficiencies",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Network devices and security appliances lack consistent firmware update management",
+        "findings": {
+          "networkDeviceInventory": {
+            "azureNetworkDevices": [
+              {
+                "deviceType": "VPN Gateway",
+                "name": "fedramp-vpn-gw",
+                "firmwareVersion": "Current",
+                "managedByAzure": true,
+                "autoUpdate": true,
+                "lastUpdate": "2025-07-30T00:00:00.000Z"
+              },
+              {
+                "deviceType": "Application Gateway",
+                "name": "fedramp-app-gw",
+                "firmwareVersion": "Current",
+                "managedByAzure": true,
+                "autoUpdate": true,
+                "lastUpdate": "2025-08-12T00:00:00.000Z"
+              }
+            ],
+            "onPremiseDevices": [
+              {
+                "deviceType": "Firewall",
+                "vendor": "Palo Alto Networks",
+                "model": "PA-220",
+                "firmwareVersion": "9.1.14",
+                "latestVersion": "9.1.19",
+                "versionsBehind": 5,
+                "lastUpdate": "2024-08-15T00:00:00.000Z",
+                "criticalVulnerabilities": 3
+              },
+              {
+                "deviceType": "Switch",
+                "vendor": "Cisco",
+                "model": "Catalyst 2960-X",
+                "firmwareVersion": "15.2(7)E6",
+                "latestVersion": "15.2(7)E10",
+                "versionsBehind": 4,
+                "lastUpdate": "2024-12-01T00:00:00.000Z",
+                "criticalVulnerabilities": 2
+              }
+            ]
+          },
+          "updateManagementIssues": {
+            "processMaturity": {
+              "firmwareInventory": "Manual tracking",
+              "vulnerabilityMonitoring": "Reactive",
+              "updatePlanning": "Ad-hoc",
+              "testingProcedures": "Basic",
+              "rollbackCapability": "Limited"
+            },
+            "automationGaps": {
+              "updateDeployment": "Manual",
+              "complianceMonitoring": "Manual",
+              "alerting": "Basic",
+              "reporting": "Quarterly"
+            }
+          },
+          "riskFactors": {
+            "criticalInfrastructure": true,
+            "exposureToInternet": true,
+            "knownVulnerabilities": 5,
+            "maintenanceWindows": "Rare",
+            "businessImpact": "High"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Azure network device update status",
+            "result": "CURRENT",
+            "details": "Azure-managed devices automatically updated"
+          },
+          {
+            "test": "On-premise device firmware check",
+            "result": "OUTDATED",
+            "details": "Multiple devices behind on firmware updates"
+          },
+          {
+            "test": "Update process maturity assessment",
+            "result": "BASIC",
+            "details": "Manual processes with limited automation"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Update on-premise network device firmware immediately, 2) Implement firmware inventory management system, 3) Establish regular maintenance windows, 4) Create firmware update testing procedures, 5) Implement vulnerability monitoring for network devices, 6) Consider migration to Azure-managed network services, 7) Establish vendor relationship management for security updates"
+      },
+      {
+        "checkId": "SVC-07-008",
+        "name": "Mobile Device and Endpoint Patching Gaps",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Mobile devices and endpoints show inconsistent patch management",
+        "findings": {
+          "endpointInventory": {
+            "totalDevices": 156,
+            "managedDevices": 98,
+            "unmanagedDevices": 58,
+            "deviceCategories": [
+              {
+                "category": "Corporate Laptops",
+                "count": 89,
+                "managementTool": "Microsoft Intune",
+                "patchCompliance": "87%",
+                "lastAssessment": "2025-08-15T00:00:00.000Z"
+              },
+              {
+                "category": "Mobile Devices",
+                "count": 34,
+                "managementTool": "Microsoft Intune",
+                "patchCompliance": "71%",
+                "lastAssessment": "2025-08-16T00:00:00.000Z"
+              },
+              {
+                "category": "BYOD Devices",
+                "count": 33,
+                "managementTool": "Limited",
+                "patchCompliance": "Unknown",
+                "lastAssessment": "Never"
+              }
+            ]
+          },
+          "patchingChallenges": {
+            "userCompliance": {
+              "automaticUpdates": "62%",
+              "userPostponement": "38%",
+              "updateAvoidance": "23%",
+              "educationNeeds": "High"
+            },
+            "deviceManagement": {
+              "byodCompliance": "Uncontrolled",
+              "remoteDevices": "Limited visibility",
+              "offlineDevices": "Patch lag",
+              "legacyDevices": "Unsupported"
+            },
+            "applicationPatching": {
+              "browserUpdates": "Inconsistent",
+              "officeUpdates": "Automated",
+              "thirdPartyApps": "Manual",
+              "mobileApps": "App store dependent"
+            }
+          },
+          "securityGaps": {
+            "unmanageDevices": 58,
+            "outdatedOperatingSystems": 23,
+            "missingCriticalPatches": 45,
+            "vulnerableApplications": 67,
+            "complianceRisk": "MEDIUM"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Endpoint patch compliance check",
+            "result": "PARTIAL",
+            "details": "87% compliance for corporate devices, unknown for BYOD"
+          },
+          {
+            "test": "Device management coverage assessment",
+            "result": "INCOMPLETE",
+            "details": "37% of devices unmanaged or partially managed"
+          },
+          {
+            "test": "Mobile device security evaluation",
+            "result": "INSUFFICIENT",
+            "details": "71% patch compliance with limited BYOD control"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Expand Intune enrollment for all corporate devices, 2) Implement BYOD security policies, 3) Deploy automated patch management for endpoints, 4) Create user education programs for update compliance, 5) Implement endpoint security monitoring, 6) Establish mobile application management policies, 7) Create compliance reporting for all device categories"
+      }
+    ],
+    "patchingBestPractices": {
+      "automatedPatching": [
+        "Use Azure Update Management for consistent VM patching",
+        "Enable automatic updates for PaaS services",
+        "Implement container image vulnerability scanning and updates",
+        "Deploy endpoint management solutions for device patching"
+      ],
+      "patchManagement": [
+        "Establish regular maintenance windows",
+        "Implement patch testing procedures before production deployment",
+        "Create rollback procedures for failed patches",
+        "Maintain comprehensive patch inventory and compliance tracking"
+      ],
+      "vulnerabilityManagement": [
+        "Implement continuous vulnerability scanning",
+        "Prioritize patches based on risk assessment",
+        "Track third-party software vulnerabilities",
+        "Establish emergency patching procedures for critical vulnerabilities"
+      ],
+      "processGovernance": [
+        "Create documented patching procedures",
+        "Establish patch approval workflows",
+        "Implement change management for patching activities",
+        "Conduct regular patch management reviews and improvements"
+      ]
+    },
+    "patchingVerificationMethods": {
+      "azureUpdateManagement": [
+        "az vm run-command invoke --command-id RunPowerShellScript --name <vm-name> --resource-group <rg> --scripts 'Get-HotFix | Sort-Object InstalledOn -Descending | Select-Object -First 10'",
+        "Get-AzAutomationSoftwareUpdateConfiguration -AutomationAccountName <account> -ResourceGroupName <rg>",
+        "Azure Portal: Automation Account > Update Management > Machines",
+        "Log Analytics: UpdateSummary | where TimeGenerated > ago(7d)"
+      ],
+      "containerSecurity": [
+        "az acr repository show-manifests --name <registry> --repository <repo> --query '[].{digest:digest,vulnerabilities:vulnerabilities}'",
+        "docker scout cves <image>",
+        "trivy image <image>",
+        "Azure Portal: Container Registry > Repositories > Vulnerabilities"
+      ],
+      "windowsPatching": [
+        "Get-HotFix | Sort-Object InstalledOn -Descending",
+        "Get-WUHistory (Windows Update PowerShell Module)",
+        "systeminfo | findstr /i 'hotfix'",
+        "wmic qfe list brief /format:table"
+      ],
+      "linuxPatching": [
+        "apt list --upgradable (Ubuntu/Debian)",
+        "yum check-update (RHEL/CentOS)",
+        "zypper list-updates (SUSE)",
+        "cat /var/log/dpkg.log | grep 'status installed' (Ubuntu/Debian)"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "SI-2": "Flaw Remediation",
+        "CM-3": "Configuration Change Control",
+        "RA-5": "Vulnerability Scanning"
+      },
+      "nist80053": {
+        "SI-2": "Flaw Remediation",
+        "CM-3": "Configuration Change Control",
+        "RA-5": "Vulnerability Scanning",
+        "SI-4": "Information System Monitoring"
+      },
+      "iso27001": {
+        "A.12.6.1": "Management of technical vulnerabilities",
+        "A.14.2.3": "Technical review of applications after operating platform changes",
+        "A.12.1.2": "Change management"
+      }
+    }
+  }
+}

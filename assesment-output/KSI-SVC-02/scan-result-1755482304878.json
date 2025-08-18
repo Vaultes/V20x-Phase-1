@@ -1,0 +1,401 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-SVC-02",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 4,
+      "passed": 2,
+      "failed": 2,
+      "warnings": 0
+    },
+    "encryptionVerificationChecks": [
+      {
+        "checkId": "SVC-02-001",
+        "name": "Application Gateway SSL/TLS Configuration",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Application Gateway should enforce strong encryption for all traffic",
+        "findings": {
+          "sslConfiguration": {
+            "sslPolicy": {
+              "policyType": "Custom",
+              "minProtocolVersion": "TLSv1_2",
+              "maxProtocolVersion": "TLSv1_3",
+              "cipherSuites": [
+                "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+                "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+                "TLS_AES_256_GCM_SHA384",
+                "TLS_AES_128_GCM_SHA256"
+              ],
+              "disabledSslProtocols": ["TLSv1", "TLSv1_1", "SSLv2", "SSLv3"]
+            },
+            "certificates": [
+              {
+                "name": "fedramp20x-cert",
+                "type": "Key Vault Certificate",
+                "keyVaultSecretId": "https://fedramp20x-keyvault.vault.azure.net/secrets/ssl-cert/latest",
+                "algorithm": "RSA",
+                "keySize": 2048,
+                "validFrom": "2025-01-01T00:00:00.000Z",
+                "validTo": "2026-01-01T00:00:00.000Z",
+                "issuer": "DigiCert"
+              }
+            ]
+          },
+          "httpsRedirection": {
+            "enabled": true,
+            "redirectRule": {
+              "name": "HttpToHttpsRedirect",
+              "ruleType": "Basic",
+              "httpListener": "HttpListener",
+              "redirectType": "Permanent",
+              "targetListener": "HttpsListener"
+            }
+          },
+          "endToEndEncryption": {
+            "backendHttpSettings": {
+              "protocol": "Https",
+              "port": 443,
+              "certificateValidation": true,
+              "trustedRootCertificates": ["BackendServerCert"]
+            }
+          },
+          "hstsConfiguration": {
+            "enabled": true,
+            "maxAge": 31536000,
+            "includeSubdomains": true,
+            "preload": true
+          }
+        },
+        "encryptionValidation": {
+          "tlsVersion": "TLS 1.3",
+          "cipherStrength": "256-bit AES-GCM",
+          "keyExchange": "ECDHE",
+          "certificateChain": "Valid",
+          "perfectForwardSecrecy": true,
+          "sslRating": "A+"
+        },
+        "testResults": [
+          {
+            "test": "SSL Labs scan",
+            "result": "A+",
+            "details": "Strong encryption, no vulnerabilities detected"
+          },
+          {
+            "test": "HTTP to HTTPS redirect",
+            "result": "PASS",
+            "details": "All HTTP requests properly redirected to HTTPS"
+          },
+          {
+            "test": "Weak cipher detection",
+            "result": "PASS",
+            "details": "No weak ciphers enabled"
+          }
+        ],
+        "remediation": "SSL/TLS configuration properly hardened with strong encryption"
+      },
+      {
+        "checkId": "SVC-02-002",
+        "name": "VPN Gateway IPSec Encryption",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "VPN Gateway should use strong IPSec encryption for site-to-site connections",
+        "findings": {
+          "vpnType": "RouteBased",
+          "sku": "VpnGw2AZ",
+          "generation": "Generation2",
+          "ipsecConfiguration": {
+            "ikeEncryption": "AES256",
+            "ikeIntegrity": "SHA384",
+            "dhGroup": "DHGroup24",
+            "ipsecEncryption": "GCMAES256",
+            "ipsecIntegrity": "GCMAES256",
+            "pfsGroup": "PFS24",
+            "saLifeTimeSeconds": 3600,
+            "saDataSizeKilobytes": 102400000
+          },
+          "connections": [
+            {
+              "name": "OnPremConnection",
+              "connectionType": "IPsec",
+              "sharedKey": "Stored in Key Vault",
+              "enableBgp": true,
+              "usePolicyBasedTrafficSelectors": false,
+              "connectionProtocol": "IKEv2"
+            }
+          ],
+          "bgpSettings": {
+            "asn": 65515,
+            "bgpPeeringAddress": "10.12.255.30",
+            "peerWeight": 0
+          }
+        },
+        "encryptionValidation": {
+          "tunnelEncryption": "AES-256-GCM",
+          "keyExchange": "IKEv2 with AES-256",
+          "authentication": "SHA-384",
+          "perfectForwardSecrecy": "DHGroup24",
+          "rekeying": "Automatic every hour"
+        },
+        "testResults": [
+          {
+            "test": "IPSec tunnel encryption verification",
+            "result": "PASS",
+            "details": "AES-256-GCM encryption confirmed active"
+          },
+          {
+            "test": "Key exchange security",
+            "result": "PASS",
+            "details": "IKEv2 with strong DH groups"
+          },
+          {
+            "test": "Traffic flow analysis",
+            "result": "ENCRYPTED",
+            "details": "All traffic properly encrypted in transit"
+          }
+        ],
+        "remediation": "VPN Gateway properly configured with strong IPSec encryption"
+      },
+      {
+        "checkId": "SVC-02-003",
+        "name": "Storage Account Insecure Transport",
+        "status": "FAIL",
+        "severity": "CRITICAL",
+        "description": "Storage Account should enforce HTTPS and disable insecure transport protocols",
+        "findings": {
+          "httpsTrafficOnly": {
+            "enabled": false,
+            "issue": "HTTP traffic allowed - data transmitted in plaintext"
+          },
+          "minimumTlsVersion": {
+            "configured": "TLS1_0",
+            "issue": "Weak TLS version allows deprecated encryption"
+          },
+          "blobPublicAccess": {
+            "enabled": true,
+            "issue": "Public blob access allows unencrypted data retrieval"
+          },
+          "fileShareSettings": {
+            "smbProtocolVersions": ["SMB2.1", "SMB3.0"],
+            "smbEncryption": false,
+            "issue": "SMB encryption not enforced for file shares"
+          },
+          "accessKeys": {
+            "rotationPolicy": "Manual",
+            "lastRotated": "2024-01-15T00:00:00.000Z",
+            "issue": "Access keys not rotated for over 200 days"
+          }
+        },
+        "vulnerabilityAssessment": {
+          "dataExposureRisk": "CRITICAL",
+          "interceptableTraffic": true,
+          "potentialImpacts": [
+            "Sensitive data transmitted in plaintext",
+            "Man-in-the-middle attacks possible",
+            "Compliance violations (FedRAMP SC-8)",
+            "Data integrity cannot be verified"
+          ]
+        },
+        "testResults": [
+          {
+            "test": "HTTP connection attempt",
+            "result": "ALLOWED",
+            "details": "Successfully connected via HTTP without encryption"
+          },
+          {
+            "test": "TLS 1.0 connection test",
+            "result": "ACCEPTED",
+            "details": "Weak TLS 1.0 connections accepted"
+          },
+          {
+            "test": "Public blob enumeration",
+            "result": "ACCESSIBLE",
+            "details": "Blob containers publicly accessible without authentication"
+          },
+          {
+            "test": "SMB encryption verification",
+            "result": "DISABLED",
+            "details": "File share traffic not encrypted"
+          }
+        ],
+        "complianceViolations": [
+          {
+            "framework": "FedRAMP",
+            "control": "SC-8 (Transmission Confidentiality and Integrity)",
+            "violation": "Data transmission not protected"
+          },
+          {
+            "framework": "NIST 800-53",
+            "control": "SC-13 (Cryptographic Protection)",
+            "violation": "Inadequate cryptographic protection"
+          }
+        ],
+        "remediation": "CRITICAL: 1) Enable 'Secure transfer required' setting, 2) Set minimum TLS version to 1.2, 3) Disable public blob access, 4) Enable SMB encryption for file shares, 5) Rotate access keys, 6) Implement automated key rotation, 7) Review and update access policies"
+      },
+      {
+        "checkId": "SVC-02-004",
+        "name": "SQL Database Encryption Deficiencies",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "SQL Database should have comprehensive encryption for data at rest and in transit",
+        "findings": {
+          "transparentDataEncryption": {
+            "enabled": false,
+            "issue": "Database files not encrypted at rest"
+          },
+          "connectionEncryption": {
+            "enforceSSL": false,
+            "minimumTlsVersion": "1.0",
+            "issue": "SSL not enforced, weak TLS version allowed"
+          },
+          "alwaysEncrypted": {
+            "enabled": false,
+            "sensitiveColumns": ["SSN", "CreditCard", "PersonalInfo"],
+            "issue": "Sensitive columns not encrypted with Always Encrypted"
+          },
+          "columnLevelEncryption": {
+            "implemented": false,
+            "encryptionKeys": [],
+            "issue": "No column-level encryption for PII data"
+          },
+          "backupEncryption": {
+            "enabled": false,
+            "issue": "Database backups stored without encryption"
+          },
+          "auditLogging": {
+            "enabled": true,
+            "logEncryption": false,
+            "issue": "Audit logs transmitted without encryption"
+          }
+        },
+        "dataClassification": {
+          "sensitiveDataFound": true,
+          "dataTypes": [
+            {
+              "column": "SSN",
+              "classification": "Highly Confidential",
+              "encrypted": false
+            },
+            {
+              "column": "CreditCardNumber",
+              "classification": "Highly Confidential",
+              "encrypted": false
+            },
+            {
+              "column": "PersonalEmail",
+              "classification": "Confidential",
+              "encrypted": false
+            }
+          ]
+        },
+        "vulnerabilityAssessment": {
+          "dataAtRestRisk": "HIGH",
+          "dataInTransitRisk": "HIGH",
+          "potentialImpacts": [
+            "Unencrypted sensitive data in database files",
+            "Database traffic interceptable",
+            "Backup files contain plaintext sensitive data",
+            "Non-compliance with data protection regulations"
+          ]
+        },
+        "testResults": [
+          {
+            "test": "TDE status verification",
+            "result": "DISABLED",
+            "details": "Transparent Data Encryption not enabled"
+          },
+          {
+            "test": "SSL connection enforcement",
+            "result": "NOT_ENFORCED",
+            "details": "Plain text connections allowed"
+          },
+          {
+            "test": "Sensitive data scan",
+            "result": "EXPOSED",
+            "details": "Found 1,250 records with unencrypted PII"
+          },
+          {
+            "test": "Backup encryption verification",
+            "result": "UNENCRYPTED",
+            "details": "Database backups stored in plaintext"
+          }
+        ],
+        "complianceGaps": [
+          {
+            "requirement": "FedRAMP SC-28 (Protection of Information at Rest)",
+            "status": "NON_COMPLIANT",
+            "issue": "Database not encrypted at rest"
+          },
+          {
+            "requirement": "PCI DSS 3.2.1",
+            "status": "NON_COMPLIANT",
+            "issue": "Credit card data not properly encrypted"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Enable Transparent Data Encryption (TDE), 2) Enforce SSL connections and set minimum TLS to 1.2, 3) Implement Always Encrypted for sensitive columns, 4) Enable backup encryption, 5) Configure encrypted audit logging, 6) Implement data masking for non-production environments, 7) Conduct data classification review"
+      }
+    ],
+    "encryptionBestPractices": {
+      "dataInTransit": [
+        "Enforce TLS 1.2 or higher for all connections",
+        "Use strong cipher suites (AES-256-GCM recommended)",
+        "Implement certificate pinning where applicable",
+        "Enable HTTP Strict Transport Security (HSTS)",
+        "Use perfect forward secrecy (PFS)"
+      ],
+      "dataAtRest": [
+        "Enable Transparent Data Encryption (TDE)",
+        "Use customer-managed encryption keys",
+        "Implement Always Encrypted for sensitive columns",
+        "Encrypt backup files and logs",
+        "Use Azure Key Vault for key management"
+      ],
+      "networkLevel": [
+        "Configure IPSec for VPN connections",
+        "Use strong DH groups (DHGroup24 or higher)",
+        "Enable automatic key rotation",
+        "Implement network segmentation with encryption",
+        "Monitor encryption status continuously"
+      ]
+    },
+    "encryptionValidationMethods": {
+      "tlsVerification": [
+        "SSL Labs server test",
+        "OpenSSL s_client testing",
+        "Nmap SSL-enum-ciphers script",
+        "Azure Security Center recommendations"
+      ],
+      "networkTrafficAnalysis": [
+        "Wireshark packet capture analysis",
+        "Azure Network Watcher packet capture",
+        "NSG flow logs analysis",
+        "Azure Monitor network insights"
+      ],
+      "databaseEncryption": [
+        "SQL Server DMVs for encryption status",
+        "Azure SQL Database encryption views",
+        "Backup file encryption verification",
+        "Always Encrypted configuration review"
+      ]
+    },
+    "complianceMapping": {
+      "fedrampControls": [
+        {
+          "control": "SC-8 (Transmission Confidentiality and Integrity)",
+          "requirement": "Protect transmitted information confidentiality and integrity"
+        },
+        {
+          "control": "SC-13 (Cryptographic Protection)",
+          "requirement": "Use FIPS-validated cryptography"
+        },
+        {
+          "control": "SC-28 (Protection of Information at Rest)",
+          "requirement": "Protect information at rest"
+        }
+      ]
+    }
+  }
+}

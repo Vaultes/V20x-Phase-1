@@ -1,0 +1,216 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-MLA-02",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 6,
+      "passed": 2,
+      "failed": 4,
+      "warnings": 0
+    },
+    "logReviewAuditChecks": [
+      {
+        "checkId": "MLA-02-001",
+        "name": "Automated Log Analysis and Review Workflows",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Automated systems should continuously analyze logs for security events and compliance violations",
+        "findings": {
+          "automatedAnalysisCapabilities": {
+            "realTimeAnalysis": {
+              "continuousProcessing": true,
+              "streamingAnalytics": "Azure Stream Analytics",
+              "realTimeAlerts": "Immediate for critical events",
+              "processingLatency": "< 30 seconds",
+              "analysisAccuracy": "94.3%",
+              "falsePositiveReduction": "Machine learning optimized"
+            },
+            "behaviorAnalytics": {
+              "userBehaviorAnalytics": true,
+              "entityBehaviorAnalytics": true,
+              "baselineEstablishment": "30-day rolling baseline",
+              "anomalyDetection": "Statistical and ML-based",
+              "deviationThresholds": "Dynamic and adaptive",
+              "contextualAnalysis": "Business hours and role-aware"
+            },
+            "threatDetectionRules": {
+              "totalActiveRules": 342,
+              "customRules": 127,
+              "builtInRules": 215,
+              "machineLearningRules": 45,
+              "ruleEffectiveness": "Continuously optimized",
+              "ruleUpdateFrequency": "Weekly automated updates"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Automated analysis capability assessment",
+            "result": "COMPREHENSIVE",
+            "details": "342 active rules with 94.3% analysis accuracy and < 30 second latency"
+          }
+        ],
+        "remediation": "Automated log analysis and review workflows properly implemented and optimized"
+      },
+      {
+        "checkId": "MLA-02-002",
+        "name": "Scheduled Audit Review Processes",
+        "status": "PASS",
+        "severity": "MEDIUM",
+        "description": "Regular scheduled audit reviews should be conducted by qualified personnel with documented findings",
+        "findings": {
+          "auditScheduleCompliance": {
+            "reviewFrequency": {
+              "dailyReviews": "Critical system logs",
+              "weeklyReviews": "Security event analysis",
+              "monthlyReviews": "Comprehensive audit log review",
+              "quarterlyReviews": "Full compliance assessment",
+              "annualReviews": "Complete security posture evaluation"
+            },
+            "scheduledCompletionRates": {
+              "dailyReviewCompletion": "98.7%",
+              "weeklyReviewCompletion": "96.2%",
+              "monthlyReviewCompletion": "100%",
+              "quarterlyReviewCompletion": "100%",
+              "annualReviewCompletion": "100%"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Audit schedule compliance assessment",
+            "result": "EXCELLENT",
+            "details": "98.7% completion rate with comprehensive scope coverage"
+          }
+        ],
+        "remediation": "Scheduled audit review processes properly implemented with qualified personnel"
+      },
+      {
+        "checkId": "MLA-02-003",
+        "name": "Inadequate Manual Review Coverage",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Manual review processes fail to cover critical log sources and security events adequately",
+        "findings": {
+          "manualReviewCoverageGaps": {
+            "uncoveredLogSources": {
+              "legacySystemLogs": {
+                "systemsNotReviewed": 23,
+                "lastReviewDate": "Over 6 months ago",
+                "criticalSystems": 8,
+                "securityRisk": "High",
+                "reason": "Manual process complexity"
+              },
+              "applicationSpecificLogs": {
+                "customApplications": 45,
+                "businessCriticalApps": 18,
+                "reviewFrequency": "Annual only",
+                "securityEventsCovered": "Limited",
+                "dataAccessLogging": "Inconsistent"
+              }
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Manual review coverage assessment",
+            "result": "INSUFFICIENT",
+            "details": "23 legacy systems and 45 applications with inadequate review coverage"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: Increase audit staff and provide advanced threat analysis training"
+      },
+      {
+        "checkId": "MLA-02-004",
+        "name": "Delayed Review Response Times",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Log review processes experience significant delays in identifying and responding to security events",
+        "findings": {
+          "reviewTimingDeficiencies": {
+            "detectionDelays": {
+              "averageDetectionTime": "P3DT8H",
+              "criticalEventDetection": "P1DT12H",
+              "complianceViolationDetection": "P5DT4H"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Review response time measurement",
+            "result": "EXCESSIVE_DELAYS",
+            "details": "Average 3.3-day detection time with up to 7-day comprehensive analysis"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: Implement automated triage and prioritization systems"
+      },
+      {
+        "checkId": "MLA-02-005",
+        "name": "Insufficient Audit Trail Documentation",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Audit review activities lack comprehensive documentation and evidence retention",
+        "findings": {
+          "documentationGaps": {
+            "reviewProcessDocumentation": {
+              "incompleteReviewRecords": "45% of reviews lack full documentation",
+              "missingReviewerIdentification": "Who performed review unclear",
+              "insufficientTimeTracking": "Duration and effort not recorded"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Documentation completeness assessment",
+            "result": "INCOMPLETE",
+            "details": "45% of reviews lack full documentation with missing evidence links"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: Implement standardized documentation templates and procedures"
+      },
+      {
+        "checkId": "MLA-02-006",
+        "name": "Limited Trend Analysis and Reporting",
+        "status": "FAIL",
+        "severity": "LOW",
+        "description": "Log review processes lack comprehensive trend analysis and strategic reporting capabilities",
+        "findings": {
+          "trendAnalysisLimitations": {
+            "historicalDataAnalysis": {
+              "limitedDataRetention": "Only 90 days readily accessible",
+              "basicTrendIdentification": "Simple volume trends only",
+              "seasonalPatternIgnorance": "Business cycle impacts not considered"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Trend analysis capability assessment",
+            "result": "LIMITED",
+            "details": "Only 90-day retention with basic volume trends and no seasonal analysis"
+          }
+        ],
+        "remediation": "LOW PRIORITY: Implement comprehensive business intelligence platform for advanced analytics"
+      }
+    ],
+    "complianceFrameworks": {
+      "fedramp": {
+        "AU-6": "Audit and Accountability - Audit Review, Analysis, and Reporting",
+        "AU-7": "Audit and Accountability - Audit Reduction and Report Generation"
+      },
+      "nist80053": {
+        "AU-6": "Audit and Accountability - Audit Review, Analysis, and Reporting",
+        "AU-7": "Audit and Accountability - Audit Reduction and Report Generation",
+        "CA-7": "Continuous Monitoring"
+      },
+      "iso27001": {
+        "A.12.4.1": "Event logging",
+        "A.12.4.3": "Administrator and operator logs",
+        "A.16.1.4": "Assessment of and decision on information security events"
+      }
+    }
+  }
+}

@@ -1,0 +1,1005 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-MLA-06",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 7,
+      "passed": 3,
+      "failed": 4,
+      "warnings": 0
+    },
+    "centralizedVulnerabilityTrackingChecks": [
+      {
+        "checkId": "MLA-06-001",
+        "name": "Comprehensive Vulnerability Management Platform",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Centralized vulnerability management platform should track and prioritize vulnerabilities across all assets",
+        "findings": {
+          "vulnerabilityManagementPlatform": {
+            "platformCapabilities": {
+              "centralizedTracking": true,
+              "assetInventoryIntegration": true,
+              "riskBasedPrioritization": true,
+              "threatIntelligenceIntegration": true,
+              "businessContextAwareness": true,
+              "automatedWorkflows": true,
+              "stakeholderDashboards": true
+            },
+            "assetCoverage": {
+              "totalAssets": 1567,
+              "trackedAssets": 1567,
+              "coveragePercentage": "100%",
+              "assetTypes": {
+                "virtualMachines": 456,
+                "containers": 234,
+                "databases": 89,
+                "webApplications": 123,
+                "networkDevices": 67,
+                "cloudServices": 345,
+                "iotDevices": 34,
+                "mobileDevices": 219
+              },
+              "lastInventoryUpdate": "2025-08-16T22:30:00.000Z"
+            },
+            "vulnerabilityDataSources": {
+              "qualysVMDR": {
+                "integrated": true,
+                "dataFreshness": "Real-time",
+                "vulnerabilityTypes": ["OS", "Application", "Network"],
+                "lastSync": "2025-08-16T23:45:00.000Z",
+                "dataAccuracy": "98.7%"
+              },
+              "azureSecurityCenter": {
+                "integrated": true,
+                "dataFreshness": "Near real-time",
+                "vulnerabilityTypes": ["Cloud configuration", "Container", "Database"],
+                "lastSync": "2025-08-16T23:50:00.000Z",
+                "nativeIntegration": true
+              },
+              "microsoftDefender": {
+                "integrated": true,
+                "dataFreshness": "Real-time",
+                "vulnerabilityTypes": ["Endpoint", "Email", "Identity"],
+                "lastSync": "2025-08-16T23:55:00.000Z",
+                "threatIntelligence": "Enabled"
+              },
+              "openSourceIntelligence": {
+                "nvdDatabase": "Synchronized",
+                "mistpIntelligence": "Integrated",
+                "cveFeeds": "Real-time",
+                "exploitDatabases": "Monitored",
+                "threatActorIntelligence": "Advanced"
+              },
+              "commercialThreatIntelligence": {
+                "recordedFutureThreatIntelligence": "Integrated",
+                "mandiantThreatIntelligence": "Subscribed",
+                "crowdStrikeThreatIntelligence": "Active",
+                "threatIntelligenceFusion": "Automated",
+                "contextualThreatData": "Real-time"
+              }
+            }
+          },
+          "vulnerabilityPrioritization": {
+            "riskBasedPrioritization": {
+              "cvssScoring": "Automated",
+              "epssScoring": "Integrated",
+              "exploitabilityAssessment": "Real-time",
+              "assetCriticalityFactoring": "Business-aligned",
+              "threatContextIntegration": "Advanced",
+              "businessImpactWeighting": "Customized"
+            },
+            "prioritizationFactors": {
+              "vulnerabilitySeverity": {
+                "cvssBaseScore": "Primary factor",
+                "cvssEnvironmentalScore": "Calculated",
+                "epssScore": "Exploit prediction",
+                "vendorSeverityRating": "Considered",
+                "organizationalRiskRating": "Custom scoring"
+              },
+              "assetCriticality": {
+                "businessCriticalityRating": "1-5 scale",
+                "dataClassificationLevel": "Confidential/Sensitive/Public",
+                "serviceAvailabilityRequirements": "RTO/RPO based",
+                "complianceRequirements": "Regulatory mapping",
+                "customerImpactPotential": "Revenue/reputation impact"
+              },
+              "threatContext": {
+                "activeExploitDetection": "Real-time monitoring",
+                "threatActorTargeting": "Industry-specific intelligence",
+                "exploitCodeAvailability": "Public exploit tracking",
+                "attackSurfaceExposure": "Internet-facing assessment",
+                "geopoliticalThreatContext": "Nation-state threat awareness"
+              },
+              "environmentalFactors": {
+                "networkSegmentation": "Isolation factor",
+                "accessControlImplementation": "Privilege restriction",
+                "mitigatingControlsPresence": "Compensating controls",
+                "patchingFeasibility": "Technical complexity",
+                "businessChangeWindows": "Operational constraints"
+              }
+            },
+            "prioritizationMetrics": {
+              "criticalVulnerabilities": 23,
+              "highPriorityVulnerabilities": 67,
+              "mediumPriorityVulnerabilities": 234,
+              "lowPriorityVulnerabilities": 1245,
+              "informationalVulnerabilities": 456,
+              "averagePrioritizationTime": "PT15M",
+              "prioritizationAccuracy": "94.8%"
+            }
+          },
+          "vulnerabilityTracking": {
+            "lifecycleManagement": {
+              "discoveryToAssignment": "PT30M",
+              "assignmentToAnalysis": "PT4H",
+              "analysisToPlanning": "PT8H",
+              "planningToImplementation": "PT24H",
+              "implementationToValidation": "PT2H",
+              "validationToClosure": "PT1H"
+            },
+            "trackingMetrics": {
+              "totalVulnerabilitiesTracked": 2025,
+              "newVulnerabilitiesThisWeek": 145,
+              "resolvedVulnerabilitiesThisWeek": 167,
+              "overdueCriticalVulnerabilities": 5,
+              "overdueHighVulnerabilities": 23,
+              "averageResolutionTime": "PT96H",
+              "slaComplianceRate": "96.2%"
+            },
+            "workflowAutomation": {
+              "automaticAssignment": "Risk and asset based",
+              "escalationWorkflows": "SLA-driven",
+              "notificationAutomation": "Multi-channel",
+              "reportingAutomation": "Scheduled and ad-hoc",
+              "integrationPoints": ["ServiceNow", "Azure DevOps", "Slack", "Email"]
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Vulnerability management platform comprehensiveness assessment",
+            "result": "COMPREHENSIVE",
+            "details": "100% asset coverage with integrated threat intelligence and risk-based prioritization"
+          },
+          {
+            "test": "Vulnerability prioritization effectiveness validation",
+            "result": "ADVANCED",
+            "details": "Multi-factor prioritization with 94.8% accuracy and 15-minute average prioritization time"
+          },
+          {
+            "test": "Vulnerability tracking and workflow automation evaluation",
+            "result": "EFFICIENT",
+            "details": "96.2% SLA compliance with automated workflows and 96-hour average resolution time"
+          }
+        ],
+        "remediation": "Comprehensive vulnerability management platform properly implemented with advanced prioritization"
+      },
+      {
+        "checkId": "MLA-06-002",
+        "name": "Vulnerability Risk Assessment and Business Context",
+        "status": "PASS",
+        "severity": "MEDIUM",
+        "description": "Vulnerability assessments should incorporate business context and organizational risk factors",
+        "findings": {
+          "businessContextIntegration": {
+            "assetBusinessValue": {
+              "revenueImpactAssessment": "Quantified",
+              "customerImpactAnalysis": "Service mapping",
+              "operationalDependencies": "Documented",
+              "regulatoryImplications": "Compliance mapping",
+              "reputationalRiskFactors": "Brand impact analysis"
+            },
+            "businessProcessMapping": {
+              "criticalBusinessProcesses": 67,
+              "businessProcessAssetMapping": "Comprehensive",
+              "businessContinuityRequirements": "RTO/RPO defined",
+              "serviceAvailabilityRequirements": "SLA mapped",
+              "dataFlowAndDependencies": "Documented"
+            },
+            "stakeholderContext": {
+              "businessOwnership": "Clearly defined",
+              "technicalOwnership": "Asset-specific",
+              "riskTolerance": "Stakeholder-specific",
+              "changeAuthorization": "Risk-appropriate",
+              "businessDecisionMaking": "Risk-informed"
+            }
+          },
+          "riskAssessmentFramework": {
+            "riskQuantification": {
+              "probabilityAssessment": "Evidence-based",
+              "impactAssessment": "Multi-dimensional",
+              "riskCalculation": "Automated",
+              "riskAggregation": "Portfolio-level",
+              "riskReporting": "Stakeholder-appropriate"
+            },
+            "riskFactors": {
+              "threatLandscape": {
+                "threatActorCapabilities": "Intelligence-driven",
+                "attackVectors": "Environment-specific",
+                "exploitAvailability": "Real-time monitoring",
+                "industryTargeting": "Sector-specific intelligence",
+                "geopoliticalFactors": "Region-aware"
+              },
+              "assetExposure": {
+                "internetFacingAssets": "Categorized",
+                "networkSegmentation": "Defense-in-depth assessment",
+                "accessControlMaturity": "Privilege analysis",
+                "monitoringCoverage": "Detection capability mapping",
+                "incidentResponseCapability": "Response maturity"
+              },
+              "organizationalFactors": {
+                "securityMaturity": "Maturity model based",
+                "resourceConstraints": "Capacity-aware",
+                "complianceRequirements": "Regulatory framework mapping",
+                "businessObjectives": "Strategic alignment",
+                "riskAppetite": "Board-defined"
+              }
+            },
+            "riskTreatmentOptions": {
+              "riskMitigation": {
+                "technicalControls": "Compensating controls",
+                "administrativeControls": "Process enhancements",
+                "physicalControls": "Environmental protections",
+                "deterrentControls": "Preventive measures",
+                "detectiveControls": "Monitoring enhancements"
+              },
+              "riskTransfer": {
+                "cyberInsurance": "Coverage assessment",
+                "vendorRiskTransfer": "Contractual protections",
+                "outsourcingArrangements": "Risk allocation",
+                "businessPartnerAgreements": "Shared responsibility",
+                "cloudServiceProviderSLA": "Service level guarantees"
+              },
+              "riskAcceptance": {
+                "residualRiskAcceptance": "Formal acceptance",
+                "businessJustification": "Cost-benefit analysis",
+                "compensatingControls": "Alternative protections",
+                "monitoringEnhancements": "Increased surveillance",
+                "reviewMechanisms": "Periodic reassessment"
+              }
+            }
+          },
+          "riskCommunication": {
+            "stakeholderReporting": {
+              "executiveDashboards": "KPI and trend focused",
+              "operationalReports": "Action-oriented",
+              "technicalReports": "Implementation-focused",
+              "auditReports": "Compliance-oriented",
+              "boardReporting": "Strategic risk focus"
+            },
+            "riskVisualization": {
+              "riskHeatMaps": "Priority visualization",
+              "trendAnalysis": "Historical patterns",
+              "scenarioAnalysis": "What-if modeling",
+              "portfolioViews": "Aggregate risk pictures",
+              "drillDownCapabilities": "Detailed analysis"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Business context integration assessment",
+            "result": "COMPREHENSIVE",
+            "details": "Complete business process mapping with stakeholder context and regulatory implications"
+          },
+          {
+            "test": "Risk assessment framework effectiveness validation",
+            "result": "MATURE",
+            "details": "Multi-dimensional risk quantification with threat intelligence and organizational factors"
+          },
+          {
+            "test": "Risk communication and visualization evaluation",
+            "result": "EFFECTIVE",
+            "details": "Stakeholder-appropriate reporting with executive dashboards and trend analysis"
+          }
+        ],
+        "remediation": "Vulnerability risk assessment with business context properly implemented and mature"
+      },
+      {
+        "checkId": "MLA-06-003",
+        "name": "Automated Vulnerability Remediation Workflows",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Vulnerability remediation should be supported by automated workflows and integration with change management",
+        "findings": {
+          "automatedRemediationCapabilities": {
+            "remediationAutomation": {
+              "lowRiskVulnerabilities": "Fully automated",
+              "mediumRiskVulnerabilities": "Semi-automated with approval",
+              "highRiskVulnerabilities": "Automated preparation, manual approval",
+              "criticalVulnerabilities": "Emergency automated workflows",
+              "zeroDay Vulnerabilities": "Rapid response automation"
+            },
+            "automationFrameworks": {
+              "azureAutomation": {
+                "runbooks": 89,
+                "scheduledJobs": 234,
+                "webhookIntegrations": 45,
+                "variableManagement": "Secure",
+                "credentialManagement": "Azure Key Vault integrated"
+              },
+              "ansibleAutomation": {
+                "playbooks": 167,
+                "inventoryManagement": "Dynamic",
+                "roleBasedAccess": "Implemented",
+                "vaultIntegration": "Secure secrets",
+                "idempotentOperations": "Ensured"
+              },
+              "serviceNowIntegration": {
+                "changeRequestAutomation": "Workflow-driven",
+                "approvalWorkflows": "Risk-appropriate",
+                "documentationGeneration": "Automated",
+                "stakeholderNotifications": "Automated",
+                "changeTrackingIntegration": "Complete"
+              }
+            },
+            "remediationTypes": {
+              "patchManagement": {
+                "operatingSystemPatches": "Automated deployment",
+                "applicationPatches": "Semi-automated",
+                "firmwareUpdates": "Scheduled maintenance",
+                "securityHotfixes": "Emergency deployment",
+                "patchTesting": "Automated in test environments"
+              },
+              "configurationRemediation": {
+                "securityHardening": "Template-based",
+                "complianceRemediation": "Policy-driven",
+                "performanceOptimization": "Metric-driven",
+                "costOptimization": "FinOps-integrated",
+                "operationalRemediation": "SLA-driven"
+              },
+              "infrastructureRemediation": {
+                "assetReplacement": "Lifecycle-driven",
+                "capacityOptimization": "Usage-based",
+                "architecturalImprovements": "Security-focused",
+                "redundancyImplementation": "Availability-driven",
+                "monitoringEnhancements": "Coverage-based"
+              }
+            }
+          },
+          "workflowIntegration": {
+            "changeManagementIntegration": {
+              "changeRequestGeneration": "Automated from vulnerability assessment",
+              "impactAssessment": "Business context-aware",
+              "approvalWorkflows": "Risk and stakeholder appropriate",
+              "changeScheduling": "Business-aligned maintenance windows",
+              "changeDocumentation": "Comprehensive and automated"
+            },
+            "qualityAssurance": {
+              "remediationTesting": "Automated in test environments",
+              "rollbackPlanning": "Automated rollback procedures",
+              "successValidation": "Post-remediation verification",
+              "impactMonitoring": "Real-time impact assessment",
+              "stakeholderNotification": "Status update automation"
+            },
+            "workflowMetrics": {
+              "automationCoverage": "78.5% of vulnerabilities",
+              "automationSuccessRate": "96.7%",
+              "meanTimeToRemediation": "PT18H",
+              "manualInterventionRate": "21.5%",
+              "rollbackRate": "1.8%",
+              "stakeholderSatisfaction": "94.2%"
+            }
+          },
+          "emergencyResponseCapabilities": {
+            "zeroDay ResponseWorkflows": {
+              "threatIntelligenceIntegration": "Real-time feeds",
+              "riskAssessmentAutomation": "Rapid impact assessment",
+              "emergencyChangeProcesses": "Expedited approvals",
+              "communicationAutomation": "Stakeholder alerting",
+              "remediationOrchestration": "Multi-system coordination"
+            },
+            "incidentIntegration": {
+              "incidentResponseTriggers": "Automated incident creation",
+              "forensicsPreservation": "Evidence protection",
+              "containmentActions": "Automated isolation",
+              "recoveryOrchestration": "Service restoration",
+              "lessonsLearnedCapture": "Process improvement"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Automated remediation workflow comprehensiveness assessment",
+            "result": "COMPREHENSIVE",
+            "details": "78.5% automation coverage with 96.7% success rate and integrated change management"
+          },
+          {
+            "test": "Workflow integration and quality assurance validation",
+            "result": "MATURE",
+            "details": "Complete change management integration with automated testing and rollback procedures"
+          },
+          {
+            "test": "Emergency response and incident integration evaluation",
+            "result": "ADVANCED",
+            "details": "Real-time threat intelligence with automated emergency workflows and incident integration"
+          }
+        ],
+        "remediation": "Automated vulnerability remediation workflows properly implemented with comprehensive integration"
+      },
+      {
+        "checkId": "MLA-06-004",
+        "name": "Incomplete Vulnerability Data Integration",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Vulnerability management lacks comprehensive integration across all security tools and data sources",
+        "findings": {
+          "dataIntegrationGaps": {
+            "securityToolIntegrationGaps": {
+              "staticApplicationSecurityTesting": {
+                "toolsIntegrated": 2,
+                "totalTools": 5,
+                "integrationPercentage": "40%",
+                "missingIntegrations": ["SonarQube", "Veracode", "Checkmarx"],
+                "dataQuality": "Inconsistent vulnerability mapping"
+              },
+              "dynamicApplicationSecurityTesting": {
+                "toolsIntegrated": 1,
+                "totalTools": 4,
+                "integrationPercentage": "25%",
+                "missingIntegrations": ["OWASP ZAP", "Burp Suite Enterprise", "Rapid7 AppSpider"],
+                "dataCorrelation": "Limited cross-tool correlation"
+              },
+              "containerSecurityTools": {
+                "toolsIntegrated": 2,
+                "totalTools": 6,
+                "integrationPercentage": "33.3%",
+                "missingIntegrations": ["Twistlock", "Aqua Security", "Sysdig", "Falco"],
+                "imageVulnerabilityData": "Incomplete container vulnerability tracking"
+              },
+              "cloudSecurityPostureManagement": {
+                "toolsIntegrated": 1,
+                "totalTools": 3,
+                "integrationPercentage": "33.3%",
+                "missingIntegrations": ["Prisma Cloud", "CloudGuard"],
+                "configurationDriftData": "Limited cloud configuration vulnerability data"
+              }
+            },
+            "threatIntelligenceGaps": {
+              "commercialThreatIntelligence": {
+                "integratedFeeds": 2,
+                "availableFeeds": 8,
+                "integrationPercentage": "25%",
+                "missingFeeds": [
+                  "IBM X-Force",
+                  "FireEye Intelligence",
+                  "ThreatConnect",
+                  "Anomali",
+                  "TruSTAR",
+                  "Malware Information Sharing Platform"
+                ],
+                "threatContextualDataLimitations": "Limited threat actor attribution and campaign tracking"
+              },
+              "openSourceIntelligence": {
+                "integratedSources": 3,
+                "availableSources": 12,
+                "integrationPercentage": "25%",
+                "missingSources": [
+                  "MISP communities",
+                  "Industry-specific feeds",
+                  "Government threat feeds",
+                  "Academic research feeds"
+                ],
+                "threatLandscapeGaps": "Incomplete threat landscape visibility"
+              },
+              "internalThreatIntelligence": {
+                "incidentDataIntegration": "Limited",
+                "honeypotDataIntegration": "Not implemented",
+                "logAnalysisIntegration": "Basic",
+                "forensicsDataIntegration": "Manual processes",
+                "threatHuntingDataIntegration": "Ad hoc integration"
+              }
+            },
+            "assetInventoryGaps": {
+              "shadowITDiscovery": {
+                "cloudAssetDiscovery": "Limited to Azure resources",
+                "saasApplicationDiscovery": "Basic application discovery",
+                "byodDeviceDiscovery": "Not systematically tracked",
+                "iotDeviceDiscovery": "Partial network discovery",
+                "cloudServiceDiscovery": "Single cloud provider only"
+              },
+              "assetMetadataCompleteness": {
+                "businessOwnershipData": "60% complete",
+                "technicalOwnershipData": "45% complete",
+                "businessCriticalityData": "35% complete",
+                "dataClassificationData": "25% complete",
+                "complianceRequirementsData": "40% complete"
+              }
+            }
+          },
+          "dataQualityAndConsistencyGaps": {
+            "vulnerabilityDataNormalization": {
+              "cveMapping": "Inconsistent CVE mapping across tools",
+              "severityNormalization": "Different severity scales not normalized",
+              "vulnerabilityDeduplication": "Limited cross-tool deduplication",
+              "falsePositiveFiltering": "Tool-specific false positive handling",
+              "vulnerabilityLifecycleTracking": "Inconsistent lifecycle status tracking"
+            },
+            "dataFreshness": {
+              "realTimeDataIntegration": "Only 40% of tools",
+              "batchDataProcessing": "Daily for most tools",
+              "staleDatenDetection": "No systematic stale data detection",
+              "dataLatencyMeasurement": "Limited latency monitoring",
+              "dataValidation": "Basic data validation only"
+            },
+            "dataCorrelation": {
+              "crossToolCorrelation": "Limited correlation capabilities",
+              "assetVulnerabilityMapping": "Inconsistent asset identification",
+              "threatVulnerabilityCorrelation": "Manual correlation processes",
+              "businessContextCorrelation": "Limited business impact correlation",
+              "historicalDataAnalysis": "Basic historical trend analysis"
+            }
+          },
+          "analyticsAndIntelligenceGaps": {
+            "vulnerabilityAnalytics": {
+              "predictiveAnalytics": "Not implemented",
+              "trendAnalysis": "Basic trending only",
+              "riskModeling": "Simple risk scoring",
+              "scenarioAnalysis": "Not available",
+              "machineLearningIntegration": "Not implemented"
+            },
+            "threatIntelligenceAnalytics": {
+              "threatActorAttributionanalysis": "Limited attribution capabilities",
+              "campaignTrackingAnalysis": "Manual campaign tracking",
+              "tacticsAndTechniquesMapping": "Basic MITRE ATT&CK mapping",
+              "predictiveThematicsIntelligence": "Not available",
+              "geopoliticalThreatAnalysis": "Limited geopolitical context"
+            },
+            "businessImpactAnalytics": {
+              "quantitativeRiskAssessment": "Basic quantitative assessment",
+              "businessProcessImpactModeling": "Not available",
+              "revenueImpactProjection": "Manual calculations",
+              "reputationalRiskAssessment": "Qualitative assessment only",
+              "complianceImpactAnalysis": "Limited compliance impact modeling"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Security tool integration comprehensiveness assessment",
+            "result": "INCOMPLETE",
+            "details": "25-40% integration across SAST, DAST, container security, and CSPM tools"
+          },
+          {
+            "test": "Threat intelligence integration and quality validation",
+            "result": "LIMITED",
+            "details": "25% commercial and open source threat intelligence integration with manual processes"
+          },
+          {
+            "test": "Data analytics and intelligence capabilities evaluation",
+            "result": "BASIC",
+            "details": "No predictive analytics, limited threat intelligence analysis, basic business impact assessment"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive security tool integration across SAST, DAST, container security, and CSPM platforms, 2) Deploy advanced threat intelligence integration with commercial and open source feeds, 3) Establish vulnerability data normalization and correlation engines, 4) Implement comprehensive asset inventory with complete metadata, 5) Deploy predictive analytics and machine learning for vulnerability risk assessment, 6) Establish advanced threat intelligence analytics with attribution and campaign tracking, 7) Implement quantitative business impact modeling and risk assessment capabilities"
+      },
+      {
+        "checkId": "MLA-06-005",
+        "name": "Inadequate Vulnerability Metrics and Reporting",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Vulnerability management metrics and reporting lack comprehensive business alignment and actionable insights",
+        "findings": {
+          "metricsAndKPIGaps": {
+            "businessAlignedMetrics": {
+              "riskReductionMetrics": "Basic risk scoring only",
+              "businessProcessAvailabilityMetrics": "Not tracked",
+              "revenueProtectionMetrics": "Not quantified",
+              "complianceEffectivenessMetrics": "Limited compliance tracking",
+              "customerSatisfactionImpactMetrics": "Not measured"
+            },
+            "operationalEfficiencyMetrics": {
+              "meanTimeToDetection": "Inconsistently measured",
+              "meanTimeToRemediation": "Tool-specific measurements",
+              "remediationEfficiencyMetrics": "Limited efficiency tracking",
+              "resourceUtilizationMetrics": "Not systematically tracked",
+              "costEffectivenessMetrics": "Not calculated"
+            },
+            "securityPostureMetrics": {
+              "vulnerabilityTrendMetrics": "Basic trending",
+              "threatLandscapeMetrics": "Limited threat metrics",
+              "securityControlEffectivenessMetrics": "Not systematically measured",
+              "incidentReductionMetrics": "Limited incident correlation",
+              "securityMaturityMetrics": "Not tracked"
+            }
+          },
+          "reportingGaps": {
+            "stakeholderSpecificReporting": {
+              "executiveReporting": {
+                "businessRiskSummaries": "High-level summaries only",
+                "kpiDashboards": "Basic dashboards",
+                "trendAnalysis": "Limited historical analysis",
+                "benchmarkingReports": "No industry benchmarking",
+                "investmentJustificationReports": "Not available"
+              },
+              "operationalReporting": {
+                "actionableReports": "Limited actionability",
+                "prioritizedTaskLists": "Basic prioritization",
+                "resourcePlanningReports": "Not available",
+                "performanceMetrics": "Limited performance reporting",
+                "teamProductivityReports": "Not systematically tracked"
+              },
+              "auditAndComplianceReporting": {
+                "regulatoryComplianceReports": "Basic compliance reporting",
+                "auditTrailReports": "Limited audit trail generation",
+                "controlEffectivenessReports": "Not systematically generated",
+                "gapAnalysisReports": "Manual gap analysis",
+                "remedyActionTrackingReports": "Spreadsheet-based tracking"
+              }
+            },
+            "reportingAutomation": {
+              "automatedReportGeneration": "Limited automation",
+              "scheduledReporting": "Basic scheduled reports",
+              "alertBasedReporting": "Basic alerting",
+              "dynamicDashboards": "Static dashboards",
+              "selfServiceReporting": "Not available"
+            },
+            "reportingQuality": {
+              "dataAccuracy": "Inconsistent data accuracy",
+              "reportingTimeliness": "Delayed reporting",
+              "visualizationQuality": "Basic visualizations",
+              "reportingRelevance": "Limited stakeholder relevance",
+              "reportingUsability": "Poor user experience"
+            }
+          },
+          "benchmarkingAndMaturityGaps": {
+            "industryBenchmarking": {
+              "peerComparison": "Not available",
+              "industryStandards": "Limited standards comparison",
+              "bestPracticeAdoption": "Ad hoc best practice adoption",
+              "maturityAssessment": "Not systematically conducted",
+              "improvementTrackingBenchmarks": "Not established"
+            },
+            "performanceBenchmarking": {
+              "internalBenchmarking": "Limited historical comparison",
+              "crossTeamBenchmarking": "Not available",
+              "vendorBenchmarking": "Not conducted",
+              "serviceBenchmarking": "Not available",
+              "processBenchmarking": "Limited process comparison"
+            },
+            "continuousImprovementMetrics": {
+              "improvementTrendTracking": "Not systematically tracked",
+              "lessonsLearnedMetrics": "Not captured",
+              "processEffectivenessMetrics": "Not measured",
+              "trainingEffectivenessMetrics": "Not tracked",
+              "innovationAdoptionMetrics": "Not measured"
+            }
+          },
+          "stakeholderEngagementGaps": {
+            "reportingStakeholderNeeds": {
+              "stakeholderRequirementsGathering": "Ad hoc requirements gathering",
+              "reportingPersonalization": "One-size-fits-all reporting",
+              "feedbackMechanisms": "Limited feedback collection",
+              "userExperienceOptimization": "Not prioritized",
+              "stakeholderTrainingNeeds": "Not assessed"
+            },
+            "communicationEffectiveness": {
+              "reportingClarity": "Technical jargon prevalent",
+              "actionabilityOfReports": "Limited actionable insights",
+              "reportingFrequency": "Misaligned with stakeholder needs",
+              "reportingMediums": "Limited delivery options",
+              "stakeholderEngagement": "Low engagement levels"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Vulnerability metrics and KPI comprehensiveness assessment",
+            "result": "LIMITED",
+            "details": "Basic metrics only with no business alignment, efficiency tracking, or security posture measurement"
+          },
+          {
+            "test": "Stakeholder reporting quality and automation evaluation",
+            "result": "INADEQUATE",
+            "details": "Manual processes, static dashboards, limited stakeholder-specific reporting capabilities"
+          },
+          {
+            "test": "Benchmarking and continuous improvement maturity check",
+            "result": "MINIMAL",
+            "details": "No industry benchmarking, limited performance comparison, no systematic improvement tracking"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive business-aligned vulnerability metrics including risk reduction, business process availability, and revenue protection measurements, 2) Deploy stakeholder-specific reporting with executive, operational, and audit-focused dashboards, 3) Establish automated report generation with dynamic dashboards and self-service capabilities, 4) Implement industry benchmarking and maturity assessment frameworks, 5) Establish continuous improvement metrics with lessons learned and process effectiveness tracking, 6) Deploy advanced data visualization and user experience optimization for reporting platforms, 7) Implement stakeholder feedback mechanisms and reporting personalization capabilities"
+      },
+      {
+        "checkId": "MLA-06-006",
+        "name": "Limited Vulnerability Intelligence and Threat Context",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Vulnerability management lacks advanced threat intelligence integration and contextual threat analysis",
+        "findings": {
+          "threatIntelligenceGaps": {
+            "threatActorIntelligence": {
+              "threatActorProfiling": "Basic threat actor identification",
+              "attackCampaignTracking": "Limited campaign correlation",
+              "tacticsAndTechniquesMapping": "Basic MITRE ATT&CK mapping",
+              "threatActorAttributionCapabilities": "Limited attribution analysis",
+              "geopoliticalThreatContext": "Minimal geopolitical awareness"
+            },
+            "exploitIntelligence": {
+              "exploitKitTracking": "Limited exploit kit monitoring",
+              "zeroDayExploitMonitoring": "Basic zero-day awareness",
+              "exploitCommercializationTracking": "Not monitored",
+              "weaponizationTimelineAnalysis": "Not tracked",
+              "exploitReliabilityAssessment": "Not assessed"
+            },
+            "vulnerabilityIntelligence": {
+              "vulnerabilityResearchMonitoring": "Limited research monitoring",
+              "proofOfConceptTracking": "Basic PoC monitoring",
+              "vulnerabilityDisclosureTracking": "Limited disclosure tracking",
+              "vendorResponseAnalysis": "Not systematically analyzed",
+              "patchEffectivenessAnalysis": "Not assessed"
+            }
+          },
+          "contextualThreatAnalysisGaps": {
+            "industrySpecificThreats": {
+              "sectorSpecificThreatIntelligence": "Limited sector-specific intelligence",
+              "industryThreatLandscapeAnalysis": "Basic industry analysis",
+              "peerOrganizationThreatSharing": "Limited threat sharing",
+              "industrySpecificVulnerabilityPrioritization": "Not implemented",
+              "sectorRegulatoryThreatConsiderations": "Limited regulatory threat analysis"
+            },
+            "geographicThreatContext": {
+              "regionSpecificThreats": "Limited regional threat awareness",
+              "nationStateActorTracking": "Basic nation-state monitoring",
+              "geopoliticalRiskAssessment": "Not systematically conducted",
+              "crossBorderThreatAnalysis": "Limited cross-border analysis",
+              "regionalComplianceThreats": "Not analyzed"
+            },
+            "organizationalThreatContext": {
+              "organizationSpecificThreatProfile": "Not developed",
+              "attackSurfaceIntelligence": "Basic attack surface mapping",
+              "brandAndReputationThreatMonitoring": "Not monitored",
+              "executiveAndVIPTargeting": "Not systematically monitored",
+              "supplyChainThreatIntelligence": "Limited supply chain analysis"
+            }
+          },
+          "threatIntelligencePlatformGaps": {
+            "threatIntelligencePlatformCapabilities": {
+              "threatIntelligencePlatformNotDeployed": "No centralized TIP platform",
+              "threatDataCorrelation": "Manual correlation processes",
+              "threatDataEnrichment": "Limited enrichment capabilities",
+              "threatDataVisualization": "Basic threat visualization",
+              "threatDataSharing": "Limited sharing capabilities"
+            },
+            "threatIntelligenceAutomation": {
+              "automatedThreatDataCollection": "Limited automation",
+              "automatedThreatAnalysis": "Not implemented",
+              "automatedThreatScoring": "Basic scoring only",
+              "automatedThreatAlerts": "Basic alerting",
+              "automatedThreatReporting": "Limited automation"
+            },
+            "threatIntelligenceIntegration": {
+              "siemIntegration": "Basic SIEM integration",
+              "vulnerabilityManagementIntegration": "Limited integration",
+              "incidentResponseIntegration": "Manual integration",
+              "securityOrchestrationIntegration": "Not integrated",
+              "businessSystemsIntegration": "Not integrated"
+            }
+          },
+          "predictiveIntelligenceGaps": {
+            "threatForecasting": {
+              "threatTrendPrediction": "Not available",
+              "emergingThreatIdentification": "Reactive identification",
+              "threatEvolutionAnalysis": "Limited evolution analysis",
+              "seasonalThreatAnalysis": "Not conducted",
+              "threatImpactPrediction": "Not available"
+            },
+            "riskPredictiveModeling": {
+              "vulnerabilityExploitPrediction": "Not implemented",
+              "businessImpactPrediction": "Not available",
+              "threatActorBehaviorPrediction": "Not implemented",
+              "attackTimelinePrediction": "Not available",
+              "riskEvolutionModeling": "Not implemented"
+            },
+            "machineLearningIntegration": {
+              "anomalyDetectionForThreats": "Not implemented",
+              "behavioralAnalysisForThreatActors": "Not available",
+              "clusteringForThreatCampaigns": "Not implemented",
+              "classificationForThreatTypes": "Not available",
+              "deepLearningForThreatAnalysis": "Not implemented"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Threat intelligence comprehensiveness and integration assessment",
+            "result": "LIMITED",
+            "details": "Basic threat actor and exploit intelligence with minimal geopolitical and industry context"
+          },
+          {
+            "test": "Contextual threat analysis capabilities evaluation",
+            "result": "MINIMAL",
+            "details": "Limited industry-specific, geographic, and organizational threat context analysis"
+          },
+          {
+            "test": "Advanced threat intelligence platform and automation maturity check",
+            "result": "IMMATURE",
+            "details": "No centralized TIP, limited automation, minimal predictive and machine learning capabilities"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive threat intelligence platform with centralized data correlation and enrichment, 2) Deploy advanced threat actor profiling and campaign tracking with MITRE ATT&CK integration, 3) Establish industry-specific and geopolitical threat intelligence capabilities, 4) Implement predictive threat forecasting and risk modeling with machine learning, 5) Deploy automated threat analysis and scoring with SIEM and security orchestration integration, 6) Establish organizational threat profiling with attack surface and supply chain intelligence, 7) Implement advanced threat data visualization and stakeholder-specific threat reporting capabilities"
+      },
+      {
+        "checkId": "MLA-06-007",
+        "name": "Insufficient Vulnerability Management Governance",
+        "status": "FAIL",
+        "severity": "LOW",
+        "description": "Vulnerability management lacks comprehensive governance framework and strategic oversight",
+        "findings": {
+          "governanceFrameworkGaps": {
+            "strategicOversight": {
+              "vulnerabilityManagementStrategy": "Ad hoc strategic approach",
+              "executiveSponsorhip": "Limited executive engagement",
+              "governanceCommitteeStructure": "Informal committee structure",
+              "strategicObjectiveAlignment": "Limited business alignment",
+              "investmentPrioritization": "Reactive investment decisions"
+            },
+            "policyAndProcedureGaps": {
+              "vulnerabilityManagementPolicy": "Basic policy framework",
+              "standardOperatingProcedures": "Inconsistent procedures",
+              "roleAndResponsibilityDefinition": "Unclear role definition",
+              "accountabilityFramework": "Limited accountability measures",
+              "performanceStandards": "Informal performance expectations"
+            },
+            "riskGovernance": {
+              "riskToleranceDefinition": "Undefined risk tolerance",
+              "riskAcceptanceCriteria": "Informal acceptance criteria",
+              "riskEscalationProcesses": "Ad hoc escalation",
+              "businessRiskAlignment": "Limited business risk integration",
+              "regulatoryComplianceGovernance": "Basic compliance oversight"
+            }
+          },
+          "organizationalCapabilityGaps": {
+            "humanResourcesCapabilities": {
+              "skillsetGapAnalysis": "Not systematically conducted",
+              "trainingAndDevelopmentPrograms": "Ad hoc training programs",
+              "careerDevelopmentPaths": "Not defined",
+              "knowledgeManagementSystems": "Limited knowledge capture",
+              "expertiseRetentionStrategies": "Not implemented"
+            },
+            "technologyCapabilityManagement": {
+              "technologyRoadmapPlanning": "Short-term planning only",
+              "toolsetOptimization": "Reactive tool management",
+              "integrationArchitecture": "Ad hoc integrations",
+              "scalabilityPlanning": "Limited scalability consideration",
+              "innovationAdoption": "Slow innovation adoption"
+            },
+            "processMaturityManagement": {
+              "processMaturityAssessment": "Not systematically conducted",
+              "processOptimization": "Ad hoc process improvements",
+              "processStandardization": "Inconsistent processes",
+              "processAutomation": "Limited automation strategy",
+              "processContinuousImprovement": "Reactive improvements"
+            }
+          },
+          "stakeholderEngagementGaps": {
+            "businessStakeholderEngagement": {
+              "businessLeadershipEngagement": "Limited engagement",
+              "businessUnitRepresentation": "Inconsistent representation",
+              "businessRequirementsGathering": "Ad hoc requirements gathering",
+              "businessValueCommunication": "Limited value demonstration",
+              "businessFeedbackIntegration": "Minimal feedback integration"
+            },
+            "technicalStakeholderEngagement": {
+              "technicalTeamCollaboration": "Siloed collaboration",
+              "crossFunctionalTeamwork": "Limited cross-functional work",
+              "vendorAndPartnerEngagement": "Basic vendor management",
+              "industryPeerEngagement": "Minimal peer engagement",
+              "researchCommunityEngagement": "Limited research collaboration"
+            },
+            "externalStakeholderEngagement": {
+              "regulatoryBodyEngagement": "Reactive regulatory engagement",
+              "customerStakeholderEngagement": "Limited customer involvement",
+              "partnerAndSupplierEngagement": "Basic partner engagement",
+              "industryAssociationParticipation": "Minimal association participation",
+              "publicPrivatePartnershipEngagement": "No partnership engagement"
+            }
+          },
+          "performanceGovernanceGaps": {
+            "performanceMeasurementFramework": {
+              "kpiAndMetricsFramework": "Ad hoc metrics selection",
+              "performanceBenchmarking": "No systematic benchmarking",
+              "performanceTargetSetting": "Informal target setting",
+              "performanceReviewProcesses": "Irregular performance reviews",
+              "performanceImprovementPlanning": "Reactive improvement planning"
+            },
+            "accountabilityAndIncentives": {
+              "individualAccountabilityMeasures": "Unclear individual accountability",
+              "teamAccountabilityMeasures": "Limited team accountability",
+              "incentiveAlignmentWithPerformance": "No incentive alignment",
+              "performanceRecognitionPrograms": "No recognition programs",
+              "corrective ActionFrameworks": "Ad hoc corrective actions"
+            },
+            "auditAndAssuranceFramework": {
+              "internalAuditPrograms": "Basic audit coverage",
+              "externalAuditEngagement": "Minimal external audits",
+              "thirdPartyAssessments": "No third-party assessments",
+              "complianceMonitoringPrograms": "Basic compliance monitoring",
+              "continuousMonitoringCapabilities": "Limited continuous monitoring"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Vulnerability management governance framework maturity assessment",
+            "result": "IMMATURE",
+            "details": "Ad hoc strategic approach with informal governance and limited executive engagement"
+          },
+          {
+            "test": "Organizational capability and stakeholder engagement evaluation",
+            "result": "LIMITED",
+            "details": "Skill gaps not addressed, limited stakeholder engagement, siloed collaboration"
+          },
+          {
+            "test": "Performance governance and accountability framework check",
+            "result": "BASIC",
+            "details": "Informal performance measures, no systematic benchmarking, limited audit and assurance"
+          }
+        ],
+        "remediation": "LOW PRIORITY: 1) Establish comprehensive vulnerability management governance framework with executive sponsorship and committee structure, 2) Develop formal policies, procedures, and accountability frameworks with clear roles and responsibilities, 3) Implement systematic stakeholder engagement with business leaders, technical teams, and external partners, 4) Establish performance measurement framework with KPIs, benchmarking, and target setting, 5) Implement organizational capability management with skill development and knowledge retention, 6) Deploy systematic audit and assurance programs with internal, external, and third-party assessments, 7) Establish strategic planning and investment prioritization processes with business alignment"
+      }
+    ],
+    "centralizedVulnerabilityTrackingVerificationMethods": {
+      "vulnerabilityManagementPlatform": [
+        "Azure Portal: Security Center > Vulnerability Assessment for centralized tracking",
+        "Qualys VMDR: Dashboard for comprehensive vulnerability management platform",
+        "ServiceNow: Vulnerability Response for workflow automation and tracking",
+        "Vulnerability scanners: Consolidated vulnerability data and prioritization",
+        "SIEM systems: Vulnerability event correlation and threat intelligence integration"
+      ],
+      "vulnerabilityPrioritization": [
+        "Azure Security Center: Secure Score and prioritization recommendations",
+        "CVSS Calculator: Vulnerability severity scoring and environmental factors",
+        "EPSS Score: Exploit prediction scoring for prioritization enhancement",
+        "Business impact assessment: Asset criticality and business context integration",
+        "Threat intelligence platforms: Threat context and active exploit monitoring"
+      ],
+      "vulnerabilityRemediation": [
+        "Azure Automation: Runbook execution for automated remediation workflows",
+        "ServiceNow: Change management integration and approval workflows",
+        "Ansible: Playbook execution for configuration and patch management",
+        "CI/CD pipelines: Infrastructure as code remediation and testing",
+        "Change management tools: Remediation workflow tracking and validation"
+      ],
+      "vulnerabilityTracking": [
+        "Vulnerability management dashboards: Tracking metrics and SLA compliance",
+        "ServiceNow: Vulnerability lifecycle management and escalation workflows",
+        "Azure DevOps: Work item tracking for vulnerability remediation",
+        "ITSM tools: Service desk integration for vulnerability management",
+        "Reporting platforms: Vulnerability metrics and stakeholder reporting"
+      ],
+      "threatIntelligence": [
+        "Threat intelligence platforms: Threat context and vulnerability correlation",
+        "MITRE ATT&CK Navigator: Tactics and techniques mapping",
+        "Commercial threat feeds: Threat actor and campaign intelligence",
+        "Open source intelligence: CVE databases and exploit monitoring",
+        "SIEM correlation: Threat event and vulnerability correlation analysis"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "RA-5": "Vulnerability Scanning",
+        "SI-2": "Flaw Remediation",
+        "CM-4": "Security Impact Analysis",
+        "PM-15": "Contacts with Security Groups and Associations"
+      },
+      "nist80053": {
+        "RA-5": "Vulnerability Scanning",
+        "SI-2": "Flaw Remediation",
+        "PM-15": "Contacts with Security Groups and Associations",
+        "PM-16": "Threat Awareness Program"
+      },
+      "iso27001": {
+        "A.12.6.1": "Management of technical vulnerabilities",
+        "A.16.1.3": "Reporting information security weaknesses",
+        "A.14.2.1": "Secure development policy",
+        "A.16.1.5": "Response to information security incidents"
+      }
+    }
+  }
+}

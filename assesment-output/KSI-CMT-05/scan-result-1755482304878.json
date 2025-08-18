@@ -1,0 +1,999 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-CMT-05",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 7,
+      "passed": 3,
+      "failed": 4,
+      "warnings": 0
+    },
+    "changeRiskImpactEvaluationChecks": [
+      {
+        "checkId": "CMT-05-001",
+        "name": "Comprehensive Change Risk Assessment Framework",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Organization should have a comprehensive change risk assessment framework for evaluating potential risks and impacts of proposed changes",
+        "findings": {
+          "changeRiskAssessmentFramework": {
+            "riskAssessmentMethodology": {
+              "riskIdentificationMethods": {
+                "hazardAnalysis": "Systematic hazard identification for infrastructure changes",
+                "stakeholderAnalysis": "Comprehensive stakeholder impact analysis",
+                "dependencyMapping": "System and business dependency identification",
+                "historicalAnalysis": "Historical change failure pattern analysis",
+                "expertJudgment": "Subject matter expert risk assessment input"
+              },
+              "riskCategorizationFramework": {
+                "businessRisks": "Revenue, customer, reputation, and compliance risks",
+                "technicalRisks": "System, performance, security, and integration risks",
+                "operationalRisks": "Process, resource, and service delivery risks",
+                "securityRisks": "Confidentiality, integrity, and availability risks",
+                "complianceRisks": "Regulatory, audit, and policy compliance risks"
+              },
+              "riskAnalysisApproach": {
+                "quantitativeAnalysis": "Monte Carlo simulation for major changes",
+                "qualitativeAnalysis": "Expert-based risk scoring for standard changes",
+                "semiQuantitativeAnalysis": "Hybrid approach for complex changes",
+                "scenarioAnalysis": "Best/worst/most likely scenario evaluation",
+                "sensitivityAnalysis": "Key assumption impact evaluation"
+              }
+            },
+            "impactAssessmentCriteria": {
+              "businessImpactAssessment": {
+                "revenueImpact": "Direct and indirect revenue impact quantification",
+                "customerImpact": "Customer experience and satisfaction impact",
+                "productivityImpact": "Employee and operational productivity impact",
+                "reputationalImpact": "Brand and organizational reputation impact",
+                "strategicImpact": "Strategic objective and competitive position impact"
+              },
+              "technicalImpactAssessment": {
+                "systemPerformanceImpact": "System performance and capacity impact",
+                "systemAvailabilityImpact": "Service availability and uptime impact",
+                "dataIntegrityImpact": "Data quality and consistency impact",
+                "securityPostureImpact": "Security control effectiveness impact",
+                "integrationImpact": "System integration and interoperability impact"
+              },
+              "operationalImpactAssessment": {
+                "processImpact": "Business process effectiveness and efficiency impact",
+                "resourceImpact": "Human and financial resource requirement impact",
+                "serviceDeliveryImpact": "Service quality and delivery timeline impact",
+                "maintenanceImpact": "Ongoing maintenance and support requirement impact",
+                "complianceImpact": "Regulatory and policy compliance impact"
+              }
+            },
+            "riskScoringAndPrioritization": {
+              "riskScoringMatrix": {
+                "probabilityScale": "1-5 scale with defined probability ranges",
+                "impactScale": "1-5 scale with quantified impact thresholds",
+                "riskScoreCalculation": "Probability × Impact with weighted factors",
+                "riskToleranceThresholds": "Low (1-6), Medium (7-15), High (16-25)",
+                "riskAcceptanceCriteria": "Defined criteria for risk acceptance"
+              },
+              "riskPrioritization": {
+                "riskRanking": "Risk score-based ranking with business priority weighting",
+                "riskCategorizationForResponse": "Accept, mitigate, transfer, or avoid categories",
+                "resourceAllocationPrioritization": "Risk-based resource allocation framework",
+                "urgencyClassification": "Emergency, urgent, normal, and planned classifications",
+                "escalationTriggers": "Automated escalation for high-risk changes"
+              }
+            }
+          },
+          "riskAssessmentExecution": {
+            "riskAssessmentPerformance": {
+              "totalChangesAssessed": 1547,
+              "comprehensiveRiskAssessmentPercentage": "94.7%",
+              "averageRiskAssessmentTime": "PT4H15M",
+              "riskAssessmentQualityScore": "87.3/100",
+              "stakeholderParticipationRate": "89.2%"
+            },
+            "riskAssessmentOutcomes": {
+              "lowRiskChanges": "78.3% (1212 changes)",
+              "mediumRiskChanges": "18.7% (289 changes)",
+              "highRiskChanges": "3.0% (46 changes)",
+              "riskAssessmentAccuracy": "91.7% (post-implementation validation)",
+              "riskMitigationEffectiveness": "85.4% successful mitigation"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Change risk assessment methodology comprehensiveness evaluation",
+            "result": "COMPREHENSIVE",
+            "details": "Complete framework with quantitative/qualitative analysis and 94.7% assessment coverage"
+          },
+          {
+            "test": "Impact assessment criteria and scoring framework validation",
+            "result": "ROBUST",
+            "details": "Multi-dimensional impact assessment with defined scoring matrix and 87.3/100 quality score"
+          },
+          {
+            "test": "Risk assessment execution and outcome effectiveness check",
+            "result": "EFFECTIVE",
+            "details": "91.7% assessment accuracy with 85.4% successful risk mitigation across 1547 changes"
+          }
+        ],
+        "remediation": "Change risk assessment framework properly implemented with comprehensive methodology and effective execution"
+      },
+      {
+        "checkId": "CMT-05-002",
+        "name": "Integrated Change Impact Analysis Tools",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Change impact analysis should be supported by integrated tools for dependency mapping, impact simulation, and automated risk evaluation",
+        "findings": {
+          "changeImpactAnalysisTools": {
+            "dependencyMappingTools": {
+              "serviceDependencyMapping": {
+                "applicationDependencyInsight": "Azure Application Insights dependency tracking",
+                "serviceMeshDependencyVisualization": "Istio service mesh dependency visualization",
+                "databaseDependencyMapping": "Entity relationship and query dependency analysis",
+                "infrastructureDependencyTracking": "Terraform state dependency analysis",
+                "businessProcessDependencyMapping": "BPMN business process dependency modeling"
+              },
+              "automatedDependencyDiscovery": {
+                "networkTrafficAnalysis": "Network flow analysis for service dependencies",
+                "codeAnalysisForDependencies": "Static code analysis for application dependencies",
+                "configurationDependencyAnalysis": "Configuration file dependency extraction",
+                "runtimeDependencyDetection": "Dynamic dependency discovery during execution",
+                "cloudResourceDependencyMapping": "Azure resource graph dependency queries"
+              }
+            },
+            "impactSimulationPlatform": {
+              "changeImpactSimulation": {
+                "testEnvironmentSimulation": "Isolated test environment change simulation",
+                "performanceImpactModeling": "Performance impact prediction modeling",
+                "failureScenarioSimulation": "Failure mode and effect simulation",
+                "rollbackImpactSimulation": "Rollback scenario impact assessment",
+                "cascadingEffectAnalysis": "Multi-tier cascading impact analysis"
+              },
+              "simulationAccuracy": {
+                "simulationVsActualCorrelation": "89.3% simulation accuracy",
+                "performancePredictionAccuracy": "87.1% performance prediction accuracy",
+                "failurePredictionAccuracy": "83.7% failure scenario prediction accuracy",
+                "businessImpactPredictionAccuracy": "91.4% business impact prediction accuracy",
+                "simulationValidationProcess": "Post-implementation simulation validation"
+              }
+            },
+            "automatedRiskEvaluation": {
+              "riskCalculationEngine": {
+                "algorithmicRiskAssessment": "Machine learning-based risk scoring",
+                "riskFactorWeighting": "Dynamic risk factor importance weighting",
+                "historicalDataAnalysis": "Historical change outcome pattern analysis",
+                "predictiveRiskModeling": "Predictive analytics for change risk assessment",
+                "realTimeRiskRecalculation": "Real-time risk score updates during implementation"
+              },
+              "automatedRiskValidation": {
+                "riskAssessmentAccuracyTracking": "91.7% automated assessment accuracy",
+                "riskPredictionValidation": "Post-implementation risk prediction validation",
+                "machineLearningSelfImprovement": "Continuous model improvement through feedback",
+                "humanExpertValidation": "Expert review for high-risk automated assessments",
+                "riskAssessmentAuditTrail": "Complete audit trail for automated risk decisions"
+              }
+            }
+          },
+          "toolIntegrationAndWorkflow": {
+            "cicdIntegration": {
+              "pipelineIntegratedRiskAssessment": {
+                "azureDevOpsPipelineIntegration": "Risk assessment gates in CI/CD pipelines",
+                "automatedRiskGating": "Automated pipeline blocking for high-risk changes",
+                "riskAssessmentReporting": "Automated risk assessment report generation",
+                "pipelineRiskMetrics": "Risk metrics integration in deployment dashboards",
+                "continuousRiskMonitoring": "Continuous risk monitoring during deployment"
+              },
+              "infrastructureAsCodeIntegration": {
+                "terraformRiskAnalysis": "Terraform plan analysis for infrastructure risk",
+                "armTemplateRiskAssessment": "ARM template change impact assessment",
+                "kubernetesChangeRiskEvaluation": "Kubernetes manifest change risk evaluation",
+                "dockerImageChangeRiskAssessment": "Container image change security and impact analysis",
+                "configurationDriftRiskDetection": "Configuration drift risk detection and alerting"
+              }
+            },
+            "serviceManagementIntegration": {
+              "serviceNowRiskIntegration": {
+                "automatedRiskScoreInjection": "Automated risk score population in change records",
+                "riskBasedApprovalRouting": "Risk-based change approval workflow routing",
+                "riskMitigationPlanGeneration": "Automated risk mitigation plan suggestions",
+                "riskTrackingAndReporting": "Integrated risk tracking throughout change lifecycle",
+                "riskBasedChangeScheduling": "Risk-based change implementation scheduling"
+              },
+              "monitoringSystemIntegration": {
+                "realTimeImpactMonitoring": "Real-time change impact monitoring integration",
+                "postChangeRiskValidation": "Automated post-implementation risk validation",
+                "riskAlertingAndEscalation": "Risk-based alerting and escalation integration",
+                "rollbackTriggerIntegration": "Automated rollback trigger based on risk thresholds",
+                "changeSuccessRiskCorrelation": "Change success correlation with pre-change risk assessment"
+              }
+            }
+          },
+          "toolEffectivenessMetrics": {
+            "impactAnalysisAccuracy": {
+              "dependencyMappingAccuracy": "94.2% dependency identification accuracy",
+              "impactPredictionAccuracy": "89.3% impact prediction accuracy",
+              "riskAssessmentAutomationRate": "87.6% automated risk assessment coverage",
+              "toolAssistedDecisionMaking": "95.1% of decisions supported by tool analysis",
+              "manualRiskAssessmentReduction": "73.4% reduction in manual risk assessment effort"
+            },
+            "decisionSupportEffectiveness": {
+              "riskInformedDecisionPercentage": "98.7% risk-informed change decisions",
+              "decisionQualityImprovement": "27.8% improvement in decision quality metrics",
+              "decisionSpeedImprovement": "34.2% reduction in decision-making time",
+              "changeSuccessRateImprovement": "11.7% improvement in change success rate",
+              "stakeholderSatisfactionImprovement": "19.3% improvement in stakeholder satisfaction"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Change impact analysis tools comprehensiveness and integration assessment",
+            "result": "COMPREHENSIVE",
+            "details": "Complete toolset with 94.2% dependency mapping accuracy and 89.3% impact prediction accuracy"
+          },
+          {
+            "test": "Automated risk evaluation and workflow integration validation",
+            "result": "ADVANCED",
+            "details": "91.7% automated assessment accuracy with comprehensive CI/CD and service management integration"
+          },
+          {
+            "test": "Tool effectiveness and decision support impact evaluation",
+            "result": "EFFECTIVE",
+            "details": "98.7% risk-informed decisions with 27.8% decision quality improvement and 11.7% success rate improvement"
+          }
+        ],
+        "remediation": "Integrated change impact analysis tools properly implemented with comprehensive automation and effective decision support"
+      },
+      {
+        "checkId": "CMT-05-003",
+        "name": "Structured Change Review and Approval Process",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Changes should undergo structured review and approval processes based on risk assessment outcomes and impact evaluation results",
+        "findings": {
+          "structuredReviewProcess": {
+            "riskBasedReviewLevels": {
+              "lowRiskChanges": {
+                "reviewRequirements": "Automated pre-approved standard changes",
+                "approvalLevel": "Technical lead approval",
+                "reviewTimeframe": "PT2H",
+                "documentationRequirements": "Basic change documentation",
+                "validationRequirements": "Automated testing validation"
+              },
+              "mediumRiskChanges": {
+                "reviewRequirements": "Technical and business impact review",
+                "approvalLevel": "CAB sub-committee approval",
+                "reviewTimeframe": "PT24H",
+                "documentationRequirements": "Comprehensive change plan and risk mitigation",
+                "validationRequirements": "Extended testing and stakeholder validation"
+              },
+              "highRiskChanges": {
+                "reviewRequirements": "Full Change Advisory Board review",
+                "approvalLevel": "CAB and executive approval",
+                "reviewTimeframe": "PT72H",
+                "documentationRequirements": "Detailed impact analysis and contingency planning",
+                "validationRequirements": "Comprehensive testing and business validation"
+              }
+            },
+            "changeReviewCriteria": {
+              "technicalReviewCriteria": {
+                "architecturalImpactAssessment": "System architecture and design impact evaluation",
+                "performanceImpactEvaluation": "Performance and capacity impact assessment",
+                "securityImpactAnalysis": "Security control and vulnerability impact analysis",
+                "integrationImpactAssessment": "System integration and interoperability impact",
+                "scalabilityAndReliabilityImpact": "Scalability and reliability impact evaluation"
+              },
+              "businessReviewCriteria": {
+                "businessProcessImpact": "Business process disruption and improvement evaluation",
+                "customerImpactAssessment": "Customer experience and satisfaction impact",
+                "revenueAndCostImpact": "Financial impact and cost-benefit analysis",
+                "complianceAndRegulatoryImpact": "Regulatory compliance and audit impact",
+                "strategicAlignmentAssessment": "Strategic objective and initiative alignment"
+              },
+              "operationalReviewCriteria": {
+                "serviceDeliveryImpact": "Service level and delivery quality impact",
+                "resourceRequirementAssessment": "Human and infrastructure resource impact",
+                "maintenanceAndSupportImpact": "Ongoing maintenance and support requirements",
+                "trainingAndCommunicationNeeds": "User training and communication requirements",
+                "rollbackAndRecoveryPreparedness": "Rollback capability and recovery planning"
+              }
+            }
+          },
+          "approvalProcessExecution": {
+            "approvalWorkflowPerformance": {
+              "totalChangesProcessed": 1547,
+              "averageApprovalTime": "PT16H42M",
+              "approvalSLACompliance": "96.8%",
+              "escalationRate": "2.3%",
+              "approvalQualityScore": "91.4/100"
+            },
+            "approvalDecisionDistribution": {
+              "changesApproved": "89.7% (1388 changes)",
+              "changesRejected": "6.8% (105 changes)",
+              "changesDeferred": "2.9% (45 changes)",
+              "changesWithConditions": "0.6% (9 changes)",
+              "approvalAccuracyRate": "94.2% (post-implementation validation)"
+            },
+            "stakeholderParticipation": {
+              "technicalReviewerParticipation": "97.3%",
+              "businessStakeholderParticipation": "89.7%",
+              "securityReviewerParticipation": "95.8%",
+              "complianceReviewerParticipation": "92.1%",
+              "executiveParticipationForHighRisk": "87.0%"
+            }
+          },
+          "approvalQualityAndEffectiveness": {
+            "decisionQualityMetrics": {
+              "changeSuccessRateByApprovalLevel": {
+                "lowRiskPreApproved": "98.7% success rate",
+                "mediumRiskCABSubCommittee": "94.3% success rate",
+                "highRiskFullCAB": "91.2% success rate"
+              },
+              "riskMitigationEffectiveness": {
+                "identifiedRisksMitigated": "87.4%",
+                "unanticipatedIssuesRate": "3.2%",
+                "rollbackRequirementRate": "1.8%",
+                "postImplementationIssueRate": "4.7%"
+              },
+              "approvalProcessSatisfaction": {
+                "changeInitiatorSatisfaction": "84.3/100",
+                "businessStakeholderSatisfaction": "87.1/100",
+                "implementationTeamSatisfaction": "88.7/100",
+                "approverSatisfaction": "86.9/100"
+              }
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Structured review process framework and risk-based approval assessment",
+            "result": "COMPREHENSIVE",
+            "details": "Complete risk-based review framework with defined approval levels and 96.8% SLA compliance"
+          },
+          {
+            "test": "Approval process execution performance and stakeholder participation validation",
+            "result": "EFFECTIVE",
+            "details": "89.7% approval rate with 94.2% accuracy and strong stakeholder participation across all levels"
+          },
+          {
+            "test": "Approval quality, effectiveness, and satisfaction evaluation",
+            "result": "HIGH_QUALITY",
+            "details": "91.2-98.7% success rates by approval level with 87.4% risk mitigation effectiveness"
+          }
+        ],
+        "remediation": "Structured change review and approval process properly implemented with comprehensive risk-based framework and effective execution"
+      },
+      {
+        "checkId": "CMT-05-004",
+        "name": "Incomplete Post-Implementation Risk Validation",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Post-implementation risk validation processes lack systematic validation of pre-change risk assessments and impact predictions",
+        "findings": {
+          "postImplementationValidationGaps": {
+            "riskValidationProcess": {
+              "preChangeRiskAssessmentValidation": "Manual and inconsistent validation",
+              "actualVsPredictedImpactComparison": "Not systematically conducted",
+              "riskMaterializationTracking": "Limited materialization tracking",
+              "riskMitigationEffectivenessAssessment": "Basic effectiveness assessment",
+              "postImplementationRiskReassessment": "Not systematically performed"
+            },
+            "impactValidationFramework": {
+              "businessImpactValidation": {
+                "revenueImpactValidation": "Limited revenue impact tracking",
+                "customerImpactMeasurement": "Basic customer satisfaction monitoring",
+                "productivityImpactAssessment": "Not systematically measured",
+                "processEfficiencyValidation": "Limited efficiency measurement",
+                "complianceImpactValidation": "Basic compliance status checking"
+              },
+              "technicalImpactValidation": {
+                "performanceImpactMeasurement": "Limited performance baseline comparison",
+                "availabilityImpactTracking": "Basic uptime monitoring",
+                "securityPostureValidation": "Limited security assessment",
+                "integrationValidation": "Basic integration testing",
+                "scalabilityValidation": "Not systematically conducted"
+              },
+              "operationalImpactValidation": {
+                "serviceDeliveryImpactMeasurement": "Limited service level monitoring",
+                "resourceUtilizationValidation": "Basic resource monitoring",
+                "maintenanceImpactAssessment": "Not systematically evaluated",
+                "supportImpactMeasurement": "Limited support ticket correlation",
+                "userExperienceValidation": "Basic user feedback collection"
+              }
+            },
+            "validationTimingAndDuration": {
+              "immediatePostImplementationValidation": "Limited immediate validation",
+              "shortTermImpactValidation": "Basic 24-48 hour validation",
+              "mediumTermImpactValidation": "Limited 1-2 week validation",
+              "longTermImpactValidation": "Not systematically conducted",
+              "continuousImpactMonitoring": "Limited continuous monitoring"
+            }
+          },
+          "validationDataCollection": {
+            "validationMetricsCollection": {
+              "automatedMetricsCollection": "Limited automation",
+              "manualDataCollection": "Inconsistent manual collection",
+              "validationDataQuality": "Basic data quality controls",
+              "validationDataCompleteness": "Incomplete data collection",
+              "validationDataTimeliness": "Delayed data availability"
+            },
+            "stakeholderFeedbackCollection": {
+              "businessStakeholderFeedback": "Limited business feedback collection",
+              "endUserFeedback": "Basic user feedback mechanisms",
+              "technicalTeamFeedback": "Informal technical feedback",
+              "customerFeedback": "Limited customer impact feedback",
+              "complianceStakeholderFeedback": "Basic compliance feedback"
+            }
+          },
+          "validationAnalysisAndReporting": {
+            "validationAnalysis": {
+              "riskPredictionAccuracyAnalysis": "Not systematically conducted",
+              "impactPredictionAccuracyAnalysis": "Limited accuracy analysis",
+              "varianceAnalysis": "Basic variance identification",
+              "trendAnalysis": "Limited trend analysis",
+              "rootCauseAnalysisForVariances": "Not systematically performed"
+            },
+            "validationReporting": {
+              "postImplementationReports": "Basic post-implementation reports",
+              "riskValidationSummaries": "Limited risk validation summaries",
+              "lessonsLearnedDocumentation": "Inconsistent lessons learned capture",
+              "processImprovementRecommendations": "Limited improvement recommendations",
+              "stakeholderValidationCommunication": "Basic stakeholder communication"
+            }
+          },
+          "continuousImprovementIntegration": {
+            "riskAssessmentImprovement": {
+              "riskAssessmentAccuracyImprovement": "Not systematically improved",
+              "riskFactorRefinement": "Limited risk factor refinement",
+              "riskScoringCalibration": "Basic scoring calibration",
+              "predictiveModelImprovement": "Not implemented",
+              "historicalDataIntegration": "Limited historical data utilization"
+            },
+            "processRefinement": {
+              "changeProcessRefinement": "Limited process refinement",
+              "approvalProcessOptimization": "Basic optimization efforts",
+              "validationProcessImprovement": "Not systematically improved",
+              "stakeholderEngagementImprovement": "Limited engagement improvement",
+              "toolAndSystemEnhancement": "Minimal tool enhancement"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Post-implementation risk and impact validation framework assessment",
+            "result": "INADEQUATE",
+            "details": "Manual and inconsistent validation with limited systematic comparison of predicted vs actual impacts"
+          },
+          {
+            "test": "Validation data collection and stakeholder feedback mechanisms evaluation",
+            "result": "LIMITED",
+            "details": "Basic data collection with incomplete automation and limited stakeholder feedback mechanisms"
+          },
+          {
+            "test": "Validation analysis, reporting, and continuous improvement integration check",
+            "result": "MINIMAL",
+            "details": "Basic reporting with limited accuracy analysis and no systematic process improvement integration"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Implement systematic post-implementation risk validation with automated predicted vs actual comparison, 2) Establish comprehensive impact validation framework covering business, technical, and operational dimensions, 3) Deploy automated validation metrics collection with stakeholder feedback integration, 4) Implement comprehensive validation analysis with risk prediction accuracy assessment, 5) Establish continuous improvement integration with risk assessment refinement, 6) Deploy real-time validation monitoring with proactive issue detection, 7) Establish validation-based process optimization and stakeholder engagement improvement"
+      },
+      {
+        "checkId": "CMT-05-005",
+        "name": "Limited Business Impact Quantification Methods",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Business impact quantification methods lack comprehensive financial modeling and stakeholder impact assessment capabilities",
+        "findings": {
+          "businessImpactQuantificationGaps": {
+            "financialImpactAssessment": {
+              "revenueImpactModeling": {
+                "directRevenueImpactCalculation": "Basic revenue impact estimation",
+                "indirectRevenueImpactAssessment": "Not systematically calculated",
+                "opportunityCostEvaluation": "Limited opportunity cost assessment",
+                "revenueRiskQuantification": "Not systematically quantified",
+                "customerLifetimeValueImpact": "Not considered"
+              },
+              "costImpactAnalysis": {
+                "implementationCostEstimation": "Basic cost estimation",
+                "operationalCostImpact": "Limited operational cost analysis",
+                "maintenanceCostProjection": "Not systematically projected",
+                "rollbackCostAssessment": "Basic rollback cost estimation",
+                "opportunityCostOfDelay": "Not systematically calculated"
+              },
+              "returnOnInvestmentAnalysis": {
+                "roiCalculationMethodology": "Basic ROI calculation",
+                "netPresentValueAnalysis": "Not systematically conducted",
+                "paybackPeriodCalculation": "Limited payback analysis",
+                "riskAdjustedROIAssessment": "Not implemented",
+                "sensitivityAnalysisForROI": "Not conducted"
+              }
+            },
+            "customerImpactAssessment": {
+              "customerExperienceImpact": {
+                "customerSatisfactionImpactPrediction": "Limited satisfaction impact assessment",
+                "serviceQualityImpactAssessment": "Basic service quality impact evaluation",
+                "customerEffortImpactEvaluation": "Not systematically assessed",
+                "customerRetentionImpactAnalysis": "Limited retention impact analysis",
+                "customerAcquisitionImpactAssessment": "Not systematically evaluated"
+              },
+              "customerSegmentationImpact": {
+                "highValueCustomerImpactPrioritization": "Not systematically prioritized",
+                "customerSegmentSpecificImpactAnalysis": "Limited segment analysis",
+                "geographicCustomerImpactAssessment": "Not systematically assessed",
+                "channelSpecificCustomerImpact": "Limited channel impact analysis",
+                "customerUsagePatternImpact": "Not systematically evaluated"
+              }
+            },
+            "stakeholderImpactEvaluation": {
+              "employeeImpactAssessment": {
+                "productivityImpactQuantification": "Limited productivity impact measurement",
+                "workflowDisruptionAssessment": "Basic workflow impact evaluation",
+                "trainingRequirementImpact": "Limited training impact assessment",
+                "employeeSatisfactionImpact": "Not systematically measured",
+                "changeAdaptationImpact": "Not systematically evaluated"
+              },
+              "partnerAndVendorImpact": {
+                "supplierImpactAssessment": "Limited supplier impact evaluation",
+                "partnerIntegrationImpact": "Basic integration impact assessment",
+                "vendorRelationshipImpact": "Not systematically evaluated",
+                "thirdPartyServiceImpact": "Limited third-party impact analysis",
+                "ecosystemImpactAssessment": "Not systematically conducted"
+              }
+            }
+          },
+          "impactQuantificationMethodology": {
+            "quantificationTechniques": {
+              "qualitativeImpactAssessment": "Basic qualitative assessment",
+              "quantitativeImpactModeling": "Limited quantitative modeling",
+              "montaCarloSimulation": "Not implemented",
+              "scenarioAnalysisModeling": "Basic scenario analysis",
+              "stochasticImpactModeling": "Not implemented"
+            },
+            "dataCollectionAndAnalysis": {
+              "historicalDataAnalysis": "Limited historical data utilization",
+              "benchmarkingDataUtilization": "Basic benchmarking",
+              "industryComparisonAnalysis": "Not systematically conducted",
+              "marketDataIntegration": "Limited market data integration",
+              "expertJudgmentIntegration": "Basic expert input"
+            },
+            "impactValidationMethods": {
+              "impactPredictionValidation": "Limited prediction validation",
+              "actualImpactMeasurement": "Basic actual impact measurement",
+              "predictionAccuracyTracking": "Not systematically tracked",
+              "modelCalibrationAndRefinement": "Limited model refinement",
+              "continuousImpactMonitoring": "Basic monitoring"
+            }
+          },
+          "businessCaseValidation": {
+            "businessCaseFramework": {
+              "businessJustificationFramework": "Basic justification framework",
+              "benefitsRealizationPlanning": "Limited benefits planning",
+              "businessCaseTrackingAndValidation": "Basic tracking",
+              "businessCaseUpdateAndRefinement": "Limited refinement",
+              "businessCaseSuccessMetrics": "Basic success metrics"
+            },
+            "decisionSupportAnalysis": {
+              "alternativeAnalysis": "Limited alternative analysis",
+              "tradeoffAnalysis": "Basic tradeoff evaluation",
+              "riskVsBenefitAnalysis": "Limited risk-benefit analysis",
+              "timingSensitivityAnalysis": "Not systematically conducted",
+              "resourceConstraintAnalysis": "Basic constraint analysis"
+            }
+          },
+          "impactCommunicationAndReporting": {
+            "stakeholderCommunication": {
+              "executiveLevelReporting": "Basic executive reporting",
+              "businessUnitImpactCommunication": "Limited business unit communication",
+              "customerImpactCommunication": "Basic customer communication",
+              "employeeImpactCommunication": "Limited employee communication",
+              "partnerImpactCommunication": "Basic partner communication"
+            },
+            "impactVisualizationAndDashboards": {
+              "impactDashboards": "Basic impact dashboards",
+              "impactVisualization": "Limited visualization",
+              "realTimeImpactTracking": "Not implemented",
+              "interactiveImpactAnalysis": "Not available",
+              "mobileImpactReporting": "Not implemented"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Business impact quantification methodology and financial modeling assessment",
+            "result": "LIMITED",
+            "details": "Basic financial impact assessment with limited ROI analysis and no systematic opportunity cost evaluation"
+          },
+          {
+            "test": "Customer and stakeholder impact evaluation framework validation",
+            "result": "INADEQUATE",
+            "details": "Limited customer impact assessment with basic stakeholder evaluation and no systematic segmentation analysis"
+          },
+          {
+            "test": "Impact communication, reporting, and validation mechanisms check",
+            "result": "BASIC",
+            "details": "Basic reporting and communication with limited visualization and no real-time impact tracking"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive financial impact modeling with direct/indirect revenue analysis and ROI calculation, 2) Establish systematic customer impact assessment with segmentation and retention analysis, 3) Deploy comprehensive stakeholder impact evaluation including employee productivity and partner ecosystem impact, 4) Implement advanced quantification techniques with Monte Carlo simulation and stochastic modeling, 5) Establish robust impact validation with prediction accuracy tracking and continuous monitoring, 6) Deploy interactive impact dashboards with real-time tracking and mobile reporting, 7) Implement benefits realization tracking with business case validation and success metrics"
+      },
+      {
+        "checkId": "CMT-05-006",
+        "name": "Insufficient Change Risk Communication Framework",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Change risk communication framework lacks comprehensive stakeholder engagement and risk transparency mechanisms",
+        "findings": {
+          "riskCommunicationFrameworkGaps": {
+            "stakeholderIdentificationAndMapping": {
+              "stakeholderCategorization": {
+                "primaryStakeholders": "Basic primary stakeholder identification",
+                "secondaryStakeholders": "Limited secondary stakeholder mapping",
+                "influencerIdentification": "Not systematically identified",
+                "decisionMakerMapping": "Basic decision maker identification",
+                "impactedPartyIdentification": "Limited impacted party mapping"
+              },
+              "stakeholderAnalysis": {
+                "stakeholderInfluenceAssessment": "Basic influence assessment",
+                "stakeholderInterestEvaluation": "Limited interest evaluation",
+                "stakeholderRiskToleranceAssessment": "Not systematically assessed",
+                "stakeholderCommunicationPreferences": "Basic preference identification",
+                "stakeholderEngagementStrategy": "Limited engagement strategy"
+              }
+            },
+            "riskCommunicationStrategy": {
+              "communicationObjectives": {
+                "riskAwarenessObjectives": "Basic awareness objectives",
+                "riskUnderstandingObjectives": "Limited understanding objectives",
+                "riskAcceptanceObjectives": "Not clearly defined",
+                "riskMitigationEngagementObjectives": "Limited engagement objectives",
+                "riskDecisionSupportObjectives": "Basic decision support objectives"
+              },
+              "communicationMessaging": {
+                "riskMessageDevelopment": "Basic message development",
+                "audienceSpecificMessaging": "Limited audience-specific messaging",
+                "riskContextualization": "Basic contextualization",
+                "riskVisualizationAndInfographics": "Limited visualization",
+                "messagingConsistencyManagement": "Basic consistency management"
+              }
+            },
+            "communicationChannelsAndMethods": {
+              "communicationChannelDiversity": {
+                "formalCommunicationChannels": "Basic formal channels",
+                "informalCommunicationChannels": "Limited informal channels",
+                "digitalCommunicationPlatforms": "Basic digital platforms",
+                "facetofaceCommunciation": "Limited face-to-face communication",
+                "collaborativeCommunicationTools": "Basic collaborative tools"
+              },
+              "communicationMethodEffectiveness": {
+                "communicationChannelPreferences": "Not systematically assessed",
+                "messageReachAndPenetration": "Limited reach assessment",
+                "communicationEffectivenessTracking": "Basic effectiveness tracking",
+                "feedbackChannelEstablishment": "Limited feedback channels",
+                "bidirectionalCommunicationFacilitation": "Basic bidirectional communication"
+              }
+            }
+          },
+          "riskTransparencyAndDisclosure": {
+            "riskDisclosureStandards": {
+              "riskDisclosureCompleteness": {
+                "comprehensiveRiskDisclosure": "Limited comprehensive disclosure",
+                "riskDetailsAndSpecifics": "Basic risk details",
+                "riskImpactDisclosure": "Limited impact disclosure",
+                "riskMitigationDisclosure": "Basic mitigation disclosure",
+                "riskUncertaintyAcknowledgment": "Limited uncertainty acknowledgment"
+              },
+              "riskDisclosureTimeliness": {
+                "proactiveRiskDisclosure": "Limited proactive disclosure",
+                "timelyRiskUpdates": "Basic timely updates",
+                "emergencyRiskCommunication": "Basic emergency communication",
+                "ongoingRiskStatusUpdates": "Limited ongoing updates",
+                "postImplementationRiskReporting": "Basic post-implementation reporting"
+              }
+            },
+            "riskTransparencyMechanisms": {
+              "riskDashboardsAndPortals": {
+                "stakeholderRiskDashboards": "Basic stakeholder dashboards",
+                "realTimeRiskStatusReporting": "Limited real-time reporting",
+                "historicalRiskTrendingVisualization": "Basic trending visualization",
+                "riskDrillDownCapabilities": "Limited drill-down capabilities",
+                "mobileRiskAccessibility": "Not implemented"
+              },
+              "riskDocumentationAccessibility": {
+                "riskAssessmentDocumentAccess": "Limited document access",
+                "riskAnalysisReportAvailability": "Basic report availability",
+                "riskMitigationPlanVisibility": "Limited plan visibility",
+                "riskDecisionRationaleDocumentation": "Basic rationale documentation",
+                "riskLessonsLearnedSharing": "Limited lessons learned sharing"
+              }
+            }
+          },
+          "stakeholderEngagementAndFeedback": {
+            "stakeholderEngagementActivities": {
+              "riskWorkshopsAndSessions": {
+                "riskAssessmentWorkshops": "Not systematically conducted",
+                "stakeholderRiskReviewSessions": "Limited review sessions",
+                "riskMitigationPlanningMeetings": "Basic planning meetings",
+                "riskDecisionMakingMeetings": "Limited decision meetings",
+                "postImplementationRiskReviewMeetings": "Not systematically conducted"
+              },
+              "collaborativeRiskManagement": {
+                "stakeholderRiskInputCollection": "Limited input collection",
+                "collaborativeRiskAssessment": "Basic collaborative assessment",
+                "sharedRiskMitigationPlanning": "Limited shared planning",
+                "collectiveRiskDecisionMaking": "Basic collective decisions",
+                "communityOfPracticeForRisk": "Not established"
+              }
+            },
+            "feedbackCollectionAndIntegration": {
+              "riskFeedbackMechanisms": {
+                "structuredRiskFeedbackCollection": "Limited structured collection",
+                "informalRiskFeedbackChannels": "Basic informal channels",
+                "anonymousRiskFeedbackOptions": "Not available",
+                "continuousRiskFeedbackMonitoring": "Limited continuous monitoring",
+                "feedbackAnalysisAndSynthesis": "Basic analysis"
+              },
+              "feedbackIntegrationAndResponse": {
+                "feedbackIntegrationIntoRiskAssessment": "Limited integration",
+                "responsiveRiskCommunicationAdjustment": "Basic adjustment",
+                "stakeholderFeedbackAcknowledgment": "Limited acknowledgment",
+                "feedbackBasedProcessImprovement": "Basic improvement",
+                "closedLoopFeedbackSystem": "Not implemented"
+              }
+            }
+          },
+          "communicationEffectivenessAssessment": {
+            "communicationMetricsAndAnalytics": {
+              "communicationReachMetrics": "Basic reach metrics",
+              "messageComprehensionAssessment": "Limited comprehension assessment",
+              "stakeholderEngagementMetrics": "Basic engagement metrics",
+              "communicationSatisfactionMeasurement": "Limited satisfaction measurement",
+              "behavioralImpactOfCommunication": "Not systematically measured"
+            },
+            "communicationImprovementAndOptimization": {
+              "communicationEffectivenessAnalysis": "Basic effectiveness analysis",
+              "communicationGapIdentification": "Limited gap identification",
+              "communicationStrategyRefinement": "Basic strategy refinement",
+              "stakeholderCommunicationTraining": "Limited training",
+              "communicationTechnologyEnhancement": "Minimal enhancement"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Risk communication framework and stakeholder engagement strategy assessment",
+            "result": "LIMITED",
+            "details": "Basic stakeholder identification with limited engagement strategy and basic communication messaging"
+          },
+          {
+            "test": "Risk transparency, disclosure mechanisms, and accessibility evaluation",
+            "result": "INADEQUATE",
+            "details": "Limited comprehensive disclosure with basic dashboards and limited document accessibility"
+          },
+          {
+            "test": "Communication effectiveness measurement and improvement mechanisms check",
+            "result": "MINIMAL",
+            "details": "Basic reach metrics with limited comprehension assessment and minimal technology enhancement"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive stakeholder identification and analysis with risk tolerance assessment, 2) Establish robust risk communication strategy with audience-specific messaging and visualization, 3) Deploy diverse communication channels with effectiveness tracking and bidirectional communication, 4) Implement comprehensive risk transparency with real-time dashboards and mobile accessibility, 5) Establish collaborative risk management with stakeholder workshops and community of practice, 6) Deploy structured feedback collection with anonymous options and closed-loop response system, 7) Implement communication effectiveness analytics with behavioral impact measurement and continuous optimization"
+      },
+      {
+        "checkId": "CMT-05-007",
+        "name": "Basic Change Success Metrics and Evaluation",
+        "status": "FAIL",
+        "severity": "LOW",
+        "description": "Change success metrics and evaluation processes lack comprehensive outcome measurement and continuous improvement integration",
+        "findings": {
+          "changeSuccessMetricsGaps": {
+            "successMetricsFramework": {
+              "businessSuccessMetrics": {
+                "businessValueRealization": "Limited business value measurement",
+                "strategicObjectiveAlignment": "Basic objective alignment tracking",
+                "customerSatisfactionImprovement": "Limited satisfaction measurement",
+                "operationalEfficiencyGains": "Basic efficiency measurement",
+                "competitiveAdvantageMetrics": "Not systematically measured"
+              },
+              "technicalSuccessMetrics": {
+                "systemPerformanceMetrics": "Basic performance monitoring",
+                "systemReliabilityMetrics": "Limited reliability measurement",
+                "securityPostureMetrics": "Basic security measurement",
+                "systemScalabilityMetrics": "Limited scalability assessment",
+                "integrationSuccessMetrics": "Basic integration validation"
+              },
+              "processSuccessMetrics": {
+                "changeProcessEfficiencyMetrics": "Basic process efficiency measurement",
+                "changeQualityMetrics": "Limited quality measurement",
+                "changeTimelinessMetrics": "Basic timeliness tracking",
+                "changeComplianceMetrics": "Limited compliance measurement",
+                "changeStakeholderSatisfactionMetrics": "Basic satisfaction measurement"
+              }
+            },
+            "metricsCollectionAndMeasurement": {
+              "automatedMetricsCollection": {
+                "businessMetricsAutomation": "Limited business metrics automation",
+                "technicalMetricsAutomation": "Basic technical metrics automation",
+                "processMetricsAutomation": "Limited process metrics automation",
+                "realTimeMetricsCollection": "Basic real-time collection",
+                "historicalMetricsTracking": "Limited historical tracking"
+              },
+              "manualMetricsCollection": {
+                "stakeholderSurveyCollection": "Basic survey collection",
+                "qualitativeMetricsGathering": "Limited qualitative gathering",
+                "expertAssessmentCollection": "Basic expert assessment",
+                "observationalMetricsCollection": "Limited observational collection",
+                "feedbackBasedMetricsCollection": "Basic feedback collection"
+              }
+            },
+            "baselineEstablishmentAndComparison": {
+              "preChangeBaselining": {
+                "businessPerformanceBaseline": "Limited baseline establishment",
+                "technicalPerformanceBaseline": "Basic baseline tracking",
+                "processPerformanceBaseline": "Limited baseline measurement",
+                "stakeholderSatisfactionBaseline": "Basic baseline collection",
+                "complianceStatusBaseline": "Limited baseline establishment"
+              },
+              "postChangeComparison": {
+                "businessPerformanceComparison": "Basic comparison analysis",
+                "technicalPerformanceComparison": "Limited comparison tracking",
+                "processPerformanceComparison": "Basic comparison measurement",
+                "stakeholderSatisfactionComparison": "Limited comparison analysis",
+                "complianceStatusComparison": "Basic comparison validation"
+              }
+            }
+          },
+          "successEvaluationProcess": {
+            "evaluationMethodology": {
+              "quantitativeEvaluationMethods": {
+                "statisticalAnalysisMethods": "Basic statistical analysis",
+                "trendAnalysisMethods": "Limited trend analysis",
+                "benchmarkingEvaluationMethods": "Basic benchmarking",
+                "varianceAnalysisMethods": "Limited variance analysis",
+                "correlationAnalysisMethods": "Basic correlation analysis"
+              },
+              "qualitativeEvaluationMethods": {
+                "stakeholderInterviewMethods": "Limited interview methods",
+                "focusGroupEvaluationMethods": "Basic focus group methods",
+                "observationalEvaluationMethods": "Limited observational methods",
+                "caseStudyEvaluationMethods": "Basic case study methods",
+                "narrativeEvaluationMethods": "Limited narrative methods"
+              }
+            },
+            "evaluationTimingAndFrequency": {
+              "immediateSuccessEvaluation": "Basic immediate evaluation",
+              "shortTermSuccessEvaluation": "Limited short-term evaluation",
+              "mediumTermSuccessEvaluation": "Basic medium-term evaluation",
+              "longTermSuccessEvaluation": "Not systematically conducted",
+              "continuousSuccessMonitoring": "Limited continuous monitoring"
+            },
+            "evaluationStakeholderInvolvement": {
+              "businessStakeholderInvolvement": "Basic stakeholder involvement",
+              "technicalStakeholderInvolvement": "Limited stakeholder participation",
+              "customerStakeholderInvolvement": "Basic customer involvement",
+              "partnerStakeholderInvolvement": "Limited partner involvement",
+              "executiveStakeholderInvolvement": "Basic executive involvement"
+            }
+          },
+          "lessonsLearnedAndContinuousImprovement": {
+            "lessonsLearnedCapture": {
+              "successFactorIdentification": "Basic success factor identification",
+              "failureFactorAnalysis": "Limited failure factor analysis",
+              "bestPracticeDocumentation": "Basic best practice documentation",
+              "improvementOpportunityIdentification": "Limited improvement identification",
+              "knowledgeTransferMechanisms": "Basic knowledge transfer"
+            },
+            "continuousImprovementIntegration": {
+              "processImprovementRecommendations": "Basic improvement recommendations",
+              "toolAndSystemEnhancements": "Limited tool enhancements",
+              "policyAndProcedureUpdates": "Basic policy updates",
+              "trainingAndDevelopmentImprovements": "Limited training improvements",
+              "organizationalLearningIntegration": "Basic learning integration"
+            },
+            "knowledgeManagementAndSharing": {
+              "lessonsLearnedRepositories": "Basic repository management",
+              "bestPracticeSharing": "Limited best practice sharing",
+              "communityOfPracticeForChange": "Not established",
+              "knowledgeBaseMaintenance": "Basic knowledge base maintenance",
+              "organizationalMemoryPreservation": "Limited memory preservation"
+            }
+          },
+          "successCommunicationAndRecognition": {
+            "successCommunication": {
+              "successStorySharingMechanisms": "Basic story sharing",
+              "stakeholderSuccessCommunication": "Limited stakeholder communication",
+              "organizationalSuccessRecognition": "Basic recognition",
+              "customerSuccessCommunication": "Limited customer communication",
+              "partnerSuccessCommunication": "Basic partner communication"
+            },
+            "recognitionAndRewardSystems": {
+              "changeSuccessRecognition": "Basic recognition systems",
+              "teamSuccessRewards": "Limited team rewards",
+              "individualContributionRecognition": "Basic individual recognition",
+              "innovationAndExcellenceRecognition": "Limited excellence recognition",
+              "continuousImprovementRecognition": "Basic improvement recognition"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Change success metrics framework and collection mechanisms assessment",
+            "result": "LIMITED",
+            "details": "Basic success metrics with limited automation and basic baseline establishment"
+          },
+          {
+            "test": "Success evaluation methodology and stakeholder involvement validation",
+            "result": "BASIC",
+            "details": "Basic evaluation methods with limited long-term assessment and basic stakeholder involvement"
+          },
+          {
+            "test": "Lessons learned capture and continuous improvement integration check",
+            "result": "MINIMAL",
+            "details": "Basic lessons learned capture with limited knowledge sharing and basic improvement integration"
+          }
+        ],
+        "remediation": "LOW PRIORITY: 1) Implement comprehensive success metrics framework covering business, technical, and process dimensions, 2) Deploy automated metrics collection with real-time monitoring and historical tracking, 3) Establish robust baseline establishment and post-change comparison processes, 4) Implement comprehensive evaluation methodology with quantitative and qualitative methods, 5) Deploy systematic lessons learned capture with best practice documentation and knowledge transfer, 6) Establish continuous improvement integration with organizational learning mechanisms, 7) Implement success communication and recognition systems with community of practice establishment"
+      }
+    ],
+    "changeRiskImpactEvaluationVerificationMethods": {
+      "riskAssessmentFrameworks": [
+        "ServiceNow: Change risk assessment modules and workflow configurations",
+        "Risk management platforms: Quantitative and qualitative risk analysis tools",
+        "Monte Carlo simulation tools: Advanced risk modeling and scenario analysis",
+        "Business impact analysis tools: Financial and operational impact assessment",
+        "FAIR (Factor Analysis of Information Risk): Structured risk quantification methodology"
+      ],
+      "impactAnalysisTools": [
+        "Azure Application Insights: Application dependency mapping and impact analysis",
+        "Service dependency mapping tools: Automated dependency discovery and visualization",
+        "Performance modeling tools: System performance impact prediction and simulation",
+        "Configuration management databases: Infrastructure and service relationship mapping",
+        "Business process modeling tools: Business impact analysis and workflow assessment"
+      ],
+      "approvalWorkflowTracking": [
+        "ServiceNow: Change approval workflow logs and decision audit trails",
+        "Change Advisory Board: CAB meeting records and decision documentation",
+        "Email and collaboration platforms: Approval communication and stakeholder engagement",
+        "Electronic signature systems: Approval authentication and non-repudiation",
+        "Workflow automation platforms: Approval process execution and performance tracking"
+      ],
+      "postImplementationValidation": [
+        "Monitoring and observability platforms: Post-change performance and availability validation",
+        "Business metrics dashboards: Business impact measurement and validation",
+        "Customer feedback systems: Customer impact assessment and satisfaction measurement",
+        "Financial systems: Revenue and cost impact tracking and validation",
+        "Compliance monitoring tools: Regulatory compliance impact assessment and validation"
+      ],
+      "metricsAndReporting": [
+        "Power BI and Tableau: Risk and impact analytics dashboards and visualization",
+        "ServiceNow: Change management KPI dashboards and performance reporting",
+        "Business intelligence platforms: Advanced analytics and predictive modeling",
+        "Custom reporting solutions: Organizational change management metrics and analysis",
+        "Executive dashboards: Strategic change impact reporting and decision support"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "CM-4": "Security Impact Analysis",
+        "RA-3": "Risk Assessment",
+        "PM-9": "Risk Management Strategy",
+        "CA-7": "Continuous Monitoring",
+        "CM-3": "Configuration Change Control"
+      },
+      "nist80053": {
+        "CM-4": "Security Impact Analysis",
+        "RA-3": "Risk Assessment",
+        "PM-9": "Risk Management Strategy",
+        "CA-7": "Continuous Monitoring",
+        "CM-3": "Configuration Change Control",
+        "SI-2": "Flaw Remediation"
+      },
+      "iso27001": {
+        "A.12.1.2": "Change management",
+        "A.16.1.5": "Response to information security incidents",
+        "A.14.2.2": "System change control procedures",
+        "A.14.2.3": "Technical review of applications after operating platform changes"
+      }
+    }
+  }
+}

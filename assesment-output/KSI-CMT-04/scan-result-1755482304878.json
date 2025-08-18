@@ -1,0 +1,711 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-CMT-04",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 6,
+      "passed": 2,
+      "failed": 4,
+      "warnings": 0
+    },
+    "changeManagementProcedureChecks": [
+      {
+        "checkId": "CMT-04-001",
+        "name": "Comprehensive Change Management Policy Framework",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Organization should have a comprehensive change management policy framework with clear procedures and governance",
+        "findings": {
+          "changeManagementPolicyFramework": {
+            "policyDocumentation": {
+              "changeManagementPolicy": {
+                "documented": true,
+                "lastUpdated": "2025-06-15T00:00:00.000Z",
+                "version": "3.2",
+                "approvedBy": "Chief Information Security Officer",
+                "nextReviewDate": "2025-12-15T00:00:00.000Z"
+              },
+              "changeCategorizationFramework": {
+                "emergencyChanges": "Documented with expedited approval process",
+                "standardChanges": "Pre-approved changes with documented procedures",
+                "normalChanges": "Standard approval workflow with risk assessment",
+                "majorChanges": "Enhanced approval with business impact analysis",
+                "infrastructureChanges": "Technical review with architecture approval"
+              },
+              "changeApprovalAuthority": {
+                "changeAdvisoryBoard": "Established with defined membership",
+                "emergencyChangeApprovers": "CISO, IT Director, Operations Manager",
+                "technicalApprovers": "Solution Architects, Senior Engineers",
+                "businessApprovers": "Business Unit Managers, Product Owners",
+                "securityApprovers": "Security Team, Compliance Officer"
+              }
+            },
+            "procedureDefinition": {
+              "changeRequestProcess": {
+                "changeRequestSubmission": "ServiceNow-based submission portal",
+                "changeRequestTemplates": "Standardized templates by change type",
+                "changeImpactAssessment": "Required impact and risk analysis",
+                "changePlanningRequirements": "Implementation and rollback planning",
+                "changeSchedulingProcess": "Maintenance window coordination"
+              },
+              "changeApprovalWorkflow": {
+                "riskBasedApproval": "Approval requirements based on risk assessment",
+                "parallelApprovalPaths": "Concurrent technical and business approvals",
+                "expeditedApprovalProcess": "Emergency change fast-track procedures",
+                "approvalEscalationProcedures": "Defined escalation for delayed approvals",
+                "approvalDocumentationRequirements": "Justification and decision rationale"
+              },
+              "changeImplementationGuidance": {
+                "preImplementationChecklist": "Comprehensive pre-implementation validation",
+                "implementationProcedures": "Step-by-step implementation guidance",
+                "rollbackProcedures": "Detailed rollback and recovery procedures",
+                "postImplementationValidation": "Post-change verification requirements",
+                "changeClosureProcess": "Change completion and lessons learned capture"
+              }
+            }
+          },
+          "governanceAndOversight": {
+            "changeAdvisoryBoard": {
+              "boardComposition": "Cross-functional representation",
+              "meetingFrequency": "Weekly CAB meetings",
+              "decisionAuthority": "Formal decision-making authority",
+              "escalationProcedures": "Defined escalation to executive leadership",
+              "performanceReviewing": "Regular CAB effectiveness reviews"
+            },
+            "changeManagementMetrics": {
+              "changeSuccessRate": "97.8%",
+              "changeVolume": "Average 145 changes per month",
+              "emergencyChangePercentage": "3.2% of total changes",
+              "changeImplementationTimeCompliance": "94.6% within planned windows",
+              "changeRollbackRate": "1.4% rollback requirement"
+            },
+            "complianceAndAuditing": {
+              "changeAuditTrails": "Complete audit trails for all changes",
+              "regulatoryCompliance": "FedRAMP and SOX compliance alignment",
+              "changeDocumentationStandards": "Standardized documentation requirements",
+              "changeRetentionPolicies": "7-year change record retention",
+              "complianceReporting": "Monthly compliance and metrics reporting"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Change management policy framework comprehensiveness assessment",
+            "result": "COMPREHENSIVE",
+            "details": "Complete policy framework with defined categorization, approval authority, and procedural guidance"
+          },
+          {
+            "test": "Change management governance and oversight validation",
+            "result": "MATURE",
+            "details": "Established CAB with 97.8% success rate and comprehensive compliance auditing"
+          },
+          {
+            "test": "Change management documentation and compliance evaluation",
+            "result": "COMPLIANT",
+            "details": "Standardized documentation with FedRAMP compliance and 7-year retention policies"
+          }
+        ],
+        "remediation": "Change management policy framework properly documented with comprehensive governance and oversight"
+      },
+      {
+        "checkId": "CMT-04-002",
+        "name": "ServiceNow Change Management Implementation",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Change management procedures should be implemented through enterprise change management platforms with workflow automation",
+        "findings": {
+          "serviceNowChangeManagement": {
+            "platformConfiguration": {
+              "changeManagementModule": {
+                "moduleEnabled": true,
+                "workflowsConfigured": 23,
+                "approvalProcessesAutomated": 15,
+                "integrationPoints": 12,
+                "customizationLevel": "Extensive organizational customization"
+              },
+              "changeRequestTypes": {
+                "normalChanges": "Standard workflow with approval gates",
+                "standardChanges": "Pre-approved with automated processing",
+                "emergencyChanges": "Expedited workflow with post-implementation review",
+                "majorChanges": "Enhanced approval with business impact assessment",
+                "infrastructureChanges": "Technical architecture review workflow"
+              },
+              "workflowAutomation": {
+                "approvalRouting": "Automated routing based on change type and impact",
+                "notificationAutomation": "Multi-channel stakeholder notifications",
+                "escalationAutomation": "Automated escalation for delayed approvals",
+                "integrationWithDeploymentTools": "Azure DevOps and deployment tool integration",
+                "changeSchedulingAutomation": "Maintenance window coordination automation"
+              }
+            },
+            "changeRequestProcessing": {
+              "changeRequestMetrics": {
+                "totalChangeRequests": 1745,
+                "averageProcessingTime": "PT18H30M",
+                "approvalSlaCompliance": "94.7%",
+                "changeRequestRejectionRate": "2.8%",
+                "emergencyChangeProcessingTime": "PT2H15M"
+              },
+              "approvalWorkflowPerformance": {
+                "averageApprovalTime": "PT12H45M",
+                "approvalTimeoutEscalations": 23,
+                "parallelApprovalEfficiency": "78.3% parallel processing",
+                "approvalBottleneckIdentification": "Automated bottleneck detection",
+                "approverWorkloadDistribution": "Balanced workload distribution"
+              },
+              "changeImplementationTracking": {
+                "implementationSuccessRate": "97.8%",
+                "plannedVsActualImplementationTime": "96.2% on-time implementation",
+                "changeValidationCompliance": "98.1% post-implementation validation",
+                "rollbackExecutionTracking": "Complete rollback procedure tracking",
+                "changeClosureCompliance": "95.4% timely change closure"
+              }
+            }
+          },
+          "integrationAndAutomation": {
+            "cicdIntegration": {
+              "azureDevOpsIntegration": {
+                "changeRequestCreation": "Automated from deployment pipelines",
+                "deploymentGating": "Change approval gating for production",
+                "implementationNotification": "Automated implementation status updates",
+                "rollbackIntegration": "Automated rollback trigger integration",
+                "deploymentDocumentation": "Automated deployment documentation"
+              },
+              "infrastructureAsCodeIntegration": {
+                "terraformIntegration": "Change requests for infrastructure modifications",
+                "armTemplateIntegration": "Azure Resource Manager deployment integration",
+                "configurationManagementIntegration": "Ansible and PowerShell DSC integration",
+                "policyChangeIntegration": "Azure Policy change integration",
+                "complianceValidationIntegration": "Automated compliance validation"
+              }
+            },
+            "monitoringAndAlerting": {
+              "changeManagementDashboards": {
+                "executiveDashboards": "Executive change management KPI dashboards",
+                "operationalDashboards": "Operational change tracking dashboards",
+                "complianceDashboards": "Regulatory compliance monitoring dashboards",
+                "performanceMetricsDashboards": "Change management performance metrics",
+                "riskAssessmentDashboards": "Change risk assessment and trending"
+              },
+              "alertingAndNotifications": {
+                "changeDeadlineAlerts": "Automated deadline and SLA alerts",
+                "approvalReminderNotifications": "Automated approval reminder system",
+                "emergencyChangeAlerts": "Immediate emergency change notifications",
+                "changeFailureAlerts": "Automated change failure detection and alerting",
+                "complianceViolationAlerts": "Compliance violation detection and alerting"
+              }
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "ServiceNow change management platform configuration assessment",
+            "result": "COMPREHENSIVE",
+            "details": "Extensive customization with 23 workflows and 94.7% SLA compliance"
+          },
+          {
+            "test": "Change request processing and workflow performance validation",
+            "result": "EFFICIENT",
+            "details": "97.8% implementation success rate with 18.5-hour average processing time"
+          },
+          {
+            "test": "Integration and automation effectiveness evaluation",
+            "result": "ADVANCED",
+            "details": "Comprehensive CI/CD integration with automated monitoring and executive dashboards"
+          }
+        ],
+        "remediation": "ServiceNow change management implementation properly configured with comprehensive automation and integration"
+      },
+      {
+        "checkId": "CMT-04-003",
+        "name": "Incomplete Change Risk Assessment Procedures",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Change risk assessment procedures lack comprehensive risk analysis and impact evaluation frameworks",
+        "findings": {
+          "changeRiskAssessmentGaps": {
+            "riskAssessmentFramework": {
+              "riskAssessmentMethodology": "Basic risk assessment methodology",
+              "riskCategorizationFramework": "Limited risk categorization",
+              "impactAssessmentCriteria": "Informal impact assessment criteria",
+              "probabilityAssessmentMethods": "Subjective probability assessment",
+              "riskScoringCalculation": "Simple risk scoring matrix"
+            },
+            "businessImpactAnalysis": {
+              "businessProcessImpactAssessment": "Limited business process analysis",
+              "customerImpactEvaluation": "Basic customer impact consideration",
+              "revenueImpactAnalysis": "Not systematically conducted",
+              "reputationalRiskAssessment": "Informal reputational risk consideration",
+              "complianceImpactAssessment": "Limited compliance impact analysis"
+            },
+            "technicalRiskAssessment": {
+              "systemDependencyAnalysis": "Limited dependency mapping",
+              "performanceImpactAssessment": "Basic performance impact consideration",
+              "securityRiskEvaluation": "Limited security risk assessment",
+              "dataIntegrityRiskAssessment": "Not systematically evaluated",
+              "rollbackComplexityAssessment": "Informal rollback complexity evaluation"
+            }
+          },
+          "riskMitigationPlanning": {
+            "riskMitigationStrategies": {
+              "preventiveControlsIdentification": "Limited preventive controls identification",
+              "mitigatingControlsPlanning": "Basic mitigating controls planning",
+              "contingencyPlanningRequirements": "Informal contingency planning",
+              "rollbackPlanningStandards": "Basic rollback planning requirements",
+              "communicationPlanRequirements": "Limited communication planning"
+            },
+            "riskMonitoringProcedures": {
+              "realTimeRiskMonitoring": "Not implemented",
+              "riskIndicatorTracking": "Limited risk indicator monitoring",
+              "riskEscalationProcedures": "Informal risk escalation",
+              "riskReportingRequirements": "Basic risk reporting",
+              "postImplementationRiskReview": "Limited post-implementation review"
+            }
+          },
+          "stakeholderRiskCommunication": {
+            "riskCommunicationFramework": {
+              "stakeholderRiskNotification": "Limited stakeholder notification",
+              "riskCommunicationStandards": "Informal communication standards",
+              "riskEscalationCommunication": "Basic escalation communication",
+              "businessStakeholderEngagement": "Limited business engagement",
+              "technicalStakeholderCoordination": "Basic technical coordination"
+            },
+            "riskDecisionMaking": {
+              "riskAcceptanceCriteria": "Informal risk acceptance criteria",
+              "riskApprovalAuthority": "Unclear risk approval authority",
+              "riskBasedChangePrioritization": "Limited risk-based prioritization",
+              "riskToleranceThresholds": "Not systematically defined",
+              "riskBasedResourceAllocation": "Not implemented"
+            }
+          },
+          "businessImpactOfGaps": {
+            "inadequateRiskEvaluation": {
+              "unexpectedChangeImpacts": "Risk of unexpected change impacts",
+              "inadequateRiskMitigation": "Insufficient risk mitigation planning",
+              "poorRiskCommunication": "Poor stakeholder risk communication",
+              "suboptimalDecisionMaking": "Risk-uninformed decision making",
+              "increasedChangeFailures": "Higher change failure rates"
+            },
+            "complianceAndGovernanceRisks": {
+              "regulatoryNonCompliance": "Risk of regulatory non-compliance",
+              "auditFindingsRisk": "Higher risk of audit findings",
+              "governanceWeaknesses": "Governance framework weaknesses",
+              "riskManagementMaturity": "Low risk management maturity",
+              "stakeholderConfidenceImpact": "Reduced stakeholder confidence"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Change risk assessment framework maturity assessment",
+            "result": "IMMATURE",
+            "details": "Basic methodology with limited categorization and informal impact assessment criteria"
+          },
+          {
+            "test": "Risk mitigation and monitoring capability evaluation",
+            "result": "LIMITED",
+            "details": "Basic mitigation planning with no real-time monitoring and informal escalation procedures"
+          },
+          {
+            "test": "Risk communication and decision-making framework check",
+            "result": "INADEQUATE",
+            "details": "Limited stakeholder notification with unclear approval authority and informal acceptance criteria"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive change risk assessment framework with quantitative risk analysis, 2) Establish systematic business impact analysis including revenue, customer, and compliance impacts, 3) Deploy technical risk assessment with dependency mapping and security evaluation, 4) Implement risk mitigation planning with preventive and contingency controls, 5) Establish real-time risk monitoring with automated escalation procedures, 6) Deploy stakeholder risk communication framework with clear approval authority, 7) Implement risk-based change prioritization and resource allocation"
+      },
+      {
+        "checkId": "CMT-04-004",
+        "name": "Inadequate Emergency Change Procedures",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Emergency change procedures lack comprehensive documentation and post-implementation review processes",
+        "findings": {
+          "emergencyChangeProcedureGaps": {
+            "emergencyChangeDefinition": {
+              "emergencyChangeCriteria": "Vague emergency change criteria",
+              "businessImpactThresholds": "Informal impact thresholds",
+              "urgencyClassification": "Basic urgency classification",
+              "emergencyChangeExamples": "Limited example scenarios",
+              "nonEmergencyPreventionGuidance": "No prevention guidance"
+            },
+            "emergencyApprovalProcess": {
+              "expeditedApprovalWorkflow": "Basic expedited workflow",
+              "emergencyApproverAvailability": "Limited 24/7 approver coverage",
+              "approvalBypassProcedures": "Informal bypass procedures",
+              "emergencyApprovalDocumentation": "Limited approval documentation",
+              "postApprovalValidation": "Basic post-approval validation"
+            },
+            "emergencyImplementationGuidance": {
+              "emergencyImplementationProcedures": "Basic implementation guidance",
+              "emergencyRollbackProcedures": "Limited rollback procedures",
+              "emergencyTestingRequirements": "Minimal testing requirements",
+              "emergencyDocumentationStandards": "Informal documentation standards",
+              "emergencyCoordinationProcedures": "Basic coordination procedures"
+            }
+          },
+          "emergencyChangeTracking": {
+            "emergencyChangeMonitoring": {
+              "realTimeEmergencyChangeTracking": "Limited real-time tracking",
+              "emergencyChangeMetrics": "Basic metrics collection",
+              "emergencyChangeSuccessRate": "78.3% success rate",
+              "emergencyChangeRollbackRate": "12.7% rollback rate",
+              "emergencyChangeProcessingTime": "Average 2.5 hours"
+            },
+            "emergencyChangeAuditing": {
+              "emergencyChangeAuditTrails": "Limited audit trail completeness",
+              "emergencyChangeJustification": "Informal justification requirements",
+              "emergencyChangeValidation": "Basic post-implementation validation",
+              "emergencyChangeReporting": "Limited emergency change reporting",
+              "emergencyChangeCompliance": "Basic compliance validation"
+            }
+          },
+          "postImplementationReview": {
+            "emergencyChangeReviewProcedures": {
+              "mandatoryPostImplementationReview": "Not consistently conducted",
+              "reviewTimelineRequirements": "Informal timeline requirements",
+              "reviewStakeholderParticipation": "Limited stakeholder participation",
+              "reviewDocumentationStandards": "Inconsistent documentation",
+              "reviewActionItemTracking": "Manual action item tracking"
+            },
+            "lessonsLearnedCapture": {
+              "lessonsLearnedDocumentation": "Inconsistent documentation",
+              "rootCauseAnalysisRequirements": "Basic root cause analysis",
+              "processImprovementIdentification": "Limited improvement identification",
+              "lessonsLearnedSharing": "No systematic sharing",
+              "preventiveActionPlanning": "Limited preventive action planning"
+            },
+            "emergencyChangeAnalysis": {
+              "emergencyChangeTrendAnalysis": "Not systematically conducted",
+              "recurrentEmergencyChangeIdentification": "Manual identification",
+              "emergencyChangeRootCausePatterns": "Not analyzed",
+              "emergencyChangePreventionPlanning": "Not systematically planned",
+              "emergencyChangePolicyAdjustments": "Reactive policy adjustments"
+            }
+          },
+          "communicationAndNotification": {
+            "emergencyChangeCommunication": {
+              "stakeholderNotificationProcedures": "Basic notification procedures",
+              "communicationChannelsDiversity": "Limited communication channels",
+              "escalationCommunicationProcedures": "Informal escalation communication",
+              "businessImpactCommunication": "Limited impact communication",
+              "statusUpdateProcedures": "Manual status updates"
+            },
+            "postEmergencyChangeCommunication": {
+              "implementationResultsCommunication": "Limited results communication",
+              "businessImpactReporting": "Basic impact reporting",
+              "stakeholderFeedbackCollection": "No systematic feedback collection",
+              "communicationEffectivenessEvaluation": "Not evaluated",
+              "communicationLessonsLearned": "Not captured"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Emergency change procedure definition and approval assessment",
+            "result": "INADEQUATE",
+            "details": "Vague criteria with basic expedited workflow and limited 24/7 approver coverage"
+          },
+          {
+            "test": "Emergency change tracking and auditing evaluation",
+            "result": "LIMITED",
+            "details": "78.3% success rate with 12.7% rollback rate and limited audit trail completeness"
+          },
+          {
+            "test": "Post-implementation review and lessons learned maturity check",
+            "result": "INCONSISTENT",
+            "details": "Not consistently conducted with limited stakeholder participation and manual tracking"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Establish comprehensive emergency change criteria with clear business impact thresholds, 2) Implement 24/7 emergency approval coverage with formal bypass procedures, 3) Deploy comprehensive emergency change tracking with real-time monitoring, 4) Establish mandatory post-implementation review with stakeholder participation, 5) Implement systematic lessons learned capture and sharing mechanisms, 6) Deploy emergency change trend analysis and prevention planning, 7) Establish comprehensive stakeholder communication and notification procedures"
+      },
+      {
+        "checkId": "CMT-04-005",
+        "name": "Limited Change Management Training and Awareness",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Change management training and awareness programs lack comprehensive coverage and effectiveness measurement",
+        "findings": {
+          "changeManagementTrainingGaps": {
+            "trainingProgramCoverage": {
+              "totalEmployees": 567,
+              "trainedEmployees": 234,
+              "trainingCoveragePercentage": "41.3%",
+              "roleBasedTrainingCompletion": "Inconsistent completion rates",
+              "trainingFrequency": "Annual training only"
+            },
+            "trainingContentGaps": {
+              "changeManagementPolicyTraining": "Basic policy overview only",
+              "procedureTraining": "Limited procedure training",
+              "toolsAndSystemsTraining": "Basic tools training",
+              "roleSpecificTraining": "Limited role-specific content",
+              "emergencyProcedureTraining": "Minimal emergency training"
+            },
+            "trainingDeliveryMethods": {
+              "onlineTrainingModules": "Basic online modules",
+              "inPersonTraining": "Limited in-person sessions",
+              "handsOnTraining": "Minimal hands-on practice",
+              "refresherTraining": "Not systematically provided",
+              "justInTimeTraining": "Not available"
+            }
+          },
+          "awarenessAndCommunication": {
+            "changeManagementAwareness": {
+              "policyAwareness": "Limited policy awareness",
+              "procedureAwareness": "Basic procedure understanding",
+              "roleResponsibilityAwareness": "Unclear role understanding",
+              "complianceRequirementAwareness": "Limited compliance awareness",
+              "processImprovementAwareness": "Minimal improvement awareness"
+            },
+            "communicationChannels": {
+              "intranetCommunication": "Basic intranet presence",
+              "emailCommunication": "Limited email updates",
+              "teamMeetingsCommunication": "Informal team communications",
+              "posterAndSignageCommunication": "Minimal visual communications",
+              "digitalDisplaysCommunication": "Not utilized"
+            },
+            "feedbackAndEngagement": {
+              "userFeedbackCollection": "No systematic feedback collection",
+              "processImprovementSuggestions": "Limited suggestion mechanisms",
+              "changeManagementSurveys": "Not conducted",
+              "stakeholderEngagementActivities": "Minimal engagement activities",
+              "continuousImprovementParticipation": "Low participation"
+            }
+          },
+          "trainingEffectivenessAssessment": {
+            "trainingAssessmentMethods": {
+              "knowledgeAssessments": "Basic knowledge testing",
+              "skillDemonstrations": "Not systematically assessed",
+              "behavioralObservations": "Not conducted",
+              "onTheJobEvaluations": "Limited job performance evaluation",
+              "trainingFeedbackCollection": "Basic feedback collection"
+            },
+            "trainingEffectivenessMetrics": {
+              "trainingCompletionRates": "76.3% completion rate",
+              "trainingAssessmentScores": "Average 78.2% assessment scores",
+              "trainingRetentionRates": "Not measured",
+              "jobPerformanceImpact": "Not systematically measured",
+              "complianceImprovementCorrelation": "Not analyzed"
+            },
+            "trainingProgramImprovement": {
+              "trainingGapAnalysis": "Not systematically conducted",
+              "trainingContentUpdates": "Irregular content updates",
+              "trainingMethodImprovement": "Limited method improvement",
+              "trainerSkillDevelopment": "Basic trainer development",
+              "trainingTechnologyEnhancement": "Minimal technology enhancement"
+            }
+          },
+          "changeManagementCulture": {
+            "culturalAssessment": {
+              "changeManagementCultureMaturity": "Low culture maturity",
+              "changeManagementBuyIn": "Limited management buy-in",
+              "changeManagementAdherence": "Inconsistent adherence",
+              "changeManagementValuePerception": "Limited value perception",
+              "changeManagementParticipation": "Reactive participation"
+            },
+            "culturalDevelopmentInitiatives": {
+              "leadershipCommitmentDemonstration": "Limited leadership commitment",
+              "changeChampionPrograms": "Not implemented",
+              "successStorySharing": "Minimal success story sharing",
+              "recognitionAndRewardPrograms": "Not implemented",
+              "continuousImprovementCulture": "Limited improvement culture"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Change management training coverage and content assessment",
+            "result": "INADEQUATE",
+            "details": "41.3% employee coverage with basic content and annual training frequency"
+          },
+          {
+            "test": "Awareness, communication, and engagement evaluation",
+            "result": "LIMITED",
+            "details": "Limited policy awareness with basic communication channels and no systematic feedback"
+          },
+          {
+            "test": "Training effectiveness and cultural maturity check",
+            "result": "IMMATURE",
+            "details": "76.3% completion rate with low culture maturity and limited leadership commitment"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive change management training program with 100% employee coverage, 2) Develop role-specific training content with hands-on practice and emergency procedures, 3) Establish multi-channel awareness and communication programs, 4) Deploy systematic training effectiveness assessment with knowledge and skill evaluations, 5) Implement change management culture development initiatives with leadership commitment, 6) Establish change champion programs with recognition and reward systems, 7) Deploy continuous improvement feedback mechanisms and training program optimization"
+      },
+      {
+        "checkId": "CMT-04-006",
+        "name": "Insufficient Change Management Metrics and Reporting",
+        "status": "FAIL",
+        "severity": "LOW",
+        "description": "Change management metrics and reporting lack comprehensive KPIs and stakeholder-specific dashboards",
+        "findings": {
+          "changeManagementMetricsGaps": {
+            "kpiFrameworkLimitations": {
+              "businessAlignedKPIs": "Limited business-aligned metrics",
+              "operationalEfficiencyKPIs": "Basic operational metrics",
+              "qualityAndEffectivenessKPIs": "Limited quality metrics",
+              "complianceAndRiskKPIs": "Basic compliance metrics",
+              "customerImpactKPIs": "Not measured"
+            },
+            "metricsCollectionGaps": {
+              "automatedMetricsCollection": "Limited automation",
+              "realTimeMetricsTracking": "Not implemented",
+              "historicalMetricsTrending": "Basic historical tracking",
+              "crossSystemMetricsCorrelation": "Limited correlation",
+              "metricsDataQuality": "Basic data quality"
+            },
+            "benchmarkingAndBaselining": {
+              "industryBenchmarking": "Not conducted",
+              "internalBenchmarking": "Limited internal comparison",
+              "performanceBaselining": "Basic baseline establishment",
+              "maturityBenchmarking": "Not systematically conducted",
+              "bestPracticeComparison": "Limited best practice comparison"
+            }
+          },
+          "reportingGaps": {
+            "stakeholderSpecificReporting": {
+              "executiveReporting": "Basic executive summaries",
+              "operationalReporting": "Limited operational reports",
+              "complianceReporting": "Basic compliance reports",
+              "businessUnitReporting": "Not customized",
+              "technicalTeamReporting": "Limited technical reports"
+            },
+            "reportingAutomation": {
+              "automatedReportGeneration": "Limited automation",
+              "scheduledReporting": "Basic scheduled reports",
+              "adhocReportingCapabilities": "Limited ad-hoc capabilities",
+              "reportingDashboards": "Basic dashboards",
+              "reportingAlerts": "Limited alerting"
+            },
+            "reportingQualityAndUsability": {
+              "reportingAccuracy": "Basic accuracy validation",
+              "reportingTimeliness": "Delayed reporting",
+              "reportingRelevance": "Limited stakeholder relevance",
+              "reportingVisualization": "Basic visualization",
+              "reportingAccessibility": "Limited accessibility"
+            }
+          },
+          "performanceAnalysisGaps": {
+            "trendAnalysis": {
+              "changeVolumeAnalysis": "Basic volume tracking",
+              "changeSuccessRateAnalysis": "Limited success analysis",
+              "changeTypeAnalysis": "Basic type analysis",
+              "changeImpactAnalysis": "Limited impact analysis",
+              "changeSeasonalityAnalysis": "Not conducted"
+            },
+            "rootCauseAnalysis": {
+              "changeFailureAnalysis": "Basic failure analysis",
+              "changeDelayAnalysis": "Limited delay analysis",
+              "changeRiskMaterializationAnalysis": "Not systematically conducted",
+              "changeProcessBottleneckAnalysis": "Limited bottleneck analysis",
+              "changeQualityAnalysis": "Basic quality analysis"
+            },
+            "predictiveAnalytics": {
+              "changeVolumeForecasting": "Not implemented",
+              "changeSuccessPrediction": "Not implemented",
+              "changeRiskPrediction": "Not implemented",
+              "changeResourceDemandForecasting": "Not implemented",
+              "changeImpactPrediction": "Not implemented"
+            }
+          },
+          "continuousImprovementGaps": {
+            "metricsBasedImprovement": {
+              "performanceGapIdentification": "Limited gap identification",
+              "improvementOpportunityAnalysis": "Basic opportunity analysis",
+              "improvementInitiativeTracking": "Manual tracking",
+              "improvementEffectivenessAssessment": "Not systematically assessed",
+              "improvementROIMeasurement": "Not measured"
+            },
+            "processOptimization": {
+              "processEfficiencyAnalysis": "Basic efficiency analysis",
+              "processAutomationOpportunities": "Limited automation identification",
+              "processStandardizationOpportunities": "Not systematically identified",
+              "processSimplificationOpportunities": "Limited simplification analysis",
+              "processInnovationOpportunities": "Not explored"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Change management KPI framework and metrics collection assessment",
+            "result": "LIMITED",
+            "details": "Basic operational metrics with limited automation and no real-time tracking"
+          },
+          {
+            "test": "Reporting capabilities and stakeholder alignment evaluation",
+            "result": "BASIC",
+            "details": "Basic executive summaries with limited automation and delayed reporting"
+          },
+          {
+            "test": "Performance analysis and continuous improvement maturity check",
+            "result": "MINIMAL",
+            "details": "Basic analysis with no predictive analytics and limited improvement tracking"
+          }
+        ],
+        "remediation": "LOW PRIORITY: 1) Implement comprehensive change management KPI framework with business-aligned metrics, 2) Deploy automated metrics collection with real-time tracking and data quality controls, 3) Establish stakeholder-specific reporting with automated generation and dashboards, 4) Implement comprehensive trend and root cause analysis capabilities, 5) Deploy predictive analytics for change forecasting and risk prediction, 6) Establish metrics-based continuous improvement with ROI measurement, 7) Implement industry benchmarking and maturity assessment programs"
+      }
+    ],
+    "changeManagementProcedureVerificationMethods": {
+      "policyAndProcedureDocumentation": [
+        "Document management systems: Policy and procedure document repositories",
+        "SharePoint: Change management procedure libraries",
+        "ServiceNow: Knowledge base articles and procedure documentation",
+        "Quality management systems: ISO 9001 change control procedures",
+        "Compliance platforms: Regulatory change management procedure validation"
+      ],
+      "changeManagementPlatforms": [
+        "ServiceNow: Change management module configuration and workflow logs",
+        "JIRA Service Management: Change request tracking and approval workflows",
+        "Azure DevOps: Work item tracking for change management integration",
+        "BMC Remedy: Change and configuration management database",
+        "Cherwell: IT service management change workflows and reporting"
+      ],
+      "approvalWorkflowTracking": [
+        "ServiceNow: Approval workflow logs and decision audit trails",
+        "Change Advisory Board: CAB meeting minutes and decision records",
+        "Email systems: Approval notification and response tracking",
+        "Electronic signature platforms: DocuSign change approval validation",
+        "Workflow management systems: Process execution and approval tracking"
+      ],
+      "changeImplementationMonitoring": [
+        "CI/CD pipelines: Deployment logs linked to change requests",
+        "Monitoring systems: Pre and post-change performance validation",
+        "Azure Monitor: Change impact assessment and rollback validation",
+        "Change execution logs: Implementation step-by-step execution tracking",
+        "Business validation: Post-change business function verification"
+      ],
+      "metricsAndReporting": [
+        "ServiceNow: Change management dashboard and KPI reporting",
+        "Power BI: Change management metrics visualization and analysis",
+        "Splunk: Change event correlation and performance analysis",
+        "Excel/spreadsheet: Manual change management metrics tracking",
+        "Custom reporting tools: Organizational change management reporting"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "CM-3": "Configuration Change Control",
+        "CM-4": "Security Impact Analysis",
+        "CM-9": "Configuration Management Plan",
+        "SA-10": "Developer Configuration Management",
+        "PM-9": "Risk Management Strategy"
+      },
+      "nist80053": {
+        "CM-3": "Configuration Change Control",
+        "CM-4": "Security Impact Analysis",
+        "CM-9": "Configuration Management Plan",
+        "SA-10": "Developer Configuration Management",
+        "PM-9": "Risk Management Strategy",
+        "RA-3": "Risk Assessment"
+      },
+      "iso27001": {
+        "A.12.1.2": "Change management",
+        "A.14.2.2": "System change control procedures",
+        "A.16.1.5": "Response to information security incidents",
+        "A.14.2.3": "Technical review of applications after operating platform changes"
+      }
+    }
+  }
+}

@@ -1,0 +1,895 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-MLA-03",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 7,
+      "passed": 3,
+      "failed": 4,
+      "warnings": 0
+    },
+    "vulnerabilityDetectionRemediationChecks": [
+      {
+        "checkId": "MLA-03-001",
+        "name": "Automated Vulnerability Scanning Coverage",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Comprehensive automated vulnerability scanning should cover all system components and infrastructure",
+        "findings": {
+          "scanningCoverage": {
+            "virtualMachines": {
+              "totalVms": 156,
+              "scannedVms": 156,
+              "coveragePercentage": "100%",
+              "scanFrequency": "Daily",
+              "lastScanDate": "2025-08-16T23:45:00.000Z"
+            },
+            "containerImages": {
+              "totalImages": 89,
+              "scannedImages": 89,
+              "coveragePercentage": "100%",
+              "scanFrequency": "On build and daily",
+              "vulnerabilityDatabase": "Updated hourly"
+            },
+            "webApplications": {
+              "totalApplications": 23,
+              "scannedApplications": 23,
+              "coveragePercentage": "100%",
+              "scanTypes": ["SAST", "DAST", "SCA"],
+              "scanFrequency": "Per deployment + weekly"
+            },
+            "infrastructure": {
+              "networkDevices": 45,
+              "databases": 34,
+              "cloudServices": 67,
+              "apiEndpoints": 156,
+              "totalCoverage": "100%"
+            }
+          },
+          "scanningTechnology": {
+            "vulnerabilityScanners": {
+              "azureSecurityCenter": {
+                "enabled": true,
+                "policies": 234,
+                "compliance": "98.7%",
+                "lastUpdate": "2025-08-16T22:00:00.000Z"
+              },
+              "qualysVmdr": {
+                "enabled": true,
+                "scannedAssets": 156,
+                "vulnerabilityDatabase": "Current",
+                "lastUpdate": "2025-08-16T23:30:00.000Z"
+              },
+              "aquaSecurityTrivy": {
+                "enabled": true,
+                "containerImages": 89,
+                "cveDatabase": "Updated hourly",
+                "integrationPoints": ["CI/CD", "Registry", "Runtime"]
+              }
+            },
+            "applicationSecurityTesting": {
+              "sonarQube": {
+                "staticAnalysis": true,
+                "codeQualityGates": "Enforced",
+                "securityHotspots": "Tracked",
+                "coveragePercentage": "87.3%"
+              },
+              "owaspZap": {
+                "dynamicAnalysis": true,
+                "automatedScans": true,
+                "integrationPoints": ["CI/CD", "Staging"],
+                "lastScan": "2025-08-16T20:15:00.000Z"
+              },
+              "snyk": {
+                "dependencyScanning": true,
+                "licenseCompliance": true,
+                "iacScanning": true,
+                "vulnerabilityDatabase": "Real-time updates"
+              }
+            }
+          },
+          "scanningMetrics": {
+            "vulnerabilityDetection": {
+              "totalVulnerabilities": 1247,
+              "criticalVulnerabilities": 8,
+              "highVulnerabilities": 45,
+              "mediumVulnerabilities": 234,
+              "lowVulnerabilities": 960,
+              "falsePositiveRate": "3.2%"
+            },
+            "scanPerformance": {
+              "averageScanTime": "PT45M",
+              "scanSuccessRate": "99.1%",
+              "dataFreshness": "< 24 hours",
+              "reportGeneration": "Automated",
+              "alertingLatency": "< 5 minutes"
+            },
+            "qualityAssurance": {
+              "scannerCalibration": "Monthly",
+              "falsePositiveReduction": "Continuous tuning",
+              "coverageValidation": "Weekly verification",
+              "scannerUpdates": "Automatic",
+              "configurationManagement": "Version controlled"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Vulnerability scanning coverage assessment",
+            "result": "COMPREHENSIVE",
+            "details": "100% coverage across VMs, containers, applications, and infrastructure"
+          },
+          {
+            "test": "Scanning technology effectiveness check",
+            "result": "OPTIMAL",
+            "details": "Multiple scanning technologies with 99.1% success rate and 3.2% false positive rate"
+          },
+          {
+            "test": "Detection metrics validation",
+            "result": "EFFECTIVE",
+            "details": "1247 vulnerabilities detected with < 5 minute alerting latency"
+          }
+        ],
+        "remediation": "Automated vulnerability scanning properly implemented with comprehensive coverage"
+      },
+      {
+        "checkId": "MLA-03-002",
+        "name": "Vulnerability Intelligence and Threat Feeds",
+        "status": "PASS",
+        "severity": "MEDIUM",
+        "description": "Current threat intelligence should be integrated with vulnerability management processes",
+        "findings": {
+          "threatIntelligenceIntegration": {
+            "threatFeeds": {
+              "microsoftThreatIntelligence": {
+                "enabled": true,
+                "feedTypes": ["IoCs", "TTPs", "Vulnerabilities"],
+                "updateFrequency": "Real-time",
+                "lastUpdate": "2025-08-16T23:55:00.000Z",
+                "confidence": "High"
+              },
+              "cisaKnownExploitedVulnerabilities": {
+                "enabled": true,
+                "kevCatalog": "Synchronized",
+                "automatedPrioritization": true,
+                "lastSync": "2025-08-16T22:30:00.000Z",
+                "actionRequired": 3
+              },
+              "commercialThreatFeeds": {
+                "recordedFuture": true,
+                "flashpoint": true,
+                "crowdstrike": true,
+                "feedCorrelation": "Automated",
+                "confidenceScoring": "Implemented"
+              }
+            },
+            "vulnerabilityPrioritization": {
+              "epssScoring": {
+                "enabled": true,
+                "integrationStatus": "Active",
+                "prioritizationEngine": "Automated",
+                "lastUpdate": "2025-08-16T20:00:00.000Z"
+              },
+              "cveAnalysis": {
+                "cvssScoring": "Automated",
+                "environmentalScoring": "Custom implementation",
+                "businessImpactScoring": "Asset-based",
+                "attackVectorAnalysis": "Comprehensive"
+              },
+              "contextualPrioritization": {
+                "assetCriticality": "Integrated",
+                "networkExposure": "Analyzed",
+                "exploitAvailability": "Monitored",
+                "threatLandscape": "Current"
+              }
+            },
+            "threatHunting": {
+              "proactiveHunting": {
+                "huntingTeam": "Dedicated 3-person team",
+                "huntingFrequency": "Daily",
+                "threatHypotheses": "IOC and TTP-based",
+                "lastHuntingSession": "2025-08-16T18:00:00.000Z"
+              },
+              "automatedHunting": {
+                "kqlQueries": 156,
+                "huntingPlaybooks": 34,
+                "alertGeneration": "Automated",
+                "huntingTools": ["Azure Sentinel", "Microsoft 365 Defender"]
+              }
+            }
+          },
+          "intelligenceDrivenResponse": {
+            "automatedResponse": {
+              "iocBlocking": "Real-time",
+              "networkSegmentation": "Dynamic",
+              "endpointIsolation": "Automated",
+              "patchPrioritization": "Intelligence-driven"
+            },
+            "manualResponse": {
+              "threatAnalysis": "Within 2 hours",
+              "incidentEscalation": "Risk-based",
+              "stakeholderNotification": "Automated",
+              "remediationPlanning": "Context-aware"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Threat intelligence integration assessment",
+            "result": "COMPREHENSIVE",
+            "details": "Multiple threat feeds with real-time updates and automated prioritization"
+          },
+          {
+            "test": "Vulnerability prioritization validation",
+            "result": "SOPHISTICATED",
+            "details": "EPSS scoring with environmental and business impact analysis"
+          },
+          {
+            "test": "Threat hunting effectiveness check",
+            "result": "PROACTIVE",
+            "details": "Dedicated hunting team with 156 automated queries and daily sessions"
+          }
+        ],
+        "remediation": "Threat intelligence properly integrated with comprehensive vulnerability prioritization"
+      },
+      {
+        "checkId": "MLA-03-003",
+        "name": "Rapid Patch Management and Deployment",
+        "status": "PASS",
+        "severity": "CRITICAL",
+        "description": "Critical security patches should be deployed rapidly with proper testing and rollback capabilities",
+        "findings": {
+          "patchManagementProcess": {
+            "criticalPatchDeployment": {
+              "emergencyPatchSla": "PT4H",
+              "standardPatchSla": "PT72H",
+              "testingRequirements": "Automated + manual validation",
+              "rollbackCapability": "Automated",
+              "lastCriticalPatch": "2025-08-14T08:30:00.000Z"
+            },
+            "automatedPatchManagement": {
+              "azureUpdateManagement": {
+                "enabled": true,
+                "scheduledPatching": "Weekly",
+                "maintenanceWindows": "Defined",
+                "patchClassification": "Security + Critical"
+              },
+              "containerImageUpdates": {
+                "baseImageUpdates": "Weekly",
+                "dependencyUpdates": "Automated",
+                "securityScanning": "Pre-deployment",
+                "rolloutStrategy": "Blue-green deployment"
+              },
+              "applicationPatching": {
+                "dependencyManagement": "Automated",
+                "securityUpdates": "Prioritized",
+                "compatibilityTesting": "CI/CD integrated",
+                "deploymentStrategy": "Canary releases"
+              }
+            },
+            "patchTesting": {
+              "automatedTesting": {
+                "unitTests": "100% coverage required",
+                "integrationTests": "Comprehensive",
+                "securityTests": "Automated",
+                "performanceTests": "Baseline comparison"
+              },
+              "manualTesting": {
+                "criticalFunctionTesting": "Required",
+                "userAcceptanceTesting": "Business-critical changes",
+                "securityValidation": "Security team review",
+                "rollbackTesting": "Verified"
+              },
+              "testEnvironments": {
+                "developmentEnvironment": "Patch first",
+                "stagingEnvironment": "Production mirror",
+                "canaryEnvironment": "Limited production traffic",
+                "productionRollout": "Phased approach"
+              }
+            }
+          },
+          "patchManagementMetrics": {
+            "deploymentMetrics": {
+              "criticalPatchCompliance": "98.7%",
+              "averageDeploymentTime": "PT2H45M",
+              "successfulDeployments": "97.3%",
+              "rollbackRate": "2.1%",
+              "lastPatchCycle": "2025-08-15T02:00:00.000Z"
+            },
+            "timingMetrics": {
+              "patchAvailabilityToDeployment": "PT48H",
+              "emergencyPatchDeployment": "PT3H15M",
+              "standardPatchDeployment": "PT56H",
+              "patchTestingDuration": "PT18H",
+              "rollbackExecutionTime": "PT15M"
+            },
+            "qualityMetrics": {
+              "patchSuccessRate": "97.3%",
+              "postPatchIncidents": "1.8%",
+              "performanceImpact": "< 5% degradation",
+              "functionalityImpact": "Minimal",
+              "securityImprovementValidation": "Automated"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Critical patch deployment speed assessment",
+            "result": "RAPID",
+            "details": "4-hour emergency SLA with 3H15M average deployment time"
+          },
+          {
+            "test": "Patch management automation validation",
+            "result": "COMPREHENSIVE",
+            "details": "Automated patching for OS, containers, and applications with CI/CD integration"
+          },
+          {
+            "test": "Patch testing and quality assurance check",
+            "result": "ROBUST",
+            "details": "97.3% success rate with comprehensive testing and 15-minute rollback capability"
+          }
+        ],
+        "remediation": "Rapid patch management properly implemented with comprehensive testing and automation"
+      },
+      {
+        "checkId": "MLA-03-004",
+        "name": "Delayed Vulnerability Remediation",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Critical and high-severity vulnerabilities are not being remediated within acceptable timeframes",
+        "findings": {
+          "remediationDelays": {
+            "criticalVulnerabilities": {
+              "totalCritical": 23,
+              "overdueCritical": 8,
+              "averageAge": "P12D",
+              "slaViolations": 8,
+              "oldestVulnerability": "P21D",
+              "remediationSla": "PT72H"
+            },
+            "highSeverityVulnerabilities": {
+              "totalHigh": 156,
+              "overdueHigh": 45,
+              "averageAge": "P18D",
+              "slaViolations": 45,
+              "oldestVulnerability": "P45D",
+              "remediationSla": "P7D"
+            },
+            "mediumSeverityVulnerabilities": {
+              "totalMedium": 334,
+              "overdueMedium": 123,
+              "averageAge": "P35D",
+              "slaViolations": 123,
+              "oldestVulnerability": "P89D",
+              "remediationSla": "P30D"
+            }
+          },
+          "remediationBottlenecks": {
+            "resourceConstraints": {
+              "insufficientStaffing": "Security team understaffed by 40%",
+              "lackOfExpertise": "Limited vulnerability analysis capabilities",
+              "toolLimitations": "Manual remediation processes",
+              "budgetConstraints": "Delayed procurement of security tools",
+              "competingPriorities": "Business projects taking precedence"
+            },
+            "processInefficiencies": {
+              "manualProcesses": "95% of remediation activities manual",
+              "approvalBottlenecks": "5-day average approval time",
+              "testingDelays": "Limited test environment availability",
+              "deploymentWindows": "Restrictive maintenance windows",
+              "communicationGaps": "Poor coordination between teams"
+            },
+            "technicalChallenges": {
+              "legacySystemConstraints": "34 systems cannot be easily patched",
+              "dependencyComplexity": "Complex application dependencies",
+              "downtime": "Business-critical systems require extensive planning",
+              "compatibility": "Patch compatibility issues",
+              "rollbackComplexity": "Limited rollback capabilities"
+            }
+          },
+          "businessImpactOfDelays": {
+            "securityRisks": {
+              "increasedAttackSurface": "Extended vulnerability exposure",
+              "exploitationRisk": "3 vulnerabilities with known exploits",
+              "lateralMovementRisk": "Network segmentation bypass potential",
+              "dataExfiltrationRisk": "Sensitive data access vulnerabilities",
+              "complianceViolationRisk": "Regulatory requirement violations"
+            },
+            "operationalImpact": {
+              "systemPerformance": "Degraded performance on unpatched systems",
+              "userProductivity": "Security alerts disrupting workflows",
+              "customerConfidence": "Potential customer trust issues",
+              "businessContinuity": "Risk of system compromises",
+              "reputationalRisk": "Public disclosure of unpatched vulnerabilities"
+            },
+            "financialImplications": {
+              "potentialFines": "Regulatory non-compliance penalties",
+              "incidentResponseCosts": "Increased costs for prolonged exposure",
+              "businessDisruption": "Potential revenue loss from outages",
+              "emergencyRemediationCosts": "Higher costs for rushed fixes",
+              "opportunityCosts": "Resources tied up in reactive activities"
+            }
+          },
+          "rootCauseAnalysis": {
+            "peopleFactors": {
+              "skillsGaps": "Insufficient vulnerability analysis expertise",
+              "workloadImbalance": "Uneven distribution of remediation tasks",
+              "trainingNeeds": "Staff requires advanced security training",
+              "motivationIssues": "Repetitive manual tasks affecting morale",
+              "communicationChallenges": "Poor cross-team collaboration"
+            },
+            "processFactors": {
+              "inadequateWorkflows": "No standardized remediation procedures",
+              "poorPrioritization": "Lack of risk-based prioritization",
+              "insufficientAutomation": "Minimal automation in remediation",
+              "lackOfMetrics": "No SLA tracking or performance measurement",
+              "changeResistance": "Reluctance to adopt new remediation tools"
+            },
+            "technologyFactors": {
+              "toolingGaps": "Missing automated remediation capabilities",
+              "integrationChallenges": "Disconnected security tools",
+              "legacyConstraints": "Old systems with limited patch options",
+              "scalabilityIssues": "Tools not designed for current volume",
+              "visibilityGaps": "Incomplete asset and vulnerability visibility"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Vulnerability remediation SLA compliance check",
+            "result": "NON_COMPLIANT",
+            "details": "8 critical and 45 high-severity vulnerabilities overdue with up to 21-day delays"
+          },
+          {
+            "test": "Remediation process efficiency analysis",
+            "result": "INEFFICIENT",
+            "details": "95% manual processes with 5-day approval bottlenecks"
+          },
+          {
+            "test": "Resource adequacy assessment",
+            "result": "INSUFFICIENT",
+            "details": "40% understaffed security team with limited automated capabilities"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Immediately address 8 critical vulnerabilities overdue by up to 21 days, 2) Implement automated remediation workflows and tools, 3) Increase security team staffing and provide advanced training, 4) Establish risk-based prioritization with automated SLA tracking, 5) Deploy vulnerability management platform with orchestration capabilities, 6) Create emergency remediation procedures for critical vulnerabilities, 7) Implement continuous monitoring and alerting for remediation SLAs"
+      },
+      {
+        "checkId": "MLA-03-005",
+        "name": "Inadequate Vulnerability Scanning Coverage",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Vulnerability scanning does not adequately cover all system components and attack vectors",
+        "findings": {
+          "scanningCoverageGaps": {
+            "infrastructureGaps": {
+              "networkDevices": {
+                "totalDevices": 67,
+                "scannedDevices": 34,
+                "coveragePercentage": "50.7%",
+                "unscannedTypes": ["Legacy routers", "IoT devices", "SCADA systems"],
+                "lastScan": "P30D ago",
+                "securityRisk": "High"
+              },
+              "cloudServices": {
+                "totalServices": 145,
+                "scannedServices": 89,
+                "coveragePercentage": "61.4%",
+                "unscannedTypes": [
+                  "Serverless functions",
+                  "Third-party SaaS",
+                  "Legacy integrations"
+                ],
+                "configurationAssessment": "Limited",
+                "complianceScanning": "Partial"
+              },
+              "databaseSystems": {
+                "totalDatabases": 23,
+                "scannedDatabases": 15,
+                "coveragePercentage": "65.2%",
+                "unscannedTypes": ["NoSQL databases", "Data warehouses", "Legacy systems"],
+                "credentialedScanning": "Not implemented",
+                "dataSecurityAssessment": "Limited"
+              }
+            },
+            "applicationSecurityGaps": {
+              "webApplications": {
+                "totalApplications": 45,
+                "dynamicallyScanned": 23,
+                "staticallyScannad": 18,
+                "coveragePercentage": "51.1%",
+                "unscannedComponents": ["APIs", "Microservices", "Legacy applications"],
+                "authenticationTesting": "Limited",
+                "businessLogicTesting": "Not performed"
+              },
+              "mobileApplications": {
+                "totalApplications": 8,
+                "scannedApplications": 2,
+                "coveragePercentage": "25%",
+                "securityTesting": "Minimal",
+                "privacyAssessment": "Not performed",
+                "dataProtectionTesting": "Limited"
+              },
+              "apiEndpoints": {
+                "totalEndpoints": 234,
+                "scannedEndpoints": 123,
+                "coveragePercentage": "52.6%",
+                "authenticationTesting": "Basic",
+                "authorizationTesting": "Limited",
+                "dataValidationTesting": "Insufficient"
+              }
+            },
+            "containerSecurityGaps": {
+              "containerImages": {
+                "totalImages": 156,
+                "scannedImages": 134,
+                "coveragePercentage": "85.9%",
+                "baseImageScanning": "Limited",
+                "layerAnalysis": "Superficial",
+                "secretsDetection": "Not implemented"
+              },
+              "runtimeEnvironment": {
+                "containerRuntime": "Limited monitoring",
+                "orchestrationPlatform": "Basic security scanning",
+                "networkPolicies": "Not validated",
+                "resourceLimits": "Not assessed",
+                "privilegeEscalation": "Not tested"
+              }
+            }
+          },
+          "scanningTechnologyLimitations": {
+            "scannerCapabilities": {
+              "limitedProtocolSupport": "Cannot scan all network protocols",
+              "credentialConstraints": "Insufficient privileged access",
+              "encryptionLimitations": "Cannot decrypt encrypted traffic",
+              "performanceImpact": "Scans limited due to performance concerns",
+              "scalabilityConstraints": "Cannot handle full environment scope"
+            },
+            "configurationIssues": {
+              "scannerMisconfiguration": "Suboptimal scanner settings",
+              "networkAccess": "Limited network segment access",
+              "firewallRestrictions": "Scanning blocked by security controls",
+              "authenticationIssues": "Credential management problems",
+              "schedulingProblems": "Infrequent scanning schedules"
+            },
+            "integrationChallenges": {
+              "assetDiscovery": "Incomplete asset inventory",
+              "vulnerabilityCorrelation": "Poor cross-tool correlation",
+              "reportingGaps": "Inconsistent reporting across tools",
+              "workflowIntegration": "Manual processes predominate",
+              "dataQuality": "Inconsistent vulnerability data"
+            }
+          },
+          "riskAssessment": {
+            "unscannedAssetRisks": {
+              "shadowIT": "Unknown devices and applications",
+              "legacySystemsVulnerability": "Unpatched legacy systems",
+              "thirdPartyRisks": "Unscanneד external dependencies",
+              "cloudDriftRisks": "Configuration changes undetected",
+              "zeroData exploits": "Unknown vulnerabilities in blind spots"
+            },
+            "businessImpactOfGaps": {
+              "complianceRisks": "Regulatory requirements not met",
+              "securityPostureUnknown": "Incomplete risk assessment",
+              "incidentResponseHampered": "Limited visibility during incidents",
+              "threatModelingIncomplete": "Attack surface not fully understood",
+              "businessContinuityRisks": "Unknown failure points"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Infrastructure scanning coverage assessment",
+            "result": "INADEQUATE",
+            "details": "50.7% network device coverage and 61.4% cloud service coverage"
+          },
+          {
+            "test": "Application security testing coverage check",
+            "result": "INSUFFICIENT",
+            "details": "51.1% web application coverage with limited API and mobile testing"
+          },
+          {
+            "test": "Container security scanning evaluation",
+            "result": "PARTIAL",
+            "details": "85.9% image scanning but limited runtime and orchestration coverage"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Expand vulnerability scanning to cover all network devices, cloud services, and applications, 2) Implement credentialed scanning for databases and applications, 3) Deploy specialized scanners for IoT, SCADA, and legacy systems, 4) Establish comprehensive API and mobile application security testing, 5) Implement runtime container and orchestration security monitoring, 6) Improve asset discovery and inventory management, 7) Integrate scanning tools for comprehensive coverage reporting"
+      },
+      {
+        "checkId": "MLA-03-006",
+        "name": "Missing Threat Intelligence Integration",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Vulnerability management lacks integration with current threat intelligence and attack trends",
+        "findings": {
+          "threatIntelligenceGaps": {
+            "threatFeedIntegration": {
+              "commercialFeeds": "Not subscribed",
+              "openSourceFeeds": "Limited integration",
+              "governmentFeeds": "CISA KEV not automated",
+              "industryFeeds": "No sector-specific intelligence",
+              "feedCorrelation": "Manual processes only",
+              "feedValidation": "No verification processes"
+            },
+            "vulnerabilityContextualization": {
+              "exploitAvailability": "Not tracked",
+              "attackTrends": "Not monitored",
+              "threatActorTtps": "Not correlated",
+              "geopoliticalFactors": "Not considered",
+              "industryTargeting": "Not analyzed",
+              "campaignMapping": "Not performed"
+            },
+            "prioritizationDeficiencies": {
+              "riskBasedPrioritization": "Basic CVSS only",
+              "businessContextMissing": "Asset criticality not considered",
+              "threatLandscapeIgnored": "Current threats not factored",
+              "exploitProbabilityUnknown": "EPSS not integrated",
+              "environmentalFactorsIgnored": "Network exposure not considered"
+            }
+          },
+          "intelligenceOperationsGaps": {
+            "threatHuntingLimitations": {
+              "proactiveHunting": "Not performed",
+              "threatHypotheses": "Not developed",
+              "iocGeneration": "Not systematic",
+              "huntingPlaybooks": "Not available",
+              "threatLandscapeAnalysis": "Reactive only"
+            },
+            "incidentCorrelation": {
+              "threatAttribution": "Limited capability",
+              "campaignIdentification": "Not performed",
+              "tacticsMapping": "Not systematic",
+              "indicatorEnrichment": "Manual processes",
+              "timelineAnalysis": "Basic only"
+            },
+            "strategicIntelligence": {
+              "threatForecasting": "Not performed",
+              "emergingThreats": "Not monitored",
+              "geopoliticalAnalysis": "Not conducted",
+              "industryTrends": "Not tracked",
+              "technologicalChanges": "Not assessed"
+            }
+          },
+          "automationAndOrchestrationGaps": {
+            "automatedResponse": {
+              "iocBlocking": "Manual implementation",
+              "threatHunting": "No automation",
+              "vulnerabilityPrioritization": "Static rules only",
+              "alertEnrichment": "Basic automation",
+              "responseOrchestration": "Manual workflows"
+            },
+            "toolIntegration": {
+              "siemIntegration": "Limited intelligence feeds",
+              "vulnerabilityScannerIntegration": "No threat context",
+              "endpointIntegration": "Basic IOC matching",
+              "networkSecurityIntegration": "Manual rule updates",
+              "cloudSecurityIntegration": "Not implemented"
+            },
+            "intelligenceSharingLimitations": {
+              "industrySharing": "Not participating",
+              "governmentSharing": "Limited engagement",
+              "vendorSharing": "Basic only",
+              "internalSharing": "Departmental silos",
+              "automaticSharing": "Not implemented"
+            }
+          },
+          "capabilityMaturityGaps": {
+            "staffingLimitations": {
+              "threatIntelligenceAnalysts": "No dedicated staff",
+              "threatHunters": "No specialized team",
+              "intelligenceSkills": "Limited expertise",
+              "analyticalCapabilities": "Basic analysis only",
+              "toolExpertise": "Insufficient training"
+            },
+            "processMaturity": {
+              "intelligenceRequirements": "Not defined",
+              "collectionPlanning": "Ad hoc",
+              "analysisWorkflows": "Informal",
+              "disseminationProcesses": "Email-based",
+              "feedbackLoops": "Not established"
+            },
+            "technologyCapabilities": {
+              "intelligencePlatforms": "Not deployed",
+              "analyticsCapabilities": "Basic reporting",
+              "machinelearningIntegration": "Not available",
+              "dataVisualization": "Limited capabilities",
+              "reportingAutomation": "Manual processes"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Threat intelligence integration assessment",
+            "result": "MINIMAL",
+            "details": "No commercial feeds, limited open source integration, manual correlation"
+          },
+          {
+            "test": "Vulnerability prioritization sophistication check",
+            "result": "BASIC",
+            "details": "CVSS-only prioritization without threat intelligence or business context"
+          },
+          {
+            "test": "Threat hunting and analysis capability evaluation",
+            "result": "NONEXISTENT",
+            "details": "No proactive hunting, dedicated staff, or systematic threat analysis"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Subscribe to commercial threat intelligence feeds and integrate CISA KEV catalog, 2) Implement EPSS scoring and threat-informed vulnerability prioritization, 3) Deploy threat intelligence platform with automated IOC correlation, 4) Establish dedicated threat hunting team with appropriate tools and training, 5) Integrate threat intelligence with SIEM and vulnerability management systems, 6) Develop automated threat hunting playbooks and response workflows, 7) Establish threat intelligence sharing relationships with industry and government partners"
+      },
+      {
+        "checkId": "MLA-03-007",
+        "name": "Limited Remediation Automation",
+        "status": "FAIL",
+        "severity": "LOW",
+        "description": "Vulnerability remediation processes lack automation leading to slower response times and inconsistent execution",
+        "findings": {
+          "automationGaps": {
+            "remediationWorkflows": {
+              "manualProcesses": "95% of remediation activities",
+              "automatedPatching": "Basic OS patches only",
+              "configurationRemediation": "Manual corrections",
+              "applicationUpdates": "Manual deployment",
+              "scriptedRemediation": "Limited use",
+              "workflowOrchestration": "Email-based coordination"
+            },
+            "infrastructureAutomation": {
+              "infrastructureAsCode": "Not utilized for remediation",
+              "configurationManagement": "Limited automation",
+              "containerImageUpdates": "Manual processes",
+              "networkConfiguration": "Manual changes",
+              "cloudResourceRemediation": "Manual reconfiguration"
+            },
+            "responseAutomation": {
+              "alertResponseWorkflows": "Manual investigation",
+              "isolationProcedures": "Manual implementation",
+              "mitigationActions": "Manual execution",
+              "rollbackCapabilities": "Limited automation",
+              "communicationAutomation": "Basic email notifications"
+            }
+          },
+          "toolingLimitations": {
+            "orchestrationPlatforms": {
+              "soarCapabilities": "Not deployed",
+              "workflowEngines": "Basic automation only",
+              "apiIntegrations": "Limited connectivity",
+              "playbookDevelopment": "Not systematic",
+              "responseTemplates": "Not standardized"
+            },
+            "remediationTools": {
+              "patchManagementAutomation": "Basic capabilities",
+              "configurationBaselines": "Not automated",
+              "vulnerabilityManagementIntegration": "Manual processes",
+              "ticketingSystemIntegration": "Basic automation",
+              "reportingAutomation": "Limited capabilities"
+            },
+            "monitoringAndValidation": {
+              "remediationValidation": "Manual verification",
+              "effectivenessTracking": "Limited automation",
+              "complianceVerification": "Manual processes",
+              "performanceImpactMonitoring": "Basic capabilities",
+              "rollbackTriggers": "Manual decision-making"
+            }
+          },
+          "processMaturityLimitations": {
+            "standardizationGaps": {
+              "remediationProcedures": "Inconsistent approaches",
+              "qualityAssurance": "Manual reviews",
+              "testingProtocols": "Ad hoc testing",
+              "approvalWorkflows": "Email-based approvals",
+              "documentationStandards": "Inconsistent documentation"
+            },
+            "skillsAndTraining": {
+              "automationSkills": "Limited staff expertise",
+              "scriptingCapabilities": "Basic scripting only",
+              "toolExpertise": "Insufficient training",
+              "processImprovement": "Limited continuous improvement",
+              "bestPracticeAdoption": "Slow adoption of automation"
+            },
+            "governanceAndOversight": {
+              "automationGovernance": "No formal governance",
+              "qualityControls": "Limited quality assurance",
+              "riskManagement": "Manual risk assessments",
+              "changeManagement": "Basic change control",
+              "performanceMetrics": "Limited automation metrics"
+            }
+          },
+          "businessImpactOfLimitations": {
+            "operationalEfficiency": {
+              "responseTime": "Slower incident response",
+              "resourceUtilization": "Inefficient resource allocation",
+              "scalability": "Cannot scale with growing environment",
+              "consistency": "Inconsistent remediation quality",
+              "errorReduction": "Higher error rates in manual processes"
+            },
+            "securityPosture": {
+              "meanTimeToRemediation": "Extended remediation periods",
+              "vulnerabilityExposure": "Longer exposure windows",
+              "incidentEscalation": "Manual processes cause delays",
+              "complianceRisks": "Delayed compliance remediation",
+              "humanErrors": "Manual process errors"
+            },
+            "costImplications": {
+              "laborIntensive": "High manual effort costs",
+              "opportunityCosts": "Security team focused on manual tasks",
+              "scalabilityCosts": "Cannot efficiently scale operations",
+              "errorCosts": "Costs associated with manual errors",
+              "delayedROI": "Delayed benefits from security investments"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Remediation automation maturity assessment",
+            "result": "MINIMAL",
+            "details": "95% manual processes with limited orchestration and workflow automation"
+          },
+          {
+            "test": "Automation tooling evaluation",
+            "result": "BASIC",
+            "details": "No SOAR platform, limited API integrations, basic patch management only"
+          },
+          {
+            "test": "Process standardization and governance check",
+            "result": "INCONSISTENT",
+            "details": "Ad hoc procedures with email-based approvals and limited quality assurance"
+          }
+        ],
+        "remediation": "LOW PRIORITY: 1) Deploy Security Orchestration, Automation and Response (SOAR) platform for workflow automation, 2) Implement Infrastructure as Code (IaC) for automated configuration remediation, 3) Develop standardized remediation playbooks and response templates, 4) Automate patch management processes across all system types, 5) Integrate vulnerability management with remediation automation tools, 6) Establish automated validation and rollback capabilities, 7) Provide automation training to security and operations teams, 8) Implement governance framework for automation quality and oversight"
+      }
+    ],
+    "vulnerabilityDetectionVerificationMethods": {
+      "scanningCoverage": [
+        "Azure Portal: Security Center > Recommendations and Secure Score",
+        "Azure Portal: Security Center > Inventory for asset coverage",
+        "Qualys VMDR: Dashboard for scan coverage and asset inventory",
+        "Aqua Security: Container image scanning reports and coverage metrics",
+        "SonarQube: Code quality and security coverage reports"
+      ],
+      "threatIntelligence": [
+        "Azure Portal: Sentinel > Threat Intelligence for feed integration",
+        "Microsoft 365 Security Center: Threat analytics and intelligence reports",
+        "CISA KEV Catalog: API integration status and automated synchronization",
+        "Threat intelligence platforms: Feed correlation and prioritization algorithms",
+        "EPSS scoring: Integration status and vulnerability prioritization"
+      ],
+      "patchManagement": [
+        "Azure Portal: Update Management for patch deployment status",
+        "Azure Portal: Maintenance Configuration for patch scheduling",
+        "Windows Update for Business: Deployment ring configuration and reporting",
+        "Container registries: Base image update tracking and scanning results",
+        "CI/CD pipelines: Automated dependency update and deployment logs"
+      ],
+      "remediationAutomation": [
+        "SOAR platforms: Playbook execution logs and automation metrics",
+        "Infrastructure as Code: Terraform/ARM template deployment tracking",
+        "Configuration management: Ansible/Chef/Puppet execution reports",
+        "API integrations: Automated remediation workflow status and results",
+        "Ticketing systems: Automated ticket creation and resolution tracking"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "RA-5": "Vulnerability Scanning",
+        "SI-2": "Flaw Remediation",
+        "SI-4": "Information System Monitoring",
+        "PM-15": "Contacts with Security Groups and Associations"
+      },
+      "nist80053": {
+        "RA-5": "Vulnerability Scanning",
+        "SI-2": "Flaw Remediation",
+        "SI-4": "Information System Monitoring",
+        "PM-15": "Contacts with Security Groups and Associations",
+        "PM-16": "Threat Awareness Program"
+      },
+      "iso27001": {
+        "A.12.6.1": "Management of technical vulnerabilities",
+        "A.16.1.3": "Reporting information security weaknesses",
+        "A.14.2.3": "Technical review of applications after operating platform changes",
+        "A.12.4.1": "Event logging"
+      }
+    }
+  }
+}

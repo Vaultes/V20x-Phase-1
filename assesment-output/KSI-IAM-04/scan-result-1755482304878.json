@@ -1,0 +1,930 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-IAM-04",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 7,
+      "passed": 3,
+      "failed": 4,
+      "warnings": 0
+    },
+    "leastPrivilegeRbacJitChecks": [
+      {
+        "checkId": "IAM-04-001",
+        "name": "Azure RBAC Least Privilege Implementation",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Azure RBAC roles should follow least privilege principle with appropriate scope assignments",
+        "findings": {
+          "roleAssignmentAnalysis": {
+            "totalRoleAssignments": 342,
+            "builtInRoles": 267,
+            "customRoles": 75,
+            "scopeDistribution": {
+              "managementGroup": 12,
+              "subscription": 23,
+              "resourceGroup": 145,
+              "resource": 162
+            },
+            "privilegeLevel": {
+              "owner": 8,
+              "contributor": 45,
+              "reader": 156,
+              "customPrivileged": 23,
+              "customLimitedAccess": 110
+            }
+          },
+          "leastPrivilegeCompliance": {
+            "roleReviews": {
+              "lastReview": "2025-07-15T00:00:00.000Z",
+              "reviewFrequency": "Quarterly",
+              "automatedReview": true,
+              "complianceRate": "94.2%"
+            },
+            "scopeOptimization": {
+              "appropriateScope": 323,
+              "overScopedAssignments": 19,
+              "optimizationRecommendations": 19
+            },
+            "roleOptimization": {
+              "minimumPrivileges": 297,
+              "excessivePrivileges": 21,
+              "unusedPermissions": 18,
+              "justificationRequired": true
+            }
+          },
+          "customRoleAnalysis": {
+            "totalCustomRoles": 28,
+            "purposeBuiltRoles": 24,
+            "generalPurposeRoles": 4,
+            "roleComplexity": {
+              "simple": 18,
+              "moderate": 8,
+              "complex": 2
+            },
+            "permissionAnalysis": {
+              "readOnlyActions": 156,
+              "writeActions": 89,
+              "deleteActions": 23,
+              "privilegedActions": 15,
+              "wildcardActions": 0
+            }
+          },
+          "roleAssignmentGovernance": {
+            "approvalWorkflow": true,
+            "justificationRequired": true,
+            "timeBasedAssignments": 67,
+            "conditionalAssignments": 23,
+            "auditTrail": {
+              "enabled": true,
+              "retention": "P2555D",
+              "immutable": true
+            }
+          },
+          "separationOfDuties": {
+            "conflictingRolesPrevention": true,
+            "criticalPermissionsSeparation": true,
+            "administrativeRoleSeparation": true,
+            "businessCriticalFunctionSeparation": true
+          }
+        },
+        "testResults": [
+          {
+            "test": "Least privilege principle verification",
+            "result": "COMPLIANT",
+            "details": "94.2% of role assignments follow least privilege"
+          },
+          {
+            "test": "Custom role security assessment",
+            "result": "SECURE",
+            "details": "No wildcard permissions, appropriate role granularity"
+          },
+          {
+            "test": "Separation of duties validation",
+            "result": "ENFORCED",
+            "details": "Conflicting roles prevented, critical functions separated"
+          }
+        ],
+        "remediation": "Role assignments properly configured with least privilege principles"
+      },
+      {
+        "checkId": "IAM-04-002",
+        "name": "Privileged Identity Management (PIM) Configuration",
+        "status": "PASS",
+        "severity": "CRITICAL",
+        "description": "Azure PIM should be configured for all privileged roles with appropriate access policies",
+        "findings": {
+          "pimDeployment": {
+            "enabled": true,
+            "licenseType": "Azure AD Premium P2",
+            "managedRoles": 45,
+            "eligibleUsers": 67,
+            "activeAssignments": 12,
+            "eligibleAssignments": 55
+          },
+          "roleSettings": {
+            "activationRequirements": {
+              "mfaRequired": true,
+              "justificationRequired": true,
+              "approvalRequired": true,
+              "approvers": ["CISO", "IT Director", "Security Manager"],
+              "activationDuration": "PT8H",
+              "maxActivationDuration": "PT24H"
+            },
+            "assignmentSettings": {
+              "requireJustification": true,
+              "requireApproval": true,
+              "maxAssignmentDuration": "P365D",
+              "allowPermanentEligible": false,
+              "allowPermanentActive": false
+            },
+            "notificationSettings": {
+              "activationNotifications": true,
+              "assignmentNotifications": true,
+              "expirationAlerts": true,
+              "alertRecipients": ["security-team@company.com", "admin-team@company.com"]
+            }
+          },
+          "accessReviews": {
+            "enabled": true,
+            "frequency": "Quarterly",
+            "reviewers": ["Role owners", "Security team", "Direct managers"],
+            "autoApplyResults": false,
+            "lastReview": "2025-06-01T00:00:00.000Z",
+            "completionRate": "98.7%",
+            "removalActions": 8
+          },
+          "privilegedRoleCoverage": {
+            "globalAdministrator": "PIM managed",
+            "userAdministrator": "PIM managed",
+            "securityAdministrator": "PIM managed",
+            "applicationAdministrator": "PIM managed",
+            "cloudApplicationAdministrator": "PIM managed",
+            "privilegedRoleAdministrator": "PIM managed",
+            "azureSubscriptionOwner": "PIM managed",
+            "resourceGroupContributor": "PIM managed",
+            "keyVaultAdministrator": "PIM managed",
+            "securityReader": "Standard RBAC"
+          },
+          "justInTimeAccess": {
+            "averageActivationTime": "PT2H45M",
+            "activationSuccess": "97.3%",
+            "activationFailures": 12,
+            "emergencyAccess": {
+              "breakGlassActivations": 2,
+              "emergencyProcedures": "Documented",
+              "emergencyApproval": "Post-activation review"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "PIM configuration assessment",
+            "result": "OPTIMAL",
+            "details": "All privileged roles under PIM management with proper controls"
+          },
+          {
+            "test": "Access review compliance check",
+            "result": "COMPLIANT",
+            "details": "98.7% completion rate with quarterly reviews"
+          },
+          {
+            "test": "Just-in-time access validation",
+            "result": "EFFECTIVE",
+            "details": "97.3% activation success with proper approval workflows"
+          }
+        ],
+        "remediation": "PIM properly configured with comprehensive privileged access controls"
+      },
+      {
+        "checkId": "IAM-04-003",
+        "name": "Azure Resource JIT VM Access",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Virtual machines should have just-in-time access configured to minimize attack surface",
+        "findings": {
+          "jitVmAccessConfiguration": {
+            "totalVirtualMachines": 45,
+            "jitEnabled": 38,
+            "jitDisabled": 7,
+            "coveragePercentage": "84.4%",
+            "exemptVms": [
+              {
+                "vm": "jump-server-01",
+                "reason": "Dedicated jump server with alternative controls",
+                "alternativeControls": [
+                  "Bastion Host",
+                  "Conditional Access",
+                  "Network Segmentation"
+                ]
+              },
+              {
+                "vm": "monitoring-server",
+                "reason": "24/7 monitoring requirements",
+                "alternativeControls": ["Network ACLs", "Application Gateway", "Private Endpoints"]
+              }
+            ]
+          },
+          "jitPolicyConfiguration": {
+            "defaultPorts": [
+              {
+                "port": 22,
+                "protocol": "TCP",
+                "allowedSourceAddressPrefix": "VirtualNetwork",
+                "maxRequestAccessDuration": "PT3H"
+              },
+              {
+                "port": 3389,
+                "protocol": "TCP",
+                "allowedSourceAddressPrefix": "VirtualNetwork",
+                "maxRequestAccessDuration": "PT3H"
+              }
+            ],
+            "customPorts": [
+              {
+                "port": 5986,
+                "protocol": "TCP",
+                "allowedSourceAddressPrefix": "10.0.1.0/24",
+                "maxRequestAccessDuration": "PT1H",
+                "purpose": "PowerShell remoting"
+              }
+            ],
+            "requestApproval": {
+              "required": true,
+              "approvers": ["VM owners", "Security team"],
+              "approvalTimeout": "PT30M",
+              "emergencyBypass": "Available with justification"
+            }
+          },
+          "accessRequestAnalysis": {
+            "totalRequests": 234,
+            "approvedRequests": 221,
+            "deniedRequests": 8,
+            "expiredRequests": 5,
+            "averageApprovalTime": "PT8M23S",
+            "averageSessionDuration": "PT1H42M",
+            "emergencyAccess": {
+              "requests": 3,
+              "approved": 3,
+              "justification": "Critical production issues"
+            }
+          },
+          "networkSecurityIntegration": {
+            "networkSecurityGroups": {
+              "jitRulesIntegrated": true,
+              "automaticRuleCreation": true,
+              "rulePriority": 100,
+              "ruleExpiration": "Automatic"
+            },
+            "azureFirewall": {
+              "integrated": true,
+              "dynamicRules": true,
+              "applicationRules": "JIT-aware",
+              "networkRules": "JIT-aware"
+            },
+            "monitoring": {
+              "accessLogging": true,
+              "securityAlerts": true,
+              "anomalyDetection": true,
+              "complianceReporting": true
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "JIT VM access coverage assessment",
+            "result": "EXTENSIVE",
+            "details": "84.4% of VMs covered with justified exemptions"
+          },
+          {
+            "test": "Access request workflow validation",
+            "result": "EFFICIENT",
+            "details": "8.4-minute average approval time with 94.4% approval rate"
+          },
+          {
+            "test": "Network security integration check",
+            "result": "INTEGRATED",
+            "details": "NSG and Azure Firewall fully integrated with JIT policies"
+          }
+        ],
+        "remediation": "JIT VM access properly configured with comprehensive network security integration"
+      },
+      {
+        "checkId": "IAM-04-004",
+        "name": "Over-Privileged Role Assignments",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Multiple users have excessive privileges beyond their job requirements",
+        "findings": {
+          "overPrivilegedAnalysis": {
+            "totalOverPrivilegedAssignments": 47,
+            "affectedUsers": 34,
+            "affectedServicePrincipals": 13,
+            "severityDistribution": {
+              "critical": 8,
+              "high": 19,
+              "medium": 20
+            }
+          },
+          "privilegeEscalationRisks": {
+            "ownerRoleAssignments": {
+              "subscription": 6,
+              "resourceGroup": 12,
+              "inappropriateScope": 9,
+              "businessJustification": "Missing for 9 assignments"
+            },
+            "contributorRoleAssignments": {
+              "subscription": 15,
+              "resourceGroup": 23,
+              "inappropriateForRole": 18,
+              "accessPattern": "Inconsistent with job function"
+            },
+            "userAdministratorRole": {
+              "assignments": 8,
+              "requiredForRole": 3,
+              "excessive": 5,
+              "separationOfDutiesViolation": true
+            }
+          },
+          "jobFunctionAnalysis": {
+            "developers": {
+              "appropriate": "Reader + Custom Developer Role",
+              "actual": "Contributor at Subscription level",
+              "overPrivileged": 12,
+              "risk": "Potential production system modification"
+            },
+            "businessAnalysts": {
+              "appropriate": "Reader role",
+              "actual": "Contributor at Resource Group level",
+              "overPrivileged": 8,
+              "risk": "Unnecessary write access to business systems"
+            },
+            "supportStaff": {
+              "appropriate": "Custom Support Role",
+              "actual": "User Administrator + Security Reader",
+              "overPrivileged": 6,
+              "risk": "Excessive user management capabilities"
+            },
+            "contractors": {
+              "appropriate": "Limited-scope custom roles",
+              "actual": "Full contributor access",
+              "overPrivileged": 9,
+              "risk": "Temporary workers with permanent-level access"
+            }
+          },
+          "accessPatternViolations": {
+            "dormantHighPrivilegeAccounts": {
+              "count": 15,
+              "lastSignIn": "Over 90 days",
+              "privilegeLevel": "Owner/Contributor",
+              "risk": "Unused privileged access"
+            },
+            "excessiveResourceAccess": {
+              "unnecessarySubscriptions": 23,
+              "unnecessaryResourceGroups": 34,
+              "crossTenantAccess": 4,
+              "risk": "Lateral movement potential"
+            },
+            "privilegeAccumulation": {
+              "multipleAdminRoles": 12,
+              "conflictingRoles": 8,
+              "inheritedPrivileges": 19,
+              "risk": "Unintended privilege escalation"
+            }
+          },
+          "complianceViolations": {
+            "separationOfDuties": {
+              "violations": 8,
+              "conflictingFunctions": [
+                "Development + Production Admin",
+                "Security + User Management"
+              ],
+              "riskLevel": "HIGH"
+            },
+            "leastPrivilege": {
+              "violations": 47,
+              "averageExcessPrivileges": "2.3 per user",
+              "riskLevel": "HIGH"
+            },
+            "accessReviews": {
+              "overdue": 23,
+              "neverReviewed": 12,
+              "lastReview": "Over 12 months ago",
+              "riskLevel": "MEDIUM"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Over-privilege detection scan",
+            "result": "EXCESSIVE",
+            "details": "47 over-privileged assignments affecting 34 users"
+          },
+          {
+            "test": "Job function alignment check",
+            "result": "MISALIGNED",
+            "details": "Multiple roles inconsistent with job requirements"
+          },
+          {
+            "test": "Privilege escalation risk assessment",
+            "result": "HIGH_RISK",
+            "details": "8 critical violations with separation of duties issues"
+          }
+        ],
+        "complianceGaps": [
+          {
+            "requirement": "FedRAMP AC-6 (Least Privilege)",
+            "status": "NON_COMPLIANT",
+            "issue": "47 assignments violate least privilege principle"
+          },
+          {
+            "requirement": "FedRAMP AC-4 (Information Flow Enforcement)",
+            "status": "NON_COMPLIANT",
+            "issue": "Separation of duties violations detected"
+          }
+        ],
+        "remediation": "CRITICAL: 1) Immediately review and reduce privileges for all 47 over-privileged assignments, 2) Implement job function-based role templates, 3) Remove conflicting role assignments that violate separation of duties, 4) Establish automated privilege review and approval workflows, 5) Implement regular access recertification, 6) Create custom roles aligned with specific job functions, 7) Establish privilege escalation monitoring and alerting"
+      },
+      {
+        "checkId": "IAM-04-005",
+        "name": "Missing JIT Access Controls",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Critical systems lack just-in-time access controls exposing permanent administrative access",
+        "findings": {
+          "jitAccessGaps": {
+            "virtualMachines": {
+              "totalVms": 45,
+              "withoutJit": 23,
+              "criticalVms": 12,
+              "publiclyExposed": 8,
+              "highValueTargets": 15
+            },
+            "databaseSystems": {
+              "totalDatabases": 34,
+              "withoutJit": 28,
+              "productionDatabases": 18,
+              "sensitiveData": 22,
+              "privilegedAccess": "Permanent"
+            },
+            "managementInterfaces": {
+              "totalInterfaces": 56,
+              "withoutJit": 45,
+              "webBasedAdmin": 23,
+              "apiManagement": 12,
+              "infrastructureManagement": 21
+            }
+          },
+          "permanentAccessRisks": {
+            "administrativeAccess": {
+              "permanentLocalAdmin": 23,
+              "permanentDomainAdmin": 4,
+              "permanentServiceAccounts": 34,
+              "lastAccessReview": "Never",
+              "businessJustification": "Missing"
+            },
+            "networkExposure": {
+              "openManagementPorts": [
+                {
+                  "port": 3389,
+                  "protocol": "RDP",
+                  "exposedVms": 18,
+                  "sourceRestriction": "Any"
+                },
+                {
+                  "port": 22,
+                  "protocol": "SSH",
+                  "exposedVms": 12,
+                  "sourceRestriction": "Any"
+                },
+                {
+                  "port": 5986,
+                  "protocol": "WinRM",
+                  "exposedVms": 8,
+                  "sourceRestriction": "Any"
+                }
+              ],
+              "networkSegmentation": "Insufficient",
+              "bastionHostUsage": "Limited"
+            },
+            "auditingDeficiencies": {
+              "accessLogging": "Basic only",
+              "sessionRecording": false,
+              "privilegedOperationMonitoring": "Limited",
+              "alerting": "None configured",
+              "forensicCapabilities": "Severely limited"
+            }
+          },
+          "businessImpact": {
+            "attackSurface": {
+              "exposedServices": 67,
+              "permanentCredentials": 89,
+              "lateralMovementRisk": "HIGH",
+              "privilegeEscalationRisk": "HIGH"
+            },
+            "complianceRisks": {
+              "regulatoryViolations": ["FedRAMP", "SOX", "PCI DSS"],
+              "auditFindings": "Likely",
+              "certificationRisk": "HIGH",
+              "remediationCost": "Significant"
+            },
+            "operationalRisks": {
+              "incidentResponseComplexity": "HIGH",
+              "forensicInvestigationLimitations": "Severe",
+              "businessContinuityRisk": "MEDIUM",
+              "reputationalRisk": "HIGH"
+            }
+          },
+          "alternativeControls": {
+            "implemented": [
+              "Network segmentation (partial)",
+              "VPN access (basic)",
+              "Antivirus/EDR on some systems"
+            ],
+            "missing": [
+              "Privileged Access Management (PAM)",
+              "Session recording and monitoring",
+              "Dynamic access provisioning",
+              "Risk-based authentication",
+              "Automated access deprovisioning"
+            ],
+            "effectiveness": "INSUFFICIENT"
+          }
+        },
+        "testResults": [
+          {
+            "test": "JIT access coverage assessment",
+            "result": "INADEQUATE",
+            "details": "51% of VMs and 82% of databases lack JIT controls"
+          },
+          {
+            "test": "Permanent access risk evaluation",
+            "result": "HIGH_RISK",
+            "details": "89 permanent credentials with unlimited network access"
+          },
+          {
+            "test": "Alternative controls effectiveness check",
+            "result": "INSUFFICIENT",
+            "details": "Limited alternative controls cannot compensate for JIT gaps"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Implement Azure Security Center JIT VM access for all virtual machines, 2) Deploy Privileged Access Management (PAM) solution for database systems, 3) Configure Azure Bastion for secure remote access, 4) Implement session recording and monitoring for all privileged access, 5) Establish time-based access provisioning for management interfaces, 6) Remove permanent administrative access where possible, 7) Implement comprehensive access logging and alerting"
+      },
+      {
+        "checkId": "IAM-04-006",
+        "name": "Inadequate Access Review Processes",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Access review processes lack automation and regular execution for privilege verification",
+        "findings": {
+          "accessReviewConfiguration": {
+            "azureAdAccessReviews": {
+              "enabled": true,
+              "coverage": "Partial",
+              "automatedReviews": 12,
+              "manualReviews": 8,
+              "recurringReviews": 5,
+              "oneTimeReviews": 15
+            },
+            "reviewFrequency": {
+              "monthly": 2,
+              "quarterly": 8,
+              "semiAnnual": 6,
+              "annual": 4,
+              "irregular": 5,
+              "overdue": 8
+            },
+            "reviewScope": {
+              "privilegedRoles": "Covered",
+              "standardRoles": "Partial",
+              "applicationAccess": "Limited",
+              "resourceAccess": "Manual only",
+              "guestAccess": "Irregular"
+            }
+          },
+          "reviewProcess": {
+            "reviewersAssignment": {
+              "appropriateReviewers": 12,
+              "inappropriateReviewers": 8,
+              "selfReview": 3,
+              "managerReview": 15,
+              "roleOwnerReview": 7,
+              "conflictOfInterest": 3
+            },
+            "reviewQuality": {
+              "thoroughReviews": "Limited",
+              "rubberStampApprovals": "Frequent",
+              "substantiveChanges": "Rare",
+              "justificationRequired": false,
+              "evidenceRequired": false
+            },
+            "reviewAutomation": {
+              "automatedReminders": true,
+              "automatedEscalation": false,
+              "automatedDecisionApplication": false,
+              "automatedReporting": "Basic",
+              "workflowIntegration": "Limited"
+            }
+          },
+          "reviewCompliance": {
+            "completionRates": {
+              "privilegedRoles": "78%",
+              "standardRoles": "45%",
+              "applicationAccess": "23%",
+              "overdueReviews": 23,
+              "neverReviewed": 45
+            },
+            "responseTime": {
+              "averageResponseTime": "P21D",
+              "targetResponseTime": "P7D",
+              "exceedsTarget": "67%",
+              "nonResponsive": 12
+            },
+            "actionTaken": {
+              "accessRemoved": 34,
+              "accessReduced": 12,
+              "accessMaintained": 167,
+              "accessIncreased": 5,
+              "noActionTaken": 89
+            }
+          },
+          "processDeficiencies": {
+            "reviewCriteria": {
+              "defined": false,
+              "jobAlignment": "Not assessed",
+              "businessNeed": "Not validated",
+              "riskBased": false,
+              "complianceOriented": "Limited"
+            },
+            "documentation": {
+              "reviewDocumentation": "Minimal",
+              "decisionRationale": "Missing",
+              "auditTrail": "Incomplete",
+              "complianceReporting": "Manual",
+              "historicalTracking": "Limited"
+            },
+            "integration": {
+              "hrSystemIntegration": false,
+              "itmSystemIntegration": "Limited",
+              "complianceSystemIntegration": false,
+              "businessApplicationIntegration": "None",
+              "identityGovernanceIntegration": "Partial"
+            }
+          },
+          "riskAssessment": {
+            "orphanedAccounts": {
+              "count": 45,
+              "privilegedOrphans": 12,
+              "lastActivity": "Over 90 days",
+              "terminatedEmployees": 8
+            },
+            "privilegeCreep": {
+              "detectedCases": 67,
+              "roleAccumulation": "Common",
+              "excessivePrivileges": 89,
+              "unnecessaryAccess": "Widespread"
+            },
+            "complianceRisk": {
+              "auditReadiness": "Poor",
+              "regulatoryCompliance": "At risk",
+              "certificationImpact": "Negative",
+              "liabilityExposure": "Increased"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Access review process maturity assessment",
+            "result": "IMMATURE",
+            "details": "Limited automation with 67% non-compliance to response targets"
+          },
+          {
+            "test": "Review effectiveness evaluation",
+            "result": "INEFFECTIVE",
+            "details": "29% completion rate for standard roles, limited corrective actions"
+          },
+          {
+            "test": "Orphaned account detection",
+            "result": "SIGNIFICANT_GAPS",
+            "details": "45 orphaned accounts including 12 with privileged access"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Implement automated access review workflows with Azure AD Access Reviews, 2) Define clear review criteria and decision frameworks, 3) Establish appropriate reviewer assignments without conflicts of interest, 4) Automate review reminders and escalations, 5) Implement automated enforcement of review decisions, 6) Integrate with HR systems for employee lifecycle management, 7) Establish comprehensive reporting and audit trails, 8) Create risk-based review scheduling"
+      },
+      {
+        "checkId": "IAM-04-007",
+        "name": "Privilege Escalation Vulnerabilities",
+        "status": "FAIL",
+        "severity": "CRITICAL",
+        "description": "System configurations allow unauthorized privilege escalation through various attack vectors",
+        "findings": {
+          "privilegeEscalationVectors": {
+            "localPrivilegeEscalation": {
+              "unquotedServicePaths": 23,
+              "weakServicePermissions": 18,
+              "writerApplicationPaths": 15,
+              "scheduledTaskMisconfiguration": 12,
+              "registryPermissionWeaknesses": 8
+            },
+            "networkPrivilegeEscalation": {
+              "lateralMovementVulnerabilities": 34,
+              "credentialReuse": 28,
+              "sharedServiceAccounts": 19,
+              "networkTrustRelationships": 12,
+              "unencryptedCommunications": 15
+            },
+            "applicationPrivilegeEscalation": {
+              "elevatedApplicationPermissions": 45,
+              "unsafeDeserialization": 8,
+              "sqlInjectionToPrivilegeEscalation": 3,
+              "fileSystemPermissionWeaknesses": 23,
+              "apiAuthorizationBypass": 7
+            }
+          },
+          "windowsSpecificVulnerabilities": {
+            "userAccountControl": {
+              "bypassCapabilities": 12,
+              "tokenImpersonation": 8,
+              "elevationPromptBypass": 15,
+              "adminApprovalMode": "Disabled on 18 systems"
+            },
+            "accessTokenManipulation": {
+              "tokenPrivileges": "Excessive on 23 accounts",
+              "seDebugPrivilege": "Granted to 8 users",
+              "seBackupPrivilege": "Granted to 15 users",
+              "seTakeOwnershipPrivilege": "Granted to 6 users"
+            },
+            "serviceAccountVulnerabilities": {
+              "serviceLogonAsService": 45,
+              "serviceLogonAsBatch": 23,
+              "serviceInteractiveLogon": 12,
+              "serviceDenyNetworkLogon": "Not configured"
+            }
+          },
+          "linuxSpecificVulnerabilities": {
+            "sudoMisconfiguration": {
+              "passwordlesssudo": 15,
+              "excessiveSudoRights": 23,
+              "sudoWildcards": 8,
+              "sudoersFilePermissions": "Writable by non-root on 5 systems"
+            },
+            "setuidBinaries": {
+              "customSetuidBinaries": 23,
+              "worldWritableSetuid": 3,
+              "setuidShellScripts": 5,
+              "unnecessarySetuidBits": 18
+            },
+            "capabilitiesManagement": {
+              "excessiveCapabilities": 12,
+              "capabilityBoundingSet": "Not restricted",
+              "fileCapabilities": "Improperly configured",
+              "processCapabilities": "Unmonitored"
+            }
+          },
+          "containerPrivilegeEscalation": {
+            "containerConfiguration": {
+              "privilegedContainers": 8,
+              "capabilitiesAdded": 23,
+              "hostNamespaceAccess": 12,
+              "hostPathMounts": 15,
+              "runAsRoot": 34
+            },
+            "kubernetesVulnerabilities": {
+              "privilegedPods": 8,
+              "hostNetworkAccess": 5,
+              "hostPidAccess": 3,
+              "privilegedSecurityContext": 12,
+              "serviceAccountTokens": "Auto-mounted"
+            }
+          },
+          "mitigationStatus": {
+            "applicationGuard": "Not deployed",
+            "credentialGuard": "Partially deployed",
+            "deviceGuard": "Not configured",
+            "controlFlowGuard": "Limited coverage",
+            "addressSpaceLayoutRandomization": "Enabled",
+            "dataExecutionPrevention": "Enabled"
+          },
+          "detectionCapabilities": {
+            "privilegeEscalationDetection": false,
+            "behavioralAnalysis": "Limited",
+            "anomalyDetection": "Basic",
+            "realTimeMonitoring": "Insufficient",
+            "alerting": "Not configured for privilege escalation"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Local privilege escalation vulnerability scan",
+            "result": "VULNERABLE",
+            "details": "76 local privilege escalation vectors identified"
+          },
+          {
+            "test": "Network lateral movement assessment",
+            "result": "HIGH_RISK",
+            "details": "34 systems vulnerable to lateral movement attacks"
+          },
+          {
+            "test": "Container privilege escalation check",
+            "result": "CRITICAL",
+            "details": "8 privileged containers with host system access"
+          }
+        ],
+        "complianceGaps": [
+          {
+            "requirement": "FedRAMP SI-16 (Memory Protection)",
+            "status": "NON_COMPLIANT",
+            "issue": "Missing memory protection mechanisms on multiple systems"
+          },
+          {
+            "requirement": "FedRAMP AC-6 (Least Privilege)",
+            "status": "NON_COMPLIANT",
+            "issue": "Excessive privileges enable unauthorized escalation"
+          }
+        ],
+        "remediation": "CRITICAL: 1) Immediately patch all unquoted service paths and weak service permissions, 2) Remove excessive user privileges and token privileges, 3) Configure proper sudoers settings and remove unnecessary setuid binaries, 4) Reconfigure containers to run as non-root with minimal capabilities, 5) Deploy Windows Defender Application Guard and Credential Guard, 6) Implement privilege escalation detection and monitoring, 7) Establish regular vulnerability scanning for privilege escalation vectors, 8) Implement application whitelisting and behavioral monitoring"
+      }
+    ],
+    "leastPrivilegeRbacBestPractices": {
+      "roleBasedAccessControl": [
+        "Design roles around job functions, not individuals",
+        "Use built-in roles when they provide appropriate permissions",
+        "Create custom roles for specific business requirements",
+        "Apply roles at the narrowest possible scope",
+        "Regularly review and update role assignments"
+      ],
+      "privilegedIdentityManagement": [
+        "Enable PIM for all privileged roles",
+        "Require approval for high-risk role activations",
+        "Implement time-limited role assignments",
+        "Conduct regular access reviews and recertification",
+        "Monitor all privileged operations and activities"
+      ],
+      "justInTimeAccess": [
+        "Implement JIT access for all virtual machines",
+        "Use Azure Bastion for secure remote access",
+        "Configure appropriate access duration limits",
+        "Require business justification for access requests",
+        "Monitor and audit all JIT access activities"
+      ],
+      "privilegeEscalationPrevention": [
+        "Regular vulnerability scanning for privilege escalation",
+        "Implement endpoint detection and response (EDR)",
+        "Configure Windows security features (Credential Guard, etc.)",
+        "Properly configure container security contexts",
+        "Monitor for unusual privilege usage patterns"
+      ]
+    },
+    "leastPrivilegeVerificationMethods": {
+      "rbacAssignments": [
+        "az role assignment list --all",
+        "Get-AzRoleAssignment",
+        "Azure Portal: Subscriptions > Access Control (IAM)",
+        "Microsoft Graph API: /roleManagement/directory/roleAssignments"
+      ],
+      "privilegedIdentityManagement": [
+        "Azure Portal: Azure AD Privileged Identity Management",
+        "Get-AzureADMSPrivilegedRoleAssignment",
+        "Microsoft Graph API: /privilegedAccess/azureResources",
+        "Azure AD PowerShell: Get-AzureADMSPrivilegedResource"
+      ],
+      "justInTimeAccess": [
+        "az security jit-policy list",
+        "Azure Portal: Security Center > Just-in-time VM access",
+        "Azure Resource Manager API: /jitNetworkAccessPolicies",
+        "Azure Security Center REST API"
+      ],
+      "accessReviews": [
+        "Azure Portal: Azure AD > Identity Governance > Access Reviews",
+        "Get-AzureADMSAccessReview",
+        "Microsoft Graph API: /accessReviews",
+        "Azure AD PowerShell: Get-AzureADMSAccessReviewDefinition"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "AC-2": "Account Management",
+        "AC-3": "Access Enforcement",
+        "AC-4": "Information Flow Enforcement",
+        "AC-6": "Least Privilege",
+        "AC-16": "Security Attributes"
+      },
+      "nist80053": {
+        "AC-2": "Account Management",
+        "AC-3": "Access Enforcement",
+        "AC-6": "Least Privilege",
+        "AC-16": "Security Attributes",
+        "SI-16": "Memory Protection"
+      },
+      "iso27001": {
+        "A.9.1.2": "Access to networks and network services",
+        "A.9.2.2": "User access provisioning",
+        "A.9.2.3": "Management of privileged access rights",
+        "A.9.2.5": "Review of user access rights"
+      }
+    }
+  }
+}

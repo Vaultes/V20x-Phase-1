@@ -1,0 +1,1158 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-IAM-05",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 8,
+      "passed": 3,
+      "failed": 5,
+      "warnings": 0
+    },
+    "zeroTrustDesignPrinciplesChecks": [
+      {
+        "checkId": "IAM-05-001",
+        "name": "Identity as Security Perimeter Implementation",
+        "status": "PASS",
+        "severity": "CRITICAL",
+        "description": "Identity-based security controls should replace traditional network perimeter security",
+        "findings": {
+          "identityBasedSecurity": {
+            "azureAdIntegration": {
+              "singleSignOn": true,
+              "federatedIdentity": true,
+              "identityProviders": ["Azure AD", "ADFS", "External SAML"],
+              "userAccounts": 1247,
+              "serviceAccounts": 89,
+              "deviceIdentities": 567
+            },
+            "conditionalAccess": {
+              "totalPolicies": 34,
+              "enabledPolicies": 32,
+              "userBasedPolicies": 18,
+              "deviceBasedPolicies": 12,
+              "locationBasedPolicies": 8,
+              "riskBasedPolicies": 15,
+              "signInFrequency": "Configured",
+              "sessionControls": "Active"
+            },
+            "multiFactorAuthentication": {
+              "coverage": "98.7%",
+              "methods": ["SMS", "Voice", "Microsoft Authenticator", "FIDO2", "Certificate"],
+              "riskBasedMfa": true,
+              "adaptiveMfa": true,
+              "strongAuthentication": "Enforced"
+            }
+          },
+          "identityGovernance": {
+            "lifecycleManagement": {
+              "automated": true,
+              "hrIntegration": true,
+              "joinersLeaversMovers": "Fully automated",
+              "orphanedAccountDetection": true,
+              "accountRecertification": "Quarterly"
+            },
+            "privilegedIdentityManagement": {
+              "justInTimeAccess": true,
+              "justEnoughAccess": true,
+              "approvalWorkflows": true,
+              "roleBasedAccess": true,
+              "accessReviews": "Monthly for privileged roles"
+            },
+            "accessManagement": {
+              "roleBasedAccess": true,
+              "attributeBasedAccess": "Implemented",
+              "dynamicGroups": 67,
+              "accessRequestWorkflow": true,
+              "selfServiceAccess": "Controlled"
+            }
+          },
+          "deviceIdentityIntegration": {
+            "deviceRegistration": {
+              "azureAdJoined": 445,
+              "hybridAzureAdJoined": 122,
+              "azureAdRegistered": 234,
+              "deviceCompliance": "Enforced",
+              "deviceTrust": "Verified"
+            },
+            "deviceBasedConditionalAccess": {
+              "compliantDeviceRequired": true,
+              "managedDeviceRequired": true,
+              "deviceRiskAssessment": true,
+              "certificateBasedAuth": true,
+              "biometricAuthentication": "Available"
+            },
+            "mobileThreatDefense": {
+              "enabled": true,
+              "riskAssessment": "Real-time",
+              "deviceCompliance": "Integrated",
+              "appProtectionPolicies": "Active"
+            }
+          },
+          "networkIntegration": {
+            "microsoftDefenderForIdentity": {
+              "deployed": true,
+              "onPremisesIntegration": true,
+              "behavioralAnalytics": true,
+              "threatDetection": "Active",
+              "forensicsIntegration": true
+            },
+            "identityProtection": {
+              "riskDetection": true,
+              "userRiskPolicies": "Active",
+              "signInRiskPolicies": "Active",
+              "automatedRemediation": true,
+              "riskInvestigation": "Enabled"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Identity perimeter security assessment",
+            "result": "COMPREHENSIVE",
+            "details": "98.7% MFA coverage with identity-based conditional access"
+          },
+          {
+            "test": "Device identity integration check",
+            "result": "INTEGRATED",
+            "details": "801 devices with compliant device requirements enforced"
+          },
+          {
+            "test": "Identity governance maturity evaluation",
+            "result": "MATURE",
+            "details": "Automated lifecycle management with quarterly recertification"
+          }
+        ],
+        "remediation": "Identity perimeter properly implemented with comprehensive controls"
+      },
+      {
+        "checkId": "IAM-05-002",
+        "name": "Never Trust Always Verify Implementation",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "All access requests should be verified regardless of location or previous trust",
+        "findings": {
+          "verificationMechanisms": {
+            "continuousAuthentication": {
+              "enabled": true,
+              "sessionRefresh": "Every 4 hours",
+              "riskBasedReauth": true,
+              "adaptiveAuth": true,
+              "contextualVerification": true
+            },
+            "deviceVerification": {
+              "deviceHealthAttestation": true,
+              "complianceVerification": "Real-time",
+              "certificateBasedDeviceAuth": true,
+              "trustedPlatformModule": "Required",
+              "deviceRiskAssessment": "Continuous"
+            },
+            "locationVerification": {
+              "geoLocationTracking": true,
+              "namedLocationPolicies": 15,
+              "impossibleTravelDetection": true,
+              "vpnDetection": true,
+              "anonymousIpDetection": true
+            }
+          },
+          "accessVerificationPolicies": {
+            "internalNetworkAccess": {
+              "trustButVerify": false,
+              "alwaysVerify": true,
+              "verificationMethods": ["MFA", "Device compliance", "Identity risk"],
+              "networkSegmentation": "Applied",
+              "zeroNetworkTrust": true
+            },
+            "externalAccess": {
+              "vpnRequirement": false,
+              "directInternetAccess": true,
+              "verificationMethods": ["Strong MFA", "Device compliance", "Conditional access"],
+              "riskAssessment": "Enhanced",
+              "sessionMonitoring": "Active"
+            },
+            "privilegedAccess": {
+              "multiFactorAuthentication": "Always required",
+              "privilegedAccessWorkstation": "Required",
+              "justInTimeAccess": true,
+              "sessionRecording": true,
+              "approvalWorkflow": "Mandatory"
+            }
+          },
+          "riskBasedAccess": {
+            "userRiskCalculation": {
+              "behavioralAnalytics": true,
+              "machineLearningModels": "Active",
+              "riskScoreThresholds": "Configured",
+              "adaptiveControls": true,
+              "realTimeRiskAssessment": true
+            },
+            "signInRiskCalculation": {
+              "deviceRisk": "Assessed",
+              "locationRisk": "Assessed",
+              "networkRisk": "Assessed",
+              "behaviorRisk": "Assessed",
+              "aggregatedRiskScore": "Calculated"
+            },
+            "automaticRemediation": {
+              "lowRisk": "Allow with monitoring",
+              "mediumRisk": "Require additional verification",
+              "highRisk": "Block and require investigation",
+              "adaptiveResponse": true
+            }
+          },
+          "continuousMonitoring": {
+            "sessionMonitoring": {
+              "activeSessionTracking": true,
+              "behaviorAnalysis": true,
+              "anomalyDetection": true,
+              "realTimeAlerting": true,
+              "sessionTermination": "Automated for high risk"
+            },
+            "accessPatternAnalysis": {
+              "baselineEstablishment": true,
+              "deviationDetection": true,
+              "machineLearningAnalysis": true,
+              "patternRecognition": "Advanced",
+              "predictiveAnalytics": true
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Always verify policy enforcement check",
+            "result": "ENFORCED",
+            "details": "All access requests verified regardless of network location"
+          },
+          {
+            "test": "Continuous verification assessment",
+            "result": "ACTIVE",
+            "details": "Real-time risk assessment with adaptive controls"
+          },
+          {
+            "test": "Risk-based access control validation",
+            "result": "SOPHISTICATED",
+            "details": "Machine learning-based risk calculation with automated remediation"
+          }
+        ],
+        "remediation": "Never trust, always verify principles properly implemented"
+      },
+      {
+        "checkId": "IAM-05-003",
+        "name": "Micro-Segmentation and Least Privilege Network Access",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Network access should be micro-segmented with least privilege principles applied",
+        "findings": {
+          "networkMicroSegmentation": {
+            "networkSegmentationStrategy": {
+              "virtualNetworks": 12,
+              "subnets": 67,
+              "networkSecurityGroups": 45,
+              "applicationSecurityGroups": 23,
+              "segmentationLevel": "Application-layer"
+            },
+            "azureFirewallConfiguration": {
+              "enabled": true,
+              "firewallPolicies": 8,
+              "applicationRules": 234,
+              "networkRules": 156,
+              "natRules": 23,
+              "defaultDeny": true,
+              "threatIntelligence": "Enabled"
+            },
+            "serviceEndpoints": {
+              "configured": 34,
+              "storageEndpoints": 12,
+              "sqlEndpoints": 8,
+              "keyVaultEndpoints": 6,
+              "cosmosDbEndpoints": 4,
+              "serviceBusEndpoints": 4
+            }
+          },
+          "leastPrivilegeNetworkAccess": {
+            "networkSecurityGroups": {
+              "denyByDefault": true,
+              "allowRules": 156,
+              "minimumRequiredPorts": true,
+              "sourceRestrictions": "Applied",
+              "timeBasedAccess": 23,
+              "justInTimeAccess": "Enabled"
+            },
+            "applicationSecurityGroups": {
+              "roleBasedSegmentation": true,
+              "applicationTierSeparation": true,
+              "databaseTierIsolation": true,
+              "webTierProtection": true,
+              "managementTierSeparation": true
+            },
+            "privateEndpoints": {
+              "implemented": 28,
+              "storageAccounts": 8,
+              "sqlDatabases": 6,
+              "keyVaults": 4,
+              "cosmosDb": 3,
+              "webApps": 7,
+              "dnsIntegration": true
+            }
+          },
+          "networkAccessControl": {
+            "conditionalAccessIntegration": {
+              "networkLocationPolicies": 8,
+              "trustedNetworkDefinition": true,
+              "namedLocations": 15,
+              "ipRangeRestrictions": true,
+              "countryBlocking": "Configured"
+            },
+            "deviceNetworkAccess": {
+              "deviceComplianceRequired": true,
+              "certificateBasedAuth": true,
+              "deviceHealthAttestation": true,
+              "managedDeviceRequirement": true,
+              "jailbrokenDeviceBlocking": true
+            },
+            "applicationLayerSecurity": {
+              "applicationGateway": true,
+              "webApplicationFirewall": true,
+              "ddosProtection": "Standard",
+              "trafficAnalytics": true,
+              "flowLogs": "Enabled"
+            }
+          },
+          "zeroTrustNetworkAccess": {
+            "softwareDefinedPerimeter": {
+              "implemented": "Partial",
+              "userBasedAccess": true,
+              "applicationBasedAccess": true,
+              "deviceBasedAccess": true,
+              "encryptedTunnels": true
+            },
+            "cloudAccessSecurityBroker": {
+              "enabled": true,
+              "shadowItDiscovery": true,
+              "dataLossPrevention": true,
+              "threatProtection": true,
+              "complianceMonitoring": true
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Network micro-segmentation assessment",
+            "result": "COMPREHENSIVE",
+            "details": "67 subnets with application-layer segmentation and default deny"
+          },
+          {
+            "test": "Least privilege network access validation",
+            "result": "IMPLEMENTED",
+            "details": "156 allow rules with source restrictions and JIT access"
+          },
+          {
+            "test": "Zero trust network access evaluation",
+            "result": "ADVANCED",
+            "details": "Software-defined perimeter with CASB integration"
+          }
+        ],
+        "remediation": "Network micro-segmentation and least privilege access properly implemented"
+      },
+      {
+        "checkId": "IAM-05-004",
+        "name": "Legacy Trust Model Dependencies",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Systems still rely on legacy network trust models rather than zero trust principles",
+        "findings": {
+          "legacyTrustReliances": {
+            "networkPerimeterDependency": {
+              "traditionalFirewalls": 12,
+              "dmzReliance": 8,
+              "perimeter BasedSecurity": true,
+              "implicitTrust": "Within network segments",
+              "flatNetworkSegments": 15
+            },
+            "onPremisesIntegration": {
+              "siteToSiteVpn": 6,
+              "expressRoute": 2,
+              "trustExtension": "Automatic for on-premises users",
+              "domainTrust": "Extended to cloud",
+              "legacyAuthentication": "NTLM still used",
+              "kerberosReliance": "Significant"
+            },
+            "applicationTrustModels": {
+              "hardcodedNetworkTrust": 23,
+              "ipBasedAuthentication": 15,
+              "internalApplicationTrust": "Assumed",
+              "serviceToServiceTrust": "Unchecked",
+              "databaseConnectionTrust": "Based on network location"
+            }
+          },
+          "implicitTrustVulnerabilities": {
+            "lateralMovementRisks": {
+              "unrestrictedEastWestTraffic": 34,
+              "serviceAccountReuse": 28,
+              "credentialSharing": 19,
+              "privilegeEscalationPaths": 23,
+              "crossSystemAccess": "Unrestricted"
+            },
+            "authenticationWeaknesses": {
+              "singleFactorAuthentication": 45,
+              "basicAuthentication": 23,
+              "passwordBasedService": 67,
+              "certificateValidation": "Limited",
+              "tokenValidation": "Minimal"
+            },
+            "authorizationGaps": {
+              "roleBasedAccessLimitations": 34,
+              "coarseGrainedPermissions": 56,
+              "staticAccessControls": 78,
+              "contextualAccessLacking": true,
+              "riskBasedAuthorizationAbsent": true
+            }
+          },
+          "legacySystemConstraints": {
+            "applicationArchitecture": {
+              "monolithicApplications": 18,
+              "legacyAuthentication": 23,
+              "hardcodedConfigurations": 34,
+              "vendorLimitations": 12,
+              "patchingConstraints": 15
+            },
+            "infrastructureLimitations": {
+              "legacyNetworkDevices": 23,
+              "unsupportedSecurityFeatures": 18,
+              "limitedLoggingCapabilities": 34,
+              "configurabilityConstraints": 28,
+              "vendorSupportLimitations": 15
+            },
+            "complianceComplexity": {
+              "existingComplianceFrameworks": "Rely on perimeter security",
+              "auditRequirements": "Network-based",
+              "changeManagementComplexity": "High",
+              "businessProcessDependencies": "Significant",
+              "userTrainingRequirements": "Extensive"
+            }
+          },
+          "migrationChallenges": {
+            "technicalDebt": {
+              "legacyCodeDependencies": 45,
+              "hardcodedNetworkAssumptions": 67,
+              "monolithicArchitectures": 23,
+              "databaseDesignLimitations": 18,
+              "integrationComplexities": 34
+            },
+            "businessImpact": {
+              "applicationDowntime": "Required for migration",
+              "userExperienceChanges": "Significant",
+              "processRedesign": "Necessary",
+              "trainingRequirements": "Extensive",
+              "costImplications": "Substantial"
+            },
+            "riskMitigation": {
+              "phaseApproach": "Planned",
+              "rollbackProcedures": "Defined",
+              "pilotPrograms": "In progress",
+              "riskAssessment": "Completed",
+              "contingencyPlanning": "Active"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Legacy trust model assessment",
+            "result": "EXTENSIVE_DEPENDENCIES",
+            "details": "67 systems with hardcoded network trust assumptions"
+          },
+          {
+            "test": "Implicit trust vulnerability scan",
+            "result": "SIGNIFICANT_RISKS",
+            "details": "Lateral movement possible through 34 unrestricted pathways"
+          },
+          {
+            "test": "Zero trust migration readiness check",
+            "result": "COMPLEX_MIGRATION",
+            "details": "45 systems with legacy code dependencies requiring redesign"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Develop comprehensive zero trust migration roadmap, 2) Implement micro-segmentation to limit lateral movement, 3) Deploy modern authentication mechanisms, 4) Replace implicit trust with explicit verification, 5) Modernize application authentication and authorization, 6) Implement risk-based access controls, 7) Establish phased migration approach with pilot programs"
+      },
+      {
+        "checkId": "IAM-05-005",
+        "name": "Inadequate Context-Aware Access Controls",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Access controls lack contextual awareness for risk-based decision making",
+        "findings": {
+          "contextualAccessDeficiencies": {
+            "deviceContextLimitations": {
+              "deviceRiskAssessment": "Basic only",
+              "deviceHealthVisibility": "Limited",
+              "deviceComplianceGranularity": "Coarse",
+              "deviceBehaviorAnalysis": false,
+              "deviceTrustCalculation": "Static"
+            },
+            "locationContextGaps": {
+              "geoLocationAccuracy": "City-level only",
+              "networkLocationAnalysis": "Basic",
+              "impossibleTravelDetection": "Limited",
+              "locationRiskScoring": false,
+              "velocityAnalysis": "Missing"
+            },
+            "behavioralContextMissing": {
+              "userBehaviorBaselines": "Not established",
+              "accessPatternAnalysis": "Minimal",
+              "timeBasedBehaviorAnalysis": false,
+              "applicationUsagePatterns": "Not tracked",
+              "riskBehaviorDetection": "Limited"
+            }
+          },
+          "riskAssessmentLimitations": {
+            "realTimeRiskCalculation": {
+              "enabled": false,
+              "riskFactorWeighting": "Static",
+              "aggregatedRiskScoring": "Basic",
+              "machLearningRiskModels": false,
+              "adaptiveRiskThresholds": false
+            },
+            "contextualRiskFactors": {
+              "identityRisk": "Assessed",
+              "deviceRisk": "Limited assessment",
+              "locationRisk": "Basic assessment",
+              "applicationRisk": "Not assessed",
+              "dataRisk": "Not assessed",
+              "networkRisk": "Not assessed"
+            },
+            "riskResponseLimitations": {
+              "granularResponseOptions": "Limited",
+              "adaptiveControls": false,
+              "riskBasedMfa": "Basic",
+              "riskBasedSessionControls": "Limited",
+              "automaticRiskRemediation": "Minimal"
+            }
+          },
+          "conditionalAccessPolicyGaps": {
+            "policyGranularity": {
+              "applicationSpecificPolicies": 23,
+              "dataClassificationAwarePolicies": 0,
+              "resourceSensitivityPolicies": 0,
+              "businessContextPolicies": 0,
+              "riskAdaptivePolicies": 8
+            },
+            "contextualConditions": {
+              "deviceRiskConditions": "Basic",
+              "locationRiskConditions": "Basic",
+              "userRiskConditions": "Implemented",
+              "applicationRiskConditions": "Missing",
+              "dataRiskConditions": "Missing",
+              "timeBasedConditions": "Limited"
+            },
+            "dynamicPolicyAdjustment": {
+              "riskBasedAdjustment": false,
+              "contextBasedAdjustment": false,
+              "learningBasedAdjustment": false,
+              "threatIntelligenceIntegration": "Limited",
+              "businessContextIntegration": false
+            }
+          },
+          "integrationDeficiencies": {
+            "securityToolIntegration": {
+              "siemIntegration": "Limited",
+              "threatIntelligenceIntegration": "Basic",
+              "userBehaviorAnalyticsIntegration": false,
+              "cloudSecurityPostureIntegration": false,
+              "dataGovernanceIntegration": false
+            },
+            "businessSystemIntegration": {
+              "hrSystemIntegration": "Basic",
+              "businessApplicationIntegration": "Limited",
+              "workflowSystemIntegration": false,
+              "businessContextIntegration": false,
+              "projectManagementIntegration": false
+            },
+            "dataSourceIntegration": {
+              "eventLogIntegration": "Basic",
+              "applicationLogIntegration": "Limited",
+              "networkLogIntegration": "Minimal",
+              "securityLogIntegration": "Partial",
+              "businessLogIntegration": false
+            }
+          },
+          "automationAndOrchestrationGaps": {
+            "automaticResponseCapabilities": {
+              "riskBasedResponse": "Limited",
+              "contextBasedResponse": "Minimal",
+              "adaptiveResponse": false,
+              "escalationProcedures": "Manual",
+              "remediationWorkflows": "Basic"
+            },
+            "orchestrationCapabilities": {
+              "multiSystemOrchestration": false,
+              "workflowAutomation": "Limited",
+              "responseCoordination": "Manual",
+              "systemIntegration": "Minimal",
+              "processAutomation": "Basic"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Context-aware access control assessment",
+            "result": "LIMITED_CONTEXT",
+            "details": "Basic device and location context, missing behavioral analysis"
+          },
+          {
+            "test": "Risk-based access control evaluation",
+            "result": "INSUFFICIENT",
+            "details": "Static risk models without real-time calculation or ML"
+          },
+          {
+            "test": "Conditional access policy sophistication check",
+            "result": "BASIC",
+            "details": "23 application-specific policies but lacking data classification awareness"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive user behavior analytics, 2) Deploy machine learning-based risk assessment models, 3) Integrate threat intelligence into access decisions, 4) Develop data classification-aware access policies, 5) Implement real-time risk calculation and adaptive controls, 6) Establish business context integration, 7) Deploy automated risk response and orchestration capabilities"
+      },
+      {
+        "checkId": "IAM-05-006",
+        "name": "Insufficient Data-Centric Security",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Data protection lacks zero trust principles with inadequate classification and access controls",
+        "findings": {
+          "dataClassificationDeficiencies": {
+            "dataDiscoveryAndClassification": {
+              "automaticClassification": false,
+              "manualClassification": "Inconsistent",
+              "dataInventory": "Incomplete",
+              "sensitiveDataIdentification": "Limited",
+              "classificationAccuracy": "65%",
+              "classificationCoverage": "34%"
+            },
+            "dataLabeling": {
+              "labelingFramework": "Basic",
+              "automatedLabeling": false,
+              "labelEnforcement": "Inconsistent",
+              "labelVisibility": "Limited",
+              "crossSystemLabelPersistence": false
+            },
+            "dataGovernance": {
+              "dataOwnership": "Undefined for 67% of datasets",
+              "dataRetentionPolicies": "Basic",
+              "dataLifecycleManagement": "Manual",
+              "dataPurging": "Inconsistent",
+              "complianceMapping": "Limited"
+            }
+          },
+          "dataAccessControlWeaknesses": {
+            "dataBasedAccessControls": {
+              "dataClassificationAware": false,
+              "attributeBasedAccess": "Limited implementation",
+              "dataSensitivityAware": false,
+              "fieldLevelSecurity": "Not implemented",
+              "dataContextAware": false
+            },
+            "encryptionImplementation": {
+              "dataAtRest": "Basic encryption",
+              "dataInTransit": "Standard TLS",
+              "dataInUse": "Not encrypted",
+              "keyManagement": "Basic",
+              "encryptionGranularity": "File-level only"
+            },
+            "dataLossPreventionGaps": {
+              "dlpPolicies": 12,
+              "dlpCoverage": "56%",
+              "dlpEnforcement": "Basic",
+              "dlpMonitoring": "Limited",
+              "behaviorAnalysis": false,
+              "contentInspection": "Basic"
+            }
+          },
+          "zeroTrustDataPrinciplesGaps": {
+            "dataVisibilityLimitations": {
+              "dataFlowMapping": "Incomplete",
+              "dataProcessingTracking": "Limited",
+              "dataAccessTracking": "Basic",
+              "dataUsageMonitoring": "Minimal",
+              "dataLineageTracking": false
+            },
+            "dataProtectionByDesign": {
+              "privacyByDesign": "Not implemented",
+              "encryptionByDefault": false,
+              "dataMinimizationPrinciple": "Not enforced",
+              "purposeLimitation": "Not implemented",
+              "dataPortability": "Limited"
+            },
+            "dataContextualControls": {
+              "businessContextAware": false,
+              "dataUsageContextAware": false,
+              "timeBasedDataAccess": "Limited",
+              "purposeBasedAccess": "Not implemented",
+              "dataRiskBasedAccess": false
+            }
+          },
+          "cloudDataSecurityGaps": {
+            "storageAccountSecurity": {
+              "accountKeys": "Widely used",
+              "rbacImplementation": "Basic",
+              "networkRestrictions": "Limited",
+              "auditLogging": "Basic",
+              "advancedThreatProtection": false
+            },
+            "databaseSecurity": {
+              "azureAdAuthentication": "Partial",
+              "rowLevelSecurity": "Not implemented",
+              "columnLevelSecurity": "Not implemented",
+              "dynamicDataMasking": "Limited",
+              "transparentDataEncryption": "Basic",
+              "alwaysEncrypted": "Not implemented"
+            },
+            "applicationDataSecurity": {
+              "apiDataProtection": "Basic",
+              "microserviceDataIsolation": "Limited",
+              "containerDataSecurity": "Basic",
+              "serverlessDataProtection": "Limited",
+              "edgeDataSecurity": "Not addressed"
+            }
+          },
+          "dataComplianceAndGovernanceGaps": {
+            "regulatoryCompliance": {
+              "gdprCompliance": "Partial",
+              "ccpaCompliance": "Limited",
+              "hipaaCompliance": "Not assessed",
+              "fedrampCompliance": "Basic",
+              "dataResidency": "Not fully controlled"
+            },
+            "dataGovernanceFramework": {
+              "dataGovernancePolicy": "Basic",
+              "dataOwnershipRoles": "Unclear",
+              "dataManagementProcesses": "Informal",
+              "dataQualityManagement": "Limited",
+              "dataStewardship": "Undefined"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Data classification and labeling assessment",
+            "result": "INADEQUATE",
+            "details": "34% classification coverage with 65% accuracy, no automated labeling"
+          },
+          {
+            "test": "Data-centric access control evaluation",
+            "result": "BASIC",
+            "details": "Limited attribute-based access, no field-level security"
+          },
+          {
+            "test": "Zero trust data principles compliance check",
+            "result": "NON_COMPLIANT",
+            "details": "Missing data visibility, protection by design, and contextual controls"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive data discovery and classification, 2) Deploy automated data labeling and governance, 3) Establish data-centric access controls with attribute-based permissions, 4) Implement field-level security and encryption, 5) Deploy advanced data loss prevention with behavior analysis, 6) Establish data lineage tracking and usage monitoring, 7) Implement privacy by design principles"
+      },
+      {
+        "checkId": "IAM-05-007",
+        "name": "Limited Continuous Verification and Monitoring",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Continuous verification and monitoring capabilities are insufficient for zero trust implementation",
+        "findings": {
+          "continuousVerificationGaps": {
+            "realTimeVerification": {
+              "continuousAuthentication": false,
+              "sessionMonitoring": "Basic",
+              "behaviorAnalysis": "Limited",
+              "contextualReVerification": false,
+              "adaptiveAuthentication": "Basic",
+              "riskBasedReAuthentication": "Limited"
+            },
+            "verificationFrequency": {
+              "identityVerification": "Login only",
+              "deviceVerification": "Periodic",
+              "accessVerification": "Static",
+              "privilegeVerification": "Manual",
+              "complianceVerification": "Scheduled",
+              "riskVerification": "Limited"
+            },
+            "verificationScope": {
+              "userVerification": "Basic",
+              "deviceVerification": "Limited",
+              "applicationVerification": "Basic",
+              "dataVerification": "Minimal",
+              "networkVerification": "Basic",
+              "systemVerification": "Limited"
+            }
+          },
+          "monitoringCapabilityLimitations": {
+            "securityOperationsCenter": {
+              "24x7Monitoring": true,
+              "realTimeAlerting": "Basic",
+              "incidentResponse": "Manual",
+              "threatHunting": "Limited",
+              "forensicCapabilities": "Basic",
+              "automatedResponse": "Minimal"
+            },
+            "behaviorAnalytics": {
+              "userBehaviorAnalytics": false,
+              "entityBehaviorAnalytics": false,
+              "applicationBehaviorAnalytics": false,
+              "networkBehaviorAnalytics": "Basic",
+              "dataAccessBehaviorAnalytics": false,
+              "machineLearningIntegration": "Limited"
+            },
+            "threatDetectionCapabilities": {
+              "signatureBasedDetection": true,
+              "behaviorBasedDetection": "Limited",
+              "anomalyDetection": "Basic",
+              "threatIntelligenceIntegration": "Basic",
+              "advancedPersistentThreatDetection": "Limited",
+              "insiderThreatDetection": "Minimal"
+            }
+          },
+          "dataCollectionAndAnalysisGaps": {
+            "logDataCollection": {
+              "comprehensiveLogging": false,
+              "logCentralization": "Partial",
+              "logRetention": "Basic",
+              "logCorrelation": "Limited",
+              "logAnalysis": "Basic",
+              "logVisualization": "Limited"
+            },
+            "telemetryIntegration": {
+              "endpointTelemetry": "Basic",
+              "networkTelemetry": "Limited",
+              "applicationTelemetry": "Minimal",
+              "cloudTelemetry": "Basic",
+              "securityTelemetry": "Limited",
+              "businessTelemetry": "Not integrated"
+            },
+            "analyticsCapabilities": {
+              "descriptiveAnalytics": "Basic",
+              "diagnosticAnalytics": "Limited",
+              "predictiveAnalytics": false,
+              "prescriptiveAnalytics": false,
+              "realTimeAnalytics": "Limited",
+              "historicalAnalytics": "Basic"
+            }
+          },
+          "automationAndOrchestrationDeficiencies": {
+            "automatedResponseCapabilities": {
+              "automaticBlocking": "Basic",
+              "automaticIsolation": "Limited",
+              "automaticRemediation": "Minimal",
+              "automaticContainment": "Basic",
+              "automaticInvestigation": false,
+              "automaticRecovery": "Limited"
+            },
+            "orchestrationWorkflows": {
+              "incidentResponseOrchestration": "Manual",
+              "complianceWorkflows": "Basic",
+              "remediationWorkflows": "Limited",
+              "investigationWorkflows": "Manual",
+              "reportingWorkflows": "Basic",
+              "escalationWorkflows": "Manual"
+            },
+            "integrationCapabilities": {
+              "securityToolIntegration": "Limited",
+              "itsmIntegration": "Basic",
+              "businessSystemIntegration": false,
+              "cloudPlatformIntegration": "Basic",
+              "thirdPartyIntegration": "Limited",
+              "apiIntegration": "Basic"
+            }
+          },
+          "complianceAndReportingGaps": {
+            "continuousCompliance": {
+              "automatedComplianceChecks": false,
+              "realTimeComplianceReporting": false,
+              "complianceDashboards": "Basic",
+              "violationDetection": "Manual",
+              "complianceOrchestration": false,
+              "regulatoryReporting": "Manual"
+            },
+            "auditAndForensics": {
+              "comprehensiveAuditTrails": "Partial",
+              "tamperProofLogging": "Limited",
+              "forensicDataCollection": "Basic",
+              "chainOfCustody": "Manual",
+              "evidenceManagement": "Basic",
+              "legalHoldCapabilities": "Limited"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Continuous verification capability assessment",
+            "result": "INSUFFICIENT",
+            "details": "No continuous authentication or real-time verification"
+          },
+          {
+            "test": "Monitoring and analytics maturity evaluation",
+            "result": "BASIC",
+            "details": "Limited behavior analytics and threat detection capabilities"
+          },
+          {
+            "test": "Automation and orchestration assessment",
+            "result": "MANUAL_PROCESSES",
+            "details": "Minimal automated response with manual incident workflows"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Implement continuous authentication and session monitoring, 2) Deploy comprehensive user and entity behavior analytics, 3) Establish real-time threat detection and response capabilities, 4) Implement automated incident response and orchestration, 5) Deploy comprehensive logging and telemetry collection, 6) Establish predictive and prescriptive analytics capabilities, 7) Implement continuous compliance monitoring and reporting"
+      },
+      {
+        "checkId": "IAM-05-008",
+        "name": "Application Integration Zero Trust Gaps",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Applications lack proper zero trust integration with insufficient security controls",
+        "findings": {
+          "applicationAuthenticationWeaknesses": {
+            "legacyAuthentication": {
+              "basicAuthentication": 23,
+              "ntlmAuthentication": 15,
+              "formBasedAuthentication": 34,
+              "customAuthentication": 18,
+              "weakProtocols": 28
+            },
+            "modernAuthenticationGaps": {
+              "oauthImplementation": "Partial",
+              "openIdConnectImplementation": "Limited",
+              "samlImplementation": "Basic",
+              "certificateAuthentication": "Minimal",
+              "tokenValidation": "Inconsistent"
+            },
+            "serviceToServiceAuthentication": {
+              "mutualTls": "Not implemented",
+              "serviceToServiceTokens": "Basic",
+              "apiKeyManagement": "Poor",
+              "certificateBasedAuth": "Limited",
+              "managedIdentityUsage": "Partial"
+            }
+          },
+          "applicationAuthorizationDeficiencies": {
+            "roleBasedAccessControl": {
+              "granularity": "Coarse",
+              "roleDefinition": "Basic",
+              "permissionManagement": "Manual",
+              "roleAssignment": "Static",
+              "roleReviews": "Infrequent"
+            },
+            "attributeBasedAccessControl": {
+              "implementation": "None",
+              "attributeDefinition": "Missing",
+              "policyEngine": "Not deployed",
+              "contextualAttributes": "Not used",
+              "dynamicAuthorization": "Not implemented"
+            },
+            "dataAccessAuthorization": {
+              "fieldLevelAuthorization": "Not implemented",
+              "rowLevelSecurity": "Limited",
+              "dataFilteringBasedOnRole": "Basic",
+              "sensitiveDataAccess": "Not controlled",
+              "dataClassificationIntegration": "Missing"
+            }
+          },
+          "applicationSecurityControlGaps": {
+            "inputValidation": {
+              "serverSideValidation": "Inconsistent",
+              "clientSideValidation": "Basic",
+              "dataTypeValidation": "Limited",
+              "businessLogicValidation": "Insufficient",
+              "injectionPrevention": "Basic"
+            },
+            "outputEncoding": {
+              "htmlEncoding": "Inconsistent",
+              "urlEncoding": "Limited",
+              "jsonEncoding": "Basic",
+              "xmlEncoding": "Not implemented",
+              "contextualEncoding": "Missing"
+            },
+            "sessionManagement": {
+              "sessionTokenSecurity": "Basic",
+              "sessionTimeout": "Fixed",
+              "sessionInvalidation": "Manual",
+              "concurrentSessionControl": "Not implemented",
+              "sessionHijackingPrevention": "Basic"
+            }
+          },
+          "apiSecurityWeaknesses": {
+            "apiAuthenticationAndAuthorization": {
+              "apiKeyManagement": "Poor",
+              "tokenBasedAuth": "Basic",
+              "oauthForApis": "Limited",
+              "rateLimit": "Basic",
+              "apiGatewayIntegration": "Partial"
+            },
+            "apiDataProtection": {
+              "dataEncryption": "Basic",
+              "dataValidation": "Limited",
+              "sensitiveDataExposure": "Risk exists",
+              "dataMinimization": "Not implemented",
+              "apiVersioning": "Inconsistent"
+            },
+            "apiMonitoringAndLogging": {
+              "apiCallLogging": "Basic",
+              "apiPerformanceMonitoring": "Limited",
+              "apiSecurityMonitoring": "Minimal",
+              "apiAbuseDetection": "Not implemented",
+              "apiForensics": "Limited"
+            }
+          },
+          "microservicesSecurityChallenges": {
+            "serviceToServiceCommunication": {
+              "mutualTlsImplementation": "Inconsistent",
+              "serviceMeshIntegration": "Limited",
+              "networkPolicyEnforcement": "Basic",
+              "trafficEncryption": "Partial",
+              "communicationAuthentication": "Basic"
+            },
+            "containerSecurityGaps": {
+              "imageVulnerabilityScanning": "Basic",
+              "runtimeProtection": "Limited",
+              "containerNetworkSecurity": "Basic",
+              "secretsManagement": "Poor",
+              "containerIsolation": "Standard"
+            },
+            "serviceMeshImplementation": {
+              "deployed": false,
+              "trafficManagement": "Basic",
+              "securityPolicies": "Not implemented",
+              "observability": "Limited",
+              "certificateManagement": "Manual"
+            }
+          },
+          "applicationIntegrationSecurityGaps": {
+            "identityProviderIntegration": {
+              "azureAdIntegration": "Partial",
+              "multipleIdpSupport": "Limited",
+              "claimsProcessing": "Basic",
+              "attributeMapping": "Manual",
+              "idpFailover": "Not implemented"
+            },
+            "secretsManagementIntegration": {
+              "keyVaultIntegration": "Limited",
+              "secretsRotation": "Manual",
+              "secretsAccess": "Not monitored",
+              "certificateManagement": "Basic",
+              "keyManagement": "Poor"
+            },
+            "loggingAndMonitoringIntegration": {
+              "centralized Logging": "Partial",
+              "securityEventLogging": "Basic",
+              "performanceMonitoring": "Limited",
+              "errorLogging": "Basic",
+              "auditLogging": "Inconsistent"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Application authentication and authorization assessment",
+            "result": "WEAK",
+            "details": "23 applications using basic authentication, limited RBAC granularity"
+          },
+          {
+            "test": "API security evaluation",
+            "result": "INSUFFICIENT",
+            "details": "Poor API key management with minimal security monitoring"
+          },
+          {
+            "test": "Microservices security analysis",
+            "result": "BASIC",
+            "details": "No service mesh, inconsistent mTLS, basic container security"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Migrate from legacy to modern authentication protocols, 2) Implement comprehensive RBAC and ABAC systems, 3) Deploy API gateway with proper security controls, 4) Implement service mesh for microservices communication security, 5) Integrate applications with Azure AD and Key Vault, 6) Establish comprehensive application security monitoring, 7) Implement container security scanning and runtime protection"
+      }
+    ],
+    "zeroTrustDesignBestPractices": {
+      "identityAsPerimeter": [
+        "Implement strong identity verification for all users and devices",
+        "Use multi-factor authentication for all access attempts",
+        "Deploy conditional access policies based on risk assessment",
+        "Establish comprehensive identity governance and lifecycle management"
+      ],
+      "neverTrustAlwaysVerify": [
+        "Verify every access request regardless of source location",
+        "Implement continuous authentication and session monitoring",
+        "Use risk-based access decisions with real-time assessment",
+        "Deploy behavioral analytics for anomaly detection"
+      ],
+      "leastPrivilegeAccess": [
+        "Apply micro-segmentation for network access",
+        "Implement just-in-time and just-enough access principles",
+        "Use attribute-based access control for fine-grained permissions",
+        "Regularly review and recertify access rights"
+      ],
+      "dataCentricSecurity": [
+        "Classify and label all data assets",
+        "Implement data-aware access controls",
+        "Use encryption for data at rest, in transit, and in use",
+        "Deploy data loss prevention and monitoring"
+      ],
+      "continuousMonitoring": [
+        "Implement comprehensive logging and monitoring",
+        "Use machine learning for threat detection",
+        "Deploy automated incident response capabilities",
+        "Establish continuous compliance monitoring"
+      ]
+    },
+    "zeroTrustVerificationMethods": {
+      "identityVerification": [
+        "Azure Portal: Azure AD > Conditional Access",
+        "Get-AzureADMSConditionalAccessPolicy",
+        "Microsoft Graph API: /identity/conditionalAccess/policies",
+        "Azure AD Connect Health monitoring"
+      ],
+      "deviceVerification": [
+        "Azure Portal: Azure AD > Devices",
+        "Get-AzureADDevice",
+        "Microsoft Intune admin center",
+        "Microsoft Graph API: /devices"
+      ],
+      "networkVerification": [
+        "Azure Portal: Virtual Networks > Network Security Groups",
+        "az network nsg list",
+        "Azure Firewall Manager",
+        "Azure Network Watcher"
+      ],
+      "applicationVerification": [
+        "Azure Portal: App registrations",
+        "Get-AzureADApplication",
+        "Azure Application Gateway logs",
+        "Azure API Management analytics"
+      ],
+      "dataVerification": [
+        "Azure Portal: Purview Data Catalog",
+        "Microsoft 365 Compliance Center",
+        "Azure Information Protection analytics",
+        "Cloud App Security data classification"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "AC-3": "Access Enforcement",
+        "AC-4": "Information Flow Enforcement",
+        "AC-6": "Least Privilege",
+        "IA-2": "Identification and Authentication (Organizational Users)",
+        "SC-7": "Boundary Protection"
+      },
+      "nist80053": {
+        "AC-3": "Access Enforcement",
+        "AC-4": "Information Flow Enforcement",
+        "AC-6": "Least Privilege",
+        "IA-2": "Identification and Authentication (Organizational Users)",
+        "SC-7": "Boundary Protection",
+        "SI-4": "Information System Monitoring"
+      },
+      "nistCyberSecurityFramework": {
+        "PR.AC": "Access Control",
+        "PR.AT": "Awareness and Training",
+        "PR.DS": "Data Security",
+        "DE.AE": "Anomalies and Events",
+        "DE.CM": "Continuous Monitoring"
+      }
+    }
+  }
+}

@@ -1,0 +1,399 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-SVC-03",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 3,
+      "passed": 1,
+      "failed": 2,
+      "warnings": 0
+    },
+    "storageEncryptionChecks": [
+      {
+        "checkId": "SVC-03-001",
+        "name": "Azure Storage Account Comprehensive Encryption",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Storage Account should have comprehensive encryption at rest with customer-managed keys",
+        "findings": {
+          "blobEncryption": {
+            "enabled": true,
+            "encryptionType": "Customer-managed keys",
+            "keyVaultUri": "https://fedramp20x-keyvault.vault.azure.net/",
+            "keyName": "storage-encryption-key",
+            "keyVersion": "current",
+            "algorithm": "RSA-OAEP-256"
+          },
+          "fileEncryption": {
+            "enabled": true,
+            "encryptionType": "Customer-managed keys",
+            "keyVaultUri": "https://fedramp20x-keyvault.vault.azure.net/",
+            "keyName": "file-encryption-key",
+            "keyVersion": "current",
+            "algorithm": "RSA-OAEP-256"
+          },
+          "queueEncryption": {
+            "enabled": true,
+            "encryptionType": "Customer-managed keys",
+            "keyVaultUri": "https://fedramp20x-keyvault.vault.azure.net/",
+            "keyName": "queue-encryption-key",
+            "keyVersion": "current"
+          },
+          "tableEncryption": {
+            "enabled": true,
+            "encryptionType": "Customer-managed keys",
+            "keyVaultUri": "https://fedramp20x-keyvault.vault.azure.net/",
+            "keyName": "table-encryption-key",
+            "keyVersion": "current"
+          },
+          "infrastructureEncryption": {
+            "enabled": true,
+            "description": "Double encryption with infrastructure-level encryption"
+          },
+          "keyManagement": {
+            "keyRotationPolicy": {
+              "enabled": true,
+              "rotationPeriod": "P90D",
+              "automaticRotation": true
+            },
+            "keyVaultAccess": {
+              "managedIdentity": true,
+              "rbacEnabled": true,
+              "accessPolicies": "Minimal required permissions"
+            }
+          },
+          "encryptionScopes": [
+            {
+              "name": "compliance-data",
+              "encryptionType": "Customer-managed keys",
+              "keyUri": "https://fedramp20x-keyvault.vault.azure.net/keys/compliance-key/current",
+              "requireInfrastructureEncryption": true
+            },
+            {
+              "name": "application-data",
+              "encryptionType": "Customer-managed keys",
+              "keyUri": "https://fedramp20x-keyvault.vault.azure.net/keys/app-key/current",
+              "requireInfrastructureEncryption": true
+            }
+          ]
+        },
+        "encryptionValidation": {
+          "encryptionAtRest": true,
+          "customerControlledKeys": true,
+          "doubleEncryption": true,
+          "keyRotationActive": true,
+          "fipsCompliant": true,
+          "encryptionStrength": "AES-256"
+        },
+        "testResults": [
+          {
+            "test": "Blob encryption verification",
+            "result": "ENCRYPTED",
+            "details": "All blobs encrypted with customer-managed keys"
+          },
+          {
+            "test": "Key accessibility test",
+            "result": "ACCESSIBLE",
+            "details": "Storage can access encryption keys in Key Vault"
+          },
+          {
+            "test": "Infrastructure encryption verification",
+            "result": "ENABLED",
+            "details": "Double encryption confirmed active"
+          },
+          {
+            "test": "Encryption scope validation",
+            "result": "CONFIGURED",
+            "details": "Custom encryption scopes properly configured"
+          }
+        ],
+        "remediation": "Storage Account properly configured with comprehensive encryption at rest"
+      },
+      {
+        "checkId": "SVC-03-002",
+        "name": "Virtual Machine Disk Encryption Failures",
+        "status": "FAIL",
+        "severity": "CRITICAL",
+        "description": "Virtual Machine disks should be encrypted using Azure Disk Encryption",
+        "findings": {
+          "osDiskEncryption": {
+            "enabled": false,
+            "encryptionType": "None",
+            "issue": "Operating system disk not encrypted"
+          },
+          "dataDiskEncryption": {
+            "disks": [
+              {
+                "name": "data-disk-1",
+                "sizeGB": 1024,
+                "encrypted": false,
+                "issue": "Data disk contains unencrypted sensitive data"
+              },
+              {
+                "name": "data-disk-2",
+                "sizeGB": 512,
+                "encrypted": false,
+                "issue": "Database files stored unencrypted"
+              }
+            ]
+          },
+          "tempDiskEncryption": {
+            "enabled": false,
+            "issue": "Temporary disk encryption not configured"
+          },
+          "keyManagement": {
+            "azureDiskEncryption": false,
+            "customerManagedKeys": false,
+            "keyVaultIntegration": false,
+            "issue": "No encryption key management configured"
+          },
+          "vmExtensions": {
+            "azureDiskEncryptionExtension": {
+              "installed": false,
+              "issue": "Azure Disk Encryption extension not installed"
+            }
+          }
+        },
+        "dataClassification": {
+          "sensitiveDataFound": true,
+          "dataTypes": [
+            {
+              "location": "/data/customer-records/",
+              "classification": "Highly Confidential",
+              "estimatedRecords": 50000,
+              "dataTypes": ["PII", "Financial"]
+            },
+            {
+              "location": "/var/lib/mysql/",
+              "classification": "Confidential",
+              "estimatedSize": "500GB",
+              "dataTypes": ["Database files", "Transaction logs"]
+            }
+          ]
+        },
+        "vulnerabilityAssessment": {
+          "dataExposureRisk": "CRITICAL",
+          "potentialImpacts": [
+            "Unencrypted sensitive data accessible if VM is compromised",
+            "Physical disk access exposes all data",
+            "Snapshots and backups contain plaintext data",
+            "Non-compliance with FedRAMP SC-28"
+          ]
+        },
+        "testResults": [
+          {
+            "test": "Disk encryption status check",
+            "result": "NOT_ENCRYPTED",
+            "details": "No disks have encryption enabled"
+          },
+          {
+            "test": "Azure Disk Encryption extension status",
+            "result": "NOT_INSTALLED",
+            "details": "ADE extension missing from VM"
+          },
+          {
+            "test": "Sensitive data scan",
+            "result": "EXPOSED",
+            "details": "Found 50,000+ unencrypted PII records"
+          }
+        ],
+        "complianceGaps": [
+          {
+            "requirement": "FedRAMP SC-28 (Protection of Information at Rest)",
+            "status": "NON_COMPLIANT",
+            "issue": "VM disks not encrypted at rest"
+          },
+          {
+            "requirement": "NIST 800-53 SC-13 (Cryptographic Protection)",
+            "status": "NON_COMPLIANT",
+            "issue": "No cryptographic protection for stored data"
+          }
+        ],
+        "remediation": "CRITICAL: 1) Stop VM and enable Azure Disk Encryption, 2) Install Azure Disk Encryption extension, 3) Configure Key Vault for encryption keys, 4) Enable encryption for all attached disks, 5) Verify data integrity after encryption, 6) Update backup procedures to include encrypted snapshots"
+      },
+      {
+        "checkId": "SVC-03-003",
+        "name": "SQL Database TDE Configuration Issues",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "SQL Database should have Transparent Data Encryption enabled with proper key management",
+        "findings": {
+          "transparentDataEncryption": {
+            "enabled": false,
+            "state": "Disabled",
+            "issue": "Database files and transaction logs not encrypted"
+          },
+          "encryptionKeyManagement": {
+            "keyType": "Service-managed",
+            "customerManagedKeys": false,
+            "keyVaultIntegration": false,
+            "issue": "Using service-managed keys instead of customer-managed keys"
+          },
+          "backupEncryption": {
+            "automaticBackups": {
+              "encrypted": false,
+              "issue": "Automatic backups stored without encryption"
+            },
+            "manualBackups": {
+              "encrypted": false,
+              "lastBackup": "2025-08-16T02:00:00.000Z",
+              "issue": "Manual backups exported without encryption"
+            }
+          },
+          "tempDbEncryption": {
+            "enabled": false,
+            "issue": "TempDB not encrypted - temporary data exposed"
+          },
+          "logFileEncryption": {
+            "transactionLog": false,
+            "errorLog": false,
+            "issue": "Log files not encrypted"
+          },
+          "columnLevelEncryption": {
+            "alwaysEncrypted": {
+              "enabled": false,
+              "sensitiveColumns": ["SSN", "CreditCard", "BankAccount"],
+              "issue": "Sensitive columns not protected with Always Encrypted"
+            },
+            "dynamicDataMasking": {
+              "enabled": false,
+              "issue": "No data masking for sensitive fields"
+            }
+          }
+        },
+        "databaseContent": {
+          "totalTables": 25,
+          "sensitiveData": {
+            "customerTable": {
+              "records": 75000,
+              "sensitiveColumns": ["SSN", "DateOfBirth", "Address"],
+              "encrypted": false
+            },
+            "paymentTable": {
+              "records": 150000,
+              "sensitiveColumns": ["CreditCardNumber", "BankAccount"],
+              "encrypted": false
+            },
+            "auditTable": {
+              "records": 500000,
+              "sensitiveColumns": ["UserActivity", "AccessLogs"],
+              "encrypted": false
+            }
+          }
+        },
+        "vulnerabilityAssessment": {
+          "dataAtRestRisk": "HIGH",
+          "potentialImpacts": [
+            "Database files readable if storage is compromised",
+            "Backup files contain plaintext sensitive data",
+            "Transaction logs expose data modification history",
+            "TempDB operations expose temporary sensitive data"
+          ]
+        },
+        "testResults": [
+          {
+            "test": "TDE encryption status",
+            "result": "DISABLED",
+            "details": "sys.dm_database_encryption_keys shows no encryption"
+          },
+          {
+            "test": "Backup file encryption check",
+            "result": "UNENCRYPTED",
+            "details": "Recent backup files not encrypted"
+          },
+          {
+            "test": "Sensitive data exposure scan",
+            "result": "EXPOSED",
+            "details": "225,000+ records with unencrypted PII"
+          },
+          {
+            "test": "Always Encrypted configuration",
+            "result": "NOT_CONFIGURED",
+            "details": "No column encryption keys found"
+          }
+        ],
+        "complianceGaps": [
+          {
+            "requirement": "FedRAMP SC-28 (Protection of Information at Rest)",
+            "status": "NON_COMPLIANT",
+            "issue": "Database not encrypted at rest"
+          },
+          {
+            "requirement": "PCI DSS 3.2.1 Requirement 3",
+            "status": "NON_COMPLIANT",
+            "issue": "Cardholder data not encrypted"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Enable Transparent Data Encryption (TDE), 2) Configure customer-managed encryption keys in Key Vault, 3) Enable backup encryption, 4) Implement Always Encrypted for sensitive columns, 5) Enable TempDB encryption, 6) Configure dynamic data masking, 7) Re-encrypt existing backup files, 8) Verify encryption status across all database components"
+      }
+    ],
+    "encryptionAtRestBestPractices": {
+      "azureStorage": [
+        "Use customer-managed keys for all storage services",
+        "Enable infrastructure encryption for double encryption",
+        "Configure encryption scopes for granular control",
+        "Implement automatic key rotation",
+        "Use Azure Key Vault for key management"
+      ],
+      "virtualMachines": [
+        "Enable Azure Disk Encryption for all VMs",
+        "Encrypt both OS and data disks",
+        "Use customer-managed keys when possible",
+        "Enable encryption for temporary disks",
+        "Encrypt VM snapshots and images"
+      ],
+      "databases": [
+        "Enable Transparent Data Encryption (TDE)",
+        "Use customer-managed TDE protectors",
+        "Implement Always Encrypted for sensitive columns",
+        "Encrypt database backups",
+        "Enable TempDB encryption"
+      ],
+      "keyManagement": [
+        "Store encryption keys in Azure Key Vault",
+        "Implement key rotation policies",
+        "Use hardware security modules (HSM)",
+        "Apply principle of least privilege for key access",
+        "Monitor key usage and access"
+      ]
+    },
+    "encryptionVerificationMethods": {
+      "azureStorage": [
+        "Azure CLI: az storage account show --query encryption",
+        "PowerShell: Get-AzStorageAccount | Select-Object Encryption",
+        "REST API: GET storageAccounts/{accountName}",
+        "Azure Portal: Storage Account > Encryption settings"
+      ],
+      "virtualMachines": [
+        "Azure CLI: az vm encryption show",
+        "PowerShell: Get-AzVmDiskEncryptionStatus",
+        "VM Extension: Check AzureDiskEncryption extension",
+        "OS Level: lsblk or diskpart commands"
+      ],
+      "sqlDatabase": [
+        "T-SQL: SELECT * FROM sys.dm_database_encryption_keys",
+        "T-SQL: SELECT name, is_encrypted FROM sys.databases",
+        "Azure CLI: az sql db tde show",
+        "PowerShell: Get-AzSqlDatabaseTransparentDataEncryption"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "SC-28": "Protection of Information at Rest",
+        "SC-13": "Cryptographic Protection",
+        "SC-12": "Cryptographic Key Establishment and Management"
+      },
+      "pciDss": {
+        "requirement3": "Protect stored cardholder data",
+        "requirement3.4": "Render cardholder data unreadable"
+      },
+      "hipaa": {
+        "164.312c1": "Integrity controls for ePHI",
+        "164.312c2": "Encrypt and decrypt ePHI"
+      }
+    }
+  }
+}

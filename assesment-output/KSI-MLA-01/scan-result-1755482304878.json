@@ -11,7 +11,89 @@
       "failed": 4,
       "warnings": 0
     },
-    "siemSystemOperationChecks": [
+    "siemSystemBestPractices": {
+      "deployment": [
+        "Deploy enterprise SIEM with centralized log management",
+        "Implement tamper-resistant logging with immutable storage",
+        "Establish comprehensive data retention and archival policies",
+        "Configure real-time log ingestion with minimal latency",
+        "Deploy redundant SIEM infrastructure for high availability"
+      ],
+      "dataCollection": [
+        "Connect all critical systems and security tools to SIEM",
+        "Implement standardized log formats and time synchronization",
+        "Deploy secure log transmission with encryption and authentication",
+        "Establish automated log parsing and normalization",
+        "Monitor log source health and connectivity status"
+      ],
+      "analytics": [
+        "Implement advanced correlation rules and machine learning",
+        "Deploy user and entity behavior analytics (UEBA)",
+        "Integrate threat intelligence for contextual analysis",
+        "Develop custom detection rules for organization-specific threats",
+        "Establish automated alert prioritization and deduplication"
+      ],
+      "operations": [
+        "Staff SOC with trained analysts for 24x7 monitoring",
+        "Implement automated incident response workflows",
+        "Establish performance metrics and SLA monitoring",
+        "Conduct regular SIEM health checks and optimization",
+        "Maintain current threat detection capabilities"
+      ]
+    },
+    "siemVerificationMethods": {
+      "deployment": [
+        "Azure Portal: Azure Sentinel workspace configuration",
+        "az monitor log-analytics workspace list",
+        "Get-AzOperationalInsightsWorkspace",
+        "Microsoft Graph API: /security/alerts",
+        "Azure Resource Manager: SIEM resource deployment validation"
+      ],
+      "dataConnectors": [
+        "Azure Portal: Sentinel > Data connectors",
+        "az sentinel data-connector list",
+        "Microsoft Graph API: /security/dataConnectors",
+        "Azure Monitor: Log ingestion metrics",
+        "KQL queries: Heartbeat and data freshness validation"
+      ],
+      "analytics": [
+        "Azure Portal: Sentinel > Analytics rules",
+        "az sentinel analytics-rule list",
+        "Microsoft Graph API: /security/alertRules",
+        "KQL queries: Alert generation and correlation testing",
+        "Azure Monitor: Analytics performance metrics"
+      ],
+      "operations": [
+        "Azure Portal: Sentinel > Incidents",
+        "Microsoft 365 Security Center: Incident management",
+        "Azure Monitor: SIEM performance dashboards",
+        "Microsoft Graph API: /security/incidents",
+        "SOC operational metrics and KPI dashboards"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "AU-3": "Audit and Accountability - Content of Audit Records",
+        "AU-6": "Audit and Accountability - Audit Review, Analysis, and Reporting",
+        "AU-12": "Audit and Accountability - Audit Generation",
+        "SI-4": "System and Information Integrity - Information System Monitoring"
+      },
+      "nist80053": {
+        "AU-3": "Audit and Accountability - Content of Audit Records",
+        "AU-6": "Audit and Accountability - Audit Review, Analysis, and Reporting",
+        "AU-12": "Audit and Accountability - Audit Generation",
+        "SI-4": "System and Information Integrity - Information System Monitoring",
+        "IR-4": "Incident Response - Incident Handling"
+      },
+      "iso27001": {
+        "A.12.4.1": "Event logging",
+        "A.12.4.2": "Protection of log information",
+        "A.12.4.3": "Administrator and operator logs",
+        "A.16.1.2": "Reporting information security events",
+        "A.16.1.4": "Assessment of and decision on information security events"
+      }
+    },
+    "checks": [
       {
         "checkId": "MLA-01-001",
         "name": "Azure Sentinel SIEM Deployment and Configuration",
@@ -111,7 +193,8 @@
             "details": "Immutable storage with cryptographic integrity checking"
           }
         ],
-        "remediation": "SIEM system properly deployed and configured with comprehensive monitoring"
+        "remediation": "SIEM system properly deployed and configured with comprehensive monitoring",
+        "checkType": "siemSystemOperatio"
       },
       {
         "checkId": "MLA-01-002",
@@ -195,7 +278,8 @@
             "details": "Sub-5 second query performance with 99.97% uptime"
           }
         ],
-        "remediation": "Centralized logging and correlation properly implemented with high coverage"
+        "remediation": "Centralized logging and correlation properly implemented with high coverage",
+        "checkType": "siemSystemOperatio"
       },
       {
         "checkId": "MLA-01-003",
@@ -279,7 +363,8 @@
             "details": "8-minute MTTD and 23-minute MTTR with 94% closure rate"
           }
         ],
-        "remediation": "SOC properly integrated with comprehensive 24x7 monitoring capabilities"
+        "remediation": "SOC properly integrated with comprehensive 24x7 monitoring capabilities",
+        "checkType": "siemSystemOperatio"
       },
       {
         "checkId": "MLA-01-004",
@@ -414,7 +499,8 @@
             "details": "67% of sources lack tamper detection and integrity verification"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement logging for all critical systems using secure log forwarding, 2) Standardize log formats and implement centralized time synchronization, 3) Deploy tamper-proof logging with integrity verification, 4) Establish comprehensive log retention policies, 5) Integrate third-party and cloud service logs through APIs and connectors, 6) Implement secure log transmission with encryption and authentication"
+        "remediation": "HIGH PRIORITY: 1) Implement logging for all critical systems using secure log forwarding, 2) Standardize log formats and implement centralized time synchronization, 3) Deploy tamper-proof logging with integrity verification, 4) Establish comprehensive log retention policies, 5) Integrate third-party and cloud service logs through APIs and connectors, 6) Implement secure log transmission with encryption and authentication",
+        "checkType": "siemSystemOperatio"
       },
       {
         "checkId": "MLA-01-005",
@@ -526,7 +612,8 @@
             "details": "34% false positive rate with limited contextual enrichment"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement advanced machine learning models for anomaly detection, 2) Deploy user and entity behavior analytics (UEBA), 3) Integrate comprehensive threat intelligence with contextual enrichment, 4) Develop custom correlation rules for organization-specific threats, 5) Implement advanced threat hunting capabilities, 6) Deploy predictive analytics for proactive threat detection, 7) Establish alert quality metrics and optimization processes"
+        "remediation": "MEDIUM PRIORITY: 1) Implement advanced machine learning models for anomaly detection, 2) Deploy user and entity behavior analytics (UEBA), 3) Integrate comprehensive threat intelligence with contextual enrichment, 4) Develop custom correlation rules for organization-specific threats, 5) Implement advanced threat hunting capabilities, 6) Deploy predictive analytics for proactive threat detection, 7) Establish alert quality metrics and optimization processes",
+        "checkType": "siemSystemOperatio"
       },
       {
         "checkId": "MLA-01-006",
@@ -654,7 +741,8 @@
             "details": "Single points of failure with 24-48 hour estimated recovery time"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive automated backup strategy for all SIEM components, 2) Establish multi-region SIEM deployment for high availability, 3) Define and document RTO/RPO objectives aligned with business requirements, 4) Develop and test detailed disaster recovery procedures, 5) Implement continuous data replication and automated failover, 6) Establish backup monitoring and alerting capabilities, 7) Conduct regular disaster recovery testing and validation exercises"
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive automated backup strategy for all SIEM components, 2) Establish multi-region SIEM deployment for high availability, 3) Define and document RTO/RPO objectives aligned with business requirements, 4) Develop and test detailed disaster recovery procedures, 5) Implement continuous data replication and automated failover, 6) Establish backup monitoring and alerting capabilities, 7) Conduct regular disaster recovery testing and validation exercises",
+        "checkType": "siemSystemOperatio"
       },
       {
         "checkId": "MLA-01-007",
@@ -782,90 +870,9 @@
             "details": "Basic playbooks without multi-system orchestration"
           }
         ],
-        "remediation": "LOW PRIORITY: 1) Expand security tool integration with comprehensive API connectivity, 2) Implement SOAR platform with advanced orchestration capabilities, 3) Integrate additional threat intelligence sources with real-time updates, 4) Develop standardized data exchange formats and APIs, 5) Implement bidirectional integration with ticketing and communication systems, 6) Establish multi-vendor strategy to reduce lock-in risks, 7) Create comprehensive integration testing and validation procedures"
+        "remediation": "LOW PRIORITY: 1) Expand security tool integration with comprehensive API connectivity, 2) Implement SOAR platform with advanced orchestration capabilities, 3) Integrate additional threat intelligence sources with real-time updates, 4) Develop standardized data exchange formats and APIs, 5) Implement bidirectional integration with ticketing and communication systems, 6) Establish multi-vendor strategy to reduce lock-in risks, 7) Create comprehensive integration testing and validation procedures",
+        "checkType": "siemSystemOperatio"
       }
-    ],
-    "siemSystemBestPractices": {
-      "deployment": [
-        "Deploy enterprise SIEM with centralized log management",
-        "Implement tamper-resistant logging with immutable storage",
-        "Establish comprehensive data retention and archival policies",
-        "Configure real-time log ingestion with minimal latency",
-        "Deploy redundant SIEM infrastructure for high availability"
-      ],
-      "dataCollection": [
-        "Connect all critical systems and security tools to SIEM",
-        "Implement standardized log formats and time synchronization",
-        "Deploy secure log transmission with encryption and authentication",
-        "Establish automated log parsing and normalization",
-        "Monitor log source health and connectivity status"
-      ],
-      "analytics": [
-        "Implement advanced correlation rules and machine learning",
-        "Deploy user and entity behavior analytics (UEBA)",
-        "Integrate threat intelligence for contextual analysis",
-        "Develop custom detection rules for organization-specific threats",
-        "Establish automated alert prioritization and deduplication"
-      ],
-      "operations": [
-        "Staff SOC with trained analysts for 24x7 monitoring",
-        "Implement automated incident response workflows",
-        "Establish performance metrics and SLA monitoring",
-        "Conduct regular SIEM health checks and optimization",
-        "Maintain current threat detection capabilities"
-      ]
-    },
-    "siemVerificationMethods": {
-      "deployment": [
-        "Azure Portal: Azure Sentinel workspace configuration",
-        "az monitor log-analytics workspace list",
-        "Get-AzOperationalInsightsWorkspace",
-        "Microsoft Graph API: /security/alerts",
-        "Azure Resource Manager: SIEM resource deployment validation"
-      ],
-      "dataConnectors": [
-        "Azure Portal: Sentinel > Data connectors",
-        "az sentinel data-connector list",
-        "Microsoft Graph API: /security/dataConnectors",
-        "Azure Monitor: Log ingestion metrics",
-        "KQL queries: Heartbeat and data freshness validation"
-      ],
-      "analytics": [
-        "Azure Portal: Sentinel > Analytics rules",
-        "az sentinel analytics-rule list",
-        "Microsoft Graph API: /security/alertRules",
-        "KQL queries: Alert generation and correlation testing",
-        "Azure Monitor: Analytics performance metrics"
-      ],
-      "operations": [
-        "Azure Portal: Sentinel > Incidents",
-        "Microsoft 365 Security Center: Incident management",
-        "Azure Monitor: SIEM performance dashboards",
-        "Microsoft Graph API: /security/incidents",
-        "SOC operational metrics and KPI dashboards"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "AU-3": "Audit and Accountability - Content of Audit Records",
-        "AU-6": "Audit and Accountability - Audit Review, Analysis, and Reporting",
-        "AU-12": "Audit and Accountability - Audit Generation",
-        "SI-4": "System and Information Integrity - Information System Monitoring"
-      },
-      "nist80053": {
-        "AU-3": "Audit and Accountability - Content of Audit Records",
-        "AU-6": "Audit and Accountability - Audit Review, Analysis, and Reporting",
-        "AU-12": "Audit and Accountability - Audit Generation",
-        "SI-4": "System and Information Integrity - Information System Monitoring",
-        "IR-4": "Incident Response - Incident Handling"
-      },
-      "iso27001": {
-        "A.12.4.1": "Event logging",
-        "A.12.4.2": "Protection of log information",
-        "A.12.4.3": "Administrator and operator logs",
-        "A.16.1.2": "Reporting information security events",
-        "A.16.1.4": "Assessment of and decision on information security events"
-      }
-    }
+    ]
   }
 }

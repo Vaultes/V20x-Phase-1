@@ -4,5 +4,13 @@
   "ksiId": "KSI-PIY-07",
   "scanType": "automated",
   "status": "completed",
-  "results": {}
+  "results": {
+    "summary": {
+      "totalChecks": 0,
+      "passed": 0,
+      "failed": 0,
+      "warnings": 0
+    },
+    "checks": []
+  }
 }

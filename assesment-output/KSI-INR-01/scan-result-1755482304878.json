@@ -11,7 +11,62 @@
       "failed": 2,
       "warnings": 0
     },
-    "incidentReportingChecks": [
+    "incidentReportingVerificationMethods": {
+      "fedrampComplianceValidation": [
+        "FedRAMP incident reporting API integration: Automated compliance validation with mandatory field verification and timeline tracking",
+        "ServiceNow FedRAMP connector: Automated incident workflow with regulatory notification and audit trail maintenance",
+        "CISA coordination platform: Automated threat intelligence sharing with incident correlation and notification automation",
+        "Compliance dashboard monitoring: Real-time FedRAMP reporting status with deviation detection and corrective action tracking",
+        "Audit trail automation: Cryptographic integrity protection with tamper-evident incident reporting and investigation support"
+      ],
+      "cspPolicyCompliance": [
+        "Policy management platforms: Automated policy compliance validation with version control and distribution tracking",
+        "ServiceNow workflow automation: Policy-driven incident escalation with approval workflows and compliance measurement",
+        "Training management systems: Policy training completion tracking with competency validation and certification management",
+        "Document management integration: Policy document lifecycle management with automated updates and stakeholder notification",
+        "Compliance reporting automation: Policy adherence metrics with violation detection and remediation tracking"
+      ],
+      "automatedDetectionIntegration": [
+        "Microsoft Sentinel SIEM: Automated incident detection with correlation rules and threat intelligence integration",
+        "Azure Security Center integration: Security alert correlation with automated incident creation and enrichment",
+        "SOAR platform integration: Security orchestration with automated response workflows and investigation automation",
+        "Threat intelligence platforms: Automated threat attribution with contextual analysis and impact assessment",
+        "ML-based anomaly detection: Behavioral analysis with automated incident classification and priority assignment"
+      ],
+      "stakeholderNotificationAutomation": [
+        "Customer communication platforms: Automated notification with impact assessment and customized content delivery",
+        "Multi-channel notification systems: Email, SMS, portal with backup channels and delivery confirmation tracking",
+        "Stakeholder management platforms: Automated notification routing with role-based content and escalation procedures",
+        "Translation and accessibility services: Multi-lingual support with accessibility compliance and content adaptation",
+        "Communication effectiveness tracking: Delivery confirmation with response tracking and satisfaction measurement"
+      ],
+      "reportingAnalyticsAndMetrics": [
+        "Business intelligence platforms: Comprehensive reporting analytics with performance metrics and trend analysis",
+        "Compliance management systems: Automated compliance tracking with regulatory requirement mapping and audit support",
+        "Dashboard visualization tools: Real-time metrics visualization with stakeholder-specific views and drill-down capabilities",
+        "Benchmarking platforms: Industry comparison with best practice alignment and maturity assessment",
+        "Continuous improvement tools: Process optimization tracking with recommendation generation and effectiveness measurement"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "IR-6": "Incident Reporting",
+        "IR-8": "Incident Response Plan",
+        "AU-6": "Audit Review, Analysis, and Reporting"
+      },
+      "nist80053": {
+        "IR-6": "Incident Reporting",
+        "IR-8": "Incident Response Plan",
+        "AU-6": "Audit Review, Analysis, and Reporting",
+        "SI-4": "Information System Monitoring"
+      },
+      "iso27001": {
+        "A.16.1.2": "Reporting information security events",
+        "A.16.1.6": "Learning from information security incidents",
+        "A.16.1.4": "Assessment of and decision on information security events"
+      }
+    },
+    "checks": [
       {
         "checkId": "INR-01-001",
         "name": "FedRAMP Incident Reporting Compliance",
@@ -30,7 +85,10 @@
             "reportingChannels": {
               "fedrampIncidentReporting": "us-cert@cisa.dhs.gov",
               "automatedReporting": true,
-              "backupReportingMethods": ["Phone", "Secure portal"],
+              "backupReportingMethods": [
+                "Phone",
+                "Secure portal"
+              ],
               "reportingSystemIntegration": "ServiceNow with FedRAMP connector"
             }
           },
@@ -86,7 +144,8 @@
             "details": "Automated CISA notification with comprehensive audit trail and integrity protection"
           }
         ],
-        "remediation": "FedRAMP incident reporting comprehensively implemented with automated compliance validation and robust audit trails"
+        "remediation": "FedRAMP incident reporting comprehensively implemented with automated compliance validation and robust audit trails",
+        "checkType": "incidentReportin"
       },
       {
         "checkId": "INR-01-002",
@@ -119,7 +178,12 @@
             "legalTeamNotification": "Automated for applicable incidents",
             "executiveTeamNotification": "Severity-based automation",
             "customerCommunicationTeam": "Automated for customer-impacting incidents",
-            "notificationChannels": ["Email", "SMS", "Teams", "PagerDuty"]
+            "notificationChannels": [
+              "Email",
+              "SMS",
+              "Teams",
+              "PagerDuty"
+            ]
           },
           "documentationRequirements": {
             "incidentDocumentationStandards": "ISO 27035 aligned",
@@ -153,7 +217,8 @@
             "details": "ISO 27035 aligned documentation with automated evidence collection and retention"
           }
         ],
-        "remediation": "Internal incident reporting policies comprehensively implemented with automated compliance validation and effective escalation procedures"
+        "remediation": "Internal incident reporting policies comprehensively implemented with automated compliance validation and effective escalation procedures",
+        "checkType": "incidentReportin"
       },
       {
         "checkId": "INR-01-003",
@@ -192,7 +257,11 @@
             "serviceNowIntegration": "Bi-directional",
             "fedrampApiIntegration": "Planned for Q4 2025",
             "cisaIntegration": "Email and portal",
-            "thirdPartyToolIntegration": ["CrowdStrike", "Splunk", "Azure Monitor"],
+            "thirdPartyToolIntegration": [
+              "CrowdStrike",
+              "Splunk",
+              "Azure Monitor"
+            ],
             "customApiDevelopment": "Available"
           },
           "reportingQualityAssurance": {
@@ -220,7 +289,8 @@
             "details": "Bi-directional ServiceNow integration with automated quality checks and ML-driven improvement"
           }
         ],
-        "remediation": "Automated incident detection and reporting comprehensively implemented with effective SIEM integration and quality assurance processes"
+        "remediation": "Automated incident detection and reporting comprehensively implemented with effective SIEM integration and quality assurance processes",
+        "checkType": "incidentReportin"
       },
       {
         "checkId": "INR-01-004",
@@ -237,7 +307,10 @@
               "highIncidents": "Target: 2 hours, Actual: 4.3 hours average",
               "mediumIncidents": "Target: 24 hours, Actual: 31 hours average"
             },
-            "customerNotificationMethods": ["Email", "Portal notifications"],
+            "customerNotificationMethods": [
+              "Email",
+              "Portal notifications"
+            ],
             "notificationCustomization": "Limited customer-specific content"
           },
           "stakeholderCommunicationDeficiencies": {
@@ -286,7 +359,8 @@
             "details": "Basic email tracking with no response tracking or effectiveness measurement"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement automated customer notification with impact assessment and customized content delivery, 2) Establish comprehensive stakeholder notification automation for internal, external, and regulatory requirements, 3) Develop advanced communication templates with technical detail customization and business impact communication, 4) Create multi-channel communication capabilities with backup channels and accessibility support, 5) Deploy notification tracking and validation with delivery confirmation and effectiveness metrics, 6) Implement communication feedback collection and continuous improvement processes"
+        "remediation": "MEDIUM PRIORITY: 1) Implement automated customer notification with impact assessment and customized content delivery, 2) Establish comprehensive stakeholder notification automation for internal, external, and regulatory requirements, 3) Develop advanced communication templates with technical detail customization and business impact communication, 4) Create multi-channel communication capabilities with backup channels and accessibility support, 5) Deploy notification tracking and validation with delivery confirmation and effectiveness metrics, 6) Implement communication feedback collection and continuous improvement processes",
+        "checkType": "incidentReportin"
       },
       {
         "checkId": "INR-01-005",
@@ -355,63 +429,9 @@
             "details": "Manual improvement processes with no systematic optimization tracking or maturity assessment"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Establish comprehensive reporting performance metrics with timeliness, quality, completeness, and accuracy measurement, 2) Implement automated compliance metrics tracking for FedRAMP and regulatory requirements with audit readiness indicators, 3) Deploy advanced analytics capabilities with trend analysis, root cause analysis automation, and efficiency measurement, 4) Create comprehensive dashboards for executive, operational, and compliance stakeholders with real-time visualization, 5) Establish benchmarking and comparison capabilities with industry standards and historical performance, 6) Integrate continuous improvement tracking with optimization recommendations and maturity assessment"
+        "remediation": "MEDIUM PRIORITY: 1) Establish comprehensive reporting performance metrics with timeliness, quality, completeness, and accuracy measurement, 2) Implement automated compliance metrics tracking for FedRAMP and regulatory requirements with audit readiness indicators, 3) Deploy advanced analytics capabilities with trend analysis, root cause analysis automation, and efficiency measurement, 4) Create comprehensive dashboards for executive, operational, and compliance stakeholders with real-time visualization, 5) Establish benchmarking and comparison capabilities with industry standards and historical performance, 6) Integrate continuous improvement tracking with optimization recommendations and maturity assessment",
+        "checkType": "incidentReportin"
       }
-    ],
-    "incidentReportingVerificationMethods": {
-      "fedrampComplianceValidation": [
-        "FedRAMP incident reporting API integration: Automated compliance validation with mandatory field verification and timeline tracking",
-        "ServiceNow FedRAMP connector: Automated incident workflow with regulatory notification and audit trail maintenance",
-        "CISA coordination platform: Automated threat intelligence sharing with incident correlation and notification automation",
-        "Compliance dashboard monitoring: Real-time FedRAMP reporting status with deviation detection and corrective action tracking",
-        "Audit trail automation: Cryptographic integrity protection with tamper-evident incident reporting and investigation support"
-      ],
-      "cspPolicyCompliance": [
-        "Policy management platforms: Automated policy compliance validation with version control and distribution tracking",
-        "ServiceNow workflow automation: Policy-driven incident escalation with approval workflows and compliance measurement",
-        "Training management systems: Policy training completion tracking with competency validation and certification management",
-        "Document management integration: Policy document lifecycle management with automated updates and stakeholder notification",
-        "Compliance reporting automation: Policy adherence metrics with violation detection and remediation tracking"
-      ],
-      "automatedDetectionIntegration": [
-        "Microsoft Sentinel SIEM: Automated incident detection with correlation rules and threat intelligence integration",
-        "Azure Security Center integration: Security alert correlation with automated incident creation and enrichment",
-        "SOAR platform integration: Security orchestration with automated response workflows and investigation automation",
-        "Threat intelligence platforms: Automated threat attribution with contextual analysis and impact assessment",
-        "ML-based anomaly detection: Behavioral analysis with automated incident classification and priority assignment"
-      ],
-      "stakeholderNotificationAutomation": [
-        "Customer communication platforms: Automated notification with impact assessment and customized content delivery",
-        "Multi-channel notification systems: Email, SMS, portal with backup channels and delivery confirmation tracking",
-        "Stakeholder management platforms: Automated notification routing with role-based content and escalation procedures",
-        "Translation and accessibility services: Multi-lingual support with accessibility compliance and content adaptation",
-        "Communication effectiveness tracking: Delivery confirmation with response tracking and satisfaction measurement"
-      ],
-      "reportingAnalyticsAndMetrics": [
-        "Business intelligence platforms: Comprehensive reporting analytics with performance metrics and trend analysis",
-        "Compliance management systems: Automated compliance tracking with regulatory requirement mapping and audit support",
-        "Dashboard visualization tools: Real-time metrics visualization with stakeholder-specific views and drill-down capabilities",
-        "Benchmarking platforms: Industry comparison with best practice alignment and maturity assessment",
-        "Continuous improvement tools: Process optimization tracking with recommendation generation and effectiveness measurement"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "IR-6": "Incident Reporting",
-        "IR-8": "Incident Response Plan",
-        "AU-6": "Audit Review, Analysis, and Reporting"
-      },
-      "nist80053": {
-        "IR-6": "Incident Reporting",
-        "IR-8": "Incident Response Plan",
-        "AU-6": "Audit Review, Analysis, and Reporting",
-        "SI-4": "Information System Monitoring"
-      },
-      "iso27001": {
-        "A.16.1.2": "Reporting information security events",
-        "A.16.1.6": "Learning from information security incidents",
-        "A.16.1.4": "Assessment of and decision on information security events"
-      }
-    }
+    ]
   }
 }

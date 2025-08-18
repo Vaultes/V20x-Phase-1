@@ -11,7 +11,67 @@
       "failed": 4,
       "warnings": 0
     },
-    "supplyChainRiskAssessmentChecks": [
+    "supplyChainRiskAssessmentVerificationMethods": {
+      "vendorRiskScoring": [
+        "Vendor risk management platforms: ServiceNow, MetricStream, Resolver automated risk scoring",
+        "Security rating services: SecurityScorecard, BitSight, RiskRecon continuous monitoring",
+        "Financial stability monitoring: Dun & Bradstreet, Moody's, S&P credit rating integration",
+        "Geopolitical risk analysis: Control Risks, Political Risk Services country risk monitoring",
+        "Compliance verification: Trust service provider assessments and certification tracking"
+      ],
+      "threatIntelligenceIntegration": [
+        "Commercial threat intelligence: Recorded Future, Mandiant, CrowdStrike supply chain feeds",
+        "Government threat intelligence: CISA alerts, FBI flash reports, NSA advisories",
+        "Industry threat sharing: ISAC participation, sector-specific threat intelligence sharing",
+        "Supply chain attack monitoring: Software composition analysis with threat correlation",
+        "Vendor compromise detection: Dark web monitoring and threat actor targeting analysis"
+      ],
+      "riskMitigationPlanning": [
+        "Risk management platforms: Integrated mitigation planning and tracking systems",
+        "Contract management systems: Automated security requirement implementation and monitoring",
+        "Business continuity planning: Alternative vendor identification and contingency planning",
+        "Vendor performance monitoring: SLA tracking, security incident monitoring, compliance verification",
+        "Mitigation effectiveness measurement: KPI dashboards and continuous improvement programs"
+      ],
+      "vendorPerformanceMonitoring": [
+        "Vendor management platforms: Centralized performance tracking and scorecard management",
+        "SLA monitoring systems: Automated compliance tracking with real-time alerting",
+        "Security performance metrics: Incident response effectiveness and vulnerability remediation speed",
+        "Business relationship management: Regular review meetings and escalation procedure execution",
+        "Contractual performance enforcement: Penalty calculation and performance improvement planning"
+      ],
+      "businessContinuityPlanning": [
+        "Business impact analysis: Vendor dependency mapping and alternative sourcing assessment",
+        "Contingency planning: Failover procedure development and recovery time validation",
+        "Business continuity testing: Vendor failure scenario testing and supply chain disruption exercises",
+        "Alternative vendor qualification: Emergency vendor pre-qualification and rapid onboarding procedures",
+        "Vendor diversification strategy: Multi-vendor approaches and geographic risk distribution"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "SA-12": "Supply Chain Protection",
+        "PM-30": "Supply Chain Risk Management Strategy",
+        "RA-3": "Risk Assessment",
+        "SA-9": "External Information System Services",
+        "CP-2": "Contingency Plan"
+      },
+      "nist80053": {
+        "SA-12": "Supply Chain Protection",
+        "PM-30": "Supply Chain Risk Management Strategy",
+        "RA-3": "Risk Assessment",
+        "SA-9": "External Information System Services",
+        "CP-2": "Contingency Plan",
+        "PM-9": "Risk Management Strategy"
+      },
+      "iso27001": {
+        "A.15.1.1": "Information security policy for supplier relationships",
+        "A.15.1.2": "Addressing security within supplier agreements",
+        "A.15.2.1": "Monitoring and review of supplier services",
+        "A.16.1.4": "Assessment of and decision on information security events"
+      }
+    },
+    "checks": [
       {
         "checkId": "TPR-03-001",
         "name": "Vendor Risk Scoring and Prioritization",
@@ -122,7 +182,8 @@
             "details": "Security, financial, geopolitical, and operational factors systematically integrated"
           }
         ],
-        "remediation": "Vendor risk scoring comprehensively implemented with effective prioritization framework"
+        "remediation": "Vendor risk scoring comprehensively implemented with effective prioritization framework",
+        "checkType": "supplyChainRiskAssessmen"
       },
       {
         "checkId": "TPR-03-002",
@@ -208,7 +269,8 @@
             "details": "Threat intelligence systematically integrated into vendor risk assessments"
           }
         ],
-        "remediation": "Supply chain threat intelligence comprehensively integrated with proactive risk identification"
+        "remediation": "Supply chain threat intelligence comprehensively integrated with proactive risk identification",
+        "checkType": "supplyChainRiskAssessmen"
       },
       {
         "checkId": "TPR-03-003",
@@ -278,7 +340,8 @@
             "details": "Limited contractual, technical, and operational controls implementation"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Develop comprehensive mitigation plans for all 47 identified risks with clear timelines and resource allocation, 2) Immediately address 3 unmitigated critical risks including payment processor dependency and identity provider lock-in, 3) Strengthen contractual controls with security requirements, audit rights, and incident notification clauses, 4) Implement comprehensive vendor access monitoring and data flow controls, 5) Develop alternative vendor options for critical services with tested contingency plans, 6) Establish automated mitigation tracking and effectiveness measurement, 7) Secure adequate budget and staffing for critical risk mitigation initiatives"
+        "remediation": "HIGH PRIORITY: 1) Develop comprehensive mitigation plans for all 47 identified risks with clear timelines and resource allocation, 2) Immediately address 3 unmitigated critical risks including payment processor dependency and identity provider lock-in, 3) Strengthen contractual controls with security requirements, audit rights, and incident notification clauses, 4) Implement comprehensive vendor access monitoring and data flow controls, 5) Develop alternative vendor options for critical services with tested contingency plans, 6) Establish automated mitigation tracking and effectiveness measurement, 7) Secure adequate budget and staffing for critical risk mitigation initiatives",
+        "checkType": "supplyChainRiskAssessmen"
       },
       {
         "checkId": "TPR-03-004",
@@ -356,7 +419,8 @@
             "details": "45% quarterly review coverage with limited escalation and performance enforcement"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement automated vendor performance monitoring for all critical vendors with real-time dashboards, 2) Establish comprehensive performance metrics including security, availability, response time, and compliance indicators, 3) Develop proactive vendor relationship management with regular review meetings and performance discussions, 4) Implement automated SLA monitoring with immediate violation alerts and penalty calculations, 5) Create performance improvement plan templates with milestone tracking and escalation procedures, 6) Establish vendor scorecards with benchmarking against industry standards and peer performance"
+        "remediation": "MEDIUM PRIORITY: 1) Implement automated vendor performance monitoring for all critical vendors with real-time dashboards, 2) Establish comprehensive performance metrics including security, availability, response time, and compliance indicators, 3) Develop proactive vendor relationship management with regular review meetings and performance discussions, 4) Implement automated SLA monitoring with immediate violation alerts and penalty calculations, 5) Create performance improvement plan templates with milestone tracking and escalation procedures, 6) Establish vendor scorecards with benchmarking against industry standards and peer performance",
+        "checkType": "supplyChainRiskAssessmen"
       },
       {
         "checkId": "TPR-03-005",
@@ -427,7 +491,8 @@
             "details": "Annual testing with untested vendor compromise and supply chain disruption scenarios"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Conduct comprehensive vendor dependency analysis with business impact assessment for all critical services, 2) Develop alternative sourcing strategies including pre-qualified emergency vendors and multi-vendor approaches, 3) Create detailed contingency plans for vendor failure scenarios with validated recovery time estimates, 4) Implement quarterly business continuity testing including vendor compromise and supply chain disruption scenarios, 5) Establish automated failover procedures where possible with regular testing and validation, 6) Develop vendor diversification strategy to reduce single points of failure and geographic concentration risks"
+        "remediation": "HIGH PRIORITY: 1) Conduct comprehensive vendor dependency analysis with business impact assessment for all critical services, 2) Develop alternative sourcing strategies including pre-qualified emergency vendors and multi-vendor approaches, 3) Create detailed contingency plans for vendor failure scenarios with validated recovery time estimates, 4) Implement quarterly business continuity testing including vendor compromise and supply chain disruption scenarios, 5) Establish automated failover procedures where possible with regular testing and validation, 6) Develop vendor diversification strategy to reduce single points of failure and geographic concentration risks",
+        "checkType": "supplyChainRiskAssessmen"
       },
       {
         "checkId": "TPR-03-006",
@@ -504,68 +569,9 @@
             "details": "Basic cross-functional coordination with limited external stakeholder management"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Establish formal supply chain governance committee with executive sponsorship and clear decision authority, 2) Develop comprehensive supply chain risk policy with defined procedures for vendor selection, risk assessment, and contractual requirements, 3) Implement structured risk reporting framework with defined KPIs and regular executive visibility, 4) Create risk acceptance criteria and escalation procedures with documented decision-making processes, 5) Enhance cross-functional stakeholder engagement with regular governance meetings and clear role definitions, 6) Establish supply chain governance maturity assessment and continuous improvement program with industry benchmarking"
+        "remediation": "MEDIUM PRIORITY: 1) Establish formal supply chain governance committee with executive sponsorship and clear decision authority, 2) Develop comprehensive supply chain risk policy with defined procedures for vendor selection, risk assessment, and contractual requirements, 3) Implement structured risk reporting framework with defined KPIs and regular executive visibility, 4) Create risk acceptance criteria and escalation procedures with documented decision-making processes, 5) Enhance cross-functional stakeholder engagement with regular governance meetings and clear role definitions, 6) Establish supply chain governance maturity assessment and continuous improvement program with industry benchmarking",
+        "checkType": "supplyChainRiskAssessmen"
       }
-    ],
-    "supplyChainRiskAssessmentVerificationMethods": {
-      "vendorRiskScoring": [
-        "Vendor risk management platforms: ServiceNow, MetricStream, Resolver automated risk scoring",
-        "Security rating services: SecurityScorecard, BitSight, RiskRecon continuous monitoring",
-        "Financial stability monitoring: Dun & Bradstreet, Moody's, S&P credit rating integration",
-        "Geopolitical risk analysis: Control Risks, Political Risk Services country risk monitoring",
-        "Compliance verification: Trust service provider assessments and certification tracking"
-      ],
-      "threatIntelligenceIntegration": [
-        "Commercial threat intelligence: Recorded Future, Mandiant, CrowdStrike supply chain feeds",
-        "Government threat intelligence: CISA alerts, FBI flash reports, NSA advisories",
-        "Industry threat sharing: ISAC participation, sector-specific threat intelligence sharing",
-        "Supply chain attack monitoring: Software composition analysis with threat correlation",
-        "Vendor compromise detection: Dark web monitoring and threat actor targeting analysis"
-      ],
-      "riskMitigationPlanning": [
-        "Risk management platforms: Integrated mitigation planning and tracking systems",
-        "Contract management systems: Automated security requirement implementation and monitoring",
-        "Business continuity planning: Alternative vendor identification and contingency planning",
-        "Vendor performance monitoring: SLA tracking, security incident monitoring, compliance verification",
-        "Mitigation effectiveness measurement: KPI dashboards and continuous improvement programs"
-      ],
-      "vendorPerformanceMonitoring": [
-        "Vendor management platforms: Centralized performance tracking and scorecard management",
-        "SLA monitoring systems: Automated compliance tracking with real-time alerting",
-        "Security performance metrics: Incident response effectiveness and vulnerability remediation speed",
-        "Business relationship management: Regular review meetings and escalation procedure execution",
-        "Contractual performance enforcement: Penalty calculation and performance improvement planning"
-      ],
-      "businessContinuityPlanning": [
-        "Business impact analysis: Vendor dependency mapping and alternative sourcing assessment",
-        "Contingency planning: Failover procedure development and recovery time validation",
-        "Business continuity testing: Vendor failure scenario testing and supply chain disruption exercises",
-        "Alternative vendor qualification: Emergency vendor pre-qualification and rapid onboarding procedures",
-        "Vendor diversification strategy: Multi-vendor approaches and geographic risk distribution"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "SA-12": "Supply Chain Protection",
-        "PM-30": "Supply Chain Risk Management Strategy",
-        "RA-3": "Risk Assessment",
-        "SA-9": "External Information System Services",
-        "CP-2": "Contingency Plan"
-      },
-      "nist80053": {
-        "SA-12": "Supply Chain Protection",
-        "PM-30": "Supply Chain Risk Management Strategy",
-        "RA-3": "Risk Assessment",
-        "SA-9": "External Information System Services",
-        "CP-2": "Contingency Plan",
-        "PM-9": "Risk Management Strategy"
-      },
-      "iso27001": {
-        "A.15.1.1": "Information security policy for supplier relationships",
-        "A.15.1.2": "Addressing security within supplier agreements",
-        "A.15.2.1": "Monitoring and review of supplier services",
-        "A.16.1.4": "Assessment of and decision on information security events"
-      }
-    }
+    ]
   }
 }

@@ -11,7 +11,62 @@
       "failed": 4,
       "warnings": 0
     },
-    "afterActionReportsChecks": [
+    "afterActionReportVerificationMethods": {
+      "reportGenerationAutomation": [
+        "ServiceNow incident management: Automated after action report workflow with template generation and stakeholder assignment",
+        "Confluence knowledge management: Structured documentation with ISO 27035 templates and collaborative editing capabilities",
+        "Microsoft Teams integration: Stakeholder collaboration with automated review scheduling and approval workflows",
+        "Document management platforms: Version control with Git integration and automated archival processes",
+        "Workflow orchestration tools: Multi-level approval automation with timeline management and distribution capabilities"
+      ],
+      "lessonsLearnedManagement": [
+        "Knowledge management systems: Confluence-based lesson capture with structured templates and categorization",
+        "Search and discovery platforms: Full-text search with automated similarity matching and tagging capabilities",
+        "Analytics and usage tracking: Lesson effectiveness measurement with access analytics and improvement recommendations",
+        "Training integration platforms: LMS integration with curriculum updates and competency mapping capabilities",
+        "Policy management systems: Automated policy change recommendations with implementation tracking and validation"
+      ],
+      "operationalProcessIntegration": [
+        "Business process management: Lesson-to-process correlation with workflow modification tracking and automation",
+        "Change management platforms: Lesson-aware change requests with impact assessment and implementation validation",
+        "Performance measurement tools: Operational metrics correlation with effectiveness tracking and improvement measurement",
+        "Resource management systems: Implementation resource allocation with timeline management and progress monitoring",
+        "Continuous improvement platforms: Feedback loop automation with organizational maturity tracking and assessment"
+      ],
+      "trainingAndKnowledgeTransfer": [
+        "Learning management systems: Lesson-based training content with personalized delivery and effectiveness measurement",
+        "Competency management platforms: Skill gap identification with lesson correlation and development program integration",
+        "Knowledge retention tools: Validation testing with retention measurement and improvement recommendations",
+        "Succession planning systems: Critical knowledge identification with expert documentation and transfer planning",
+        "Cultural assessment platforms: Learning culture measurement with knowledge sharing incentives and promotion"
+      ],
+      "automationAndTechnologyIntegration": [
+        "AI/ML platforms: Natural language processing for lesson analysis with pattern recognition and categorization automation",
+        "Business intelligence tools: Advanced analytics with interactive dashboards and executive reporting automation",
+        "Integration platforms: Cross-system connectivity with standardized APIs and data exchange automation",
+        "Workflow automation tools: End-to-end process automation with implementation tracking and success validation",
+        "Recommendation engines: Automated improvement suggestions with predictive analytics and effectiveness forecasting"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "IR-4": "Incident Handling",
+        "IR-8": "Incident Response Plan",
+        "AT-3": "Role-Based Security Training"
+      },
+      "nist80053": {
+        "IR-4": "Incident Handling",
+        "IR-8": "Incident Response Plan",
+        "AT-3": "Role-Based Security Training",
+        "PM-6": "Information Security Measures of Performance"
+      },
+      "iso27001": {
+        "A.16.1.6": "Learning from information security incidents",
+        "A.7.2.2": "Information security awareness, education and training",
+        "A.18.2.3": "Technical compliance review"
+      }
+    },
+    "checks": [
       {
         "checkId": "INR-03-001",
         "name": "After Action Report Generation and Documentation",
@@ -74,7 +129,8 @@
             "details": "95.7% template compliance with automated evidence integration and Git-based version control"
           }
         ],
-        "remediation": "After action report generation comprehensively implemented with strong quality assurance and stakeholder involvement"
+        "remediation": "After action report generation comprehensively implemented with strong quality assurance and stakeholder involvement",
+        "checkType": "afterActionReport"
       },
       {
         "checkId": "INR-03-002",
@@ -142,7 +198,8 @@
             "details": "Training program integration with automated policy recommendations and cultural promotion"
           }
         ],
-        "remediation": "Lessons learned capture and documentation comprehensively implemented with strong organizational learning integration"
+        "remediation": "Lessons learned capture and documentation comprehensively implemented with strong organizational learning integration",
+        "checkType": "afterActionReport"
       },
       {
         "checkId": "INR-03-003",
@@ -204,7 +261,8 @@
             "details": "No performance metrics correlation with limited feedback loop effectiveness"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement comprehensive operational process mapping with automated lesson-to-process correlation and workflow modification tracking, 2) Establish systematic implementation tracking with standardized timelines, resource allocation, and progress monitoring, 3) Integrate change management with lesson-aware approval workflows and effectiveness validation, 4) Deploy operational metrics correlation with performance measurement and cost impact analysis, 5) Create continuous improvement cycles with automated feedback loops and organizational maturity tracking, 6) Develop implementation success validation with systematic effectiveness assessment and improvement capture"
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive operational process mapping with automated lesson-to-process correlation and workflow modification tracking, 2) Establish systematic implementation tracking with standardized timelines, resource allocation, and progress monitoring, 3) Integrate change management with lesson-aware approval workflows and effectiveness validation, 4) Deploy operational metrics correlation with performance measurement and cost impact analysis, 5) Create continuous improvement cycles with automated feedback loops and organizational maturity tracking, 6) Develop implementation success validation with systematic effectiveness assessment and improvement capture",
+        "checkType": "afterActionReport"
       },
       {
         "checkId": "INR-03-004",
@@ -266,7 +324,8 @@
             "details": "Limited knowledge sharing initiatives with no learning incentive programs or maturity measurement"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Integrate lessons learned into training programs with automated curriculum updates and personalized delivery modalities, 2) Establish comprehensive knowledge transfer processes with role-specific customization and retention validation, 3) Implement competency development programs with lesson-based skill gap identification and validation testing, 4) Create systematic organizational memory preservation with expertise documentation and succession planning, 5) Promote learning culture with knowledge sharing incentives and organizational learning maturity measurement, 6) Develop automated knowledge transfer validation with effectiveness tracking and continuous improvement"
+        "remediation": "MEDIUM PRIORITY: 1) Integrate lessons learned into training programs with automated curriculum updates and personalized delivery modalities, 2) Establish comprehensive knowledge transfer processes with role-specific customization and retention validation, 3) Implement competency development programs with lesson-based skill gap identification and validation testing, 4) Create systematic organizational memory preservation with expertise documentation and succession planning, 5) Promote learning culture with knowledge sharing incentives and organizational learning maturity measurement, 6) Develop automated knowledge transfer validation with effectiveness tracking and continuous improvement",
+        "checkType": "afterActionReport"
       },
       {
         "checkId": "INR-03-005",
@@ -328,7 +387,8 @@
             "details": "Basic API implementation with no cross-platform integration or data exchange standardization"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive lesson capture and analysis automation with AI/ML capabilities for pattern recognition and categorization, 2) Establish technology integration with ITSM, HRMS, LMS, and business intelligence platforms for seamless workflow automation, 3) Deploy artificial intelligence capabilities including natural language processing for lesson analysis and recommendation engines, 4) Create advanced data analytics and visualization with effectiveness metrics and interactive executive dashboards, 5) Develop robust integration and interoperability with standardized APIs and cross-platform data exchange, 6) Establish automated workflow orchestration with implementation tracking and success validation"
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive lesson capture and analysis automation with AI/ML capabilities for pattern recognition and categorization, 2) Establish technology integration with ITSM, HRMS, LMS, and business intelligence platforms for seamless workflow automation, 3) Deploy artificial intelligence capabilities including natural language processing for lesson analysis and recommendation engines, 4) Create advanced data analytics and visualization with effectiveness metrics and interactive executive dashboards, 5) Develop robust integration and interoperability with standardized APIs and cross-platform data exchange, 6) Establish automated workflow orchestration with implementation tracking and success validation",
+        "checkType": "afterActionReport"
       },
       {
         "checkId": "INR-03-006",
@@ -390,63 +450,9 @@
             "details": "No external expert review with reactive regulatory change learning and limited threat monitoring"
           }
         ],
-        "remediation": "LOW PRIORITY: 1) Integrate external learning sources with systematic monitoring of industry best practices, peer organizations, and academic research, 2) Establish comprehensive benchmarking capabilities with industry participation and performance comparison analysis, 3) Create knowledge sharing and collaboration initiatives with expert networks and community engagement, 4) Implement external validation processes with peer review and independent assessment capabilities, 5) Deploy emerging trend integration with proactive threat landscape monitoring and innovation adoption learning, 6) Develop thought leadership contributions with expertise gap identification and future risk preparation"
+        "remediation": "LOW PRIORITY: 1) Integrate external learning sources with systematic monitoring of industry best practices, peer organizations, and academic research, 2) Establish comprehensive benchmarking capabilities with industry participation and performance comparison analysis, 3) Create knowledge sharing and collaboration initiatives with expert networks and community engagement, 4) Implement external validation processes with peer review and independent assessment capabilities, 5) Deploy emerging trend integration with proactive threat landscape monitoring and innovation adoption learning, 6) Develop thought leadership contributions with expertise gap identification and future risk preparation",
+        "checkType": "afterActionReport"
       }
-    ],
-    "afterActionReportVerificationMethods": {
-      "reportGenerationAutomation": [
-        "ServiceNow incident management: Automated after action report workflow with template generation and stakeholder assignment",
-        "Confluence knowledge management: Structured documentation with ISO 27035 templates and collaborative editing capabilities",
-        "Microsoft Teams integration: Stakeholder collaboration with automated review scheduling and approval workflows",
-        "Document management platforms: Version control with Git integration and automated archival processes",
-        "Workflow orchestration tools: Multi-level approval automation with timeline management and distribution capabilities"
-      ],
-      "lessonsLearnedManagement": [
-        "Knowledge management systems: Confluence-based lesson capture with structured templates and categorization",
-        "Search and discovery platforms: Full-text search with automated similarity matching and tagging capabilities",
-        "Analytics and usage tracking: Lesson effectiveness measurement with access analytics and improvement recommendations",
-        "Training integration platforms: LMS integration with curriculum updates and competency mapping capabilities",
-        "Policy management systems: Automated policy change recommendations with implementation tracking and validation"
-      ],
-      "operationalProcessIntegration": [
-        "Business process management: Lesson-to-process correlation with workflow modification tracking and automation",
-        "Change management platforms: Lesson-aware change requests with impact assessment and implementation validation",
-        "Performance measurement tools: Operational metrics correlation with effectiveness tracking and improvement measurement",
-        "Resource management systems: Implementation resource allocation with timeline management and progress monitoring",
-        "Continuous improvement platforms: Feedback loop automation with organizational maturity tracking and assessment"
-      ],
-      "trainingAndKnowledgeTransfer": [
-        "Learning management systems: Lesson-based training content with personalized delivery and effectiveness measurement",
-        "Competency management platforms: Skill gap identification with lesson correlation and development program integration",
-        "Knowledge retention tools: Validation testing with retention measurement and improvement recommendations",
-        "Succession planning systems: Critical knowledge identification with expert documentation and transfer planning",
-        "Cultural assessment platforms: Learning culture measurement with knowledge sharing incentives and promotion"
-      ],
-      "automationAndTechnologyIntegration": [
-        "AI/ML platforms: Natural language processing for lesson analysis with pattern recognition and categorization automation",
-        "Business intelligence tools: Advanced analytics with interactive dashboards and executive reporting automation",
-        "Integration platforms: Cross-system connectivity with standardized APIs and data exchange automation",
-        "Workflow automation tools: End-to-end process automation with implementation tracking and success validation",
-        "Recommendation engines: Automated improvement suggestions with predictive analytics and effectiveness forecasting"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "IR-4": "Incident Handling",
-        "IR-8": "Incident Response Plan",
-        "AT-3": "Role-Based Security Training"
-      },
-      "nist80053": {
-        "IR-4": "Incident Handling",
-        "IR-8": "Incident Response Plan",
-        "AT-3": "Role-Based Security Training",
-        "PM-6": "Information Security Measures of Performance"
-      },
-      "iso27001": {
-        "A.16.1.6": "Learning from information security incidents",
-        "A.7.2.2": "Information security awareness, education and training",
-        "A.18.2.3": "Technical compliance review"
-      }
-    }
+    ]
   }
 }

@@ -11,7 +11,57 @@
       "failed": 4,
       "warnings": 0
     },
-    "securityAwarenessTrainingChecks": [
+    "securityAwarenessTrainingVerificationMethods": {
+      "employeeEnrollmentTracking": [
+        "HR Information System integration: Workday, BambooHR, ADP automated enrollment verification",
+        "Learning Management System APIs: Canvas, Blackboard, Moodle completion tracking",
+        "Identity and Access Management correlation: Azure AD, Okta user account verification",
+        "Automated enrollment reporting: Real-time dashboards and compliance monitoring",
+        "Exception tracking: Manual enrollment verification for special cases and contractors"
+      ],
+      "trainingCompletionAnalytics": [
+        "LMS completion data extraction: Automated reporting with completion rates and timestamps",
+        "Progress tracking APIs: Integration with training platforms for real-time monitoring",
+        "Departmental performance analytics: Comparative analysis across organizational units",
+        "Trend analysis and forecasting: Historical data analysis for training effectiveness trends",
+        "Compliance deadline monitoring: Automated alerts for overdue training and deadline tracking"
+      ],
+      "contentEffectivenessAssessment": [
+        "Learning outcome measurement: Pre and post-training knowledge assessments",
+        "Simulated phishing campaigns: Automated phishing simulation with failure rate tracking",
+        "Security incident correlation: Training completion correlation with security event reduction",
+        "Knowledge retention testing: Periodic assessments to measure long-term effectiveness",
+        "Behavioral analytics: Security behavior monitoring and improvement measurement"
+      ],
+      "continuousImprovementMonitoring": [
+        "Training feedback analysis: Automated sentiment analysis and improvement identification",
+        "Content update tracking: Version control and currency monitoring for training materials",
+        "Industry benchmark comparison: External training effectiveness benchmark analysis",
+        "Regulatory compliance verification: Alignment with FISMA, FedRAMP, and industry requirements",
+        "ROI and business impact measurement: Training investment effectiveness quantification"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "AT-2": "Security Awareness Training",
+        "AT-3": "Role-Based Security Training",
+        "AT-4": "Security Training Records",
+        "PM-13": "Information Security Workforce"
+      },
+      "nist80053": {
+        "AT-2": "Security Awareness Training",
+        "AT-3": "Role-Based Security Training",
+        "AT-4": "Security Training Records",
+        "PM-13": "Information Security Workforce",
+        "PM-14": "Testing, Training, and Monitoring"
+      },
+      "iso27001": {
+        "A.7.2.2": "Information security awareness, education and training",
+        "A.13.2.1": "Information transfer policies and procedures",
+        "A.16.1.5": "Response to information security incidents"
+      }
+    },
+    "checks": [
       {
         "checkId": "CED-01-001",
         "name": "Employee Training Enrollment Coverage",
@@ -86,7 +136,8 @@
             "details": "Training program covers FISMA, FedRAMP, and relevant industry standards"
           }
         ],
-        "remediation": "Employee enrollment comprehensively implemented with strong automation and integration"
+        "remediation": "Employee enrollment comprehensively implemented with strong automation and integration",
+        "checkType": "securityAwarenessTrainin"
       },
       {
         "checkId": "CED-01-002",
@@ -168,7 +219,8 @@
             "details": "Complete automated reporting with executive dashboards and predictive analytics"
           }
         ],
-        "remediation": "Training completion tracking comprehensively implemented with effective analytics and continuous improvement"
+        "remediation": "Training completion tracking comprehensively implemented with effective analytics and continuous improvement",
+        "checkType": "securityAwarenessTrainin"
       },
       {
         "checkId": "CED-01-003",
@@ -247,7 +299,8 @@
             "details": "45% interactive content with limited gamification and no personalized learning"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Expand training content to include comprehensive coverage of mobile device security, cloud security, and data classification, 2) Develop emerging threat training modules for deepfakes, AI/ML security risks, and evolving ransomware tactics, 3) Implement monthly content updates with rapid emerging threat integration, 4) Enhance learning effectiveness with increased interactive elements, gamification, and scenario-based learning, 5) Develop personalized learning paths based on role and risk profile, 6) Improve accessibility with multi-language support and full mobile optimization"
+        "remediation": "MEDIUM PRIORITY: 1) Expand training content to include comprehensive coverage of mobile device security, cloud security, and data classification, 2) Develop emerging threat training modules for deepfakes, AI/ML security risks, and evolving ransomware tactics, 3) Implement monthly content updates with rapid emerging threat integration, 4) Enhance learning effectiveness with increased interactive elements, gamification, and scenario-based learning, 5) Develop personalized learning paths based on role and risk profile, 6) Improve accessibility with multi-language support and full mobile optimization",
+        "checkType": "securityAwarenessTrainin"
       },
       {
         "checkId": "CED-01-004",
@@ -317,7 +370,8 @@
             "details": "Minimal micro-learning, ad-hoc security tips, and basic simulated phishing program"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement quarterly comprehensive training with monthly micro-learning modules, 2) Develop automated reinforcement mechanisms including contextual learning and adaptive training paths, 3) Increase simulated phishing frequency to monthly with automated remedial training, 4) Implement just-in-time learning triggered by security events and risk indicators, 5) Establish continuous knowledge retention monitoring with automated refresher training recommendations, 6) Develop employee engagement programs with gamification, incentives, and recognition systems"
+        "remediation": "MEDIUM PRIORITY: 1) Implement quarterly comprehensive training with monthly micro-learning modules, 2) Develop automated reinforcement mechanisms including contextual learning and adaptive training paths, 3) Increase simulated phishing frequency to monthly with automated remedial training, 4) Implement just-in-time learning triggered by security events and risk indicators, 5) Establish continuous knowledge retention monitoring with automated refresher training recommendations, 6) Develop employee engagement programs with gamification, incentives, and recognition systems",
+        "checkType": "securityAwarenessTrainin"
       },
       {
         "checkId": "CED-01-005",
@@ -392,7 +446,8 @@
             "details": "Training content doesn't address specific departmental risk profiles and specialization needs"
           }
         ],
-        "remediation": "LOW PRIORITY: 1) Develop role-specific training content for all departments based on risk profiles and job functions, 2) Implement personalized learning paths with skill level assessment and adaptive content delivery, 3) Create departmental specialization modules addressing specific threat landscapes, 4) Deploy learning analytics to customize training based on individual progress and performance, 5) Establish role-based content library with automated customization engine, 6) Develop learning style adaptation capabilities to improve engagement and retention"
+        "remediation": "LOW PRIORITY: 1) Develop role-specific training content for all departments based on risk profiles and job functions, 2) Implement personalized learning paths with skill level assessment and adaptive content delivery, 3) Create departmental specialization modules addressing specific threat landscapes, 4) Deploy learning analytics to customize training based on individual progress and performance, 5) Establish role-based content library with automated customization engine, 6) Develop learning style adaptation capabilities to improve engagement and retention",
+        "checkType": "securityAwarenessTrainin"
       },
       {
         "checkId": "CED-01-006",
@@ -471,58 +526,9 @@
             "details": "Ad-hoc improvement process with no industry benchmarking or peer comparison"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive Kirkpatrick four-level evaluation framework with behavior change tracking and business impact measurement, 2) Develop real-world application testing including social engineering simulations and incident response performance correlation, 3) Establish longitudinal effectiveness analysis with knowledge decay tracking and behavior sustainability measurement, 4) Create automated improvement feedback loop with actionable insights generation and content optimization, 5) Implement industry benchmarking and peer organization comparison capabilities, 6) Develop ROI calculation methodology with quantified organizational risk reduction metrics"
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive Kirkpatrick four-level evaluation framework with behavior change tracking and business impact measurement, 2) Develop real-world application testing including social engineering simulations and incident response performance correlation, 3) Establish longitudinal effectiveness analysis with knowledge decay tracking and behavior sustainability measurement, 4) Create automated improvement feedback loop with actionable insights generation and content optimization, 5) Implement industry benchmarking and peer organization comparison capabilities, 6) Develop ROI calculation methodology with quantified organizational risk reduction metrics",
+        "checkType": "securityAwarenessTrainin"
       }
-    ],
-    "securityAwarenessTrainingVerificationMethods": {
-      "employeeEnrollmentTracking": [
-        "HR Information System integration: Workday, BambooHR, ADP automated enrollment verification",
-        "Learning Management System APIs: Canvas, Blackboard, Moodle completion tracking",
-        "Identity and Access Management correlation: Azure AD, Okta user account verification",
-        "Automated enrollment reporting: Real-time dashboards and compliance monitoring",
-        "Exception tracking: Manual enrollment verification for special cases and contractors"
-      ],
-      "trainingCompletionAnalytics": [
-        "LMS completion data extraction: Automated reporting with completion rates and timestamps",
-        "Progress tracking APIs: Integration with training platforms for real-time monitoring",
-        "Departmental performance analytics: Comparative analysis across organizational units",
-        "Trend analysis and forecasting: Historical data analysis for training effectiveness trends",
-        "Compliance deadline monitoring: Automated alerts for overdue training and deadline tracking"
-      ],
-      "contentEffectivenessAssessment": [
-        "Learning outcome measurement: Pre and post-training knowledge assessments",
-        "Simulated phishing campaigns: Automated phishing simulation with failure rate tracking",
-        "Security incident correlation: Training completion correlation with security event reduction",
-        "Knowledge retention testing: Periodic assessments to measure long-term effectiveness",
-        "Behavioral analytics: Security behavior monitoring and improvement measurement"
-      ],
-      "continuousImprovementMonitoring": [
-        "Training feedback analysis: Automated sentiment analysis and improvement identification",
-        "Content update tracking: Version control and currency monitoring for training materials",
-        "Industry benchmark comparison: External training effectiveness benchmark analysis",
-        "Regulatory compliance verification: Alignment with FISMA, FedRAMP, and industry requirements",
-        "ROI and business impact measurement: Training investment effectiveness quantification"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "AT-2": "Security Awareness Training",
-        "AT-3": "Role-Based Security Training",
-        "AT-4": "Security Training Records",
-        "PM-13": "Information Security Workforce"
-      },
-      "nist80053": {
-        "AT-2": "Security Awareness Training",
-        "AT-3": "Role-Based Security Training",
-        "AT-4": "Security Training Records",
-        "PM-13": "Information Security Workforce",
-        "PM-14": "Testing, Training, and Monitoring"
-      },
-      "iso27001": {
-        "A.7.2.2": "Information security awareness, education and training",
-        "A.13.2.1": "Information transfer policies and procedures",
-        "A.16.1.5": "Response to information security incidents"
-      }
-    }
+    ]
   }
 }

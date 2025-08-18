@@ -160,9 +160,19 @@
             "issue": "External users can directly access internal services"
           },
           "networkScan": {
-            "openPorts": [22, 3000, 8080],
-            "servicesExposed": ["SSH", "Web App", "API Service"],
-            "vulnerableServices": ["SSH (password auth enabled)"]
+            "openPorts": [
+              22,
+              3000,
+              8080
+            ],
+            "servicesExposed": [
+              "SSH",
+              "Web App",
+              "API Service"
+            ],
+            "vulnerableServices": [
+              "SSH (password auth enabled)"
+            ]
           }
         },
         "remediation": "Implement proper network segmentation: 1) Remove public IP from containers, 2) Route traffic through Application Gateway, 3) Implement restrictive NSG rules, 4) Enable network policies for container-to-container communication, 5) Disable SSH access or restrict to management subnet only"
@@ -171,20 +181,44 @@
     "validationMethods": {
       "networkTopologyAnalysis": {
         "tool": "Azure Network Watcher",
-        "methods": ["Network topology view", "Connection troubleshoot", "IP flow verify"]
+        "methods": [
+          "Network topology view",
+          "Connection troubleshoot",
+          "IP flow verify"
+        ]
       },
       "trafficAnalysis": {
         "tool": "NSG Flow Logs",
-        "methods": ["Traffic analytics", "Flow log analysis", "Security rule effectiveness"]
+        "methods": [
+          "Traffic analytics",
+          "Flow log analysis",
+          "Security rule effectiveness"
+        ]
       },
       "penetrationTesting": {
-        "tools": ["OWASP ZAP", "Burp Suite", "Nmap"],
-        "scope": ["External attack surface", "Internal network segmentation", "Service discovery"]
+        "tools": [
+          "OWASP ZAP",
+          "Burp Suite",
+          "Nmap"
+        ],
+        "scope": [
+          "External attack surface",
+          "Internal network segmentation",
+          "Service discovery"
+        ]
       },
       "complianceValidation": {
-        "frameworks": ["FedRAMP", "NIST 800-53", "SOC 2"],
-        "controls": ["SC-7 (Boundary Protection)", "SC-32 (Information System Partitioning)"]
+        "frameworks": [
+          "FedRAMP",
+          "NIST 800-53",
+          "SOC 2"
+        ],
+        "controls": [
+          "SC-7 (Boundary Protection)",
+          "SC-32 (Information System Partitioning)"
+        ]
       }
-    }
+    },
+    "checks": []
   }
 }

@@ -11,7 +11,64 @@
       "failed": 3,
       "warnings": 0
     },
-    "recoveryObjectivesChecks": [
+    "recoveryObjectivesVerificationMethods": {
+      "rtoRpoDocumentationTracking": [
+        "Business Continuity Management System integration: ServiceNow BCDR, Fusion Risk Management automated tracking",
+        "Document management platforms: SharePoint, Confluence with version control and approval workflows",
+        "Compliance management tools: GRC platforms with automated regulatory requirement mapping",
+        "Executive dashboards: Real-time RTO/RPO status reporting with stakeholder visibility",
+        "Automated notification systems: Alerts for documentation updates, reviews, and approvals"
+      ],
+      "infrastructureCapabilityAssessment": [
+        "Azure Site Recovery monitoring: Automated replication health and lag monitoring",
+        "Backup service validation: Azure Backup job monitoring with success rate tracking",
+        "Network failover testing: Traffic Manager and Load Balancer failover capability validation",
+        "Database replication monitoring: SQL Database geo-replication lag and synchronization tracking",
+        "Resource capacity monitoring: Azure Monitor for DR site capacity and performance validation"
+      ],
+      "businessImpactAnalysisValidation": [
+        "Financial impact modeling: Automated revenue calculation based on service availability metrics",
+        "Stakeholder engagement tracking: Meeting attendance, feedback collection, and approval workflows",
+        "Cost-benefit analysis automation: ROI calculation for different RTO/RPO investment scenarios",
+        "Risk assessment integration: Quantitative risk modeling with recovery objective correlation",
+        "Compliance impact analysis: Regulatory requirement mapping with penalty calculation automation"
+      ],
+      "serviceDependencyMapping": [
+        "Azure Service Map: Automated application dependency discovery and visualization",
+        "Application Performance Monitoring: Dynatrace, New Relic dependency tracking integration",
+        "Network topology discovery: Automated infrastructure dependency mapping and critical path analysis",
+        "Service mesh monitoring: Istio, Linkerd service interaction and dependency tracking",
+        "Configuration management integration: Ansible, Terraform dependency relationship documentation"
+      ],
+      "recoveryObjectiveValidation": [
+        "Automated failover testing: Scheduled disaster recovery testing with RTO/RPO measurement",
+        "Chaos engineering platforms: Gremlin, Chaos Monkey resilience testing with objective validation",
+        "Recovery time measurement: Automated timing of failover processes and application startup",
+        "Data recovery validation: Automated backup restore testing with integrity verification",
+        "Business process validation: User acceptance testing automation with recovery scenario simulation"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "CP-2": "Contingency Plan",
+        "CP-3": "Contingency Training",
+        "CP-4": "Contingency Plan Testing",
+        "CP-9": "Information System Backup"
+      },
+      "nist80053": {
+        "CP-2": "Contingency Plan",
+        "CP-3": "Contingency Training",
+        "CP-4": "Contingency Plan Testing",
+        "CP-9": "Information System Backup",
+        "CP-10": "Information System Recovery and Reconstitution"
+      },
+      "iso27001": {
+        "A.17.1.1": "Planning information security continuity",
+        "A.17.1.2": "Implementing information security continuity",
+        "A.17.2.1": "Availability of information processing facilities"
+      }
+    },
+    "checks": [
       {
         "checkId": "RPL-01-001",
         "name": "RTO/RPO Documentation and Tracking",
@@ -94,7 +151,8 @@
             "details": "Board approval, executive oversight, and regular review processes in place"
           }
         ],
-        "remediation": "RTO/RPO documentation comprehensively implemented with strong governance and tracking"
+        "remediation": "RTO/RPO documentation comprehensively implemented with strong governance and tracking",
+        "checkType": "recoveryObjective"
       },
       {
         "checkId": "RPL-01-002",
@@ -171,7 +229,8 @@
             "details": "15-minute maximum data loss exposure meets defined RPO requirements"
           }
         ],
-        "remediation": "Infrastructure capabilities adequately support defined recovery objectives with strong automation"
+        "remediation": "Infrastructure capabilities adequately support defined recovery objectives with strong automation",
+        "checkType": "recoveryObjective"
       },
       {
         "checkId": "RPL-01-003",
@@ -239,7 +298,8 @@
             "details": "No cost-benefit analysis or risk tolerance alignment for recovery objectives"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Conduct comprehensive business impact analysis with full stakeholder participation within 90 days, 2) Develop detailed financial impact calculations including operational costs, regulatory fines, and contractual penalties, 3) Perform cost-benefit analysis for different RTO/RPO scenarios with sensitivity analysis, 4) Establish regular BIA update cycle with semi-annual reviews and continuous stakeholder engagement, 5) Implement business impact quantification tools with automated data collection and analysis, 6) Validate RTO/RPO objectives through comprehensive risk tolerance assessment and alternative scenario modeling"
+        "remediation": "HIGH PRIORITY: 1) Conduct comprehensive business impact analysis with full stakeholder participation within 90 days, 2) Develop detailed financial impact calculations including operational costs, regulatory fines, and contractual penalties, 3) Perform cost-benefit analysis for different RTO/RPO scenarios with sensitivity analysis, 4) Establish regular BIA update cycle with semi-annual reviews and continuous stakeholder engagement, 5) Implement business impact quantification tools with automated data collection and analysis, 6) Validate RTO/RPO objectives through comprehensive risk tolerance assessment and alternative scenario modeling",
+        "checkType": "recoveryObjective"
       },
       {
         "checkId": "RPL-01-004",
@@ -305,7 +365,8 @@
             "details": "High-level recovery order without dependency-based sequencing or bottleneck identification"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Complete comprehensive service dependency mapping for all 34 services with automated discovery tools, 2) Implement critical path analysis to identify recovery bottlenecks and sequence dependencies, 3) Perform cascading failure analysis to understand dependency impact on RTO/RPO objectives, 4) Develop dependency-based recovery sequencing with parallel recovery optimization, 5) Establish automated dependency monitoring with real-time mapping updates, 6) Create dependency resilience scoring to prioritize strengthening critical service relationships"
+        "remediation": "MEDIUM PRIORITY: 1) Complete comprehensive service dependency mapping for all 34 services with automated discovery tools, 2) Implement critical path analysis to identify recovery bottlenecks and sequence dependencies, 3) Perform cascading failure analysis to understand dependency impact on RTO/RPO objectives, 4) Develop dependency-based recovery sequencing with parallel recovery optimization, 5) Establish automated dependency monitoring with real-time mapping updates, 6) Create dependency resilience scoring to prioritize strengthening critical service relationships",
+        "checkType": "recoveryObjective"
       },
       {
         "checkId": "RPL-01-005",
@@ -367,65 +428,9 @@
             "details": "No systematic validation analysis or objective adjustment process"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement quarterly recovery objective validation exercises with full business process testing, 2) Conduct comprehensive actual vs target RTO/RPO gap analysis with systematic improvement planning, 3) Establish regular cross-region failover testing with end-to-end user acceptance validation, 4) Develop automated recovery objective monitoring with real-time achievement tracking, 5) Create continuous improvement process with stakeholder feedback integration and industry benchmarking, 6) Implement recovery objective adjustment procedures based on validation results and changing business requirements"
+        "remediation": "MEDIUM PRIORITY: 1) Implement quarterly recovery objective validation exercises with full business process testing, 2) Conduct comprehensive actual vs target RTO/RPO gap analysis with systematic improvement planning, 3) Establish regular cross-region failover testing with end-to-end user acceptance validation, 4) Develop automated recovery objective monitoring with real-time achievement tracking, 5) Create continuous improvement process with stakeholder feedback integration and industry benchmarking, 6) Implement recovery objective adjustment procedures based on validation results and changing business requirements",
+        "checkType": "recoveryObjective"
       }
-    ],
-    "recoveryObjectivesVerificationMethods": {
-      "rtoRpoDocumentationTracking": [
-        "Business Continuity Management System integration: ServiceNow BCDR, Fusion Risk Management automated tracking",
-        "Document management platforms: SharePoint, Confluence with version control and approval workflows",
-        "Compliance management tools: GRC platforms with automated regulatory requirement mapping",
-        "Executive dashboards: Real-time RTO/RPO status reporting with stakeholder visibility",
-        "Automated notification systems: Alerts for documentation updates, reviews, and approvals"
-      ],
-      "infrastructureCapabilityAssessment": [
-        "Azure Site Recovery monitoring: Automated replication health and lag monitoring",
-        "Backup service validation: Azure Backup job monitoring with success rate tracking",
-        "Network failover testing: Traffic Manager and Load Balancer failover capability validation",
-        "Database replication monitoring: SQL Database geo-replication lag and synchronization tracking",
-        "Resource capacity monitoring: Azure Monitor for DR site capacity and performance validation"
-      ],
-      "businessImpactAnalysisValidation": [
-        "Financial impact modeling: Automated revenue calculation based on service availability metrics",
-        "Stakeholder engagement tracking: Meeting attendance, feedback collection, and approval workflows",
-        "Cost-benefit analysis automation: ROI calculation for different RTO/RPO investment scenarios",
-        "Risk assessment integration: Quantitative risk modeling with recovery objective correlation",
-        "Compliance impact analysis: Regulatory requirement mapping with penalty calculation automation"
-      ],
-      "serviceDependencyMapping": [
-        "Azure Service Map: Automated application dependency discovery and visualization",
-        "Application Performance Monitoring: Dynatrace, New Relic dependency tracking integration",
-        "Network topology discovery: Automated infrastructure dependency mapping and critical path analysis",
-        "Service mesh monitoring: Istio, Linkerd service interaction and dependency tracking",
-        "Configuration management integration: Ansible, Terraform dependency relationship documentation"
-      ],
-      "recoveryObjectiveValidation": [
-        "Automated failover testing: Scheduled disaster recovery testing with RTO/RPO measurement",
-        "Chaos engineering platforms: Gremlin, Chaos Monkey resilience testing with objective validation",
-        "Recovery time measurement: Automated timing of failover processes and application startup",
-        "Data recovery validation: Automated backup restore testing with integrity verification",
-        "Business process validation: User acceptance testing automation with recovery scenario simulation"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "CP-2": "Contingency Plan",
-        "CP-3": "Contingency Training",
-        "CP-4": "Contingency Plan Testing",
-        "CP-9": "Information System Backup"
-      },
-      "nist80053": {
-        "CP-2": "Contingency Plan",
-        "CP-3": "Contingency Training",
-        "CP-4": "Contingency Plan Testing",
-        "CP-9": "Information System Backup",
-        "CP-10": "Information System Recovery and Reconstitution"
-      },
-      "iso27001": {
-        "A.17.1.1": "Planning information security continuity",
-        "A.17.1.2": "Implementing information security continuity",
-        "A.17.2.1": "Availability of information processing facilities"
-      }
-    }
+    ]
   }
 }

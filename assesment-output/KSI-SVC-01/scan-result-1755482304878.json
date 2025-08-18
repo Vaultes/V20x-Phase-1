@@ -11,7 +11,66 @@
       "failed": 1,
       "warnings": 0
     },
-    "networkHardeningChecks": [
+    "networkHardeningBestPractices": {
+      "segmentation": [
+        "Implement network micro-segmentation",
+        "Use separate subnets for different tiers",
+        "Apply NSGs at subnet and NIC level",
+        "Implement application security groups",
+        "Use private endpoints for Azure services"
+      ],
+      "accessControl": [
+        "Follow principle of least privilege",
+        "Use service tags instead of IP ranges",
+        "Implement just-in-time access",
+        "Restrict management ports to specific networks",
+        "Use Azure Bastion for secure RDP/SSH access"
+      ],
+      "monitoring": [
+        "Enable NSG flow logs",
+        "Configure traffic analytics",
+        "Implement network monitoring alerts",
+        "Use Azure Network Watcher for diagnostics",
+        "Monitor for suspicious network activity"
+      ],
+      "encryption": [
+        "Enforce TLS for all communications",
+        "Use IPSec for site-to-site connections",
+        "Implement certificate-based authentication",
+        "Enable encryption in transit for all services"
+      ]
+    },
+    "complianceMapping": {
+      "fedrampControls": [
+        {
+          "control": "SC-7 (Boundary Protection)",
+          "implementation": "Network segmentation with NSGs and firewalls"
+        },
+        {
+          "control": "AC-4 (Information Flow Enforcement)",
+          "implementation": "Traffic flow control through routing and filtering"
+        },
+        {
+          "control": "SI-4 (Information System Monitoring)",
+          "implementation": "Network monitoring and logging"
+        }
+      ]
+    },
+    "detectionMethods": {
+      "azureNativeTools": [
+        "Azure Security Center network recommendations",
+        "Azure Network Watcher topology view",
+        "NSG diagnostics and flow logs",
+        "Azure Firewall analytics"
+      ],
+      "automatedScanning": [
+        "Azure Resource Graph queries for NSG rules",
+        "PowerShell scripts for rule analysis",
+        "Azure Policy for compliance validation",
+        "Third-party network scanning tools"
+      ]
+    },
+    "checks": [
       {
         "checkId": "SVC-01-001",
         "name": "Virtual Network Security Configuration",
@@ -135,7 +194,8 @@
           "networkIsolation": true,
           "trafficEncryption": true
         },
-        "remediation": "Virtual Network properly segmented and hardened"
+        "remediation": "Virtual Network properly segmented and hardened",
+        "checkType": "networkHardenin"
       },
       {
         "checkId": "SVC-01-002",
@@ -164,19 +224,35 @@
               "name": "AllowOutboundHTTPS",
               "priority": 100,
               "action": "Allow",
-              "sourceAddresses": ["10.0.0.0/16"],
-              "destinationPorts": ["443"],
-              "protocols": ["TCP"],
-              "destinationAddresses": ["*"]
+              "sourceAddresses": [
+                "10.0.0.0/16"
+              ],
+              "destinationPorts": [
+                "443"
+              ],
+              "protocols": [
+                "TCP"
+              ],
+              "destinationAddresses": [
+                "*"
+              ]
             },
             {
               "name": "AllowDNS",
               "priority": 200,
               "action": "Allow",
-              "sourceAddresses": ["10.0.0.0/16"],
-              "destinationPorts": ["53"],
-              "protocols": ["UDP"],
-              "destinationAddresses": ["168.63.129.16"]
+              "sourceAddresses": [
+                "10.0.0.0/16"
+              ],
+              "destinationPorts": [
+                "53"
+              ],
+              "protocols": [
+                "UDP"
+              ],
+              "destinationAddresses": [
+                "168.63.129.16"
+              ]
             }
           ],
           "applicationRules": [
@@ -184,8 +260,14 @@
               "name": "AllowAzureServices",
               "priority": 100,
               "action": "Allow",
-              "sourceAddresses": ["10.0.0.0/16"],
-              "targetFqdns": ["*.azure.com", "*.microsoft.com", "*.windows.net"],
+              "sourceAddresses": [
+                "10.0.0.0/16"
+              ],
+              "targetFqdns": [
+                "*.azure.com",
+                "*.microsoft.com",
+                "*.windows.net"
+              ],
               "protocols": [
                 {
                   "protocolType": "Https",
@@ -197,7 +279,11 @@
           "dnatRules": [],
           "logging": {
             "enabled": true,
-            "destinations": ["Log Analytics Workspace", "Storage Account", "Event Hub"],
+            "destinations": [
+              "Log Analytics Workspace",
+              "Storage Account",
+              "Event Hub"
+            ],
             "categories": [
               "AzureFirewallApplicationRule",
               "AzureFirewallNetworkRule",
@@ -233,10 +319,14 @@
           "tlsInspection": {
             "enabled": true,
             "certificateAuthority": "Internal CA",
-            "excludedDomains": ["*.microsoft.com", "*.azure.com"]
+            "excludedDomains": [
+              "*.microsoft.com",
+              "*.azure.com"
+            ]
           }
         },
-        "remediation": "Azure Firewall properly configured with advanced security features"
+        "remediation": "Azure Firewall properly configured with advanced security features",
+        "checkType": "networkHardenin"
       },
       {
         "checkId": "SVC-01-003",
@@ -374,7 +464,12 @@
             {
               "test": "Port scan from internet",
               "result": "VULNERABLE",
-              "portsFound": ["22", "3389", "1433", "8080"]
+              "portsFound": [
+                "22",
+                "3389",
+                "1433",
+                "8080"
+              ]
             },
             {
               "test": "RDP brute force simulation",
@@ -388,67 +483,9 @@
             }
           ]
         },
-        "remediation": "IMMEDIATE ACTION REQUIRED: 1) Remove wildcard allow rules, 2) Restrict RDP/SSH to management subnet or VPN, 3) Block database access from internet, 4) Implement application security groups, 5) Enable NSG flow logs, 6) Configure service tags for Azure services, 7) Apply principle of least privilege to all rules, 8) Conduct security review of all NSG rules"
+        "remediation": "IMMEDIATE ACTION REQUIRED: 1) Remove wildcard allow rules, 2) Restrict RDP/SSH to management subnet or VPN, 3) Block database access from internet, 4) Implement application security groups, 5) Enable NSG flow logs, 6) Configure service tags for Azure services, 7) Apply principle of least privilege to all rules, 8) Conduct security review of all NSG rules",
+        "checkType": "networkHardenin"
       }
-    ],
-    "networkHardeningBestPractices": {
-      "segmentation": [
-        "Implement network micro-segmentation",
-        "Use separate subnets for different tiers",
-        "Apply NSGs at subnet and NIC level",
-        "Implement application security groups",
-        "Use private endpoints for Azure services"
-      ],
-      "accessControl": [
-        "Follow principle of least privilege",
-        "Use service tags instead of IP ranges",
-        "Implement just-in-time access",
-        "Restrict management ports to specific networks",
-        "Use Azure Bastion for secure RDP/SSH access"
-      ],
-      "monitoring": [
-        "Enable NSG flow logs",
-        "Configure traffic analytics",
-        "Implement network monitoring alerts",
-        "Use Azure Network Watcher for diagnostics",
-        "Monitor for suspicious network activity"
-      ],
-      "encryption": [
-        "Enforce TLS for all communications",
-        "Use IPSec for site-to-site connections",
-        "Implement certificate-based authentication",
-        "Enable encryption in transit for all services"
-      ]
-    },
-    "complianceMapping": {
-      "fedrampControls": [
-        {
-          "control": "SC-7 (Boundary Protection)",
-          "implementation": "Network segmentation with NSGs and firewalls"
-        },
-        {
-          "control": "AC-4 (Information Flow Enforcement)",
-          "implementation": "Traffic flow control through routing and filtering"
-        },
-        {
-          "control": "SI-4 (Information System Monitoring)",
-          "implementation": "Network monitoring and logging"
-        }
-      ]
-    },
-    "detectionMethods": {
-      "azureNativeTools": [
-        "Azure Security Center network recommendations",
-        "Azure Network Watcher topology view",
-        "NSG diagnostics and flow logs",
-        "Azure Firewall analytics"
-      ],
-      "automatedScanning": [
-        "Azure Resource Graph queries for NSG rules",
-        "PowerShell scripts for rule analysis",
-        "Azure Policy for compliance validation",
-        "Third-party network scanning tools"
-      ]
-    }
+    ]
   }
 }

@@ -11,7 +11,68 @@
       "failed": 3,
       "warnings": 0
     },
-    "systemModificationMonitoringChecks": [
+    "systemModificationMonitoringVerificationMethods": {
+      "azureActivityLogs": [
+        "Azure Portal: Monitor > Activity Log for subscription-level changes",
+        "Azure CLI: az monitor activity-log list for activity log retrieval",
+        "Azure PowerShell: Get-AzActivityLog for change history analysis",
+        "Azure Resource Graph: Activity log queries for change tracking",
+        "Log Analytics: Kusto queries for activity log analysis and alerting"
+      ],
+      "infrastructureAsCodeTracking": [
+        "Azure DevOps: Repository history and pipeline logs for IaC changes",
+        "Git: Version control history for infrastructure template changes",
+        "Azure Resource Manager: Deployment history for template deployments",
+        "Terraform: State file history and plan logs for infrastructure changes",
+        "Azure Bicep: Template deployment logs and change tracking"
+      ],
+      "applicationAndDatabaseChanges": [
+        "Azure App Service: Deployment logs and configuration change history",
+        "Azure SQL Database: Audit logs for schema and data changes",
+        "Azure DevOps: Build and release pipeline logs for application deployments",
+        "Application Insights: Application change correlation with performance metrics",
+        "Database audit logs: SQL Server audit for comprehensive database change tracking"
+      ],
+      "containerAndKubernetesChanges": [
+        "Azure Container Registry: Image build and deployment logs",
+        "Azure Kubernetes Service: Audit logs for cluster configuration changes",
+        "Kubernetes: kubectl get events for workload change tracking",
+        "Helm: Helm history for release change tracking",
+        "Container monitoring: Docker and container runtime change logs"
+      ],
+      "networkConfigurationChanges": [
+        "Azure Network Watcher: Network topology and configuration monitoring",
+        "Azure Firewall: Rule change logs and policy modification tracking",
+        "Network Security Groups: Rule modification audit logs",
+        "Azure Load Balancer: Configuration change logging",
+        "Azure Virtual Network: Subnet and peering change tracking"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "AU-2": "Audit Events",
+        "AU-3": "Content of Audit Records",
+        "AU-6": "Audit Review, Analysis, and Reporting",
+        "AU-12": "Audit Generation",
+        "CM-3": "Configuration Change Control"
+      },
+      "nist80053": {
+        "AU-2": "Audit Events",
+        "AU-3": "Content of Audit Records",
+        "AU-6": "Audit Review, Analysis, and Reporting",
+        "AU-12": "Audit Generation",
+        "CM-3": "Configuration Change Control",
+        "CM-5": "Access Restrictions for Change"
+      },
+      "iso27001": {
+        "A.12.4.1": "Event logging",
+        "A.12.4.2": "Protection of log information",
+        "A.12.4.3": "Administrator and operator logs",
+        "A.12.1.2": "Change management",
+        "A.14.2.2": "System change control procedures"
+      }
+    },
+    "checks": [
       {
         "checkId": "CMT-01-001",
         "name": "Azure Activity Log Comprehensive Configuration",
@@ -144,7 +205,8 @@
             "details": "Real-time alerting for critical changes with comprehensive stakeholder notification"
           }
         ],
-        "remediation": "Azure Activity Log properly configured with comprehensive system modification monitoring"
+        "remediation": "Azure Activity Log properly configured with comprehensive system modification monitoring",
+        "checkType": "systemModificationMonitorin"
       },
       {
         "checkId": "CMT-01-002",
@@ -239,7 +301,8 @@
             "details": "Real-time drift detection with 97.8% configuration compliance"
           }
         ],
-        "remediation": "Infrastructure as Code change tracking properly implemented with comprehensive version control and deployment monitoring"
+        "remediation": "Infrastructure as Code change tracking properly implemented with comprehensive version control and deployment monitoring",
+        "checkType": "systemModificationMonitorin"
       },
       {
         "checkId": "CMT-01-003",
@@ -282,7 +345,13 @@
             "dataChangeAuditing": {
               "auditingEnabled": true,
               "auditLogRetention": "P2555D",
-              "auditedOperations": ["SELECT", "INSERT", "UPDATE", "DELETE", "SCHEMA_MODIFICATION"],
+              "auditedOperations": [
+                "SELECT",
+                "INSERT",
+                "UPDATE",
+                "DELETE",
+                "SCHEMA_MODIFICATION"
+              ],
               "auditLogEncryption": "TDE enabled",
               "auditLogIntegrity": "Immutable storage"
             },
@@ -328,7 +397,8 @@
             "details": "Automated multi-tier correlation with 98.2% change success rate and 12-minute MTTR"
           }
         ],
-        "remediation": "Application and database change auditing properly implemented with comprehensive tracking and correlation"
+        "remediation": "Application and database change auditing properly implemented with comprehensive tracking and correlation",
+        "checkType": "systemModificationMonitorin"
       },
       {
         "checkId": "CMT-01-004",
@@ -443,7 +513,8 @@
             "details": "Manual Helm tracking, no custom resource monitoring, limited operator lifecycle tracking"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement comprehensive container image tracking with vulnerability and provenance monitoring, 2) Deploy full Kubernetes audit logging with extended retention and central integration, 3) Establish automated deployment logging for all container workloads, 4) Implement Helm release and chart tracking automation, 5) Deploy Kubernetes operator lifecycle monitoring, 6) Establish container network and resource utilization tracking, 7) Integrate container and Kubernetes changes with central change management system"
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive container image tracking with vulnerability and provenance monitoring, 2) Deploy full Kubernetes audit logging with extended retention and central integration, 3) Establish automated deployment logging for all container workloads, 4) Implement Helm release and chart tracking automation, 5) Deploy Kubernetes operator lifecycle monitoring, 6) Establish container network and resource utilization tracking, 7) Integrate container and Kubernetes changes with central change management system",
+        "checkType": "systemModificationMonitorin"
       },
       {
         "checkId": "CMT-01-005",
@@ -551,7 +622,8 @@
             "details": "Limited DNS zone monitoring with manual certificate and domain change tracking"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive network security group change monitoring with real-time alerting, 2) Deploy automated virtual network and subnet change tracking, 3) Establish load balancer configuration change monitoring, 4) Implement Azure Firewall and Application Gateway change tracking automation, 5) Deploy DNS zone and SSL certificate change monitoring, 6) Establish network change correlation with application performance, 7) Implement automated network change approval and documentation workflows"
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive network security group change monitoring with real-time alerting, 2) Deploy automated virtual network and subnet change tracking, 3) Establish load balancer configuration change monitoring, 4) Implement Azure Firewall and Application Gateway change tracking automation, 5) Deploy DNS zone and SSL certificate change monitoring, 6) Establish network change correlation with application performance, 7) Implement automated network change approval and documentation workflows",
+        "checkType": "systemModificationMonitorin"
       },
       {
         "checkId": "CMT-01-006",
@@ -665,69 +737,9 @@
             "details": "No internal-external change correlation, limited impact analysis capabilities"
           }
         ],
-        "remediation": "LOW PRIORITY: 1) Implement comprehensive third-party service change integration with webhook and API support, 2) Deploy event-driven integration architecture for real-time change processing, 3) Establish standardized change data formatting and normalization, 4) Implement cross-system change correlation and impact analysis, 5) Deploy third-party system health and dependency monitoring, 6) Establish automated stakeholder notification workflows for external changes, 7) Implement change coordination and rollback procedures for integrated systems"
+        "remediation": "LOW PRIORITY: 1) Implement comprehensive third-party service change integration with webhook and API support, 2) Deploy event-driven integration architecture for real-time change processing, 3) Establish standardized change data formatting and normalization, 4) Implement cross-system change correlation and impact analysis, 5) Deploy third-party system health and dependency monitoring, 6) Establish automated stakeholder notification workflows for external changes, 7) Implement change coordination and rollback procedures for integrated systems",
+        "checkType": "systemModificationMonitorin"
       }
-    ],
-    "systemModificationMonitoringVerificationMethods": {
-      "azureActivityLogs": [
-        "Azure Portal: Monitor > Activity Log for subscription-level changes",
-        "Azure CLI: az monitor activity-log list for activity log retrieval",
-        "Azure PowerShell: Get-AzActivityLog for change history analysis",
-        "Azure Resource Graph: Activity log queries for change tracking",
-        "Log Analytics: Kusto queries for activity log analysis and alerting"
-      ],
-      "infrastructureAsCodeTracking": [
-        "Azure DevOps: Repository history and pipeline logs for IaC changes",
-        "Git: Version control history for infrastructure template changes",
-        "Azure Resource Manager: Deployment history for template deployments",
-        "Terraform: State file history and plan logs for infrastructure changes",
-        "Azure Bicep: Template deployment logs and change tracking"
-      ],
-      "applicationAndDatabaseChanges": [
-        "Azure App Service: Deployment logs and configuration change history",
-        "Azure SQL Database: Audit logs for schema and data changes",
-        "Azure DevOps: Build and release pipeline logs for application deployments",
-        "Application Insights: Application change correlation with performance metrics",
-        "Database audit logs: SQL Server audit for comprehensive database change tracking"
-      ],
-      "containerAndKubernetesChanges": [
-        "Azure Container Registry: Image build and deployment logs",
-        "Azure Kubernetes Service: Audit logs for cluster configuration changes",
-        "Kubernetes: kubectl get events for workload change tracking",
-        "Helm: Helm history for release change tracking",
-        "Container monitoring: Docker and container runtime change logs"
-      ],
-      "networkConfigurationChanges": [
-        "Azure Network Watcher: Network topology and configuration monitoring",
-        "Azure Firewall: Rule change logs and policy modification tracking",
-        "Network Security Groups: Rule modification audit logs",
-        "Azure Load Balancer: Configuration change logging",
-        "Azure Virtual Network: Subnet and peering change tracking"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "AU-2": "Audit Events",
-        "AU-3": "Content of Audit Records",
-        "AU-6": "Audit Review, Analysis, and Reporting",
-        "AU-12": "Audit Generation",
-        "CM-3": "Configuration Change Control"
-      },
-      "nist80053": {
-        "AU-2": "Audit Events",
-        "AU-3": "Content of Audit Records",
-        "AU-6": "Audit Review, Analysis, and Reporting",
-        "AU-12": "Audit Generation",
-        "CM-3": "Configuration Change Control",
-        "CM-5": "Access Restrictions for Change"
-      },
-      "iso27001": {
-        "A.12.4.1": "Event logging",
-        "A.12.4.2": "Protection of log information",
-        "A.12.4.3": "Administrator and operator logs",
-        "A.12.1.2": "Change management",
-        "A.14.2.2": "System change control procedures"
-      }
-    }
+    ]
   }
 }

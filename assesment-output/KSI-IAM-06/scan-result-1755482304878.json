@@ -11,7 +11,87 @@
       "failed": 5,
       "warnings": 0
     },
-    "suspiciousBehaviorAccountDisablingChecks": [
+    "suspiciousBehaviorAccountDisablingBestPractices": {
+      "automatedDetection": [
+        "Deploy comprehensive user and entity behavior analytics",
+        "Implement machine learning-based anomaly detection",
+        "Use risk-based authentication and conditional access",
+        "Integrate multiple threat intelligence sources",
+        "Establish baseline behaviors for all account types"
+      ],
+      "automatedResponse": [
+        "Configure automatic account disabling for high-risk behaviors",
+        "Implement graduated response based on risk levels",
+        "Use orchestrated multi-system account management",
+        "Deploy just-in-time access for investigation activities",
+        "Establish emergency break-glass procedures"
+      ],
+      "investigation": [
+        "Implement comprehensive forensic data collection",
+        "Deploy automated investigation and correlation tools",
+        "Establish chain of custody procedures",
+        "Create standardized investigation workflows",
+        "Maintain detailed audit trails and evidence"
+      ],
+      "incidentResponse": [
+        "Integrate account incidents into formal response procedures",
+        "Establish cross-functional response teams",
+        "Implement automated containment and eradication",
+        "Create account-specific incident response playbooks",
+        "Conduct regular incident response exercises"
+      ]
+    },
+    "suspiciousBehaviorVerificationMethods": {
+      "identityProtection": [
+        "Azure Portal: Azure AD > Security > Identity Protection",
+        "Get-AzureADMSRiskDetection",
+        "Microsoft Graph API: /identityProtection/riskDetections",
+        "Azure AD PowerShell: Get-AzureADMSIdentityProtectionPolicy"
+      ],
+      "behaviorAnalytics": [
+        "Azure Portal: Azure Sentinel > User and Entity Behavior Analytics",
+        "Microsoft Cloud App Security admin center",
+        "Azure Monitor: Log Analytics workspace",
+        "Microsoft 365 Security Center: Advanced hunting"
+      ],
+      "automatedResponse": [
+        "Azure Portal: Azure AD > Conditional Access",
+        "Azure Logic Apps for response orchestration",
+        "Azure Automation for account management",
+        "Microsoft Graph API: /users/{id}/revokeSignInSessions"
+      ],
+      "incidentResponse": [
+        "Azure Portal: Microsoft 365 Security Center > Incidents",
+        "Azure Sentinel: Incident management",
+        "Azure Resource Manager: Activity logs",
+        "Microsoft Graph API: /security/incidents"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "AC-2": "Account Management",
+        "AU-6": "Audit Review, Analysis, and Reporting",
+        "IR-4": "Incident Handling",
+        "IR-5": "Incident Monitoring",
+        "SI-4": "Information System Monitoring"
+      },
+      "nist80053": {
+        "AC-2": "Account Management",
+        "AU-6": "Audit Review, Analysis, and Reporting",
+        "IR-4": "Incident Handling",
+        "IR-5": "Incident Monitoring",
+        "SI-4": "Information System Monitoring",
+        "RA-5": "Vulnerability Scanning"
+      },
+      "iso27001": {
+        "A.12.6.1": "Management of technical vulnerabilities",
+        "A.16.1.2": "Reporting information security events",
+        "A.16.1.4": "Assessment of and decision on information security events",
+        "A.16.1.5": "Response to information security incidents",
+        "A.16.1.7": "Collection of evidence"
+      }
+    },
+    "checks": [
       {
         "checkId": "IAM-06-001",
         "name": "Automated Risk-Based Account Protection",
@@ -156,7 +236,8 @@
             "details": "Full integration with Defender for Identity, Cloud App Security, and Sentinel"
           }
         ],
-        "remediation": "Identity Protection properly configured with automated risk-based responses"
+        "remediation": "Identity Protection properly configured with automated risk-based responses",
+        "checkType": "suspiciousBehaviorAccountDisablin"
       },
       {
         "checkId": "IAM-06-002",
@@ -299,7 +380,8 @@
             "details": "Multi-tier response with 23 automated playbooks and forensic collection"
           }
         ],
-        "remediation": "Behavioral analytics and anomaly detection properly implemented with comprehensive automation"
+        "remediation": "Behavioral analytics and anomaly detection properly implemented with comprehensive automation",
+        "checkType": "suspiciousBehaviorAccountDisablin"
       },
       {
         "checkId": "IAM-06-003",
@@ -425,7 +507,8 @@
             "details": "Only 23% of alerts actionable, manual investigation processes"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Expand monitoring coverage to include all high-risk activities, 2) Implement machine learning-based detection with adaptive baselines, 3) Integrate comprehensive threat intelligence feeds, 4) Deploy automated investigation and response capabilities, 5) Establish 24x7 security operations center, 6) Implement alert quality improvement and false positive reduction programs"
+        "remediation": "HIGH PRIORITY: 1) Expand monitoring coverage to include all high-risk activities, 2) Implement machine learning-based detection with adaptive baselines, 3) Integrate comprehensive threat intelligence feeds, 4) Deploy automated investigation and response capabilities, 5) Establish 24x7 security operations center, 6) Implement alert quality improvement and false positive reduction programs",
+        "checkType": "suspiciousBehaviorAccountDisablin"
       },
       {
         "checkId": "IAM-06-004",
@@ -547,7 +630,8 @@
             "details": "Manual coordination across multiple systems with dependency gaps"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement automated account disabling workflows across all systems, 2) Deploy orchestrated multi-system account management, 3) Establish real-time monitoring and alerting for account status changes, 4) Create standardized procedures with complete audit trails, 5) Implement 24x7 automated response capabilities, 6) Deploy risk-based automatic account disabling, 7) Establish comprehensive governance and compliance tracking"
+        "remediation": "HIGH PRIORITY: 1) Implement automated account disabling workflows across all systems, 2) Deploy orchestrated multi-system account management, 3) Establish real-time monitoring and alerting for account status changes, 4) Create standardized procedures with complete audit trails, 5) Implement 24x7 automated response capabilities, 6) Deploy risk-based automatic account disabling, 7) Establish comprehensive governance and compliance tracking",
+        "checkType": "suspiciousBehaviorAccountDisablin"
       },
       {
         "checkId": "IAM-06-005",
@@ -685,7 +769,8 @@
             "details": "Basic compromised credential feeds without risk scoring integration"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Deploy comprehensive threat intelligence platform with automated processing, 2) Integrate threat intelligence into real-time security controls and account risk scoring, 3) Establish industry and government threat intelligence sharing partnerships, 4) Implement predictive analytics for threat forecasting, 5) Develop threat-informed automated response capabilities, 6) Establish proactive threat hunting based on intelligence, 7) Create strategic threat intelligence program for business risk assessment"
+        "remediation": "MEDIUM PRIORITY: 1) Deploy comprehensive threat intelligence platform with automated processing, 2) Integrate threat intelligence into real-time security controls and account risk scoring, 3) Establish industry and government threat intelligence sharing partnerships, 4) Implement predictive analytics for threat forecasting, 5) Develop threat-informed automated response capabilities, 6) Establish proactive threat hunting based on intelligence, 7) Create strategic threat intelligence program for business risk assessment",
+        "checkType": "suspiciousBehaviorAccountDisablin"
       },
       {
         "checkId": "IAM-06-006",
@@ -836,7 +921,8 @@
             "details": "No commercial forensic tools and informal evidence documentation"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Deploy comprehensive log management with long-term retention and tamper-proof storage, 2) Implement commercial forensic analysis tools and automation, 3) Establish standardized investigation workflows and case management, 4) Train and certify forensic investigators with specialized skills, 5) Implement chain of custody procedures and evidence integrity controls, 6) Establish legal admissibility standards and compliance documentation, 7) Deploy advanced analytics and machine learning for automated investigation assistance"
+        "remediation": "MEDIUM PRIORITY: 1) Deploy comprehensive log management with long-term retention and tamper-proof storage, 2) Implement commercial forensic analysis tools and automation, 3) Establish standardized investigation workflows and case management, 4) Train and certify forensic investigators with specialized skills, 5) Implement chain of custody procedures and evidence integrity controls, 6) Establish legal admissibility standards and compliance documentation, 7) Deploy advanced analytics and machine learning for automated investigation assistance",
+        "checkType": "suspiciousBehaviorAccountDisablin"
       },
       {
         "checkId": "IAM-06-007",
@@ -985,88 +1071,9 @@
             "details": "Basic post-incident analysis without systematic improvement tracking"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Integrate account security incidents into formal incident response procedures, 2) Implement automated incident classification and escalation workflows, 3) Establish cross-functional incident response teams with defined roles, 4) Deploy automated containment and eradication capabilities, 5) Implement comprehensive incident response metrics and performance tracking, 6) Establish systematic lessons learned and continuous improvement processes, 7) Create incident response playbooks specific to account compromise scenarios"
+        "remediation": "MEDIUM PRIORITY: 1) Integrate account security incidents into formal incident response procedures, 2) Implement automated incident classification and escalation workflows, 3) Establish cross-functional incident response teams with defined roles, 4) Deploy automated containment and eradication capabilities, 5) Implement comprehensive incident response metrics and performance tracking, 6) Establish systematic lessons learned and continuous improvement processes, 7) Create incident response playbooks specific to account compromise scenarios",
+        "checkType": "suspiciousBehaviorAccountDisablin"
       }
-    ],
-    "suspiciousBehaviorAccountDisablingBestPractices": {
-      "automatedDetection": [
-        "Deploy comprehensive user and entity behavior analytics",
-        "Implement machine learning-based anomaly detection",
-        "Use risk-based authentication and conditional access",
-        "Integrate multiple threat intelligence sources",
-        "Establish baseline behaviors for all account types"
-      ],
-      "automatedResponse": [
-        "Configure automatic account disabling for high-risk behaviors",
-        "Implement graduated response based on risk levels",
-        "Use orchestrated multi-system account management",
-        "Deploy just-in-time access for investigation activities",
-        "Establish emergency break-glass procedures"
-      ],
-      "investigation": [
-        "Implement comprehensive forensic data collection",
-        "Deploy automated investigation and correlation tools",
-        "Establish chain of custody procedures",
-        "Create standardized investigation workflows",
-        "Maintain detailed audit trails and evidence"
-      ],
-      "incidentResponse": [
-        "Integrate account incidents into formal response procedures",
-        "Establish cross-functional response teams",
-        "Implement automated containment and eradication",
-        "Create account-specific incident response playbooks",
-        "Conduct regular incident response exercises"
-      ]
-    },
-    "suspiciousBehaviorVerificationMethods": {
-      "identityProtection": [
-        "Azure Portal: Azure AD > Security > Identity Protection",
-        "Get-AzureADMSRiskDetection",
-        "Microsoft Graph API: /identityProtection/riskDetections",
-        "Azure AD PowerShell: Get-AzureADMSIdentityProtectionPolicy"
-      ],
-      "behaviorAnalytics": [
-        "Azure Portal: Azure Sentinel > User and Entity Behavior Analytics",
-        "Microsoft Cloud App Security admin center",
-        "Azure Monitor: Log Analytics workspace",
-        "Microsoft 365 Security Center: Advanced hunting"
-      ],
-      "automatedResponse": [
-        "Azure Portal: Azure AD > Conditional Access",
-        "Azure Logic Apps for response orchestration",
-        "Azure Automation for account management",
-        "Microsoft Graph API: /users/{id}/revokeSignInSessions"
-      ],
-      "incidentResponse": [
-        "Azure Portal: Microsoft 365 Security Center > Incidents",
-        "Azure Sentinel: Incident management",
-        "Azure Resource Manager: Activity logs",
-        "Microsoft Graph API: /security/incidents"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "AC-2": "Account Management",
-        "AU-6": "Audit Review, Analysis, and Reporting",
-        "IR-4": "Incident Handling",
-        "IR-5": "Incident Monitoring",
-        "SI-4": "Information System Monitoring"
-      },
-      "nist80053": {
-        "AC-2": "Account Management",
-        "AU-6": "Audit Review, Analysis, and Reporting",
-        "IR-4": "Incident Handling",
-        "IR-5": "Incident Monitoring",
-        "SI-4": "Information System Monitoring",
-        "RA-5": "Vulnerability Scanning"
-      },
-      "iso27001": {
-        "A.12.6.1": "Management of technical vulnerabilities",
-        "A.16.1.2": "Reporting information security events",
-        "A.16.1.4": "Assessment of and decision on information security events",
-        "A.16.1.5": "Response to information security incidents",
-        "A.16.1.7": "Collection of evidence"
-      }
-    }
+    ]
   }
 }

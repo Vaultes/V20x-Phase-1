@@ -11,7 +11,23 @@
       "failed": 4,
       "warnings": 0
     },
-    "logReviewAuditChecks": [
+    "complianceFrameworks": {
+      "fedramp": {
+        "AU-6": "Audit and Accountability - Audit Review, Analysis, and Reporting",
+        "AU-7": "Audit and Accountability - Audit Reduction and Report Generation"
+      },
+      "nist80053": {
+        "AU-6": "Audit and Accountability - Audit Review, Analysis, and Reporting",
+        "AU-7": "Audit and Accountability - Audit Reduction and Report Generation",
+        "CA-7": "Continuous Monitoring"
+      },
+      "iso27001": {
+        "A.12.4.1": "Event logging",
+        "A.12.4.3": "Administrator and operator logs",
+        "A.16.1.4": "Assessment of and decision on information security events"
+      }
+    },
+    "checks": [
       {
         "checkId": "MLA-02-001",
         "name": "Automated Log Analysis and Review Workflows",
@@ -53,7 +69,8 @@
             "details": "342 active rules with 94.3% analysis accuracy and < 30 second latency"
           }
         ],
-        "remediation": "Automated log analysis and review workflows properly implemented and optimized"
+        "remediation": "Automated log analysis and review workflows properly implemented and optimized",
+        "checkType": "logReviewAudi"
       },
       {
         "checkId": "MLA-02-002",
@@ -86,7 +103,8 @@
             "details": "98.7% completion rate with comprehensive scope coverage"
           }
         ],
-        "remediation": "Scheduled audit review processes properly implemented with qualified personnel"
+        "remediation": "Scheduled audit review processes properly implemented with qualified personnel",
+        "checkType": "logReviewAudi"
       },
       {
         "checkId": "MLA-02-003",
@@ -121,7 +139,8 @@
             "details": "23 legacy systems and 45 applications with inadequate review coverage"
           }
         ],
-        "remediation": "HIGH PRIORITY: Increase audit staff and provide advanced threat analysis training"
+        "remediation": "HIGH PRIORITY: Increase audit staff and provide advanced threat analysis training",
+        "checkType": "logReviewAudi"
       },
       {
         "checkId": "MLA-02-004",
@@ -145,7 +164,8 @@
             "details": "Average 3.3-day detection time with up to 7-day comprehensive analysis"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: Implement automated triage and prioritization systems"
+        "remediation": "MEDIUM PRIORITY: Implement automated triage and prioritization systems",
+        "checkType": "logReviewAudi"
       },
       {
         "checkId": "MLA-02-005",
@@ -169,7 +189,8 @@
             "details": "45% of reviews lack full documentation with missing evidence links"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: Implement standardized documentation templates and procedures"
+        "remediation": "MEDIUM PRIORITY: Implement standardized documentation templates and procedures",
+        "checkType": "logReviewAudi"
       },
       {
         "checkId": "MLA-02-006",
@@ -193,24 +214,9 @@
             "details": "Only 90-day retention with basic volume trends and no seasonal analysis"
           }
         ],
-        "remediation": "LOW PRIORITY: Implement comprehensive business intelligence platform for advanced analytics"
+        "remediation": "LOW PRIORITY: Implement comprehensive business intelligence platform for advanced analytics",
+        "checkType": "logReviewAudi"
       }
-    ],
-    "complianceFrameworks": {
-      "fedramp": {
-        "AU-6": "Audit and Accountability - Audit Review, Analysis, and Reporting",
-        "AU-7": "Audit and Accountability - Audit Reduction and Report Generation"
-      },
-      "nist80053": {
-        "AU-6": "Audit and Accountability - Audit Review, Analysis, and Reporting",
-        "AU-7": "Audit and Accountability - Audit Reduction and Report Generation",
-        "CA-7": "Continuous Monitoring"
-      },
-      "iso27001": {
-        "A.12.4.1": "Event logging",
-        "A.12.4.3": "Administrator and operator logs",
-        "A.16.1.4": "Assessment of and decision on information security events"
-      }
-    }
+    ]
   }
 }

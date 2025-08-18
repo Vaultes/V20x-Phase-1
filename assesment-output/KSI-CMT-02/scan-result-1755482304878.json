@@ -11,7 +11,67 @@
       "failed": 3,
       "warnings": 0
     },
-    "immutableInfrastructureChecks": [
+    "immutableInfrastructureVerificationMethods": {
+      "infrastructureAsCode": [
+        "Azure Portal: Resource Manager > Deployments for IaC deployment history",
+        "Azure CLI: az deployment group list for deployment tracking",
+        "Git: Repository history for infrastructure template version control",
+        "Azure DevOps: Pipeline logs for automated deployment validation",
+        "Terraform: terraform plan/apply logs for infrastructure immutability"
+      ],
+      "containerImmutability": [
+        "Azure Container Registry: Image repositories for immutable image tracking",
+        "Docker: docker history for container image layer analysis",
+        "Kubernetes: kubectl describe for deployment immutability validation",
+        "Azure Security Center: Container security recommendations",
+        "Container scanning tools: Vulnerability and compliance scanning results"
+      ],
+      "applicationDeployment": [
+        "Azure App Service: Deployment slots for blue-green deployment validation",
+        "Azure DevOps: Release pipelines for deployment automation tracking",
+        "Application Insights: Deployment annotation and performance correlation",
+        "Azure Traffic Manager: Traffic routing for canary deployment validation",
+        "Azure Monitor: Application health and performance monitoring"
+      ],
+      "databaseMigrations": [
+        "Entity Framework: Migration history for database schema versioning",
+        "Azure SQL Database: Query Store for migration performance tracking",
+        "Database audit logs: Schema change tracking and validation",
+        "Azure DevOps: Pipeline logs for automated migration deployment",
+        "Database backup validation: Pre and post-migration backup verification"
+      ],
+      "configurationManagement": [
+        "Azure App Configuration: Configuration change history and versioning",
+        "Azure Key Vault: Secrets and certificate management audit logs",
+        "PowerShell DSC: Desired State Configuration compliance reports",
+        "Ansible: Playbook execution logs for configuration automation",
+        "Azure Policy: Configuration compliance and drift detection reports"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "CM-2": "Baseline Configuration",
+        "CM-3": "Configuration Change Control",
+        "CM-5": "Access Restrictions for Change",
+        "CM-6": "Configuration Settings",
+        "SI-2": "Flaw Remediation"
+      },
+      "nist80053": {
+        "CM-2": "Baseline Configuration",
+        "CM-3": "Configuration Change Control",
+        "CM-5": "Access Restrictions for Change",
+        "CM-6": "Configuration Settings",
+        "SI-2": "Flaw Remediation",
+        "SA-10": "Developer Configuration Management"
+      },
+      "iso27001": {
+        "A.12.1.2": "Change management",
+        "A.12.1.4": "Separation of development, testing and operational environments",
+        "A.14.2.2": "System change control procedures",
+        "A.14.2.3": "Technical review of applications after operating platform changes"
+      }
+    },
+    "checks": [
       {
         "checkId": "CMT-02-001",
         "name": "Infrastructure as Code Immutable Deployment",
@@ -113,7 +173,8 @@
             "details": "Multi-pipeline automation with comprehensive testing and automated rollback capabilities"
           }
         ],
-        "remediation": "Infrastructure as Code immutable deployment properly implemented with comprehensive automation"
+        "remediation": "Infrastructure as Code immutable deployment properly implemented with comprehensive automation",
+        "checkType": "immutableInfrastructur"
       },
       {
         "checkId": "CMT-02-002",
@@ -196,7 +257,8 @@
             "details": "Rolling updates with immutable images, restricted pod security standards, and admission control"
           }
         ],
-        "remediation": "Container image immutability properly implemented with comprehensive security and deployment controls"
+        "remediation": "Container image immutability properly implemented with comprehensive security and deployment controls",
+        "checkType": "immutableInfrastructur"
       },
       {
         "checkId": "CMT-02-003",
@@ -296,7 +358,8 @@
             "details": "Real-time monitoring with automatic rollback triggers and comprehensive alerting"
           }
         ],
-        "remediation": "Application deployment immutability properly implemented with advanced deployment patterns and monitoring"
+        "remediation": "Application deployment immutability properly implemented with advanced deployment patterns and monitoring",
+        "checkType": "immutableInfrastructur"
       },
       {
         "checkId": "CMT-02-004",
@@ -405,7 +468,8 @@
             "details": "Comprehensive testing with automated backups, integrity checks, and rollback capabilities"
           }
         ],
-        "remediation": "Database schema immutability properly implemented with comprehensive migration management and safety controls"
+        "remediation": "Database schema immutability properly implemented with comprehensive migration management and safety controls",
+        "checkType": "immutableInfrastructur"
       },
       {
         "checkId": "CMT-02-005",
@@ -516,7 +580,8 @@
             "details": "28 servers with security drift, 23 unpached systems, 15 insecure configurations"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement comprehensive golden image strategy with automated image creation and versioning, 2) Deploy configuration management tools (PowerShell DSC, Ansible) for automated configuration, 3) Eliminate direct server modifications through policy and access controls, 4) Establish immutable server deployment patterns with Infrastructure as Code, 5) Implement comprehensive configuration drift detection and remediation, 6) Establish automated server lifecycle management with CI/CD integration, 7) Deploy server configuration baselines with automated compliance validation"
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive golden image strategy with automated image creation and versioning, 2) Deploy configuration management tools (PowerShell DSC, Ansible) for automated configuration, 3) Eliminate direct server modifications through policy and access controls, 4) Establish immutable server deployment patterns with Infrastructure as Code, 5) Implement comprehensive configuration drift detection and remediation, 6) Establish automated server lifecycle management with CI/CD integration, 7) Deploy server configuration baselines with automated compliance validation",
+        "checkType": "immutableInfrastructur"
       },
       {
         "checkId": "CMT-02-006",
@@ -619,7 +684,8 @@
             "details": "12 applications with hardcoded secrets, 8 with plaintext passwords, limited Key Vault usage"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive external configuration management with Azure App Configuration, 2) Eliminate in-place configuration modifications through policy and process controls, 3) Deploy Azure Key Vault integration for all secrets and sensitive data, 4) Establish configuration versioning and approval workflows, 5) Implement environment-specific configuration isolation and promotion, 6) Deploy configuration drift detection and validation automation, 7) Establish configuration change monitoring and alerting capabilities"
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive external configuration management with Azure App Configuration, 2) Eliminate in-place configuration modifications through policy and process controls, 3) Deploy Azure Key Vault integration for all secrets and sensitive data, 4) Establish configuration versioning and approval workflows, 5) Implement environment-specific configuration isolation and promotion, 6) Deploy configuration drift detection and validation automation, 7) Establish configuration change monitoring and alerting capabilities",
+        "checkType": "immutableInfrastructur"
       },
       {
         "checkId": "CMT-02-007",
@@ -725,68 +791,9 @@
             "details": "Manual progress tracking, basic health validation, limited post-rollback validation"
           }
         ],
-        "remediation": "LOW PRIORITY: 1) Implement comprehensive automated rollback capabilities for all infrastructure deployments, 2) Establish systematic rollback testing procedures with comprehensive scenario coverage, 3) Deploy blue-green infrastructure patterns for instant rollback capabilities, 4) Implement comprehensive rollback monitoring and validation automation, 5) Establish formal rollback decision frameworks and approval processes, 6) Deploy rollback performance and integrity validation automation, 7) Implement rollback metrics collection and process improvement programs"
+        "remediation": "LOW PRIORITY: 1) Implement comprehensive automated rollback capabilities for all infrastructure deployments, 2) Establish systematic rollback testing procedures with comprehensive scenario coverage, 3) Deploy blue-green infrastructure patterns for instant rollback capabilities, 4) Implement comprehensive rollback monitoring and validation automation, 5) Establish formal rollback decision frameworks and approval processes, 6) Deploy rollback performance and integrity validation automation, 7) Implement rollback metrics collection and process improvement programs",
+        "checkType": "immutableInfrastructur"
       }
-    ],
-    "immutableInfrastructureVerificationMethods": {
-      "infrastructureAsCode": [
-        "Azure Portal: Resource Manager > Deployments for IaC deployment history",
-        "Azure CLI: az deployment group list for deployment tracking",
-        "Git: Repository history for infrastructure template version control",
-        "Azure DevOps: Pipeline logs for automated deployment validation",
-        "Terraform: terraform plan/apply logs for infrastructure immutability"
-      ],
-      "containerImmutability": [
-        "Azure Container Registry: Image repositories for immutable image tracking",
-        "Docker: docker history for container image layer analysis",
-        "Kubernetes: kubectl describe for deployment immutability validation",
-        "Azure Security Center: Container security recommendations",
-        "Container scanning tools: Vulnerability and compliance scanning results"
-      ],
-      "applicationDeployment": [
-        "Azure App Service: Deployment slots for blue-green deployment validation",
-        "Azure DevOps: Release pipelines for deployment automation tracking",
-        "Application Insights: Deployment annotation and performance correlation",
-        "Azure Traffic Manager: Traffic routing for canary deployment validation",
-        "Azure Monitor: Application health and performance monitoring"
-      ],
-      "databaseMigrations": [
-        "Entity Framework: Migration history for database schema versioning",
-        "Azure SQL Database: Query Store for migration performance tracking",
-        "Database audit logs: Schema change tracking and validation",
-        "Azure DevOps: Pipeline logs for automated migration deployment",
-        "Database backup validation: Pre and post-migration backup verification"
-      ],
-      "configurationManagement": [
-        "Azure App Configuration: Configuration change history and versioning",
-        "Azure Key Vault: Secrets and certificate management audit logs",
-        "PowerShell DSC: Desired State Configuration compliance reports",
-        "Ansible: Playbook execution logs for configuration automation",
-        "Azure Policy: Configuration compliance and drift detection reports"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "CM-2": "Baseline Configuration",
-        "CM-3": "Configuration Change Control",
-        "CM-5": "Access Restrictions for Change",
-        "CM-6": "Configuration Settings",
-        "SI-2": "Flaw Remediation"
-      },
-      "nist80053": {
-        "CM-2": "Baseline Configuration",
-        "CM-3": "Configuration Change Control",
-        "CM-5": "Access Restrictions for Change",
-        "CM-6": "Configuration Settings",
-        "SI-2": "Flaw Remediation",
-        "SA-10": "Developer Configuration Management"
-      },
-      "iso27001": {
-        "A.12.1.2": "Change management",
-        "A.12.1.4": "Separation of development, testing and operational environments",
-        "A.14.2.2": "System change control procedures",
-        "A.14.2.3": "Technical review of applications after operating platform changes"
-      }
-    }
+    ]
   }
 }

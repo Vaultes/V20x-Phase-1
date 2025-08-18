@@ -11,7 +11,61 @@
       "failed": 4,
       "warnings": 0
     },
-    "recoveryTestingChecks": [
+    "recoveryTestingVerificationMethods": {
+      "testingScheduleManagement": [
+        "Microsoft Project integration: Automated testing schedule management with resource allocation and dependency tracking",
+        "Azure DevOps pipeline automation: Scheduled recovery testing with automated execution and stakeholder notification",
+        "ServiceNow change management: Integrated testing schedule with change control and approval workflows",
+        "Calendar integration platforms: Business calendar alignment with maintenance window coordination and conflict avoidance",
+        "Risk management platforms: Risk-based testing prioritization with dynamic schedule adjustment based on threat landscape"
+      ],
+      "testEnvironmentAutomation": [
+        "Terraform infrastructure automation: Automated test environment provisioning with production-like configuration",
+        "Azure Resource Manager templates: Standardized environment deployment with configuration drift detection",
+        "PowerShell DSC: Configuration management automation with validation and compliance checking",
+        "Docker containerization: Isolated testing environments with rapid provisioning and cleanup capabilities",
+        "Kubernetes orchestration: Scalable test environment management with resource optimization and lifecycle automation"
+      ],
+      "testingScopeAndCoverage": [
+        "Test case management platforms: Comprehensive test scenario documentation with coverage analysis and gap identification",
+        "Business process modeling tools: End-to-end workflow validation with dependency mapping and integration testing",
+        "Risk assessment platforms: Risk-based testing prioritization with scenario likelihood and impact analysis",
+        "Dependency mapping tools: System interdependency visualization with cascade failure simulation and testing",
+        "Compliance validation frameworks: Regulatory requirement testing with automated evidence collection and reporting"
+      ],
+      "testAutomationPlatforms": [
+        "Azure Automation runbooks: Automated test execution with orchestration and exception handling",
+        "PowerShell scripting automation: Custom test automation with dynamic parameter management and validation",
+        "Azure Logic Apps: Workflow automation for complex test scenarios with conditional logic and integration",
+        "GitHub Actions: CI/CD pipeline integration for automated testing with version control and rollback capabilities",
+        "Jenkins automation: Build pipeline integration with test execution and result analysis automation"
+      ],
+      "performanceValidationTools": [
+        "Azure Application Insights: Performance monitoring with baseline comparison and anomaly detection",
+        "Load testing platforms: JMeter, LoadRunner integration for performance validation during and post-recovery",
+        "Database performance tools: SQL performance monitoring with query analysis and optimization recommendations",
+        "Network monitoring solutions: Network performance validation with latency and throughput measurement",
+        "User experience monitoring: Synthetic transaction monitoring with real user experience simulation and validation"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "CP-4": "Contingency Plan Testing",
+        "CP-3": "Contingency Training",
+        "CP-2": "Contingency Plan"
+      },
+      "nist80053": {
+        "CP-4": "Contingency Plan Testing",
+        "CP-3": "Contingency Training",
+        "CP-2": "Contingency Plan",
+        "AU-6": "Audit Review, Analysis, and Reporting"
+      },
+      "iso27001": {
+        "A.17.1.3": "Verify, review and evaluate information security continuity",
+        "A.17.2.1": "Availability of information processing facilities"
+      }
+    },
+    "checks": [
       {
         "checkId": "RPL-04-001",
         "name": "Recovery Testing Schedule and Frequency",
@@ -92,7 +146,8 @@
             "details": "Board-approved policy with ISO 22301 alignment and established oversight committee"
           }
         ],
-        "remediation": "Recovery testing schedule comprehensively implemented with strong governance and business alignment"
+        "remediation": "Recovery testing schedule comprehensively implemented with strong governance and business alignment",
+        "checkType": "recoveryTestin"
       },
       {
         "checkId": "RPL-04-002",
@@ -161,7 +216,8 @@
             "details": "Comprehensive pre/post test validation with automated cleanup and readiness verification"
           }
         ],
-        "remediation": "Recovery testing environments comprehensively managed with production-like accuracy and automated lifecycle management"
+        "remediation": "Recovery testing environments comprehensively managed with production-like accuracy and automated lifecycle management",
+        "checkType": "recoveryTestin"
       },
       {
         "checkId": "RPL-04-003",
@@ -232,7 +288,8 @@
             "details": "Manual verification only with limited integration testing and no third-party validation"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Achieve 100% critical system and business process testing coverage with comprehensive scenario validation, 2) Implement diverse recovery scenario testing including data corruption, security incidents, and cascading failures, 3) Establish comprehensive dependency testing for systems, vendors, networks, and cross-functional interfaces, 4) Integrate performance and scalability testing during and post-recovery with load and constraint validation, 5) Develop automated end-to-end workflow testing with user experience and compliance validation, 6) Create detailed testing documentation with systematic lessons learned capture and improvement recommendations"
+        "remediation": "HIGH PRIORITY: 1) Achieve 100% critical system and business process testing coverage with comprehensive scenario validation, 2) Implement diverse recovery scenario testing including data corruption, security incidents, and cascading failures, 3) Establish comprehensive dependency testing for systems, vendors, networks, and cross-functional interfaces, 4) Integrate performance and scalability testing during and post-recovery with load and constraint validation, 5) Develop automated end-to-end workflow testing with user experience and compliance validation, 6) Create detailed testing documentation with systematic lessons learned capture and improvement recommendations",
+        "checkType": "recoveryTestin"
       },
       {
         "checkId": "RPL-04-004",
@@ -301,7 +358,8 @@
             "details": "No automated optimization recommendations or coverage analysis capabilities"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Increase recovery testing automation coverage to 85% with comprehensive test case automation and orchestration, 2) Implement advanced test workflow orchestration with parallel execution and dependency management, 3) Establish automated test data management with dynamic generation and versioning capabilities, 4) Deploy automated test result analysis with trend analysis and root cause analysis capabilities, 5) Create comprehensive test environment automation with optimization and reuse capabilities, 6) Develop continuous improvement automation with optimization recommendations and coverage analysis"
+        "remediation": "MEDIUM PRIORITY: 1) Increase recovery testing automation coverage to 85% with comprehensive test case automation and orchestration, 2) Implement advanced test workflow orchestration with parallel execution and dependency management, 3) Establish automated test data management with dynamic generation and versioning capabilities, 4) Deploy automated test result analysis with trend analysis and root cause analysis capabilities, 5) Create comprehensive test environment automation with optimization and reuse capabilities, 6) Develop continuous improvement automation with optimization recommendations and coverage analysis",
+        "checkType": "recoveryTestin"
       },
       {
         "checkId": "RPL-04-005",
@@ -370,7 +428,8 @@
             "details": "No business process performance validation or customer experience impact measurement"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Establish comprehensive RTO/RPO performance validation with accuracy measurement and baseline comparison, 2) Implement systematic system performance validation including application, database, network, and storage assessment, 3) Deploy load and stress testing capabilities during and post-recovery with scalability validation, 4) Create real-time performance monitoring with anomaly detection and trend analysis capabilities, 5) Develop performance comparison and regression analysis with optimization recommendations, 6) Establish business performance validation including workflow assessment and customer experience impact measurement"
+        "remediation": "MEDIUM PRIORITY: 1) Establish comprehensive RTO/RPO performance validation with accuracy measurement and baseline comparison, 2) Implement systematic system performance validation including application, database, network, and storage assessment, 3) Deploy load and stress testing capabilities during and post-recovery with scalability validation, 4) Create real-time performance monitoring with anomaly detection and trend analysis capabilities, 5) Develop performance comparison and regression analysis with optimization recommendations, 6) Establish business performance validation including workflow assessment and customer experience impact measurement",
+        "checkType": "recoveryTestin"
       },
       {
         "checkId": "RPL-04-006",
@@ -439,62 +498,9 @@
             "details": "No knowledge base establishment with limited knowledge sharing and systematic improvement tracking"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Achieve 100% testing documentation completeness with detailed procedures and systematic lessons learned capture, 2) Implement automated test reporting with executive dashboards and stakeholder customization, 3) Establish comprehensive issue tracking with root cause analysis and corrective action validation, 4) Create testing knowledge base with expertise capture and training material maintenance, 5) Develop automated compliance reporting with audit trail maintenance and regulatory documentation, 6) Implement systematic continuous improvement documentation with opportunity tracking and effectiveness measurement"
+        "remediation": "MEDIUM PRIORITY: 1) Achieve 100% testing documentation completeness with detailed procedures and systematic lessons learned capture, 2) Implement automated test reporting with executive dashboards and stakeholder customization, 3) Establish comprehensive issue tracking with root cause analysis and corrective action validation, 4) Create testing knowledge base with expertise capture and training material maintenance, 5) Develop automated compliance reporting with audit trail maintenance and regulatory documentation, 6) Implement systematic continuous improvement documentation with opportunity tracking and effectiveness measurement",
+        "checkType": "recoveryTestin"
       }
-    ],
-    "recoveryTestingVerificationMethods": {
-      "testingScheduleManagement": [
-        "Microsoft Project integration: Automated testing schedule management with resource allocation and dependency tracking",
-        "Azure DevOps pipeline automation: Scheduled recovery testing with automated execution and stakeholder notification",
-        "ServiceNow change management: Integrated testing schedule with change control and approval workflows",
-        "Calendar integration platforms: Business calendar alignment with maintenance window coordination and conflict avoidance",
-        "Risk management platforms: Risk-based testing prioritization with dynamic schedule adjustment based on threat landscape"
-      ],
-      "testEnvironmentAutomation": [
-        "Terraform infrastructure automation: Automated test environment provisioning with production-like configuration",
-        "Azure Resource Manager templates: Standardized environment deployment with configuration drift detection",
-        "PowerShell DSC: Configuration management automation with validation and compliance checking",
-        "Docker containerization: Isolated testing environments with rapid provisioning and cleanup capabilities",
-        "Kubernetes orchestration: Scalable test environment management with resource optimization and lifecycle automation"
-      ],
-      "testingScopeAndCoverage": [
-        "Test case management platforms: Comprehensive test scenario documentation with coverage analysis and gap identification",
-        "Business process modeling tools: End-to-end workflow validation with dependency mapping and integration testing",
-        "Risk assessment platforms: Risk-based testing prioritization with scenario likelihood and impact analysis",
-        "Dependency mapping tools: System interdependency visualization with cascade failure simulation and testing",
-        "Compliance validation frameworks: Regulatory requirement testing with automated evidence collection and reporting"
-      ],
-      "testAutomationPlatforms": [
-        "Azure Automation runbooks: Automated test execution with orchestration and exception handling",
-        "PowerShell scripting automation: Custom test automation with dynamic parameter management and validation",
-        "Azure Logic Apps: Workflow automation for complex test scenarios with conditional logic and integration",
-        "GitHub Actions: CI/CD pipeline integration for automated testing with version control and rollback capabilities",
-        "Jenkins automation: Build pipeline integration with test execution and result analysis automation"
-      ],
-      "performanceValidationTools": [
-        "Azure Application Insights: Performance monitoring with baseline comparison and anomaly detection",
-        "Load testing platforms: JMeter, LoadRunner integration for performance validation during and post-recovery",
-        "Database performance tools: SQL performance monitoring with query analysis and optimization recommendations",
-        "Network monitoring solutions: Network performance validation with latency and throughput measurement",
-        "User experience monitoring: Synthetic transaction monitoring with real user experience simulation and validation"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "CP-4": "Contingency Plan Testing",
-        "CP-3": "Contingency Training",
-        "CP-2": "Contingency Plan"
-      },
-      "nist80053": {
-        "CP-4": "Contingency Plan Testing",
-        "CP-3": "Contingency Training",
-        "CP-2": "Contingency Plan",
-        "AU-6": "Audit Review, Analysis, and Reporting"
-      },
-      "iso27001": {
-        "A.17.1.3": "Verify, review and evaluate information security continuity",
-        "A.17.2.1": "Availability of information processing facilities"
-      }
-    }
+    ]
   }
 }

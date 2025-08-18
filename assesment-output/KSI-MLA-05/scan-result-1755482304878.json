@@ -11,7 +11,65 @@
       "failed": 3,
       "warnings": 0
     },
-    "iacConfigurationTestingChecks": [
+    "iacConfigurationTestingVerificationMethods": {
+      "infrastructureAsCodeScanning": [
+        "Azure Portal: Security Center > Recommendations for IaC security issues",
+        "Azure DevOps: Pipeline results for ARM/Bicep template validation",
+        "Terraform Cloud: Sentinel policy results and plan analysis",
+        "Checkov: Static analysis results in CI/CD pipeline logs",
+        "TFSec: Terraform security scanning reports and CI/CD integration"
+      ],
+      "configurationDriftDetection": [
+        "Azure Portal: Automation > State Configuration for compliance status",
+        "Azure Portal: Policy > Compliance for guest configuration results",
+        "Azure Resource Graph: Configuration drift queries and analysis",
+        "Terraform Cloud: Drift detection and plan comparison results",
+        "Configuration management tools: Puppet/Ansible compliance reports"
+      ],
+      "cicdConfigurationTesting": [
+        "Azure DevOps: Pipeline test results and deployment validation",
+        "GitHub Actions: Workflow results for infrastructure testing",
+        "Jenkins: Build logs for configuration testing and validation",
+        "CI/CD tools: Test coverage reports and security scan results",
+        "Deployment validation: Post-deployment configuration verification"
+      ],
+      "policyAsCode": [
+        "Azure Portal: Policy > Compliance for policy evaluation results",
+        "Terraform Cloud: Sentinel policy evaluation and enforcement logs",
+        "Open Policy Agent: Policy evaluation results and admission control",
+        "Azure Resource Manager: Template deployment policy violations",
+        "Policy frameworks: Custom policy testing and validation results"
+      ],
+      "configurationBaselines": [
+        "Azure Security Center: Secure Score and configuration recommendations",
+        "CIS Benchmarks: Compliance assessment results and gap analysis",
+        "Configuration management: Baseline compliance reports and drift analysis",
+        "CMDB systems: Configuration item tracking and change history",
+        "Audit tools: Configuration baseline validation and compliance reporting"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "CM-2": "Baseline Configuration",
+        "CM-3": "Configuration Change Control",
+        "CM-6": "Configuration Settings",
+        "SA-11": "Developer Security Testing and Evaluation"
+      },
+      "nist80053": {
+        "CM-2": "Baseline Configuration",
+        "CM-3": "Configuration Change Control",
+        "CM-6": "Configuration Settings",
+        "SA-11": "Developer Security Testing and Evaluation",
+        "SA-15": "Development Process, Standards, and Tools"
+      },
+      "iso27001": {
+        "A.12.1.2": "Change management",
+        "A.14.2.3": "Technical review of applications after operating platform changes",
+        "A.12.6.2": "Restrictions on software installation",
+        "A.14.1.3": "Protection of application services transactions"
+      }
+    },
+    "checks": [
       {
         "checkId": "MLA-05-001",
         "name": "Infrastructure as Code Security Scanning",
@@ -48,7 +106,11 @@
                 "iacScanningEnabled": true,
                 "builtInPolicies": 234,
                 "customPolicies": 67,
-                "complianceFrameworks": ["CIS", "NIST", "ISO27001"],
+                "complianceFrameworks": [
+                  "CIS",
+                  "NIST",
+                  "ISO27001"
+                ],
                 "scanAccuracy": "96.7%"
               },
               "terraformSentinel": {
@@ -56,12 +118,20 @@
                 "policyAsCode": true,
                 "policies": 123,
                 "enforcementLevel": "Hard mandatory",
-                "integrationPoints": ["Terraform Cloud", "CI/CD"]
+                "integrationPoints": [
+                  "Terraform Cloud",
+                  "CI/CD"
+                ]
               },
               "checkov": {
                 "enabled": true,
                 "staticAnalysis": true,
-                "supportedFrameworks": ["Terraform", "ARM", "Bicep", "CloudFormation"],
+                "supportedFrameworks": [
+                  "Terraform",
+                  "ARM",
+                  "Bicep",
+                  "CloudFormation"
+                ],
                 "customRules": 45,
                 "cicdIntegration": true
               },
@@ -146,7 +216,8 @@
             "details": "Multi-framework compliance with 94.2% CIS and 96.7% NIST compliance scores"
           }
         ],
-        "remediation": "Infrastructure as Code security scanning properly implemented with comprehensive coverage"
+        "remediation": "Infrastructure as Code security scanning properly implemented with comprehensive coverage",
+        "checkType": "iacConfigurationTestin"
       },
       {
         "checkId": "MLA-05-002",
@@ -267,7 +338,8 @@
             "details": "Automated baseline comparison with 98.7% drift accuracy and comprehensive reporting"
           }
         ],
-        "remediation": "Configuration drift detection and management properly implemented with comprehensive automation"
+        "remediation": "Configuration drift detection and management properly implemented with comprehensive automation",
+        "checkType": "iacConfigurationTestin"
       },
       {
         "checkId": "MLA-05-003",
@@ -281,7 +353,12 @@
               "totalPipelines": 67,
               "configurationTestingEnabled": 67,
               "coveragePercentage": "100%",
-              "testingStages": ["Pre-commit", "Build", "Pre-deployment", "Post-deployment"],
+              "testingStages": [
+                "Pre-commit",
+                "Build",
+                "Pre-deployment",
+                "Post-deployment"
+              ],
               "lastPipelineExecution": "2025-08-16T19:30:00.000Z"
             },
             "testingTools": {
@@ -386,7 +463,8 @@
             "details": "97.8% build success rate with 25-minute average execution time"
           }
         ],
-        "remediation": "Automated configuration testing in CI/CD properly implemented with comprehensive coverage"
+        "remediation": "Automated configuration testing in CI/CD properly implemented with comprehensive coverage",
+        "checkType": "iacConfigurationTestin"
       },
       {
         "checkId": "MLA-05-004",
@@ -412,14 +490,22 @@
                 "totalStorageResources": 78,
                 "testedResources": 34,
                 "coveragePercentage": "43.6%",
-                "untestedTypes": ["Data Lake Storage", "Archive storage", "Premium file shares"],
+                "untestedTypes": [
+                  "Data Lake Storage",
+                  "Archive storage",
+                  "Premium file shares"
+                ],
                 "dataProtectionTesting": "Limited backup and disaster recovery testing"
               },
               "computeInfrastructure": {
                 "totalComputeResources": 234,
                 "testedResources": 178,
                 "coveragePercentage": "76.1%",
-                "untestedTypes": ["GPU instances", "Spot instances", "Dedicated hosts"],
+                "untestedTypes": [
+                  "GPU instances",
+                  "Spot instances",
+                  "Dedicated hosts"
+                ],
                 "scalingTesting": "Limited auto-scaling scenario testing"
               }
             },
@@ -498,7 +584,7 @@
               "longerIncidentResolution": "Infrastructure issues harder to diagnose",
               "manualTestingOverhead": "Increased manual testing effort",
               "delayedDeployments": "Issues discovered late in deployment cycle",
-              "increaseедCosts": "Higher costs due to production issues",
+              "increase\u0435\u0434Costs": "Higher costs due to production issues",
               "reducedConfidence": "Lower confidence in infrastructure changes"
             }
           }
@@ -520,7 +606,8 @@
             "details": "No chaos engineering, limited penetration testing, basic compliance validation"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement comprehensive infrastructure testing covering all component types and scenarios, 2) Establish automated disaster recovery and failover testing procedures, 3) Deploy chaos engineering and fault tolerance testing frameworks, 4) Implement systematic production environment testing with blue-green deployments, 5) Establish automated scalability and performance testing for infrastructure, 6) Implement comprehensive security testing including penetration testing automation, 7) Deploy test environment management and orchestration platforms"
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive infrastructure testing covering all component types and scenarios, 2) Establish automated disaster recovery and failover testing procedures, 3) Deploy chaos engineering and fault tolerance testing frameworks, 4) Implement systematic production environment testing with blue-green deployments, 5) Establish automated scalability and performance testing for infrastructure, 6) Implement comprehensive security testing including penetration testing automation, 7) Deploy test environment management and orchestration platforms",
+        "checkType": "iacConfigurationTestin"
       },
       {
         "checkId": "MLA-05-005",
@@ -664,7 +751,8 @@
             "details": "Manual processes, no version control, informal governance structure"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive policy as code framework using Azure Policy, Terraform Sentinel, and OPA, 2) Establish systematic policy development lifecycle with version control and testing, 3) Deploy automated policy enforcement with preventive, detective, and corrective controls, 4) Implement policy governance framework with clear ownership and approval processes, 5) Establish policy monitoring and effectiveness measurement, 6) Deploy automated policy testing and validation frameworks, 7) Implement cross-platform policy management for multi-cloud environments"
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive policy as code framework using Azure Policy, Terraform Sentinel, and OPA, 2) Establish systematic policy development lifecycle with version control and testing, 3) Deploy automated policy enforcement with preventive, detective, and corrective controls, 4) Implement policy governance framework with clear ownership and approval processes, 5) Establish policy monitoring and effectiveness measurement, 6) Deploy automated policy testing and validation frameworks, 7) Implement cross-platform policy management for multi-cloud environments",
+        "checkType": "iacConfigurationTestin"
       },
       {
         "checkId": "MLA-05-006",
@@ -808,66 +896,9 @@
             "details": "Basic tools only with limited integration and low automation maturity"
           }
         ],
-        "remediation": "LOW PRIORITY: 1) Develop comprehensive configuration baseline framework with industry benchmarks and organizational standards, 2) Implement systematic baseline development, validation, and documentation processes, 3) Deploy automated baseline enforcement and compliance monitoring tools, 4) Establish baseline lifecycle management with version control and change management, 5) Integrate baseline management with CMDB and security tools, 6) Implement automated baseline deployment and drift remediation, 7) Establish baseline governance framework with stakeholder engagement and continuous improvement"
+        "remediation": "LOW PRIORITY: 1) Develop comprehensive configuration baseline framework with industry benchmarks and organizational standards, 2) Implement systematic baseline development, validation, and documentation processes, 3) Deploy automated baseline enforcement and compliance monitoring tools, 4) Establish baseline lifecycle management with version control and change management, 5) Integrate baseline management with CMDB and security tools, 6) Implement automated baseline deployment and drift remediation, 7) Establish baseline governance framework with stakeholder engagement and continuous improvement",
+        "checkType": "iacConfigurationTestin"
       }
-    ],
-    "iacConfigurationTestingVerificationMethods": {
-      "infrastructureAsCodeScanning": [
-        "Azure Portal: Security Center > Recommendations for IaC security issues",
-        "Azure DevOps: Pipeline results for ARM/Bicep template validation",
-        "Terraform Cloud: Sentinel policy results and plan analysis",
-        "Checkov: Static analysis results in CI/CD pipeline logs",
-        "TFSec: Terraform security scanning reports and CI/CD integration"
-      ],
-      "configurationDriftDetection": [
-        "Azure Portal: Automation > State Configuration for compliance status",
-        "Azure Portal: Policy > Compliance for guest configuration results",
-        "Azure Resource Graph: Configuration drift queries and analysis",
-        "Terraform Cloud: Drift detection and plan comparison results",
-        "Configuration management tools: Puppet/Ansible compliance reports"
-      ],
-      "cicdConfigurationTesting": [
-        "Azure DevOps: Pipeline test results and deployment validation",
-        "GitHub Actions: Workflow results for infrastructure testing",
-        "Jenkins: Build logs for configuration testing and validation",
-        "CI/CD tools: Test coverage reports and security scan results",
-        "Deployment validation: Post-deployment configuration verification"
-      ],
-      "policyAsCode": [
-        "Azure Portal: Policy > Compliance for policy evaluation results",
-        "Terraform Cloud: Sentinel policy evaluation and enforcement logs",
-        "Open Policy Agent: Policy evaluation results and admission control",
-        "Azure Resource Manager: Template deployment policy violations",
-        "Policy frameworks: Custom policy testing and validation results"
-      ],
-      "configurationBaselines": [
-        "Azure Security Center: Secure Score and configuration recommendations",
-        "CIS Benchmarks: Compliance assessment results and gap analysis",
-        "Configuration management: Baseline compliance reports and drift analysis",
-        "CMDB systems: Configuration item tracking and change history",
-        "Audit tools: Configuration baseline validation and compliance reporting"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "CM-2": "Baseline Configuration",
-        "CM-3": "Configuration Change Control",
-        "CM-6": "Configuration Settings",
-        "SA-11": "Developer Security Testing and Evaluation"
-      },
-      "nist80053": {
-        "CM-2": "Baseline Configuration",
-        "CM-3": "Configuration Change Control",
-        "CM-6": "Configuration Settings",
-        "SA-11": "Developer Security Testing and Evaluation",
-        "SA-15": "Development Process, Standards, and Tools"
-      },
-      "iso27001": {
-        "A.12.1.2": "Change management",
-        "A.14.2.3": "Technical review of applications after operating platform changes",
-        "A.12.6.2": "Restrictions on software installation",
-        "A.14.1.3": "Protection of application services transactions"
-      }
-    }
+    ]
   }
 }

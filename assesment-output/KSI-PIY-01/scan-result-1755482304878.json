@@ -11,7 +11,74 @@
       "failed": 3,
       "warnings": 0
     },
-    "informationResourceInventoryChecks": [
+    "informationResourceInventoryVerificationMethods": {
+      "infrastructureAsCodeInventory": [
+        "Terraform state files: terraform state list and terraform show",
+        "Azure Resource Manager: az resource list and ARM template exports",
+        "Bicep deployments: bicep compilation and Azure Resource Graph queries",
+        "Configuration management: Ansible inventories and Puppet node classifications",
+        "Kubernetes: kubectl get all and Helm release tracking"
+      ],
+      "softwareAssetManagement": [
+        "Package managers: npm list, pip freeze, nuget list, mvn dependency:tree",
+        "Container registries: docker images and container vulnerability scanning",
+        "Application repositories: Git repository analysis and code scanning",
+        "Software composition analysis: SAST and dependency scanning tools",
+        "License management platforms: WhiteSource, Black Duck, FOSSA"
+      ],
+      "serviceAndApiInventory": [
+        "API Management platforms: Azure API Management service inventory",
+        "Service mesh: Istio service discovery and Consul service catalog",
+        "Application performance monitoring: New Relic, Datadog service maps",
+        "Service discovery tools: Eureka, Consul, etcd service registrations",
+        "API documentation: OpenAPI specifications and API gateway configurations"
+      ],
+      "personnelAndAccessInventory": [
+        "Identity management systems: Azure AD user and group enumeration",
+        "HR systems: Employee database exports and contractor management systems",
+        "Privileged access management: PIM role assignments and access reviews",
+        "Access governance platforms: SailPoint, Okta access certification reports",
+        "Directory services: LDAP queries and Active Directory reports"
+      ],
+      "dataAssetInventory": [
+        "Data discovery tools: Microsoft Purview data catalog and classification",
+        "Database management systems: SQL Server, Oracle, PostgreSQL schema analysis",
+        "Cloud storage: Azure Storage, AWS S3, GCP Cloud Storage bucket analysis",
+        "Data lineage tools: Apache Atlas, Collibra data lineage tracking",
+        "Privacy compliance platforms: OneTrust, TrustArc privacy assessment tools"
+      ],
+      "networkAndSecurityAssets": [
+        "Network discovery tools: Nmap, Lansweeper network scanning",
+        "Security information management: SIEM asset correlation and CMDB integration",
+        "Vulnerability management: Nessus, Qualys, Rapid7 asset discovery",
+        "Cloud asset inventory: Azure Resource Graph, AWS Config, GCP Asset Inventory",
+        "Configuration management databases: ServiceNow CMDB and BMC Remedy"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "CM-8": "Information System Component Inventory",
+        "SA-4": "Acquisition Process",
+        "SA-9": "External Information System Services",
+        "PM-5": "Information System Inventory",
+        "CM-2": "Baseline Configuration"
+      },
+      "nist80053": {
+        "CM-8": "Information System Component Inventory",
+        "SA-4": "Acquisition Process",
+        "SA-9": "External Information System Services",
+        "PM-5": "Information System Inventory",
+        "CM-2": "Baseline Configuration",
+        "PL-9": "Central Management"
+      },
+      "iso27001": {
+        "A.8.1.1": "Inventory of assets",
+        "A.8.1.2": "Ownership of assets",
+        "A.8.1.3": "Acceptable use of assets",
+        "A.8.1.4": "Return of assets"
+      }
+    },
+    "checks": [
       {
         "checkId": "PIY-01-001",
         "name": "Infrastructure as Code Asset Definition",
@@ -120,7 +187,8 @@
             "details": "97.6% accuracy with daily reconciliation and automated discrepancy detection"
           }
         ],
-        "remediation": "Infrastructure asset inventory properly maintained through comprehensive IaC and automated discovery"
+        "remediation": "Infrastructure asset inventory properly maintained through comprehensive IaC and automated discovery",
+        "checkType": "informationResourceInventor"
       },
       {
         "checkId": "PIY-01-002",
@@ -195,7 +263,13 @@
               "totalRepositories": 89,
               "activeRepositories": 76,
               "archivedRepositories": 13,
-              "codeLanguages": ["TypeScript", "Python", "C#", "Java", "Go"],
+              "codeLanguages": [
+                "TypeScript",
+                "Python",
+                "C#",
+                "Java",
+                "Go"
+              ],
               "linesOfCode": 1456789
             },
             "codeQualityMetrics": {
@@ -224,7 +298,8 @@
             "details": "156 container images tracked with 87.3% test coverage across 89 repositories"
           }
         ],
-        "remediation": "Software asset inventory comprehensively maintained with automated scanning and compliance tracking"
+        "remediation": "Software asset inventory comprehensively maintained with automated scanning and compliance tracking",
+        "checkType": "informationResourceInventor"
       },
       {
         "checkId": "PIY-01-003",
@@ -319,7 +394,8 @@
             "details": "Enforced design standards with automated dependency mapping and complete ownership tracking"
           }
         ],
-        "remediation": "Service and API inventory comprehensively maintained with robust governance and automated discovery"
+        "remediation": "Service and API inventory comprehensively maintained with robust governance and automated discovery",
+        "checkType": "informationResourceInventor"
       },
       {
         "checkId": "PIY-01-004",
@@ -428,7 +504,8 @@
             "details": "Manual contractor management with 23 duplicate records and multiple disconnected systems"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement automated HR system integration for real-time user provisioning/deprovisioning, 2) Deploy comprehensive identity governance platform for access inventory and recertification, 3) Establish centralized role and responsibility management with complete documentation, 4) Implement automated vendor and contractor access management, 5) Deploy master data management for personnel inventory data quality, 6) Establish real-time synchronization between all personnel management systems, 7) Remove orphaned accounts and establish automated dormant account detection"
+        "remediation": "HIGH PRIORITY: 1) Implement automated HR system integration for real-time user provisioning/deprovisioning, 2) Deploy comprehensive identity governance platform for access inventory and recertification, 3) Establish centralized role and responsibility management with complete documentation, 4) Implement automated vendor and contractor access management, 5) Deploy master data management for personnel inventory data quality, 6) Establish real-time synchronization between all personnel management systems, 7) Remove orphaned accounts and establish automated dormant account detection",
+        "checkType": "informationResourceInventor"
       },
       {
         "checkId": "PIY-01-005",
@@ -452,7 +529,7 @@
                 "sqlDatabases": 15,
                 "cosmosDbCollections": 8,
                 "fileShares": 34,
-                "untracked储存位置": 12
+                "untracked\u50a8\u5b58\u4f4d\u7f6e": 12
               },
               "dataResidencyCompliance": {
                 "dataResidencyPolicy": "Basic policy",
@@ -545,7 +622,8 @@
             "details": "43% personal data inventory completeness with manual compliance processes and limited governance enforcement"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Deploy automated data discovery and classification tools with ML-based sensitive data detection, 2) Implement comprehensive data lineage tracking with automated flow visualization, 3) Establish automated privacy compliance management with PII detection and consent tracking, 4) Deploy data governance platform with automated policy enforcement and ownership assignment, 5) Implement real-time data access monitoring with anomaly detection, 6) Establish data quality monitoring with automated validation and metrics tracking, 7) Create comprehensive data processing inventory with legal basis documentation"
+        "remediation": "HIGH PRIORITY: 1) Deploy automated data discovery and classification tools with ML-based sensitive data detection, 2) Implement comprehensive data lineage tracking with automated flow visualization, 3) Establish automated privacy compliance management with PII detection and consent tracking, 4) Deploy data governance platform with automated policy enforcement and ownership assignment, 5) Implement real-time data access monitoring with anomaly detection, 6) Establish data quality monitoring with automated validation and metrics tracking, 7) Create comprehensive data processing inventory with legal basis documentation",
+        "checkType": "informationResourceInventor"
       },
       {
         "checkId": "PIY-01-006",
@@ -656,75 +734,9 @@
             "details": "Partially mapped dependencies with limited discovery automation and manual maintenance processes"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Deploy automated network discovery tools with real-time topology mapping, 2) Implement comprehensive security asset management platform with automated inventory updates, 3) Establish automated vulnerability tracking with aging metrics and remediation workflows, 4) Deploy dependency mapping tools with automated relationship discovery, 5) Implement comprehensive asset lifecycle automation with reconciliation and validation, 6) Establish real-time asset monitoring with automated alerting and reporting, 7) Create comprehensive integration point documentation with automated tracking"
+        "remediation": "MEDIUM PRIORITY: 1) Deploy automated network discovery tools with real-time topology mapping, 2) Implement comprehensive security asset management platform with automated inventory updates, 3) Establish automated vulnerability tracking with aging metrics and remediation workflows, 4) Deploy dependency mapping tools with automated relationship discovery, 5) Implement comprehensive asset lifecycle automation with reconciliation and validation, 6) Establish real-time asset monitoring with automated alerting and reporting, 7) Create comprehensive integration point documentation with automated tracking",
+        "checkType": "informationResourceInventor"
       }
-    ],
-    "informationResourceInventoryVerificationMethods": {
-      "infrastructureAsCodeInventory": [
-        "Terraform state files: terraform state list and terraform show",
-        "Azure Resource Manager: az resource list and ARM template exports",
-        "Bicep deployments: bicep compilation and Azure Resource Graph queries",
-        "Configuration management: Ansible inventories and Puppet node classifications",
-        "Kubernetes: kubectl get all and Helm release tracking"
-      ],
-      "softwareAssetManagement": [
-        "Package managers: npm list, pip freeze, nuget list, mvn dependency:tree",
-        "Container registries: docker images and container vulnerability scanning",
-        "Application repositories: Git repository analysis and code scanning",
-        "Software composition analysis: SAST and dependency scanning tools",
-        "License management platforms: WhiteSource, Black Duck, FOSSA"
-      ],
-      "serviceAndApiInventory": [
-        "API Management platforms: Azure API Management service inventory",
-        "Service mesh: Istio service discovery and Consul service catalog",
-        "Application performance monitoring: New Relic, Datadog service maps",
-        "Service discovery tools: Eureka, Consul, etcd service registrations",
-        "API documentation: OpenAPI specifications and API gateway configurations"
-      ],
-      "personnelAndAccessInventory": [
-        "Identity management systems: Azure AD user and group enumeration",
-        "HR systems: Employee database exports and contractor management systems",
-        "Privileged access management: PIM role assignments and access reviews",
-        "Access governance platforms: SailPoint, Okta access certification reports",
-        "Directory services: LDAP queries and Active Directory reports"
-      ],
-      "dataAssetInventory": [
-        "Data discovery tools: Microsoft Purview data catalog and classification",
-        "Database management systems: SQL Server, Oracle, PostgreSQL schema analysis",
-        "Cloud storage: Azure Storage, AWS S3, GCP Cloud Storage bucket analysis",
-        "Data lineage tools: Apache Atlas, Collibra data lineage tracking",
-        "Privacy compliance platforms: OneTrust, TrustArc privacy assessment tools"
-      ],
-      "networkAndSecurityAssets": [
-        "Network discovery tools: Nmap, Lansweeper network scanning",
-        "Security information management: SIEM asset correlation and CMDB integration",
-        "Vulnerability management: Nessus, Qualys, Rapid7 asset discovery",
-        "Cloud asset inventory: Azure Resource Graph, AWS Config, GCP Asset Inventory",
-        "Configuration management databases: ServiceNow CMDB and BMC Remedy"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "CM-8": "Information System Component Inventory",
-        "SA-4": "Acquisition Process",
-        "SA-9": "External Information System Services",
-        "PM-5": "Information System Inventory",
-        "CM-2": "Baseline Configuration"
-      },
-      "nist80053": {
-        "CM-8": "Information System Component Inventory",
-        "SA-4": "Acquisition Process",
-        "SA-9": "External Information System Services",
-        "PM-5": "Information System Inventory",
-        "CM-2": "Baseline Configuration",
-        "PL-9": "Central Management"
-      },
-      "iso27001": {
-        "A.8.1.1": "Inventory of assets",
-        "A.8.1.2": "Ownership of assets",
-        "A.8.1.3": "Acceptable use of assets",
-        "A.8.1.4": "Return of assets"
-      }
-    }
+    ]
   }
 }

@@ -11,7 +11,76 @@
       "failed": 1,
       "warnings": 0
     },
-    "highAvailabilityChecks": [
+    "highAvailabilityStrategies": {
+      "compute": [
+        "Multiple availability zones deployment",
+        "Auto-scaling policies",
+        "Load balancing across regions",
+        "Health checks and automatic failover",
+        "Premium service tiers with SLA guarantees"
+      ],
+      "storage": [
+        "Zone-Redundant Storage (ZRS) or Geo-Redundant Storage (GRS)",
+        "Cross-region replication",
+        "Point-in-time restore capabilities",
+        "Automated backup schedules",
+        "Lifecycle management policies"
+      ],
+      "networking": [
+        "Traffic Manager for DNS-based failover",
+        "Application Gateway with multiple backends",
+        "Azure Front Door for global load balancing",
+        "Private endpoints for secure connectivity",
+        "Network redundancy across zones"
+      ],
+      "database": [
+        "Always On availability groups",
+        "Read replicas across regions",
+        "Automated backup and restore",
+        "Point-in-time recovery",
+        "Failover groups for disaster recovery"
+      ]
+    },
+    "rtoRpoTargets": {
+      "fedrampRequirements": {
+        "rto": "4 hours",
+        "rpo": "1 hour",
+        "availabilityTarget": "99.9%"
+      },
+      "currentConfiguration": {
+        "appService": {
+          "rto": "30 minutes",
+          "rpo": "15 minutes",
+          "availability": "99.95%",
+          "status": "COMPLIANT"
+        },
+        "storage": {
+          "rto": "Unknown",
+          "rpo": "Potentially infinite",
+          "availability": "99.9%",
+          "status": "NON_COMPLIANT"
+        }
+      }
+    },
+    "detectionMethods": {
+      "azureTools": [
+        "Azure Monitor for availability metrics",
+        "Azure Service Health for service status",
+        "Azure Advisor for HA recommendations",
+        "Azure Site Recovery for DR planning"
+      ],
+      "powershellCommands": [
+        "Get-AzWebApp | Select-Object -ExpandProperty SiteConfig",
+        "Get-AzStorageAccount | Select-Object -Property StorageAccountName, SkuName",
+        "Get-AzTrafficManagerProfile"
+      ],
+      "azureCLICommands": [
+        "az webapp show --query 'availabilityState'",
+        "az storage account show --query 'sku.name'",
+        "az monitor autoscale show"
+      ]
+    },
+    "checks": [
       {
         "checkId": "CNA-06-001",
         "name": "App Service High Availability Configuration",
@@ -48,7 +117,11 @@
           },
           "availabilityZones": {
             "enabled": true,
-            "zones": ["1", "2", "3"],
+            "zones": [
+              "1",
+              "2",
+              "3"
+            ],
             "zoneRedundant": true
           },
           "loadBalancing": {
@@ -124,7 +197,8 @@
             }
           ]
         },
-        "remediation": "High availability properly configured and validated"
+        "remediation": "High availability properly configured and validated",
+        "checkType": "highAvailabilit"
       },
       {
         "checkId": "CNA-06-002",
@@ -220,77 +294,9 @@
             }
           ]
         },
-        "remediation": "CRITICAL: 1) Upgrade to Zone-Redundant Storage (ZRS) or Geo-Redundant Storage (GRS), 2) Enable blob backup with appropriate retention, 3) Configure point-in-time restore, 4) Implement cross-region replication, 5) Set up monitoring and alerting, 6) Extend soft delete retention to 30+ days, 7) Implement lifecycle management policies, 8) Conduct regular disaster recovery testing"
+        "remediation": "CRITICAL: 1) Upgrade to Zone-Redundant Storage (ZRS) or Geo-Redundant Storage (GRS), 2) Enable blob backup with appropriate retention, 3) Configure point-in-time restore, 4) Implement cross-region replication, 5) Set up monitoring and alerting, 6) Extend soft delete retention to 30+ days, 7) Implement lifecycle management policies, 8) Conduct regular disaster recovery testing",
+        "checkType": "highAvailabilit"
       }
-    ],
-    "highAvailabilityStrategies": {
-      "compute": [
-        "Multiple availability zones deployment",
-        "Auto-scaling policies",
-        "Load balancing across regions",
-        "Health checks and automatic failover",
-        "Premium service tiers with SLA guarantees"
-      ],
-      "storage": [
-        "Zone-Redundant Storage (ZRS) or Geo-Redundant Storage (GRS)",
-        "Cross-region replication",
-        "Point-in-time restore capabilities",
-        "Automated backup schedules",
-        "Lifecycle management policies"
-      ],
-      "networking": [
-        "Traffic Manager for DNS-based failover",
-        "Application Gateway with multiple backends",
-        "Azure Front Door for global load balancing",
-        "Private endpoints for secure connectivity",
-        "Network redundancy across zones"
-      ],
-      "database": [
-        "Always On availability groups",
-        "Read replicas across regions",
-        "Automated backup and restore",
-        "Point-in-time recovery",
-        "Failover groups for disaster recovery"
-      ]
-    },
-    "rtoRpoTargets": {
-      "fedrampRequirements": {
-        "rto": "4 hours",
-        "rpo": "1 hour",
-        "availabilityTarget": "99.9%"
-      },
-      "currentConfiguration": {
-        "appService": {
-          "rto": "30 minutes",
-          "rpo": "15 minutes",
-          "availability": "99.95%",
-          "status": "COMPLIANT"
-        },
-        "storage": {
-          "rto": "Unknown",
-          "rpo": "Potentially infinite",
-          "availability": "99.9%",
-          "status": "NON_COMPLIANT"
-        }
-      }
-    },
-    "detectionMethods": {
-      "azureTools": [
-        "Azure Monitor for availability metrics",
-        "Azure Service Health for service status",
-        "Azure Advisor for HA recommendations",
-        "Azure Site Recovery for DR planning"
-      ],
-      "powershellCommands": [
-        "Get-AzWebApp | Select-Object -ExpandProperty SiteConfig",
-        "Get-AzStorageAccount | Select-Object -Property StorageAccountName, SkuName",
-        "Get-AzTrafficManagerProfile"
-      ],
-      "azureCLICommands": [
-        "az webapp show --query 'availabilityState'",
-        "az storage account show --query 'sku.name'",
-        "az monitor autoscale show"
-      ]
-    }
+    ]
   }
 }

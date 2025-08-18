@@ -11,7 +11,17 @@
       "failed": 1,
       "warnings": 0
     },
-    "permissionChecks": [
+    "detectionMethods": {
+      "azureResourceGraphQueries": [
+        "AuthorizationResources | where type == 'microsoft.authorization/roleassignments' | where properties.roleDefinitionId contains 'Contributor' or properties.roleDefinitionId contains 'Owner'",
+        "AuthorizationResources | where type == 'microsoft.authorization/roleassignments' | where properties.scope startswith '/subscriptions/' and properties.scope !contains '/resourceGroups/'"
+      ],
+      "powerShellCommands": [
+        "Get-AzRoleAssignment | Where-Object {$_.RoleDefinitionName -eq 'Owner' -or $_.RoleDefinitionName -eq 'Contributor'}",
+        "Get-AzKeyVaultAccessPolicy -VaultName 'fedramp20x-keyvault' | Where-Object {$_.PermissionsToSecrets -contains 'All'}"
+      ]
+    },
+    "checks": [
       {
         "checkId": "CNA-02-001",
         "name": "Service Principal Role Assignment Review",
@@ -35,7 +45,8 @@
           "excessivePermissions": false,
           "principleOfLeastPrivilege": true
         },
-        "remediation": "Service principal permissions are appropriately scoped"
+        "remediation": "Service principal permissions are appropriately scoped",
+        "checkType": "permissio"
       },
       {
         "checkId": "CNA-02-002",
@@ -55,7 +66,8 @@
           "scopeLevel": "Container",
           "excessivePermissions": false
         },
-        "remediation": "Managed identity permissions properly scoped to specific container"
+        "remediation": "Managed identity permissions properly scoped to specific container",
+        "checkType": "permissio"
       },
       {
         "checkId": "CNA-02-003",
@@ -77,7 +89,8 @@
           "adminUserEnabled": false,
           "anonymousAccess": false
         },
-        "remediation": "Container registry access properly restricted"
+        "remediation": "Container registry access properly restricted",
+        "checkType": "permissio"
       },
       {
         "checkId": "CNA-02-004",
@@ -90,7 +103,10 @@
             {
               "objectId": "app-managed-identity",
               "permissions": {
-                "secrets": ["get", "list"],
+                "secrets": [
+                  "get",
+                  "list"
+                ],
                 "keys": [],
                 "certificates": []
               },
@@ -101,7 +117,8 @@
           "publicNetworkAccess": "Disabled",
           "excessivePermissions": false
         },
-        "remediation": "Key Vault access policies properly configured"
+        "remediation": "Key Vault access policies properly configured",
+        "checkType": "permissio"
       },
       {
         "checkId": "CNA-02-005",
@@ -122,7 +139,8 @@
           "sharedKeyAccess": "Disabled",
           "anonymousAccess": false
         },
-        "remediation": "Storage account permissions appropriately scoped"
+        "remediation": "Storage account permissions appropriately scoped",
+        "checkType": "permissio"
       },
       {
         "checkId": "CNA-02-006",
@@ -155,18 +173,9 @@
             }
           ]
         },
-        "remediation": "Remove Contributor and User Access Administrator roles. Assign specific minimal roles: Storage Blob Data Reader for required storage account only."
+        "remediation": "Remove Contributor and User Access Administrator roles. Assign specific minimal roles: Storage Blob Data Reader for required storage account only.",
+        "checkType": "permissio"
       }
-    ],
-    "detectionMethods": {
-      "azureResourceGraphQueries": [
-        "AuthorizationResources | where type == 'microsoft.authorization/roleassignments' | where properties.roleDefinitionId contains 'Contributor' or properties.roleDefinitionId contains 'Owner'",
-        "AuthorizationResources | where type == 'microsoft.authorization/roleassignments' | where properties.scope startswith '/subscriptions/' and properties.scope !contains '/resourceGroups/'"
-      ],
-      "powerShellCommands": [
-        "Get-AzRoleAssignment | Where-Object {$_.RoleDefinitionName -eq 'Owner' -or $_.RoleDefinitionName -eq 'Contributor'}",
-        "Get-AzKeyVaultAccessPolicy -VaultName 'fedramp20x-keyvault' | Where-Object {$_.PermissionsToSecrets -contains 'All'}"
-      ]
-    }
+    ]
   }
 }

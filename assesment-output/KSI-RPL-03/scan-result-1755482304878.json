@@ -11,7 +11,62 @@
       "failed": 2,
       "warnings": 0
     },
-    "systemBackupChecks": [
+    "systemBackupVerificationMethods": {
+      "backupPolicyAlignment": [
+        "Azure Backup Center: Centralized backup policy management with RTO/RPO alignment validation and automated compliance checking",
+        "Azure Policy integration: Automated backup policy enforcement with compliance scanning and remediation recommendations",
+        "Recovery objectives monitoring: Automated alignment validation between backup schedules and defined recovery objectives",
+        "Business impact analysis integration: Dynamic backup priority adjustment based on business criticality assessments",
+        "Cross-region backup validation: Automated geo-replication monitoring with RTO-based region selection optimization"
+      ],
+      "backupMonitoringAndAlerting": [
+        "Azure Monitor integration: Comprehensive backup job monitoring with performance metrics and failure detection",
+        "Log Analytics workspaces: Centralized backup log aggregation with automated anomaly detection and trend analysis",
+        "ServiceNow integration: Automated incident creation for backup failures with escalation and resolution tracking",
+        "Power BI dashboards: Real-time backup status visualization with executive reporting and compliance metrics",
+        "Predictive analytics platforms: AI-driven failure prediction with proactive intervention and maintenance optimization"
+      ],
+      "dataIntegrityValidation": [
+        "Azure Storage integrity monitoring: Automated checksum validation with corruption detection and alerting",
+        "Database consistency checking: Automated DBCC operations with integrity validation and repair recommendations",
+        "File system integrity validation: Automated file hash verification with tamper detection and restore validation",
+        "Cross-region data validation: Automated replication integrity checking with synchronization monitoring",
+        "Application-specific validation: Custom validation scripts with business logic verification and data quality assessment"
+      ],
+      "restoreTestingAutomation": [
+        "Azure DevOps pipelines: Automated restore testing with validation and success criteria verification",
+        "PowerShell DSC: Configuration-driven restore testing with environment provisioning and application validation",
+        "Terraform automation: Infrastructure as Code restore testing with automated environment recreation",
+        "Azure Logic Apps: Workflow automation for scheduled restore testing with notification and reporting",
+        "Azure Functions: Serverless restore validation with dynamic test data generation and performance assessment"
+      ],
+      "recoveryDocumentationManagement": [
+        "SharePoint integration: Centralized recovery procedure management with version control and stakeholder access",
+        "Confluence automation: Automated procedure documentation with template enforcement and currency validation",
+        "Azure DevOps wikis: Developer-centric recovery documentation with code integration and automated updates",
+        "ServiceNow knowledge base: Service management integration with procedure accessibility and training tracking",
+        "Microsoft Teams integration: Collaborative procedure development with stakeholder review and approval workflows"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "CP-9": "Information System Backup",
+        "CP-10": "Information System Recovery and Reconstitution",
+        "SI-13": "Predictable Failure Prevention"
+      },
+      "nist80053": {
+        "CP-9": "Information System Backup",
+        "CP-10": "Information System Recovery and Reconstitution",
+        "SI-13": "Predictable Failure Prevention",
+        "AU-9": "Protection of Audit Information"
+      },
+      "iso27001": {
+        "A.12.3.1": "Information backup",
+        "A.17.1.2": "Implementing information security continuity",
+        "A.17.1.3": "Verify, review and evaluate information security continuity"
+      }
+    },
+    "checks": [
       {
         "checkId": "RPL-03-001",
         "name": "Backup Policy Alignment with Recovery Objectives",
@@ -88,7 +143,8 @@
             "details": "Business-aligned scheduling with automated retention policy management"
           }
         ],
-        "remediation": "Backup policies comprehensively aligned with recovery objectives with strong cross-region strategy and automated retention management"
+        "remediation": "Backup policies comprehensively aligned with recovery objectives with strong cross-region strategy and automated retention management",
+        "checkType": "systemBacku"
       },
       {
         "checkId": "RPL-03-002",
@@ -114,7 +170,12 @@
           },
           "alertingAndNotificationSystem": {
             "failureAlertingEnabled": true,
-            "alertingChannels": ["Email", "SMS", "Teams", "ServiceNow"],
+            "alertingChannels": [
+              "Email",
+              "SMS",
+              "Teams",
+              "ServiceNow"
+            ],
             "escalationProcedures": "Multi-level",
             "alertResponseTime": "< 15 minutes",
             "alertSuppressionLogic": "Intelligent filtering"
@@ -158,7 +219,8 @@
             "details": "AI-driven failure prediction with anomaly detection and proactive intervention"
           }
         ],
-        "remediation": "Backup monitoring comprehensively implemented with advanced predictive analytics and proactive intervention capabilities"
+        "remediation": "Backup monitoring comprehensively implemented with advanced predictive analytics and proactive intervention capabilities",
+        "checkType": "systemBacku"
       },
       {
         "checkId": "RPL-03-003",
@@ -229,7 +291,8 @@
             "details": "Role-based access with MFA, privileged access management, and automated security auditing"
           }
         ],
-        "remediation": "Backup storage and data integrity comprehensively implemented with robust security and automated validation procedures"
+        "remediation": "Backup storage and data integrity comprehensively implemented with robust security and automated validation procedures",
+        "checkType": "systemBacku"
       },
       {
         "checkId": "RPL-03-004",
@@ -299,7 +362,8 @@
             "details": "No BCP integrated testing or business process validation testing"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Increase restore testing coverage to 100% with weekly frequency and comprehensive scope, 2) Implement full testing automation with dynamic test data generation and automated validation, 3) Establish performance and scalability testing for large databases and concurrent operations, 4) Integrate business continuity testing with stakeholder involvement and business process validation, 5) Create comprehensive testing analytics with trend analysis and improvement recommendations, 6) Develop automated test environment provisioning with realistic data and configuration management"
+        "remediation": "MEDIUM PRIORITY: 1) Increase restore testing coverage to 100% with weekly frequency and comprehensive scope, 2) Implement full testing automation with dynamic test data generation and automated validation, 3) Establish performance and scalability testing for large databases and concurrent operations, 4) Integrate business continuity testing with stakeholder involvement and business process validation, 5) Create comprehensive testing analytics with trend analysis and improvement recommendations, 6) Develop automated test environment provisioning with realistic data and configuration management",
+        "checkType": "systemBacku"
       },
       {
         "checkId": "RPL-03-005",
@@ -368,63 +432,9 @@
             "details": "IT team access only with no role-based documentation or training materials"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Achieve 100% recovery procedure documentation coverage with detailed step-by-step instructions and comprehensive scenario coverage, 2) Implement standardized procedure templates with consistent formatting and troubleshooting guidance, 3) Develop role-based recovery documentation with stakeholder-specific procedures and training materials, 4) Establish systematic procedure validation and maintenance processes with effectiveness metrics, 5) Create mobile-accessible emergency procedures with offline availability capabilities, 6) Integrate automated recovery procedures with comprehensive tool-specific guidance and self-service capabilities"
+        "remediation": "MEDIUM PRIORITY: 1) Achieve 100% recovery procedure documentation coverage with detailed step-by-step instructions and comprehensive scenario coverage, 2) Implement standardized procedure templates with consistent formatting and troubleshooting guidance, 3) Develop role-based recovery documentation with stakeholder-specific procedures and training materials, 4) Establish systematic procedure validation and maintenance processes with effectiveness metrics, 5) Create mobile-accessible emergency procedures with offline availability capabilities, 6) Integrate automated recovery procedures with comprehensive tool-specific guidance and self-service capabilities",
+        "checkType": "systemBacku"
       }
-    ],
-    "systemBackupVerificationMethods": {
-      "backupPolicyAlignment": [
-        "Azure Backup Center: Centralized backup policy management with RTO/RPO alignment validation and automated compliance checking",
-        "Azure Policy integration: Automated backup policy enforcement with compliance scanning and remediation recommendations",
-        "Recovery objectives monitoring: Automated alignment validation between backup schedules and defined recovery objectives",
-        "Business impact analysis integration: Dynamic backup priority adjustment based on business criticality assessments",
-        "Cross-region backup validation: Automated geo-replication monitoring with RTO-based region selection optimization"
-      ],
-      "backupMonitoringAndAlerting": [
-        "Azure Monitor integration: Comprehensive backup job monitoring with performance metrics and failure detection",
-        "Log Analytics workspaces: Centralized backup log aggregation with automated anomaly detection and trend analysis",
-        "ServiceNow integration: Automated incident creation for backup failures with escalation and resolution tracking",
-        "Power BI dashboards: Real-time backup status visualization with executive reporting and compliance metrics",
-        "Predictive analytics platforms: AI-driven failure prediction with proactive intervention and maintenance optimization"
-      ],
-      "dataIntegrityValidation": [
-        "Azure Storage integrity monitoring: Automated checksum validation with corruption detection and alerting",
-        "Database consistency checking: Automated DBCC operations with integrity validation and repair recommendations",
-        "File system integrity validation: Automated file hash verification with tamper detection and restore validation",
-        "Cross-region data validation: Automated replication integrity checking with synchronization monitoring",
-        "Application-specific validation: Custom validation scripts with business logic verification and data quality assessment"
-      ],
-      "restoreTestingAutomation": [
-        "Azure DevOps pipelines: Automated restore testing with validation and success criteria verification",
-        "PowerShell DSC: Configuration-driven restore testing with environment provisioning and application validation",
-        "Terraform automation: Infrastructure as Code restore testing with automated environment recreation",
-        "Azure Logic Apps: Workflow automation for scheduled restore testing with notification and reporting",
-        "Azure Functions: Serverless restore validation with dynamic test data generation and performance assessment"
-      ],
-      "recoveryDocumentationManagement": [
-        "SharePoint integration: Centralized recovery procedure management with version control and stakeholder access",
-        "Confluence automation: Automated procedure documentation with template enforcement and currency validation",
-        "Azure DevOps wikis: Developer-centric recovery documentation with code integration and automated updates",
-        "ServiceNow knowledge base: Service management integration with procedure accessibility and training tracking",
-        "Microsoft Teams integration: Collaborative procedure development with stakeholder review and approval workflows"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "CP-9": "Information System Backup",
-        "CP-10": "Information System Recovery and Reconstitution",
-        "SI-13": "Predictable Failure Prevention"
-      },
-      "nist80053": {
-        "CP-9": "Information System Backup",
-        "CP-10": "Information System Recovery and Reconstitution",
-        "SI-13": "Predictable Failure Prevention",
-        "AU-9": "Protection of Audit Information"
-      },
-      "iso27001": {
-        "A.12.3.1": "Information backup",
-        "A.17.1.2": "Implementing information security continuity",
-        "A.17.1.3": "Verify, review and evaluate information security continuity"
-      }
-    }
+    ]
   }
 }

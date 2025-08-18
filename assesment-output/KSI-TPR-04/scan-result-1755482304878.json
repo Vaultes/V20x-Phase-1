@@ -11,7 +11,60 @@
       "failed": 4,
       "warnings": 0
     },
-    "thirdPartySoftwareVulnerabilityMonitoringChecks": [
+    "thirdPartySoftwareVulnerabilityMonitoringVerificationMethods": {
+      "automatedVulnerabilityScanning": [
+        "Software Composition Analysis: Snyk, WhiteSource, FOSSA vulnerability scanning integration",
+        "Container image scanning: Trivy, Twistlock, Azure Container Registry vulnerability assessment",
+        "Package manager integration: npm audit, pip-audit, NuGet vulnerability checking",
+        "CI/CD pipeline integration: Automated vulnerability scanning in build and deployment processes",
+        "Continuous monitoring: Real-time vulnerability detection and alerting systems"
+      ],
+      "vulnerabilityIntelligenceIntegration": [
+        "National Vulnerability Database: NVD CVE feed integration and synchronization",
+        "GitHub Security Advisory Database: GHSA vulnerability intelligence integration",
+        "Vendor security advisories: Microsoft, npm, Python, Docker security advisory monitoring",
+        "Threat intelligence feeds: Commercial and open-source threat intelligence integration",
+        "EPSS scoring: Exploit Prediction Scoring System integration for prioritization"
+      ],
+      "contractualNotificationTracking": [
+        "Contract management systems: Vendor agreement tracking and security clause validation",
+        "Vendor communication platforms: Security notification receival and response tracking",
+        "SLA monitoring: Contractual notification timeline compliance measurement",
+        "Vendor performance dashboards: Security communication effectiveness tracking",
+        "Legal compliance tracking: Contractual obligation fulfillment monitoring"
+      ],
+      "remediationTrackingAndManagement": [
+        "Vulnerability management platforms: Centralized remediation tracking and workflow management",
+        "Ticketing systems: Issue tracking integration for vulnerability remediation tasks",
+        "Change management systems: Remediation deployment tracking and approval workflows",
+        "Testing frameworks: Automated patch testing and validation processes",
+        "Metrics and reporting: Remediation SLA compliance and performance analytics"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "SA-12": "Supply Chain Protection",
+        "SI-2": "Flaw Remediation",
+        "SI-4": "Information System Monitoring",
+        "RA-5": "Vulnerability Scanning",
+        "SA-9": "External Information System Services"
+      },
+      "nist80053": {
+        "SA-12": "Supply Chain Protection",
+        "SI-2": "Flaw Remediation",
+        "SI-4": "Information System Monitoring",
+        "RA-5": "Vulnerability Scanning",
+        "SA-9": "External Information System Services",
+        "PM-30": "Supply Chain Risk Management Strategy"
+      },
+      "iso27001": {
+        "A.12.6.1": "Management of technical vulnerabilities",
+        "A.15.2.1": "Monitoring and review of supplier services",
+        "A.15.2.2": "Managing changes to supplier services",
+        "A.16.1.3": "Reporting information security weaknesses"
+      }
+    },
+    "checks": [
       {
         "checkId": "TPR-04-001",
         "name": "Automated Vulnerability Scanning",
@@ -95,7 +148,8 @@
             "details": "23 critical vulnerabilities identified with 45 new vulnerabilities in latest scan"
           }
         ],
-        "remediation": "Automated vulnerability scanning comprehensively implemented with effective multi-ecosystem coverage"
+        "remediation": "Automated vulnerability scanning comprehensively implemented with effective multi-ecosystem coverage",
+        "checkType": "thirdPartySoftwareVulnerabilityMonitorin"
       },
       {
         "checkId": "TPR-04-002",
@@ -151,7 +205,13 @@
             "exploitReleaseAlerts": true,
             "vendorAdvisoryAlerts": true,
             "alertLatency": "< 5 minutes",
-            "alertingChannels": ["Email", "Slack", "Teams", "SMS", "SIEM Integration"]
+            "alertingChannels": [
+              "Email",
+              "Slack",
+              "Teams",
+              "SMS",
+              "SIEM Integration"
+            ]
           }
         },
         "testResults": [
@@ -171,7 +231,8 @@
             "details": "Sub-5-minute alert latency with multi-channel notification integration"
           }
         ],
-        "remediation": "Vulnerability intelligence comprehensively integrated with advanced enrichment and real-time alerting"
+        "remediation": "Vulnerability intelligence comprehensively integrated with advanced enrichment and real-time alerting",
+        "checkType": "thirdPartySoftwareVulnerabilityMonitorin"
       },
       {
         "checkId": "TPR-04-003",
@@ -243,7 +304,8 @@
             "details": "83.4% overall notification compliance with systematic performance tracking"
           }
         ],
-        "remediation": "Contractual notification requirements well-established with strong vendor compliance monitoring"
+        "remediation": "Contractual notification requirements well-established with strong vendor compliance monitoring",
+        "checkType": "thirdPartySoftwareVulnerabilityMonitorin"
       },
       {
         "checkId": "TPR-04-004",
@@ -308,7 +370,8 @@
             "details": "80 overdue vulnerabilities with average 12.3-day critical remediation time"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement comprehensive vulnerability remediation tracking for all 456 identified vulnerabilities, 2) Establish automated remediation workflows for low-risk vulnerabilities, 3) Improve critical vulnerability remediation to meet 7-day SLA target, 4) Address remediation bottlenecks through resource allocation and process optimization, 5) Implement automated testing and validation for vulnerability patches, 6) Establish escalation procedures for overdue critical vulnerabilities"
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive vulnerability remediation tracking for all 456 identified vulnerabilities, 2) Establish automated remediation workflows for low-risk vulnerabilities, 3) Improve critical vulnerability remediation to meet 7-day SLA target, 4) Address remediation bottlenecks through resource allocation and process optimization, 5) Implement automated testing and validation for vulnerability patches, 6) Establish escalation procedures for overdue critical vulnerabilities",
+        "checkType": "thirdPartySoftwareVulnerabilityMonitorin"
       },
       {
         "checkId": "TPR-04-005",
@@ -358,7 +421,8 @@
             "details": "55.9% vendor security program coverage with basic maturity assessment"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Establish security communication channels with all 34 vendors including emergency contact procedures, 2) Implement standardized vendor security advisory receival process with automated acknowledgment, 3) Conduct comprehensive vendor security capability assessments including incident response testing, 4) Establish vendor security scorecard with regular maturity assessments, 5) Implement proactive vendor security engagement program with regular security reviews, 6) Deploy vendor risk monitoring with continuous security posture assessment"
+        "remediation": "MEDIUM PRIORITY: 1) Establish security communication channels with all 34 vendors including emergency contact procedures, 2) Implement standardized vendor security advisory receival process with automated acknowledgment, 3) Conduct comprehensive vendor security capability assessments including incident response testing, 4) Establish vendor security scorecard with regular maturity assessments, 5) Implement proactive vendor security engagement program with regular security reviews, 6) Deploy vendor risk monitoring with continuous security posture assessment",
+        "checkType": "thirdPartySoftwareVulnerabilityMonitorin"
       },
       {
         "checkId": "TPR-04-006",
@@ -406,7 +470,8 @@
             "details": "Basic industry threat awareness with no predictive threat modeling"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Integrate remaining 4 threat intelligence sources with automated enrichment capabilities, 2) Implement contextual risk scoring combining vulnerability data with threat intelligence, 3) Deploy attack surface monitoring with threat actor targeting analysis, 4) Establish dark web monitoring for leaked credentials and exploit kit tracking, 5) Implement predictive threat modeling for supply chain risk assessment, 6) Develop industry-specific threat landscape monitoring and analysis"
+        "remediation": "MEDIUM PRIORITY: 1) Integrate remaining 4 threat intelligence sources with automated enrichment capabilities, 2) Implement contextual risk scoring combining vulnerability data with threat intelligence, 3) Deploy attack surface monitoring with threat actor targeting analysis, 4) Establish dark web monitoring for leaked credentials and exploit kit tracking, 5) Implement predictive threat modeling for supply chain risk assessment, 6) Develop industry-specific threat landscape monitoring and analysis",
+        "checkType": "thirdPartySoftwareVulnerabilityMonitorin"
       },
       {
         "checkId": "TPR-04-007",
@@ -458,61 +523,9 @@
             "details": "25.5% migration plan coverage with limited alternative component identification"
           }
         ],
-        "remediation": "LOW PRIORITY: 1) Implement automated end-of-life tracking for all 1845 third-party components with vendor lifecycle monitoring, 2) Establish deprecation status dashboard with automated alerts for approaching end-of-life dates, 3) Develop migration planning framework with alternative component identification and evaluation, 4) Implement automated migration timeline tracking with milestone management, 5) Create vendor lifecycle management process with proactive renewal and replacement planning, 6) Deploy component lifecycle analytics with predictive replacement recommendations"
+        "remediation": "LOW PRIORITY: 1) Implement automated end-of-life tracking for all 1845 third-party components with vendor lifecycle monitoring, 2) Establish deprecation status dashboard with automated alerts for approaching end-of-life dates, 3) Develop migration planning framework with alternative component identification and evaluation, 4) Implement automated migration timeline tracking with milestone management, 5) Create vendor lifecycle management process with proactive renewal and replacement planning, 6) Deploy component lifecycle analytics with predictive replacement recommendations",
+        "checkType": "thirdPartySoftwareVulnerabilityMonitorin"
       }
-    ],
-    "thirdPartySoftwareVulnerabilityMonitoringVerificationMethods": {
-      "automatedVulnerabilityScanning": [
-        "Software Composition Analysis: Snyk, WhiteSource, FOSSA vulnerability scanning integration",
-        "Container image scanning: Trivy, Twistlock, Azure Container Registry vulnerability assessment",
-        "Package manager integration: npm audit, pip-audit, NuGet vulnerability checking",
-        "CI/CD pipeline integration: Automated vulnerability scanning in build and deployment processes",
-        "Continuous monitoring: Real-time vulnerability detection and alerting systems"
-      ],
-      "vulnerabilityIntelligenceIntegration": [
-        "National Vulnerability Database: NVD CVE feed integration and synchronization",
-        "GitHub Security Advisory Database: GHSA vulnerability intelligence integration",
-        "Vendor security advisories: Microsoft, npm, Python, Docker security advisory monitoring",
-        "Threat intelligence feeds: Commercial and open-source threat intelligence integration",
-        "EPSS scoring: Exploit Prediction Scoring System integration for prioritization"
-      ],
-      "contractualNotificationTracking": [
-        "Contract management systems: Vendor agreement tracking and security clause validation",
-        "Vendor communication platforms: Security notification receival and response tracking",
-        "SLA monitoring: Contractual notification timeline compliance measurement",
-        "Vendor performance dashboards: Security communication effectiveness tracking",
-        "Legal compliance tracking: Contractual obligation fulfillment monitoring"
-      ],
-      "remediationTrackingAndManagement": [
-        "Vulnerability management platforms: Centralized remediation tracking and workflow management",
-        "Ticketing systems: Issue tracking integration for vulnerability remediation tasks",
-        "Change management systems: Remediation deployment tracking and approval workflows",
-        "Testing frameworks: Automated patch testing and validation processes",
-        "Metrics and reporting: Remediation SLA compliance and performance analytics"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "SA-12": "Supply Chain Protection",
-        "SI-2": "Flaw Remediation",
-        "SI-4": "Information System Monitoring",
-        "RA-5": "Vulnerability Scanning",
-        "SA-9": "External Information System Services"
-      },
-      "nist80053": {
-        "SA-12": "Supply Chain Protection",
-        "SI-2": "Flaw Remediation",
-        "SI-4": "Information System Monitoring",
-        "RA-5": "Vulnerability Scanning",
-        "SA-9": "External Information System Services",
-        "PM-30": "Supply Chain Risk Management Strategy"
-      },
-      "iso27001": {
-        "A.12.6.1": "Management of technical vulnerabilities",
-        "A.15.2.1": "Monitoring and review of supplier services",
-        "A.15.2.2": "Managing changes to supplier services",
-        "A.16.1.3": "Reporting information security weaknesses"
-      }
-    }
+    ]
   }
 }

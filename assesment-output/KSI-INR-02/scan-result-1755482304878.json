@@ -11,7 +11,64 @@
       "failed": 3,
       "warnings": 0
     },
-    "incidentLogMaintenanceChecks": [
+    "incidentLogVerificationMethods": {
+      "logManagementAndIntegrity": [
+        "Microsoft Sentinel integration: Comprehensive incident log management with STIX 2.1 compatibility and cryptographic integrity protection",
+        "Azure Log Analytics workspaces: Centralized incident data storage with retention management and query optimization",
+        "Immutable storage implementation: Tamper-evident logging with cryptographic hash validation and audit trail protection",
+        "Access control automation: Role-based log access with MFA requirements and comprehensive activity auditing",
+        "Backup and disaster recovery: Geo-redundant log backup with cross-region replication and recovery capabilities"
+      ],
+      "patternAnalysisAutomation": [
+        "Azure Machine Learning platforms: Automated pattern detection with anomaly identification and trend analysis capabilities",
+        "MITRE ATT&CK framework integration: Attack vector analysis with technique mapping and lateral movement detection",
+        "Threat intelligence platforms: CVE correlation with exploit pattern identification and zero-day detection capabilities",
+        "Statistical analysis tools: Time-series analysis with seasonal pattern detection and predictive forecasting",
+        "Behavioral analytics platforms: User and entity behavior analysis with deviation detection and risk scoring"
+      ],
+      "reviewProcessAutomation": [
+        "ServiceNow workflow automation: Automated review scheduling with stakeholder notification and agenda generation",
+        "Microsoft Teams integration: Collaborative review processes with documentation automation and action item tracking",
+        "Calendar integration platforms: Schedule management with automated reminders and availability coordination",
+        "Document management systems: Automated report generation with template population and distribution capabilities",
+        "Action item tracking tools: Automated assignment with follow-up reminders and completion validation"
+      ],
+      "historicalAnalysisCapabilities": [
+        "Business intelligence platforms: Multi-year trend analysis with cross-incident correlation and visualization capabilities",
+        "Data warehousing solutions: Historical data aggregation with quality validation and normalization processes",
+        "Advanced analytics platforms: Predictive analytics with root cause analysis and impact assessment capabilities",
+        "Interactive dashboard tools: Executive reporting with drill-down capabilities and stakeholder-specific views",
+        "Data quality management: Automated validation with completeness checking and accuracy verification"
+      ],
+      "vulnerabilityIntegrationPlatforms": [
+        "Vulnerability management systems: Automated CVE correlation with exploitation tracking and remediation integration",
+        "Patch management platforms: Remediation effectiveness analysis with timeline tracking and success measurement",
+        "Threat intelligence feeds: IoC correlation with threat actor attribution and campaign identification",
+        "Risk assessment platforms: Vulnerability prioritization with incident data integration and predictive capabilities",
+        "Security orchestration tools: Automated vulnerability-incident linking with response workflow integration"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "IR-4": "Incident Handling",
+        "IR-5": "Incident Monitoring",
+        "AU-6": "Audit Review, Analysis, and Reporting",
+        "AU-9": "Protection of Audit Information"
+      },
+      "nist80053": {
+        "IR-4": "Incident Handling",
+        "IR-5": "Incident Monitoring",
+        "AU-6": "Audit Review, Analysis, and Reporting",
+        "AU-9": "Protection of Audit Information",
+        "SI-4": "Information System Monitoring"
+      },
+      "iso27001": {
+        "A.16.1.4": "Assessment of and decision on information security events",
+        "A.16.1.6": "Learning from information security incidents",
+        "A.12.4.1": "Event logging"
+      }
+    },
+    "checks": [
       {
         "checkId": "INR-02-001",
         "name": "Comprehensive Incident Log Management",
@@ -73,7 +130,8 @@
             "details": "FedRAMP retention compliance with 99.97% uptime and cross-region disaster recovery"
           }
         ],
-        "remediation": "Incident log management comprehensively implemented with strong security and compliance alignment"
+        "remediation": "Incident log management comprehensively implemented with strong security and compliance alignment",
+        "checkType": "incidentLogMaintenanc"
       },
       {
         "checkId": "INR-02-002",
@@ -135,7 +193,8 @@
             "details": "AI-generated remediation recommendations with predictive analytics and benchmarking"
           }
         ],
-        "remediation": "Pattern analysis comprehensively implemented with advanced ML capabilities and intelligent recommendation generation"
+        "remediation": "Pattern analysis comprehensively implemented with advanced ML capabilities and intelligent recommendation generation",
+        "checkType": "incidentLogMaintenanc"
       },
       {
         "checkId": "INR-02-003",
@@ -197,7 +256,8 @@
             "details": "94.3% action item completion with automated tracking and system integration"
           }
         ],
-        "remediation": "Incident review processes comprehensively automated with effective stakeholder management and integration capabilities"
+        "remediation": "Incident review processes comprehensively automated with effective stakeholder management and integration capabilities",
+        "checkType": "incidentLogMaintenanc"
       },
       {
         "checkId": "INR-02-004",
@@ -259,7 +319,8 @@
             "details": "Limited predictive analytics with manual executive reporting and basic visualization"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive historical data analysis with multi-year trend identification and seasonal pattern recognition, 2) Establish advanced correlation analysis capabilities across incidents, systems, time periods, and stakeholders, 3) Improve data quality and completeness with systematic validation and normalization processes, 4) Deploy advanced analytics capabilities including predictive analysis, comprehensive root cause analysis, and risk assessment integration, 5) Create interactive reporting and visualization capabilities with stakeholder-specific dashboards and executive integration, 6) Develop automated historical data maintenance with quality assurance and accuracy validation"
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive historical data analysis with multi-year trend identification and seasonal pattern recognition, 2) Establish advanced correlation analysis capabilities across incidents, systems, time periods, and stakeholders, 3) Improve data quality and completeness with systematic validation and normalization processes, 4) Deploy advanced analytics capabilities including predictive analysis, comprehensive root cause analysis, and risk assessment integration, 5) Create interactive reporting and visualization capabilities with stakeholder-specific dashboards and executive integration, 6) Develop automated historical data maintenance with quality assurance and accuracy validation",
+        "checkType": "incidentLogMaintenanc"
       },
       {
         "checkId": "INR-02-005",
@@ -321,7 +382,8 @@
             "details": "Limited threat intelligence integration with no predictive vulnerability exploitation capabilities"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement comprehensive vulnerability management integration with automated CVE correlation and exploitation tracking, 2) Establish systematic incident-vulnerability linking with automated mapping and impact assessment, 3) Create integrated remediation tracking with patching effectiveness analysis and success metrics, 4) Deploy advanced threat intelligence integration with IoC correlation and threat actor attribution, 5) Develop predictive vulnerability exploitation capabilities with attack likelihood assessment and proactive defense recommendations, 6) Integrate vulnerability prioritization with incident data for risk-based remediation planning"
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive vulnerability management integration with automated CVE correlation and exploitation tracking, 2) Establish systematic incident-vulnerability linking with automated mapping and impact assessment, 3) Create integrated remediation tracking with patching effectiveness analysis and success metrics, 4) Deploy advanced threat intelligence integration with IoC correlation and threat actor attribution, 5) Develop predictive vulnerability exploitation capabilities with attack likelihood assessment and proactive defense recommendations, 6) Integrate vulnerability prioritization with incident data for risk-based remediation planning",
+        "checkType": "incidentLogMaintenanc"
       },
       {
         "checkId": "INR-02-006",
@@ -383,65 +445,9 @@
             "details": "Manual bottleneck identification with no systematic process improvement or industry benchmarking"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive incident lifecycle tracking with systematic measurement of detection, response, containment, recovery, and closure times, 2) Establish response effectiveness metrics with escalation analysis, communication measurement, and stakeholder satisfaction tracking, 3) Deploy resource utilization analysis with staff, technology, and cost per incident measurement for capacity planning, 4) Create automated process optimization capabilities with bottleneck identification and workflow improvement recommendations, 5) Implement benchmarking and comparison capabilities with industry standards and historical performance analysis, 6) Develop incident response maturity measurement with best practice alignment assessment and continuous improvement tracking"
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive incident lifecycle tracking with systematic measurement of detection, response, containment, recovery, and closure times, 2) Establish response effectiveness metrics with escalation analysis, communication measurement, and stakeholder satisfaction tracking, 3) Deploy resource utilization analysis with staff, technology, and cost per incident measurement for capacity planning, 4) Create automated process optimization capabilities with bottleneck identification and workflow improvement recommendations, 5) Implement benchmarking and comparison capabilities with industry standards and historical performance analysis, 6) Develop incident response maturity measurement with best practice alignment assessment and continuous improvement tracking",
+        "checkType": "incidentLogMaintenanc"
       }
-    ],
-    "incidentLogVerificationMethods": {
-      "logManagementAndIntegrity": [
-        "Microsoft Sentinel integration: Comprehensive incident log management with STIX 2.1 compatibility and cryptographic integrity protection",
-        "Azure Log Analytics workspaces: Centralized incident data storage with retention management and query optimization",
-        "Immutable storage implementation: Tamper-evident logging with cryptographic hash validation and audit trail protection",
-        "Access control automation: Role-based log access with MFA requirements and comprehensive activity auditing",
-        "Backup and disaster recovery: Geo-redundant log backup with cross-region replication and recovery capabilities"
-      ],
-      "patternAnalysisAutomation": [
-        "Azure Machine Learning platforms: Automated pattern detection with anomaly identification and trend analysis capabilities",
-        "MITRE ATT&CK framework integration: Attack vector analysis with technique mapping and lateral movement detection",
-        "Threat intelligence platforms: CVE correlation with exploit pattern identification and zero-day detection capabilities",
-        "Statistical analysis tools: Time-series analysis with seasonal pattern detection and predictive forecasting",
-        "Behavioral analytics platforms: User and entity behavior analysis with deviation detection and risk scoring"
-      ],
-      "reviewProcessAutomation": [
-        "ServiceNow workflow automation: Automated review scheduling with stakeholder notification and agenda generation",
-        "Microsoft Teams integration: Collaborative review processes with documentation automation and action item tracking",
-        "Calendar integration platforms: Schedule management with automated reminders and availability coordination",
-        "Document management systems: Automated report generation with template population and distribution capabilities",
-        "Action item tracking tools: Automated assignment with follow-up reminders and completion validation"
-      ],
-      "historicalAnalysisCapabilities": [
-        "Business intelligence platforms: Multi-year trend analysis with cross-incident correlation and visualization capabilities",
-        "Data warehousing solutions: Historical data aggregation with quality validation and normalization processes",
-        "Advanced analytics platforms: Predictive analytics with root cause analysis and impact assessment capabilities",
-        "Interactive dashboard tools: Executive reporting with drill-down capabilities and stakeholder-specific views",
-        "Data quality management: Automated validation with completeness checking and accuracy verification"
-      ],
-      "vulnerabilityIntegrationPlatforms": [
-        "Vulnerability management systems: Automated CVE correlation with exploitation tracking and remediation integration",
-        "Patch management platforms: Remediation effectiveness analysis with timeline tracking and success measurement",
-        "Threat intelligence feeds: IoC correlation with threat actor attribution and campaign identification",
-        "Risk assessment platforms: Vulnerability prioritization with incident data integration and predictive capabilities",
-        "Security orchestration tools: Automated vulnerability-incident linking with response workflow integration"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "IR-4": "Incident Handling",
-        "IR-5": "Incident Monitoring",
-        "AU-6": "Audit Review, Analysis, and Reporting",
-        "AU-9": "Protection of Audit Information"
-      },
-      "nist80053": {
-        "IR-4": "Incident Handling",
-        "IR-5": "Incident Monitoring",
-        "AU-6": "Audit Review, Analysis, and Reporting",
-        "AU-9": "Protection of Audit Information",
-        "SI-4": "Information System Monitoring"
-      },
-      "iso27001": {
-        "A.16.1.4": "Assessment of and decision on information security events",
-        "A.16.1.6": "Learning from information security incidents",
-        "A.12.4.1": "Event logging"
-      }
-    }
+    ]
   }
 }

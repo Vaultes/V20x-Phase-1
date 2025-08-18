@@ -11,7 +11,77 @@
       "failed": 4,
       "warnings": 0
     },
-    "keyAndCertificateRotationChecks": [
+    "keyAndCertificateRotationBestPractices": {
+      "automatedRotation": [
+        "Configure automatic key rotation policies in Azure Key Vault",
+        "Use Azure App Service managed certificates for automatic renewal",
+        "Implement coordinated rotation across dependent services",
+        "Establish pre-expiry notification and alerting systems"
+      ],
+      "certificateManagement": [
+        "Use ACME protocol for automated certificate issuance",
+        "Implement certificate lifecycle monitoring and reporting",
+        "Configure automatic deployment to target services",
+        "Establish rollback procedures for failed renewals"
+      ],
+      "servicePrincipalSecurity": [
+        "Migrate to managed identities where possible",
+        "Implement automated secret rotation for service principals",
+        "Use Azure Key Vault for centralized secret management",
+        "Configure coordinated updates across applications"
+      ],
+      "databaseSecurity": [
+        "Use managed identities for database authentication",
+        "Implement automated credential rotation procedures",
+        "Store connection strings in Azure Key Vault",
+        "Configure zero-downtime credential updates"
+      ]
+    },
+    "rotationVerificationMethods": {
+      "azureKeyVault": [
+        "az keyvault key list --vault-name <vault> --query '[].{Name:name,Created:attributes.created,Updated:attributes.updated}'",
+        "az keyvault certificate list --vault-name <vault> --query '[].{Name:name,Expires:attributes.expires}'",
+        "Get-AzKeyVaultKey -VaultName <vault> | Select-Object Name, Created, Updated",
+        "Azure Portal: Key Vault > Keys/Certificates > Versions"
+      ],
+      "appService": [
+        "az webapp config ssl list --resource-group <rg> --name <app>",
+        "az webapp config ssl show --resource-group <rg> --name <app> --certificate-thumbprint <thumbprint>",
+        "Get-AzWebAppSSLBinding -ResourceGroupName <rg> -WebAppName <app>",
+        "Azure Portal: App Service > TLS/SSL settings"
+      ],
+      "servicePrincipals": [
+        "az ad sp list --query '[].{DisplayName:displayName,AppId:appId,PasswordCredentials:passwordCredentials}'",
+        "az ad sp credential list --id <app-id>",
+        "Get-AzADServicePrincipal | Select-Object DisplayName, ApplicationId, PasswordCredentials",
+        "Azure Portal: Azure AD > App registrations > Certificates & secrets"
+      ],
+      "certificates": [
+        "openssl x509 -in <cert> -text -noout | grep -E 'Not Before|Not After'",
+        "Get-ChildItem Cert:\\LocalMachine\\My | Select-Object Subject, NotBefore, NotAfter",
+        "certlm.msc (Windows Certificate Manager)",
+        "curl -I <https-endpoint> | grep -i expire"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "SC-12": "Cryptographic Key Establishment and Management",
+        "SC-17": "Public Key Infrastructure Certificates",
+        "IA-5": "Authenticator Management"
+      },
+      "nist80053": {
+        "SC-12": "Cryptographic Key Establishment and Management",
+        "SC-17": "Public Key Infrastructure Certificates",
+        "IA-5": "Authenticator Management",
+        "SC-23": "Session Authenticity"
+      },
+      "iso27001": {
+        "A.10.1.2": "Key management",
+        "A.14.1.2": "Securing application services on public networks",
+        "A.9.4.3": "Password management system"
+      }
+    },
+    "checks": [
       {
         "checkId": "SVC-06-001",
         "name": "Azure Key Vault Automatic Key Rotation",
@@ -77,7 +147,10 @@
               "preExpiryAlerts": true,
               "rotationFailureAlerts": true,
               "unusedKeyAlerts": true,
-              "actionGroups": ["security-team", "platform-ops"]
+              "actionGroups": [
+                "security-team",
+                "platform-ops"
+              ]
             },
             "reporting": {
               "rotationDashboard": true,
@@ -122,7 +195,8 @@
             "details": "Key rotation coordinated across dependent services"
           }
         ],
-        "remediation": "Key rotation properly automated with comprehensive monitoring"
+        "remediation": "Key rotation properly automated with comprehensive monitoring",
+        "checkType": "keyAndCertificateRotatio"
       },
       {
         "checkId": "SVC-06-002",
@@ -142,7 +216,10 @@
                 "validTo": "2026-01-15T00:00:00.000Z",
                 "autoRenewal": true,
                 "renewalThreshold": "P60D",
-                "deploymentTargets": ["Application Gateway", "Front Door"]
+                "deploymentTargets": [
+                  "Application Gateway",
+                  "Front Door"
+                ]
               },
               {
                 "name": "api-fedramp-gov-ssl",
@@ -151,7 +228,9 @@
                 "validTo": "2025-09-15T00:00:00.000Z",
                 "autoRenewal": true,
                 "renewalThreshold": "P30D",
-                "deploymentTargets": ["Application Gateway"]
+                "deploymentTargets": [
+                  "Application Gateway"
+                ]
               },
               {
                 "name": "vpn-gateway-cert",
@@ -160,7 +239,9 @@
                 "validTo": "2027-03-01T00:00:00.000Z",
                 "autoRenewal": true,
                 "renewalThreshold": "P90D",
-                "deploymentTargets": ["VPN Gateway"]
+                "deploymentTargets": [
+                  "VPN Gateway"
+                ]
               }
             ]
           },
@@ -187,8 +268,17 @@
           },
           "lifecycleManagement": {
             "expiryMonitoring": {
-              "alertThresholds": ["P90D", "P60D", "P30D", "P7D"],
-              "notificationChannels": ["Email", "Teams", "Azure Monitor"],
+              "alertThresholds": [
+                "P90D",
+                "P60D",
+                "P30D",
+                "P7D"
+              ],
+              "notificationChannels": [
+                "Email",
+                "Teams",
+                "Azure Monitor"
+              ],
               "escalationPolicy": true
             },
             "renewalTracking": {
@@ -221,7 +311,8 @@
             "details": "Multi-threshold alerting active for all certificates"
           }
         ],
-        "remediation": "Certificate lifecycle properly automated with comprehensive monitoring"
+        "remediation": "Certificate lifecycle properly automated with comprehensive monitoring",
+        "checkType": "keyAndCertificateRotatio"
       },
       {
         "checkId": "SVC-06-003",
@@ -289,7 +380,8 @@
             "details": "Continuous domain validation configured"
           }
         ],
-        "remediation": "App Service managed certificates properly configured"
+        "remediation": "App Service managed certificates properly configured",
+        "checkType": "keyAndCertificateRotatio"
       },
       {
         "checkId": "SVC-06-004",
@@ -398,7 +490,8 @@
             "issue": "Manual key/certificate management without proper controls"
           }
         ],
-        "remediation": "CRITICAL: 1) Immediately replace expired certificates, 2) Implement automated certificate discovery and inventory, 3) Deploy certificate lifecycle management solution, 4) Establish automated renewal processes, 5) Configure comprehensive monitoring and alerting, 6) Create documented procedures and assign ownership, 7) Plan migration to Azure Key Vault or equivalent solution"
+        "remediation": "CRITICAL: 1) Immediately replace expired certificates, 2) Implement automated certificate discovery and inventory, 3) Deploy certificate lifecycle management solution, 4) Establish automated renewal processes, 5) Configure comprehensive monitoring and alerting, 6) Create documented procedures and assign ownership, 7) Plan migration to Azure Key Vault or equivalent solution",
+        "checkType": "keyAndCertificateRotatio"
       },
       {
         "checkId": "SVC-06-005",
@@ -494,7 +587,8 @@
             "details": "Limited visibility into secret lifecycle"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Immediately rotate expired secrets, 2) Implement Azure Key Vault for service principal secret management, 3) Configure automated rotation policies, 4) Deploy secret lifecycle monitoring, 5) Establish coordinated update procedures, 6) Create comprehensive alerting and reporting, 7) Migrate to managed identities where possible"
+        "remediation": "HIGH PRIORITY: 1) Immediately rotate expired secrets, 2) Implement Azure Key Vault for service principal secret management, 3) Configure automated rotation policies, 4) Deploy secret lifecycle monitoring, 5) Establish coordinated update procedures, 6) Create comprehensive alerting and reporting, 7) Migrate to managed identities where possible",
+        "checkType": "keyAndCertificateRotatio"
       },
       {
         "checkId": "SVC-06-006",
@@ -588,7 +682,8 @@
             "details": "No automated credential rotation processes"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Migrate to managed identities where possible, 2) Store database credentials in Azure Key Vault, 3) Implement automated credential rotation, 4) Remove hardcoded credentials from configuration, 5) Establish coordinated update procedures, 6) Create rollback and testing procedures, 7) Configure comprehensive monitoring and alerting"
+        "remediation": "HIGH PRIORITY: 1) Migrate to managed identities where possible, 2) Store database credentials in Azure Key Vault, 3) Implement automated credential rotation, 4) Remove hardcoded credentials from configuration, 5) Establish coordinated update procedures, 6) Create rollback and testing procedures, 7) Configure comprehensive monitoring and alerting",
+        "checkType": "keyAndCertificateRotatio"
       },
       {
         "checkId": "SVC-06-007",
@@ -677,78 +772,9 @@
             "details": "Most key/token operations require manual intervention"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement automated API key rotation, 2) Configure JWT signing key rotation, 3) Establish token lifecycle policies, 4) Deploy key management automation, 5) Create comprehensive inventory and monitoring, 6) Implement secure key distribution, 7) Establish revocation and audit capabilities"
+        "remediation": "MEDIUM PRIORITY: 1) Implement automated API key rotation, 2) Configure JWT signing key rotation, 3) Establish token lifecycle policies, 4) Deploy key management automation, 5) Create comprehensive inventory and monitoring, 6) Implement secure key distribution, 7) Establish revocation and audit capabilities",
+        "checkType": "keyAndCertificateRotatio"
       }
-    ],
-    "keyAndCertificateRotationBestPractices": {
-      "automatedRotation": [
-        "Configure automatic key rotation policies in Azure Key Vault",
-        "Use Azure App Service managed certificates for automatic renewal",
-        "Implement coordinated rotation across dependent services",
-        "Establish pre-expiry notification and alerting systems"
-      ],
-      "certificateManagement": [
-        "Use ACME protocol for automated certificate issuance",
-        "Implement certificate lifecycle monitoring and reporting",
-        "Configure automatic deployment to target services",
-        "Establish rollback procedures for failed renewals"
-      ],
-      "servicePrincipalSecurity": [
-        "Migrate to managed identities where possible",
-        "Implement automated secret rotation for service principals",
-        "Use Azure Key Vault for centralized secret management",
-        "Configure coordinated updates across applications"
-      ],
-      "databaseSecurity": [
-        "Use managed identities for database authentication",
-        "Implement automated credential rotation procedures",
-        "Store connection strings in Azure Key Vault",
-        "Configure zero-downtime credential updates"
-      ]
-    },
-    "rotationVerificationMethods": {
-      "azureKeyVault": [
-        "az keyvault key list --vault-name <vault> --query '[].{Name:name,Created:attributes.created,Updated:attributes.updated}'",
-        "az keyvault certificate list --vault-name <vault> --query '[].{Name:name,Expires:attributes.expires}'",
-        "Get-AzKeyVaultKey -VaultName <vault> | Select-Object Name, Created, Updated",
-        "Azure Portal: Key Vault > Keys/Certificates > Versions"
-      ],
-      "appService": [
-        "az webapp config ssl list --resource-group <rg> --name <app>",
-        "az webapp config ssl show --resource-group <rg> --name <app> --certificate-thumbprint <thumbprint>",
-        "Get-AzWebAppSSLBinding -ResourceGroupName <rg> -WebAppName <app>",
-        "Azure Portal: App Service > TLS/SSL settings"
-      ],
-      "servicePrincipals": [
-        "az ad sp list --query '[].{DisplayName:displayName,AppId:appId,PasswordCredentials:passwordCredentials}'",
-        "az ad sp credential list --id <app-id>",
-        "Get-AzADServicePrincipal | Select-Object DisplayName, ApplicationId, PasswordCredentials",
-        "Azure Portal: Azure AD > App registrations > Certificates & secrets"
-      ],
-      "certificates": [
-        "openssl x509 -in <cert> -text -noout | grep -E 'Not Before|Not After'",
-        "Get-ChildItem Cert:\\LocalMachine\\My | Select-Object Subject, NotBefore, NotAfter",
-        "certlm.msc (Windows Certificate Manager)",
-        "curl -I <https-endpoint> | grep -i expire"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "SC-12": "Cryptographic Key Establishment and Management",
-        "SC-17": "Public Key Infrastructure Certificates",
-        "IA-5": "Authenticator Management"
-      },
-      "nist80053": {
-        "SC-12": "Cryptographic Key Establishment and Management",
-        "SC-17": "Public Key Infrastructure Certificates",
-        "IA-5": "Authenticator Management",
-        "SC-23": "Session Authenticity"
-      },
-      "iso27001": {
-        "A.10.1.2": "Key management",
-        "A.14.1.2": "Securing application services on public networks",
-        "A.9.4.3": "Password management system"
-      }
-    }
+    ]
   }
 }

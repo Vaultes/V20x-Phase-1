@@ -11,7 +11,57 @@
       "failed": 4,
       "warnings": 0
     },
-    "roleSpecificTrainingChecks": [
+    "roleSpecificTrainingVerificationMethods": {
+      "privilegedUserTrainingTracking": [
+        "Identity and Access Management integration: Azure AD PIM role assignment correlation with training requirements",
+        "Privileged account discovery: Automated identification of users with elevated privileges requiring specialized training",
+        "Training completion correlation: Cross-reference training records with current privilege levels and role assignments",
+        "Certification tracking: Monitor security certifications and professional development for privileged users",
+        "Risk-based training assignment: Automatic enrollment triggers based on privilege escalation and role changes"
+      ],
+      "highRiskRoleIdentification": [
+        "Role risk assessment automation: Regular automated analysis of job functions and access patterns to identify high-risk roles",
+        "Access pattern analysis: Behavioral analytics to identify roles with high-risk access patterns requiring specialized training",
+        "Business impact assessment: Correlation of roles with business-critical functions and data access requiring enhanced training",
+        "Regulatory compliance mapping: Automatic identification of roles subject to specific compliance training requirements",
+        "Training matrix automation: Dynamic assignment of specialized training based on role risk assessment results"
+      ],
+      "specializationTrainingEffectiveness": [
+        "Competency assessment platforms: Skills validation and practical demonstration of security knowledge for specialized roles",
+        "Simulation and lab environments: Hands-on training effectiveness measurement through practical exercises",
+        "Incident response correlation: Analysis of training effectiveness through incident response performance measurement",
+        "Certification achievement tracking: Monitor professional certification completion rates and ongoing maintenance",
+        "Peer assessment and validation: Cross-training verification and knowledge sharing effectiveness measurement"
+      ],
+      "continuousSkillsDevelopment": [
+        "Learning path analytics: Automated tracking of individual learning progression and skill development",
+        "Industry trend integration: Monitoring of emerging threats and technologies requiring updated training content",
+        "Training content currency monitoring: Automated alerts for outdated training materials and curriculum updates",
+        "Professional development planning: Individual development plan tracking with career progression alignment",
+        "External training integration: Coordination with vendor training, conferences, and industry certification programs"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "AT-3": "Role-Based Security Training",
+        "AT-2": "Security Awareness Training",
+        "AT-4": "Security Training Records",
+        "PM-13": "Information Security Workforce"
+      },
+      "nist80053": {
+        "AT-3": "Role-Based Security Training",
+        "AT-2": "Security Awareness Training",
+        "AT-4": "Security Training Records",
+        "PM-13": "Information Security Workforce",
+        "PM-14": "Testing, Training, and Monitoring"
+      },
+      "iso27001": {
+        "A.7.2.2": "Information security awareness, education and training",
+        "A.6.1.1": "Information security roles and responsibilities",
+        "A.13.2.1": "Information transfer policies and procedures"
+      }
+    },
+    "checks": [
       {
         "checkId": "CED-02-001",
         "name": "Privileged User Training Coverage",
@@ -109,7 +159,8 @@
             "details": "95.5% completion rate with 91.7% average scores and 87.3% certification pass rate"
           }
         ],
-        "remediation": "Privileged user training comprehensively implemented with advanced content and strong completion rates"
+        "remediation": "Privileged user training comprehensively implemented with advanced content and strong completion rates",
+        "checkType": "roleSpecificTrainin"
       },
       {
         "checkId": "CED-02-002",
@@ -136,35 +187,47 @@
               "userCount": 15,
               "specializedTraining": "Advanced technical security",
               "trainingHours": "40 hours annually",
-              "certificationRequirements": ["Security+", "CISSP", "GSEC"]
+              "certificationRequirements": [
+                "Security+",
+                "CISSP",
+                "GSEC"
+              ]
             },
             "databaseAdministrators": {
               "riskLevel": "High",
               "userCount": 8,
               "specializedTraining": "Database security and privacy",
               "trainingHours": "24 hours annually",
-              "certificationRequirements": ["Database security certifications"]
+              "certificationRequirements": [
+                "Database security certifications"
+              ]
             },
             "financialProcessors": {
               "riskLevel": "High",
               "userCount": 12,
               "specializedTraining": "Financial fraud prevention",
               "trainingHours": "16 hours annually",
-              "certificationRequirements": ["Anti-fraud certification"]
+              "certificationRequirements": [
+                "Anti-fraud certification"
+              ]
             },
             "developmentTeam": {
               "riskLevel": "Medium-High",
               "userCount": 34,
               "specializedTraining": "Secure coding and DevSecOps",
               "trainingHours": "20 hours annually",
-              "certificationRequirements": ["Certified Secure Software Lifecycle Professional"]
+              "certificationRequirements": [
+                "Certified Secure Software Lifecycle Professional"
+              ]
             },
             "humanResourcesStaff": {
               "riskLevel": "Medium-High",
               "userCount": 7,
               "specializedTraining": "Privacy and social engineering awareness",
               "trainingHours": "12 hours annually",
-              "certificationRequirements": ["Privacy certification"]
+              "certificationRequirements": [
+                "Privacy certification"
+              ]
             }
           },
           "trainingMatrixImplementation": {
@@ -204,7 +267,8 @@
             "details": "Strong completion rates across all high-risk roles with 89.4% average competency scores"
           }
         ],
-        "remediation": "High-risk role training matrix comprehensively implemented with systematic identification and effective specialized training"
+        "remediation": "High-risk role training matrix comprehensively implemented with systematic identification and effective specialized training",
+        "checkType": "roleSpecificTrainin"
       },
       {
         "checkId": "CED-02-003",
@@ -284,7 +348,8 @@
             "details": "Limited coding labs and no capture-the-flag exercises or threat modeling training"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Achieve 100% developer enrollment in secure coding training with mandatory participation, 2) Develop comprehensive framework-specific security training for .NET Core, React, Node.js, and Python, 3) Implement complete OWASP Top 10 coverage with hands-on vulnerable application testing, 4) Deploy comprehensive DevSecOps training including container security, IaC security, and advanced SAST/DAST tools, 5) Establish regular capture-the-flag exercises and threat modeling workshops, 6) Implement security-focused peer code review training and practices, 7) Create security coding labs with real-world vulnerability scenarios"
+        "remediation": "HIGH PRIORITY: 1) Achieve 100% developer enrollment in secure coding training with mandatory participation, 2) Develop comprehensive framework-specific security training for .NET Core, React, Node.js, and Python, 3) Implement complete OWASP Top 10 coverage with hands-on vulnerable application testing, 4) Deploy comprehensive DevSecOps training including container security, IaC security, and advanced SAST/DAST tools, 5) Establish regular capture-the-flag exercises and threat modeling workshops, 6) Implement security-focused peer code review training and practices, 7) Create security coding labs with real-world vulnerability scenarios",
+        "checkType": "roleSpecificTrainin"
       },
       {
         "checkId": "CED-02-004",
@@ -324,7 +389,10 @@
           "simulationAndTabletopExercises": {
             "lastTabletopExercise": "2024-08-15T00:00:00.000Z",
             "exerciseFrequency": "Bi-annual",
-            "scenarioCoverage": ["Basic phishing incident", "Ransomware attack (limited scope)"],
+            "scenarioCoverage": [
+              "Basic phishing incident",
+              "Ransomware attack (limited scope)"
+            ],
             "missingScenarios": [
               "Advanced persistent threat (APT)",
               "Supply chain compromise",
@@ -366,7 +434,8 @@
             "details": "34.2% escalation rate with 4.2-hour average detection time indicating training gaps"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Achieve 100% incident response team training coverage with comprehensive incident handling procedures, 2) Implement advanced technical training for malware analysis, cloud incident response, and threat hunting, 3) Deploy monthly simulation exercises covering APT, supply chain, and multi-vector attack scenarios, 4) Establish digital forensics and evidence handling certification requirements, 5) Provide comprehensive SIEM tool training with advanced query and automation capabilities, 6) Implement stress management and communication training for high-pressure incident situations, 7) Increase professional development budget for industry certifications and conference attendance"
+        "remediation": "HIGH PRIORITY: 1) Achieve 100% incident response team training coverage with comprehensive incident handling procedures, 2) Implement advanced technical training for malware analysis, cloud incident response, and threat hunting, 3) Deploy monthly simulation exercises covering APT, supply chain, and multi-vector attack scenarios, 4) Establish digital forensics and evidence handling certification requirements, 5) Provide comprehensive SIEM tool training with advanced query and automation capabilities, 6) Implement stress management and communication training for high-pressure incident situations, 7) Increase professional development budget for industry certifications and conference attendance",
+        "checkType": "roleSpecificTrainin"
       },
       {
         "checkId": "CED-02-005",
@@ -440,7 +509,8 @@
             "details": "No systematic high-risk vendor identification or access-level based training requirements"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement standardized security training clauses in all vendor contracts with specific hour and topic requirements, 2) Establish risk-based vendor training requirements based on access levels and data classification, 3) Deploy vendor training verification system with competency testing and certificate validation, 4) Provide organization-specific training for all vendors with system access including policies and incident reporting, 5) Implement ongoing vendor training monitoring with compliance audits and penalty enforcement, 6) Create vendor training scorecard with performance tracking and deficiency remediation procedures"
+        "remediation": "MEDIUM PRIORITY: 1) Implement standardized security training clauses in all vendor contracts with specific hour and topic requirements, 2) Establish risk-based vendor training requirements based on access levels and data classification, 3) Deploy vendor training verification system with competency testing and certificate validation, 4) Provide organization-specific training for all vendors with system access including policies and incident reporting, 5) Implement ongoing vendor training monitoring with compliance audits and penalty enforcement, 6) Create vendor training scorecard with performance tracking and deficiency remediation procedures",
+        "checkType": "roleSpecificTrainin"
       },
       {
         "checkId": "CED-02-006",
@@ -532,58 +602,9 @@
             "details": "Significant training gaps for cloud architects and critical gaps for data scientists"
           }
         ],
-        "remediation": "LOW PRIORITY: 1) Develop comprehensive AI/ML security training program including adversarial machine learning and AI governance, 2) Implement advanced cloud-native security training covering serverless, microservices, and container orchestration security, 3) Establish zero trust architecture training with hands-on implementation methodologies, 4) Create emerging threat training modules for deepfakes, AI-powered attacks, and quantum computing threats, 5) Partner with specialized training providers for cutting-edge technology security education, 6) Develop role-specific emerging technology training paths for cloud architects, data scientists, and IoT teams"
+        "remediation": "LOW PRIORITY: 1) Develop comprehensive AI/ML security training program including adversarial machine learning and AI governance, 2) Implement advanced cloud-native security training covering serverless, microservices, and container orchestration security, 3) Establish zero trust architecture training with hands-on implementation methodologies, 4) Create emerging threat training modules for deepfakes, AI-powered attacks, and quantum computing threats, 5) Partner with specialized training providers for cutting-edge technology security education, 6) Develop role-specific emerging technology training paths for cloud architects, data scientists, and IoT teams",
+        "checkType": "roleSpecificTrainin"
       }
-    ],
-    "roleSpecificTrainingVerificationMethods": {
-      "privilegedUserTrainingTracking": [
-        "Identity and Access Management integration: Azure AD PIM role assignment correlation with training requirements",
-        "Privileged account discovery: Automated identification of users with elevated privileges requiring specialized training",
-        "Training completion correlation: Cross-reference training records with current privilege levels and role assignments",
-        "Certification tracking: Monitor security certifications and professional development for privileged users",
-        "Risk-based training assignment: Automatic enrollment triggers based on privilege escalation and role changes"
-      ],
-      "highRiskRoleIdentification": [
-        "Role risk assessment automation: Regular automated analysis of job functions and access patterns to identify high-risk roles",
-        "Access pattern analysis: Behavioral analytics to identify roles with high-risk access patterns requiring specialized training",
-        "Business impact assessment: Correlation of roles with business-critical functions and data access requiring enhanced training",
-        "Regulatory compliance mapping: Automatic identification of roles subject to specific compliance training requirements",
-        "Training matrix automation: Dynamic assignment of specialized training based on role risk assessment results"
-      ],
-      "specializationTrainingEffectiveness": [
-        "Competency assessment platforms: Skills validation and practical demonstration of security knowledge for specialized roles",
-        "Simulation and lab environments: Hands-on training effectiveness measurement through practical exercises",
-        "Incident response correlation: Analysis of training effectiveness through incident response performance measurement",
-        "Certification achievement tracking: Monitor professional certification completion rates and ongoing maintenance",
-        "Peer assessment and validation: Cross-training verification and knowledge sharing effectiveness measurement"
-      ],
-      "continuousSkillsDevelopment": [
-        "Learning path analytics: Automated tracking of individual learning progression and skill development",
-        "Industry trend integration: Monitoring of emerging threats and technologies requiring updated training content",
-        "Training content currency monitoring: Automated alerts for outdated training materials and curriculum updates",
-        "Professional development planning: Individual development plan tracking with career progression alignment",
-        "External training integration: Coordination with vendor training, conferences, and industry certification programs"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "AT-3": "Role-Based Security Training",
-        "AT-2": "Security Awareness Training",
-        "AT-4": "Security Training Records",
-        "PM-13": "Information Security Workforce"
-      },
-      "nist80053": {
-        "AT-3": "Role-Based Security Training",
-        "AT-2": "Security Awareness Training",
-        "AT-4": "Security Training Records",
-        "PM-13": "Information Security Workforce",
-        "PM-14": "Testing, Training, and Monitoring"
-      },
-      "iso27001": {
-        "A.7.2.2": "Information security awareness, education and training",
-        "A.6.1.1": "Information security roles and responsibilities",
-        "A.13.2.1": "Information transfer policies and procedures"
-      }
-    }
+    ]
   }
 }

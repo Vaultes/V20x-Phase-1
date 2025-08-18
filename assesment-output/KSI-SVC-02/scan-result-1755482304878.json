@@ -11,7 +11,66 @@
       "failed": 2,
       "warnings": 0
     },
-    "encryptionVerificationChecks": [
+    "encryptionBestPractices": {
+      "dataInTransit": [
+        "Enforce TLS 1.2 or higher for all connections",
+        "Use strong cipher suites (AES-256-GCM recommended)",
+        "Implement certificate pinning where applicable",
+        "Enable HTTP Strict Transport Security (HSTS)",
+        "Use perfect forward secrecy (PFS)"
+      ],
+      "dataAtRest": [
+        "Enable Transparent Data Encryption (TDE)",
+        "Use customer-managed encryption keys",
+        "Implement Always Encrypted for sensitive columns",
+        "Encrypt backup files and logs",
+        "Use Azure Key Vault for key management"
+      ],
+      "networkLevel": [
+        "Configure IPSec for VPN connections",
+        "Use strong DH groups (DHGroup24 or higher)",
+        "Enable automatic key rotation",
+        "Implement network segmentation with encryption",
+        "Monitor encryption status continuously"
+      ]
+    },
+    "encryptionValidationMethods": {
+      "tlsVerification": [
+        "SSL Labs server test",
+        "OpenSSL s_client testing",
+        "Nmap SSL-enum-ciphers script",
+        "Azure Security Center recommendations"
+      ],
+      "networkTrafficAnalysis": [
+        "Wireshark packet capture analysis",
+        "Azure Network Watcher packet capture",
+        "NSG flow logs analysis",
+        "Azure Monitor network insights"
+      ],
+      "databaseEncryption": [
+        "SQL Server DMVs for encryption status",
+        "Azure SQL Database encryption views",
+        "Backup file encryption verification",
+        "Always Encrypted configuration review"
+      ]
+    },
+    "complianceMapping": {
+      "fedrampControls": [
+        {
+          "control": "SC-8 (Transmission Confidentiality and Integrity)",
+          "requirement": "Protect transmitted information confidentiality and integrity"
+        },
+        {
+          "control": "SC-13 (Cryptographic Protection)",
+          "requirement": "Use FIPS-validated cryptography"
+        },
+        {
+          "control": "SC-28 (Protection of Information at Rest)",
+          "requirement": "Protect information at rest"
+        }
+      ]
+    },
+    "checks": [
       {
         "checkId": "SVC-02-001",
         "name": "Application Gateway SSL/TLS Configuration",
@@ -30,7 +89,12 @@
                 "TLS_AES_256_GCM_SHA384",
                 "TLS_AES_128_GCM_SHA256"
               ],
-              "disabledSslProtocols": ["TLSv1", "TLSv1_1", "SSLv2", "SSLv3"]
+              "disabledSslProtocols": [
+                "TLSv1",
+                "TLSv1_1",
+                "SSLv2",
+                "SSLv3"
+              ]
             },
             "certificates": [
               {
@@ -60,7 +124,9 @@
               "protocol": "Https",
               "port": 443,
               "certificateValidation": true,
-              "trustedRootCertificates": ["BackendServerCert"]
+              "trustedRootCertificates": [
+                "BackendServerCert"
+              ]
             }
           },
           "hstsConfiguration": {
@@ -95,7 +161,8 @@
             "details": "No weak ciphers enabled"
           }
         ],
-        "remediation": "SSL/TLS configuration properly hardened with strong encryption"
+        "remediation": "SSL/TLS configuration properly hardened with strong encryption",
+        "checkType": "encryptionVerificatio"
       },
       {
         "checkId": "SVC-02-002",
@@ -157,7 +224,8 @@
             "details": "All traffic properly encrypted in transit"
           }
         ],
-        "remediation": "VPN Gateway properly configured with strong IPSec encryption"
+        "remediation": "VPN Gateway properly configured with strong IPSec encryption",
+        "checkType": "encryptionVerificatio"
       },
       {
         "checkId": "SVC-02-003",
@@ -179,7 +247,10 @@
             "issue": "Public blob access allows unencrypted data retrieval"
           },
           "fileShareSettings": {
-            "smbProtocolVersions": ["SMB2.1", "SMB3.0"],
+            "smbProtocolVersions": [
+              "SMB2.1",
+              "SMB3.0"
+            ],
             "smbEncryption": false,
             "issue": "SMB encryption not enforced for file shares"
           },
@@ -233,7 +304,8 @@
             "violation": "Inadequate cryptographic protection"
           }
         ],
-        "remediation": "CRITICAL: 1) Enable 'Secure transfer required' setting, 2) Set minimum TLS version to 1.2, 3) Disable public blob access, 4) Enable SMB encryption for file shares, 5) Rotate access keys, 6) Implement automated key rotation, 7) Review and update access policies"
+        "remediation": "CRITICAL: 1) Enable 'Secure transfer required' setting, 2) Set minimum TLS version to 1.2, 3) Disable public blob access, 4) Enable SMB encryption for file shares, 5) Rotate access keys, 6) Implement automated key rotation, 7) Review and update access policies",
+        "checkType": "encryptionVerificatio"
       },
       {
         "checkId": "SVC-02-004",
@@ -253,7 +325,11 @@
           },
           "alwaysEncrypted": {
             "enabled": false,
-            "sensitiveColumns": ["SSN", "CreditCard", "PersonalInfo"],
+            "sensitiveColumns": [
+              "SSN",
+              "CreditCard",
+              "PersonalInfo"
+            ],
             "issue": "Sensitive columns not encrypted with Always Encrypted"
           },
           "columnLevelEncryption": {
@@ -335,67 +411,9 @@
             "issue": "Credit card data not properly encrypted"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Enable Transparent Data Encryption (TDE), 2) Enforce SSL connections and set minimum TLS to 1.2, 3) Implement Always Encrypted for sensitive columns, 4) Enable backup encryption, 5) Configure encrypted audit logging, 6) Implement data masking for non-production environments, 7) Conduct data classification review"
+        "remediation": "HIGH PRIORITY: 1) Enable Transparent Data Encryption (TDE), 2) Enforce SSL connections and set minimum TLS to 1.2, 3) Implement Always Encrypted for sensitive columns, 4) Enable backup encryption, 5) Configure encrypted audit logging, 6) Implement data masking for non-production environments, 7) Conduct data classification review",
+        "checkType": "encryptionVerificatio"
       }
-    ],
-    "encryptionBestPractices": {
-      "dataInTransit": [
-        "Enforce TLS 1.2 or higher for all connections",
-        "Use strong cipher suites (AES-256-GCM recommended)",
-        "Implement certificate pinning where applicable",
-        "Enable HTTP Strict Transport Security (HSTS)",
-        "Use perfect forward secrecy (PFS)"
-      ],
-      "dataAtRest": [
-        "Enable Transparent Data Encryption (TDE)",
-        "Use customer-managed encryption keys",
-        "Implement Always Encrypted for sensitive columns",
-        "Encrypt backup files and logs",
-        "Use Azure Key Vault for key management"
-      ],
-      "networkLevel": [
-        "Configure IPSec for VPN connections",
-        "Use strong DH groups (DHGroup24 or higher)",
-        "Enable automatic key rotation",
-        "Implement network segmentation with encryption",
-        "Monitor encryption status continuously"
-      ]
-    },
-    "encryptionValidationMethods": {
-      "tlsVerification": [
-        "SSL Labs server test",
-        "OpenSSL s_client testing",
-        "Nmap SSL-enum-ciphers script",
-        "Azure Security Center recommendations"
-      ],
-      "networkTrafficAnalysis": [
-        "Wireshark packet capture analysis",
-        "Azure Network Watcher packet capture",
-        "NSG flow logs analysis",
-        "Azure Monitor network insights"
-      ],
-      "databaseEncryption": [
-        "SQL Server DMVs for encryption status",
-        "Azure SQL Database encryption views",
-        "Backup file encryption verification",
-        "Always Encrypted configuration review"
-      ]
-    },
-    "complianceMapping": {
-      "fedrampControls": [
-        {
-          "control": "SC-8 (Transmission Confidentiality and Integrity)",
-          "requirement": "Protect transmitted information confidentiality and integrity"
-        },
-        {
-          "control": "SC-13 (Cryptographic Protection)",
-          "requirement": "Use FIPS-validated cryptography"
-        },
-        {
-          "control": "SC-28 (Protection of Information at Rest)",
-          "requirement": "Protect information at rest"
-        }
-      ]
-    }
+    ]
   }
 }

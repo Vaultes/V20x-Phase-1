@@ -11,7 +11,72 @@
       "failed": 4,
       "warnings": 0
     },
-    "authenticatedScanningChecks": [
+    "authenticatedScanningVerificationMethods": {
+      "windowsScanning": [
+        "Azure Portal: Security Center > Secure Score for Windows assessment results",
+        "Qualys VMDR: Windows vulnerability dashboard and credential validation",
+        "Windows Event Logs: Event ID 4624/4625 for scanner authentication",
+        "Azure Key Vault: Access logs for scanner credential usage",
+        "PowerShell: Get-WmiObject Win32_QuickFixEngineering for patch validation"
+      ],
+      "linuxScanning": [
+        "SSH access logs: /var/log/auth.log for scanner authentication",
+        "Package manager logs: rpm -qa, dpkg -l for software inventory validation",
+        "Sudo access logs: /var/log/sudo.log for privilege escalation tracking",
+        "Azure Key Vault: SSH key management and rotation logs",
+        "Configuration management tools: Ansible/Puppet execution logs"
+      ],
+      "databaseScanning": [
+        "Azure SQL: Database audit logs for scanner access",
+        "SQL Server: SQL Server Error Log and Security Log for authentication",
+        "Azure Key Vault: Database credential access and rotation logs",
+        "Database vulnerability assessment: Native Azure SQL vulnerability reports",
+        "Database management systems: Native database security assessment tools"
+      ],
+      "networkDeviceScanning": [
+        "SNMP monitoring: SNMPv3 authentication and access logs",
+        "Network device logs: SSH/console access logs for scanner authentication",
+        "Network management systems: Device configuration and baseline comparison",
+        "Azure Network Watcher: Network security group flow logs",
+        "Network configuration management: Ansible Network automation logs"
+      ],
+      "containerScanning": [
+        "Container registry logs: Docker/ACR pull and scan logs",
+        "Kubernetes audit logs: API server access for security scanning",
+        "Runtime security tools: Falco, Twistlock runtime monitoring logs",
+        "CI/CD pipeline logs: Security scan integration and results",
+        "Azure Container Registry: Vulnerability scanning reports and logs"
+      ],
+      "cloudConfigurationScanning": [
+        "Azure Activity Logs: Configuration changes and security assessments",
+        "Azure Policy: Compliance evaluation results and policy violations",
+        "Azure Security Center: Secure Score and configuration recommendations",
+        "Azure Resource Graph: Configuration queries and security posture analysis",
+        "Infrastructure as Code: Terraform/ARM template security scan results"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "RA-5": "Vulnerability Scanning",
+        "CA-2": "Security Assessments",
+        "CA-7": "Continuous Monitoring",
+        "SC-7": "Boundary Protection"
+      },
+      "nist80053": {
+        "RA-5": "Vulnerability Scanning",
+        "CA-2": "Security Assessments",
+        "CA-7": "Continuous Monitoring",
+        "SC-7": "Boundary Protection",
+        "SI-4": "Information System Monitoring"
+      },
+      "iso27001": {
+        "A.12.6.1": "Management of technical vulnerabilities",
+        "A.14.2.3": "Technical review of applications after operating platform changes",
+        "A.18.2.3": "Technical compliance review",
+        "A.12.4.1": "Event logging"
+      }
+    },
+    "checks": [
       {
         "checkId": "MLA-04-001",
         "name": "Authenticated Windows System Scanning",
@@ -24,7 +89,11 @@
               "totalWindowsSystems": 89,
               "authenticatedScanningSystems": 89,
               "coveragePercentage": "100%",
-              "credentialTypes": ["Local admin", "Domain admin", "Service accounts"],
+              "credentialTypes": [
+                "Local admin",
+                "Domain admin",
+                "Service accounts"
+              ],
               "lastScanDate": "2025-08-16T22:30:00.000Z"
             },
             "credentialManagement": {
@@ -130,7 +199,8 @@
             "details": "Comprehensive Windows Update, security configuration, and role-based analysis"
           }
         ],
-        "remediation": "Windows authenticated scanning properly implemented with comprehensive coverage and credential management"
+        "remediation": "Windows authenticated scanning properly implemented with comprehensive coverage and credential management",
+        "checkType": "authenticatedScannin"
       },
       {
         "checkId": "MLA-04-002",
@@ -143,7 +213,13 @@
             "totalDatabases": 34,
             "authenticatedScanning": 34,
             "coveragePercentage": "100%",
-            "databaseTypes": ["SQL Server", "Azure SQL", "PostgreSQL", "MySQL", "Oracle"],
+            "databaseTypes": [
+              "SQL Server",
+              "Azure SQL",
+              "PostgreSQL",
+              "MySQL",
+              "Oracle"
+            ],
             "lastScanDate": "2025-08-16T20:15:00.000Z"
           },
           "databaseCredentialManagement": {
@@ -238,7 +314,8 @@
             "details": "Limited vulnerabilities with no critical security configuration issues"
           }
         ],
-        "remediation": "Database authenticated scanning properly implemented with comprehensive security assessments"
+        "remediation": "Database authenticated scanning properly implemented with comprehensive security assessments",
+        "checkType": "authenticatedScannin"
       },
       {
         "checkId": "MLA-04-003",
@@ -372,7 +449,8 @@
             "details": "Insufficient system access preventing comprehensive vulnerability detection"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement centralized SSH key management system with automated distribution, 2) Establish standardized Linux scanner service accounts with appropriate privileges, 3) Deploy configuration management tools (Ansible/Puppet) to standardize scan access, 4) Implement credential rotation and secure storage using Azure Key Vault, 5) Establish Linux-specific scanning procedures and quality assurance, 6) Provide Linux security training to operations teams, 7) Integrate Linux scanning with existing vulnerability management workflows"
+        "remediation": "HIGH PRIORITY: 1) Implement centralized SSH key management system with automated distribution, 2) Establish standardized Linux scanner service accounts with appropriate privileges, 3) Deploy configuration management tools (Ansible/Puppet) to standardize scan access, 4) Implement credential rotation and secure storage using Azure Key Vault, 5) Establish Linux-specific scanning procedures and quality assurance, 6) Provide Linux security training to operations teams, 7) Integrate Linux scanning with existing vulnerability management workflows",
+        "checkType": "authenticatedScannin"
       },
       {
         "checkId": "MLA-04-004",
@@ -484,7 +562,8 @@
             "details": "Cannot assess routing protocols, firewalls, or wireless configurations"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement centralized network device credential management with automated rotation, 2) Deploy dedicated network vulnerability scanning tools with network device support, 3) Establish secure management VLANs and jump server access for network devices, 4) Upgrade network devices to support secure authentication protocols (SNMPv3, SSH), 5) Implement network configuration management and baseline validation tools, 6) Establish network device inventory and lifecycle management, 7) Deploy network security monitoring and configuration drift detection"
+        "remediation": "MEDIUM PRIORITY: 1) Implement centralized network device credential management with automated rotation, 2) Deploy dedicated network vulnerability scanning tools with network device support, 3) Establish secure management VLANs and jump server access for network devices, 4) Upgrade network devices to support secure authentication protocols (SNMPv3, SSH), 5) Implement network configuration management and baseline validation tools, 6) Establish network device inventory and lifecycle management, 7) Deploy network security monitoring and configuration drift detection",
+        "checkType": "authenticatedScannin"
       },
       {
         "checkId": "MLA-04-005",
@@ -627,7 +706,8 @@
             "details": "37.5% cluster coverage with manual-only configuration assessment"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Deploy comprehensive container security platform with image and runtime scanning, 2) Implement automated container registry scanning with vulnerability database integration, 3) Establish Kubernetes security scanning with CIS benchmark validation, 4) Integrate container scanning into CI/CD pipelines with security gates, 5) Deploy runtime container monitoring with behavioral analysis, 6) Implement container image signing and verification processes, 7) Establish container security policies with automated enforcement, 8) Deploy Kubernetes admission controllers for security policy enforcement"
+        "remediation": "HIGH PRIORITY: 1) Deploy comprehensive container security platform with image and runtime scanning, 2) Implement automated container registry scanning with vulnerability database integration, 3) Establish Kubernetes security scanning with CIS benchmark validation, 4) Integrate container scanning into CI/CD pipelines with security gates, 5) Deploy runtime container monitoring with behavioral analysis, 6) Implement container image signing and verification processes, 7) Establish container security policies with automated enforcement, 8) Deploy Kubernetes admission controllers for security policy enforcement",
+        "checkType": "authenticatedScannin"
       },
       {
         "checkId": "MLA-04-006",
@@ -752,73 +832,9 @@
             "details": "Limited continuous monitoring with no automated remediation"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Deploy comprehensive Cloud Security Posture Management (CSPM) solution for complete Azure service coverage, 2) Implement Infrastructure as Code scanning for ARM, Terraform, and Bicep templates, 3) Establish cloud-native security assessment for serverless and container services, 4) Implement continuous configuration monitoring with drift detection and automated remediation, 5) Deploy custom Azure Policy framework with automated compliance checking, 6) Integrate cloud configuration scanning with vulnerability management workflows, 7) Establish cloud security governance framework with risk-based prioritization"
+        "remediation": "MEDIUM PRIORITY: 1) Deploy comprehensive Cloud Security Posture Management (CSPM) solution for complete Azure service coverage, 2) Implement Infrastructure as Code scanning for ARM, Terraform, and Bicep templates, 3) Establish cloud-native security assessment for serverless and container services, 4) Implement continuous configuration monitoring with drift detection and automated remediation, 5) Deploy custom Azure Policy framework with automated compliance checking, 6) Integrate cloud configuration scanning with vulnerability management workflows, 7) Establish cloud security governance framework with risk-based prioritization",
+        "checkType": "authenticatedScannin"
       }
-    ],
-    "authenticatedScanningVerificationMethods": {
-      "windowsScanning": [
-        "Azure Portal: Security Center > Secure Score for Windows assessment results",
-        "Qualys VMDR: Windows vulnerability dashboard and credential validation",
-        "Windows Event Logs: Event ID 4624/4625 for scanner authentication",
-        "Azure Key Vault: Access logs for scanner credential usage",
-        "PowerShell: Get-WmiObject Win32_QuickFixEngineering for patch validation"
-      ],
-      "linuxScanning": [
-        "SSH access logs: /var/log/auth.log for scanner authentication",
-        "Package manager logs: rpm -qa, dpkg -l for software inventory validation",
-        "Sudo access logs: /var/log/sudo.log for privilege escalation tracking",
-        "Azure Key Vault: SSH key management and rotation logs",
-        "Configuration management tools: Ansible/Puppet execution logs"
-      ],
-      "databaseScanning": [
-        "Azure SQL: Database audit logs for scanner access",
-        "SQL Server: SQL Server Error Log and Security Log for authentication",
-        "Azure Key Vault: Database credential access and rotation logs",
-        "Database vulnerability assessment: Native Azure SQL vulnerability reports",
-        "Database management systems: Native database security assessment tools"
-      ],
-      "networkDeviceScanning": [
-        "SNMP monitoring: SNMPv3 authentication and access logs",
-        "Network device logs: SSH/console access logs for scanner authentication",
-        "Network management systems: Device configuration and baseline comparison",
-        "Azure Network Watcher: Network security group flow logs",
-        "Network configuration management: Ansible Network automation logs"
-      ],
-      "containerScanning": [
-        "Container registry logs: Docker/ACR pull and scan logs",
-        "Kubernetes audit logs: API server access for security scanning",
-        "Runtime security tools: Falco, Twistlock runtime monitoring logs",
-        "CI/CD pipeline logs: Security scan integration and results",
-        "Azure Container Registry: Vulnerability scanning reports and logs"
-      ],
-      "cloudConfigurationScanning": [
-        "Azure Activity Logs: Configuration changes and security assessments",
-        "Azure Policy: Compliance evaluation results and policy violations",
-        "Azure Security Center: Secure Score and configuration recommendations",
-        "Azure Resource Graph: Configuration queries and security posture analysis",
-        "Infrastructure as Code: Terraform/ARM template security scan results"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "RA-5": "Vulnerability Scanning",
-        "CA-2": "Security Assessments",
-        "CA-7": "Continuous Monitoring",
-        "SC-7": "Boundary Protection"
-      },
-      "nist80053": {
-        "RA-5": "Vulnerability Scanning",
-        "CA-2": "Security Assessments",
-        "CA-7": "Continuous Monitoring",
-        "SC-7": "Boundary Protection",
-        "SI-4": "Information System Monitoring"
-      },
-      "iso27001": {
-        "A.12.6.1": "Management of technical vulnerabilities",
-        "A.14.2.3": "Technical review of applications after operating platform changes",
-        "A.18.2.3": "Technical compliance review",
-        "A.12.4.1": "Event logging"
-      }
-    }
+    ]
   }
 }

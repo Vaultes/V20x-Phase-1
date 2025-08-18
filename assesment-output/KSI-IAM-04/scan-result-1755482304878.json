@@ -11,7 +11,85 @@
       "failed": 4,
       "warnings": 0
     },
-    "leastPrivilegeRbacJitChecks": [
+    "leastPrivilegeRbacBestPractices": {
+      "roleBasedAccessControl": [
+        "Design roles around job functions, not individuals",
+        "Use built-in roles when they provide appropriate permissions",
+        "Create custom roles for specific business requirements",
+        "Apply roles at the narrowest possible scope",
+        "Regularly review and update role assignments"
+      ],
+      "privilegedIdentityManagement": [
+        "Enable PIM for all privileged roles",
+        "Require approval for high-risk role activations",
+        "Implement time-limited role assignments",
+        "Conduct regular access reviews and recertification",
+        "Monitor all privileged operations and activities"
+      ],
+      "justInTimeAccess": [
+        "Implement JIT access for all virtual machines",
+        "Use Azure Bastion for secure remote access",
+        "Configure appropriate access duration limits",
+        "Require business justification for access requests",
+        "Monitor and audit all JIT access activities"
+      ],
+      "privilegeEscalationPrevention": [
+        "Regular vulnerability scanning for privilege escalation",
+        "Implement endpoint detection and response (EDR)",
+        "Configure Windows security features (Credential Guard, etc.)",
+        "Properly configure container security contexts",
+        "Monitor for unusual privilege usage patterns"
+      ]
+    },
+    "leastPrivilegeVerificationMethods": {
+      "rbacAssignments": [
+        "az role assignment list --all",
+        "Get-AzRoleAssignment",
+        "Azure Portal: Subscriptions > Access Control (IAM)",
+        "Microsoft Graph API: /roleManagement/directory/roleAssignments"
+      ],
+      "privilegedIdentityManagement": [
+        "Azure Portal: Azure AD Privileged Identity Management",
+        "Get-AzureADMSPrivilegedRoleAssignment",
+        "Microsoft Graph API: /privilegedAccess/azureResources",
+        "Azure AD PowerShell: Get-AzureADMSPrivilegedResource"
+      ],
+      "justInTimeAccess": [
+        "az security jit-policy list",
+        "Azure Portal: Security Center > Just-in-time VM access",
+        "Azure Resource Manager API: /jitNetworkAccessPolicies",
+        "Azure Security Center REST API"
+      ],
+      "accessReviews": [
+        "Azure Portal: Azure AD > Identity Governance > Access Reviews",
+        "Get-AzureADMSAccessReview",
+        "Microsoft Graph API: /accessReviews",
+        "Azure AD PowerShell: Get-AzureADMSAccessReviewDefinition"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "AC-2": "Account Management",
+        "AC-3": "Access Enforcement",
+        "AC-4": "Information Flow Enforcement",
+        "AC-6": "Least Privilege",
+        "AC-16": "Security Attributes"
+      },
+      "nist80053": {
+        "AC-2": "Account Management",
+        "AC-3": "Access Enforcement",
+        "AC-6": "Least Privilege",
+        "AC-16": "Security Attributes",
+        "SI-16": "Memory Protection"
+      },
+      "iso27001": {
+        "A.9.1.2": "Access to networks and network services",
+        "A.9.2.2": "User access provisioning",
+        "A.9.2.3": "Management of privileged access rights",
+        "A.9.2.5": "Review of user access rights"
+      }
+    },
+    "checks": [
       {
         "checkId": "IAM-04-001",
         "name": "Azure RBAC Least Privilege Implementation",
@@ -108,7 +186,8 @@
             "details": "Conflicting roles prevented, critical functions separated"
           }
         ],
-        "remediation": "Role assignments properly configured with least privilege principles"
+        "remediation": "Role assignments properly configured with least privilege principles",
+        "checkType": "leastPrivilegeRbacJi"
       },
       {
         "checkId": "IAM-04-002",
@@ -130,7 +209,11 @@
               "mfaRequired": true,
               "justificationRequired": true,
               "approvalRequired": true,
-              "approvers": ["CISO", "IT Director", "Security Manager"],
+              "approvers": [
+                "CISO",
+                "IT Director",
+                "Security Manager"
+              ],
               "activationDuration": "PT8H",
               "maxActivationDuration": "PT24H"
             },
@@ -145,13 +228,20 @@
               "activationNotifications": true,
               "assignmentNotifications": true,
               "expirationAlerts": true,
-              "alertRecipients": ["security-team@company.com", "admin-team@company.com"]
+              "alertRecipients": [
+                "security-team@company.com",
+                "admin-team@company.com"
+              ]
             }
           },
           "accessReviews": {
             "enabled": true,
             "frequency": "Quarterly",
-            "reviewers": ["Role owners", "Security team", "Direct managers"],
+            "reviewers": [
+              "Role owners",
+              "Security team",
+              "Direct managers"
+            ],
             "autoApplyResults": false,
             "lastReview": "2025-06-01T00:00:00.000Z",
             "completionRate": "98.7%",
@@ -197,7 +287,8 @@
             "details": "97.3% activation success with proper approval workflows"
           }
         ],
-        "remediation": "PIM properly configured with comprehensive privileged access controls"
+        "remediation": "PIM properly configured with comprehensive privileged access controls",
+        "checkType": "leastPrivilegeRbacJi"
       },
       {
         "checkId": "IAM-04-003",
@@ -224,7 +315,11 @@
               {
                 "vm": "monitoring-server",
                 "reason": "24/7 monitoring requirements",
-                "alternativeControls": ["Network ACLs", "Application Gateway", "Private Endpoints"]
+                "alternativeControls": [
+                  "Network ACLs",
+                  "Application Gateway",
+                  "Private Endpoints"
+                ]
               }
             ]
           },
@@ -254,7 +349,10 @@
             ],
             "requestApproval": {
               "required": true,
-              "approvers": ["VM owners", "Security team"],
+              "approvers": [
+                "VM owners",
+                "Security team"
+              ],
               "approvalTimeout": "PT30M",
               "emergencyBypass": "Available with justification"
             }
@@ -310,7 +408,8 @@
             "details": "NSG and Azure Firewall fully integrated with JIT policies"
           }
         ],
-        "remediation": "JIT VM access properly configured with comprehensive network security integration"
+        "remediation": "JIT VM access properly configured with comprehensive network security integration",
+        "checkType": "leastPrivilegeRbacJi"
       },
       {
         "checkId": "IAM-04-004",
@@ -446,7 +545,8 @@
             "issue": "Separation of duties violations detected"
           }
         ],
-        "remediation": "CRITICAL: 1) Immediately review and reduce privileges for all 47 over-privileged assignments, 2) Implement job function-based role templates, 3) Remove conflicting role assignments that violate separation of duties, 4) Establish automated privilege review and approval workflows, 5) Implement regular access recertification, 6) Create custom roles aligned with specific job functions, 7) Establish privilege escalation monitoring and alerting"
+        "remediation": "CRITICAL: 1) Immediately review and reduce privileges for all 47 over-privileged assignments, 2) Implement job function-based role templates, 3) Remove conflicting role assignments that violate separation of duties, 4) Establish automated privilege review and approval workflows, 5) Implement regular access recertification, 6) Create custom roles aligned with specific job functions, 7) Establish privilege escalation monitoring and alerting",
+        "checkType": "leastPrivilegeRbacJi"
       },
       {
         "checkId": "IAM-04-005",
@@ -526,7 +626,11 @@
               "privilegeEscalationRisk": "HIGH"
             },
             "complianceRisks": {
-              "regulatoryViolations": ["FedRAMP", "SOX", "PCI DSS"],
+              "regulatoryViolations": [
+                "FedRAMP",
+                "SOX",
+                "PCI DSS"
+              ],
               "auditFindings": "Likely",
               "certificationRisk": "HIGH",
               "remediationCost": "Significant"
@@ -571,7 +675,8 @@
             "details": "Limited alternative controls cannot compensate for JIT gaps"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement Azure Security Center JIT VM access for all virtual machines, 2) Deploy Privileged Access Management (PAM) solution for database systems, 3) Configure Azure Bastion for secure remote access, 4) Implement session recording and monitoring for all privileged access, 5) Establish time-based access provisioning for management interfaces, 6) Remove permanent administrative access where possible, 7) Implement comprehensive access logging and alerting"
+        "remediation": "HIGH PRIORITY: 1) Implement Azure Security Center JIT VM access for all virtual machines, 2) Deploy Privileged Access Management (PAM) solution for database systems, 3) Configure Azure Bastion for secure remote access, 4) Implement session recording and monitoring for all privileged access, 5) Establish time-based access provisioning for management interfaces, 6) Remove permanent administrative access where possible, 7) Implement comprehensive access logging and alerting",
+        "checkType": "leastPrivilegeRbacJi"
       },
       {
         "checkId": "IAM-04-006",
@@ -712,7 +817,8 @@
             "details": "45 orphaned accounts including 12 with privileged access"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement automated access review workflows with Azure AD Access Reviews, 2) Define clear review criteria and decision frameworks, 3) Establish appropriate reviewer assignments without conflicts of interest, 4) Automate review reminders and escalations, 5) Implement automated enforcement of review decisions, 6) Integrate with HR systems for employee lifecycle management, 7) Establish comprehensive reporting and audit trails, 8) Create risk-based review scheduling"
+        "remediation": "MEDIUM PRIORITY: 1) Implement automated access review workflows with Azure AD Access Reviews, 2) Define clear review criteria and decision frameworks, 3) Establish appropriate reviewer assignments without conflicts of interest, 4) Automate review reminders and escalations, 5) Implement automated enforcement of review decisions, 6) Integrate with HR systems for employee lifecycle management, 7) Establish comprehensive reporting and audit trails, 8) Create risk-based review scheduling",
+        "checkType": "leastPrivilegeRbacJi"
       },
       {
         "checkId": "IAM-04-007",
@@ -845,86 +951,9 @@
             "issue": "Excessive privileges enable unauthorized escalation"
           }
         ],
-        "remediation": "CRITICAL: 1) Immediately patch all unquoted service paths and weak service permissions, 2) Remove excessive user privileges and token privileges, 3) Configure proper sudoers settings and remove unnecessary setuid binaries, 4) Reconfigure containers to run as non-root with minimal capabilities, 5) Deploy Windows Defender Application Guard and Credential Guard, 6) Implement privilege escalation detection and monitoring, 7) Establish regular vulnerability scanning for privilege escalation vectors, 8) Implement application whitelisting and behavioral monitoring"
+        "remediation": "CRITICAL: 1) Immediately patch all unquoted service paths and weak service permissions, 2) Remove excessive user privileges and token privileges, 3) Configure proper sudoers settings and remove unnecessary setuid binaries, 4) Reconfigure containers to run as non-root with minimal capabilities, 5) Deploy Windows Defender Application Guard and Credential Guard, 6) Implement privilege escalation detection and monitoring, 7) Establish regular vulnerability scanning for privilege escalation vectors, 8) Implement application whitelisting and behavioral monitoring",
+        "checkType": "leastPrivilegeRbacJi"
       }
-    ],
-    "leastPrivilegeRbacBestPractices": {
-      "roleBasedAccessControl": [
-        "Design roles around job functions, not individuals",
-        "Use built-in roles when they provide appropriate permissions",
-        "Create custom roles for specific business requirements",
-        "Apply roles at the narrowest possible scope",
-        "Regularly review and update role assignments"
-      ],
-      "privilegedIdentityManagement": [
-        "Enable PIM for all privileged roles",
-        "Require approval for high-risk role activations",
-        "Implement time-limited role assignments",
-        "Conduct regular access reviews and recertification",
-        "Monitor all privileged operations and activities"
-      ],
-      "justInTimeAccess": [
-        "Implement JIT access for all virtual machines",
-        "Use Azure Bastion for secure remote access",
-        "Configure appropriate access duration limits",
-        "Require business justification for access requests",
-        "Monitor and audit all JIT access activities"
-      ],
-      "privilegeEscalationPrevention": [
-        "Regular vulnerability scanning for privilege escalation",
-        "Implement endpoint detection and response (EDR)",
-        "Configure Windows security features (Credential Guard, etc.)",
-        "Properly configure container security contexts",
-        "Monitor for unusual privilege usage patterns"
-      ]
-    },
-    "leastPrivilegeVerificationMethods": {
-      "rbacAssignments": [
-        "az role assignment list --all",
-        "Get-AzRoleAssignment",
-        "Azure Portal: Subscriptions > Access Control (IAM)",
-        "Microsoft Graph API: /roleManagement/directory/roleAssignments"
-      ],
-      "privilegedIdentityManagement": [
-        "Azure Portal: Azure AD Privileged Identity Management",
-        "Get-AzureADMSPrivilegedRoleAssignment",
-        "Microsoft Graph API: /privilegedAccess/azureResources",
-        "Azure AD PowerShell: Get-AzureADMSPrivilegedResource"
-      ],
-      "justInTimeAccess": [
-        "az security jit-policy list",
-        "Azure Portal: Security Center > Just-in-time VM access",
-        "Azure Resource Manager API: /jitNetworkAccessPolicies",
-        "Azure Security Center REST API"
-      ],
-      "accessReviews": [
-        "Azure Portal: Azure AD > Identity Governance > Access Reviews",
-        "Get-AzureADMSAccessReview",
-        "Microsoft Graph API: /accessReviews",
-        "Azure AD PowerShell: Get-AzureADMSAccessReviewDefinition"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "AC-2": "Account Management",
-        "AC-3": "Access Enforcement",
-        "AC-4": "Information Flow Enforcement",
-        "AC-6": "Least Privilege",
-        "AC-16": "Security Attributes"
-      },
-      "nist80053": {
-        "AC-2": "Account Management",
-        "AC-3": "Access Enforcement",
-        "AC-6": "Least Privilege",
-        "AC-16": "Security Attributes",
-        "SI-16": "Memory Protection"
-      },
-      "iso27001": {
-        "A.9.1.2": "Access to networks and network services",
-        "A.9.2.2": "User access provisioning",
-        "A.9.2.3": "Management of privileged access rights",
-        "A.9.2.5": "Review of user access rights"
-      }
-    }
+    ]
   }
 }

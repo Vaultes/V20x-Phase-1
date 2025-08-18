@@ -11,7 +11,79 @@
       "failed": 4,
       "warnings": 0
     },
-    "nonUserAccountSecurityChecks": [
+    "nonUserAccountBestPractices": {
+      "managedIdentities": [
+        "Use system-assigned managed identities for single-resource scenarios",
+        "Use user-assigned managed identities for multi-resource scenarios",
+        "Migrate all Azure resources from service accounts to managed identities",
+        "Implement least privilege role assignments for managed identities"
+      ],
+      "servicePrincipals": [
+        "Use certificate-based authentication over password-based",
+        "Store certificates and secrets in Azure Key Vault",
+        "Implement automated credential rotation",
+        "Apply conditional access policies to service principals"
+      ],
+      "serviceAccounts": [
+        "Migrate to managed service accounts where possible",
+        "Implement strong password policies for remaining accounts",
+        "Apply principle of least privilege",
+        "Enable comprehensive auditing and monitoring"
+      ],
+      "emergencyAccess": [
+        "Limit emergency accounts to absolute minimum",
+        "Implement strong authentication and access controls",
+        "Require approval workflows for activation",
+        "Monitor all emergency account activities"
+      ]
+    },
+    "nonUserAccountVerificationMethods": {
+      "managedIdentities": [
+        "az identity list --query '[].{Name:name,Type:type,ResourceGroup:resourceGroup}'",
+        "Get-AzUserAssignedIdentity",
+        "Azure Portal: Managed Identities > Overview",
+        "Microsoft Graph API: /servicePrincipals?$filter=servicePrincipalType eq 'ManagedIdentity'"
+      ],
+      "servicePrincipals": [
+        "az ad sp list --query '[].{DisplayName:displayName,AppId:appId,AccountEnabled:accountEnabled}'",
+        "Get-AzADServicePrincipal",
+        "Azure Portal: Azure AD > App registrations",
+        "Microsoft Graph API: /servicePrincipals"
+      ],
+      "serviceAccounts": [
+        "Get-ADServiceAccount (PowerShell)",
+        "dsquery user -samid *$ (Domain service accounts)",
+        "net user (Local service accounts)",
+        "sc query (Windows services and their accounts)"
+      ],
+      "emergencyAccounts": [
+        "Azure Portal: Azure AD > Users > Filter by administrative roles",
+        "Get-AzRoleAssignment | Where-Object {$_.RoleDefinitionName -like '*Admin*'}",
+        "Microsoft Graph API: /directoryRoles/{role-id}/members",
+        "Azure AD PowerShell: Get-AzureADDirectoryRoleMember"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "AC-2": "Account Management",
+        "AC-6": "Least Privilege",
+        "IA-4": "Identifier Management",
+        "IA-8": "Identification and Authentication (Non-Organizational Users)"
+      },
+      "nist80053": {
+        "AC-2": "Account Management",
+        "AC-6": "Least Privilege",
+        "IA-4": "Identifier Management",
+        "IA-8": "Identification and Authentication (Non-Organizational Users)"
+      },
+      "iso27001": {
+        "A.9.2.1": "User registration and de-registration",
+        "A.9.2.2": "User access provisioning",
+        "A.9.2.5": "Review of user access rights",
+        "A.9.2.6": "Removal or adjustment of access rights"
+      }
+    },
+    "checks": [
       {
         "checkId": "IAM-03-001",
         "name": "Managed Identity Implementation",
@@ -27,12 +99,20 @@
               {
                 "type": "System-assigned",
                 "count": 32,
-                "resources": ["Virtual Machines", "App Services", "Function Apps"]
+                "resources": [
+                  "Virtual Machines",
+                  "App Services",
+                  "Function Apps"
+                ]
               },
               {
                 "type": "User-assigned",
                 "count": 13,
-                "resources": ["Container Instances", "Logic Apps", "Data Factory"]
+                "resources": [
+                  "Container Instances",
+                  "Logic Apps",
+                  "Data Factory"
+                ]
               }
             ]
           },
@@ -90,7 +170,8 @@
             "details": "Key services integrated with managed identity authentication"
           }
         ],
-        "remediation": "Managed identities properly implemented with secure role assignments"
+        "remediation": "Managed identities properly implemented with secure role assignments",
+        "checkType": "nonUserAccountSecurit"
       },
       {
         "checkId": "IAM-03-002",
@@ -188,7 +269,8 @@
             "details": "Comprehensive monitoring and alerting in place"
           }
         ],
-        "remediation": "Service principals properly secured with appropriate controls"
+        "remediation": "Service principals properly secured with appropriate controls",
+        "checkType": "nonUserAccountSecurit"
       },
       {
         "checkId": "IAM-03-003",
@@ -283,7 +365,8 @@
             "issue": "Over-privileged service accounts detected"
           }
         ],
-        "remediation": "CRITICAL: 1) Immediately review and reduce privileges for all service accounts, 2) Change default and weak passwords, 3) Migrate to managed service accounts where possible, 4) Implement comprehensive auditing and monitoring, 5) Establish regular access reviews, 6) Document and justify all service account requirements, 7) Implement account lifecycle management"
+        "remediation": "CRITICAL: 1) Immediately review and reduce privileges for all service accounts, 2) Change default and weak passwords, 3) Migrate to managed service accounts where possible, 4) Implement comprehensive auditing and monitoring, 5) Establish regular access reviews, 6) Document and justify all service account requirements, 7) Implement account lifecycle management",
+        "checkType": "nonUserAccountSecurit"
       },
       {
         "checkId": "IAM-03-004",
@@ -381,7 +464,8 @@
             "details": "Password sharing and unlimited concurrent access"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Eliminate shared accounts where possible, 2) Implement individual user accounts with role-based access, 3) For necessary shared accounts, implement session monitoring and recording, 4) Establish individual accountability mechanisms, 5) Implement privileged access management for shared accounts, 6) Conduct regular access reviews and justification, 7) Create incident response procedures for shared account compromise"
+        "remediation": "HIGH PRIORITY: 1) Eliminate shared accounts where possible, 2) Implement individual user accounts with role-based access, 3) For necessary shared accounts, implement session monitoring and recording, 4) Establish individual accountability mechanisms, 5) Implement privileged access management for shared accounts, 6) Conduct regular access reviews and justification, 7) Create incident response procedures for shared account compromise",
+        "checkType": "nonUserAccountSecurit"
       },
       {
         "checkId": "IAM-03-005",
@@ -473,7 +557,8 @@
             "details": "Manual processes with 20 orphaned/zombie accounts"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Remove all hardcoded credentials from code and config files, 2) Migrate credentials to Azure Key Vault, 3) Implement managed identities for Azure resources, 4) Apply principle of least privilege to all application accounts, 5) Establish automated credential rotation, 6) Implement comprehensive monitoring and alerting, 7) Create application account lifecycle management procedures"
+        "remediation": "HIGH PRIORITY: 1) Remove all hardcoded credentials from code and config files, 2) Migrate credentials to Azure Key Vault, 3) Implement managed identities for Azure resources, 4) Apply principle of least privilege to all application accounts, 5) Establish automated credential rotation, 6) Implement comprehensive monitoring and alerting, 7) Create application account lifecycle management procedures",
+        "checkType": "nonUserAccountSecurit"
       },
       {
         "checkId": "IAM-03-006",
@@ -523,7 +608,10 @@
             "accessReview": {
               "frequency": "Quarterly",
               "lastReview": "2025-06-01T00:00:00.000Z",
-              "reviewers": ["CISO", "IT Director"],
+              "reviewers": [
+                "CISO",
+                "IT Director"
+              ],
               "nextReview": "2025-09-01T00:00:00.000Z"
             },
             "auditControls": {
@@ -575,80 +663,9 @@
             "details": "Strong passwords but no rotation since creation"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement approval workflow for emergency account activation, 2) Add access restrictions (IP, time, location), 3) Establish regular password rotation schedule, 4) Create automated session termination procedures, 5) Enhance justification and documentation requirements, 6) Consider certificate-based authentication for emergency accounts, 7) Conduct regular emergency access drills and testing"
+        "remediation": "MEDIUM PRIORITY: 1) Implement approval workflow for emergency account activation, 2) Add access restrictions (IP, time, location), 3) Establish regular password rotation schedule, 4) Create automated session termination procedures, 5) Enhance justification and documentation requirements, 6) Consider certificate-based authentication for emergency accounts, 7) Conduct regular emergency access drills and testing",
+        "checkType": "nonUserAccountSecurit"
       }
-    ],
-    "nonUserAccountBestPractices": {
-      "managedIdentities": [
-        "Use system-assigned managed identities for single-resource scenarios",
-        "Use user-assigned managed identities for multi-resource scenarios",
-        "Migrate all Azure resources from service accounts to managed identities",
-        "Implement least privilege role assignments for managed identities"
-      ],
-      "servicePrincipals": [
-        "Use certificate-based authentication over password-based",
-        "Store certificates and secrets in Azure Key Vault",
-        "Implement automated credential rotation",
-        "Apply conditional access policies to service principals"
-      ],
-      "serviceAccounts": [
-        "Migrate to managed service accounts where possible",
-        "Implement strong password policies for remaining accounts",
-        "Apply principle of least privilege",
-        "Enable comprehensive auditing and monitoring"
-      ],
-      "emergencyAccess": [
-        "Limit emergency accounts to absolute minimum",
-        "Implement strong authentication and access controls",
-        "Require approval workflows for activation",
-        "Monitor all emergency account activities"
-      ]
-    },
-    "nonUserAccountVerificationMethods": {
-      "managedIdentities": [
-        "az identity list --query '[].{Name:name,Type:type,ResourceGroup:resourceGroup}'",
-        "Get-AzUserAssignedIdentity",
-        "Azure Portal: Managed Identities > Overview",
-        "Microsoft Graph API: /servicePrincipals?$filter=servicePrincipalType eq 'ManagedIdentity'"
-      ],
-      "servicePrincipals": [
-        "az ad sp list --query '[].{DisplayName:displayName,AppId:appId,AccountEnabled:accountEnabled}'",
-        "Get-AzADServicePrincipal",
-        "Azure Portal: Azure AD > App registrations",
-        "Microsoft Graph API: /servicePrincipals"
-      ],
-      "serviceAccounts": [
-        "Get-ADServiceAccount (PowerShell)",
-        "dsquery user -samid *$ (Domain service accounts)",
-        "net user (Local service accounts)",
-        "sc query (Windows services and their accounts)"
-      ],
-      "emergencyAccounts": [
-        "Azure Portal: Azure AD > Users > Filter by administrative roles",
-        "Get-AzRoleAssignment | Where-Object {$_.RoleDefinitionName -like '*Admin*'}",
-        "Microsoft Graph API: /directoryRoles/{role-id}/members",
-        "Azure AD PowerShell: Get-AzureADDirectoryRoleMember"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "AC-2": "Account Management",
-        "AC-6": "Least Privilege",
-        "IA-4": "Identifier Management",
-        "IA-8": "Identification and Authentication (Non-Organizational Users)"
-      },
-      "nist80053": {
-        "AC-2": "Account Management",
-        "AC-6": "Least Privilege",
-        "IA-4": "Identifier Management",
-        "IA-8": "Identification and Authentication (Non-Organizational Users)"
-      },
-      "iso27001": {
-        "A.9.2.1": "User registration and de-registration",
-        "A.9.2.2": "User access provisioning",
-        "A.9.2.5": "Review of user access rights",
-        "A.9.2.6": "Removal or adjustment of access rights"
-      }
-    }
+    ]
   }
 }

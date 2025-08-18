@@ -11,7 +11,67 @@
       "failed": 3,
       "warnings": 0
     },
-    "automatedTestingValidationChecks": [
+    "automatedTestingValidationVerificationMethods": {
+      "cicdPipelineTesting": [
+        "Azure DevOps: Pipeline run history and test results analysis",
+        "GitHub Actions: Workflow execution logs and test reports",
+        "Jenkins: Build logs and test result trends",
+        "CI/CD tools: Quality gate execution and approval workflow logs",
+        "Test reporting platforms: Test coverage and execution metrics"
+      ],
+      "infrastructureAsCodeValidation": [
+        "Azure Resource Manager: Template deployment validation results",
+        "Terraform: Plan output analysis and validation logs",
+        "Bicep: Template compilation and validation results",
+        "Infrastructure testing tools: Terratest, Kitchen-Terraform execution logs",
+        "Policy validation: Azure Policy and Terraform Sentinel evaluation results"
+      ],
+      "databaseChangeTesting": [
+        "Database migration tools: Entity Framework migration logs",
+        "Database testing frameworks: tSQLt, DbUnit test execution results",
+        "SQL Server: Query execution plans and performance monitoring",
+        "Database CI/CD: Migration pipeline execution and validation logs",
+        "Database performance testing: Load testing results and analysis"
+      ],
+      "performanceTesting": [
+        "Azure Load Testing: Load test execution results and metrics",
+        "Application Performance Monitoring: APM tools performance baselines",
+        "Performance testing tools: JMeter, LoadRunner execution reports",
+        "Azure Monitor: Application and infrastructure performance correlation",
+        "Performance benchmarking: Historical performance trend analysis"
+      ],
+      "securityTesting": [
+        "Security scanning tools: SAST, DAST, and dependency scanning results",
+        "Azure Security Center: Security recommendations and compliance scores",
+        "Container security: Image scanning results and vulnerability reports",
+        "Penetration testing: Security assessment reports and remediation tracking",
+        "Compliance testing: Regulatory compliance validation results"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "CM-4": "Security Impact Analysis",
+        "SA-11": "Developer Security Testing and Evaluation",
+        "SA-15": "Development Process, Standards, and Tools",
+        "SI-2": "Flaw Remediation",
+        "CA-2": "Security Assessments"
+      },
+      "nist80053": {
+        "CM-4": "Security Impact Analysis",
+        "SA-11": "Developer Security Testing and Evaluation",
+        "SA-15": "Development Process, Standards, and Tools",
+        "SI-2": "Flaw Remediation",
+        "CA-2": "Security Assessments",
+        "SA-3": "System Development Life Cycle"
+      },
+      "iso27001": {
+        "A.14.2.3": "Technical review of applications after operating platform changes",
+        "A.14.2.8": "System security testing",
+        "A.14.1.3": "Protection of application services transactions",
+        "A.12.6.1": "Management of technical vulnerabilities"
+      }
+    },
+    "checks": [
       {
         "checkId": "CMT-03-001",
         "name": "Comprehensive CI/CD Pipeline Testing",
@@ -24,7 +84,11 @@
               "totalApplications": 45,
               "applicationsWithCicd": 45,
               "cicdCoveragePercentage": "100%",
-              "pipelineTypes": ["Build pipelines", "Release pipelines", "Multi-stage pipelines"],
+              "pipelineTypes": [
+                "Build pipelines",
+                "Release pipelines",
+                "Multi-stage pipelines"
+              ],
               "pipelineComplexity": "Multi-stage with approval gates"
             },
             "testingStages": {
@@ -32,7 +96,12 @@
                 "enabled": true,
                 "testCoverageThreshold": "80%",
                 "actualTestCoverage": "87.3%",
-                "testFrameworks": ["MSTest", "NUnit", "Jest", "Pytest"],
+                "testFrameworks": [
+                  "MSTest",
+                  "NUnit",
+                  "Jest",
+                  "Pytest"
+                ],
                 "testExecutionTime": "Average 8 minutes"
               },
               "integrationTestingStage": {
@@ -124,7 +193,8 @@
             "details": "Ephemeral test environments with comprehensive automation frameworks and 96.8% test success rate"
           }
         ],
-        "remediation": "Comprehensive CI/CD pipeline testing properly implemented with advanced automation and quality gates"
+        "remediation": "Comprehensive CI/CD pipeline testing properly implemented with advanced automation and quality gates",
+        "checkType": "automatedTestingValidatio"
       },
       {
         "checkId": "CMT-03-002",
@@ -224,7 +294,8 @@
             "details": "Comprehensive policy validation with FedRAMP compliance and organizational governance standards"
           }
         ],
-        "remediation": "Infrastructure as Code validation properly implemented with comprehensive testing and compliance validation"
+        "remediation": "Infrastructure as Code validation properly implemented with comprehensive testing and compliance validation",
+        "checkType": "automatedTestingValidatio"
       },
       {
         "checkId": "CMT-03-003",
@@ -333,7 +404,8 @@
             "details": "SQL injection testing, encryption validation, and comprehensive compliance testing"
           }
         ],
-        "remediation": "Database change testing and validation properly implemented with comprehensive automation and security validation"
+        "remediation": "Database change testing and validation properly implemented with comprehensive automation and security validation",
+        "checkType": "automatedTestingValidatio"
       },
       {
         "checkId": "CMT-03-004",
@@ -441,7 +513,8 @@
             "details": "Limited APM implementation with manual analysis and basic baseline comparison"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement comprehensive performance testing for all applications with realistic load scenarios, 2) Deploy scalable performance testing infrastructure with production-equivalent environments, 3) Establish continuous performance testing in CI/CD pipelines, 4) Implement comprehensive application and infrastructure performance monitoring, 5) Deploy automated performance analysis and bottleneck identification, 6) Establish performance baseline management and regression detection, 7) Implement stress and volume testing with systematic capacity planning"
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive performance testing for all applications with realistic load scenarios, 2) Deploy scalable performance testing infrastructure with production-equivalent environments, 3) Establish continuous performance testing in CI/CD pipelines, 4) Implement comprehensive application and infrastructure performance monitoring, 5) Deploy automated performance analysis and bottleneck identification, 6) Establish performance baseline management and regression detection, 7) Implement stress and volume testing with systematic capacity planning",
+        "checkType": "automatedTestingValidatio"
       },
       {
         "checkId": "CMT-03-005",
@@ -546,7 +619,8 @@
             "details": "Limited automation with manual orchestration and basic security gates"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement comprehensive SAST, DAST, and IAST tools with full application coverage, 2) Deploy automated dependency vulnerability scanning with update automation, 3) Establish container and Kubernetes security testing throughout development lifecycle, 4) Integrate security testing into CI/CD pipelines with automated gates and reporting, 5) Implement comprehensive infrastructure as code security scanning, 6) Deploy automated compliance and regulatory testing frameworks, 7) Establish continuous security monitoring and vulnerability management integration"
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive SAST, DAST, and IAST tools with full application coverage, 2) Deploy automated dependency vulnerability scanning with update automation, 3) Establish container and Kubernetes security testing throughout development lifecycle, 4) Integrate security testing into CI/CD pipelines with automated gates and reporting, 5) Implement comprehensive infrastructure as code security scanning, 6) Deploy automated compliance and regulatory testing frameworks, 7) Establish continuous security monitoring and vulnerability management integration",
+        "checkType": "automatedTestingValidatio"
       },
       {
         "checkId": "CMT-03-006",
@@ -651,68 +725,9 @@
             "details": "Basic access management with limited compliance validation and manual reporting"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement automated test environment provisioning with Infrastructure as Code templates, 2) Deploy comprehensive test data management with synthetic data generation and automated masking, 3) Establish environment isolation and security controls with proper access management, 4) Implement automated environment lifecycle management with cost optimization, 5) Deploy configuration drift detection and automated remediation for test environments, 6) Establish environment compliance validation and automated auditing, 7) Implement ephemeral environment capabilities with on-demand scaling and optimization"
+        "remediation": "MEDIUM PRIORITY: 1) Implement automated test environment provisioning with Infrastructure as Code templates, 2) Deploy comprehensive test data management with synthetic data generation and automated masking, 3) Establish environment isolation and security controls with proper access management, 4) Implement automated environment lifecycle management with cost optimization, 5) Deploy configuration drift detection and automated remediation for test environments, 6) Establish environment compliance validation and automated auditing, 7) Implement ephemeral environment capabilities with on-demand scaling and optimization",
+        "checkType": "automatedTestingValidatio"
       }
-    ],
-    "automatedTestingValidationVerificationMethods": {
-      "cicdPipelineTesting": [
-        "Azure DevOps: Pipeline run history and test results analysis",
-        "GitHub Actions: Workflow execution logs and test reports",
-        "Jenkins: Build logs and test result trends",
-        "CI/CD tools: Quality gate execution and approval workflow logs",
-        "Test reporting platforms: Test coverage and execution metrics"
-      ],
-      "infrastructureAsCodeValidation": [
-        "Azure Resource Manager: Template deployment validation results",
-        "Terraform: Plan output analysis and validation logs",
-        "Bicep: Template compilation and validation results",
-        "Infrastructure testing tools: Terratest, Kitchen-Terraform execution logs",
-        "Policy validation: Azure Policy and Terraform Sentinel evaluation results"
-      ],
-      "databaseChangeTesting": [
-        "Database migration tools: Entity Framework migration logs",
-        "Database testing frameworks: tSQLt, DbUnit test execution results",
-        "SQL Server: Query execution plans and performance monitoring",
-        "Database CI/CD: Migration pipeline execution and validation logs",
-        "Database performance testing: Load testing results and analysis"
-      ],
-      "performanceTesting": [
-        "Azure Load Testing: Load test execution results and metrics",
-        "Application Performance Monitoring: APM tools performance baselines",
-        "Performance testing tools: JMeter, LoadRunner execution reports",
-        "Azure Monitor: Application and infrastructure performance correlation",
-        "Performance benchmarking: Historical performance trend analysis"
-      ],
-      "securityTesting": [
-        "Security scanning tools: SAST, DAST, and dependency scanning results",
-        "Azure Security Center: Security recommendations and compliance scores",
-        "Container security: Image scanning results and vulnerability reports",
-        "Penetration testing: Security assessment reports and remediation tracking",
-        "Compliance testing: Regulatory compliance validation results"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "CM-4": "Security Impact Analysis",
-        "SA-11": "Developer Security Testing and Evaluation",
-        "SA-15": "Development Process, Standards, and Tools",
-        "SI-2": "Flaw Remediation",
-        "CA-2": "Security Assessments"
-      },
-      "nist80053": {
-        "CM-4": "Security Impact Analysis",
-        "SA-11": "Developer Security Testing and Evaluation",
-        "SA-15": "Development Process, Standards, and Tools",
-        "SI-2": "Flaw Remediation",
-        "CA-2": "Security Assessments",
-        "SA-3": "System Development Life Cycle"
-      },
-      "iso27001": {
-        "A.14.2.3": "Technical review of applications after operating platform changes",
-        "A.14.2.8": "System security testing",
-        "A.14.1.3": "Protection of application services transactions",
-        "A.12.6.1": "Management of technical vulnerabilities"
-      }
-    }
+    ]
   }
 }

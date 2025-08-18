@@ -11,7 +11,48 @@
       "failed": 1,
       "warnings": 0
     },
-    "dosProtectionChecks": [
+    "dosProtectionStrategies": {
+      "networkLevel": [
+        "Azure DDoS Protection Standard",
+        "Web Application Firewall (WAF)",
+        "Network Security Groups with restrictive rules",
+        "Azure Front Door with rate limiting",
+        "Geographic access restrictions"
+      ],
+      "applicationLevel": [
+        "Request rate limiting per client",
+        "Connection pooling and limits",
+        "Circuit breaker patterns",
+        "Health check endpoints",
+        "Graceful degradation mechanisms"
+      ],
+      "infrastructureLevel": [
+        "Auto-scaling policies",
+        "Resource quotas and limits",
+        "Load balancing across multiple instances",
+        "CDN for static content delivery",
+        "Monitoring and alerting systems"
+      ]
+    },
+    "detectionMethods": {
+      "azureNativeTools": [
+        "Azure Monitor for DDoS metrics",
+        "Application Gateway analytics",
+        "NSG flow logs analysis",
+        "Azure Security Center recommendations"
+      ],
+      "powershellCommands": [
+        "Get-AzNetworkSecurityGroup | Get-AzNetworkSecurityRuleConfig",
+        "Get-AzApplicationGateway | Select-Object -ExpandProperty WebApplicationFirewallConfiguration",
+        "Get-AzDdosProtectionPlan"
+      ],
+      "azureCLICommands": [
+        "az network ddos-protection show",
+        "az network application-gateway waf-config show",
+        "az container show --resource-group fedramp-rg --name app-container --query 'containers[0].resources'"
+      ]
+    },
+    "checks": [
       {
         "checkId": "CNA-05-001",
         "name": "Application Gateway DDoS Protection Validation",
@@ -59,7 +100,10 @@
                     "matchVariable": "RemoteAddr",
                     "operator": "GeoMatch",
                     "negationCondition": true,
-                    "matchValues": ["US", "CA"]
+                    "matchValues": [
+                      "US",
+                      "CA"
+                    ]
                   }
                 ]
               }
@@ -124,7 +168,8 @@
             }
           }
         },
-        "remediation": "DDoS protection properly configured and validated"
+        "remediation": "DDoS protection properly configured and validated",
+        "checkType": "dosProtectio"
       },
       {
         "checkId": "CNA-05-002",
@@ -232,49 +277,9 @@
             }
           ]
         },
-        "remediation": "CRITICAL: 1) Configure CPU and memory limits for containers, 2) Remove direct public IP exposure, 3) Route traffic through Application Gateway with DDoS protection, 4) Implement restrictive NSG rules, 5) Add health checks and circuit breakers, 6) Enable resource monitoring and alerting, 7) Implement application-level rate limiting"
+        "remediation": "CRITICAL: 1) Configure CPU and memory limits for containers, 2) Remove direct public IP exposure, 3) Route traffic through Application Gateway with DDoS protection, 4) Implement restrictive NSG rules, 5) Add health checks and circuit breakers, 6) Enable resource monitoring and alerting, 7) Implement application-level rate limiting",
+        "checkType": "dosProtectio"
       }
-    ],
-    "dosProtectionStrategies": {
-      "networkLevel": [
-        "Azure DDoS Protection Standard",
-        "Web Application Firewall (WAF)",
-        "Network Security Groups with restrictive rules",
-        "Azure Front Door with rate limiting",
-        "Geographic access restrictions"
-      ],
-      "applicationLevel": [
-        "Request rate limiting per client",
-        "Connection pooling and limits",
-        "Circuit breaker patterns",
-        "Health check endpoints",
-        "Graceful degradation mechanisms"
-      ],
-      "infrastructureLevel": [
-        "Auto-scaling policies",
-        "Resource quotas and limits",
-        "Load balancing across multiple instances",
-        "CDN for static content delivery",
-        "Monitoring and alerting systems"
-      ]
-    },
-    "detectionMethods": {
-      "azureNativeTools": [
-        "Azure Monitor for DDoS metrics",
-        "Application Gateway analytics",
-        "NSG flow logs analysis",
-        "Azure Security Center recommendations"
-      ],
-      "powershellCommands": [
-        "Get-AzNetworkSecurityGroup | Get-AzNetworkSecurityRuleConfig",
-        "Get-AzApplicationGateway | Select-Object -ExpandProperty WebApplicationFirewallConfiguration",
-        "Get-AzDdosProtectionPlan"
-      ],
-      "azureCLICommands": [
-        "az network ddos-protection show",
-        "az network application-gateway waf-config show",
-        "az container show --resource-group fedramp-rg --name app-container --query 'containers[0].resources'"
-      ]
-    }
+    ]
   }
 }

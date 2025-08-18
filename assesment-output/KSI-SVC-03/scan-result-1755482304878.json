@@ -11,7 +11,72 @@
       "failed": 2,
       "warnings": 0
     },
-    "storageEncryptionChecks": [
+    "encryptionAtRestBestPractices": {
+      "azureStorage": [
+        "Use customer-managed keys for all storage services",
+        "Enable infrastructure encryption for double encryption",
+        "Configure encryption scopes for granular control",
+        "Implement automatic key rotation",
+        "Use Azure Key Vault for key management"
+      ],
+      "virtualMachines": [
+        "Enable Azure Disk Encryption for all VMs",
+        "Encrypt both OS and data disks",
+        "Use customer-managed keys when possible",
+        "Enable encryption for temporary disks",
+        "Encrypt VM snapshots and images"
+      ],
+      "databases": [
+        "Enable Transparent Data Encryption (TDE)",
+        "Use customer-managed TDE protectors",
+        "Implement Always Encrypted for sensitive columns",
+        "Encrypt database backups",
+        "Enable TempDB encryption"
+      ],
+      "keyManagement": [
+        "Store encryption keys in Azure Key Vault",
+        "Implement key rotation policies",
+        "Use hardware security modules (HSM)",
+        "Apply principle of least privilege for key access",
+        "Monitor key usage and access"
+      ]
+    },
+    "encryptionVerificationMethods": {
+      "azureStorage": [
+        "Azure CLI: az storage account show --query encryption",
+        "PowerShell: Get-AzStorageAccount | Select-Object Encryption",
+        "REST API: GET storageAccounts/{accountName}",
+        "Azure Portal: Storage Account > Encryption settings"
+      ],
+      "virtualMachines": [
+        "Azure CLI: az vm encryption show",
+        "PowerShell: Get-AzVmDiskEncryptionStatus",
+        "VM Extension: Check AzureDiskEncryption extension",
+        "OS Level: lsblk or diskpart commands"
+      ],
+      "sqlDatabase": [
+        "T-SQL: SELECT * FROM sys.dm_database_encryption_keys",
+        "T-SQL: SELECT name, is_encrypted FROM sys.databases",
+        "Azure CLI: az sql db tde show",
+        "PowerShell: Get-AzSqlDatabaseTransparentDataEncryption"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "SC-28": "Protection of Information at Rest",
+        "SC-13": "Cryptographic Protection",
+        "SC-12": "Cryptographic Key Establishment and Management"
+      },
+      "pciDss": {
+        "requirement3": "Protect stored cardholder data",
+        "requirement3.4": "Render cardholder data unreadable"
+      },
+      "hipaa": {
+        "164.312c1": "Integrity controls for ePHI",
+        "164.312c2": "Encrypt and decrypt ePHI"
+      }
+    },
+    "checks": [
       {
         "checkId": "SVC-03-001",
         "name": "Azure Storage Account Comprehensive Encryption",
@@ -110,7 +175,8 @@
             "details": "Custom encryption scopes properly configured"
           }
         ],
-        "remediation": "Storage Account properly configured with comprehensive encryption at rest"
+        "remediation": "Storage Account properly configured with comprehensive encryption at rest",
+        "checkType": "storageEncryptio"
       },
       {
         "checkId": "SVC-03-002",
@@ -164,13 +230,19 @@
               "location": "/data/customer-records/",
               "classification": "Highly Confidential",
               "estimatedRecords": 50000,
-              "dataTypes": ["PII", "Financial"]
+              "dataTypes": [
+                "PII",
+                "Financial"
+              ]
             },
             {
               "location": "/var/lib/mysql/",
               "classification": "Confidential",
               "estimatedSize": "500GB",
-              "dataTypes": ["Database files", "Transaction logs"]
+              "dataTypes": [
+                "Database files",
+                "Transaction logs"
+              ]
             }
           ]
         },
@@ -212,7 +284,8 @@
             "issue": "No cryptographic protection for stored data"
           }
         ],
-        "remediation": "CRITICAL: 1) Stop VM and enable Azure Disk Encryption, 2) Install Azure Disk Encryption extension, 3) Configure Key Vault for encryption keys, 4) Enable encryption for all attached disks, 5) Verify data integrity after encryption, 6) Update backup procedures to include encrypted snapshots"
+        "remediation": "CRITICAL: 1) Stop VM and enable Azure Disk Encryption, 2) Install Azure Disk Encryption extension, 3) Configure Key Vault for encryption keys, 4) Enable encryption for all attached disks, 5) Verify data integrity after encryption, 6) Update backup procedures to include encrypted snapshots",
+        "checkType": "storageEncryptio"
       },
       {
         "checkId": "SVC-03-003",
@@ -255,7 +328,11 @@
           "columnLevelEncryption": {
             "alwaysEncrypted": {
               "enabled": false,
-              "sensitiveColumns": ["SSN", "CreditCard", "BankAccount"],
+              "sensitiveColumns": [
+                "SSN",
+                "CreditCard",
+                "BankAccount"
+              ],
               "issue": "Sensitive columns not protected with Always Encrypted"
             },
             "dynamicDataMasking": {
@@ -269,17 +346,27 @@
           "sensitiveData": {
             "customerTable": {
               "records": 75000,
-              "sensitiveColumns": ["SSN", "DateOfBirth", "Address"],
+              "sensitiveColumns": [
+                "SSN",
+                "DateOfBirth",
+                "Address"
+              ],
               "encrypted": false
             },
             "paymentTable": {
               "records": 150000,
-              "sensitiveColumns": ["CreditCardNumber", "BankAccount"],
+              "sensitiveColumns": [
+                "CreditCardNumber",
+                "BankAccount"
+              ],
               "encrypted": false
             },
             "auditTable": {
               "records": 500000,
-              "sensitiveColumns": ["UserActivity", "AccessLogs"],
+              "sensitiveColumns": [
+                "UserActivity",
+                "AccessLogs"
+              ],
               "encrypted": false
             }
           }
@@ -327,73 +414,9 @@
             "issue": "Cardholder data not encrypted"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Enable Transparent Data Encryption (TDE), 2) Configure customer-managed encryption keys in Key Vault, 3) Enable backup encryption, 4) Implement Always Encrypted for sensitive columns, 5) Enable TempDB encryption, 6) Configure dynamic data masking, 7) Re-encrypt existing backup files, 8) Verify encryption status across all database components"
+        "remediation": "HIGH PRIORITY: 1) Enable Transparent Data Encryption (TDE), 2) Configure customer-managed encryption keys in Key Vault, 3) Enable backup encryption, 4) Implement Always Encrypted for sensitive columns, 5) Enable TempDB encryption, 6) Configure dynamic data masking, 7) Re-encrypt existing backup files, 8) Verify encryption status across all database components",
+        "checkType": "storageEncryptio"
       }
-    ],
-    "encryptionAtRestBestPractices": {
-      "azureStorage": [
-        "Use customer-managed keys for all storage services",
-        "Enable infrastructure encryption for double encryption",
-        "Configure encryption scopes for granular control",
-        "Implement automatic key rotation",
-        "Use Azure Key Vault for key management"
-      ],
-      "virtualMachines": [
-        "Enable Azure Disk Encryption for all VMs",
-        "Encrypt both OS and data disks",
-        "Use customer-managed keys when possible",
-        "Enable encryption for temporary disks",
-        "Encrypt VM snapshots and images"
-      ],
-      "databases": [
-        "Enable Transparent Data Encryption (TDE)",
-        "Use customer-managed TDE protectors",
-        "Implement Always Encrypted for sensitive columns",
-        "Encrypt database backups",
-        "Enable TempDB encryption"
-      ],
-      "keyManagement": [
-        "Store encryption keys in Azure Key Vault",
-        "Implement key rotation policies",
-        "Use hardware security modules (HSM)",
-        "Apply principle of least privilege for key access",
-        "Monitor key usage and access"
-      ]
-    },
-    "encryptionVerificationMethods": {
-      "azureStorage": [
-        "Azure CLI: az storage account show --query encryption",
-        "PowerShell: Get-AzStorageAccount | Select-Object Encryption",
-        "REST API: GET storageAccounts/{accountName}",
-        "Azure Portal: Storage Account > Encryption settings"
-      ],
-      "virtualMachines": [
-        "Azure CLI: az vm encryption show",
-        "PowerShell: Get-AzVmDiskEncryptionStatus",
-        "VM Extension: Check AzureDiskEncryption extension",
-        "OS Level: lsblk or diskpart commands"
-      ],
-      "sqlDatabase": [
-        "T-SQL: SELECT * FROM sys.dm_database_encryption_keys",
-        "T-SQL: SELECT name, is_encrypted FROM sys.databases",
-        "Azure CLI: az sql db tde show",
-        "PowerShell: Get-AzSqlDatabaseTransparentDataEncryption"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "SC-28": "Protection of Information at Rest",
-        "SC-13": "Cryptographic Protection",
-        "SC-12": "Cryptographic Key Establishment and Management"
-      },
-      "pciDss": {
-        "requirement3": "Protect stored cardholder data",
-        "requirement3.4": "Render cardholder data unreadable"
-      },
-      "hipaa": {
-        "164.312c1": "Integrity controls for ePHI",
-        "164.312c2": "Encrypt and decrypt ePHI"
-      }
-    }
+    ]
   }
 }

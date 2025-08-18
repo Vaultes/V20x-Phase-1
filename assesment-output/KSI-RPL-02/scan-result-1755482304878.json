@@ -11,7 +11,64 @@
       "failed": 4,
       "warnings": 0
     },
-    "recoveryPlanChecks": [
+    "recoveryPlanVerificationMethods": {
+      "planDocumentationTracking": [
+        "Document management platforms: SharePoint, Confluence with automated version control and approval workflows",
+        "Business continuity platforms: ServiceNow BCDR, Fusion Risk Management with plan lifecycle management",
+        "Compliance management integration: GRC platforms with regulatory requirement mapping and audit trails",
+        "Change management integration: Azure DevOps, GitLab with branching strategies and merge approval processes",
+        "Automated notification systems: Plan update alerts, review reminders, and stakeholder communications"
+      ],
+      "rtoRpoAlignmentValidation": [
+        "Recovery objective monitoring: Automated alignment checking between plans and defined RTO/RPO targets",
+        "Timeline estimation validation: Recovery procedure timing analysis with bottleneck identification",
+        "Dependency impact analysis: Service dependency mapping correlation with recovery time estimates",
+        "Alignment dashboard monitoring: Real-time visualization of plan-objective alignment status",
+        "Deviation detection and alerting: Automated notifications for alignment gaps and recommended corrections"
+      ],
+      "stakeholderTrainingTracking": [
+        "Learning management systems: Canvas, Blackboard with role-based training assignment and completion tracking",
+        "Competency assessment platforms: Skills validation and knowledge retention testing automation",
+        "Training effectiveness measurement: Performance analytics and improvement recommendation generation",
+        "Certification management: Professional development tracking with renewal and compliance monitoring",
+        "Simulation exercise integration: Hands-on training effectiveness measurement through practical exercises"
+      ],
+      "automationAndOrchestration": [
+        "Infrastructure as Code platforms: Terraform, ARM templates for automated infrastructure recovery",
+        "Orchestration platforms: Azure Automation, AWS Systems Manager for workflow automation and coordination",
+        "Application deployment automation: Azure DevOps, GitLab CI/CD for automated application recovery",
+        "Monitoring and alerting integration: Azure Monitor, CloudWatch for recovery progress tracking and exception handling",
+        "Recovery testing automation: Automated disaster recovery testing with success criteria validation"
+      ],
+      "crossFunctionalCoordination": [
+        "Communication platform integration: Microsoft Teams, Slack for automated stakeholder notifications",
+        "Incident management systems: ServiceNow, PagerDuty for cross-functional coordination and escalation",
+        "Decision support systems: Business intelligence platforms for recovery decision-making assistance",
+        "Collaboration tools: Confluence, SharePoint for real-time coordination and status tracking",
+        "Command center platforms: Emergency management systems for centralized coordination and communication"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "CP-2": "Contingency Plan",
+        "CP-3": "Contingency Training",
+        "CP-4": "Contingency Plan Testing",
+        "CP-9": "Information System Backup"
+      },
+      "nist80053": {
+        "CP-2": "Contingency Plan",
+        "CP-3": "Contingency Training",
+        "CP-4": "Contingency Plan Testing",
+        "CP-9": "Information System Backup",
+        "CP-10": "Information System Recovery and Reconstitution"
+      },
+      "iso27001": {
+        "A.17.1.1": "Planning information security continuity",
+        "A.17.1.2": "Implementing information security continuity",
+        "A.17.1.3": "Verify, review and evaluate information security continuity"
+      }
+    },
+    "checks": [
       {
         "checkId": "RPL-02-001",
         "name": "Recovery Plan Documentation and Version Control",
@@ -82,7 +139,8 @@
             "details": "Consistent structure across all plans with comprehensive content coverage"
           }
         ],
-        "remediation": "Recovery plan documentation comprehensively implemented with robust version control and change management"
+        "remediation": "Recovery plan documentation comprehensively implemented with robust version control and change management",
+        "checkType": "recoveryPla"
       },
       {
         "checkId": "RPL-02-002",
@@ -157,7 +215,8 @@
             "details": "Automated alignment checking with dashboards and deviation alerting"
           }
         ],
-        "remediation": "RTO/RPO alignment comprehensively validated with strong monitoring and automated deviation detection"
+        "remediation": "RTO/RPO alignment comprehensively validated with strong monitoring and automated deviation detection",
+        "checkType": "recoveryPla"
       },
       {
         "checkId": "RPL-02-003",
@@ -239,7 +298,8 @@
             "details": "No knowledge retention testing or competency validation beyond self-assessment"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Achieve 100% stakeholder training coverage with quarterly sessions and role-specific content, 2) Implement comprehensive hands-on simulation exercises with scenario-based training, 3) Develop competency validation and knowledge retention testing for all recovery roles, 4) Establish cross-functional training to improve coordination and communication, 5) Create training effectiveness metrics with performance measurement and continuous improvement, 6) Deploy training management system with automated tracking and certification management"
+        "remediation": "HIGH PRIORITY: 1) Achieve 100% stakeholder training coverage with quarterly sessions and role-specific content, 2) Implement comprehensive hands-on simulation exercises with scenario-based training, 3) Develop competency validation and knowledge retention testing for all recovery roles, 4) Establish cross-functional training to improve coordination and communication, 5) Create training effectiveness metrics with performance measurement and continuous improvement, 6) Deploy training management system with automated tracking and certification management",
+        "checkType": "recoveryPla"
       },
       {
         "checkId": "RPL-02-004",
@@ -308,7 +368,8 @@
             "details": "Basic monitoring with manual exception handling and recovery validation"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Increase recovery automation coverage to 80% with comprehensive orchestration platform implementation, 2) Deploy Infrastructure as Code for automated infrastructure recovery and reconfiguration, 3) Implement application recovery automation with dependency resolution and health check validation, 4) Establish automated data recovery workflows with integrity validation and rollback capabilities, 5) Create comprehensive recovery monitoring with automated status reporting and exception handling, 6) Develop automated testing and validation frameworks for recovery procedure verification"
+        "remediation": "MEDIUM PRIORITY: 1) Increase recovery automation coverage to 80% with comprehensive orchestration platform implementation, 2) Deploy Infrastructure as Code for automated infrastructure recovery and reconfiguration, 3) Implement application recovery automation with dependency resolution and health check validation, 4) Establish automated data recovery workflows with integrity validation and rollback capabilities, 5) Create comprehensive recovery monitoring with automated status reporting and exception handling, 6) Develop automated testing and validation frameworks for recovery procedure verification",
+        "checkType": "recoveryPla"
       },
       {
         "checkId": "RPL-02-005",
@@ -380,7 +441,8 @@
             "details": "No cross-functional exercises or coordination effectiveness measurement"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Establish recovery command center with clear decision-making hierarchy and communication protocols, 2) Develop comprehensive communication plans for internal, external, customer, and regulatory stakeholders, 3) Define clear roles, responsibilities, and authority levels for all cross-functional recovery activities, 4) Implement regular cross-functional coordination exercises with effectiveness measurement, 5) Create backup communication channels and methods for all stakeholder groups, 6) Establish interdepartmental handoff procedures with testing and validation protocols"
+        "remediation": "MEDIUM PRIORITY: 1) Establish recovery command center with clear decision-making hierarchy and communication protocols, 2) Develop comprehensive communication plans for internal, external, customer, and regulatory stakeholders, 3) Define clear roles, responsibilities, and authority levels for all cross-functional recovery activities, 4) Implement regular cross-functional coordination exercises with effectiveness measurement, 5) Create backup communication channels and methods for all stakeholder groups, 6) Establish interdepartmental handoff procedures with testing and validation protocols",
+        "checkType": "recoveryPla"
       },
       {
         "checkId": "RPL-02-006",
@@ -448,65 +510,9 @@
             "details": "No systematic currency metrics or plan effectiveness indicators"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement quarterly plan maintenance schedule with defined triggers and clear ownership assignments, 2) Establish automated change tracking integration with infrastructure, application, and business process changes, 3) Develop systematic plan validation and testing procedures with stakeholder feedback integration, 4) Create plan currency metrics and effectiveness indicators with automated monitoring, 5) Implement automated plan update notifications and impact assessment workflows, 6) Establish continuous plan optimization process with regular effectiveness reviews and improvement recommendations"
+        "remediation": "HIGH PRIORITY: 1) Implement quarterly plan maintenance schedule with defined triggers and clear ownership assignments, 2) Establish automated change tracking integration with infrastructure, application, and business process changes, 3) Develop systematic plan validation and testing procedures with stakeholder feedback integration, 4) Create plan currency metrics and effectiveness indicators with automated monitoring, 5) Implement automated plan update notifications and impact assessment workflows, 6) Establish continuous plan optimization process with regular effectiveness reviews and improvement recommendations",
+        "checkType": "recoveryPla"
       }
-    ],
-    "recoveryPlanVerificationMethods": {
-      "planDocumentationTracking": [
-        "Document management platforms: SharePoint, Confluence with automated version control and approval workflows",
-        "Business continuity platforms: ServiceNow BCDR, Fusion Risk Management with plan lifecycle management",
-        "Compliance management integration: GRC platforms with regulatory requirement mapping and audit trails",
-        "Change management integration: Azure DevOps, GitLab with branching strategies and merge approval processes",
-        "Automated notification systems: Plan update alerts, review reminders, and stakeholder communications"
-      ],
-      "rtoRpoAlignmentValidation": [
-        "Recovery objective monitoring: Automated alignment checking between plans and defined RTO/RPO targets",
-        "Timeline estimation validation: Recovery procedure timing analysis with bottleneck identification",
-        "Dependency impact analysis: Service dependency mapping correlation with recovery time estimates",
-        "Alignment dashboard monitoring: Real-time visualization of plan-objective alignment status",
-        "Deviation detection and alerting: Automated notifications for alignment gaps and recommended corrections"
-      ],
-      "stakeholderTrainingTracking": [
-        "Learning management systems: Canvas, Blackboard with role-based training assignment and completion tracking",
-        "Competency assessment platforms: Skills validation and knowledge retention testing automation",
-        "Training effectiveness measurement: Performance analytics and improvement recommendation generation",
-        "Certification management: Professional development tracking with renewal and compliance monitoring",
-        "Simulation exercise integration: Hands-on training effectiveness measurement through practical exercises"
-      ],
-      "automationAndOrchestration": [
-        "Infrastructure as Code platforms: Terraform, ARM templates for automated infrastructure recovery",
-        "Orchestration platforms: Azure Automation, AWS Systems Manager for workflow automation and coordination",
-        "Application deployment automation: Azure DevOps, GitLab CI/CD for automated application recovery",
-        "Monitoring and alerting integration: Azure Monitor, CloudWatch for recovery progress tracking and exception handling",
-        "Recovery testing automation: Automated disaster recovery testing with success criteria validation"
-      ],
-      "crossFunctionalCoordination": [
-        "Communication platform integration: Microsoft Teams, Slack for automated stakeholder notifications",
-        "Incident management systems: ServiceNow, PagerDuty for cross-functional coordination and escalation",
-        "Decision support systems: Business intelligence platforms for recovery decision-making assistance",
-        "Collaboration tools: Confluence, SharePoint for real-time coordination and status tracking",
-        "Command center platforms: Emergency management systems for centralized coordination and communication"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "CP-2": "Contingency Plan",
-        "CP-3": "Contingency Training",
-        "CP-4": "Contingency Plan Testing",
-        "CP-9": "Information System Backup"
-      },
-      "nist80053": {
-        "CP-2": "Contingency Plan",
-        "CP-3": "Contingency Training",
-        "CP-4": "Contingency Plan Testing",
-        "CP-9": "Information System Backup",
-        "CP-10": "Information System Recovery and Reconstitution"
-      },
-      "iso27001": {
-        "A.17.1.1": "Planning information security continuity",
-        "A.17.1.2": "Implementing information security continuity",
-        "A.17.1.3": "Verify, review and evaluate information security continuity"
-      }
-    }
+    ]
   }
 }

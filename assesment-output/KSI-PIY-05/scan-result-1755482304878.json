@@ -11,7 +11,60 @@
       "failed": 4,
       "warnings": 0
     },
-    "informationResourceEvaluationChecks": [
+    "informationResourceEvaluationVerificationMethods": {
+      "evaluationMethodologyDocumentation": [
+        "Policy management systems: Evaluation framework documentation and approval tracking",
+        "Process documentation platforms: Evaluation methodology definition and workflow documentation",
+        "Knowledge management systems: Evaluation criteria libraries and decision support frameworks",
+        "Project management platforms: Evaluation project tracking and milestone management",
+        "Quality management systems: Evaluation quality standards and assessment frameworks"
+      ],
+      "technicalValidationAndTesting": [
+        "Testing platforms: Azure DevTest Labs, test environment provisioning and management",
+        "Performance testing tools: Azure Load Testing, performance benchmarking and validation",
+        "Security testing platforms: Security assessment and validation tooling integration",
+        "Automated testing frameworks: CI/CD pipeline integration and continuous validation",
+        "Test management systems: Test case management and results tracking platforms"
+      ],
+      "benchmarkingAndComplianceValidation": [
+        "Benchmarking platforms: Industry standard compliance assessment and validation",
+        "Compliance management systems: Regulatory requirement tracking and validation",
+        "Security frameworks: CIS Benchmarks, NIST CSF, and security baseline compliance",
+        "Performance monitoring: Azure Monitor, Application Insights performance baseline tracking",
+        "Governance platforms: Risk assessment and compliance reporting systems"
+      ],
+      "stakeholderEngagementAndCommunication": [
+        "Collaboration platforms: Stakeholder engagement and communication management",
+        "Feedback management systems: Stakeholder feedback collection and analysis",
+        "Reporting platforms: Evaluation results communication and executive reporting",
+        "Communication tools: Multi-channel communication coordination and delivery",
+        "Governance platforms: Stakeholder involvement tracking and engagement effectiveness"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "SA-3": "System Development Life Cycle",
+        "SA-4": "Acquisition Process",
+        "SA-5": "Information System Documentation",
+        "SA-8": "Security Engineering Principles",
+        "SA-11": "Developer Security Testing and Evaluation"
+      },
+      "nist80053": {
+        "SA-3": "System Development Life Cycle",
+        "SA-4": "Acquisition Process",
+        "SA-5": "Information System Documentation",
+        "SA-8": "Security Engineering Principles",
+        "SA-11": "Developer Security Testing and Evaluation",
+        "PM-9": "Risk Management Strategy"
+      },
+      "iso27001": {
+        "A.12.1.1": "Documented operating procedures",
+        "A.14.1.1": "Information security requirements analysis and specification",
+        "A.14.2.1": "Secure development policy",
+        "A.15.1.1": "Information security policy for supplier relationships"
+      }
+    },
+    "checks": [
       {
         "checkId": "PIY-05-001",
         "name": "Technical Evaluation Framework Implementation",
@@ -173,7 +226,8 @@
             "details": "Advanced evaluation platform with compliance integration and workflow automation"
           }
         ],
-        "remediation": "Technical evaluation framework comprehensively implemented with robust automation and compliance integration"
+        "remediation": "Technical evaluation framework comprehensively implemented with robust automation and compliance integration",
+        "checkType": "informationResourceEvaluatio"
       },
       {
         "checkId": "PIY-05-002",
@@ -302,7 +356,8 @@
             "details": "Active participation in industry benchmarking with third-party validation and regulatory compliance"
           }
         ],
-        "remediation": "Performance and security benchmarking comprehensively implemented with industry and regulatory alignment"
+        "remediation": "Performance and security benchmarking comprehensively implemented with industry and regulatory alignment",
+        "checkType": "informationResourceEvaluatio"
       },
       {
         "checkId": "PIY-05-003",
@@ -465,7 +520,8 @@
             "details": "Basic documentation repository with limited search capabilities and no automation"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Develop comprehensive evaluation documentation standards with standardized templates and quality requirements, 2) Implement centralized documentation management platform with advanced search and collaboration capabilities, 3) Establish automated documentation generation and validation processes, 4) Create comprehensive evaluation methodology documentation with clear roles and responsibilities, 5) Implement knowledge management system with lessons learned capture and best practices sharing, 6) Deploy documentation workflow automation with version control and approval processes, 7) Establish documentation governance framework with ownership, standards enforcement, and quality assurance"
+        "remediation": "HIGH PRIORITY: 1) Develop comprehensive evaluation documentation standards with standardized templates and quality requirements, 2) Implement centralized documentation management platform with advanced search and collaboration capabilities, 3) Establish automated documentation generation and validation processes, 4) Create comprehensive evaluation methodology documentation with clear roles and responsibilities, 5) Implement knowledge management system with lessons learned capture and best practices sharing, 6) Deploy documentation workflow automation with version control and approval processes, 7) Establish documentation governance framework with ownership, standards enforcement, and quality assurance",
+        "checkType": "informationResourceEvaluatio"
       },
       {
         "checkId": "PIY-05-004",
@@ -628,7 +684,8 @@
             "details": "Limited security testing with basic performance testing and manual tool integration"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive validation testing framework with standardized methodologies and coverage requirements, 2) Deploy automated testing platforms with CI/CD integration and continuous validation capabilities, 3) Establish specialized security and performance testing programs with dedicated tooling and expertise, 4) Implement comprehensive test data management with generation, anonymization, and governance capabilities, 5) Deploy test environment management platform with automated provisioning and configuration, 6) Establish validation testing governance with standards enforcement and quality assurance, 7) Implement advanced testing analytics with bottleneck identification and optimization recommendations"
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive validation testing framework with standardized methodologies and coverage requirements, 2) Deploy automated testing platforms with CI/CD integration and continuous validation capabilities, 3) Establish specialized security and performance testing programs with dedicated tooling and expertise, 4) Implement comprehensive test data management with generation, anonymization, and governance capabilities, 5) Deploy test environment management platform with automated provisioning and configuration, 6) Establish validation testing governance with standards enforcement and quality assurance, 7) Implement advanced testing analytics with bottleneck identification and optimization recommendations",
+        "checkType": "informationResourceEvaluatio"
       },
       {
         "checkId": "PIY-05-005",
@@ -791,7 +848,8 @@
             "details": "Basic improvement processes with limited knowledge management and manual governance workflows"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Establish comprehensive evaluation governance framework with clear committees, responsibilities, and decision-making authority, 2) Implement evaluation quality assurance program with standardized metrics and assessment processes, 3) Deploy governance platform with automated workflows for approval, escalation, and compliance management, 4) Establish continuous improvement methodology with systematic feedback collection and impact assessment, 5) Implement comprehensive audit and assurance program with internal and external validation, 6) Deploy governance analytics platform with comprehensive metrics, reporting, and trend analysis, 7) Establish organizational learning framework with knowledge management and adaptive evaluation capabilities"
+        "remediation": "MEDIUM PRIORITY: 1) Establish comprehensive evaluation governance framework with clear committees, responsibilities, and decision-making authority, 2) Implement evaluation quality assurance program with standardized metrics and assessment processes, 3) Deploy governance platform with automated workflows for approval, escalation, and compliance management, 4) Establish continuous improvement methodology with systematic feedback collection and impact assessment, 5) Implement comprehensive audit and assurance program with internal and external validation, 6) Deploy governance analytics platform with comprehensive metrics, reporting, and trend analysis, 7) Establish organizational learning framework with knowledge management and adaptive evaluation capabilities",
+        "checkType": "informationResourceEvaluatio"
       },
       {
         "checkId": "PIY-05-006",
@@ -954,61 +1012,9 @@
             "details": "Basic feedback collection with manual analysis and limited cross-functional collaboration"
           }
         ],
-        "remediation": "LOW PRIORITY: 1) Develop comprehensive stakeholder engagement strategy with mapping, segmentation, and prioritization framework, 2) Implement advanced communication platform with multi-channel coordination and personalized delivery, 3) Establish structured feedback collection and analysis system with automated categorization and trend analysis, 4) Deploy collaboration platform with cross-functional tools and effectiveness tracking, 5) Implement stakeholder satisfaction measurement with continuous improvement processes, 6) Establish external partnership engagement framework with vendor and customer integration, 7) Create stakeholder engagement analytics with satisfaction tracking and engagement effectiveness measurement"
+        "remediation": "LOW PRIORITY: 1) Develop comprehensive stakeholder engagement strategy with mapping, segmentation, and prioritization framework, 2) Implement advanced communication platform with multi-channel coordination and personalized delivery, 3) Establish structured feedback collection and analysis system with automated categorization and trend analysis, 4) Deploy collaboration platform with cross-functional tools and effectiveness tracking, 5) Implement stakeholder satisfaction measurement with continuous improvement processes, 6) Establish external partnership engagement framework with vendor and customer integration, 7) Create stakeholder engagement analytics with satisfaction tracking and engagement effectiveness measurement",
+        "checkType": "informationResourceEvaluatio"
       }
-    ],
-    "informationResourceEvaluationVerificationMethods": {
-      "evaluationMethodologyDocumentation": [
-        "Policy management systems: Evaluation framework documentation and approval tracking",
-        "Process documentation platforms: Evaluation methodology definition and workflow documentation",
-        "Knowledge management systems: Evaluation criteria libraries and decision support frameworks",
-        "Project management platforms: Evaluation project tracking and milestone management",
-        "Quality management systems: Evaluation quality standards and assessment frameworks"
-      ],
-      "technicalValidationAndTesting": [
-        "Testing platforms: Azure DevTest Labs, test environment provisioning and management",
-        "Performance testing tools: Azure Load Testing, performance benchmarking and validation",
-        "Security testing platforms: Security assessment and validation tooling integration",
-        "Automated testing frameworks: CI/CD pipeline integration and continuous validation",
-        "Test management systems: Test case management and results tracking platforms"
-      ],
-      "benchmarkingAndComplianceValidation": [
-        "Benchmarking platforms: Industry standard compliance assessment and validation",
-        "Compliance management systems: Regulatory requirement tracking and validation",
-        "Security frameworks: CIS Benchmarks, NIST CSF, and security baseline compliance",
-        "Performance monitoring: Azure Monitor, Application Insights performance baseline tracking",
-        "Governance platforms: Risk assessment and compliance reporting systems"
-      ],
-      "stakeholderEngagementAndCommunication": [
-        "Collaboration platforms: Stakeholder engagement and communication management",
-        "Feedback management systems: Stakeholder feedback collection and analysis",
-        "Reporting platforms: Evaluation results communication and executive reporting",
-        "Communication tools: Multi-channel communication coordination and delivery",
-        "Governance platforms: Stakeholder involvement tracking and engagement effectiveness"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "SA-3": "System Development Life Cycle",
-        "SA-4": "Acquisition Process",
-        "SA-5": "Information System Documentation",
-        "SA-8": "Security Engineering Principles",
-        "SA-11": "Developer Security Testing and Evaluation"
-      },
-      "nist80053": {
-        "SA-3": "System Development Life Cycle",
-        "SA-4": "Acquisition Process",
-        "SA-5": "Information System Documentation",
-        "SA-8": "Security Engineering Principles",
-        "SA-11": "Developer Security Testing and Evaluation",
-        "PM-9": "Risk Management Strategy"
-      },
-      "iso27001": {
-        "A.12.1.1": "Documented operating procedures",
-        "A.14.1.1": "Information security requirements analysis and specification",
-        "A.14.2.1": "Secure development policy",
-        "A.15.1.1": "Information security policy for supplier relationships"
-      }
-    }
+    ]
   }
 }

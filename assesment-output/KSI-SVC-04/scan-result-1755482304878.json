@@ -11,7 +11,82 @@
       "failed": 4,
       "warnings": 0
     },
-    "centralConfigurationManagementChecks": [
+    "centralConfigurationManagementBestPractices": {
+      "applicationConfiguration": [
+        "Use Azure App Configuration for centralized app settings",
+        "Store secrets in Azure Key Vault with proper access controls",
+        "Implement configuration as code with version control",
+        "Use environment-specific labeling and feature flags",
+        "Enable configuration refresh without application restart"
+      ],
+      "infrastructureConfiguration": [
+        "Implement Infrastructure as Code (IaC) using ARM/Bicep/Terraform",
+        "Use Azure Resource Manager Template Specs for standardization",
+        "Configure Azure Policy for compliance enforcement",
+        "Implement configuration drift detection and remediation",
+        "Establish approval workflows for infrastructure changes"
+      ],
+      "securityConfiguration": [
+        "Centralize secrets management in Azure Key Vault",
+        "Use managed identities for secure access to configuration",
+        "Implement role-based access control for configuration access",
+        "Enable audit logging for all configuration changes",
+        "Encrypt configuration data at rest and in transit"
+      ],
+      "operationalConfiguration": [
+        "Standardize monitoring and alerting configurations",
+        "Use configuration management tools for consistency",
+        "Implement automated configuration validation",
+        "Create configuration backup and recovery procedures",
+        "Establish configuration change approval processes"
+      ]
+    },
+    "configurationVerificationMethods": {
+      "azureAppConfiguration": [
+        "Azure CLI: az appconfig show --name <config-store-name>",
+        "PowerShell: Get-AzAppConfigurationStore",
+        "REST API: GET /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
+        "Azure Portal: App Configuration > Overview"
+      ],
+      "azureKeyVault": [
+        "Azure CLI: az keyvault show --name <vault-name>",
+        "PowerShell: Get-AzKeyVault",
+        "REST API: GET /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}",
+        "Azure Portal: Key Vault > Access policies"
+      ],
+      "azurePolicy": [
+        "Azure CLI: az policy state list --resource <resource-id>",
+        "PowerShell: Get-AzPolicyState",
+        "REST API: POST /subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults",
+        "Azure Portal: Policy > Compliance"
+      ],
+      "infrastructureAsCode": [
+        "Git repository audit for template versioning",
+        "Azure DevOps pipeline logs for deployment tracking",
+        "ARM template validation using az deployment validate",
+        "Resource drift detection using Azure Resource Graph"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "CM-2": "Baseline Configuration",
+        "CM-3": "Configuration Change Control",
+        "CM-6": "Configuration Settings",
+        "CM-8": "Information System Component Inventory"
+      },
+      "nist80053": {
+        "CM-2": "Baseline Configuration",
+        "CM-3": "Configuration Change Control",
+        "CM-7": "Least Functionality",
+        "CM-8": "Information System Component Inventory"
+      },
+      "iso27001": {
+        "A.12.1.2": "Change management",
+        "A.12.5.1": "Installation of software on operational systems",
+        "A.14.2.2": "System change control procedures"
+      }
+    },
+    "checks": [
       {
         "checkId": "SVC-04-001",
         "name": "Azure App Configuration Service Implementation",
@@ -34,8 +109,17 @@
             "featureFlags": 23,
             "keyVaultReferences": 18,
             "labeling": {
-              "environments": ["dev", "staging", "prod"],
-              "components": ["frontend", "backend", "database", "monitoring"]
+              "environments": [
+                "dev",
+                "staging",
+                "prod"
+              ],
+              "components": [
+                "frontend",
+                "backend",
+                "database",
+                "monitoring"
+              ]
             }
           },
           "accessControl": {
@@ -44,12 +128,16 @@
               {
                 "name": "webapp-identity",
                 "type": "UserAssigned",
-                "permissions": ["App Configuration Data Reader"]
+                "permissions": [
+                  "App Configuration Data Reader"
+                ]
               },
               {
                 "name": "function-identity",
                 "type": "SystemAssigned",
-                "permissions": ["App Configuration Data Reader"]
+                "permissions": [
+                  "App Configuration Data Reader"
+                ]
               }
             ],
             "networkAccess": {
@@ -118,7 +206,8 @@
             "evidence": "Centralized configuration with version control"
           }
         ],
-        "remediation": "Configuration properly centralized through Azure App Configuration with appropriate security controls"
+        "remediation": "Configuration properly centralized through Azure App Configuration with appropriate security controls",
+        "checkType": "centralConfigurationManagemen"
       },
       {
         "checkId": "SVC-04-002",
@@ -219,7 +308,8 @@
             "details": "Automatic rotation policies active"
           }
         ],
-        "remediation": "Key Vault properly configured for centralized secrets management"
+        "remediation": "Key Vault properly configured for centralized secrets management",
+        "checkType": "centralConfigurationManagemen"
       },
       {
         "checkId": "SVC-04-003",
@@ -309,7 +399,8 @@
             "details": "Auto-remediation tasks completing successfully"
           }
         ],
-        "remediation": "Azure Policy properly implementing configuration governance"
+        "remediation": "Azure Policy properly implementing configuration governance",
+        "checkType": "centralConfigurationManagemen"
       },
       {
         "checkId": "SVC-04-004",
@@ -389,7 +480,11 @@
           "operationalIssues": {
             "configurationDrift": {
               "detected": true,
-              "environments": ["dev", "staging", "prod"],
+              "environments": [
+                "dev",
+                "staging",
+                "prod"
+              ],
               "driftCount": 23,
               "lastCheck": "2025-08-16T10:30:00.000Z"
             },
@@ -446,7 +541,8 @@
             "issue": "Uncontrolled configuration changes"
           }
         ],
-        "remediation": "CRITICAL: 1) Implement Azure App Configuration for centralized config management, 2) Migrate secrets to Azure Key Vault, 3) Remove hardcoded secrets from app settings, 4) Implement configuration as code with version control, 5) Establish approval processes for config changes, 6) Deploy configuration scanning tools, 7) Create configuration drift detection automation"
+        "remediation": "CRITICAL: 1) Implement Azure App Configuration for centralized config management, 2) Migrate secrets to Azure Key Vault, 3) Remove hardcoded secrets from app settings, 4) Implement configuration as code with version control, 5) Establish approval processes for config changes, 6) Deploy configuration scanning tools, 7) Create configuration drift detection automation",
+        "checkType": "centralConfigurationManagemen"
       },
       {
         "checkId": "SVC-04-005",
@@ -541,7 +637,8 @@
             "details": "No standard template library or validation"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement comprehensive Infrastructure as Code using Bicep/ARM templates, 2) Establish Git-based version control for all templates, 3) Deploy Azure Resource Manager Template Specs for standardization, 4) Configure Azure Policy for configuration compliance, 5) Implement Azure Automation State Configuration for drift detection, 6) Create automated deployment pipelines with approval gates"
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive Infrastructure as Code using Bicep/ARM templates, 2) Establish Git-based version control for all templates, 3) Deploy Azure Resource Manager Template Specs for standardization, 4) Configure Azure Policy for configuration compliance, 5) Implement Azure Automation State Configuration for drift detection, 6) Create automated deployment pipelines with approval gates",
+        "checkType": "centralConfigurationManagemen"
       },
       {
         "checkId": "SVC-04-006",
@@ -561,7 +658,11 @@
               "managed": "Manual",
               "count": 23,
               "standardization": false,
-              "issues": ["Overly permissive rules", "No naming convention", "No approval process"]
+              "issues": [
+                "Overly permissive rules",
+                "No naming convention",
+                "No approval process"
+              ]
             },
             "accessControl": {
               "managed": "Manual",
@@ -632,7 +733,8 @@
             "details": "Many configuration decisions undocumented"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement database configuration as code using SQL Database Project or Dacpac, 2) Standardize security configurations across all databases, 3) Implement automated schema deployment pipelines, 4) Create configuration templates for consistent deployment, 5) Establish change approval workflows, 6) Document all configuration standards and procedures"
+        "remediation": "MEDIUM PRIORITY: 1) Implement database configuration as code using SQL Database Project or Dacpac, 2) Standardize security configurations across all databases, 3) Implement automated schema deployment pipelines, 4) Create configuration templates for consistent deployment, 5) Establish change approval workflows, 6) Document all configuration standards and procedures",
+        "checkType": "centralConfigurationManagemen"
       },
       {
         "checkId": "SVC-04-007",
@@ -720,83 +822,9 @@
             "details": "No automated deployment of monitoring configurations"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Create standardized monitoring templates for each resource type, 2) Implement monitoring as code using ARM/Bicep templates, 3) Establish standard alert thresholds and action groups, 4) Consolidate Log Analytics workspaces based on purpose, 5) Create automated deployment pipeline for monitoring configurations, 6) Document monitoring standards and best practices"
+        "remediation": "MEDIUM PRIORITY: 1) Create standardized monitoring templates for each resource type, 2) Implement monitoring as code using ARM/Bicep templates, 3) Establish standard alert thresholds and action groups, 4) Consolidate Log Analytics workspaces based on purpose, 5) Create automated deployment pipeline for monitoring configurations, 6) Document monitoring standards and best practices",
+        "checkType": "centralConfigurationManagemen"
       }
-    ],
-    "centralConfigurationManagementBestPractices": {
-      "applicationConfiguration": [
-        "Use Azure App Configuration for centralized app settings",
-        "Store secrets in Azure Key Vault with proper access controls",
-        "Implement configuration as code with version control",
-        "Use environment-specific labeling and feature flags",
-        "Enable configuration refresh without application restart"
-      ],
-      "infrastructureConfiguration": [
-        "Implement Infrastructure as Code (IaC) using ARM/Bicep/Terraform",
-        "Use Azure Resource Manager Template Specs for standardization",
-        "Configure Azure Policy for compliance enforcement",
-        "Implement configuration drift detection and remediation",
-        "Establish approval workflows for infrastructure changes"
-      ],
-      "securityConfiguration": [
-        "Centralize secrets management in Azure Key Vault",
-        "Use managed identities for secure access to configuration",
-        "Implement role-based access control for configuration access",
-        "Enable audit logging for all configuration changes",
-        "Encrypt configuration data at rest and in transit"
-      ],
-      "operationalConfiguration": [
-        "Standardize monitoring and alerting configurations",
-        "Use configuration management tools for consistency",
-        "Implement automated configuration validation",
-        "Create configuration backup and recovery procedures",
-        "Establish configuration change approval processes"
-      ]
-    },
-    "configurationVerificationMethods": {
-      "azureAppConfiguration": [
-        "Azure CLI: az appconfig show --name <config-store-name>",
-        "PowerShell: Get-AzAppConfigurationStore",
-        "REST API: GET /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
-        "Azure Portal: App Configuration > Overview"
-      ],
-      "azureKeyVault": [
-        "Azure CLI: az keyvault show --name <vault-name>",
-        "PowerShell: Get-AzKeyVault",
-        "REST API: GET /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}",
-        "Azure Portal: Key Vault > Access policies"
-      ],
-      "azurePolicy": [
-        "Azure CLI: az policy state list --resource <resource-id>",
-        "PowerShell: Get-AzPolicyState",
-        "REST API: POST /subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults",
-        "Azure Portal: Policy > Compliance"
-      ],
-      "infrastructureAsCode": [
-        "Git repository audit for template versioning",
-        "Azure DevOps pipeline logs for deployment tracking",
-        "ARM template validation using az deployment validate",
-        "Resource drift detection using Azure Resource Graph"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "CM-2": "Baseline Configuration",
-        "CM-3": "Configuration Change Control",
-        "CM-6": "Configuration Settings",
-        "CM-8": "Information System Component Inventory"
-      },
-      "nist80053": {
-        "CM-2": "Baseline Configuration",
-        "CM-3": "Configuration Change Control",
-        "CM-7": "Least Functionality",
-        "CM-8": "Information System Component Inventory"
-      },
-      "iso27001": {
-        "A.12.1.2": "Change management",
-        "A.12.5.1": "Installation of software on operational systems",
-        "A.14.2.2": "System change control procedures"
-      }
-    }
+    ]
   }
 }

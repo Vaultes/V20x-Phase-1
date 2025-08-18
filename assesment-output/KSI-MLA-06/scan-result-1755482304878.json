@@ -11,7 +11,64 @@
       "failed": 4,
       "warnings": 0
     },
-    "centralizedVulnerabilityTrackingChecks": [
+    "centralizedVulnerabilityTrackingVerificationMethods": {
+      "vulnerabilityManagementPlatform": [
+        "Azure Portal: Security Center > Vulnerability Assessment for centralized tracking",
+        "Qualys VMDR: Dashboard for comprehensive vulnerability management platform",
+        "ServiceNow: Vulnerability Response for workflow automation and tracking",
+        "Vulnerability scanners: Consolidated vulnerability data and prioritization",
+        "SIEM systems: Vulnerability event correlation and threat intelligence integration"
+      ],
+      "vulnerabilityPrioritization": [
+        "Azure Security Center: Secure Score and prioritization recommendations",
+        "CVSS Calculator: Vulnerability severity scoring and environmental factors",
+        "EPSS Score: Exploit prediction scoring for prioritization enhancement",
+        "Business impact assessment: Asset criticality and business context integration",
+        "Threat intelligence platforms: Threat context and active exploit monitoring"
+      ],
+      "vulnerabilityRemediation": [
+        "Azure Automation: Runbook execution for automated remediation workflows",
+        "ServiceNow: Change management integration and approval workflows",
+        "Ansible: Playbook execution for configuration and patch management",
+        "CI/CD pipelines: Infrastructure as code remediation and testing",
+        "Change management tools: Remediation workflow tracking and validation"
+      ],
+      "vulnerabilityTracking": [
+        "Vulnerability management dashboards: Tracking metrics and SLA compliance",
+        "ServiceNow: Vulnerability lifecycle management and escalation workflows",
+        "Azure DevOps: Work item tracking for vulnerability remediation",
+        "ITSM tools: Service desk integration for vulnerability management",
+        "Reporting platforms: Vulnerability metrics and stakeholder reporting"
+      ],
+      "threatIntelligence": [
+        "Threat intelligence platforms: Threat context and vulnerability correlation",
+        "MITRE ATT&CK Navigator: Tactics and techniques mapping",
+        "Commercial threat feeds: Threat actor and campaign intelligence",
+        "Open source intelligence: CVE databases and exploit monitoring",
+        "SIEM correlation: Threat event and vulnerability correlation analysis"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "RA-5": "Vulnerability Scanning",
+        "SI-2": "Flaw Remediation",
+        "CM-4": "Security Impact Analysis",
+        "PM-15": "Contacts with Security Groups and Associations"
+      },
+      "nist80053": {
+        "RA-5": "Vulnerability Scanning",
+        "SI-2": "Flaw Remediation",
+        "PM-15": "Contacts with Security Groups and Associations",
+        "PM-16": "Threat Awareness Program"
+      },
+      "iso27001": {
+        "A.12.6.1": "Management of technical vulnerabilities",
+        "A.16.1.3": "Reporting information security weaknesses",
+        "A.14.2.1": "Secure development policy",
+        "A.16.1.5": "Response to information security incidents"
+      }
+    },
+    "checks": [
       {
         "checkId": "MLA-06-001",
         "name": "Comprehensive Vulnerability Management Platform",
@@ -49,21 +106,33 @@
               "qualysVMDR": {
                 "integrated": true,
                 "dataFreshness": "Real-time",
-                "vulnerabilityTypes": ["OS", "Application", "Network"],
+                "vulnerabilityTypes": [
+                  "OS",
+                  "Application",
+                  "Network"
+                ],
                 "lastSync": "2025-08-16T23:45:00.000Z",
                 "dataAccuracy": "98.7%"
               },
               "azureSecurityCenter": {
                 "integrated": true,
                 "dataFreshness": "Near real-time",
-                "vulnerabilityTypes": ["Cloud configuration", "Container", "Database"],
+                "vulnerabilityTypes": [
+                  "Cloud configuration",
+                  "Container",
+                  "Database"
+                ],
                 "lastSync": "2025-08-16T23:50:00.000Z",
                 "nativeIntegration": true
               },
               "microsoftDefender": {
                 "integrated": true,
                 "dataFreshness": "Real-time",
-                "vulnerabilityTypes": ["Endpoint", "Email", "Identity"],
+                "vulnerabilityTypes": [
+                  "Endpoint",
+                  "Email",
+                  "Identity"
+                ],
                 "lastSync": "2025-08-16T23:55:00.000Z",
                 "threatIntelligence": "Enabled"
               },
@@ -155,7 +224,12 @@
               "escalationWorkflows": "SLA-driven",
               "notificationAutomation": "Multi-channel",
               "reportingAutomation": "Scheduled and ad-hoc",
-              "integrationPoints": ["ServiceNow", "Azure DevOps", "Slack", "Email"]
+              "integrationPoints": [
+                "ServiceNow",
+                "Azure DevOps",
+                "Slack",
+                "Email"
+              ]
             }
           }
         },
@@ -176,7 +250,8 @@
             "details": "96.2% SLA compliance with automated workflows and 96-hour average resolution time"
           }
         ],
-        "remediation": "Comprehensive vulnerability management platform properly implemented with advanced prioritization"
+        "remediation": "Comprehensive vulnerability management platform properly implemented with advanced prioritization",
+        "checkType": "centralizedVulnerabilityTrackin"
       },
       {
         "checkId": "MLA-06-002",
@@ -297,7 +372,8 @@
             "details": "Stakeholder-appropriate reporting with executive dashboards and trend analysis"
           }
         ],
-        "remediation": "Vulnerability risk assessment with business context properly implemented and mature"
+        "remediation": "Vulnerability risk assessment with business context properly implemented and mature",
+        "checkType": "centralizedVulnerabilityTrackin"
       },
       {
         "checkId": "MLA-06-003",
@@ -419,7 +495,8 @@
             "details": "Real-time threat intelligence with automated emergency workflows and incident integration"
           }
         ],
-        "remediation": "Automated vulnerability remediation workflows properly implemented with comprehensive integration"
+        "remediation": "Automated vulnerability remediation workflows properly implemented with comprehensive integration",
+        "checkType": "centralizedVulnerabilityTrackin"
       },
       {
         "checkId": "MLA-06-004",
@@ -434,28 +511,44 @@
                 "toolsIntegrated": 2,
                 "totalTools": 5,
                 "integrationPercentage": "40%",
-                "missingIntegrations": ["SonarQube", "Veracode", "Checkmarx"],
+                "missingIntegrations": [
+                  "SonarQube",
+                  "Veracode",
+                  "Checkmarx"
+                ],
                 "dataQuality": "Inconsistent vulnerability mapping"
               },
               "dynamicApplicationSecurityTesting": {
                 "toolsIntegrated": 1,
                 "totalTools": 4,
                 "integrationPercentage": "25%",
-                "missingIntegrations": ["OWASP ZAP", "Burp Suite Enterprise", "Rapid7 AppSpider"],
+                "missingIntegrations": [
+                  "OWASP ZAP",
+                  "Burp Suite Enterprise",
+                  "Rapid7 AppSpider"
+                ],
                 "dataCorrelation": "Limited cross-tool correlation"
               },
               "containerSecurityTools": {
                 "toolsIntegrated": 2,
                 "totalTools": 6,
                 "integrationPercentage": "33.3%",
-                "missingIntegrations": ["Twistlock", "Aqua Security", "Sysdig", "Falco"],
+                "missingIntegrations": [
+                  "Twistlock",
+                  "Aqua Security",
+                  "Sysdig",
+                  "Falco"
+                ],
                 "imageVulnerabilityData": "Incomplete container vulnerability tracking"
               },
               "cloudSecurityPostureManagement": {
                 "toolsIntegrated": 1,
                 "totalTools": 3,
                 "integrationPercentage": "33.3%",
-                "missingIntegrations": ["Prisma Cloud", "CloudGuard"],
+                "missingIntegrations": [
+                  "Prisma Cloud",
+                  "CloudGuard"
+                ],
                 "configurationDriftData": "Limited cloud configuration vulnerability data"
               }
             },
@@ -575,7 +668,8 @@
             "details": "No predictive analytics, limited threat intelligence analysis, basic business impact assessment"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement comprehensive security tool integration across SAST, DAST, container security, and CSPM platforms, 2) Deploy advanced threat intelligence integration with commercial and open source feeds, 3) Establish vulnerability data normalization and correlation engines, 4) Implement comprehensive asset inventory with complete metadata, 5) Deploy predictive analytics and machine learning for vulnerability risk assessment, 6) Establish advanced threat intelligence analytics with attribution and campaign tracking, 7) Implement quantitative business impact modeling and risk assessment capabilities"
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive security tool integration across SAST, DAST, container security, and CSPM platforms, 2) Deploy advanced threat intelligence integration with commercial and open source feeds, 3) Establish vulnerability data normalization and correlation engines, 4) Implement comprehensive asset inventory with complete metadata, 5) Deploy predictive analytics and machine learning for vulnerability risk assessment, 6) Establish advanced threat intelligence analytics with attribution and campaign tracking, 7) Implement quantitative business impact modeling and risk assessment capabilities",
+        "checkType": "centralizedVulnerabilityTrackin"
       },
       {
         "checkId": "MLA-06-005",
@@ -703,7 +797,8 @@
             "details": "No industry benchmarking, limited performance comparison, no systematic improvement tracking"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive business-aligned vulnerability metrics including risk reduction, business process availability, and revenue protection measurements, 2) Deploy stakeholder-specific reporting with executive, operational, and audit-focused dashboards, 3) Establish automated report generation with dynamic dashboards and self-service capabilities, 4) Implement industry benchmarking and maturity assessment frameworks, 5) Establish continuous improvement metrics with lessons learned and process effectiveness tracking, 6) Deploy advanced data visualization and user experience optimization for reporting platforms, 7) Implement stakeholder feedback mechanisms and reporting personalization capabilities"
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive business-aligned vulnerability metrics including risk reduction, business process availability, and revenue protection measurements, 2) Deploy stakeholder-specific reporting with executive, operational, and audit-focused dashboards, 3) Establish automated report generation with dynamic dashboards and self-service capabilities, 4) Implement industry benchmarking and maturity assessment frameworks, 5) Establish continuous improvement metrics with lessons learned and process effectiveness tracking, 6) Deploy advanced data visualization and user experience optimization for reporting platforms, 7) Implement stakeholder feedback mechanisms and reporting personalization capabilities",
+        "checkType": "centralizedVulnerabilityTrackin"
       },
       {
         "checkId": "MLA-06-006",
@@ -822,7 +917,8 @@
             "details": "No centralized TIP, limited automation, minimal predictive and machine learning capabilities"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive threat intelligence platform with centralized data correlation and enrichment, 2) Deploy advanced threat actor profiling and campaign tracking with MITRE ATT&CK integration, 3) Establish industry-specific and geopolitical threat intelligence capabilities, 4) Implement predictive threat forecasting and risk modeling with machine learning, 5) Deploy automated threat analysis and scoring with SIEM and security orchestration integration, 6) Establish organizational threat profiling with attack surface and supply chain intelligence, 7) Implement advanced threat data visualization and stakeholder-specific threat reporting capabilities"
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive threat intelligence platform with centralized data correlation and enrichment, 2) Deploy advanced threat actor profiling and campaign tracking with MITRE ATT&CK integration, 3) Establish industry-specific and geopolitical threat intelligence capabilities, 4) Implement predictive threat forecasting and risk modeling with machine learning, 5) Deploy automated threat analysis and scoring with SIEM and security orchestration integration, 6) Establish organizational threat profiling with attack surface and supply chain intelligence, 7) Implement advanced threat data visualization and stakeholder-specific threat reporting capabilities",
+        "checkType": "centralizedVulnerabilityTrackin"
       },
       {
         "checkId": "MLA-06-007",
@@ -941,65 +1037,9 @@
             "details": "Informal performance measures, no systematic benchmarking, limited audit and assurance"
           }
         ],
-        "remediation": "LOW PRIORITY: 1) Establish comprehensive vulnerability management governance framework with executive sponsorship and committee structure, 2) Develop formal policies, procedures, and accountability frameworks with clear roles and responsibilities, 3) Implement systematic stakeholder engagement with business leaders, technical teams, and external partners, 4) Establish performance measurement framework with KPIs, benchmarking, and target setting, 5) Implement organizational capability management with skill development and knowledge retention, 6) Deploy systematic audit and assurance programs with internal, external, and third-party assessments, 7) Establish strategic planning and investment prioritization processes with business alignment"
+        "remediation": "LOW PRIORITY: 1) Establish comprehensive vulnerability management governance framework with executive sponsorship and committee structure, 2) Develop formal policies, procedures, and accountability frameworks with clear roles and responsibilities, 3) Implement systematic stakeholder engagement with business leaders, technical teams, and external partners, 4) Establish performance measurement framework with KPIs, benchmarking, and target setting, 5) Implement organizational capability management with skill development and knowledge retention, 6) Deploy systematic audit and assurance programs with internal, external, and third-party assessments, 7) Establish strategic planning and investment prioritization processes with business alignment",
+        "checkType": "centralizedVulnerabilityTrackin"
       }
-    ],
-    "centralizedVulnerabilityTrackingVerificationMethods": {
-      "vulnerabilityManagementPlatform": [
-        "Azure Portal: Security Center > Vulnerability Assessment for centralized tracking",
-        "Qualys VMDR: Dashboard for comprehensive vulnerability management platform",
-        "ServiceNow: Vulnerability Response for workflow automation and tracking",
-        "Vulnerability scanners: Consolidated vulnerability data and prioritization",
-        "SIEM systems: Vulnerability event correlation and threat intelligence integration"
-      ],
-      "vulnerabilityPrioritization": [
-        "Azure Security Center: Secure Score and prioritization recommendations",
-        "CVSS Calculator: Vulnerability severity scoring and environmental factors",
-        "EPSS Score: Exploit prediction scoring for prioritization enhancement",
-        "Business impact assessment: Asset criticality and business context integration",
-        "Threat intelligence platforms: Threat context and active exploit monitoring"
-      ],
-      "vulnerabilityRemediation": [
-        "Azure Automation: Runbook execution for automated remediation workflows",
-        "ServiceNow: Change management integration and approval workflows",
-        "Ansible: Playbook execution for configuration and patch management",
-        "CI/CD pipelines: Infrastructure as code remediation and testing",
-        "Change management tools: Remediation workflow tracking and validation"
-      ],
-      "vulnerabilityTracking": [
-        "Vulnerability management dashboards: Tracking metrics and SLA compliance",
-        "ServiceNow: Vulnerability lifecycle management and escalation workflows",
-        "Azure DevOps: Work item tracking for vulnerability remediation",
-        "ITSM tools: Service desk integration for vulnerability management",
-        "Reporting platforms: Vulnerability metrics and stakeholder reporting"
-      ],
-      "threatIntelligence": [
-        "Threat intelligence platforms: Threat context and vulnerability correlation",
-        "MITRE ATT&CK Navigator: Tactics and techniques mapping",
-        "Commercial threat feeds: Threat actor and campaign intelligence",
-        "Open source intelligence: CVE databases and exploit monitoring",
-        "SIEM correlation: Threat event and vulnerability correlation analysis"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "RA-5": "Vulnerability Scanning",
-        "SI-2": "Flaw Remediation",
-        "CM-4": "Security Impact Analysis",
-        "PM-15": "Contacts with Security Groups and Associations"
-      },
-      "nist80053": {
-        "RA-5": "Vulnerability Scanning",
-        "SI-2": "Flaw Remediation",
-        "PM-15": "Contacts with Security Groups and Associations",
-        "PM-16": "Threat Awareness Program"
-      },
-      "iso27001": {
-        "A.12.6.1": "Management of technical vulnerabilities",
-        "A.16.1.3": "Reporting information security weaknesses",
-        "A.14.2.1": "Secure development policy",
-        "A.16.1.5": "Response to information security incidents"
-      }
-    }
+    ]
   }
 }

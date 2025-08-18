@@ -11,7 +11,76 @@
       "failed": 4,
       "warnings": 0
     },
-    "cryptographicIntegrityChecks": [
+    "cryptographicIntegrityBestPractices": {
+      "containerSecurity": [
+        "Implement Docker Content Trust with Notary",
+        "Use signed container images from trusted registries",
+        "Enable admission controllers for signature verification",
+        "Monitor image integrity throughout lifecycle"
+      ],
+      "infrastructureIntegrity": [
+        "Sign Infrastructure as Code templates",
+        "Validate template integrity before deployment",
+        "Use Template Specs for version control",
+        "Implement deployment pipeline integrity checks"
+      ],
+      "systemIntegrity": [
+        "Enable Secure Boot on all virtual machines",
+        "Configure TPM-based attestation",
+        "Implement file integrity monitoring",
+        "Use code signing for applications"
+      ],
+      "dataIntegrity": [
+        "Enable database page verification",
+        "Use backup checksums for integrity",
+        "Implement audit log integrity protection",
+        "Configure data modification tracking"
+      ]
+    },
+    "integrityVerificationMethods": {
+      "containerImages": [
+        "docker trust inspect <image>",
+        "notary list <registry>/<repository>",
+        "az acr repository show-manifests --name <registry> --repository <repo>",
+        "kubectl get admissionregistration.k8s.io/v1/validatingadmissionwebhooks"
+      ],
+      "virtualMachines": [
+        "Get-SecureBootUEFI (PowerShell on Windows)",
+        "dmesg | grep -i secure (Linux)",
+        "tpm2_pcrread (TPM verification)",
+        "az vm show --resource-group <rg> --name <vm> --query 'securityProfile'"
+      ],
+      "applications": [
+        "signtool verify /pa <file> (Windows)",
+        "codesign -dv <file> (macOS)",
+        "gpg --verify <signature> <file> (Linux)",
+        "Get-AuthenticodeSignature <file> (PowerShell)"
+      ],
+      "databases": [
+        "DBCC CHECKDB WITH CHECKSUM",
+        "SELECT page_verify_option_desc FROM sys.databases",
+        "RESTORE VERIFYONLY FROM DISK",
+        "SELECT is_encrypted FROM sys.dm_database_encryption_keys"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "SI-7": "Software, Firmware, and Information Integrity",
+        "SC-8": "Transmission Integrity",
+        "AU-9": "Protection of Audit Information"
+      },
+      "nist80053": {
+        "SI-7": "Software, Firmware, and Information Integrity",
+        "SC-8": "Transmission Integrity",
+        "CM-5": "Access Restrictions for Change"
+      },
+      "iso27001": {
+        "A.12.2.1": "Controls against malware",
+        "A.12.6.1": "Management of technical vulnerabilities",
+        "A.14.1.3": "Protection of application services transactions"
+      }
+    },
+    "checks": [
       {
         "checkId": "SVC-05-001",
         "name": "Container Image Signing and Verification",
@@ -103,7 +172,8 @@
             "details": "Real-time monitoring of image integrity violations"
           }
         ],
-        "remediation": "Container image signing properly implemented with cryptographic verification"
+        "remediation": "Container image signing properly implemented with cryptographic verification",
+        "checkType": "cryptographicIntegrit"
       },
       {
         "checkId": "SVC-05-002",
@@ -178,7 +248,8 @@
             "details": "Real-time detection of template tampering"
           }
         ],
-        "remediation": "Infrastructure templates properly signed and validated"
+        "remediation": "Infrastructure templates properly signed and validated",
+        "checkType": "cryptographicIntegrit"
       },
       {
         "checkId": "SVC-05-003",
@@ -263,7 +334,8 @@
             "issue": "Boot process integrity not cryptographically verified"
           }
         ],
-        "remediation": "CRITICAL: 1) Enable Secure Boot on all Generation 2 VMs, 2) Configure TPM 2.0 for boot measurement, 3) Implement Azure Attestation service, 4) Enable kernel and driver signature verification, 5) Deploy boot integrity monitoring solutions, 6) Configure UEFI firmware protection"
+        "remediation": "CRITICAL: 1) Enable Secure Boot on all Generation 2 VMs, 2) Configure TPM 2.0 for boot measurement, 3) Implement Azure Attestation service, 4) Enable kernel and driver signature verification, 5) Deploy boot integrity monitoring solutions, 6) Configure UEFI firmware protection",
+        "checkType": "cryptographicIntegrit"
       },
       {
         "checkId": "SVC-05-004",
@@ -335,7 +407,8 @@
             "details": "Deployment integrity not cryptographically validated"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement code signing for all application binaries, 2) Enable assembly verification in runtime, 3) Add package integrity verification to build process, 4) Configure deployment artifact signing, 5) Implement post-deployment integrity checks, 6) Enable advanced memory protection features"
+        "remediation": "HIGH PRIORITY: 1) Implement code signing for all application binaries, 2) Enable assembly verification in runtime, 3) Add package integrity verification to build process, 4) Configure deployment artifact signing, 5) Implement post-deployment integrity checks, 6) Enable advanced memory protection features",
+        "checkType": "cryptographicIntegrit"
       },
       {
         "checkId": "SVC-05-005",
@@ -400,7 +473,8 @@
             "details": "Audit logs not cryptographically protected"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Enable page verification and checksums, 2) Configure backup compression with checksums, 3) Implement audit log integrity protection, 4) Enable change data capture with integrity tracking, 5) Configure Always On with integrity verification, 6) Implement database schema change auditing"
+        "remediation": "HIGH PRIORITY: 1) Enable page verification and checksums, 2) Configure backup compression with checksums, 3) Implement audit log integrity protection, 4) Enable change data capture with integrity tracking, 5) Configure Always On with integrity verification, 6) Implement database schema change auditing",
+        "checkType": "cryptographicIntegrit"
       },
       {
         "checkId": "SVC-05-006",
@@ -455,77 +529,9 @@
             "details": "No real-time tamper detection"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Deploy file integrity monitoring solution (e.g., AIDE, Tripwire), 2) Establish cryptographic baselines for critical files, 3) Configure real-time monitoring for system files, 4) Implement automatic integrity verification, 5) Set up alerting for integrity violations, 6) Create automated remediation procedures"
+        "remediation": "MEDIUM PRIORITY: 1) Deploy file integrity monitoring solution (e.g., AIDE, Tripwire), 2) Establish cryptographic baselines for critical files, 3) Configure real-time monitoring for system files, 4) Implement automatic integrity verification, 5) Set up alerting for integrity violations, 6) Create automated remediation procedures",
+        "checkType": "cryptographicIntegrit"
       }
-    ],
-    "cryptographicIntegrityBestPractices": {
-      "containerSecurity": [
-        "Implement Docker Content Trust with Notary",
-        "Use signed container images from trusted registries",
-        "Enable admission controllers for signature verification",
-        "Monitor image integrity throughout lifecycle"
-      ],
-      "infrastructureIntegrity": [
-        "Sign Infrastructure as Code templates",
-        "Validate template integrity before deployment",
-        "Use Template Specs for version control",
-        "Implement deployment pipeline integrity checks"
-      ],
-      "systemIntegrity": [
-        "Enable Secure Boot on all virtual machines",
-        "Configure TPM-based attestation",
-        "Implement file integrity monitoring",
-        "Use code signing for applications"
-      ],
-      "dataIntegrity": [
-        "Enable database page verification",
-        "Use backup checksums for integrity",
-        "Implement audit log integrity protection",
-        "Configure data modification tracking"
-      ]
-    },
-    "integrityVerificationMethods": {
-      "containerImages": [
-        "docker trust inspect <image>",
-        "notary list <registry>/<repository>",
-        "az acr repository show-manifests --name <registry> --repository <repo>",
-        "kubectl get admissionregistration.k8s.io/v1/validatingadmissionwebhooks"
-      ],
-      "virtualMachines": [
-        "Get-SecureBootUEFI (PowerShell on Windows)",
-        "dmesg | grep -i secure (Linux)",
-        "tpm2_pcrread (TPM verification)",
-        "az vm show --resource-group <rg> --name <vm> --query 'securityProfile'"
-      ],
-      "applications": [
-        "signtool verify /pa <file> (Windows)",
-        "codesign -dv <file> (macOS)",
-        "gpg --verify <signature> <file> (Linux)",
-        "Get-AuthenticodeSignature <file> (PowerShell)"
-      ],
-      "databases": [
-        "DBCC CHECKDB WITH CHECKSUM",
-        "SELECT page_verify_option_desc FROM sys.databases",
-        "RESTORE VERIFYONLY FROM DISK",
-        "SELECT is_encrypted FROM sys.dm_database_encryption_keys"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "SI-7": "Software, Firmware, and Information Integrity",
-        "SC-8": "Transmission Integrity",
-        "AU-9": "Protection of Audit Information"
-      },
-      "nist80053": {
-        "SI-7": "Software, Firmware, and Information Integrity",
-        "SC-8": "Transmission Integrity",
-        "CM-5": "Access Restrictions for Change"
-      },
-      "iso27001": {
-        "A.12.2.1": "Controls against malware",
-        "A.12.6.1": "Management of technical vulnerabilities",
-        "A.14.1.3": "Protection of application services transactions"
-      }
-    }
+    ]
   }
 }

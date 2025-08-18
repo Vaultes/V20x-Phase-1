@@ -11,7 +11,95 @@
       "failed": 5,
       "warnings": 0
     },
-    "zeroTrustDesignPrinciplesChecks": [
+    "zeroTrustDesignBestPractices": {
+      "identityAsPerimeter": [
+        "Implement strong identity verification for all users and devices",
+        "Use multi-factor authentication for all access attempts",
+        "Deploy conditional access policies based on risk assessment",
+        "Establish comprehensive identity governance and lifecycle management"
+      ],
+      "neverTrustAlwaysVerify": [
+        "Verify every access request regardless of source location",
+        "Implement continuous authentication and session monitoring",
+        "Use risk-based access decisions with real-time assessment",
+        "Deploy behavioral analytics for anomaly detection"
+      ],
+      "leastPrivilegeAccess": [
+        "Apply micro-segmentation for network access",
+        "Implement just-in-time and just-enough access principles",
+        "Use attribute-based access control for fine-grained permissions",
+        "Regularly review and recertify access rights"
+      ],
+      "dataCentricSecurity": [
+        "Classify and label all data assets",
+        "Implement data-aware access controls",
+        "Use encryption for data at rest, in transit, and in use",
+        "Deploy data loss prevention and monitoring"
+      ],
+      "continuousMonitoring": [
+        "Implement comprehensive logging and monitoring",
+        "Use machine learning for threat detection",
+        "Deploy automated incident response capabilities",
+        "Establish continuous compliance monitoring"
+      ]
+    },
+    "zeroTrustVerificationMethods": {
+      "identityVerification": [
+        "Azure Portal: Azure AD > Conditional Access",
+        "Get-AzureADMSConditionalAccessPolicy",
+        "Microsoft Graph API: /identity/conditionalAccess/policies",
+        "Azure AD Connect Health monitoring"
+      ],
+      "deviceVerification": [
+        "Azure Portal: Azure AD > Devices",
+        "Get-AzureADDevice",
+        "Microsoft Intune admin center",
+        "Microsoft Graph API: /devices"
+      ],
+      "networkVerification": [
+        "Azure Portal: Virtual Networks > Network Security Groups",
+        "az network nsg list",
+        "Azure Firewall Manager",
+        "Azure Network Watcher"
+      ],
+      "applicationVerification": [
+        "Azure Portal: App registrations",
+        "Get-AzureADApplication",
+        "Azure Application Gateway logs",
+        "Azure API Management analytics"
+      ],
+      "dataVerification": [
+        "Azure Portal: Purview Data Catalog",
+        "Microsoft 365 Compliance Center",
+        "Azure Information Protection analytics",
+        "Cloud App Security data classification"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "AC-3": "Access Enforcement",
+        "AC-4": "Information Flow Enforcement",
+        "AC-6": "Least Privilege",
+        "IA-2": "Identification and Authentication (Organizational Users)",
+        "SC-7": "Boundary Protection"
+      },
+      "nist80053": {
+        "AC-3": "Access Enforcement",
+        "AC-4": "Information Flow Enforcement",
+        "AC-6": "Least Privilege",
+        "IA-2": "Identification and Authentication (Organizational Users)",
+        "SC-7": "Boundary Protection",
+        "SI-4": "Information System Monitoring"
+      },
+      "nistCyberSecurityFramework": {
+        "PR.AC": "Access Control",
+        "PR.AT": "Awareness and Training",
+        "PR.DS": "Data Security",
+        "DE.AE": "Anomalies and Events",
+        "DE.CM": "Continuous Monitoring"
+      }
+    },
+    "checks": [
       {
         "checkId": "IAM-05-001",
         "name": "Identity as Security Perimeter Implementation",
@@ -23,7 +111,11 @@
             "azureAdIntegration": {
               "singleSignOn": true,
               "federatedIdentity": true,
-              "identityProviders": ["Azure AD", "ADFS", "External SAML"],
+              "identityProviders": [
+                "Azure AD",
+                "ADFS",
+                "External SAML"
+              ],
               "userAccounts": 1247,
               "serviceAccounts": 89,
               "deviceIdentities": 567
@@ -40,7 +132,13 @@
             },
             "multiFactorAuthentication": {
               "coverage": "98.7%",
-              "methods": ["SMS", "Voice", "Microsoft Authenticator", "FIDO2", "Certificate"],
+              "methods": [
+                "SMS",
+                "Voice",
+                "Microsoft Authenticator",
+                "FIDO2",
+                "Certificate"
+              ],
               "riskBasedMfa": true,
               "adaptiveMfa": true,
               "strongAuthentication": "Enforced"
@@ -125,7 +223,8 @@
             "details": "Automated lifecycle management with quarterly recertification"
           }
         ],
-        "remediation": "Identity perimeter properly implemented with comprehensive controls"
+        "remediation": "Identity perimeter properly implemented with comprehensive controls",
+        "checkType": "zeroTrustDesignPrinciple"
       },
       {
         "checkId": "IAM-05-002",
@@ -161,14 +260,22 @@
             "internalNetworkAccess": {
               "trustButVerify": false,
               "alwaysVerify": true,
-              "verificationMethods": ["MFA", "Device compliance", "Identity risk"],
+              "verificationMethods": [
+                "MFA",
+                "Device compliance",
+                "Identity risk"
+              ],
               "networkSegmentation": "Applied",
               "zeroNetworkTrust": true
             },
             "externalAccess": {
               "vpnRequirement": false,
               "directInternetAccess": true,
-              "verificationMethods": ["Strong MFA", "Device compliance", "Conditional access"],
+              "verificationMethods": [
+                "Strong MFA",
+                "Device compliance",
+                "Conditional access"
+              ],
               "riskAssessment": "Enhanced",
               "sessionMonitoring": "Active"
             },
@@ -236,7 +343,8 @@
             "details": "Machine learning-based risk calculation with automated remediation"
           }
         ],
-        "remediation": "Never trust, always verify principles properly implemented"
+        "remediation": "Never trust, always verify principles properly implemented",
+        "checkType": "zeroTrustDesignPrinciple"
       },
       {
         "checkId": "IAM-05-003",
@@ -354,7 +462,8 @@
             "details": "Software-defined perimeter with CASB integration"
           }
         ],
-        "remediation": "Network micro-segmentation and least privilege access properly implemented"
+        "remediation": "Network micro-segmentation and least privilege access properly implemented",
+        "checkType": "zeroTrustDesignPrinciple"
       },
       {
         "checkId": "IAM-05-004",
@@ -474,7 +583,8 @@
             "details": "45 systems with legacy code dependencies requiring redesign"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Develop comprehensive zero trust migration roadmap, 2) Implement micro-segmentation to limit lateral movement, 3) Deploy modern authentication mechanisms, 4) Replace implicit trust with explicit verification, 5) Modernize application authentication and authorization, 6) Implement risk-based access controls, 7) Establish phased migration approach with pilot programs"
+        "remediation": "HIGH PRIORITY: 1) Develop comprehensive zero trust migration roadmap, 2) Implement micro-segmentation to limit lateral movement, 3) Deploy modern authentication mechanisms, 4) Replace implicit trust with explicit verification, 5) Modernize application authentication and authorization, 6) Implement risk-based access controls, 7) Establish phased migration approach with pilot programs",
+        "checkType": "zeroTrustDesignPrinciple"
       },
       {
         "checkId": "IAM-05-005",
@@ -611,7 +721,8 @@
             "details": "23 application-specific policies but lacking data classification awareness"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement comprehensive user behavior analytics, 2) Deploy machine learning-based risk assessment models, 3) Integrate threat intelligence into access decisions, 4) Develop data classification-aware access policies, 5) Implement real-time risk calculation and adaptive controls, 6) Establish business context integration, 7) Deploy automated risk response and orchestration capabilities"
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive user behavior analytics, 2) Deploy machine learning-based risk assessment models, 3) Integrate threat intelligence into access decisions, 4) Develop data classification-aware access policies, 5) Implement real-time risk calculation and adaptive controls, 6) Establish business context integration, 7) Deploy automated risk response and orchestration capabilities",
+        "checkType": "zeroTrustDesignPrinciple"
       },
       {
         "checkId": "IAM-05-006",
@@ -749,7 +860,8 @@
             "details": "Missing data visibility, protection by design, and contextual controls"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement comprehensive data discovery and classification, 2) Deploy automated data labeling and governance, 3) Establish data-centric access controls with attribute-based permissions, 4) Implement field-level security and encryption, 5) Deploy advanced data loss prevention with behavior analysis, 6) Establish data lineage tracking and usage monitoring, 7) Implement privacy by design principles"
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive data discovery and classification, 2) Deploy automated data labeling and governance, 3) Establish data-centric access controls with attribute-based permissions, 4) Implement field-level security and encryption, 5) Deploy advanced data loss prevention with behavior analysis, 6) Establish data lineage tracking and usage monitoring, 7) Implement privacy by design principles",
+        "checkType": "zeroTrustDesignPrinciple"
       },
       {
         "checkId": "IAM-05-007",
@@ -898,7 +1010,8 @@
             "details": "Minimal automated response with manual incident workflows"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement continuous authentication and session monitoring, 2) Deploy comprehensive user and entity behavior analytics, 3) Establish real-time threat detection and response capabilities, 4) Implement automated incident response and orchestration, 5) Deploy comprehensive logging and telemetry collection, 6) Establish predictive and prescriptive analytics capabilities, 7) Implement continuous compliance monitoring and reporting"
+        "remediation": "MEDIUM PRIORITY: 1) Implement continuous authentication and session monitoring, 2) Deploy comprehensive user and entity behavior analytics, 3) Establish real-time threat detection and response capabilities, 4) Implement automated incident response and orchestration, 5) Deploy comprehensive logging and telemetry collection, 6) Establish predictive and prescriptive analytics capabilities, 7) Implement continuous compliance monitoring and reporting",
+        "checkType": "zeroTrustDesignPrinciple"
       },
       {
         "checkId": "IAM-05-008",
@@ -1063,96 +1176,9 @@
             "details": "No service mesh, inconsistent mTLS, basic container security"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Migrate from legacy to modern authentication protocols, 2) Implement comprehensive RBAC and ABAC systems, 3) Deploy API gateway with proper security controls, 4) Implement service mesh for microservices communication security, 5) Integrate applications with Azure AD and Key Vault, 6) Establish comprehensive application security monitoring, 7) Implement container security scanning and runtime protection"
+        "remediation": "MEDIUM PRIORITY: 1) Migrate from legacy to modern authentication protocols, 2) Implement comprehensive RBAC and ABAC systems, 3) Deploy API gateway with proper security controls, 4) Implement service mesh for microservices communication security, 5) Integrate applications with Azure AD and Key Vault, 6) Establish comprehensive application security monitoring, 7) Implement container security scanning and runtime protection",
+        "checkType": "zeroTrustDesignPrinciple"
       }
-    ],
-    "zeroTrustDesignBestPractices": {
-      "identityAsPerimeter": [
-        "Implement strong identity verification for all users and devices",
-        "Use multi-factor authentication for all access attempts",
-        "Deploy conditional access policies based on risk assessment",
-        "Establish comprehensive identity governance and lifecycle management"
-      ],
-      "neverTrustAlwaysVerify": [
-        "Verify every access request regardless of source location",
-        "Implement continuous authentication and session monitoring",
-        "Use risk-based access decisions with real-time assessment",
-        "Deploy behavioral analytics for anomaly detection"
-      ],
-      "leastPrivilegeAccess": [
-        "Apply micro-segmentation for network access",
-        "Implement just-in-time and just-enough access principles",
-        "Use attribute-based access control for fine-grained permissions",
-        "Regularly review and recertify access rights"
-      ],
-      "dataCentricSecurity": [
-        "Classify and label all data assets",
-        "Implement data-aware access controls",
-        "Use encryption for data at rest, in transit, and in use",
-        "Deploy data loss prevention and monitoring"
-      ],
-      "continuousMonitoring": [
-        "Implement comprehensive logging and monitoring",
-        "Use machine learning for threat detection",
-        "Deploy automated incident response capabilities",
-        "Establish continuous compliance monitoring"
-      ]
-    },
-    "zeroTrustVerificationMethods": {
-      "identityVerification": [
-        "Azure Portal: Azure AD > Conditional Access",
-        "Get-AzureADMSConditionalAccessPolicy",
-        "Microsoft Graph API: /identity/conditionalAccess/policies",
-        "Azure AD Connect Health monitoring"
-      ],
-      "deviceVerification": [
-        "Azure Portal: Azure AD > Devices",
-        "Get-AzureADDevice",
-        "Microsoft Intune admin center",
-        "Microsoft Graph API: /devices"
-      ],
-      "networkVerification": [
-        "Azure Portal: Virtual Networks > Network Security Groups",
-        "az network nsg list",
-        "Azure Firewall Manager",
-        "Azure Network Watcher"
-      ],
-      "applicationVerification": [
-        "Azure Portal: App registrations",
-        "Get-AzureADApplication",
-        "Azure Application Gateway logs",
-        "Azure API Management analytics"
-      ],
-      "dataVerification": [
-        "Azure Portal: Purview Data Catalog",
-        "Microsoft 365 Compliance Center",
-        "Azure Information Protection analytics",
-        "Cloud App Security data classification"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "AC-3": "Access Enforcement",
-        "AC-4": "Information Flow Enforcement",
-        "AC-6": "Least Privilege",
-        "IA-2": "Identification and Authentication (Organizational Users)",
-        "SC-7": "Boundary Protection"
-      },
-      "nist80053": {
-        "AC-3": "Access Enforcement",
-        "AC-4": "Information Flow Enforcement",
-        "AC-6": "Least Privilege",
-        "IA-2": "Identification and Authentication (Organizational Users)",
-        "SC-7": "Boundary Protection",
-        "SI-4": "Information System Monitoring"
-      },
-      "nistCyberSecurityFramework": {
-        "PR.AC": "Access Control",
-        "PR.AT": "Awareness and Training",
-        "PR.DS": "Data Security",
-        "DE.AE": "Anomalies and Events",
-        "DE.CM": "Continuous Monitoring"
-      }
-    }
+    ]
   }
 }

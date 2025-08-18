@@ -11,7 +11,78 @@
       "failed": 4,
       "warnings": 0
     },
-    "passwordlessAndPasswordPolicyChecks": [
+    "passwordlessVerificationMethods": {
+      "windowsHello": [
+        "Get-WindowsHelloForBusinessPolicy (PowerShell)",
+        "dsregcmd /status (Device registration status)",
+        "Microsoft Intune: Devices > Configuration profiles > Windows Hello",
+        "Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\PassportForWork"
+      ],
+      "fido2SecurityKeys": [
+        "Azure Portal: Azure AD > Authentication methods > FIDO2 security key",
+        "Microsoft Graph API: /authenticationMethodsPolicy/authenticationMethodConfigurations",
+        "PowerShell: Get-AzureADMSAuthenticationMethodPolicy",
+        "Chrome: chrome://settings/securityKeys (for WebAuthn testing)"
+      ],
+      "passwordPolicies": [
+        "Get-AzureADPolicy -Type PasswordPolicyConfiguration",
+        "Azure Portal: Azure AD > Password reset > Authentication methods",
+        "Microsoft Graph API: /policies/passwordPolicyConfiguration",
+        "PowerShell: Get-MsolPasswordPolicy"
+      ],
+      "azureAdPasswordProtection": [
+        "Azure Portal: Azure AD > Authentication methods > Password protection",
+        "Event Logs: Microsoft-AzureADPasswordProtection-DCAgent",
+        "PowerShell: Get-AzureADPasswordProtectionPolicy",
+        "Registry: HKLM\\SOFTWARE\\Microsoft\\AzureADPasswordProtection"
+      ]
+    },
+    "passwordlessAuthenticationBestPractices": {
+      "deploymentStrategy": [
+        "Start with Windows Hello for Business for corporate devices",
+        "Deploy FIDO2 security keys for privileged users",
+        "Implement Microsoft Authenticator passwordless phone sign-in",
+        "Use certificate-based authentication for non-interactive accounts"
+      ],
+      "passwordPolicyModernization": [
+        "Remove forced password expiration policies",
+        "Increase minimum password length to 14+ characters",
+        "Enable Azure AD Password Protection",
+        "Implement smart lockout and risk-based policies"
+      ],
+      "userExperience": [
+        "Provide multiple passwordless options for different scenarios",
+        "Create comprehensive user training and support",
+        "Implement gradual rollout with pilot groups",
+        "Maintain secure fallback methods for edge cases"
+      ],
+      "securityControls": [
+        "Require device compliance for passwordless authentication",
+        "Implement phishing-resistant authentication methods",
+        "Monitor and alert on authentication anomalies",
+        "Regular security assessment of authentication methods"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "IA-5": "Authenticator Management",
+        "IA-5(1)": "Password-Based Authentication",
+        "IA-5(2)": "PKI-Based Authentication",
+        "IA-5(11)": "Hardware Token-Based Authentication"
+      },
+      "nist80053": {
+        "IA-5": "Authenticator Management",
+        "IA-5(1)": "Password-Based Authentication",
+        "IA-5(2)": "Public Key Infrastructure Certificates",
+        "IA-5(11)": "Hardware Token-Based Authentication"
+      },
+      "nist80063b": {
+        "section5": "Authenticator and Verifier Requirements",
+        "section8": "Threats and Security Considerations",
+        "appendixA": "Strength of Memorized Secrets"
+      }
+    },
+    "checks": [
       {
         "checkId": "IAM-02-001",
         "name": "Windows Hello for Business Implementation",
@@ -72,7 +143,8 @@
             "details": "High user adoption with minimal fallback to passwords"
           }
         ],
-        "remediation": "Windows Hello for Business successfully deployed with high adoption"
+        "remediation": "Windows Hello for Business successfully deployed with high adoption",
+        "checkType": "passwordlessAndPasswordPolic"
       },
       {
         "checkId": "IAM-02-002",
@@ -104,13 +176,20 @@
             "attestationRequired": true,
             "residentKeyRequired": true,
             "userVerificationRequired": true,
-            "allowedAAGUIDs": ["YubiKey 5 Series", "Surface Security Key", "Titan Security Key"],
+            "allowedAAGUIDs": [
+              "YubiKey 5 Series",
+              "Surface Security Key",
+              "Titan Security Key"
+            ],
             "blockedAAGUIDs": []
           },
           "conditionalAccessIntegration": {
             "policyName": "FIDO2 for Privileged Users",
             "enforcementMode": "Report-only for non-privileged, Enforce for privileged",
-            "fallbackMethods": ["Windows Hello", "Microsoft Authenticator"],
+            "fallbackMethods": [
+              "Windows Hello",
+              "Microsoft Authenticator"
+            ],
             "sessionControls": "Sign-in frequency: 8 hours"
           },
           "usageStatistics": {
@@ -143,7 +222,8 @@
             "details": "99.2% success rate for FIDO2 authentication"
           }
         ],
-        "remediation": "FIDO2 security keys successfully deployed for privileged users"
+        "remediation": "FIDO2 security keys successfully deployed for privileged users",
+        "checkType": "passwordlessAndPasswordPolic"
       },
       {
         "checkId": "IAM-02-003",
@@ -230,7 +310,8 @@
             "issue": "Forced password changes and weak complexity requirements"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Enable Azure AD Password Protection, 2) Configure custom banned password list, 3) Enable smart lockout, 4) Remove forced password expiration, 5) Implement risk-based password policies, 6) Deploy password breach detection, 7) Increase minimum password length to 14 characters"
+        "remediation": "HIGH PRIORITY: 1) Enable Azure AD Password Protection, 2) Configure custom banned password list, 3) Enable smart lockout, 4) Remove forced password expiration, 5) Implement risk-based password policies, 6) Deploy password breach detection, 7) Increase minimum password length to 14 characters",
+        "checkType": "passwordlessAndPasswordPolic"
       },
       {
         "checkId": "IAM-02-004",
@@ -297,7 +378,11 @@
             "appPasswords": {
               "enabled": true,
               "activeCount": 67,
-              "applicationTypes": ["Legacy email clients", "VPN clients", "ERP systems"],
+              "applicationTypes": [
+                "Legacy email clients",
+                "VPN clients",
+                "ERP systems"
+              ],
               "securityConcerns": "High"
             }
           }
@@ -319,7 +404,8 @@
             "details": "Good adoption for corporate users, challenges with contractors"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Accelerate legacy application modernization, 2) Implement certificate-based authentication where passwordless not possible, 3) Address contractor device management challenges, 4) Reduce app password usage, 5) Establish clear passwordless migration timeline, 6) Create user training and support programs"
+        "remediation": "MEDIUM PRIORITY: 1) Accelerate legacy application modernization, 2) Implement certificate-based authentication where passwordless not possible, 3) Address contractor device management challenges, 4) Reduce app password usage, 5) Establish clear passwordless migration timeline, 6) Create user training and support programs",
+        "checkType": "passwordlessAndPasswordPolic"
       },
       {
         "checkId": "IAM-02-005",
@@ -341,7 +427,11 @@
               {
                 "strength": "Very Weak",
                 "count": 8,
-                "examples": ["service123", "password1", "admin2024"]
+                "examples": [
+                  "service123",
+                  "password1",
+                  "admin2024"
+                ]
               },
               {
                 "strength": "Weak",
@@ -401,7 +491,8 @@
             "details": "48 accounts could migrate to stronger authentication"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Migrate service accounts to managed identities where possible, 2) Implement certificate-based authentication for remaining accounts, 3) Generate strong random passwords for accounts requiring passwords, 4) Establish automated password rotation, 5) Remove default and weak passwords immediately, 6) Document and justify password-based authentication requirements"
+        "remediation": "HIGH PRIORITY: 1) Migrate service accounts to managed identities where possible, 2) Implement certificate-based authentication for remaining accounts, 3) Generate strong random passwords for accounts requiring passwords, 4) Establish automated password rotation, 5) Remove default and weak passwords immediately, 6) Document and justify password-based authentication requirements",
+        "checkType": "passwordlessAndPasswordPolic"
       },
       {
         "checkId": "IAM-02-006",
@@ -419,19 +510,26 @@
                 "method": "Username/Password",
                 "appCount": 15,
                 "securityRating": "Low",
-                "issues": ["No MFA", "Password storage on device"]
+                "issues": [
+                  "No MFA",
+                  "Password storage on device"
+                ]
               },
               {
                 "method": "Biometric + PIN",
                 "appCount": 8,
                 "securityRating": "High",
-                "issues": ["None"]
+                "issues": [
+                  "None"
+                ]
               },
               {
                 "method": "Certificate-based",
                 "appCount": 3,
                 "securityRating": "Medium",
-                "issues": ["Certificate management complexity"]
+                "issues": [
+                  "Certificate management complexity"
+                ]
               }
             ]
           },
@@ -452,7 +550,10 @@
             },
             "appSpecificPasswords": {
               "count": 23,
-              "applications": ["Email clients", "Legacy mobile apps"],
+              "applications": [
+                "Email clients",
+                "Legacy mobile apps"
+              ],
               "securityRisk": "High - long-lived credentials"
             }
           },
@@ -462,7 +563,11 @@
             "compliancePolicies": {
               "enforced": true,
               "compliance": "63%",
-              "commonViolations": ["Outdated OS", "Missing encryption", "Weak passcode"]
+              "commonViolations": [
+                "Outdated OS",
+                "Missing encryption",
+                "Weak passcode"
+              ]
             },
             "applicationManagement": {
               "managedApps": 12,
@@ -488,79 +593,9 @@
             "details": "Only 35% of apps support passwordless authentication"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Migrate mobile apps to modern authentication (OAuth/SAML), 2) Implement mobile application management (MAM), 3) Enforce device compliance policies, 4) Deploy biometric authentication where possible, 5) Eliminate app-specific passwords, 6) Implement mobile device encryption requirements, 7) Regular mobile security assessments"
+        "remediation": "MEDIUM PRIORITY: 1) Migrate mobile apps to modern authentication (OAuth/SAML), 2) Implement mobile application management (MAM), 3) Enforce device compliance policies, 4) Deploy biometric authentication where possible, 5) Eliminate app-specific passwords, 6) Implement mobile device encryption requirements, 7) Regular mobile security assessments",
+        "checkType": "passwordlessAndPasswordPolic"
       }
-    ],
-    "passwordlessVerificationMethods": {
-      "windowsHello": [
-        "Get-WindowsHelloForBusinessPolicy (PowerShell)",
-        "dsregcmd /status (Device registration status)",
-        "Microsoft Intune: Devices > Configuration profiles > Windows Hello",
-        "Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\PassportForWork"
-      ],
-      "fido2SecurityKeys": [
-        "Azure Portal: Azure AD > Authentication methods > FIDO2 security key",
-        "Microsoft Graph API: /authenticationMethodsPolicy/authenticationMethodConfigurations",
-        "PowerShell: Get-AzureADMSAuthenticationMethodPolicy",
-        "Chrome: chrome://settings/securityKeys (for WebAuthn testing)"
-      ],
-      "passwordPolicies": [
-        "Get-AzureADPolicy -Type PasswordPolicyConfiguration",
-        "Azure Portal: Azure AD > Password reset > Authentication methods",
-        "Microsoft Graph API: /policies/passwordPolicyConfiguration",
-        "PowerShell: Get-MsolPasswordPolicy"
-      ],
-      "azureAdPasswordProtection": [
-        "Azure Portal: Azure AD > Authentication methods > Password protection",
-        "Event Logs: Microsoft-AzureADPasswordProtection-DCAgent",
-        "PowerShell: Get-AzureADPasswordProtectionPolicy",
-        "Registry: HKLM\\SOFTWARE\\Microsoft\\AzureADPasswordProtection"
-      ]
-    },
-    "passwordlessAuthenticationBestPractices": {
-      "deploymentStrategy": [
-        "Start with Windows Hello for Business for corporate devices",
-        "Deploy FIDO2 security keys for privileged users",
-        "Implement Microsoft Authenticator passwordless phone sign-in",
-        "Use certificate-based authentication for non-interactive accounts"
-      ],
-      "passwordPolicyModernization": [
-        "Remove forced password expiration policies",
-        "Increase minimum password length to 14+ characters",
-        "Enable Azure AD Password Protection",
-        "Implement smart lockout and risk-based policies"
-      ],
-      "userExperience": [
-        "Provide multiple passwordless options for different scenarios",
-        "Create comprehensive user training and support",
-        "Implement gradual rollout with pilot groups",
-        "Maintain secure fallback methods for edge cases"
-      ],
-      "securityControls": [
-        "Require device compliance for passwordless authentication",
-        "Implement phishing-resistant authentication methods",
-        "Monitor and alert on authentication anomalies",
-        "Regular security assessment of authentication methods"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "IA-5": "Authenticator Management",
-        "IA-5(1)": "Password-Based Authentication",
-        "IA-5(2)": "PKI-Based Authentication",
-        "IA-5(11)": "Hardware Token-Based Authentication"
-      },
-      "nist80053": {
-        "IA-5": "Authenticator Management",
-        "IA-5(1)": "Password-Based Authentication",
-        "IA-5(2)": "Public Key Infrastructure Certificates",
-        "IA-5(11)": "Hardware Token-Based Authentication"
-      },
-      "nist80063b": {
-        "section5": "Authenticator and Verifier Requirements",
-        "section8": "Threats and Security Considerations",
-        "appendixA": "Strength of Memorized Secrets"
-      }
-    }
+    ]
   }
 }

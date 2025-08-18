@@ -11,7 +11,60 @@
       "failed": 3,
       "warnings": 0
     },
-    "fedrampAuthorizationVerificationChecks": [
+    "fedrampAuthorizationVerificationMethods": {
+      "marketplaceValidation": [
+        "FedRAMP Marketplace API: Automated service authorization status checking",
+        "P-ATO validation: Agency provisional authorization verification",
+        "Authorization scope verification: Service boundary and federal data handling validation",
+        "Continuous monitoring: Daily marketplace synchronization and status updates",
+        "Authorization expiration tracking: Automated renewal notification and compliance reporting"
+      ],
+      "serviceConfigurationValidation": [
+        "Azure Security Center: Security baseline compliance assessment and configuration validation",
+        "Azure Policy: Automated compliance checking against FedRAMP control requirements",
+        "CIS Benchmark scanning: Center for Internet Security baseline validation",
+        "Configuration drift detection: Continuous monitoring for unauthorized configuration changes",
+        "Security posture management: Comprehensive security configuration assessment"
+      ],
+      "unauthorizedServiceDetection": [
+        "Network traffic analysis: Deep packet inspection and flow analysis for unauthorized endpoints",
+        "DNS monitoring: Query analysis for unauthorized domain resolution",
+        "Cloud Access Security Broker (CASB): Real-time SaaS application usage monitoring",
+        "API call monitoring: Application-level third-party service usage tracking",
+        "Data loss prevention (DLP): Federal information transfer detection to unauthorized services"
+      ],
+      "dataFlowAnalysisAndClassification": [
+        "Data classification tools: Automated federal information identification and tagging",
+        "Network traffic analysis: Data flow mapping and federal information tracking",
+        "Content inspection: Deep content analysis for PII, CUI, and federal data detection",
+        "Database activity monitoring: Federal information access and transfer tracking",
+        "Application performance monitoring: Third-party service data transmission analysis"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "SA-9": "External Information System Services",
+        "SA-9(1)": "Risk Assessments / Updates",
+        "SA-9(2)": "Identification of Functions / Ports / Protocols / Services",
+        "SA-9(4)": "Consistent Interests in Personnel",
+        "SA-9(5)": "Processing, Storage, and Service Location"
+      },
+      "nist80053": {
+        "SA-9": "External Information System Services",
+        "SA-9(1)": "Risk Assessments / Updates",
+        "SA-9(2)": "Identification of Functions / Ports / Protocols / Services",
+        "SA-9(4)": "Consistent Interests in Personnel",
+        "SA-9(5)": "Processing, Storage, and Service Location",
+        "PM-30": "Supply Chain Risk Management Strategy"
+      },
+      "iso27001": {
+        "A.15.1.1": "Information security policy for supplier relationships",
+        "A.15.1.2": "Addressing security within supplier agreements",
+        "A.15.2.1": "Monitoring and review of supplier services",
+        "A.15.2.2": "Managing changes to supplier services"
+      }
+    },
+    "checks": [
       {
         "checkId": "TPR-02-001",
         "name": "FedRAMP Marketplace Authorization Verification",
@@ -95,7 +148,8 @@
             "details": "Daily marketplace validation with automated compliance reporting"
           }
         ],
-        "remediation": "FedRAMP authorization verification comprehensively implemented with proactive monitoring"
+        "remediation": "FedRAMP authorization verification comprehensively implemented with proactive monitoring",
+        "checkType": "fedrampAuthorizationVerificatio"
       },
       {
         "checkId": "TPR-02-002",
@@ -166,7 +220,8 @@
             "details": "3 critical misconfigurations identified with 7 high-risk issues under remediation"
           }
         ],
-        "remediation": "Service configuration security comprehensively validated with strong baseline adherence"
+        "remediation": "Service configuration security comprehensively validated with strong baseline adherence",
+        "checkType": "fedrampAuthorizationVerificatio"
       },
       {
         "checkId": "TPR-02-003",
@@ -254,7 +309,8 @@
             "details": "80% of unauthorized services lack proper business justification"
           }
         ],
-        "remediation": "CRITICAL: 1) Immediately discontinue use of Dropbox Business and migrate data to FedRAMP authorized storage, 2) Assess and migrate Slack communications to Microsoft Teams (FedRAMP authorized), 3) Review GitHub public repositories for federal data exposure and migrate to private repositories, 4) Implement data loss prevention (DLP) policies to prevent federal data upload to unauthorized services, 5) Establish mandatory pre-approval workflow for all cloud service usage, 6) Deploy Cloud Access Security Broker (CASB) for real-time unauthorized service detection"
+        "remediation": "CRITICAL: 1) Immediately discontinue use of Dropbox Business and migrate data to FedRAMP authorized storage, 2) Assess and migrate Slack communications to Microsoft Teams (FedRAMP authorized), 3) Review GitHub public repositories for federal data exposure and migrate to private repositories, 4) Implement data loss prevention (DLP) policies to prevent federal data upload to unauthorized services, 5) Establish mandatory pre-approval workflow for all cloud service usage, 6) Deploy Cloud Access Security Broker (CASB) for real-time unauthorized service detection",
+        "checkType": "fedrampAuthorizationVerificatio"
       },
       {
         "checkId": "TPR-02-004",
@@ -303,7 +359,8 @@
             "details": "Manual alerting processes with 65% stakeholder notification coverage"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement automated monitoring for all 28 cloud services with real-time FedRAMP status checking, 2) Increase marketplace synchronization to daily frequency with automated failure alerting, 3) Deploy comprehensive alerting system for authorization changes, expirations, and violations, 4) Establish automated compliance reporting with stakeholder distribution, 5) Implement predictive analytics for authorization renewal planning, 6) Deploy real-time dashboard for service authorization status visibility"
+        "remediation": "HIGH PRIORITY: 1) Implement automated monitoring for all 28 cloud services with real-time FedRAMP status checking, 2) Increase marketplace synchronization to daily frequency with automated failure alerting, 3) Deploy comprehensive alerting system for authorization changes, expirations, and violations, 4) Establish automated compliance reporting with stakeholder distribution, 5) Implement predictive analytics for authorization renewal planning, 6) Deploy real-time dashboard for service authorization status visibility",
+        "checkType": "fedrampAuthorizationVerificatio"
       },
       {
         "checkId": "TPR-02-005",
@@ -357,61 +414,9 @@
             "details": "67 unmapped data flows with unknown federal information exposure potential"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Complete data flow mapping for all 156 identified flows with federal information classification, 2) Implement automated data classification using content inspection and machine learning, 3) Deploy comprehensive data loss prevention (DLP) solution with federal data detection, 4) Establish real-time data flow monitoring with anomaly detection, 5) Implement data flow visualization dashboard for compliance officers, 6) Create automated reporting of federal data flows to unauthorized services"
+        "remediation": "MEDIUM PRIORITY: 1) Complete data flow mapping for all 156 identified flows with federal information classification, 2) Implement automated data classification using content inspection and machine learning, 3) Deploy comprehensive data loss prevention (DLP) solution with federal data detection, 4) Establish real-time data flow monitoring with anomaly detection, 5) Implement data flow visualization dashboard for compliance officers, 6) Create automated reporting of federal data flows to unauthorized services",
+        "checkType": "fedrampAuthorizationVerificatio"
       }
-    ],
-    "fedrampAuthorizationVerificationMethods": {
-      "marketplaceValidation": [
-        "FedRAMP Marketplace API: Automated service authorization status checking",
-        "P-ATO validation: Agency provisional authorization verification",
-        "Authorization scope verification: Service boundary and federal data handling validation",
-        "Continuous monitoring: Daily marketplace synchronization and status updates",
-        "Authorization expiration tracking: Automated renewal notification and compliance reporting"
-      ],
-      "serviceConfigurationValidation": [
-        "Azure Security Center: Security baseline compliance assessment and configuration validation",
-        "Azure Policy: Automated compliance checking against FedRAMP control requirements",
-        "CIS Benchmark scanning: Center for Internet Security baseline validation",
-        "Configuration drift detection: Continuous monitoring for unauthorized configuration changes",
-        "Security posture management: Comprehensive security configuration assessment"
-      ],
-      "unauthorizedServiceDetection": [
-        "Network traffic analysis: Deep packet inspection and flow analysis for unauthorized endpoints",
-        "DNS monitoring: Query analysis for unauthorized domain resolution",
-        "Cloud Access Security Broker (CASB): Real-time SaaS application usage monitoring",
-        "API call monitoring: Application-level third-party service usage tracking",
-        "Data loss prevention (DLP): Federal information transfer detection to unauthorized services"
-      ],
-      "dataFlowAnalysisAndClassification": [
-        "Data classification tools: Automated federal information identification and tagging",
-        "Network traffic analysis: Data flow mapping and federal information tracking",
-        "Content inspection: Deep content analysis for PII, CUI, and federal data detection",
-        "Database activity monitoring: Federal information access and transfer tracking",
-        "Application performance monitoring: Third-party service data transmission analysis"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "SA-9": "External Information System Services",
-        "SA-9(1)": "Risk Assessments / Updates",
-        "SA-9(2)": "Identification of Functions / Ports / Protocols / Services",
-        "SA-9(4)": "Consistent Interests in Personnel",
-        "SA-9(5)": "Processing, Storage, and Service Location"
-      },
-      "nist80053": {
-        "SA-9": "External Information System Services",
-        "SA-9(1)": "Risk Assessments / Updates",
-        "SA-9(2)": "Identification of Functions / Ports / Protocols / Services",
-        "SA-9(4)": "Consistent Interests in Personnel",
-        "SA-9(5)": "Processing, Storage, and Service Location",
-        "PM-30": "Supply Chain Risk Management Strategy"
-      },
-      "iso27001": {
-        "A.15.1.1": "Information security policy for supplier relationships",
-        "A.15.1.2": "Addressing security within supplier agreements",
-        "A.15.2.1": "Monitoring and review of supplier services",
-        "A.15.2.2": "Managing changes to supplier services"
-      }
-    }
+    ]
   }
 }

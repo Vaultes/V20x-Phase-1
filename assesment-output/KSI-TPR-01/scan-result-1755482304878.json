@@ -11,7 +11,60 @@
       "failed": 3,
       "warnings": 0
     },
-    "thirdPartyResourceIdentificationChecks": [
+    "thirdPartyIdentificationVerificationMethods": {
+      "softwareDependencyScanning": [
+        "Package manifest analysis: package.json, requirements.txt, *.csproj parsing",
+        "Dependency tree analysis: npm audit, pip-audit, NuGet vulnerability scanning",
+        "Software composition analysis: WhiteSource, Snyk, FOSSA integration",
+        "Container image scanning: Trivy, Twistlock, Azure Container Registry scanning",
+        "License compliance checking: FOSSA, WhiteSource license analysis"
+      ],
+      "infrastructureAsCodeScanning": [
+        "Terraform provider analysis: terraform providers command and registry validation",
+        "ARM/Bicep template scanning: Azure Resource Manager template analysis",
+        "Kubernetes manifest scanning: kubectl and Helm chart dependency analysis",
+        "Cloud resource discovery: Azure Resource Graph queries and resource tagging",
+        "Configuration drift detection: Terraform plan and Azure Policy compliance"
+      ],
+      "runtimeEnvironmentMonitoring": [
+        "Network traffic analysis: Azure Network Watcher and NSG flow logs",
+        "Process monitoring: Azure Security Center and endpoint detection",
+        "API call monitoring: Azure API Management and Application Insights",
+        "DNS query monitoring: Azure DNS Analytics and threat intelligence",
+        "Dynamic library analysis: Runtime dependency injection detection"
+      ],
+      "documentationAndApprovalTracking": [
+        "Asset management systems: ServiceNow, Jira Service Management integration",
+        "Risk assessment platforms: GRC tools and security assessment workflows",
+        "Approval workflow systems: Azure DevOps, GitHub approval requirements",
+        "Compliance tracking: Azure Policy compliance and regulatory mapping",
+        "Shadow IT detection: Cloud Access Security Broker (CASB) monitoring"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "SA-4": "Acquisition Process",
+        "SA-9": "External Information System Services",
+        "SA-12": "Supply Chain Protection",
+        "PL-8": "Information Security Architecture",
+        "CM-8": "Information System Component Inventory"
+      },
+      "nist80053": {
+        "SA-4": "Acquisition Process",
+        "SA-9": "External Information System Services",
+        "SA-12": "Supply Chain Protection",
+        "PL-8": "Information Security Architecture",
+        "CM-8": "Information System Component Inventory",
+        "PM-30": "Supply Chain Risk Management Strategy"
+      },
+      "iso27001": {
+        "A.15.1.1": "Information security policy for supplier relationships",
+        "A.15.1.2": "Addressing security within supplier agreements",
+        "A.15.2.1": "Monitoring and review of supplier services",
+        "A.12.6.1": "Management of technical vulnerabilities"
+      }
+    },
+    "checks": [
       {
         "checkId": "TPR-01-001",
         "name": "Software Dependency Inventory",
@@ -40,7 +93,10 @@
               "vulnerablePackages": 3,
               "licenseCompliantPackages": 64,
               "unknownLicensePackages": 0,
-              "packageManifestFiles": ["/src/FedRAMP20x.csproj", "/tests/FedRAMP20x.Tests.csproj"]
+              "packageManifestFiles": [
+                "/src/FedRAMP20x.csproj",
+                "/tests/FedRAMP20x.Tests.csproj"
+              ]
             },
             "pythonDependencies": {
               "totalPackages": 156,
@@ -49,7 +105,10 @@
               "vulnerablePackages": 8,
               "licenseCompliantPackages": 142,
               "unknownLicensePackages": 6,
-              "packageManifestFiles": ["/scripts/requirements.txt", "/automation/requirements.txt"]
+              "packageManifestFiles": [
+                "/scripts/requirements.txt",
+                "/automation/requirements.txt"
+              ]
             }
           },
           "containerImageDependencies": {
@@ -144,7 +203,8 @@
             "details": "23 Azure services and 15 external APIs cataloged with FedRAMP status"
           }
         ],
-        "remediation": "Third-party software dependencies comprehensively identified and cataloged"
+        "remediation": "Third-party software dependencies comprehensively identified and cataloged",
+        "checkType": "thirdPartyResourceIdentificatio"
       },
       {
         "checkId": "TPR-01-002",
@@ -261,7 +321,8 @@
             "details": "12 Helm charts and 8 CRDs identified with security scanning results"
           }
         ],
-        "remediation": "Infrastructure as Code dependencies comprehensively identified and verified"
+        "remediation": "Infrastructure as Code dependencies comprehensively identified and verified",
+        "checkType": "thirdPartyResourceIdentificatio"
       },
       {
         "checkId": "TPR-01-003",
@@ -359,7 +420,8 @@
             "details": "2690 service calls tracked with FedRAMP authorization validation"
           }
         ],
-        "remediation": "Runtime environment dependencies comprehensively monitored and validated"
+        "remediation": "Runtime environment dependencies comprehensively monitored and validated",
+        "checkType": "thirdPartyResourceIdentificatio"
       },
       {
         "checkId": "TPR-01-004",
@@ -453,7 +515,8 @@
             "details": "62.7% approval compliance with 221 resources in unauthorized usage"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Document all 611 undocumented third-party resources with comprehensive risk assessments, 2) Complete risk assessments for 954 pending resources using standardized criteria, 3) Implement approval workflow enforcement to prevent unauthorized resource usage, 4) Establish automated documentation requirements in development pipelines, 5) Create centralized third-party resource registry with approval tracking, 6) Implement periodic approval renewal process with expiration monitoring"
+        "remediation": "HIGH PRIORITY: 1) Document all 611 undocumented third-party resources with comprehensive risk assessments, 2) Complete risk assessments for 954 pending resources using standardized criteria, 3) Implement approval workflow enforcement to prevent unauthorized resource usage, 4) Establish automated documentation requirements in development pipelines, 5) Create centralized third-party resource registry with approval tracking, 6) Implement periodic approval renewal process with expiration monitoring",
+        "checkType": "thirdPartyResourceIdentificatio"
       },
       {
         "checkId": "TPR-01-005",
@@ -573,7 +636,8 @@
             "details": "18 critical/high-risk unauthorized resources with potential security impacts"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Immediately assess and approve or remove 80 unauthorized software packages, 2) Block access to 7 shadow cloud services pending security review, 3) Implement automated dependency approval workflows in CI/CD pipelines, 4) Deploy network monitoring to detect unauthorized external connections, 5) Establish developer training on approved resource usage policies, 6) Implement automated scanning for unauthorized dependencies in all environments"
+        "remediation": "MEDIUM PRIORITY: 1) Immediately assess and approve or remove 80 unauthorized software packages, 2) Block access to 7 shadow cloud services pending security review, 3) Implement automated dependency approval workflows in CI/CD pipelines, 4) Deploy network monitoring to detect unauthorized external connections, 5) Establish developer training on approved resource usage policies, 6) Implement automated scanning for unauthorized dependencies in all environments",
+        "checkType": "thirdPartyResourceIdentificatio"
       },
       {
         "checkId": "TPR-01-006",
@@ -662,61 +726,9 @@
             "details": "Basic automation with significant gaps in runtime and configuration change detection"
           }
         ],
-        "remediation": "LOW PRIORITY: 1) Extend change monitoring to all third-party resource types including Python packages and external APIs, 2) Implement automated change tracking for all dependency version updates, 3) Deploy configuration drift detection for all third-party resource configurations, 4) Establish automated change approval workflows with security impact assessment, 5) Implement comprehensive change notification system with stakeholder alerts, 6) Deploy automated end-of-life and deprecation tracking for all third-party resources"
+        "remediation": "LOW PRIORITY: 1) Extend change monitoring to all third-party resource types including Python packages and external APIs, 2) Implement automated change tracking for all dependency version updates, 3) Deploy configuration drift detection for all third-party resource configurations, 4) Establish automated change approval workflows with security impact assessment, 5) Implement comprehensive change notification system with stakeholder alerts, 6) Deploy automated end-of-life and deprecation tracking for all third-party resources",
+        "checkType": "thirdPartyResourceIdentificatio"
       }
-    ],
-    "thirdPartyIdentificationVerificationMethods": {
-      "softwareDependencyScanning": [
-        "Package manifest analysis: package.json, requirements.txt, *.csproj parsing",
-        "Dependency tree analysis: npm audit, pip-audit, NuGet vulnerability scanning",
-        "Software composition analysis: WhiteSource, Snyk, FOSSA integration",
-        "Container image scanning: Trivy, Twistlock, Azure Container Registry scanning",
-        "License compliance checking: FOSSA, WhiteSource license analysis"
-      ],
-      "infrastructureAsCodeScanning": [
-        "Terraform provider analysis: terraform providers command and registry validation",
-        "ARM/Bicep template scanning: Azure Resource Manager template analysis",
-        "Kubernetes manifest scanning: kubectl and Helm chart dependency analysis",
-        "Cloud resource discovery: Azure Resource Graph queries and resource tagging",
-        "Configuration drift detection: Terraform plan and Azure Policy compliance"
-      ],
-      "runtimeEnvironmentMonitoring": [
-        "Network traffic analysis: Azure Network Watcher and NSG flow logs",
-        "Process monitoring: Azure Security Center and endpoint detection",
-        "API call monitoring: Azure API Management and Application Insights",
-        "DNS query monitoring: Azure DNS Analytics and threat intelligence",
-        "Dynamic library analysis: Runtime dependency injection detection"
-      ],
-      "documentationAndApprovalTracking": [
-        "Asset management systems: ServiceNow, Jira Service Management integration",
-        "Risk assessment platforms: GRC tools and security assessment workflows",
-        "Approval workflow systems: Azure DevOps, GitHub approval requirements",
-        "Compliance tracking: Azure Policy compliance and regulatory mapping",
-        "Shadow IT detection: Cloud Access Security Broker (CASB) monitoring"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "SA-4": "Acquisition Process",
-        "SA-9": "External Information System Services",
-        "SA-12": "Supply Chain Protection",
-        "PL-8": "Information Security Architecture",
-        "CM-8": "Information System Component Inventory"
-      },
-      "nist80053": {
-        "SA-4": "Acquisition Process",
-        "SA-9": "External Information System Services",
-        "SA-12": "Supply Chain Protection",
-        "PL-8": "Information Security Architecture",
-        "CM-8": "Information System Component Inventory",
-        "PM-30": "Supply Chain Risk Management Strategy"
-      },
-      "iso27001": {
-        "A.15.1.1": "Information security policy for supplier relationships",
-        "A.15.1.2": "Addressing security within supplier agreements",
-        "A.15.2.1": "Monitoring and review of supplier services",
-        "A.12.6.1": "Management of technical vulnerabilities"
-      }
-    }
+    ]
   }
 }

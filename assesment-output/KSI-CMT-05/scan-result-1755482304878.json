@@ -11,7 +11,67 @@
       "failed": 4,
       "warnings": 0
     },
-    "changeRiskImpactEvaluationChecks": [
+    "changeRiskImpactEvaluationVerificationMethods": {
+      "riskAssessmentFrameworks": [
+        "ServiceNow: Change risk assessment modules and workflow configurations",
+        "Risk management platforms: Quantitative and qualitative risk analysis tools",
+        "Monte Carlo simulation tools: Advanced risk modeling and scenario analysis",
+        "Business impact analysis tools: Financial and operational impact assessment",
+        "FAIR (Factor Analysis of Information Risk): Structured risk quantification methodology"
+      ],
+      "impactAnalysisTools": [
+        "Azure Application Insights: Application dependency mapping and impact analysis",
+        "Service dependency mapping tools: Automated dependency discovery and visualization",
+        "Performance modeling tools: System performance impact prediction and simulation",
+        "Configuration management databases: Infrastructure and service relationship mapping",
+        "Business process modeling tools: Business impact analysis and workflow assessment"
+      ],
+      "approvalWorkflowTracking": [
+        "ServiceNow: Change approval workflow logs and decision audit trails",
+        "Change Advisory Board: CAB meeting records and decision documentation",
+        "Email and collaboration platforms: Approval communication and stakeholder engagement",
+        "Electronic signature systems: Approval authentication and non-repudiation",
+        "Workflow automation platforms: Approval process execution and performance tracking"
+      ],
+      "postImplementationValidation": [
+        "Monitoring and observability platforms: Post-change performance and availability validation",
+        "Business metrics dashboards: Business impact measurement and validation",
+        "Customer feedback systems: Customer impact assessment and satisfaction measurement",
+        "Financial systems: Revenue and cost impact tracking and validation",
+        "Compliance monitoring tools: Regulatory compliance impact assessment and validation"
+      ],
+      "metricsAndReporting": [
+        "Power BI and Tableau: Risk and impact analytics dashboards and visualization",
+        "ServiceNow: Change management KPI dashboards and performance reporting",
+        "Business intelligence platforms: Advanced analytics and predictive modeling",
+        "Custom reporting solutions: Organizational change management metrics and analysis",
+        "Executive dashboards: Strategic change impact reporting and decision support"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "CM-4": "Security Impact Analysis",
+        "RA-3": "Risk Assessment",
+        "PM-9": "Risk Management Strategy",
+        "CA-7": "Continuous Monitoring",
+        "CM-3": "Configuration Change Control"
+      },
+      "nist80053": {
+        "CM-4": "Security Impact Analysis",
+        "RA-3": "Risk Assessment",
+        "PM-9": "Risk Management Strategy",
+        "CA-7": "Continuous Monitoring",
+        "CM-3": "Configuration Change Control",
+        "SI-2": "Flaw Remediation"
+      },
+      "iso27001": {
+        "A.12.1.2": "Change management",
+        "A.16.1.5": "Response to information security incidents",
+        "A.14.2.2": "System change control procedures",
+        "A.14.2.3": "Technical review of applications after operating platform changes"
+      }
+    },
+    "checks": [
       {
         "checkId": "CMT-05-001",
         "name": "Comprehensive Change Risk Assessment Framework",
@@ -70,7 +130,7 @@
               "riskScoringMatrix": {
                 "probabilityScale": "1-5 scale with defined probability ranges",
                 "impactScale": "1-5 scale with quantified impact thresholds",
-                "riskScoreCalculation": "Probability × Impact with weighted factors",
+                "riskScoreCalculation": "Probability \u00d7 Impact with weighted factors",
                 "riskToleranceThresholds": "Low (1-6), Medium (7-15), High (16-25)",
                 "riskAcceptanceCriteria": "Defined criteria for risk acceptance"
               },
@@ -117,7 +177,8 @@
             "details": "91.7% assessment accuracy with 85.4% successful risk mitigation across 1547 changes"
           }
         ],
-        "remediation": "Change risk assessment framework properly implemented with comprehensive methodology and effective execution"
+        "remediation": "Change risk assessment framework properly implemented with comprehensive methodology and effective execution",
+        "checkType": "changeRiskImpactEvaluatio"
       },
       {
         "checkId": "CMT-05-002",
@@ -244,7 +305,8 @@
             "details": "98.7% risk-informed decisions with 27.8% decision quality improvement and 11.7% success rate improvement"
           }
         ],
-        "remediation": "Integrated change impact analysis tools properly implemented with comprehensive automation and effective decision support"
+        "remediation": "Integrated change impact analysis tools properly implemented with comprehensive automation and effective decision support",
+        "checkType": "changeRiskImpactEvaluatio"
       },
       {
         "checkId": "CMT-05-003",
@@ -363,7 +425,8 @@
             "details": "91.2-98.7% success rates by approval level with 87.4% risk mitigation effectiveness"
           }
         ],
-        "remediation": "Structured change review and approval process properly implemented with comprehensive risk-based framework and effective execution"
+        "remediation": "Structured change review and approval process properly implemented with comprehensive risk-based framework and effective execution",
+        "checkType": "changeRiskImpactEvaluatio"
       },
       {
         "checkId": "CMT-05-004",
@@ -477,7 +540,8 @@
             "details": "Basic reporting with limited accuracy analysis and no systematic process improvement integration"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement systematic post-implementation risk validation with automated predicted vs actual comparison, 2) Establish comprehensive impact validation framework covering business, technical, and operational dimensions, 3) Deploy automated validation metrics collection with stakeholder feedback integration, 4) Implement comprehensive validation analysis with risk prediction accuracy assessment, 5) Establish continuous improvement integration with risk assessment refinement, 6) Deploy real-time validation monitoring with proactive issue detection, 7) Establish validation-based process optimization and stakeholder engagement improvement"
+        "remediation": "HIGH PRIORITY: 1) Implement systematic post-implementation risk validation with automated predicted vs actual comparison, 2) Establish comprehensive impact validation framework covering business, technical, and operational dimensions, 3) Deploy automated validation metrics collection with stakeholder feedback integration, 4) Implement comprehensive validation analysis with risk prediction accuracy assessment, 5) Establish continuous improvement integration with risk assessment refinement, 6) Deploy real-time validation monitoring with proactive issue detection, 7) Establish validation-based process optimization and stakeholder engagement improvement",
+        "checkType": "changeRiskImpactEvaluatio"
       },
       {
         "checkId": "CMT-05-005",
@@ -616,7 +680,8 @@
             "details": "Basic reporting and communication with limited visualization and no real-time impact tracking"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Implement comprehensive financial impact modeling with direct/indirect revenue analysis and ROI calculation, 2) Establish systematic customer impact assessment with segmentation and retention analysis, 3) Deploy comprehensive stakeholder impact evaluation including employee productivity and partner ecosystem impact, 4) Implement advanced quantification techniques with Monte Carlo simulation and stochastic modeling, 5) Establish robust impact validation with prediction accuracy tracking and continuous monitoring, 6) Deploy interactive impact dashboards with real-time tracking and mobile reporting, 7) Implement benefits realization tracking with business case validation and success metrics"
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive financial impact modeling with direct/indirect revenue analysis and ROI calculation, 2) Establish systematic customer impact assessment with segmentation and retention analysis, 3) Deploy comprehensive stakeholder impact evaluation including employee productivity and partner ecosystem impact, 4) Implement advanced quantification techniques with Monte Carlo simulation and stochastic modeling, 5) Establish robust impact validation with prediction accuracy tracking and continuous monitoring, 6) Deploy interactive impact dashboards with real-time tracking and mobile reporting, 7) Implement benefits realization tracking with business case validation and success metrics",
+        "checkType": "changeRiskImpactEvaluatio"
       },
       {
         "checkId": "CMT-05-006",
@@ -777,7 +842,8 @@
             "details": "Basic reach metrics with limited comprehension assessment and minimal technology enhancement"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive stakeholder identification and analysis with risk tolerance assessment, 2) Establish robust risk communication strategy with audience-specific messaging and visualization, 3) Deploy diverse communication channels with effectiveness tracking and bidirectional communication, 4) Implement comprehensive risk transparency with real-time dashboards and mobile accessibility, 5) Establish collaborative risk management with stakeholder workshops and community of practice, 6) Deploy structured feedback collection with anonymous options and closed-loop response system, 7) Implement communication effectiveness analytics with behavioral impact measurement and continuous optimization"
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive stakeholder identification and analysis with risk tolerance assessment, 2) Establish robust risk communication strategy with audience-specific messaging and visualization, 3) Deploy diverse communication channels with effectiveness tracking and bidirectional communication, 4) Implement comprehensive risk transparency with real-time dashboards and mobile accessibility, 5) Establish collaborative risk management with stakeholder workshops and community of practice, 6) Deploy structured feedback collection with anonymous options and closed-loop response system, 7) Implement communication effectiveness analytics with behavioral impact measurement and continuous optimization",
+        "checkType": "changeRiskImpactEvaluatio"
       },
       {
         "checkId": "CMT-05-007",
@@ -932,68 +998,9 @@
             "details": "Basic lessons learned capture with limited knowledge sharing and basic improvement integration"
           }
         ],
-        "remediation": "LOW PRIORITY: 1) Implement comprehensive success metrics framework covering business, technical, and process dimensions, 2) Deploy automated metrics collection with real-time monitoring and historical tracking, 3) Establish robust baseline establishment and post-change comparison processes, 4) Implement comprehensive evaluation methodology with quantitative and qualitative methods, 5) Deploy systematic lessons learned capture with best practice documentation and knowledge transfer, 6) Establish continuous improvement integration with organizational learning mechanisms, 7) Implement success communication and recognition systems with community of practice establishment"
+        "remediation": "LOW PRIORITY: 1) Implement comprehensive success metrics framework covering business, technical, and process dimensions, 2) Deploy automated metrics collection with real-time monitoring and historical tracking, 3) Establish robust baseline establishment and post-change comparison processes, 4) Implement comprehensive evaluation methodology with quantitative and qualitative methods, 5) Deploy systematic lessons learned capture with best practice documentation and knowledge transfer, 6) Establish continuous improvement integration with organizational learning mechanisms, 7) Implement success communication and recognition systems with community of practice establishment",
+        "checkType": "changeRiskImpactEvaluatio"
       }
-    ],
-    "changeRiskImpactEvaluationVerificationMethods": {
-      "riskAssessmentFrameworks": [
-        "ServiceNow: Change risk assessment modules and workflow configurations",
-        "Risk management platforms: Quantitative and qualitative risk analysis tools",
-        "Monte Carlo simulation tools: Advanced risk modeling and scenario analysis",
-        "Business impact analysis tools: Financial and operational impact assessment",
-        "FAIR (Factor Analysis of Information Risk): Structured risk quantification methodology"
-      ],
-      "impactAnalysisTools": [
-        "Azure Application Insights: Application dependency mapping and impact analysis",
-        "Service dependency mapping tools: Automated dependency discovery and visualization",
-        "Performance modeling tools: System performance impact prediction and simulation",
-        "Configuration management databases: Infrastructure and service relationship mapping",
-        "Business process modeling tools: Business impact analysis and workflow assessment"
-      ],
-      "approvalWorkflowTracking": [
-        "ServiceNow: Change approval workflow logs and decision audit trails",
-        "Change Advisory Board: CAB meeting records and decision documentation",
-        "Email and collaboration platforms: Approval communication and stakeholder engagement",
-        "Electronic signature systems: Approval authentication and non-repudiation",
-        "Workflow automation platforms: Approval process execution and performance tracking"
-      ],
-      "postImplementationValidation": [
-        "Monitoring and observability platforms: Post-change performance and availability validation",
-        "Business metrics dashboards: Business impact measurement and validation",
-        "Customer feedback systems: Customer impact assessment and satisfaction measurement",
-        "Financial systems: Revenue and cost impact tracking and validation",
-        "Compliance monitoring tools: Regulatory compliance impact assessment and validation"
-      ],
-      "metricsAndReporting": [
-        "Power BI and Tableau: Risk and impact analytics dashboards and visualization",
-        "ServiceNow: Change management KPI dashboards and performance reporting",
-        "Business intelligence platforms: Advanced analytics and predictive modeling",
-        "Custom reporting solutions: Organizational change management metrics and analysis",
-        "Executive dashboards: Strategic change impact reporting and decision support"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "CM-4": "Security Impact Analysis",
-        "RA-3": "Risk Assessment",
-        "PM-9": "Risk Management Strategy",
-        "CA-7": "Continuous Monitoring",
-        "CM-3": "Configuration Change Control"
-      },
-      "nist80053": {
-        "CM-4": "Security Impact Analysis",
-        "RA-3": "Risk Assessment",
-        "PM-9": "Risk Management Strategy",
-        "CA-7": "Continuous Monitoring",
-        "CM-3": "Configuration Change Control",
-        "SI-2": "Flaw Remediation"
-      },
-      "iso27001": {
-        "A.12.1.2": "Change management",
-        "A.16.1.5": "Response to information security incidents",
-        "A.14.2.2": "System change control procedures",
-        "A.14.2.3": "Technical review of applications after operating platform changes"
-      }
-    }
+    ]
   }
 }

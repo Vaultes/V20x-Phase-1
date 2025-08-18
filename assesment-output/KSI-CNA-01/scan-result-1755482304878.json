@@ -11,7 +11,7 @@
       "failed": 3,
       "warnings": 1
     },
-    "containerSecurityChecks": [
+    "checks": [
       {
         "checkId": "CNA-01-001",
         "name": "Container Image Vulnerability Scan",
@@ -26,7 +26,8 @@
             "low": 5
           }
         },
-        "remediation": "No critical or high vulnerabilities found"
+        "remediation": "No critical or high vulnerabilities found",
+        "checkType": "containerSecurit"
       },
       {
         "checkId": "CNA-01-002",
@@ -36,10 +37,14 @@
         "description": "Container base images must use approved secure base images",
         "findings": {
           "baseImage": "node:latest",
-          "approvedImages": ["node:18-alpine", "node:20-alpine"],
+          "approvedImages": [
+            "node:18-alpine",
+            "node:20-alpine"
+          ],
           "issue": "Using 'latest' tag is not permitted for production workloads"
         },
-        "remediation": "Update Dockerfile to use specific versioned base image from approved list"
+        "remediation": "Update Dockerfile to use specific versioned base image from approved list",
+        "checkType": "containerSecurit"
       },
       {
         "checkId": "CNA-01-003",
@@ -52,7 +57,8 @@
           "runAsGroup": "1001",
           "allowPrivilegeEscalation": false
         },
-        "remediation": "Container properly configured with non-root user"
+        "remediation": "Container properly configured with non-root user",
+        "checkType": "containerSecurit"
       },
       {
         "checkId": "CNA-01-004",
@@ -61,12 +67,17 @@
         "severity": "HIGH",
         "description": "Container network policies must restrict traffic",
         "findings": {
-          "exposedPorts": [80, 443, 22],
+          "exposedPorts": [
+            80,
+            443,
+            22
+          ],
           "publicAccess": true,
           "sshAccess": true,
           "issue": "SSH port 22 should not be exposed publicly"
         },
-        "remediation": "Remove SSH access and restrict network access to necessary ports only"
+        "remediation": "Remove SSH access and restrict network access to necessary ports only",
+        "checkType": "containerSecurit"
       },
       {
         "checkId": "CNA-01-005",
@@ -80,7 +91,8 @@
           "cpuRequest": "0.5",
           "memoryRequest": "1Gi"
         },
-        "remediation": "Resource limits properly configured"
+        "remediation": "Resource limits properly configured",
+        "checkType": "containerSecurit"
       },
       {
         "checkId": "CNA-01-006",
@@ -93,7 +105,8 @@
           "signingEnabled": false,
           "issue": "Container images are not digitally signed"
         },
-        "remediation": "Enable container image signing and verification in registry"
+        "remediation": "Enable container image signing and verification in registry",
+        "checkType": "containerSecurit"
       },
       {
         "checkId": "CNA-01-007",
@@ -106,7 +119,8 @@
           "keyVaultIntegration": true,
           "secretRotation": true
         },
-        "remediation": "Secrets properly managed through Azure Key Vault"
+        "remediation": "Secrets properly managed through Azure Key Vault",
+        "checkType": "containerSecurit"
       },
       {
         "checkId": "CNA-01-008",
@@ -120,7 +134,8 @@
           "monitoringAlerts": false,
           "issue": "Monitoring alerts not configured for security events"
         },
-        "remediation": "Configure security monitoring alerts for container events"
+        "remediation": "Configure security monitoring alerts for container events",
+        "checkType": "containerSecurit"
       }
     ]
   }

@@ -11,7 +11,67 @@
       "failed": 4,
       "warnings": 0
     },
-    "securityPolicyChecks": [
+    "securityPolicyVerificationMethods": {
+      "policyDocumentationSystems": [
+        "Document management systems: SharePoint policy libraries and version control",
+        "Policy management platforms: MetricStream, ServiceNow GRC policy modules",
+        "Compliance platforms: Archer, Thomson Reuters compliance management",
+        "Quality management systems: ISO 9001 document control systems",
+        "Legal document management: Contract and legal document repositories"
+      ],
+      "azurePolicyImplementation": [
+        "Azure Policy: Policy definitions, assignments, and compliance reporting",
+        "Azure Security Center: Security policy recommendations and compliance scoring",
+        "Azure Blueprints: Policy blueprint assignments and governance frameworks",
+        "Azure Management Groups: Hierarchical policy assignment and inheritance",
+        "Azure Resource Graph: Policy compliance queries and resource analysis"
+      ],
+      "policyEnforcementMonitoring": [
+        "Compliance monitoring tools: RSA Archer, ServiceNow GRC compliance dashboards",
+        "Security information management: SIEM policy violation detection and alerting",
+        "Identity governance platforms: SailPoint, Okta policy compliance monitoring",
+        "Configuration management: Chef, Puppet, Ansible compliance automation",
+        "Vulnerability management: Nessus, Qualys policy compliance scanning"
+      ],
+      "trainingAndAwarenessTracking": [
+        "Learning management systems: LMS training completion and assessment tracking",
+        "Security awareness platforms: KnowBe4, Proofpoint security awareness training",
+        "HR systems: Employee training record integration and compliance tracking",
+        "Phishing simulation tools: Simulated phishing campaign results and improvement tracking",
+        "Compliance training platforms: Specialized compliance and regulatory training systems"
+      ],
+      "privacyAndDataProtection": [
+        "Privacy management platforms: OneTrust, TrustArc privacy program management",
+        "Data discovery tools: Microsoft Purview, Varonis data classification and discovery",
+        "Consent management platforms: Automated consent collection and preference management",
+        "Data subject request management: Automated GDPR/CCPA request processing systems",
+        "Privacy impact assessment tools: Automated privacy risk assessment and documentation"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "PL-1": "Security Planning Policy and Procedures",
+        "PM-1": "Information Security Program Plan",
+        "SA-5": "Information System Documentation",
+        "AT-1": "Security Awareness and Training Policy and Procedures",
+        "SI-5": "Security Alerts, Advisories, and Directives"
+      },
+      "nist80053": {
+        "PL-1": "Security Planning Policy and Procedures",
+        "PM-1": "Information Security Program Plan",
+        "SA-5": "Information System Documentation",
+        "AT-1": "Security Awareness and Training Policy and Procedures",
+        "SI-5": "Security Alerts, Advisories, and Directives",
+        "PT-1": "Privacy Authorization"
+      },
+      "iso27001": {
+        "A.5.1.1": "Policies for information security",
+        "A.5.1.2": "Review of the policies for information security",
+        "A.7.2.2": "Information security awareness, education and training",
+        "A.18.1.1": "Identification of applicable legislation and contractual requirements"
+      }
+    },
+    "checks": [
       {
         "checkId": "PIY-02-001",
         "name": "Comprehensive Security Policy Framework",
@@ -132,7 +192,8 @@
             "details": "Systematic lifecycle management with annual reviews and automated distribution"
           }
         ],
-        "remediation": "Security policy framework comprehensively implemented with robust governance and lifecycle management"
+        "remediation": "Security policy framework comprehensively implemented with robust governance and lifecycle management",
+        "checkType": "securityPolic"
       },
       {
         "checkId": "PIY-02-002",
@@ -240,7 +301,8 @@
             "details": "91.7% compliance score with automated remediation and real-time monitoring"
           }
         ],
-        "remediation": "Azure policy implementation comprehensive with effective enforcement and automated compliance monitoring"
+        "remediation": "Azure policy implementation comprehensive with effective enforcement and automated compliance monitoring",
+        "checkType": "securityPolic"
       },
       {
         "checkId": "PIY-02-003",
@@ -340,7 +402,8 @@
             "details": "Dedicated coordinator with systematic needs assessment and quarterly content updates"
           }
         ],
-        "remediation": "Security awareness and training policy comprehensively implemented with effective delivery and measurable outcomes"
+        "remediation": "Security awareness and training policy comprehensively implemented with effective delivery and measurable outcomes",
+        "checkType": "securityPolic"
       },
       {
         "checkId": "PIY-02-004",
@@ -449,7 +512,8 @@
             "details": "67% awareness with 54% comprehension rate and basic access mechanisms"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Develop comprehensive technical implementation standards with step-by-step guides, 2) Create detailed configuration baselines and compliance checklists for all systems, 3) Resolve policy conflicts and establish consistent terminology framework, 4) Implement centralized policy repository with enhanced search and mobile access, 5) Simplify policy language and add visual aids and practical examples, 6) Establish systematic policy awareness and training programs, 7) Implement regular policy communication channels and feedback mechanisms"
+        "remediation": "HIGH PRIORITY: 1) Develop comprehensive technical implementation standards with step-by-step guides, 2) Create detailed configuration baselines and compliance checklists for all systems, 3) Resolve policy conflicts and establish consistent terminology framework, 4) Implement centralized policy repository with enhanced search and mobile access, 5) Simplify policy language and add visual aids and practical examples, 6) Establish systematic policy awareness and training programs, 7) Implement regular policy communication channels and feedback mechanisms",
+        "checkType": "securityPolic"
       },
       {
         "checkId": "PIY-02-005",
@@ -558,7 +622,8 @@
             "details": "Basic supply chain assessment with limited incident response coordination and transparency"
           }
         ],
-        "remediation": "HIGH PRIORITY: 1) Develop comprehensive vendor security requirements with detailed assessment procedures, 2) Implement automated vendor access management with privileged access controls, 3) Establish continuous vendor security monitoring with real-time compliance checking, 4) Create dedicated vendor security governance committees with regular review meetings, 5) Implement comprehensive supply chain security assessment and transparency requirements, 6) Establish joint incident response procedures with automated notification and escalation, 7) Deploy vendor risk management platform with continuous risk assessment capabilities"
+        "remediation": "HIGH PRIORITY: 1) Develop comprehensive vendor security requirements with detailed assessment procedures, 2) Implement automated vendor access management with privileged access controls, 3) Establish continuous vendor security monitoring with real-time compliance checking, 4) Create dedicated vendor security governance committees with regular review meetings, 5) Implement comprehensive supply chain security assessment and transparency requirements, 6) Establish joint incident response procedures with automated notification and escalation, 7) Deploy vendor risk management platform with continuous risk assessment capabilities",
+        "checkType": "securityPolic"
       },
       {
         "checkId": "PIY-02-006",
@@ -676,7 +741,8 @@
             "details": "78.3% compliance rate with limited trending analysis and basic improvement processes"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement automated policy enforcement and real-time violation detection systems, 2) Deploy compliance monitoring platform with automated alerting and escalation, 3) Establish systematic policy violation investigation and response procedures, 4) Implement comprehensive compliance metrics and analytics with trend analysis, 5) Deploy automated corrective action tracking and effectiveness assessment, 6) Establish continuous policy improvement framework with systematic gap analysis, 7) Implement advanced compliance dashboards and stakeholder reporting capabilities"
+        "remediation": "MEDIUM PRIORITY: 1) Implement automated policy enforcement and real-time violation detection systems, 2) Deploy compliance monitoring platform with automated alerting and escalation, 3) Establish systematic policy violation investigation and response procedures, 4) Implement comprehensive compliance metrics and analytics with trend analysis, 5) Deploy automated corrective action tracking and effectiveness assessment, 6) Establish continuous policy improvement framework with systematic gap analysis, 7) Implement advanced compliance dashboards and stakeholder reporting capabilities",
+        "checkType": "securityPolic"
       },
       {
         "checkId": "PIY-02-007",
@@ -801,68 +867,9 @@
             "details": "Manual privacy risk assessment with basic incident response and no dedicated governance committee"
           }
         ],
-        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive automated data discovery and classification with ML-based personal data detection, 2) Deploy automated privacy controls including consent management and data subject request processing, 3) Establish automated data retention and anonymization capabilities, 4) Implement comprehensive privacy risk assessment and monitoring framework, 5) Deploy privacy governance committee with dedicated resources and oversight, 6) Implement privacy compliance dashboards with real-time metrics and automated reporting, 7) Establish comprehensive privacy training and awareness programs with specialized privacy team training"
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive automated data discovery and classification with ML-based personal data detection, 2) Deploy automated privacy controls including consent management and data subject request processing, 3) Establish automated data retention and anonymization capabilities, 4) Implement comprehensive privacy risk assessment and monitoring framework, 5) Deploy privacy governance committee with dedicated resources and oversight, 6) Implement privacy compliance dashboards with real-time metrics and automated reporting, 7) Establish comprehensive privacy training and awareness programs with specialized privacy team training",
+        "checkType": "securityPolic"
       }
-    ],
-    "securityPolicyVerificationMethods": {
-      "policyDocumentationSystems": [
-        "Document management systems: SharePoint policy libraries and version control",
-        "Policy management platforms: MetricStream, ServiceNow GRC policy modules",
-        "Compliance platforms: Archer, Thomson Reuters compliance management",
-        "Quality management systems: ISO 9001 document control systems",
-        "Legal document management: Contract and legal document repositories"
-      ],
-      "azurePolicyImplementation": [
-        "Azure Policy: Policy definitions, assignments, and compliance reporting",
-        "Azure Security Center: Security policy recommendations and compliance scoring",
-        "Azure Blueprints: Policy blueprint assignments and governance frameworks",
-        "Azure Management Groups: Hierarchical policy assignment and inheritance",
-        "Azure Resource Graph: Policy compliance queries and resource analysis"
-      ],
-      "policyEnforcementMonitoring": [
-        "Compliance monitoring tools: RSA Archer, ServiceNow GRC compliance dashboards",
-        "Security information management: SIEM policy violation detection and alerting",
-        "Identity governance platforms: SailPoint, Okta policy compliance monitoring",
-        "Configuration management: Chef, Puppet, Ansible compliance automation",
-        "Vulnerability management: Nessus, Qualys policy compliance scanning"
-      ],
-      "trainingAndAwarenessTracking": [
-        "Learning management systems: LMS training completion and assessment tracking",
-        "Security awareness platforms: KnowBe4, Proofpoint security awareness training",
-        "HR systems: Employee training record integration and compliance tracking",
-        "Phishing simulation tools: Simulated phishing campaign results and improvement tracking",
-        "Compliance training platforms: Specialized compliance and regulatory training systems"
-      ],
-      "privacyAndDataProtection": [
-        "Privacy management platforms: OneTrust, TrustArc privacy program management",
-        "Data discovery tools: Microsoft Purview, Varonis data classification and discovery",
-        "Consent management platforms: Automated consent collection and preference management",
-        "Data subject request management: Automated GDPR/CCPA request processing systems",
-        "Privacy impact assessment tools: Automated privacy risk assessment and documentation"
-      ]
-    },
-    "complianceFrameworks": {
-      "fedramp": {
-        "PL-1": "Security Planning Policy and Procedures",
-        "PM-1": "Information Security Program Plan",
-        "SA-5": "Information System Documentation",
-        "AT-1": "Security Awareness and Training Policy and Procedures",
-        "SI-5": "Security Alerts, Advisories, and Directives"
-      },
-      "nist80053": {
-        "PL-1": "Security Planning Policy and Procedures",
-        "PM-1": "Information Security Program Plan",
-        "SA-5": "Information System Documentation",
-        "AT-1": "Security Awareness and Training Policy and Procedures",
-        "SI-5": "Security Alerts, Advisories, and Directives",
-        "PT-1": "Privacy Authorization"
-      },
-      "iso27001": {
-        "A.5.1.1": "Policies for information security",
-        "A.5.1.2": "Review of the policies for information security",
-        "A.7.2.2": "Information security awareness, education and training",
-        "A.18.1.1": "Identification of applicable legislation and contractual requirements"
-      }
-    }
+    ]
   }
 }

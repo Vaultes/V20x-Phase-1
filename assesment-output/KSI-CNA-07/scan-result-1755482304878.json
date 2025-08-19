@@ -1,0 +1,407 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-CNA-07",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 4,
+      "passed": 3,
+      "failed": 1,
+      "warnings": 0
+    },
+    "cloudNativeBestPractices": {
+      "security": [
+        "Use Azure Active Directory for authentication",
+        "Implement private endpoints for network isolation",
+        "Enable encryption at rest and in transit",
+        "Apply principle of least privilege access",
+        "Use managed identities instead of connection strings",
+        "Enable audit logging and monitoring"
+      ],
+      "reliability": [
+        "Configure multi-region deployment",
+        "Implement automated backups and disaster recovery",
+        "Use auto-scaling and load balancing",
+        "Set up health monitoring and alerting",
+        "Configure retry policies and circuit breakers"
+      ],
+      "performance": [
+        "Optimize data partitioning strategies",
+        "Implement caching layers",
+        "Use appropriate service tiers",
+        "Configure performance monitoring",
+        "Implement query optimization"
+      ],
+      "costOptimization": [
+        "Use reserved capacity for predictable workloads",
+        "Implement auto-scaling to match demand",
+        "Configure lifecycle policies for data tiering",
+        "Monitor and optimize resource utilization",
+        "Use serverless options where appropriate"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "applicableControls": [
+          "SC-7 (Boundary Protection)",
+          "SC-13 (Cryptographic Protection)",
+          "IA-2 (Identification and Authentication)",
+          "AU-2 (Auditable Events)",
+          "CP-9 (Information System Backup)"
+        ]
+      },
+      "cloudSecurityAlliance": {
+        "domains": [
+          "Data Security and Encryption",
+          "Identity and Access Management",
+          "Infrastructure Security",
+          "Application Security"
+        ]
+      }
+    },
+    "detectionMethods": {
+      "azureNativeTools": [
+        "Azure Advisor for best practice recommendations",
+        "Azure Security Center for security posture",
+        "Azure Monitor for performance metrics",
+        "Azure Policy for compliance validation"
+      ],
+      "automatedScanning": [
+        "Azure Resource Graph queries for configuration validation",
+        "PowerShell/CLI scripts for bulk assessment",
+        "ARM template analysis for infrastructure as code",
+        "Azure DevOps pipeline integration for continuous validation"
+      ]
+    },
+    "checks": [
+      {
+        "checkId": "CNA-07-001",
+        "name": "Azure Cosmos DB Best Practices Implementation",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Cosmos DB should follow cloud-native best practices for security, performance, and cost optimization",
+        "findings": {
+          "security": {
+            "networkAccess": {
+              "publicNetworkAccess": "Disabled",
+              "privateEndpoints": [
+                {
+                  "name": "cosmos-private-endpoint",
+                  "subnet": "/subscriptions/12345/resourceGroups/fedramp-rg/providers/Microsoft.Network/virtualNetworks/fedramp-vnet/subnets/data-subnet"
+                }
+              ]
+            },
+            "authentication": {
+              "authMethod": "Azure Active Directory",
+              "keyBasedAuth": "Disabled",
+              "rbacEnabled": true
+            },
+            "encryption": {
+              "encryptionAtRest": true,
+              "encryptionInTransit": true,
+              "customerManagedKeys": true,
+              "keyVault": "/subscriptions/12345/resourceGroups/fedramp-rg/providers/Microsoft.KeyVault/vaults/fedramp20x-keyvault"
+            }
+          },
+          "performance": {
+            "consistencyLevel": "Session",
+            "multiRegion": {
+              "enabled": true,
+              "regions": [
+                "East US",
+                "West US 2"
+              ],
+              "writeRegions": 1,
+              "readRegions": 2
+            },
+            "throughputProvisioning": {
+              "mode": "Autoscale",
+              "maxRU": 4000,
+              "minRU": 400
+            }
+          },
+          "availability": {
+            "multiMaster": false,
+            "automaticFailover": true,
+            "backupPolicy": {
+              "type": "Continuous",
+              "retentionPeriod": "P30D"
+            }
+          },
+          "monitoring": {
+            "diagnosticSettings": {
+              "enabled": true,
+              "logCategories": [
+                "DataPlaneRequests",
+                "QueryRuntimeStatistics",
+                "PartitionKeyStatistics"
+              ],
+              "destination": "Log Analytics"
+            },
+            "alerts": [
+              {
+                "name": "HighRequestCharge",
+                "metric": "TotalRequestUnits",
+                "threshold": 1000,
+                "frequency": "PT5M"
+              }
+            ]
+          }
+        },
+        "bestPracticesValidation": {
+          "partitioningStrategy": "COMPLIANT - Using effective partition key",
+          "indexingPolicy": "OPTIMIZED - Custom indexing for query patterns",
+          "requestUnitOptimization": "EFFICIENT - Auto-scaling enabled",
+          "crossRegionReplication": "CONFIGURED - Multi-region setup",
+          "securityPosture": "HARDENED - AAD auth, private endpoints"
+        },
+        "remediation": "Cosmos DB properly configured following cloud-native best practices",
+        "checkType": "cloudNativeResourc"
+      },
+      {
+        "checkId": "CNA-07-002",
+        "name": "Azure Service Bus Enterprise Messaging Best Practices",
+        "status": "PASS",
+        "severity": "MEDIUM",
+        "description": "Service Bus should implement cloud-native messaging patterns with proper security and reliability",
+        "findings": {
+          "tier": {
+            "pricingTier": "Premium",
+            "messagingUnits": 2,
+            "slaGuarantee": "99.95%"
+          },
+          "security": {
+            "networkAccess": {
+              "publicAccess": "Disabled",
+              "privateEndpoints": true,
+              "ipFiltering": true
+            },
+            "authentication": {
+              "managedIdentity": true,
+              "sharedAccessSignatures": "Disabled",
+              "azureAdIntegration": true
+            },
+            "encryption": {
+              "transitEncryption": true,
+              "atRestEncryption": true,
+              "customerManagedKeys": true
+            }
+          },
+          "messageHandling": {
+            "deadLetterQueues": {
+              "configured": true,
+              "maxDeliveryCount": 3,
+              "ttl": "P14D"
+            },
+            "sessions": {
+              "enabled": true,
+              "sessionTimeout": "PT30M"
+            },
+            "duplicateDetection": {
+              "enabled": true,
+              "detectionWindow": "PT10M"
+            }
+          },
+          "monitoring": {
+            "metricsEnabled": true,
+            "alertRules": [
+              {
+                "name": "DeadLetterMessages",
+                "threshold": 10,
+                "action": "Alert"
+              },
+              {
+                "name": "ActiveMessageCount",
+                "threshold": 1000,
+                "action": "Scale"
+              }
+            ]
+          }
+        },
+        "messagePatterns": {
+          "implementedPatterns": [
+            "Request-Response with correlation ID",
+            "Publish-Subscribe with topics",
+            "Competing Consumers with sessions",
+            "Dead Letter Queue handling"
+          ]
+        },
+        "remediation": "Service Bus properly configured with enterprise messaging best practices",
+        "checkType": "cloudNativeResourc"
+      },
+      {
+        "checkId": "CNA-07-003",
+        "name": "Azure Key Vault Secrets Management Best Practices",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Key Vault should follow cloud-native security best practices for secrets, keys, and certificates",
+        "findings": {
+          "security": {
+            "networkAccess": {
+              "publicAccess": "Disabled",
+              "privateEndpoints": true,
+              "trustedServices": "AzureServices"
+            },
+            "accessControl": {
+              "rbacEnabled": true,
+              "accessPolicies": "Minimal",
+              "principleOfLeastPrivilege": true
+            },
+            "advancedSecurity": {
+              "softDeleteEnabled": true,
+              "purgeProtectionEnabled": true,
+              "retentionDays": 90
+            }
+          },
+          "keyManagement": {
+            "hsmProtection": {
+              "enabled": true,
+              "keyType": "RSA-HSM",
+              "keySize": 2048
+            },
+            "keyRotation": {
+              "automaticRotation": true,
+              "rotationPolicy": "P6M",
+              "notificationEnabled": true
+            }
+          },
+          "certificateManagement": {
+            "autoRenewal": true,
+            "certificateAuthority": "DigiCert",
+            "lifecycleActions": [
+              {
+                "trigger": "DaysBeforeExpiry",
+                "value": 30,
+                "action": "AutoRenew"
+              }
+            ]
+          },
+          "monitoring": {
+            "auditLogging": {
+              "enabled": true,
+              "logDestination": "Log Analytics",
+              "retentionDays": 365
+            },
+            "alerts": [
+              {
+                "name": "UnauthorizedAccess",
+                "condition": "Failed authentication attempts > 5",
+                "action": "Immediate alert"
+              },
+              {
+                "name": "KeyExpiration",
+                "condition": "Days until expiration < 30",
+                "action": "Email notification"
+              }
+            ]
+          }
+        },
+        "bestPracticesValidation": {
+          "secretsManagement": "COMPLIANT - No hardcoded secrets in application",
+          "accessPatterns": "SECURE - Managed identity authentication",
+          "secretRotation": "AUTOMATED - 6-month rotation policy",
+          "auditTrail": "COMPREHENSIVE - All access logged and monitored"
+        },
+        "remediation": "Key Vault properly configured following security best practices",
+        "checkType": "cloudNativeResourc"
+      },
+      {
+        "checkId": "CNA-07-004",
+        "name": "Azure SQL Database Configuration Issues",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "SQL Database should follow cloud-native best practices for security, performance, and cost optimization",
+        "findings": {
+          "security": {
+            "authentication": {
+              "azureAdAuthEnabled": false,
+              "sqlAuthEnabled": true,
+              "issue": "Using SQL authentication instead of Azure AD authentication"
+            },
+            "networkAccess": {
+              "publicEndpointEnabled": true,
+              "firewallRules": [
+                {
+                  "name": "AllowAll",
+                  "startIpAddress": "0.0.0.0",
+                  "endIpAddress": "255.255.255.255",
+                  "issue": "Overly permissive firewall rule allows access from any IP"
+                }
+              ],
+              "privateEndpoint": false
+            },
+            "encryption": {
+              "transparentDataEncryption": false,
+              "alwaysEncrypted": false,
+              "issue": "Data encryption not enabled"
+            }
+          },
+          "performance": {
+            "serviceTier": "Basic",
+            "computeSize": "5 DTU",
+            "issue": "Basic tier provides no SLA and poor performance"
+          },
+          "backup": {
+            "automatedBackups": true,
+            "backupRetention": "7 days",
+            "pointInTimeRestore": true,
+            "geoRedundantBackup": false,
+            "issue": "No geo-redundant backups configured"
+          },
+          "monitoring": {
+            "diagnosticSettings": false,
+            "queryPerformanceInsights": false,
+            "automaticTuning": false,
+            "issue": "No performance monitoring or optimization enabled"
+          },
+          "compliance": {
+            "advancedDataSecurity": false,
+            "vulnerabilityAssessment": false,
+            "dataDiscoveryClassification": false,
+            "issue": "Missing compliance and security features"
+          }
+        },
+        "vulnerabilityAssessment": {
+          "criticalIssues": [
+            {
+              "finding": "Public internet access enabled",
+              "risk": "Data exposure and unauthorized access",
+              "severity": "CRITICAL"
+            },
+            {
+              "finding": "No data encryption",
+              "risk": "Data at rest is not protected",
+              "severity": "HIGH"
+            },
+            {
+              "finding": "SQL authentication enabled",
+              "risk": "Weak authentication mechanism",
+              "severity": "HIGH"
+            }
+          ]
+        },
+        "complianceGaps": [
+          {
+            "requirement": "FedRAMP SC-13 (Cryptographic Protection)",
+            "status": "NON_COMPLIANT",
+            "issue": "Transparent Data Encryption not enabled"
+          },
+          {
+            "requirement": "FedRAMP IA-2 (Identification and Authentication)",
+            "status": "NON_COMPLIANT",
+            "issue": "Not using Azure AD authentication"
+          },
+          {
+            "requirement": "FedRAMP SC-7 (Boundary Protection)",
+            "status": "NON_COMPLIANT",
+            "issue": "Overly permissive network access"
+          }
+        ],
+        "remediation": "CRITICAL: 1) Enable Azure AD authentication and disable SQL auth, 2) Configure private endpoint and remove public access, 3) Enable Transparent Data Encryption, 4) Upgrade to Standard/Premium tier, 5) Enable geo-redundant backups, 6) Configure diagnostic settings and monitoring, 7) Enable Advanced Data Security features, 8) Implement restrictive firewall rules",
+        "checkType": "cloudNativeResourc"
+      }
+    ]
+  }
+}

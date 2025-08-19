@@ -1,0 +1,224 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-CNA-03",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 2,
+      "passed": 1,
+      "failed": 1,
+      "warnings": 0
+    },
+    "trafficFlowControls": [
+      {
+        "checkId": "CNA-03-001",
+        "name": "Application Gateway Traffic Flow Validation",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Validate that traffic flows through proper security controls and WAF",
+        "findings": {
+          "trafficFlow": {
+            "inbound": {
+              "source": "Internet",
+              "destination": "Application Gateway",
+              "port": "443",
+              "protocol": "HTTPS",
+              "encrypted": true
+            },
+            "backend": {
+              "source": "Application Gateway",
+              "destination": "Container Instance",
+              "port": "8080",
+              "protocol": "HTTP",
+              "privateNetwork": true
+            }
+          },
+          "securityControls": {
+            "wafEnabled": true,
+            "wafMode": "Prevention",
+            "wafRuleSet": "OWASP 3.2",
+            "sslTermination": true,
+            "certificateValidation": true,
+            "httpToHttpsRedirect": true
+          },
+          "networkPolicies": {
+            "frontendSubnet": {
+              "nsgRules": [
+                {
+                  "name": "AllowHTTPS",
+                  "priority": 100,
+                  "direction": "Inbound",
+                  "access": "Allow",
+                  "protocol": "Tcp",
+                  "sourceAddressPrefix": "Internet",
+                  "sourcePortRange": "*",
+                  "destinationAddressPrefix": "10.0.1.0/24",
+                  "destinationPortRange": "443"
+                }
+              ]
+            },
+            "backendSubnet": {
+              "nsgRules": [
+                {
+                  "name": "AllowAppGateway",
+                  "priority": 100,
+                  "direction": "Inbound",
+                  "access": "Allow",
+                  "protocol": "Tcp",
+                  "sourceAddressPrefix": "10.0.1.0/24",
+                  "sourcePortRange": "*",
+                  "destinationAddressPrefix": "10.0.2.0/24",
+                  "destinationPortRange": "8080"
+                }
+              ]
+            }
+          },
+          "validation": {
+            "endToEndEncryption": true,
+            "unauthorizedAccessBlocked": true,
+            "maliciousTrafficFiltered": true,
+            "complianceValidated": true
+          }
+        },
+        "testResults": {
+          "penetrationTest": {
+            "sqlInjectionBlocked": true,
+            "xssAttackBlocked": true,
+            "directBackendAccessDenied": true
+          },
+          "connectivityTest": {
+            "httpsConnectionSuccessful": true,
+            "httpConnectionRedirected": true,
+            "unauthorizedPortsBlocked": true
+          }
+        },
+        "remediation": "Traffic flow controls are properly configured and validated"
+      },
+      {
+        "checkId": "CNA-03-002",
+        "name": "Container Network Policy Enforcement",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Validate that container-to-container traffic is properly controlled",
+        "findings": {
+          "networkConfiguration": {
+            "virtualNetwork": "fedramp-vnet",
+            "subnet": "container-subnet",
+            "subnetAddressPrefix": "10.0.3.0/24",
+            "publicIpAssigned": true,
+            "publicIpAddress": "20.22.24.26"
+          },
+          "exposedServices": [
+            {
+              "containerName": "web-app",
+              "port": 3000,
+              "protocol": "TCP",
+              "exposure": "Public",
+              "issue": "Application exposed directly to internet without WAF protection"
+            },
+            {
+              "containerName": "api-service",
+              "port": 8080,
+              "protocol": "TCP",
+              "exposure": "Public",
+              "issue": "API service should only be accessible from web tier"
+            }
+          ],
+          "networkPolicies": {
+            "ingressRules": [],
+            "egressRules": [],
+            "issue": "No network policies defined for container group"
+          },
+          "securityGroups": {
+            "associatedNSG": "container-nsg",
+            "rules": [
+              {
+                "name": "AllowAnyInbound",
+                "priority": 100,
+                "direction": "Inbound",
+                "access": "Allow",
+                "protocol": "*",
+                "sourceAddressPrefix": "*",
+                "destinationPortRange": "*",
+                "issue": "Overly permissive rule allows any traffic"
+              }
+            ]
+          },
+          "validation": {
+            "microSegmentationImplemented": false,
+            "zeroTrustPrinciples": false,
+            "lateralMovementPrevented": false
+          }
+        },
+        "testResults": {
+          "accessTest": {
+            "directContainerAccess": true,
+            "bypassedSecurityControls": true,
+            "unauthorizedServiceAccess": true,
+            "issue": "External users can directly access internal services"
+          },
+          "networkScan": {
+            "openPorts": [
+              22,
+              3000,
+              8080
+            ],
+            "servicesExposed": [
+              "SSH",
+              "Web App",
+              "API Service"
+            ],
+            "vulnerableServices": [
+              "SSH (password auth enabled)"
+            ]
+          }
+        },
+        "remediation": "Implement proper network segmentation: 1) Remove public IP from containers, 2) Route traffic through Application Gateway, 3) Implement restrictive NSG rules, 4) Enable network policies for container-to-container communication, 5) Disable SSH access or restrict to management subnet only"
+      }
+    ],
+    "validationMethods": {
+      "networkTopologyAnalysis": {
+        "tool": "Azure Network Watcher",
+        "methods": [
+          "Network topology view",
+          "Connection troubleshoot",
+          "IP flow verify"
+        ]
+      },
+      "trafficAnalysis": {
+        "tool": "NSG Flow Logs",
+        "methods": [
+          "Traffic analytics",
+          "Flow log analysis",
+          "Security rule effectiveness"
+        ]
+      },
+      "penetrationTesting": {
+        "tools": [
+          "OWASP ZAP",
+          "Burp Suite",
+          "Nmap"
+        ],
+        "scope": [
+          "External attack surface",
+          "Internal network segmentation",
+          "Service discovery"
+        ]
+      },
+      "complianceValidation": {
+        "frameworks": [
+          "FedRAMP",
+          "NIST 800-53",
+          "SOC 2"
+        ],
+        "controls": [
+          "SC-7 (Boundary Protection)",
+          "SC-32 (Information System Partitioning)"
+        ]
+      }
+    },
+    "checks": []
+  }
+}

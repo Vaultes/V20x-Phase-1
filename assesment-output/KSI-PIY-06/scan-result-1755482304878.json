@@ -1,0 +1,16 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-PIY-06",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 0,
+      "passed": 0,
+      "failed": 0,
+      "warnings": 0
+    },
+    "checks": []
+  }
+}

@@ -1,0 +1,302 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-CNA-06",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 2,
+      "passed": 1,
+      "failed": 1,
+      "warnings": 0
+    },
+    "highAvailabilityStrategies": {
+      "compute": [
+        "Multiple availability zones deployment",
+        "Auto-scaling policies",
+        "Load balancing across regions",
+        "Health checks and automatic failover",
+        "Premium service tiers with SLA guarantees"
+      ],
+      "storage": [
+        "Zone-Redundant Storage (ZRS) or Geo-Redundant Storage (GRS)",
+        "Cross-region replication",
+        "Point-in-time restore capabilities",
+        "Automated backup schedules",
+        "Lifecycle management policies"
+      ],
+      "networking": [
+        "Traffic Manager for DNS-based failover",
+        "Application Gateway with multiple backends",
+        "Azure Front Door for global load balancing",
+        "Private endpoints for secure connectivity",
+        "Network redundancy across zones"
+      ],
+      "database": [
+        "Always On availability groups",
+        "Read replicas across regions",
+        "Automated backup and restore",
+        "Point-in-time recovery",
+        "Failover groups for disaster recovery"
+      ]
+    },
+    "rtoRpoTargets": {
+      "fedrampRequirements": {
+        "rto": "4 hours",
+        "rpo": "1 hour",
+        "availabilityTarget": "99.9%"
+      },
+      "currentConfiguration": {
+        "appService": {
+          "rto": "30 minutes",
+          "rpo": "15 minutes",
+          "availability": "99.95%",
+          "status": "COMPLIANT"
+        },
+        "storage": {
+          "rto": "Unknown",
+          "rpo": "Potentially infinite",
+          "availability": "99.9%",
+          "status": "NON_COMPLIANT"
+        }
+      }
+    },
+    "detectionMethods": {
+      "azureTools": [
+        "Azure Monitor for availability metrics",
+        "Azure Service Health for service status",
+        "Azure Advisor for HA recommendations",
+        "Azure Site Recovery for DR planning"
+      ],
+      "powershellCommands": [
+        "Get-AzWebApp | Select-Object -ExpandProperty SiteConfig",
+        "Get-AzStorageAccount | Select-Object -Property StorageAccountName, SkuName",
+        "Get-AzTrafficManagerProfile"
+      ],
+      "azureCLICommands": [
+        "az webapp show --query 'availabilityState'",
+        "az storage account show --query 'sku.name'",
+        "az monitor autoscale show"
+      ]
+    },
+    "checks": [
+      {
+        "checkId": "CNA-06-001",
+        "name": "App Service High Availability Configuration",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "App Service should be configured for high availability with proper scaling and disaster recovery",
+        "findings": {
+          "serviceTier": {
+            "pricingTier": "Premium V3",
+            "supportsSLA": true,
+            "slaPercentage": "99.95%",
+            "multipleInstances": true
+          },
+          "scaling": {
+            "autoScaleEnabled": true,
+            "minimumInstances": 3,
+            "maximumInstances": 10,
+            "scaleRules": [
+              {
+                "metricName": "CpuPercentage",
+                "threshold": 70,
+                "scaleAction": "Increase",
+                "instanceCount": 1,
+                "cooldown": "PT5M"
+              },
+              {
+                "metricName": "HttpQueueLength",
+                "threshold": 100,
+                "scaleAction": "Increase",
+                "instanceCount": 2,
+                "cooldown": "PT3M"
+              }
+            ]
+          },
+          "availabilityZones": {
+            "enabled": true,
+            "zones": [
+              "1",
+              "2",
+              "3"
+            ],
+            "zoneRedundant": true
+          },
+          "loadBalancing": {
+            "trafficManager": {
+              "enabled": true,
+              "routingMethod": "Performance",
+              "endpoints": [
+                {
+                  "name": "primary-region",
+                  "location": "East US",
+                  "priority": 1,
+                  "weight": 100
+                },
+                {
+                  "name": "secondary-region",
+                  "location": "West US 2",
+                  "priority": 2,
+                  "weight": 0
+                }
+              ]
+            }
+          },
+          "backupAndRestore": {
+            "automaticBackup": {
+              "enabled": true,
+              "frequency": "Daily",
+              "retentionDays": 30,
+              "lastBackup": "2025-08-16T23:00:00.000Z"
+            },
+            "pointInTimeRestore": {
+              "enabled": true,
+              "retentionPeriod": "35 days"
+            }
+          },
+          "healthMonitoring": {
+            "healthCheckPath": "/health",
+            "healthCheckInterval": "PT1M",
+            "healthCheckTimeout": "PT30S",
+            "unhealthyThreshold": 3,
+            "healthyThreshold": 2
+          },
+          "disasterRecovery": {
+            "secondaryRegion": "West US 2",
+            "replicationMethod": "Active-Passive",
+            "rpoMinutes": 15,
+            "rtoMinutes": 30,
+            "failoverTesting": {
+              "lastTest": "2025-07-15T10:00:00.000Z",
+              "testResult": "SUCCESS",
+              "failoverTime": "25 minutes"
+            }
+          }
+        },
+        "testResults": {
+          "availabilityTests": [
+            {
+              "test": "Zone failure simulation",
+              "result": "PASS",
+              "details": "Service remained available during zone 1 outage",
+              "downtime": "0 seconds"
+            },
+            {
+              "test": "Auto-scaling validation",
+              "result": "PASS",
+              "details": "Successfully scaled from 3 to 8 instances under load",
+              "responseTime": "2 minutes"
+            },
+            {
+              "test": "Backup restore validation",
+              "result": "PASS",
+              "details": "Backup restored successfully to test environment",
+              "restoreTime": "12 minutes"
+            }
+          ]
+        },
+        "remediation": "High availability properly configured and validated",
+        "checkType": "highAvailabilit"
+      },
+      {
+        "checkId": "CNA-06-002",
+        "name": "Storage Account Redundancy and Recovery Configuration",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Storage accounts should be configured with appropriate redundancy and disaster recovery options",
+        "findings": {
+          "redundancy": {
+            "replicationType": "LRS",
+            "issue": "Locally Redundant Storage provides no protection against datacenter failures",
+            "recommendedType": "ZRS or GRS",
+            "riskLevel": "HIGH"
+          },
+          "availability": {
+            "currentSLA": "99.9%",
+            "targetSLA": "99.99%",
+            "availabilityZones": false,
+            "issue": "Single availability zone deployment"
+          },
+          "backup": {
+            "blobBackup": {
+              "enabled": false,
+              "issue": "No backup configured for blob data"
+            },
+            "pointInTimeRestore": {
+              "enabled": false,
+              "issue": "Cannot restore to specific point in time"
+            },
+            "softDelete": {
+              "enabled": true,
+              "retentionDays": 7,
+              "issue": "Retention period too short for compliance requirements"
+            }
+          },
+          "disasterRecovery": {
+            "crossRegionReplication": false,
+            "secondaryRegion": null,
+            "failoverCapability": false,
+            "issue": "No disaster recovery plan for storage data"
+          },
+          "monitoring": {
+            "metricsEnabled": false,
+            "alerting": false,
+            "issue": "No monitoring for storage availability or performance"
+          },
+          "accessTiers": {
+            "hotTier": "100%",
+            "coolTier": "0%",
+            "archiveTier": "0%",
+            "issue": "All data in expensive hot tier - no cost optimization"
+          }
+        },
+        "vulnerabilityAssessment": {
+          "dataLossRisk": "HIGH",
+          "availabilityRisk": "HIGH",
+          "recoveryRisk": "CRITICAL",
+          "potentialImpacts": [
+            "Complete data loss in case of datacenter failure",
+            "Extended downtime during infrastructure issues",
+            "Non-compliance with FedRAMP RTO/RPO requirements",
+            "No ability to recover from accidental deletions"
+          ]
+        },
+        "complianceGaps": [
+          {
+            "requirement": "FedRAMP CP-9 (Information System Backup)",
+            "status": "NON_COMPLIANT",
+            "issue": "Inadequate backup and restore capabilities"
+          },
+          {
+            "requirement": "FedRAMP CP-10 (Information System Recovery)",
+            "status": "NON_COMPLIANT",
+            "issue": "No disaster recovery plan or testing"
+          }
+        ],
+        "testResults": {
+          "failureSimulation": [
+            {
+              "scenario": "Datacenter outage simulation",
+              "result": "FAIL",
+              "impact": "Complete service unavailability - no failover capability"
+            },
+            {
+              "scenario": "Accidental blob deletion",
+              "result": "PARTIAL",
+              "impact": "Data recoverable only within 7-day soft delete window"
+            },
+            {
+              "scenario": "Regional disaster simulation",
+              "result": "FAIL",
+              "impact": "Complete data loss - no cross-region replication"
+            }
+          ]
+        },
+        "remediation": "CRITICAL: 1) Upgrade to Zone-Redundant Storage (ZRS) or Geo-Redundant Storage (GRS), 2) Enable blob backup with appropriate retention, 3) Configure point-in-time restore, 4) Implement cross-region replication, 5) Set up monitoring and alerting, 6) Extend soft delete retention to 30+ days, 7) Implement lifecycle management policies, 8) Conduct regular disaster recovery testing",
+        "checkType": "highAvailabilit"
+      }
+    ]
+  }
+}

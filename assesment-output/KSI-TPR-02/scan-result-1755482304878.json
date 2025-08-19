@@ -1,0 +1,422 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-TPR-02",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 5,
+      "passed": 2,
+      "failed": 3,
+      "warnings": 0
+    },
+    "fedrampAuthorizationVerificationMethods": {
+      "marketplaceValidation": [
+        "FedRAMP Marketplace API: Automated service authorization status checking",
+        "P-ATO validation: Agency provisional authorization verification",
+        "Authorization scope verification: Service boundary and federal data handling validation",
+        "Continuous monitoring: Daily marketplace synchronization and status updates",
+        "Authorization expiration tracking: Automated renewal notification and compliance reporting"
+      ],
+      "serviceConfigurationValidation": [
+        "Azure Security Center: Security baseline compliance assessment and configuration validation",
+        "Azure Policy: Automated compliance checking against FedRAMP control requirements",
+        "CIS Benchmark scanning: Center for Internet Security baseline validation",
+        "Configuration drift detection: Continuous monitoring for unauthorized configuration changes",
+        "Security posture management: Comprehensive security configuration assessment"
+      ],
+      "unauthorizedServiceDetection": [
+        "Network traffic analysis: Deep packet inspection and flow analysis for unauthorized endpoints",
+        "DNS monitoring: Query analysis for unauthorized domain resolution",
+        "Cloud Access Security Broker (CASB): Real-time SaaS application usage monitoring",
+        "API call monitoring: Application-level third-party service usage tracking",
+        "Data loss prevention (DLP): Federal information transfer detection to unauthorized services"
+      ],
+      "dataFlowAnalysisAndClassification": [
+        "Data classification tools: Automated federal information identification and tagging",
+        "Network traffic analysis: Data flow mapping and federal information tracking",
+        "Content inspection: Deep content analysis for PII, CUI, and federal data detection",
+        "Database activity monitoring: Federal information access and transfer tracking",
+        "Application performance monitoring: Third-party service data transmission analysis"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "SA-9": "External Information System Services",
+        "SA-9(1)": "Risk Assessments / Updates",
+        "SA-9(2)": "Identification of Functions / Ports / Protocols / Services",
+        "SA-9(4)": "Consistent Interests in Personnel",
+        "SA-9(5)": "Processing, Storage, and Service Location"
+      },
+      "nist80053": {
+        "SA-9": "External Information System Services",
+        "SA-9(1)": "Risk Assessments / Updates",
+        "SA-9(2)": "Identification of Functions / Ports / Protocols / Services",
+        "SA-9(4)": "Consistent Interests in Personnel",
+        "SA-9(5)": "Processing, Storage, and Service Location",
+        "PM-30": "Supply Chain Risk Management Strategy"
+      },
+      "iso27001": {
+        "A.15.1.1": "Information security policy for supplier relationships",
+        "A.15.1.2": "Addressing security within supplier agreements",
+        "A.15.2.1": "Monitoring and review of supplier services",
+        "A.15.2.2": "Managing changes to supplier services"
+      }
+    },
+    "checks": [
+      {
+        "checkId": "TPR-02-001",
+        "name": "FedRAMP Marketplace Authorization Verification",
+        "status": "PASS",
+        "severity": "CRITICAL",
+        "description": "All cloud services handling federal information should be verified against the FedRAMP Marketplace",
+        "findings": {
+          "fedrampMarketplaceValidation": {
+            "totalCloudServices": 28,
+            "fedrampAuthorizedServices": 23,
+            "unauthorizedServices": 5,
+            "marketplaceVerificationTimestamp": "2025-08-17T06:00:00.000Z",
+            "authorizedServiceDetails": [
+              {
+                "serviceName": "Microsoft Azure",
+                "provider": "Microsoft Corporation",
+                "authorizationLevel": "FedRAMP High",
+                "authorizationDate": "2014-05-12",
+                "expirationDate": "2025-05-12",
+                "p-ato": "DoD",
+                "leveragedAtos": 147,
+                "marketplaceUrl": "https://marketplace.fedramp.gov/products/F1603037516"
+              },
+              {
+                "serviceName": "Azure Government",
+                "provider": "Microsoft Corporation",
+                "authorizationLevel": "FedRAMP High",
+                "authorizationDate": "2014-12-22",
+                "expirationDate": "2025-12-22",
+                "p-ato": "DISA",
+                "leveragedAtos": 89,
+                "marketplaceUrl": "https://marketplace.fedramp.gov/products/F1603037516"
+              }
+            ],
+            "unauthorizedServiceDetails": [
+              {
+                "serviceName": "Slack",
+                "provider": "Slack Technologies",
+                "authorizationStatus": "Not Authorized",
+                "riskLevel": "HIGH",
+                "federalDataExposure": "Potential communication data"
+              },
+              {
+                "serviceName": "Dropbox Business",
+                "provider": "Dropbox Inc.",
+                "authorizationStatus": "Not Authorized",
+                "riskLevel": "CRITICAL",
+                "federalDataExposure": "File storage and sharing"
+              }
+            ]
+          },
+          "authorizationStatusTracking": {
+            "authorizationExpirationMonitoring": {
+              "servicesNearExpiration": 3,
+              "servicesExpired": 0,
+              "expirationAlertThreshold": "90 days",
+              "lastExpirationCheck": "2025-08-17T06:00:00.000Z"
+            },
+            "continuousAuthorizationMonitoring": {
+              "dailyMarketplaceChecks": true,
+              "authorizationChangeAlerts": true,
+              "newServiceDetectionAlerts": true,
+              "automatedComplianceReporting": true
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "FedRAMP Marketplace authorization verification",
+            "result": "COMPLIANT",
+            "details": "23 of 28 cloud services are FedRAMP authorized with current valid authorizations"
+          },
+          {
+            "test": "Authorization expiration monitoring",
+            "result": "PROACTIVE",
+            "details": "3 services identified nearing expiration with automated alerting enabled"
+          },
+          {
+            "test": "Continuous authorization status tracking",
+            "result": "COMPREHENSIVE",
+            "details": "Daily marketplace validation with automated compliance reporting"
+          }
+        ],
+        "remediation": "FedRAMP authorization verification comprehensively implemented with proactive monitoring",
+        "checkType": "fedrampAuthorizationVerificatio"
+      },
+      {
+        "checkId": "TPR-02-002",
+        "name": "Service Configuration Security Validation",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "FedRAMP authorized services should be configured according to security baselines and best practices",
+        "findings": {
+          "azureServiceConfigurations": {
+            "azureAppService": {
+              "httpsOnlyEnabled": true,
+              "minTlsVersion": "1.2",
+              "clientCertificateEnabled": true,
+              "authenticationEnabled": true,
+              "diagnosticLogsEnabled": true,
+              "securityBaselineCompliance": "96.7%",
+              "configurationValidationTimestamp": "2025-08-17T05:30:00.000Z"
+            },
+            "azureSqlDatabase": {
+              "transparentDataEncryptionEnabled": true,
+              "advancedDataSecurityEnabled": true,
+              "auditingEnabled": true,
+              "threatDetectionEnabled": true,
+              "vulnerabilityAssessmentEnabled": true,
+              "securityBaselineCompliance": "98.2%",
+              "configurationValidationTimestamp": "2025-08-17T05:30:00.000Z"
+            },
+            "azureKeyVault": {
+              "softDeleteEnabled": true,
+              "purgeProtectionEnabled": true,
+              "accessPoliciesConfigured": true,
+              "networkAccessRestricted": true,
+              "diagnosticLogsEnabled": true,
+              "securityBaselineCompliance": "100.0%",
+              "configurationValidationTimestamp": "2025-08-17T05:30:00.000Z"
+            }
+          },
+          "configurationComplianceMetrics": {
+            "totalManagedServices": 23,
+            "compliantServices": 21,
+            "nonCompliantServices": 2,
+            "compliancePercentage": "91.3%",
+            "criticalMisconfigurations": 3,
+            "highRiskMisconfigurations": 7,
+            "mediumRiskMisconfigurations": 12
+          },
+          "securityBaselineAdherence": {
+            "cisAzureFoundationsBenchmark": "89.4%",
+            "azureSecurityBenchmark": "93.7%",
+            "nistCybersecurityFramework": "87.8%",
+            "fedrampSecurityBaseline": "91.3%"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Azure service security configuration validation",
+            "result": "STRONG",
+            "details": "91.3% configuration compliance across 23 managed services with automated validation"
+          },
+          {
+            "test": "Security baseline adherence assessment",
+            "result": "COMPLIANT",
+            "details": "Strong adherence to CIS, Azure Security Benchmark, and FedRAMP baselines"
+          },
+          {
+            "test": "Critical misconfiguration detection",
+            "result": "CONTROLLED",
+            "details": "3 critical misconfigurations identified with 7 high-risk issues under remediation"
+          }
+        ],
+        "remediation": "Service configuration security comprehensively validated with strong baseline adherence",
+        "checkType": "fedrampAuthorizationVerificatio"
+      },
+      {
+        "checkId": "TPR-02-003",
+        "name": "Unauthorized Service Usage Detection",
+        "status": "FAIL",
+        "severity": "CRITICAL",
+        "description": "Non-FedRAMP authorized services are being used to handle federal information",
+        "findings": {
+          "unauthorizedServiceUsage": {
+            "detectedUnauthorizedServices": 5,
+            "federalDataExposureServices": 3,
+            "highRiskUnauthorizedServices": 2,
+            "mediumRiskUnauthorizedServices": 2,
+            "lowRiskUnauthorizedServices": 1,
+            "unauthorizedServiceDetails": [
+              {
+                "serviceName": "Slack Workspace",
+                "endpoint": "https://company.slack.com",
+                "detectionMethod": "Network traffic analysis",
+                "federalDataExposure": "Internal communications, project discussions",
+                "riskLevel": "HIGH",
+                "userCount": 34,
+                "dataVolume": "2.3 GB over 30 days",
+                "complianceGap": "No FedRAMP authorization"
+              },
+              {
+                "serviceName": "Dropbox Business",
+                "endpoint": "https://api.dropboxapi.com",
+                "detectionMethod": "API call monitoring",
+                "federalDataExposure": "Document storage and sharing",
+                "riskLevel": "CRITICAL",
+                "userCount": 12,
+                "dataVolume": "15.7 GB over 30 days",
+                "complianceGap": "No FedRAMP authorization, PII storage"
+              },
+              {
+                "serviceName": "GitHub Public Repositories",
+                "endpoint": "https://api.github.com",
+                "detectionMethod": "Git repository analysis",
+                "federalDataExposure": "Source code, configuration files",
+                "riskLevel": "MEDIUM",
+                "userCount": 23,
+                "dataVolume": "500 MB over 30 days",
+                "complianceGap": "Public repository exposure"
+              }
+            ]
+          },
+          "dataClassificationAnalysis": {
+            "federalInformationTypes": [
+              "Personally Identifiable Information (PII)",
+              "Controlled Unclassified Information (CUI)",
+              "Internal communications",
+              "Technical specifications",
+              "Configuration data"
+            ],
+            "unauthorizedDataExposure": {
+              "piiExposure": "12.3 MB across 3 services",
+              "cuiExposure": "5.7 MB across 2 services",
+              "technicalDataExposure": "500 MB across 1 service",
+              "communicationDataExposure": "2.3 GB across 1 service"
+            }
+          },
+          "businessJustificationAssessment": {
+            "servicesWithBusinessJustification": 1,
+            "servicesWithoutJustification": 4,
+            "justificationCompleteness": "20.0%",
+            "approvalProcessBypass": 4,
+            "emergencyUsageJustification": 0
+          }
+        },
+        "testResults": [
+          {
+            "test": "Unauthorized service detection and analysis",
+            "result": "CRITICAL_VIOLATIONS",
+            "details": "5 unauthorized services detected with 3 services exposing federal data"
+          },
+          {
+            "test": "Federal data exposure assessment",
+            "result": "SIGNIFICANT_EXPOSURE",
+            "details": "18.5 MB of PII/CUI and 2.8 GB of total federal data exposure"
+          },
+          {
+            "test": "Business justification and approval compliance",
+            "result": "NON_COMPLIANT",
+            "details": "80% of unauthorized services lack proper business justification"
+          }
+        ],
+        "remediation": "CRITICAL: 1) Immediately discontinue use of Dropbox Business and migrate data to FedRAMP authorized storage, 2) Assess and migrate Slack communications to Microsoft Teams (FedRAMP authorized), 3) Review GitHub public repositories for federal data exposure and migrate to private repositories, 4) Implement data loss prevention (DLP) policies to prevent federal data upload to unauthorized services, 5) Establish mandatory pre-approval workflow for all cloud service usage, 6) Deploy Cloud Access Security Broker (CASB) for real-time unauthorized service detection",
+        "checkType": "fedrampAuthorizationVerificatio"
+      },
+      {
+        "checkId": "TPR-02-004",
+        "name": "Service Authorization Monitoring Gaps",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Continuous monitoring of service authorization status lacks comprehensive coverage and automation",
+        "findings": {
+          "monitoringCoverageGaps": {
+            "monitoredServices": 18,
+            "unmonitoredServices": 10,
+            "monitoringCoverage": "64.3%",
+            "automatedMonitoringServices": 12,
+            "manualMonitoringServices": 16,
+            "monitoringAutomationLevel": "42.9%"
+          },
+          "authorizationStatusUpdates": {
+            "lastMarketplaceSync": "2025-08-10T00:00:00.000Z",
+            "syncFrequency": "Weekly",
+            "missedSyncCount": 3,
+            "authorizationStatusLag": "7 days",
+            "outdatedAuthorizationRecords": 8
+          },
+          "alertingAndNotificationGaps": {
+            "authorizationExpirationAlerts": "Manual process",
+            "newServiceDetectionAlerts": "Limited coverage",
+            "unauthorizedServiceAlerts": "Basic email notifications",
+            "complianceViolationEscalation": "Manual escalation",
+            "stakeholderNotificationCoverage": "65.0%"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Service authorization monitoring coverage assessment",
+            "result": "INSUFFICIENT",
+            "details": "64.3% monitoring coverage with 42.9% automation level"
+          },
+          {
+            "test": "Authorization status update frequency validation",
+            "result": "DELAYED",
+            "details": "7-day authorization status lag with 3 missed sync cycles"
+          },
+          {
+            "test": "Alerting and notification effectiveness evaluation",
+            "result": "BASIC",
+            "details": "Manual alerting processes with 65% stakeholder notification coverage"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Implement automated monitoring for all 28 cloud services with real-time FedRAMP status checking, 2) Increase marketplace synchronization to daily frequency with automated failure alerting, 3) Deploy comprehensive alerting system for authorization changes, expirations, and violations, 4) Establish automated compliance reporting with stakeholder distribution, 5) Implement predictive analytics for authorization renewal planning, 6) Deploy real-time dashboard for service authorization status visibility",
+        "checkType": "fedrampAuthorizationVerificatio"
+      },
+      {
+        "checkId": "TPR-02-005",
+        "name": "Data Flow Analysis and Federal Information Identification",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Data flows to third-party services lack comprehensive analysis to identify federal information handling",
+        "findings": {
+          "dataFlowMapping": {
+            "totalDataFlows": 156,
+            "mappedDataFlows": 89,
+            "unmappedDataFlows": 67,
+            "dataFlowMappingCoverage": "57.1%",
+            "federalDataFlows": 34,
+            "commercialDataFlows": 55,
+            "unknownDataFlows": 67
+          },
+          "federalInformationClassification": {
+            "classifiedDataFlows": 34,
+            "unclassifiedDataFlows": 89,
+            "pendingClassification": 33,
+            "classificationAccuracy": "78.2%",
+            "dataClassificationMethods": [
+              "Manual review",
+              "Pattern-based detection",
+              "Content inspection"
+            ]
+          },
+          "dataFlowSecurityAnalysis": {
+            "encryptedDataFlows": 123,
+            "unencryptedDataFlows": 33,
+            "encryptionCoverage": "78.8%",
+            "dataFlowMonitoring": "Basic network monitoring",
+            "dataExfiltrationDetection": "Limited DLP coverage"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Data flow mapping and federal information identification",
+            "result": "INCOMPLETE",
+            "details": "57.1% data flow mapping coverage with 33 pending federal information classifications"
+          },
+          {
+            "test": "Data flow security and encryption analysis",
+            "result": "ADEQUATE",
+            "details": "78.8% encryption coverage with basic monitoring capabilities"
+          },
+          {
+            "test": "Federal data exposure risk assessment",
+            "result": "MODERATE_RISK",
+            "details": "67 unmapped data flows with unknown federal information exposure potential"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Complete data flow mapping for all 156 identified flows with federal information classification, 2) Implement automated data classification using content inspection and machine learning, 3) Deploy comprehensive data loss prevention (DLP) solution with federal data detection, 4) Establish real-time data flow monitoring with anomaly detection, 5) Implement data flow visualization dashboard for compliance officers, 6) Create automated reporting of federal data flows to unauthorized services",
+        "checkType": "fedrampAuthorizationVerificatio"
+      }
+    ]
+  }
+}

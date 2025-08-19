@@ -1,0 +1,733 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-CMT-03",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 6,
+      "passed": 3,
+      "failed": 3,
+      "warnings": 0
+    },
+    "automatedTestingValidationVerificationMethods": {
+      "cicdPipelineTesting": [
+        "Azure DevOps: Pipeline run history and test results analysis",
+        "GitHub Actions: Workflow execution logs and test reports",
+        "Jenkins: Build logs and test result trends",
+        "CI/CD tools: Quality gate execution and approval workflow logs",
+        "Test reporting platforms: Test coverage and execution metrics"
+      ],
+      "infrastructureAsCodeValidation": [
+        "Azure Resource Manager: Template deployment validation results",
+        "Terraform: Plan output analysis and validation logs",
+        "Bicep: Template compilation and validation results",
+        "Infrastructure testing tools: Terratest, Kitchen-Terraform execution logs",
+        "Policy validation: Azure Policy and Terraform Sentinel evaluation results"
+      ],
+      "databaseChangeTesting": [
+        "Database migration tools: Entity Framework migration logs",
+        "Database testing frameworks: tSQLt, DbUnit test execution results",
+        "SQL Server: Query execution plans and performance monitoring",
+        "Database CI/CD: Migration pipeline execution and validation logs",
+        "Database performance testing: Load testing results and analysis"
+      ],
+      "performanceTesting": [
+        "Azure Load Testing: Load test execution results and metrics",
+        "Application Performance Monitoring: APM tools performance baselines",
+        "Performance testing tools: JMeter, LoadRunner execution reports",
+        "Azure Monitor: Application and infrastructure performance correlation",
+        "Performance benchmarking: Historical performance trend analysis"
+      ],
+      "securityTesting": [
+        "Security scanning tools: SAST, DAST, and dependency scanning results",
+        "Azure Security Center: Security recommendations and compliance scores",
+        "Container security: Image scanning results and vulnerability reports",
+        "Penetration testing: Security assessment reports and remediation tracking",
+        "Compliance testing: Regulatory compliance validation results"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "CM-4": "Security Impact Analysis",
+        "SA-11": "Developer Security Testing and Evaluation",
+        "SA-15": "Development Process, Standards, and Tools",
+        "SI-2": "Flaw Remediation",
+        "CA-2": "Security Assessments"
+      },
+      "nist80053": {
+        "CM-4": "Security Impact Analysis",
+        "SA-11": "Developer Security Testing and Evaluation",
+        "SA-15": "Development Process, Standards, and Tools",
+        "SI-2": "Flaw Remediation",
+        "CA-2": "Security Assessments",
+        "SA-3": "System Development Life Cycle"
+      },
+      "iso27001": {
+        "A.14.2.3": "Technical review of applications after operating platform changes",
+        "A.14.2.8": "System security testing",
+        "A.14.1.3": "Protection of application services transactions",
+        "A.12.6.1": "Management of technical vulnerabilities"
+      }
+    },
+    "checks": [
+      {
+        "checkId": "CMT-03-001",
+        "name": "Comprehensive CI/CD Pipeline Testing",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "CI/CD pipelines should implement comprehensive automated testing including unit, integration, and security tests",
+        "findings": {
+          "cicdPipelineConfiguration": {
+            "pipelinesCoverage": {
+              "totalApplications": 45,
+              "applicationsWithCicd": 45,
+              "cicdCoveragePercentage": "100%",
+              "pipelineTypes": [
+                "Build pipelines",
+                "Release pipelines",
+                "Multi-stage pipelines"
+              ],
+              "pipelineComplexity": "Multi-stage with approval gates"
+            },
+            "testingStages": {
+              "unitTestingStage": {
+                "enabled": true,
+                "testCoverageThreshold": "80%",
+                "actualTestCoverage": "87.3%",
+                "testFrameworks": [
+                  "MSTest",
+                  "NUnit",
+                  "Jest",
+                  "Pytest"
+                ],
+                "testExecutionTime": "Average 8 minutes"
+              },
+              "integrationTestingStage": {
+                "enabled": true,
+                "testEnvironmentProvisioning": "Automated",
+                "testDataManagement": "Automated test data generation",
+                "serviceIntegrationTesting": "Comprehensive",
+                "databaseIntegrationTesting": "Automated"
+              },
+              "securityTestingStage": {
+                "staticApplicationSecurityTesting": "SAST with SonarQube",
+                "dynamicApplicationSecurityTesting": "DAST with OWASP ZAP",
+                "dependencyVulnerabilityScanning": "Snyk integration",
+                "secretsScanning": "GitGuardian integration",
+                "containerSecurityScanning": "Aqua Security Trivy"
+              }
+            }
+          },
+          "qualityGatesAndApprovals": {
+            "automatedQualityGates": {
+              "codeQualityGates": "SonarQube quality profiles",
+              "securityQualityGates": "Security vulnerability thresholds",
+              "performanceQualityGates": "Performance degradation thresholds",
+              "testCoverageGates": "Minimum 80% code coverage",
+              "complianceGates": "Automated compliance validation"
+            },
+            "approvalWorkflows": {
+              "peerCodeReviewRequired": true,
+              "securityTeamApprovalRequired": "For high-risk changes",
+              "businessStakeholderApproval": "For feature releases",
+              "automatedApprovalForLowRisk": "Automated for low-risk changes",
+              "emergencyBypassProcedures": "Documented emergency procedures"
+            },
+            "deploymentValidation": {
+              "preDeploymentValidation": "Infrastructure and application validation",
+              "deploymentHealthChecks": "Automated health validation",
+              "postDeploymentValidation": "Functional and performance validation",
+              "rollbackValidation": "Automated rollback testing",
+              "userAcceptanceTesting": "Automated UAT scenarios"
+            }
+          },
+          "testingInfrastructure": {
+            "testEnvironmentManagement": {
+              "ephemeralTestEnvironments": "Automated provisioning and teardown",
+              "testEnvironmentIsolation": "Container-based isolation",
+              "testDataManagement": "Synthetic and masked data",
+              "testEnvironmentScaling": "On-demand scaling",
+              "testEnvironmentSecurity": "Production-equivalent security"
+            },
+            "testAutomationFrameworks": {
+              "webApplicationTesting": "Selenium WebDriver",
+              "apiTesting": "Postman/Newman automation",
+              "performanceTestingFramework": "Azure Load Testing",
+              "mobileApplicationTesting": "Appium framework",
+              "accessibilityTesting": "axe-core integration"
+            }
+          },
+          "testMetricsAndReporting": {
+            "testExecution": {
+              "totalTestsExecuted": 12456,
+              "testSuccessRate": "96.8%",
+              "testExecutionTime": "Average 25 minutes",
+              "flakyTestPercentage": "2.1%",
+              "testFailureAnalysis": "Automated failure categorization"
+            },
+            "defectDetection": {
+              "bugsFoundInTesting": 234,
+              "bugsFoundInProduction": 12,
+              "defectDetectionEfficiency": "95.1%",
+              "criticalDefectsBlocked": 23,
+              "securityVulnerabilitiesBlocked": 45
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "CI/CD pipeline testing comprehensiveness assessment",
+            "result": "COMPREHENSIVE",
+            "details": "100% application coverage with multi-stage testing including unit, integration, and security testing"
+          },
+          {
+            "test": "Quality gates and approval workflow validation",
+            "result": "ROBUST",
+            "details": "Automated quality gates with 87.3% test coverage and comprehensive approval workflows"
+          },
+          {
+            "test": "Test infrastructure and automation framework evaluation",
+            "result": "ADVANCED",
+            "details": "Ephemeral test environments with comprehensive automation frameworks and 96.8% test success rate"
+          }
+        ],
+        "remediation": "Comprehensive CI/CD pipeline testing properly implemented with advanced automation and quality gates",
+        "checkType": "automatedTestingValidatio"
+      },
+      {
+        "checkId": "CMT-03-002",
+        "name": "Infrastructure as Code Validation",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Infrastructure as Code templates should undergo comprehensive validation and testing before deployment",
+        "findings": {
+          "iacValidationFramework": {
+            "templateValidation": {
+              "syntaxValidation": {
+                "armTemplateValidation": "Automated ARM template syntax validation",
+                "bicepTemplateValidation": "Bicep CLI validation",
+                "terraformValidation": "Terraform validate command",
+                "validationSuccessRate": "99.2%",
+                "validationExecutionTime": "Average 2 minutes"
+              },
+              "semanticValidation": {
+                "resourceDependencyValidation": "Automated dependency analysis",
+                "parameterValidation": "Parameter type and constraint validation",
+                "resourceQuotaValidation": "Subscription quota validation",
+                "policyComplianceValidation": "Azure Policy validation",
+                "securityBaselineValidation": "Security baseline compliance"
+              },
+              "deploymentSimulation": {
+                "whatIfAnalysis": "ARM template what-if deployment",
+                "terraformPlanAnalysis": "Terraform plan validation",
+                "resourceImpactAnalysis": "Change impact assessment",
+                "costImpactAnalysis": "Azure Cost Management integration",
+                "performanceImpactAnalysis": "Performance prediction modeling"
+              }
+            },
+            "securityValidation": {
+              "infrastructureSecurityScanning": {
+                "checkovIntegration": "Infrastructure security scanning",
+                "tfsecIntegration": "Terraform security analysis",
+                "azureSecurityCenterIntegration": "ASC recommendation validation",
+                "customSecurityRules": "Organization-specific security rules",
+                "complianceFrameworkValidation": "FedRAMP and NIST compliance"
+              },
+              "accessControlValidation": {
+                "rbacConfigurationValidation": "Role assignment validation",
+                "privilegeEscalationDetection": "Privilege escalation analysis",
+                "networkSecurityValidation": "Network security configuration",
+                "encryptionConfigurationValidation": "Encryption at rest and in transit",
+                "secretsManagementValidation": "Key Vault integration validation"
+              }
+            }
+          },
+          "testingEnvironmentValidation": {
+            "infrastructureTestDeployment": {
+              "testEnvironmentDeployment": "Automated test environment provisioning",
+              "deploymentValidation": "Post-deployment validation scripts",
+              "resourceConfigurationTesting": "Resource configuration verification",
+              "networkConnectivityTesting": "Network connectivity validation",
+              "securityPostureTesting": "Security configuration testing"
+            },
+            "integrationTesting": {
+              "crossResourceIntegrationTesting": "Resource integration validation",
+              "applicationInfrastructureIntegration": "App-infrastructure integration",
+              "dataFlowValidation": "Data flow and connectivity testing",
+              "performanceBaslineTesting": "Infrastructure performance validation",
+              "disasterRecoveryTesting": "DR capability validation"
+            }
+          },
+          "complianceAndGovernanceValidation": {
+            "policyValidation": {
+              "azurePolicyEvaluation": "Policy compliance validation",
+              "organizationalPolicyCompliance": "Custom policy validation",
+              "regulatoryComplianceValidation": "FedRAMP compliance validation",
+              "industryStandardCompliance": "CIS benchmark validation",
+              "securityControlValidation": "NIST 800-53 control validation"
+            },
+            "governanceValidation": {
+              "resourceNamingConventions": "Naming standard validation",
+              "resourceTaggingCompliance": "Tagging policy validation",
+              "costManagementCompliance": "Budget and cost control validation",
+              "environmentSegregation": "Environment isolation validation",
+              "accessControlCompliance": "Access control policy validation"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Infrastructure as Code validation framework assessment",
+            "result": "COMPREHENSIVE",
+            "details": "99.2% validation success rate with syntax, semantic, and security validation across all IaC templates"
+          },
+          {
+            "test": "Testing environment and integration validation evaluation",
+            "result": "ROBUST",
+            "details": "Automated test deployment with comprehensive resource and network connectivity validation"
+          },
+          {
+            "test": "Compliance and governance validation maturity check",
+            "result": "MATURE",
+            "details": "Comprehensive policy validation with FedRAMP compliance and organizational governance standards"
+          }
+        ],
+        "remediation": "Infrastructure as Code validation properly implemented with comprehensive testing and compliance validation",
+        "checkType": "automatedTestingValidatio"
+      },
+      {
+        "checkId": "CMT-03-003",
+        "name": "Database Change Testing and Validation",
+        "status": "PASS",
+        "severity": "MEDIUM",
+        "description": "Database schema changes should undergo comprehensive testing including data integrity and performance validation",
+        "findings": {
+          "databaseChangeValidation": {
+            "migrationTesting": {
+              "migrationScriptValidation": {
+                "syntaxValidation": "SQL syntax validation",
+                "semanticValidation": "Schema dependency validation",
+                "constraintValidation": "Data constraint validation",
+                "indexOptimizationValidation": "Index performance validation",
+                "migrationScriptTesting": "Automated migration testing"
+              },
+              "rollbackTesting": {
+                "rollbackScriptGeneration": "Automated rollback script creation",
+                "rollbackValidation": "Rollback script testing",
+                "dataIntegrityRollbackTesting": "Data integrity after rollback",
+                "performanceRollbackTesting": "Performance after rollback",
+                "rollbackAutomation": "Automated rollback procedures"
+              }
+            },
+            "dataIntegrityTesting": {
+              "dataConsistencyValidation": {
+                "referentialIntegrityTesting": "Foreign key constraint validation",
+                "dataTypeValidation": "Data type consistency testing",
+                "businessRuleValidation": "Business logic constraint testing",
+                "dataQualityValidation": "Data quality assessment",
+                "crossTableConsistencyTesting": "Multi-table consistency validation"
+              },
+              "dataVolumeTesting": {
+                "largeDataSetTesting": "High-volume data testing",
+                "dataMigrationValidation": "Data migration integrity testing",
+                "performanceUnderLoadTesting": "Database performance testing",
+                "concurrencyTesting": "Concurrent access testing",
+                "scalabilityTesting": "Database scalability validation"
+              }
+            }
+          },
+          "performanceValidation": {
+            "queryPerformanceTesting": {
+              "queryExecutionPlanAnalysis": "Query execution optimization",
+              "indexUsageAnalysis": "Index utilization validation",
+              "queryOptimizationTesting": "Query performance optimization",
+              "statisticsUpdateValidation": "Database statistics validation",
+              "performanceBaselineTesting": "Performance baseline comparison"
+            },
+            "loadTesting": {
+              "concurrentUserSimulation": "Multi-user load simulation",
+              "transactionThroughputTesting": "Transaction performance testing",
+              "resourceUtilizationMonitoring": "CPU, memory, and I/O monitoring",
+              "connectionPoolTesting": "Connection pool optimization",
+              "deadlockDetectionTesting": "Deadlock prevention validation"
+            }
+          },
+          "securityAndComplianceValidation": {
+            "securityTesting": {
+              "sqlInjectionTesting": "SQL injection vulnerability testing",
+              "authenticationTesting": "Database authentication validation",
+              "authorizationTesting": "Database authorization testing",
+              "encryptionValidation": "Data encryption validation",
+              "auditingValidation": "Database auditing configuration"
+            },
+            "complianceValidation": {
+              "dataPrivacyCompliance": "GDPR and privacy regulation compliance",
+              "retentionPolicyValidation": "Data retention policy testing",
+              "backupValidation": "Backup and recovery testing",
+              "disasterRecoveryTesting": "DR capability validation",
+              "complianceReportingValidation": "Compliance reporting testing"
+            }
+          },
+          "automationAndOrchestration": {
+            "testDataManagement": {
+              "testDataGeneration": "Synthetic test data creation",
+              "dataSeeding": "Automated test data seeding",
+              "dataMasking": "Sensitive data masking",
+              "testDataRefresh": "Automated data refresh procedures",
+              "dataCleanup": "Post-test data cleanup"
+            },
+            "testOrchestration": {
+              "automatedTestExecution": "CI/CD integrated database testing",
+              "parallelTesting": "Parallel test execution",
+              "testResultAggregation": "Test result consolidation",
+              "testReporting": "Automated test reporting",
+              "testMetricsCollection": "Test performance metrics"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Database migration and rollback testing assessment",
+            "result": "COMPREHENSIVE",
+            "details": "Complete migration testing with automated rollback validation and data integrity checks"
+          },
+          {
+            "test": "Database performance and load testing validation",
+            "result": "ROBUST",
+            "details": "Query performance analysis with concurrent user simulation and resource monitoring"
+          },
+          {
+            "test": "Database security and compliance testing evaluation",
+            "result": "SECURE",
+            "details": "SQL injection testing, encryption validation, and comprehensive compliance testing"
+          }
+        ],
+        "remediation": "Database change testing and validation properly implemented with comprehensive automation and security validation",
+        "checkType": "automatedTestingValidatio"
+      },
+      {
+        "checkId": "CMT-03-004",
+        "name": "Insufficient Performance Testing Coverage",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Performance testing lacks comprehensive coverage across all application tiers and realistic load scenarios",
+        "findings": {
+          "performanceTestingGaps": {
+            "loadTestingCoverage": {
+              "totalApplications": 45,
+              "performanceTestedApplications": 18,
+              "performanceTestingCoverage": "40.0%",
+              "untestedApplications": 27,
+              "loadTestingFrequency": "Quarterly only",
+              "realisticLoadScenarios": "Limited realistic scenarios"
+            },
+            "performanceTestingTypes": {
+              "loadTesting": {
+                "implementedApplications": 18,
+                "expectedLoadSimulation": "Basic load simulation",
+                "peakLoadTesting": "Not systematically tested",
+                "sustainedLoadTesting": "Limited duration testing",
+                "graduatedLoadTesting": "Not implemented"
+              },
+              "stressTesting": {
+                "implementedApplications": 8,
+                "breakpointTesting": "Not systematically conducted",
+                "resourceExhaustionTesting": "Limited testing",
+                "systemLimitTesting": "Not comprehensively tested",
+                "recoveryTesting": "Basic recovery testing"
+              },
+              "volumeTesting": {
+                "implementedApplications": 5,
+                "largeDataSetTesting": "Limited data volume testing",
+                "highTransactionVolumeTesting": "Not systematically tested",
+                "dataProcessingCapacityTesting": "Basic capacity testing",
+                "storageCapacityTesting": "Not comprehensively tested"
+              }
+            }
+          },
+          "performanceTestingInfrastructure": {
+            "testingEnvironmentLimitations": {
+              "productionEquivalentEnvironments": "Limited production equivalence",
+              "scalableTestingInfrastructure": "Not systematically scalable",
+              "testDataVolumeRealism": "Limited realistic data volumes",
+              "networkLatencySimulation": "Not implemented",
+              "geographicDistributionSimulation": "Not tested"
+            },
+            "loadGenerationCapabilities": {
+              "loadGenerationScalability": "Limited load generation capacity",
+              "realisticUserBehaviorSimulation": "Basic user simulation",
+              "multiProtocolLoadTesting": "Limited protocol coverage",
+              "cloudNativeLoadTesting": "Basic cloud load testing",
+              "continuousLoadTesting": "Not implemented"
+            }
+          },
+          "performanceMonitoringAndAnalysis": {
+            "performanceMetricsCollection": {
+              "applicationPerformanceMonitoring": "Limited APM implementation",
+              "infrastructurePerformanceMonitoring": "Basic infrastructure monitoring",
+              "databasePerformanceMonitoring": "Limited database monitoring",
+              "networkPerformanceMonitoring": "Not systematically monitored",
+              "userExperienceMonitoring": "Basic user experience monitoring"
+            },
+            "performanceAnalysisCapabilities": {
+              "bottleneckIdentification": "Manual bottleneck analysis",
+              "performanceTrendAnalysis": "Limited trend analysis",
+              "performanceBaselineComparison": "Basic baseline comparison",
+              "performanceRegressionDetection": "Not systematically detected",
+              "performanceOptimizationRecommendations": "Manual recommendations"
+            }
+          },
+          "businessImpactOfGaps": {
+            "productionPerformanceRisks": {
+              "unexpectedPerformanceDegradation": "Risk of production performance issues",
+              "scalabilityLimitations": "Unknown scalability boundaries",
+              "userExperienceImpact": "Potential poor user experience",
+              "businessProcessDisruption": "Risk of business process disruption",
+              "revenueImpact": "Potential revenue loss from performance issues"
+            },
+            "operationalComplexity": {
+              "performanceTroubleshooting": "Complex performance issue diagnosis",
+              "capacityPlanning": "Inadequate capacity planning",
+              "performanceOptimization": "Reactive performance optimization",
+              "scalingDecisions": "Uninformed scaling decisions",
+              "resourceAllocation": "Inefficient resource allocation"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Performance testing coverage and frequency assessment",
+            "result": "INADEQUATE",
+            "details": "40% application coverage with quarterly testing and limited realistic load scenarios"
+          },
+          {
+            "test": "Performance testing infrastructure and capabilities evaluation",
+            "result": "LIMITED",
+            "details": "Basic testing environments with limited load generation and realistic simulation capabilities"
+          },
+          {
+            "test": "Performance monitoring and analysis maturity check",
+            "result": "BASIC",
+            "details": "Limited APM implementation with manual analysis and basic baseline comparison"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive performance testing for all applications with realistic load scenarios, 2) Deploy scalable performance testing infrastructure with production-equivalent environments, 3) Establish continuous performance testing in CI/CD pipelines, 4) Implement comprehensive application and infrastructure performance monitoring, 5) Deploy automated performance analysis and bottleneck identification, 6) Establish performance baseline management and regression detection, 7) Implement stress and volume testing with systematic capacity planning",
+        "checkType": "automatedTestingValidatio"
+      },
+      {
+        "checkId": "CMT-03-005",
+        "name": "Inadequate Security Testing Integration",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Security testing lacks comprehensive integration with development workflows and automated vulnerability detection",
+        "findings": {
+          "securityTestingIntegrationGaps": {
+            "staticApplicationSecurityTesting": {
+              "sastToolIntegration": "Limited SAST tool coverage",
+              "codeCoverageForSAST": "63.2% code coverage",
+              "sastFindingsRemediation": "Manual remediation processes",
+              "falsePositiveManagement": "Limited false positive filtering",
+              "sastPolicyEnforcement": "Basic policy enforcement"
+            },
+            "dynamicApplicationSecurityTesting": {
+              "dastToolIntegration": "Basic DAST integration",
+              "applicationCoverageForDAST": "34.7% application coverage",
+              "dastTestingFrequency": "Monthly only",
+              "authenticatedDAST": "Limited authenticated scanning",
+              "dastApiTesting": "Basic API testing"
+            },
+            "interactiveApplicationSecurityTesting": {
+              "iastImplementation": "Not implemented",
+              "runtimeSecurityTesting": "Not available",
+              "realTimeVulnerabilityDetection": "Not implemented",
+              "applicationSecurityMonitoring": "Basic monitoring",
+              "securityTestingInProduction": "Not performed"
+            }
+          },
+          "dependencyAndSupplyChainSecurity": {
+            "dependencyVulnerabilityScanning": {
+              "dependencyScanningTools": "Limited tool coverage",
+              "openSourceVulnerabilityDetection": "Basic detection",
+              "licensingComplianceScanning": "Not systematically scanned",
+              "dependencyUpdateAutomation": "Manual updates",
+              "vulnerabilityPrioritization": "Basic prioritization"
+            },
+            "containerSecurityTesting": {
+              "containerImageScanning": "Basic image scanning",
+              "runtimeContainerSecurity": "Not implemented",
+              "containerConfigurationTesting": "Limited testing",
+              "kubernetesSecurityTesting": "Basic testing",
+              "containerSupplyChainSecurity": "Not systematically tested"
+            },
+            "infrastructureSecurityTesting": {
+              "infrastructureAsCodeSecurityScanning": "Limited IaC scanning",
+              "cloudConfigurationTesting": "Basic configuration testing",
+              "networkSecurityTesting": "Not systematically tested",
+              "identityAndAccessTesting": "Limited IAM testing",
+              "encryptionImplementationTesting": "Basic encryption testing"
+            }
+          },
+          "securityTestingAutomationGaps": {
+            "cicdSecurityIntegration": {
+              "securityGatesInPipelines": "Basic security gates",
+              "automatedSecurityTesting": "Limited automation",
+              "securityTestingOrchestration": "Manual orchestration",
+              "securityFindingsAggregation": "Manual aggregation",
+              "securityTestingReporting": "Basic reporting"
+            },
+            "vulnerabilityManagementIntegration": {
+              "vulnerabilityTrackingIntegration": "Limited integration",
+              "securityFindingsCorrelation": "Manual correlation",
+              "vulnerabilityLifecycleManagement": "Basic lifecycle management",
+              "securityMetricsCollection": "Limited metrics collection",
+              "securityTrendAnalysis": "Not systematically analyzed"
+            }
+          },
+          "complianceAndRegulatoryTesting": {
+            "complianceTestingAutomation": {
+              "regulatoryComplianceTesting": "Manual compliance testing",
+              "securityControlValidation": "Basic control validation",
+              "auditingAndLoggingTesting": "Limited auditing testing",
+              "dataProtectionTesting": "Basic data protection testing",
+              "privacyComplianceTesting": "Not systematically tested"
+            },
+            "penetrationTestingIntegration": {
+              "automatedPenetrationTesting": "Not implemented",
+              "penetrationTestingFrequency": "Annual only",
+              "penetrationTestingScope": "Limited scope",
+              "penetrationTestingIntegration": "Not integrated with development",
+              "ethicalHackingPrograms": "Not implemented"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Security testing tool integration and coverage assessment",
+            "result": "INCOMPLETE",
+            "details": "63.2% SAST coverage, 34.7% DAST coverage, no IAST implementation"
+          },
+          {
+            "test": "Dependency and supply chain security testing evaluation",
+            "result": "LIMITED",
+            "details": "Basic dependency scanning with manual updates and limited container security testing"
+          },
+          {
+            "test": "Security testing automation and CI/CD integration check",
+            "result": "BASIC",
+            "details": "Limited automation with manual orchestration and basic security gates"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive SAST, DAST, and IAST tools with full application coverage, 2) Deploy automated dependency vulnerability scanning with update automation, 3) Establish container and Kubernetes security testing throughout development lifecycle, 4) Integrate security testing into CI/CD pipelines with automated gates and reporting, 5) Implement comprehensive infrastructure as code security scanning, 6) Deploy automated compliance and regulatory testing frameworks, 7) Establish continuous security monitoring and vulnerability management integration",
+        "checkType": "automatedTestingValidatio"
+      },
+      {
+        "checkId": "CMT-03-006",
+        "name": "Limited Test Environment Management",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Test environment management lacks automation and consistent configuration across development lifecycle",
+        "findings": {
+          "testEnvironmentProvisioningGaps": {
+            "environmentProvisioningAutomation": {
+              "manualEnvironmentProvisioning": "67% manual provisioning",
+              "environmentProvisioningTime": "Average 4 hours",
+              "environmentConfigurationConsistency": "Inconsistent configurations",
+              "environmentVersioning": "Limited versioning",
+              "environmentLifecycleManagement": "Manual lifecycle management"
+            },
+            "environmentIsolation": {
+              "environmentNetworkIsolation": "Basic network isolation",
+              "dataIsolation": "Limited data isolation",
+              "serviceIsolation": "Partial service isolation",
+              "secretsIsolation": "Basic secrets isolation",
+              "crossEnvironmentDataLeakage": "Potential data leakage risk"
+            },
+            "environmentScaling": {
+              "onDemandEnvironmentScaling": "Not implemented",
+              "environmentResourceOptimization": "Manual optimization",
+              "environmentCostManagement": "Limited cost control",
+              "ephemeralEnvironmentCapabilities": "Basic ephemeral environments",
+              "environmentSharingOptimization": "Not optimized"
+            }
+          },
+          "testDataManagement": {
+            "testDataProvisioning": {
+              "testDataGeneration": "Manual test data creation",
+              "syntheticDataGeneration": "Limited synthetic data",
+              "productionDataMasking": "Basic data masking",
+              "testDataVersioning": "Not versioned",
+              "testDataRefreshAutomation": "Manual refresh processes"
+            },
+            "testDataSecurity": {
+              "sensitiveDataMasking": "Limited masking implementation",
+              "testDataEncryption": "Basic encryption",
+              "testDataAccess": "Limited access controls",
+              "testDataAuditing": "Not systematically audited",
+              "testDataRetention": "Informal retention policies"
+            },
+            "testDataConsistency": {
+              "crossEnvironmentDataConsistency": "Inconsistent data",
+              "testDataSynchronization": "Manual synchronization",
+              "referentialIntegrityInTestData": "Limited integrity maintenance",
+              "testDataQuality": "Variable data quality",
+              "testDataValidation": "Manual validation"
+            }
+          },
+          "environmentConfigurationManagement": {
+            "configurationAsCode": {
+              "environmentConfigurationTemplates": "Limited template usage",
+              "configurationVersionControl": "Basic version control",
+              "configurationParameterization": "Limited parameterization",
+              "configurationValidation": "Manual validation",
+              "configurationDriftDetection": "Not implemented"
+            },
+            "environmentOrchestration": {
+              "multiTierEnvironmentProvisioning": "Manual orchestration",
+              "serviceIntegrationInEnvironments": "Manual integration",
+              "environmentDependencyManagement": "Limited dependency management",
+              "environmentHealthMonitoring": "Basic health monitoring",
+              "environmentTroubleshooting": "Manual troubleshooting"
+            }
+          },
+          "environmentGovernanceAndCompliance": {
+            "environmentAccessControl": {
+              "environmentAccessManagement": "Basic access management",
+              "roleBasedEnvironmentAccess": "Limited RBAC implementation",
+              "environmentAccessAuditing": "Basic auditing",
+              "privilegedAccessToEnvironments": "Not systematically managed",
+              "environmentAccessReviews": "Not conducted"
+            },
+            "environmentCompliance": {
+              "environmentSecurityCompliance": "Limited compliance validation",
+              "environmentPolicyEnforcement": "Basic policy enforcement",
+              "environmentAuditingCapabilities": "Limited auditing",
+              "environmentComplianceReporting": "Manual reporting",
+              "environmentRiskAssessment": "Not systematically conducted"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Test environment provisioning and automation assessment",
+            "result": "MANUAL",
+            "details": "67% manual provisioning with 4-hour average provisioning time and inconsistent configurations"
+          },
+          {
+            "test": "Test data management and security evaluation",
+            "result": "INADEQUATE",
+            "details": "Manual test data creation with limited masking and informal retention policies"
+          },
+          {
+            "test": "Environment governance and compliance maturity check",
+            "result": "BASIC",
+            "details": "Basic access management with limited compliance validation and manual reporting"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Implement automated test environment provisioning with Infrastructure as Code templates, 2) Deploy comprehensive test data management with synthetic data generation and automated masking, 3) Establish environment isolation and security controls with proper access management, 4) Implement automated environment lifecycle management with cost optimization, 5) Deploy configuration drift detection and automated remediation for test environments, 6) Establish environment compliance validation and automated auditing, 7) Implement ephemeral environment capabilities with on-demand scaling and optimization",
+        "checkType": "automatedTestingValidatio"
+      }
+    ]
+  }
+}

@@ -1,0 +1,840 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-MLA-04",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 6,
+      "passed": 2,
+      "failed": 4,
+      "warnings": 0
+    },
+    "authenticatedScanningVerificationMethods": {
+      "windowsScanning": [
+        "Azure Portal: Security Center > Secure Score for Windows assessment results",
+        "Qualys VMDR: Windows vulnerability dashboard and credential validation",
+        "Windows Event Logs: Event ID 4624/4625 for scanner authentication",
+        "Azure Key Vault: Access logs for scanner credential usage",
+        "PowerShell: Get-WmiObject Win32_QuickFixEngineering for patch validation"
+      ],
+      "linuxScanning": [
+        "SSH access logs: /var/log/auth.log for scanner authentication",
+        "Package manager logs: rpm -qa, dpkg -l for software inventory validation",
+        "Sudo access logs: /var/log/sudo.log for privilege escalation tracking",
+        "Azure Key Vault: SSH key management and rotation logs",
+        "Configuration management tools: Ansible/Puppet execution logs"
+      ],
+      "databaseScanning": [
+        "Azure SQL: Database audit logs for scanner access",
+        "SQL Server: SQL Server Error Log and Security Log for authentication",
+        "Azure Key Vault: Database credential access and rotation logs",
+        "Database vulnerability assessment: Native Azure SQL vulnerability reports",
+        "Database management systems: Native database security assessment tools"
+      ],
+      "networkDeviceScanning": [
+        "SNMP monitoring: SNMPv3 authentication and access logs",
+        "Network device logs: SSH/console access logs for scanner authentication",
+        "Network management systems: Device configuration and baseline comparison",
+        "Azure Network Watcher: Network security group flow logs",
+        "Network configuration management: Ansible Network automation logs"
+      ],
+      "containerScanning": [
+        "Container registry logs: Docker/ACR pull and scan logs",
+        "Kubernetes audit logs: API server access for security scanning",
+        "Runtime security tools: Falco, Twistlock runtime monitoring logs",
+        "CI/CD pipeline logs: Security scan integration and results",
+        "Azure Container Registry: Vulnerability scanning reports and logs"
+      ],
+      "cloudConfigurationScanning": [
+        "Azure Activity Logs: Configuration changes and security assessments",
+        "Azure Policy: Compliance evaluation results and policy violations",
+        "Azure Security Center: Secure Score and configuration recommendations",
+        "Azure Resource Graph: Configuration queries and security posture analysis",
+        "Infrastructure as Code: Terraform/ARM template security scan results"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "RA-5": "Vulnerability Scanning",
+        "CA-2": "Security Assessments",
+        "CA-7": "Continuous Monitoring",
+        "SC-7": "Boundary Protection"
+      },
+      "nist80053": {
+        "RA-5": "Vulnerability Scanning",
+        "CA-2": "Security Assessments",
+        "CA-7": "Continuous Monitoring",
+        "SC-7": "Boundary Protection",
+        "SI-4": "Information System Monitoring"
+      },
+      "iso27001": {
+        "A.12.6.1": "Management of technical vulnerabilities",
+        "A.14.2.3": "Technical review of applications after operating platform changes",
+        "A.18.2.3": "Technical compliance review",
+        "A.12.4.1": "Event logging"
+      }
+    },
+    "checks": [
+      {
+        "checkId": "MLA-04-001",
+        "name": "Authenticated Windows System Scanning",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Windows systems should have comprehensive authenticated vulnerability scanning with appropriate credentials",
+        "findings": {
+          "windowsAuthenticatedScanning": {
+            "scanCoverage": {
+              "totalWindowsSystems": 89,
+              "authenticatedScanningSystems": 89,
+              "coveragePercentage": "100%",
+              "credentialTypes": [
+                "Local admin",
+                "Domain admin",
+                "Service accounts"
+              ],
+              "lastScanDate": "2025-08-16T22:30:00.000Z"
+            },
+            "credentialManagement": {
+              "azureKeyVault": {
+                "enabled": true,
+                "credentialRotation": "Monthly",
+                "accessLogging": "Comprehensive",
+                "minimumPrivilege": "Enforced",
+                "lastRotation": "2025-08-01T09:00:00.000Z"
+              },
+              "scannerServiceAccount": {
+                "dedicatedAccount": true,
+                "minimumPrivileges": "Read-only + specific scan rights",
+                "accountMonitoring": "Real-time",
+                "accessRestrictions": "Scanner systems only",
+                "accountExpiration": "Annual review"
+              },
+              "domainAuthentication": {
+                "activeDirectoryIntegration": true,
+                "kerberosAuthentication": true,
+                "groupPolicyCompliance": "Verified",
+                "privilegedAccessManagement": "Integrated",
+                "auditTrail": "Complete"
+              }
+            },
+            "scanDepthAndCoverage": {
+              "registryScanning": {
+                "enabled": true,
+                "coverage": "System and security hives",
+                "vulnerabilityChecks": 2456,
+                "configurationAssessment": "Comprehensive",
+                "complianceValidation": "Automated"
+              },
+              "fileSystemScanning": {
+                "enabled": true,
+                "scopeCoverage": "System files and installed applications",
+                "permissionAnalysis": "Detailed",
+                "integrityValidation": "Hash-based verification",
+                "lastModificationTracking": "Enabled"
+              },
+              "serviceAndProcessScanning": {
+                "runningServices": "Complete enumeration",
+                "processAnalysis": "Runtime analysis",
+                "servicePermissions": "Detailed assessment",
+                "startupPrograms": "Comprehensive scan",
+                "networkConnections": "Active connection analysis"
+              },
+              "installedSoftwareInventory": {
+                "softwareEnumeration": "Complete WMI-based inventory",
+                "versionAnalysis": "Detailed version checking",
+                "vulnerabilityMapping": "Automated CVE correlation",
+                "licenseCompliance": "Basic tracking",
+                "softwareIntegrityChecks": "Digital signature validation"
+              }
+            },
+            "windowsSpecificChecks": {
+              "windowsUpdateCompliance": {
+                "patchLevel": "Current within 30 days",
+                "missingUpdates": 23,
+                "criticalUpdates": 2,
+                "securityUpdates": 15,
+                "optionalUpdates": 6
+              },
+              "securityConfiguration": {
+                "userAccountControl": "Properly configured",
+                "windowsFirewall": "Enabled with proper rules",
+                "bitlockerStatus": "Enabled on 87 systems",
+                "defendersStatus": "Active and updated",
+                "eventLogging": "Comprehensive configuration"
+              },
+              "roleAndFeatureAnalysis": {
+                "installedRoles": "IIS, DNS, DHCP, File Services",
+                "roleSpecificVulnerabilities": "Role-appropriate scanning",
+                "featureSecurityAssessment": "Comprehensive",
+                "unnecessaryFeatures": "Identified and flagged",
+                "serverCoreCompliance": "Where applicable"
+              }
+            }
+          },
+          "scanQualityMetrics": {
+            "authenticationSuccess": "99.2%",
+            "scanCompleteness": "97.8%",
+            "falsePositiveRate": "2.3%",
+            "scanDuration": "Average 45 minutes per system",
+            "dataAccuracy": "High confidence in results",
+            "credentialIssues": "0.8% authentication failures"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Windows authenticated scanning coverage assessment",
+            "result": "COMPREHENSIVE",
+            "details": "100% Windows systems with authenticated scanning using proper credential management"
+          },
+          {
+            "test": "Scan depth and accuracy validation",
+            "result": "THOROUGH",
+            "details": "Registry, file system, service, and software inventory scanning with 97.8% completeness"
+          },
+          {
+            "test": "Windows-specific security assessment",
+            "result": "DETAILED",
+            "details": "Comprehensive Windows Update, security configuration, and role-based analysis"
+          }
+        ],
+        "remediation": "Windows authenticated scanning properly implemented with comprehensive coverage and credential management",
+        "checkType": "authenticatedScannin"
+      },
+      {
+        "checkId": "MLA-04-002",
+        "name": "Database Security Assessment",
+        "status": "PASS",
+        "severity": "CRITICAL",
+        "description": "Database systems should undergo authenticated security assessments with appropriate database-specific scanning",
+        "findings": {
+          "databaseScanningCoverage": {
+            "totalDatabases": 34,
+            "authenticatedScanning": 34,
+            "coveragePercentage": "100%",
+            "databaseTypes": [
+              "SQL Server",
+              "Azure SQL",
+              "PostgreSQL",
+              "MySQL",
+              "Oracle"
+            ],
+            "lastScanDate": "2025-08-16T20:15:00.000Z"
+          },
+          "databaseCredentialManagement": {
+            "credentialSecurity": {
+              "azureKeyVault": "All credentials stored securely",
+              "credentialRotation": "Quarterly",
+              "minimumPrivilegeAccess": "Read-only with specific assessment rights",
+              "connectionEncryption": "TLS 1.2+ enforced",
+              "auditLogging": "All access logged"
+            },
+            "authenticationMethods": {
+              "sqlAuthentication": "Limited use with strong passwords",
+              "windowsAuthentication": "Preferred method",
+              "azureAdAuthentication": "Primary for Azure SQL",
+              "certificateBasedAuth": "For Oracle systems",
+              "managedIdentities": "Where supported"
+            }
+          },
+          "databaseSpecificAssessments": {
+            "sqlServerAssessment": {
+              "systemsDatabases": "Complete assessment",
+              "userDatabases": "Application-specific scanning",
+              "securityConfiguration": {
+                "authenticationMode": "Windows Authentication preferred",
+                "surfaceAreaReduction": "Unnecessary features disabled",
+                "encryptionAtRest": "Transparent Data Encryption enabled",
+                "encryptionInTransit": "SSL/TLS enforced",
+                "auditingConfiguration": "Comprehensive audit policies"
+              },
+              "permissionAnalysis": {
+                "serverPermissions": "Detailed analysis",
+                "databasePermissions": "Object-level assessment",
+                "roleAnalysis": "Built-in and custom roles",
+                "userMappings": "Cross-database permissions",
+                "orphanedUsers": "Identification and reporting"
+              }
+            },
+            "cloudDatabaseAssessment": {
+              "azureSqlSecurity": {
+                "advancedThreatProtection": "Enabled",
+                "vulnerabilityAssessment": "Automated scanning",
+                "dataClassification": "Sensitive data identified",
+                "dynamicDataMasking": "Configured for sensitive fields",
+                "alwaysEncrypted": "Key sensitive data protected"
+              },
+              "networkSecurity": {
+                "firewallRules": "Restrictive IP allowlists",
+                "serviceEndpoints": "Virtual network integration",
+                "privateEndpoints": "Enabled for production systems",
+                "databaseConnectionPolicies": "Encrypted connections required"
+              }
+            }
+          },
+          "databaseVulnerabilityFindings": {
+            "configurationVulnerabilities": {
+              "weakAuthentication": 0,
+              "excessivePermissions": 3,
+              "unencryptedConnections": 0,
+              "weakPasswords": 0,
+              "unnecessaryFeatures": 5
+            },
+            "dataProtectionIssues": {
+              "unencryptedSensitiveData": 0,
+              "insufficientAccessControls": 2,
+              "dataLeakageRisks": 1,
+              "auditingDeficiencies": 0,
+              "backupSecurity": 1
+            },
+            "complianceViolations": {
+              "cisControlsViolations": 4,
+              "nistFrameworkGaps": 2,
+              "industryStandardDeviations": 3,
+              "organizationPolicyViolations": 1,
+              "regulatoryRequirementGaps": 0
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Database authenticated scanning coverage check",
+            "result": "COMPLETE",
+            "details": "100% database coverage with secure credential management and encryption"
+          },
+          {
+            "test": "Database-specific security assessment validation",
+            "result": "COMPREHENSIVE",
+            "details": "Detailed configuration, permission, and vulnerability analysis across all database types"
+          },
+          {
+            "test": "Database vulnerability and compliance evaluation",
+            "result": "WELL_CONTROLLED",
+            "details": "Limited vulnerabilities with no critical security configuration issues"
+          }
+        ],
+        "remediation": "Database authenticated scanning properly implemented with comprehensive security assessments",
+        "checkType": "authenticatedScannin"
+      },
+      {
+        "checkId": "MLA-04-003",
+        "name": "Insufficient Linux System Authenticated Scanning",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Linux systems lack comprehensive authenticated vulnerability scanning coverage",
+        "findings": {
+          "linuxScanningGaps": {
+            "coverageDeficiencies": {
+              "totalLinuxSystems": 67,
+              "authenticatedScanning": 23,
+              "coveragePercentage": "34.3%",
+              "unscannedSystems": 44,
+              "systemTypes": {
+                "ubuntuSystems": "12 of 23 scanned",
+                "centOsSystems": "8 of 18 scanned",
+                "rhelSystems": "3 of 15 scanned",
+                "debianSystems": "0 of 8 scanned",
+                "amazonLinux": "0 of 3 scanned"
+              }
+            },
+            "credentialManagementIssues": {
+              "missingCredentials": "44 systems without scan credentials",
+              "expiredCredentials": "12 systems with expired SSH keys",
+              "insufficientPrivileges": "8 systems with limited access",
+              "credentialRotation": "No systematic rotation process",
+              "secureStorage": "Credentials stored in plain text"
+            },
+            "authenticationChallenges": {
+              "sshKeyManagement": {
+                "keyDistribution": "Manual and inconsistent",
+                "keyRotation": "No regular rotation",
+                "keyStorage": "Not centrally managed",
+                "privilegeEscalation": "sudo configuration varies",
+                "accessControl": "No centralized access control"
+              },
+              "serviceAccountIssues": {
+                "noStandardizedAccounts": "Each system configured differently",
+                "privilegeInconsistency": "Varying privilege levels",
+                "accountMonitoring": "No systematic monitoring",
+                "accessLogging": "Inconsistent logging",
+                "accountLifecycle": "No formal lifecycle management"
+              }
+            }
+          },
+          "scanDepthLimitations": {
+            "limitedSystemAccess": {
+              "fileSystemAccess": "Read-only access to limited directories",
+              "packageManagementAccess": "Cannot query all package managers",
+              "configurationFileAccess": "Limited access to system configurations",
+              "logFileAccess": "Insufficient log file access",
+              "processListAccess": "Cannot enumerate all running processes"
+            },
+            "incompleteVulnerabilityDetection": {
+              "packageVulnerabilities": "Only detecting major packages",
+              "configurationVulnerabilities": "Missing security configuration analysis",
+              "kernelVulnerabilities": "Limited kernel-level scanning",
+              "customSoftwareVulnerabilities": "Cannot scan locally compiled software",
+              "containerVulnerabilities": "No container runtime scanning"
+            },
+            "missedSecurityChecks": {
+              "filePermissions": "Cannot validate file permissions comprehensively",
+              "userAccountAnalysis": "Limited user account security analysis",
+              "networkConfiguration": "Cannot access network configuration details",
+              "firewallConfiguration": "Limited firewall rule analysis",
+              "serviceConfiguration": "Cannot analyze service security configurations"
+            }
+          },
+          "businessImpactOfGaps": {
+            "securityRisks": {
+              "undetectedVulnerabilities": "High risk of unpatched vulnerabilities",
+              "configurationDrift": "Security misconfigurations not detected",
+              "complianceGaps": "Cannot verify compliance across all systems",
+              "incidentResponseHampered": "Limited visibility during incidents",
+              "riskAssessmentIncomplete": "Incomplete security posture assessment"
+            },
+            "operationalChallenges": {
+              "manualProcesses": "Increased manual security review requirements",
+              "inconsistentBaselines": "Cannot establish consistent security baselines",
+              "patchManagementDifficulties": "Incomplete vulnerability information for patching",
+              "auditingComplexity": "Increased complexity for security audits",
+              "resourceIntensive": "Higher manual effort for security assessments"
+            },
+            "complianceRisks": {
+              "regulatoryViolations": "Potential violation of scanning requirements",
+              "auditFindings": "Likely findings in external audits",
+              "certificationRisks": "Risk to security certifications",
+              "contractualViolations": "Potential customer contract violations",
+              "reputationalRisk": "Risk to organizational security reputation"
+            }
+          },
+          "rootCauseAnalysis": {
+            "peopleFactors": {
+              "skillsGaps": "Limited Linux security expertise",
+              "resourceConstraints": "Insufficient staff for credential management",
+              "trainingDeficiencies": "Lack of Linux scanning expertise",
+              "processAdherence": "Inconsistent adherence to scanning procedures",
+              "communicationGaps": "Poor coordination between Linux and security teams"
+            },
+            "processFactors": {
+              "proceduralGaps": "No standardized Linux scanning procedures",
+              "credentialManagement": "Informal credential management processes",
+              "changeManagement": "New systems not automatically enrolled in scanning",
+              "documentationDeficiencies": "Poor documentation of scanning requirements",
+              "qualityAssurance": "No validation of scanning coverage"
+            },
+            "technologyFactors": {
+              "toolLimitations": "Scanning tools not optimized for Linux environments",
+              "integrationChallenges": "Poor integration with Linux management tools",
+              "automationGaps": "Limited automation for credential distribution",
+              "scalabilityIssues": "Manual processes cannot scale with Linux growth",
+              "compatibilityIssues": "Scanner compatibility with diverse Linux distributions"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Linux authenticated scanning coverage assessment",
+            "result": "INADEQUATE",
+            "details": "Only 34.3% coverage with 44 systems lacking authenticated scanning"
+          },
+          {
+            "test": "Credential management and authentication evaluation",
+            "result": "DEFICIENT",
+            "details": "No systematic SSH key management with credentials stored insecurely"
+          },
+          {
+            "test": "Scan depth and vulnerability detection analysis",
+            "result": "LIMITED",
+            "details": "Insufficient system access preventing comprehensive vulnerability detection"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Implement centralized SSH key management system with automated distribution, 2) Establish standardized Linux scanner service accounts with appropriate privileges, 3) Deploy configuration management tools (Ansible/Puppet) to standardize scan access, 4) Implement credential rotation and secure storage using Azure Key Vault, 5) Establish Linux-specific scanning procedures and quality assurance, 6) Provide Linux security training to operations teams, 7) Integrate Linux scanning with existing vulnerability management workflows",
+        "checkType": "authenticatedScannin"
+      },
+      {
+        "checkId": "MLA-04-004",
+        "name": "Missing Network Device Authentication",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Network infrastructure devices lack authenticated vulnerability scanning and security assessment",
+        "findings": {
+          "networkDeviceScanningGaps": {
+            "deviceCoverageDeficiencies": {
+              "totalNetworkDevices": 45,
+              "authenticatedScanning": 8,
+              "coveragePercentage": "17.8%",
+              "deviceTypes": {
+                "routers": "2 of 12 devices scanned",
+                "switches": "4 of 18 devices scanned",
+                "firewalls": "2 of 8 devices scanned",
+                "loadBalancers": "0 of 4 devices scanned",
+                "wirelessControllers": "0 of 3 devices scanned"
+              },
+              "criticalDevicesUnscanned": 32,
+              "lastAttemptedScan": "2025-07-15T14:30:00.000Z"
+            },
+            "authenticationChallenges": {
+              "credentialManagement": {
+                "snmpCommunityStrings": "Default or weak community strings",
+                "adminCredentials": "Inconsistent credential management",
+                "sshKeyManagement": "No centralized SSH key distribution",
+                "certificateBasedAuth": "Not implemented for device management",
+                "credentialRotation": "No systematic rotation"
+              },
+              "protocolLimitations": {
+                "snmpV1V2Usage": "Insecure SNMP versions in use",
+                "telnetConnections": "Some devices still using Telnet",
+                "httpManagement": "Unencrypted HTTP management interfaces",
+                "weakEncryption": "Weak SSH encryption algorithms",
+                "authenticationProtocols": "Inconsistent authentication methods"
+              },
+              "accessControlIssues": {
+                "managementVlans": "No dedicated management VLANs",
+                "accessControlLists": "Insufficient ACLs for management access",
+                "networkSegmentation": "Poor segmentation of management traffic",
+                "firewallRules": "Overly permissive management access rules",
+                "jumpServerAccess": "No centralized jump server access"
+              }
+            }
+          },
+          "networkSpecificSecurityGaps": {
+            "configurationAssessmentLimitations": {
+              "securityPolicyAnalysis": "Cannot assess device security policies",
+              "accessControlValidation": "Limited ACL and firewall rule analysis",
+              "routingSecurityChecks": "Cannot validate routing protocol security",
+              "vlanConfigurationAnalysis": "Limited VLAN security assessment",
+              "interfaceSecurityChecks": "Cannot validate interface security settings"
+            },
+            "firmwareAndPatchingGaps": {
+              "firmwareVersioning": "Cannot systematically check firmware versions",
+              "vulnerabilityMapping": "Cannot map device vulnerabilities to CVEs",
+              "patchingStatus": "No systematic patch status tracking",
+              "endOfLifeTracking": "No systematic EOL tracking for devices",
+              "supportStatusMonitoring": "Cannot track vendor support status"
+            },
+            "networkProtocolSecurity": {
+              "routingProtocolSecurity": "Cannot assess BGP, OSPF security",
+              "spanningTreeSecurity": "Cannot validate STP security configurations",
+              "networkAccessControl": "Limited NAC configuration assessment",
+              "wirelessSecurityChecks": "Cannot validate wireless security configurations",
+              "networkTimeProtocol": "Cannot assess NTP security configurations"
+            }
+          },
+          "businessImpactOfGaps": {
+            "networkSecurityRisks": {
+              "criticalInfrastructureVulnerabilities": "Undetected network vulnerabilities",
+              "lateralMovementRisks": "Network devices as pivot points",
+              "trafficInterceptionRisks": "Compromised network devices for traffic interception",
+              "networkAvailabilityRisks": "DoS attacks against network infrastructure",
+              "dataExfiltrationRisks": "Network devices used for data exfiltration"
+            },
+            "operationalImpact": {
+              "networkTroubleshooting": "Limited visibility for network troubleshooting",
+              "changeManagement": "Cannot validate network configuration changes",
+              "capacityPlanning": "Incomplete network infrastructure assessment",
+              "performanceMonitoring": "Limited performance and security correlation",
+              "maintenanceScheduling": "Cannot systematically schedule device maintenance"
+            },
+            "complianceAndGovernanceRisks": {
+              "networkComplianceGaps": "Cannot demonstrate network security compliance",
+              "auditingDifficulties": "Increased manual effort for network audits",
+              "riskAssessmentIncomplete": "Incomplete network risk assessment",
+              "securityBaselineViolations": "Cannot validate network security baselines",
+              "incidentResponseLimitations": "Limited network forensic capabilities"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Network device authenticated scanning coverage assessment",
+            "result": "SEVERELY_LIMITED",
+            "details": "Only 17.8% coverage with 37 critical network devices unscanned"
+          },
+          {
+            "test": "Network device authentication and credential management evaluation",
+            "result": "INSECURE",
+            "details": "Weak SNMP community strings, inconsistent SSH access, no credential rotation"
+          },
+          {
+            "test": "Network-specific security assessment capability check",
+            "result": "MINIMAL",
+            "details": "Cannot assess routing protocols, firewalls, or wireless configurations"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Implement centralized network device credential management with automated rotation, 2) Deploy dedicated network vulnerability scanning tools with network device support, 3) Establish secure management VLANs and jump server access for network devices, 4) Upgrade network devices to support secure authentication protocols (SNMPv3, SSH), 5) Implement network configuration management and baseline validation tools, 6) Establish network device inventory and lifecycle management, 7) Deploy network security monitoring and configuration drift detection",
+        "checkType": "authenticatedScannin"
+      },
+      {
+        "checkId": "MLA-04-005",
+        "name": "Inadequate Container and Kubernetes Scanning",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Container images and Kubernetes environments lack comprehensive authenticated vulnerability scanning",
+        "findings": {
+          "containerScanningGaps": {
+            "imageScanningDeficiencies": {
+              "totalContainerImages": 234,
+              "scannedImages": 156,
+              "coveragePercentage": "66.7%",
+              "unscannedImages": 78,
+              "scanningScope": {
+                "baseImageScanning": "Basic scanning only",
+                "layerAnalysis": "Limited layer-by-layer analysis",
+                "dependencyScanning": "Incomplete dependency analysis",
+                "secretsDetection": "Not systematically implemented",
+                "configurationAnalysis": "Limited Dockerfile analysis"
+              }
+            },
+            "runtimeScanningGaps": {
+              "runningContainers": {
+                "totalRunningContainers": 456,
+                "runtimeScanningEnabled": 123,
+                "coveragePercentage": "27.0%",
+                "unscanonedRuntime": 333,
+                "dynamicAnalysis": "Not implemented"
+              },
+              "runtimeBehaviorAnalysis": {
+                "processMonitoring": "Limited monitoring",
+                "networkActivityAnalysis": "Basic analysis only",
+                "fileSystemChanges": "Not monitored",
+                "systemCallAnalysis": "Not implemented",
+                "anomalyDetection": "Limited capabilities"
+              }
+            },
+            "kubernetesSecurityGaps": {
+              "clusterConfiguration": {
+                "totalClusters": 8,
+                "securityScannedClusters": 3,
+                "coveragePercentage": "37.5%",
+                "unscannedClusters": 5,
+                "configurationAssessment": "Manual only"
+              },
+              "workloadSecurity": {
+                "podSecurityScanning": "Not implemented",
+                "serviceAccountAnalysis": "Limited analysis",
+                "rbacAssessment": "Manual assessment only",
+                "networkPolicyValidation": "Not automated",
+                "secretsManagementAssessment": "Basic validation only"
+              }
+            }
+          },
+          "authenticationAndAccessChallenges": {
+            "registryAuthentication": {
+              "privateRegistryAccess": "Inconsistent credential management",
+              "registryScanning": "Limited authenticated access to registries",
+              "imageSignatureValidation": "Not systematically implemented",
+              "vulnerabilityDatabaseAccess": "Limited access to commercial databases",
+              "scannerAuthentication": "Manual credential management"
+            },
+            "kubernetesApiAccess": {
+              "clusterAuthentication": "Inconsistent scanner access",
+              "rbacForScanning": "Overly permissive scanner permissions",
+              "serviceAccountManagement": "No standardized scanner service accounts",
+              "namespaceAccess": "Inconsistent cross-namespace scanning",
+              "secretsAccess": "Limited access to validate secrets"
+            },
+            "orchestrationIntegration": {
+              "cicdIntegration": "Limited pipeline integration",
+              "deploymentValidation": "No pre-deployment security validation",
+              "continuousScanning": "Not implemented for running workloads",
+              "policieEnforcement": "Limited policy-based scanning",
+              "autoRadiation": "No automated vulnerable image removal"
+            }
+          },
+          "containerSpecificVulnerabilityGaps": {
+            "imageLayerAnalysis": {
+              "layerVulnerabilities": "Cannot identify vulnerabilities by layer",
+              "baseDependence": "Limited base image vulnerability tracking",
+              "layerOptimization": "Cannot recommend layer optimization",
+              "historicalAnalysis": "No historical vulnerability tracking",
+              "deltaAnalysis": "Cannot perform incremental scans"
+            },
+            "runtimeVulnerabilities": {
+              "liveContainerScanning": "Cannot scan live containers effectively",
+              "processVulnerabilities": "Cannot identify process-level vulnerabilities",
+              "memoryAnalysis": "No runtime memory vulnerability analysis",
+              "networkVulnerabilities": "Limited network service vulnerability detection",
+              "configurationDrift": "Cannot detect runtime configuration changes"
+            },
+            "orchestrationVulnerabilities": {
+              "kubernetesApiVulnerabilities": "Limited API server vulnerability scanning",
+              "etcdSecurity": "Cannot assess etcd security configuration",
+              "networkPolicyGaps": "Cannot validate network policy effectiveness",
+              "ingressControllerSecurity": "Limited ingress security assessment",
+              "serviceMeshSecurity": "No service mesh security analysis"
+            }
+          },
+          "businessImpactOfGaps": {
+            "containerSecurityRisks": {
+              "vulnerableImageDeployment": "Risk of deploying vulnerable containers",
+              "runtimeExploitation": "Undetected runtime vulnerabilities",
+              "containerBreakout": "Risk of container escape vulnerabilities",
+              "lateralMovement": "Compromised containers as pivot points",
+              "dataExfiltration": "Container-based data exfiltration risks"
+            },
+            "operationalChallenges": {
+              "incidentResponse": "Limited container forensic capabilities",
+              "complianceValidation": "Cannot demonstrate container security compliance",
+              "vulnerabilityRemediation": "Difficult to prioritize container vulnerabilities",
+              "securityBaselines": "Cannot establish container security baselines",
+              "changeManagement": "Cannot validate container configuration changes"
+            },
+            "developmentImpact": {
+              "developmentVelocity": "Security issues discovered late in deployment",
+              "securityShiftLeft": "Cannot implement security early in development",
+              "qualityAssurance": "Inadequate security validation in QA processes",
+              "continuousDeployment": "Security bottlenecks in deployment pipelines",
+              "developerProductivity": "Manual security processes slow development"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Container image scanning coverage assessment",
+            "result": "INCOMPLETE",
+            "details": "66.7% image coverage with 78 unscanned images and limited layer analysis"
+          },
+          {
+            "test": "Runtime container security analysis evaluation",
+            "result": "INSUFFICIENT",
+            "details": "27% runtime coverage with no dynamic analysis or behavior monitoring"
+          },
+          {
+            "test": "Kubernetes security scanning and configuration assessment",
+            "result": "INADEQUATE",
+            "details": "37.5% cluster coverage with manual-only configuration assessment"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Deploy comprehensive container security platform with image and runtime scanning, 2) Implement automated container registry scanning with vulnerability database integration, 3) Establish Kubernetes security scanning with CIS benchmark validation, 4) Integrate container scanning into CI/CD pipelines with security gates, 5) Deploy runtime container monitoring with behavioral analysis, 6) Implement container image signing and verification processes, 7) Establish container security policies with automated enforcement, 8) Deploy Kubernetes admission controllers for security policy enforcement",
+        "checkType": "authenticatedScannin"
+      },
+      {
+        "checkId": "MLA-04-006",
+        "name": "Limited Cloud Service Configuration Scanning",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Cloud service configurations lack comprehensive security assessment and vulnerability scanning",
+        "findings": {
+          "cloudServiceScanningGaps": {
+            "azureServiceCoverage": {
+              "totalAzureServices": 156,
+              "configurationScanned": 89,
+              "coveragePercentage": "57.1%",
+              "unscannedServices": 67,
+              "serviceTypes": {
+                "computeServices": "12 of 23 services scanned",
+                "networkingServices": "15 of 34 services scanned",
+                "storageServices": "18 of 28 services scanned",
+                "databaseServices": "23 of 23 services scanned",
+                "securityServices": "21 of 48 services scanned"
+              }
+            },
+            "configurationAssessmentLimitations": {
+              "securityConfigurationAnalysis": "Basic Azure Security Center only",
+              "complianceFrameworkValidation": "Limited compliance framework coverage",
+              "customPolicyValidation": "No custom policy validation",
+              "configurationDriftDetection": "Manual detection only",
+              "baselineComparison": "No systematic baseline comparison"
+            },
+            "authenticationAndAccessGaps": {
+              "serviceAuthenticatedScanning": "Limited service-level authentication",
+              "apiAccessForScanning": "Basic read-only access only",
+              "crossServiceCorrelation": "No cross-service security analysis",
+              "serviceSpecificCredentials": "Inconsistent credential management",
+              "privilegedAccessForScanning": "Insufficient privileges for deep scanning"
+            }
+          },
+          "cloudSpecificSecurityGaps": {
+            "infrastructureAsCodeAnalysis": {
+              "armTemplateScanning": "Limited ARM template security analysis",
+              "terraformAnalysis": "No Terraform configuration scanning",
+              "bicepTemplateAnalysis": "Basic analysis only",
+              "deploymentValidation": "No pre-deployment security validation",
+              "templateSecurityPolicies": "No systematic policy enforcement"
+            },
+            "cloudNativeSecurityAssessment": {
+              "serverlessSecurityScanning": "Limited Function App security analysis",
+              "apiManagementSecurity": "Basic API security assessment",
+              "containerInstancesSecurity": "Limited Azure Container Instances scanning",
+              "logicAppsSecurity": "No Logic Apps security assessment",
+              "eventGridSecurity": "No Event Grid security configuration analysis"
+            },
+            "multiCloudVisibility": {
+              "awsServicesScanning": "Not implemented",
+              "gcpServicesScanning": "Not implemented",
+              "hybridCloudAssessment": "Limited hybrid environment scanning",
+              "crossCloudSecurityCorrelation": "No multi-cloud security analysis",
+              "cloudBrokerSecurityAssessment": "No cloud broker security assessment"
+            }
+          },
+          "configurationManagementGaps": {
+            "continuousComplianceMonitoring": {
+              "realTimeConfigurationMonitoring": "Limited real-time monitoring",
+              "configurationChangeDetection": "Basic change detection only",
+              "complianceDeviation": "No automatic deviation alerting",
+              "remediationAutomation": "No automated configuration remediation",
+              "configurationVersioning": "No systematic configuration versioning"
+            },
+            "policyEnforcementLimitations": {
+              "azurePolicyValidation": "Basic policy compliance checking",
+              "customPolicyCreation": "Limited custom policy development",
+              "policyExceptionManagement": "Manual exception management",
+              "policyEffectivenessAnalysis": "No systematic policy effectiveness analysis",
+              "crossSubscriptionPolicyEnforcement": "Inconsistent cross-subscription policies"
+            },
+            "governanceAndRiskManagement": {
+              "cloudGovernanceFramework": "Limited governance framework implementation",
+              "riskBasedConfigurationPrioritization": "No risk-based prioritization",
+              "cloudSecurityPostureManagement": "Basic posture management only",
+              "businessImpactAnalysis": "No business impact analysis for configurations",
+              "stakeholderReporting": "Limited stakeholder configuration reporting"
+            }
+          },
+          "toolingAndProcessGaps": {
+            "scanningToolLimitations": {
+              "cloudSecurityPostureManagement": "Basic CSPM implementation",
+              "infrastructureAsCodeScanning": "Limited IaC scanning tools",
+              "apiSecurityTesting": "No systematic API security testing",
+              "configurationBaselineManagement": "No baseline management tools",
+              "vulnerabilityCorrelation": "Poor correlation between tools"
+            },
+            "automationAndOrchestration": {
+              "scanningAutomation": "Limited scanning automation",
+              "remediationOrchestration": "No automated remediation workflows",
+              "reportingAutomation": "Basic automated reporting",
+              "alertingAndNotification": "Limited alerting capabilities",
+              "workflowIntegration": "Poor workflow integration with existing tools"
+            },
+            "dataManagementAndAnalytics": {
+              "configurationDataManagement": "Poor configuration data management",
+              "trendAnalysis": "No configuration trend analysis",
+              "predictiveAnalytics": "No predictive configuration analysis",
+              "benchmarkingAndComparison": "No industry benchmarking",
+              "historicalConfigurationAnalysis": "Limited historical analysis"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Cloud service configuration scanning coverage assessment",
+            "result": "PARTIAL",
+            "details": "57.1% Azure service coverage with 67 unscanned services"
+          },
+          {
+            "test": "Infrastructure as Code and cloud-native security analysis",
+            "result": "LIMITED",
+            "details": "Basic ARM template analysis with no Terraform or serverless scanning"
+          },
+          {
+            "test": "Configuration management and governance evaluation",
+            "result": "BASIC",
+            "details": "Limited continuous monitoring with no automated remediation"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Deploy comprehensive Cloud Security Posture Management (CSPM) solution for complete Azure service coverage, 2) Implement Infrastructure as Code scanning for ARM, Terraform, and Bicep templates, 3) Establish cloud-native security assessment for serverless and container services, 4) Implement continuous configuration monitoring with drift detection and automated remediation, 5) Deploy custom Azure Policy framework with automated compliance checking, 6) Integrate cloud configuration scanning with vulnerability management workflows, 7) Establish cloud security governance framework with risk-based prioritization",
+        "checkType": "authenticatedScannin"
+      }
+    ]
+  }
+}

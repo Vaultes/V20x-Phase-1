@@ -1,0 +1,1079 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-IAM-06",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 7,
+      "passed": 2,
+      "failed": 5,
+      "warnings": 0
+    },
+    "suspiciousBehaviorAccountDisablingBestPractices": {
+      "automatedDetection": [
+        "Deploy comprehensive user and entity behavior analytics",
+        "Implement machine learning-based anomaly detection",
+        "Use risk-based authentication and conditional access",
+        "Integrate multiple threat intelligence sources",
+        "Establish baseline behaviors for all account types"
+      ],
+      "automatedResponse": [
+        "Configure automatic account disabling for high-risk behaviors",
+        "Implement graduated response based on risk levels",
+        "Use orchestrated multi-system account management",
+        "Deploy just-in-time access for investigation activities",
+        "Establish emergency break-glass procedures"
+      ],
+      "investigation": [
+        "Implement comprehensive forensic data collection",
+        "Deploy automated investigation and correlation tools",
+        "Establish chain of custody procedures",
+        "Create standardized investigation workflows",
+        "Maintain detailed audit trails and evidence"
+      ],
+      "incidentResponse": [
+        "Integrate account incidents into formal response procedures",
+        "Establish cross-functional response teams",
+        "Implement automated containment and eradication",
+        "Create account-specific incident response playbooks",
+        "Conduct regular incident response exercises"
+      ]
+    },
+    "suspiciousBehaviorVerificationMethods": {
+      "identityProtection": [
+        "Azure Portal: Azure AD > Security > Identity Protection",
+        "Get-AzureADMSRiskDetection",
+        "Microsoft Graph API: /identityProtection/riskDetections",
+        "Azure AD PowerShell: Get-AzureADMSIdentityProtectionPolicy"
+      ],
+      "behaviorAnalytics": [
+        "Azure Portal: Azure Sentinel > User and Entity Behavior Analytics",
+        "Microsoft Cloud App Security admin center",
+        "Azure Monitor: Log Analytics workspace",
+        "Microsoft 365 Security Center: Advanced hunting"
+      ],
+      "automatedResponse": [
+        "Azure Portal: Azure AD > Conditional Access",
+        "Azure Logic Apps for response orchestration",
+        "Azure Automation for account management",
+        "Microsoft Graph API: /users/{id}/revokeSignInSessions"
+      ],
+      "incidentResponse": [
+        "Azure Portal: Microsoft 365 Security Center > Incidents",
+        "Azure Sentinel: Incident management",
+        "Azure Resource Manager: Activity logs",
+        "Microsoft Graph API: /security/incidents"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "AC-2": "Account Management",
+        "AU-6": "Audit Review, Analysis, and Reporting",
+        "IR-4": "Incident Handling",
+        "IR-5": "Incident Monitoring",
+        "SI-4": "Information System Monitoring"
+      },
+      "nist80053": {
+        "AC-2": "Account Management",
+        "AU-6": "Audit Review, Analysis, and Reporting",
+        "IR-4": "Incident Handling",
+        "IR-5": "Incident Monitoring",
+        "SI-4": "Information System Monitoring",
+        "RA-5": "Vulnerability Scanning"
+      },
+      "iso27001": {
+        "A.12.6.1": "Management of technical vulnerabilities",
+        "A.16.1.2": "Reporting information security events",
+        "A.16.1.4": "Assessment of and decision on information security events",
+        "A.16.1.5": "Response to information security incidents",
+        "A.16.1.7": "Collection of evidence"
+      }
+    },
+    "checks": [
+      {
+        "checkId": "IAM-06-001",
+        "name": "Automated Risk-Based Account Protection",
+        "status": "PASS",
+        "severity": "CRITICAL",
+        "description": "Azure Identity Protection should automatically respond to high-risk user activities",
+        "findings": {
+          "identityProtectionConfiguration": {
+            "deployment": {
+              "enabled": true,
+              "licenseType": "Azure AD Premium P2",
+              "coverage": "All users",
+              "riskDetectionTypes": 23,
+              "userRiskPolicy": "Active",
+              "signInRiskPolicy": "Active"
+            },
+            "riskDetectionMethods": [
+              {
+                "type": "Leaked credentials",
+                "enabled": true,
+                "severity": "High",
+                "frequency": "Real-time"
+              },
+              {
+                "type": "Atypical travel",
+                "enabled": true,
+                "severity": "Medium",
+                "frequency": "Real-time"
+              },
+              {
+                "type": "Impossible travel",
+                "enabled": true,
+                "severity": "High",
+                "frequency": "Real-time"
+              },
+              {
+                "type": "Anonymous IP",
+                "enabled": true,
+                "severity": "Medium",
+                "frequency": "Real-time"
+              },
+              {
+                "type": "Malware linked IP address",
+                "enabled": true,
+                "severity": "High",
+                "frequency": "Real-time"
+              },
+              {
+                "type": "Unfamiliar sign-in properties",
+                "enabled": true,
+                "severity": "Low",
+                "frequency": "Real-time"
+              }
+            ]
+          },
+          "automatedResponse": {
+            "userRiskPolicy": {
+              "riskLevel": "High",
+              "action": "Block access and require password reset",
+              "requireSecurePasswordReset": true,
+              "requireMfaRegistration": true,
+              "notifyUser": true,
+              "notifyAdministrators": true
+            },
+            "signInRiskPolicy": {
+              "riskLevel": "Medium and above",
+              "action": "Require multi-factor authentication",
+              "allowUserSelfRemediation": true,
+              "blockHighRisk": true,
+              "sessionTimeout": "Reduced to 1 hour"
+            },
+            "responseMetrics": {
+              "averageResponseTime": "< 30 seconds",
+              "automatedActions": 1247,
+              "manualInterventions": 34,
+              "falsePositives": "2.3%",
+              "falseNegatives": "1.1%"
+            }
+          },
+          "integrationWithSecurity": {
+            "microsoftDefenderForIdentity": {
+              "integrated": true,
+              "alertCorrelation": true,
+              "behavioralAnalytics": true,
+              "onPremisesSignals": true,
+              "hybridEnvironmentCoverage": true
+            },
+            "microsoftCloudAppSecurity": {
+              "integrated": true,
+              "sessionPolicies": true,
+              "anomalyDetection": true,
+              "riskScoreContribution": true,
+              "automaticInvestigation": true
+            },
+            "azureSentinel": {
+              "integrated": true,
+              "customRules": 23,
+              "huntingQueries": 45,
+              "workbooks": 12,
+              "playbookAutomation": 8
+            }
+          },
+          "riskCalculationEngine": {
+            "machineLearningModels": {
+              "behavioralBaselines": true,
+              "anomalyDetection": "Advanced",
+              "patternRecognition": true,
+              "adaptiveLearning": true,
+              "globalThreatIntelligence": true
+            },
+            "riskFactors": {
+              "deviceRisk": "Weighted",
+              "locationRisk": "Weighted",
+              "behaviorRisk": "Weighted",
+              "networkRisk": "Weighted",
+              "applicationRisk": "Weighted",
+              "dataAccessRisk": "Weighted"
+            },
+            "riskAggregation": {
+              "multiFactorCorrelation": true,
+              "temporalAnalysis": true,
+              "contextualWeighting": true,
+              "feedbackLearning": true,
+              "dynamicThresholds": true
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Identity Protection policy configuration check",
+            "result": "OPTIMAL",
+            "details": "Active policies with 23 risk detection types and automated response"
+          },
+          {
+            "test": "Automated response effectiveness assessment",
+            "result": "EFFECTIVE",
+            "details": "< 30 second response time with 2.3% false positive rate"
+          },
+          {
+            "test": "Security integration validation",
+            "result": "COMPREHENSIVE",
+            "details": "Full integration with Defender for Identity, Cloud App Security, and Sentinel"
+          }
+        ],
+        "remediation": "Identity Protection properly configured with automated risk-based responses",
+        "checkType": "suspiciousBehaviorAccountDisablin"
+      },
+      {
+        "checkId": "IAM-06-002",
+        "name": "Behavioral Analytics and Anomaly Detection",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "User and entity behavior analytics should detect suspicious patterns and trigger automated responses",
+        "findings": {
+          "behaviorAnalyticsConfiguration": {
+            "azureSentinelUeba": {
+              "enabled": true,
+              "dataConnectors": 15,
+              "behaviorBaselines": "Established",
+              "anomalyDetection": "Machine learning-based",
+              "riskScoring": "Dynamic",
+              "investigationWorkflows": "Automated"
+            },
+            "microsoftDefenderForCloudApps": {
+              "enabled": true,
+              "anomalyDetectionPolicies": 34,
+              "userBehaviorAnalytics": true,
+              "dataScienceDetection": true,
+              "impossibleTravelDetection": true,
+              "activityBasedAnomalies": true
+            },
+            "behaviorMonitoringScope": {
+              "userAccounts": 1247,
+              "serviceAccounts": 89,
+              "adminAccounts": 23,
+              "guestAccounts": 156,
+              "deviceEntities": 567,
+              "applicationEntities": 234
+            }
+          },
+          "anomalyDetectionCapabilities": {
+            "behaviorBaselines": {
+              "userLoginPatterns": "Established",
+              "applicationUsagePatterns": "Tracked",
+              "dataAccessPatterns": "Monitored",
+              "privilegedActivityPatterns": "Analyzed",
+              "deviceUsagePatterns": "Baseline",
+              "networkAccessPatterns": "Tracked"
+            },
+            "anomalyTypes": [
+              {
+                "type": "Unusual login times",
+                "sensitivity": "Medium",
+                "threshold": "95th percentile",
+                "action": "Alert and investigate"
+              },
+              {
+                "type": "Abnormal data access volume",
+                "sensitivity": "High",
+                "threshold": "3 standard deviations",
+                "action": "Alert and restrict access"
+              },
+              {
+                "type": "Privilege escalation attempts",
+                "sensitivity": "Critical",
+                "threshold": "Any occurrence",
+                "action": "Block and investigate"
+              },
+              {
+                "type": "Unusual application access",
+                "sensitivity": "Medium",
+                "threshold": "First time access to sensitive apps",
+                "action": "Alert and require additional authentication"
+              }
+            ],
+            "machineLearningModels": {
+              "unsupervisedLearning": true,
+              "supervisedLearning": true,
+              "deepLearning": "For complex patterns",
+              "ensembleMethods": true,
+              "continuousLearning": true,
+              "feedbackIncorporation": true
+            }
+          },
+          "automatedResponseCapabilities": {
+            "immediateActions": {
+              "sessionTermination": "For critical anomalies",
+              "accessSuspension": "For high-risk behavior",
+              "additionalAuthRequired": "For medium-risk anomalies",
+              "accountLocking": "For repeated violations",
+              "alertGeneration": "For all anomalies"
+            },
+            "escalationProcedures": {
+              "tier1Response": "Automated investigation",
+              "tier2Response": "Security analyst review",
+              "tier3Response": "Incident response team",
+              "executiveNotification": "For critical incidents",
+              "legalNotification": "For compliance violations"
+            },
+            "forensicDataCollection": {
+              "sessionRecording": "For high-risk users",
+              "screenCapture": "For privileged activities",
+              "keystrokeLogging": "For sensitive operations",
+              "networkTrafficCapture": "For anomalous communications",
+              "systemCallMonitoring": "For system-level anomalies"
+            }
+          },
+          "integrationAndOrchestration": {
+            "siemIntegration": {
+              "azureSentinel": "Full integration",
+              "customConnectors": 8,
+              "realTimeStreaming": true,
+              "historicalDataImport": true,
+              "dashboardVisualization": true
+            },
+            "soarIntegration": {
+              "automatedPlaybooks": 23,
+              "responseOrchestration": true,
+              "multiSystemCoordination": true,
+              "workflowAutomation": true,
+              "humanInTheLoopApproval": "For high-impact actions"
+            },
+            "threatIntelligenceIntegration": {
+              "globalThreatFeeds": true,
+              "industryThreatFeeds": true,
+              "governmentThreatFeeds": true,
+              "internalThreatIntelligence": true,
+              "contextualThreatInformation": true
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Behavioral analytics deployment assessment",
+            "result": "COMPREHENSIVE",
+            "details": "UEBA enabled across 1247 users with ML-based anomaly detection"
+          },
+          {
+            "test": "Anomaly detection accuracy evaluation",
+            "result": "HIGH_ACCURACY",
+            "details": "34 detection policies with adaptive thresholds and continuous learning"
+          },
+          {
+            "test": "Automated response capability check",
+            "result": "SOPHISTICATED",
+            "details": "Multi-tier response with 23 automated playbooks and forensic collection"
+          }
+        ],
+        "remediation": "Behavioral analytics and anomaly detection properly implemented with comprehensive automation",
+        "checkType": "suspiciousBehaviorAccountDisablin"
+      },
+      {
+        "checkId": "IAM-06-003",
+        "name": "Incomplete Suspicious Activity Detection",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Suspicious activity detection coverage has significant gaps and limited automation",
+        "findings": {
+          "detectionCoverageGaps": {
+            "monitoredActivities": {
+              "loginActivities": "Comprehensive",
+              "privilegedOperations": "Limited",
+              "dataAccessActivities": "Basic",
+              "applicationUsage": "Minimal",
+              "systemConfigurationChanges": "Limited",
+              "networkActivities": "Basic"
+            },
+            "unmonitoredHighRiskActivities": [
+              "Service account password changes",
+              "Certificate management operations",
+              "Key vault secret access patterns",
+              "Database schema modifications",
+              "Network configuration changes",
+              "Security group membership changes",
+              "Firewall rule modifications",
+              "DNS configuration changes"
+            ],
+            "dataSourceLimitations": {
+              "applicationLogs": "Inconsistent collection",
+              "systemLogs": "Basic coverage",
+              "networkLogs": "Limited retention",
+              "databaseAuditLogs": "Not centralized",
+              "customApplicationLogs": "Not integrated",
+              "thirdPartySystemLogs": "Not collected"
+            }
+          },
+          "detectionLogicDeficiencies": {
+            "ruleBasedDetection": {
+              "staticRules": 45,
+              "dynamicRules": 8,
+              "contextualRules": 3,
+              "ruleEffectiveness": "67%",
+              "falsePositiveRate": "23%",
+              "ruleMaintenanceFrequency": "Quarterly"
+            },
+            "behaviorBasedDetection": {
+              "baselineEstablishment": "Incomplete",
+              "deviationThresholds": "Static",
+              "adaptiveLearning": false,
+              "patternRecognition": "Basic",
+              "temporalAnalysis": "Limited",
+              "contextualAnalysis": "Minimal"
+            },
+            "threatIntelligenceIntegration": {
+              "externalThreatFeeds": "Basic integration",
+              "indicatorOfCompromise": "Limited",
+              "threatActorProfiling": "Not implemented",
+              "campaignTracking": "Manual",
+              "attributionAnalysis": "Not performed"
+            }
+          },
+          "alertingAndNotificationIssues": {
+            "alertQuality": {
+              "relevantAlerts": "34%",
+              "actionableAlerts": "23%",
+              "duplicateAlerts": "High volume",
+              "contextualInformation": "Limited",
+              "prioritization": "Basic"
+            },
+            "notificationMechanisms": {
+              "realTimeNotification": "Email only",
+              "mobileNotification": "Not implemented",
+              "escalationNotification": "Manual",
+              "executiveReporting": "Weekly batch",
+              "customNotificationRules": "Limited"
+            },
+            "alertFatigue": {
+              "dailyAlertVolume": 456,
+              "investigatedAlerts": 67,
+              "falsePositiveReduction": "Minimal effort",
+              "analystBurnout": "Significant concern",
+              "alertPrioritization": "Basic"
+            }
+          },
+          "investigationAndResponseLimitations": {
+            "investigationTools": {
+              "forensicCapabilities": "Basic",
+              "dataCorrelation": "Limited",
+              "timelineReconstruction": "Manual",
+              "evidenceCollection": "Ad hoc",
+              "chainOfCustody": "Paper-based"
+            },
+            "responseAutomation": {
+              "automatedContainment": "Basic",
+              "automatedInvestigation": "Limited",
+              "orchestratedResponse": "Manual",
+              "remediationAutomation": "Minimal",
+              "lessonsLearnedIntegration": "Not implemented"
+            },
+            "skillsAndResources": {
+              "trainedAnalysts": 3,
+              "24x7Coverage": false,
+              "specialistExpertise": "Limited",
+              "vendorSupport": "Business hours only",
+              "continuousEducation": "Informal"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Suspicious activity detection coverage assessment",
+            "result": "INCOMPLETE",
+            "details": "High-risk activities like service account changes not monitored"
+          },
+          {
+            "test": "Detection logic effectiveness evaluation",
+            "result": "INEFFECTIVE",
+            "details": "23% false positive rate with static thresholds and limited learning"
+          },
+          {
+            "test": "Alert quality and response capability check",
+            "result": "POOR",
+            "details": "Only 23% of alerts actionable, manual investigation processes"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Expand monitoring coverage to include all high-risk activities, 2) Implement machine learning-based detection with adaptive baselines, 3) Integrate comprehensive threat intelligence feeds, 4) Deploy automated investigation and response capabilities, 5) Establish 24x7 security operations center, 6) Implement alert quality improvement and false positive reduction programs",
+        "checkType": "suspiciousBehaviorAccountDisablin"
+      },
+      {
+        "checkId": "IAM-06-004",
+        "name": "Manual Account Disabling Processes",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Account disabling relies heavily on manual processes leading to delays and inconsistencies",
+        "findings": {
+          "accountDisablingProcessGaps": {
+            "automationLevel": {
+              "fullyAutomated": "12%",
+              "partiallyAutomated": "23%",
+              "manualProcess": "65%",
+              "averageResponseTime": "P2DT4H",
+              "businessHoursOnly": true,
+              "weekendCoverage": false
+            },
+            "triggerMechanisms": {
+              "automatedTriggers": 8,
+              "manualTriggers": 34,
+              "scheduledReviews": "Weekly",
+              "eventBasedTriggers": "Limited",
+              "riskBasedTriggers": "Not implemented",
+              "emergencyTriggers": "Phone call only"
+            },
+            "processInconsistencies": {
+              "departmentVariations": "Significant",
+              "procedureDocumentation": "Outdated",
+              "standardizedWorkflows": false,
+              "qualityAssurance": "Informal",
+              "auditTrail": "Incomplete"
+            }
+          },
+          "delayedResponseIssues": {
+            "responseTimeMetrics": {
+              "immediateResponse": "Critical incidents only",
+              "sameDay": "23% of incidents",
+              "within24Hours": "45% of incidents",
+              "within72Hours": "78% of incidents",
+              "beyondSla": "22% of incidents"
+            },
+            "businessImpact": {
+              "securityExposureWindow": "Up to 72 hours",
+              "complianceViolationRisk": "High",
+              "dataAccessRisk": "Continued during delay",
+              "privilegedAccessRisk": "Not immediately revoked",
+              "auditTrailGaps": "During response delay"
+            },
+            "escalationChallenges": {
+              "manualEscalation": "Required",
+              "approvalDelays": "Common",
+              "communicationGaps": "Between teams",
+              "prioritizationIssues": "Subjective",
+              "resourceAvailability": "Limited"
+            }
+          },
+          "workflowAndOrchestrationDeficiencies": {
+            "crossSystemDisabling": {
+              "azureAd": "Manual",
+              "onPremisesAd": "Manual",
+              "applicationAccounts": "Manual with gaps",
+              "databaseAccounts": "Not coordinated",
+              "networkAccounts": "Separate process",
+              "cloudPlatformAccounts": "Inconsistent"
+            },
+            "dependencyManagement": {
+              "serviceAccountDependencies": "Not mapped",
+              "applicationDependencies": "Unknown",
+              "businessProcessImpact": "Not assessed",
+              "downstreamEffects": "Not evaluated",
+              "rollbackProcedures": "Limited"
+            },
+            "communicationAndNotification": {
+              "stakeholderNotification": "Manual",
+              "userNotification": "Inconsistent",
+              "managementReporting": "Delayed",
+              "auditNotification": "Manual",
+              "complianceReporting": "Batch process"
+            }
+          },
+          "governanceAndComplianceGaps": {
+            "policyEnforcement": {
+              "consistentApplication": false,
+              "policyUpdates": "Infrequent",
+              "exceptionHandling": "Ad hoc",
+              "complianceTracking": "Manual",
+              "violationDetection": "Reactive"
+            },
+            "auditabilityIssues": {
+              "completeAuditTrail": false,
+              "timestampAccuracy": "Inconsistent",
+              "actionJustification": "Often missing",
+              "approvalDocumentation": "Paper-based",
+              "evidenceRetention": "Informal"
+            },
+            "reportingAndMetrics": {
+              "processingTimeMetrics": "Not tracked",
+              "effectivenessMetrics": "Not measured",
+              "qualityMetrics": "Not defined",
+              "complianceMetrics": "Basic",
+              "improvementTracking": "Limited"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Account disabling automation assessment",
+            "result": "HEAVILY_MANUAL",
+            "details": "65% manual processes with 2.4-day average response time"
+          },
+          {
+            "test": "Process consistency evaluation",
+            "result": "INCONSISTENT",
+            "details": "Significant departmental variations with incomplete audit trails"
+          },
+          {
+            "test": "Cross-system coordination check",
+            "result": "FRAGMENTED",
+            "details": "Manual coordination across multiple systems with dependency gaps"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Implement automated account disabling workflows across all systems, 2) Deploy orchestrated multi-system account management, 3) Establish real-time monitoring and alerting for account status changes, 4) Create standardized procedures with complete audit trails, 5) Implement 24x7 automated response capabilities, 6) Deploy risk-based automatic account disabling, 7) Establish comprehensive governance and compliance tracking",
+        "checkType": "suspiciousBehaviorAccountDisablin"
+      },
+      {
+        "checkId": "IAM-06-005",
+        "name": "Insufficient Threat Intelligence Integration",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Threat intelligence integration lacks comprehensiveness and real-time application to account security",
+        "findings": {
+          "threatIntelligenceSourceLimitations": {
+            "externalThreatFeeds": {
+              "commercialFeeds": 3,
+              "openSourceFeeds": 5,
+              "governmentFeeds": 1,
+              "industryFeeds": 2,
+              "vendorFeeds": 4,
+              "customFeeds": 0
+            },
+            "internalThreatIntelligence": {
+              "incidentData": "Basic collection",
+              "behaviorPatterns": "Limited analysis",
+              "attackPatterns": "Manual documentation",
+              "iocGeneration": "Inconsistent",
+              "lessonsLearned": "Not systematized"
+            },
+            "threatIntelligenceQuality": {
+              "relevance": "Medium",
+              "timeliness": "Delayed",
+              "accuracy": "Unverified",
+              "actionability": "Low",
+              "contextualInformation": "Limited"
+            }
+          },
+          "integrationAndProcessingGaps": {
+            "threatIntelligencePlatform": {
+              "deployed": false,
+              "dataIngestion": "Manual",
+              "dataProcessing": "Basic",
+              "dataNormalization": "Limited",
+              "dataCorrelation": "Manual",
+              "dataEnrichment": "Minimal"
+            },
+            "automatedProcessing": {
+              "iocExtraction": "Manual",
+              "iocValidation": "Limited",
+              "iocScoringAndRanking": false,
+              "contextualAnalysis": false,
+              "temporalAnalysis": false,
+              "geospatialAnalysis": false
+            },
+            "realTimeApplication": {
+              "liveSecurityControls": "Not integrated",
+              "dynamicBlocking": "Limited",
+              "adaptiveDetection": false,
+              "proactiveHunting": "Manual",
+              "preventiveControls": "Static"
+            }
+          },
+          "accountSecurityIntegrationDeficiencies": {
+            "identityThreatDetection": {
+              "compromisedCredentialFeeds": "Basic",
+              "attackerInfrastructureFeeds": "Limited",
+              "campaignAttributionFeeds": "Not integrated",
+              "behavioralThreatPatterns": "Not applied",
+              "contextualThreatInformation": "Missing"
+            },
+            "riskScoringIntegration": {
+              "threatBasedRiskScoring": false,
+              "dynamicRiskAdjustment": false,
+              "contextualRiskFactors": "Not incorporated",
+              "threatActorProfiling": "Not applied",
+              "campaignAwareRiskScoring": false
+            },
+            "responseOrchestration": {
+              "threatInformedResponse": "Limited",
+              "contextualResponseAdaptation": false,
+              "threatActorSpecificResponse": false,
+              "campaignBasedResponse": false,
+              "proactiveResponseTriggers": "Not implemented"
+            }
+          },
+          "analyticsAndIntelligenceGaps": {
+            "threatLandscapeAnalysis": {
+              "sectorSpecificThreats": "Not analyzed",
+              "emergingThreatTrends": "Not tracked",
+              "attackMethodEvolution": "Not monitored",
+              "threatActorCapabilities": "Not assessed",
+              "geopoliticalContext": "Not considered"
+            },
+            "predictiveAnalytics": {
+              "threatForecasting": false,
+              "attackPrediction": false,
+              "vulnerabilityExploitPrediction": false,
+              "campaignPrediction": false,
+              "emergingThreatIdentification": false
+            },
+            "strategicIntelligence": {
+              "threatEnvironmentAssessment": "Annual only",
+              "competitorThreatAnalysis": "Not performed",
+              "supplyChainThreatAnalysis": "Limited",
+              "geopoliticalThreatAssessment": "Not performed",
+              "businessImpactAnalysis": "Basic"
+            }
+          },
+          "sharingAndCollaborationLimitations": {
+            "threatIntelligenceSharing": {
+              "industrySharing": "Limited",
+              "governmentSharing": "Basic",
+              "vendorSharing": "Inconsistent",
+              "communitySharing": "Not active",
+              "internalSharing": "Siloed"
+            },
+            "collaborativeThreatHunting": {
+              "crossOrganizationalHunting": false,
+              "sharedHuntingQueries": "Not developed",
+              "collectiveIntelligence": "Not leveraged",
+              "communityPlaybooks": "Not used",
+              "crowdsourcedIntelligence": "Not utilized"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Threat intelligence source coverage assessment",
+            "result": "LIMITED",
+            "details": "15 external feeds but no threat intelligence platform or automated processing"
+          },
+          {
+            "test": "Real-time threat intelligence application check",
+            "result": "MANUAL",
+            "details": "Manual IOC processing with no dynamic security control integration"
+          },
+          {
+            "test": "Account security threat intelligence integration evaluation",
+            "result": "MINIMAL",
+            "details": "Basic compromised credential feeds without risk scoring integration"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Deploy comprehensive threat intelligence platform with automated processing, 2) Integrate threat intelligence into real-time security controls and account risk scoring, 3) Establish industry and government threat intelligence sharing partnerships, 4) Implement predictive analytics for threat forecasting, 5) Develop threat-informed automated response capabilities, 6) Establish proactive threat hunting based on intelligence, 7) Create strategic threat intelligence program for business risk assessment",
+        "checkType": "suspiciousBehaviorAccountDisablin"
+      },
+      {
+        "checkId": "IAM-06-006",
+        "name": "Limited Forensic and Investigation Capabilities",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Forensic capabilities are insufficient for thorough investigation of suspicious account activities",
+        "findings": {
+          "forensicDataCollectionGaps": {
+            "dataSourceCoverage": {
+              "systemLogs": "Basic collection",
+              "applicationLogs": "Inconsistent",
+              "networkLogs": "Limited retention",
+              "securityLogs": "Partial coverage",
+              "databaseAuditLogs": "Not centralized",
+              "cloudServiceLogs": "Basic",
+              "endpointLogs": "Limited",
+              "mobileDeviceLogs": "Not collected"
+            },
+            "logRetentionIssues": {
+              "retentionPeriods": "Inconsistent",
+              "longTermArchival": "Not implemented",
+              "compressionStrategies": "Basic",
+              "costOptimization": "Not addressed",
+              "complianceRequirements": "Not fully met",
+              "legalHoldCapabilities": "Manual"
+            },
+            "dataIntegrityAndChainOfCustody": {
+              "tamperProofLogging": "Limited",
+              "cryptographicHashing": "Not implemented",
+              "digitalSignatures": "Not used",
+              "timestampValidation": "Basic",
+              "evidenceIntegrity": "Not assured",
+              "chainOfCustodyTracking": "Manual"
+            }
+          },
+          "investigationToolLimitations": {
+            "forensicAnalysisTools": {
+              "logAnalysisTools": "Basic",
+              "timelineReconstructionTools": "Manual",
+              "correlationEngines": "Limited",
+              "visualizationTools": "Basic",
+              "automatedAnalysis": "Minimal",
+              "expertiseRequired": "High"
+            },
+            "dataCorrelationCapabilities": {
+              "crossSystemCorrelation": "Manual",
+              "temporalCorrelation": "Limited",
+              "behavioralCorrelation": "Basic",
+              "networkCorrelation": "Manual",
+              "contextualCorrelation": "Not implemented",
+              "geospatialCorrelation": "Not available"
+            },
+            "searchAndDiscoveryCapabilities": {
+              "fullTextSearch": "Basic",
+              "metadataSearch": "Limited",
+              "patternMatching": "Manual",
+              "anomalyDetection": "Limited",
+              "contentAnalysis": "Not implemented",
+              "relationshipMapping": "Manual"
+            }
+          },
+          "investigationProcessDeficiencies": {
+            "investigationWorkflows": {
+              "standardizedProcedures": "Basic",
+              "workflowAutomation": "Limited",
+              "caseManagement": "Manual",
+              "progressTracking": "Informal",
+              "qualityAssurance": "Ad hoc",
+              "knowledgeManagement": "Not implemented"
+            },
+            "investigativeSkillsAndTraining": {
+              "trainedInvestigators": 2,
+              "certificationRequirements": "None",
+              "continuousEducation": "Informal",
+              "specializedSkills": "Limited",
+              "vendorSupport": "Basic",
+              "knowledgeSharing": "Informal"
+            },
+            "collaborationAndCoordination": {
+              "internalCoordination": "Manual",
+              "externalCoordination": "Limited",
+              "lawEnforcementCooperation": "Ad hoc",
+              "legalSupport": "External only",
+              "vendorCoordination": "Reactive",
+              "communityEngagement": "Limited"
+            }
+          },
+          "reportingAndDocumentationGaps": {
+            "investigationReporting": {
+              "standardizedReports": "Limited",
+              "executiveSummaries": "Manual",
+              "technicalDetails": "Inconsistent",
+              "recommendationsIncluded": "Sometimes",
+              "lessonsLearned": "Not captured",
+              "followUpTracking": "Manual"
+            },
+            "documentationStandards": {
+              "evidenceDocumentation": "Informal",
+              "procedureDocumentation": "Outdated",
+              "findingsDocumentation": "Inconsistent",
+              "conclusionDocumentation": "Basic",
+              "recommendationDocumentation": "Limited",
+              "archivalProcedures": "Not defined"
+            },
+            "complianceAndLegalPreparedness": {
+              "legalAdmissibility": "Not ensured",
+              "regulatoryReporting": "Manual",
+              "complianceDocumentation": "Basic",
+              "courtTestimonyPreparedness": "Limited",
+              "expertWitnessCapabilities": "External",
+              "litigationHoldProcedures": "Manual"
+            }
+          },
+          "toolsAndTechnologyGaps": {
+            "forensicSoftware": {
+              "commercialForensicSuites": "Not deployed",
+              "openSourceTools": "Limited use",
+              "cloudForensicTools": "Basic",
+              "mobileForensicTools": "Not available",
+              "networkForensicTools": "Limited",
+              "memoryForensicTools": "Not available"
+            },
+            "dataProcessingCapabilities": {
+              "bigDataProcessing": "Limited",
+              "realTimeProcessing": "Not available",
+              "distributedProcessing": "Not implemented",
+              "gpuAcceleration": "Not available",
+              "machLearningIntegration": "Not implemented",
+              "aiAssistedAnalysis": "Not available"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Forensic data collection capability assessment",
+            "result": "INSUFFICIENT",
+            "details": "Inconsistent log collection with limited retention and no chain of custody"
+          },
+          {
+            "test": "Investigation tool and process evaluation",
+            "result": "BASIC",
+            "details": "Manual processes with 2 trained investigators and limited automation"
+          },
+          {
+            "test": "Forensic readiness and compliance check",
+            "result": "UNPREPARED",
+            "details": "No commercial forensic tools and informal evidence documentation"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Deploy comprehensive log management with long-term retention and tamper-proof storage, 2) Implement commercial forensic analysis tools and automation, 3) Establish standardized investigation workflows and case management, 4) Train and certify forensic investigators with specialized skills, 5) Implement chain of custody procedures and evidence integrity controls, 6) Establish legal admissibility standards and compliance documentation, 7) Deploy advanced analytics and machine learning for automated investigation assistance",
+        "checkType": "suspiciousBehaviorAccountDisablin"
+      },
+      {
+        "checkId": "IAM-06-007",
+        "name": "Inadequate Incident Response Integration",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Account disabling is not properly integrated with broader incident response procedures",
+        "findings": {
+          "incidentResponseIntegrationGaps": {
+            "incidentClassification": {
+              "accountCompromiseIncidents": "Basic classification",
+              "suspiciousActivityIncidents": "Limited classification",
+              "privilegedAccountIncidents": "Enhanced classification",
+              "massAccountCompromise": "Not defined",
+              "insiderThreatIncidents": "Basic classification",
+              "automatedClassification": false
+            },
+            "responseCoordination": {
+              "crossFunctionalTeams": "Manual coordination",
+              "externalParties": "Ad hoc coordination",
+              "lawEnforcement": "No established procedures",
+              "legalCounsel": "Reactive engagement",
+              "publicRelations": "No integration",
+              "executiveManagement": "Delayed notification"
+            },
+            "communicationProtocols": {
+              "internalCommunication": "Email-based",
+              "externalCommunication": "Ad hoc",
+              "stakeholderNotification": "Manual",
+              "mediaManagement": "Not addressed",
+              "customerNotification": "Delayed",
+              "regulatorNotification": "Manual"
+            }
+          },
+          "containmentAndEradicationLimitations": {
+            "immediateContainment": {
+              "automaticAccountDisabling": "Limited",
+              "networkIsolation": "Manual",
+              "systemQuarantine": "Not implemented",
+              "dataAccessRevocation": "Manual",
+              "sessionTermination": "Basic",
+              "privilegeRevocation": "Manual"
+            },
+            "scopeAssessment": {
+              "impactAssessment": "Manual",
+              "lateralMovementAnalysis": "Limited",
+              "dataExposureAssessment": "Basic",
+              "systemCompromiseAnalysis": "Manual",
+              "timelineReconstruction": "Limited",
+              "rootCauseAnalysis": "Informal"
+            },
+            "eradicationProcedures": {
+              "malwareRemoval": "Manual",
+              "persistenceMechanismRemoval": "Manual",
+              "backdoorElimination": "Limited",
+              "vulnerabilityPatching": "Reactive",
+              "configurationHardening": "Ad hoc",
+              "credentialReset": "Manual"
+            }
+          },
+          "recoveryAndRestoration": {
+            "serviceRestoration": {
+              "businessContinuityPlanning": "Basic",
+              "serviceAvailabilityMaintenance": "Reactive",
+              "dataRecoveryProcedures": "Manual",
+              "systemRestoration": "Ad hoc",
+              "operationalValidation": "Limited",
+              "performanceMonitoring": "Basic"
+            },
+            "accountRecovery": {
+              "identityVerification": "Manual",
+              "accountReactivation": "Manual",
+              "privilegeRestoration": "Manual",
+              "accessRevalidation": "Limited",
+              "monitoringEnhancement": "Not implemented",
+              "behaviorBaselineReset": "Not performed"
+            },
+            "systemHardening": {
+              "securityControlEnhancement": "Reactive",
+              "monitoringImprovements": "Ad hoc",
+              "detectionRuleUpdates": "Manual",
+              "preventiveControlDeployment": "Reactive",
+              "vulnerabilityAssessment": "Scheduled",
+              "penetrationTestingFollow-up": "Not performed"
+            }
+          },
+          "lessonsLearnedAndImprovement": {
+            "postIncidentAnalysis": {
+              "thoroughPostMortem": "Informal",
+              "rootCauseAnalysis": "Basic",
+              "processEffectivenessReview": "Limited",
+              "responseTimeAnalysis": "Not performed",
+              "decisionQualityAssessment": "Not performed",
+              "communicationEffectivenessReview": "Limited"
+            },
+            "processImprovement": {
+              "procedureUpdates": "Reactive",
+              "toolEnhancements": "Ad hoc",
+              "trainingUpdates": "Informal",
+              "playBookRefinement": "Limited",
+              "automationOpportunities": "Not identified",
+              "technologUpgrades": "Budget-dependent"
+            },
+            "knowledgeManagement": {
+              "incidentDocumentation": "Basic",
+              "tacticsTechniquesDocumentation": "Limited",
+              "bestPracticesSharing": "Informal",
+              "organizationalLearning": "Ad hoc",
+              "industryBenchmarking": "Not performed",
+              "continuousImprovement": "Not systematic"
+            }
+          },
+          "metricsAndPerformanceTracking": {
+            "responseMetrics": {
+              "detectionTime": "Not measured",
+              "containmentTime": "Not tracked",
+              "eradicationTime": "Not measured",
+              "recoveryTime": "Basic tracking",
+              "totalResponseTime": "Not calculated",
+              "effectivenessMetrics": "Not defined"
+            },
+            "qualityMetrics": {
+              "falsePositiveRates": "Not tracked",
+              "escalationAccuracy": "Not measured",
+              "stakeholderSatisfaction": "Not assessed",
+              "businessImpactMinimization": "Not quantified",
+              "complianceAdherence": "Not measured",
+              "improvementTracking": "Informal"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Incident response integration assessment",
+            "result": "FRAGMENTED",
+            "details": "Manual coordination with no automated classification or containment"
+          },
+          {
+            "test": "Response procedure effectiveness evaluation",
+            "result": "REACTIVE",
+            "details": "Ad hoc procedures with limited automation and delayed notifications"
+          },
+          {
+            "test": "Continuous improvement capability check",
+            "result": "INFORMAL",
+            "details": "Basic post-incident analysis without systematic improvement tracking"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Integrate account security incidents into formal incident response procedures, 2) Implement automated incident classification and escalation workflows, 3) Establish cross-functional incident response teams with defined roles, 4) Deploy automated containment and eradication capabilities, 5) Implement comprehensive incident response metrics and performance tracking, 6) Establish systematic lessons learned and continuous improvement processes, 7) Create incident response playbooks specific to account compromise scenarios",
+        "checkType": "suspiciousBehaviorAccountDisablin"
+      }
+    ]
+  }
+}

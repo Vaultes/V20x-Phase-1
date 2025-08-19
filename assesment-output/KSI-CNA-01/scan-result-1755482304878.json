@@ -1,0 +1,142 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-CNA-01",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 8,
+      "passed": 4,
+      "failed": 3,
+      "warnings": 1
+    },
+    "checks": [
+      {
+        "checkId": "CNA-01-001",
+        "name": "Container Image Vulnerability Scan",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Container images must be scanned for vulnerabilities",
+        "findings": {
+          "vulnerabilities": {
+            "critical": 0,
+            "high": 0,
+            "medium": 2,
+            "low": 5
+          }
+        },
+        "remediation": "No critical or high vulnerabilities found",
+        "checkType": "containerSecurit"
+      },
+      {
+        "checkId": "CNA-01-002",
+        "name": "Container Base Image Security",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Container base images must use approved secure base images",
+        "findings": {
+          "baseImage": "node:latest",
+          "approvedImages": [
+            "node:18-alpine",
+            "node:20-alpine"
+          ],
+          "issue": "Using 'latest' tag is not permitted for production workloads"
+        },
+        "remediation": "Update Dockerfile to use specific versioned base image from approved list",
+        "checkType": "containerSecurit"
+      },
+      {
+        "checkId": "CNA-01-003",
+        "name": "Container Runtime Security",
+        "status": "PASS",
+        "severity": "MEDIUM",
+        "description": "Containers must not run as root user",
+        "findings": {
+          "runAsUser": "1001",
+          "runAsGroup": "1001",
+          "allowPrivilegeEscalation": false
+        },
+        "remediation": "Container properly configured with non-root user",
+        "checkType": "containerSecurit"
+      },
+      {
+        "checkId": "CNA-01-004",
+        "name": "Container Network Security",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Container network policies must restrict traffic",
+        "findings": {
+          "exposedPorts": [
+            80,
+            443,
+            22
+          ],
+          "publicAccess": true,
+          "sshAccess": true,
+          "issue": "SSH port 22 should not be exposed publicly"
+        },
+        "remediation": "Remove SSH access and restrict network access to necessary ports only",
+        "checkType": "containerSecurit"
+      },
+      {
+        "checkId": "CNA-01-005",
+        "name": "Container Resource Limits",
+        "status": "PASS",
+        "severity": "MEDIUM",
+        "description": "Containers must have CPU and memory limits defined",
+        "findings": {
+          "cpuLimit": "1.0",
+          "memoryLimit": "2Gi",
+          "cpuRequest": "0.5",
+          "memoryRequest": "1Gi"
+        },
+        "remediation": "Resource limits properly configured",
+        "checkType": "containerSecurit"
+      },
+      {
+        "checkId": "CNA-01-006",
+        "name": "Container Image Signing",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Container images must be digitally signed",
+        "findings": {
+          "signatureVerification": false,
+          "signingEnabled": false,
+          "issue": "Container images are not digitally signed"
+        },
+        "remediation": "Enable container image signing and verification in registry",
+        "checkType": "containerSecurit"
+      },
+      {
+        "checkId": "CNA-01-007",
+        "name": "Container Secrets Management",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Container secrets must be stored securely",
+        "findings": {
+          "secretsInEnvironment": false,
+          "keyVaultIntegration": true,
+          "secretRotation": true
+        },
+        "remediation": "Secrets properly managed through Azure Key Vault",
+        "checkType": "containerSecurit"
+      },
+      {
+        "checkId": "CNA-01-008",
+        "name": "Container Logging and Monitoring",
+        "status": "WARNING",
+        "severity": "MEDIUM",
+        "description": "Container logs must be centrally collected and monitored",
+        "findings": {
+          "loggingEnabled": true,
+          "logRetention": "30 days",
+          "monitoringAlerts": false,
+          "issue": "Monitoring alerts not configured for security events"
+        },
+        "remediation": "Configure security monitoring alerts for container events",
+        "checkType": "containerSecurit"
+      }
+    ]
+  }
+}

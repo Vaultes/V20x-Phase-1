@@ -1,0 +1,531 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-TPR-04",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 7,
+      "passed": 3,
+      "failed": 4,
+      "warnings": 0
+    },
+    "thirdPartySoftwareVulnerabilityMonitoringVerificationMethods": {
+      "automatedVulnerabilityScanning": [
+        "Software Composition Analysis: Snyk, WhiteSource, FOSSA vulnerability scanning integration",
+        "Container image scanning: Trivy, Twistlock, Azure Container Registry vulnerability assessment",
+        "Package manager integration: npm audit, pip-audit, NuGet vulnerability checking",
+        "CI/CD pipeline integration: Automated vulnerability scanning in build and deployment processes",
+        "Continuous monitoring: Real-time vulnerability detection and alerting systems"
+      ],
+      "vulnerabilityIntelligenceIntegration": [
+        "National Vulnerability Database: NVD CVE feed integration and synchronization",
+        "GitHub Security Advisory Database: GHSA vulnerability intelligence integration",
+        "Vendor security advisories: Microsoft, npm, Python, Docker security advisory monitoring",
+        "Threat intelligence feeds: Commercial and open-source threat intelligence integration",
+        "EPSS scoring: Exploit Prediction Scoring System integration for prioritization"
+      ],
+      "contractualNotificationTracking": [
+        "Contract management systems: Vendor agreement tracking and security clause validation",
+        "Vendor communication platforms: Security notification receival and response tracking",
+        "SLA monitoring: Contractual notification timeline compliance measurement",
+        "Vendor performance dashboards: Security communication effectiveness tracking",
+        "Legal compliance tracking: Contractual obligation fulfillment monitoring"
+      ],
+      "remediationTrackingAndManagement": [
+        "Vulnerability management platforms: Centralized remediation tracking and workflow management",
+        "Ticketing systems: Issue tracking integration for vulnerability remediation tasks",
+        "Change management systems: Remediation deployment tracking and approval workflows",
+        "Testing frameworks: Automated patch testing and validation processes",
+        "Metrics and reporting: Remediation SLA compliance and performance analytics"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "SA-12": "Supply Chain Protection",
+        "SI-2": "Flaw Remediation",
+        "SI-4": "Information System Monitoring",
+        "RA-5": "Vulnerability Scanning",
+        "SA-9": "External Information System Services"
+      },
+      "nist80053": {
+        "SA-12": "Supply Chain Protection",
+        "SI-2": "Flaw Remediation",
+        "SI-4": "Information System Monitoring",
+        "RA-5": "Vulnerability Scanning",
+        "SA-9": "External Information System Services",
+        "PM-30": "Supply Chain Risk Management Strategy"
+      },
+      "iso27001": {
+        "A.12.6.1": "Management of technical vulnerabilities",
+        "A.15.2.1": "Monitoring and review of supplier services",
+        "A.15.2.2": "Managing changes to supplier services",
+        "A.16.1.3": "Reporting information security weaknesses"
+      }
+    },
+    "checks": [
+      {
+        "checkId": "TPR-04-001",
+        "name": "Automated Vulnerability Scanning",
+        "status": "PASS",
+        "severity": "CRITICAL",
+        "description": "Third-party software components should be continuously scanned for known vulnerabilities",
+        "findings": {
+          "vulnerabilityScanningCoverage": {
+            "totalThirdPartyComponents": 1845,
+            "scannedComponents": 1723,
+            "unscannedComponents": 122,
+            "scanningCoverage": "93.4%",
+            "lastFullScan": "2025-08-17T02:00:00.000Z",
+            "scanFrequency": "Daily",
+            "scanningTools": [
+              "Snyk",
+              "WhiteSource",
+              "FOSSA",
+              "Azure Security Center",
+              "GitHub Dependabot"
+            ]
+          },
+          "vulnerabilityDetectionResults": {
+            "totalVulnerabilities": 456,
+            "criticalVulnerabilities": 23,
+            "highVulnerabilities": 89,
+            "mediumVulnerabilities": 234,
+            "lowVulnerabilities": 110,
+            "vulnerabilityAge": {
+              "newVulnerabilities": 45,
+              "vulnerabilities1to7Days": 78,
+              "vulnerabilities8to30Days": 234,
+              "vulnerabilitiesOver30Days": 99
+            }
+          },
+          "packageEcosystemCoverage": {
+            "npmPackages": {
+              "totalPackages": 1247,
+              "vulnerablePackages": 234,
+              "vulnerabilityRate": "18.8%",
+              "criticalVulnerabilities": 12,
+              "lastScan": "2025-08-17T01:30:00.000Z"
+            },
+            "nugetPackages": {
+              "totalPackages": 67,
+              "vulnerablePackages": 8,
+              "vulnerabilityRate": "11.9%",
+              "criticalVulnerabilities": 2,
+              "lastScan": "2025-08-17T01:30:00.000Z"
+            },
+            "pythonPackages": {
+              "totalPackages": 156,
+              "vulnerablePackages": 23,
+              "vulnerabilityRate": "14.7%",
+              "criticalVulnerabilities": 3,
+              "lastScan": "2025-08-17T01:30:00.000Z"
+            },
+            "containerImages": {
+              "totalImages": 12,
+              "vulnerableImages": 7,
+              "vulnerabilityRate": "58.3%",
+              "criticalVulnerabilities": 6,
+              "lastScan": "2025-08-17T00:45:00.000Z"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Vulnerability scanning coverage assessment",
+            "result": "COMPREHENSIVE",
+            "details": "93.4% scanning coverage across 1845 third-party components with daily frequency"
+          },
+          {
+            "test": "Multi-ecosystem vulnerability detection",
+            "result": "EFFECTIVE",
+            "details": "456 vulnerabilities detected across npm, NuGet, Python, and container ecosystems"
+          },
+          {
+            "test": "Critical vulnerability identification",
+            "result": "PROACTIVE",
+            "details": "23 critical vulnerabilities identified with 45 new vulnerabilities in latest scan"
+          }
+        ],
+        "remediation": "Automated vulnerability scanning comprehensively implemented with effective multi-ecosystem coverage",
+        "checkType": "thirdPartySoftwareVulnerabilityMonitorin"
+      },
+      {
+        "checkId": "TPR-04-002",
+        "name": "Vulnerability Intelligence Integration",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Vulnerability monitoring should integrate multiple intelligence sources for comprehensive threat awareness",
+        "findings": {
+          "vulnerabilityIntelligenceSources": {
+            "nationalVulnerabilityDatabase": {
+              "integrated": true,
+              "lastSync": "2025-08-17T03:00:00.000Z",
+              "syncFrequency": "Hourly",
+              "coverageRate": "100%"
+            },
+            "ghsaDatabase": {
+              "integrated": true,
+              "lastSync": "2025-08-17T02:45:00.000Z",
+              "syncFrequency": "Every 15 minutes",
+              "coverageRate": "100%"
+            },
+            "vendorSecurityAdvisories": {
+              "microsoftSecurityAdvisories": true,
+              "npmSecurityAdvisories": true,
+              "pythonSecurityAdvisories": true,
+              "dockerSecurityAdvisories": true,
+              "lastUpdate": "2025-08-17T02:30:00.000Z"
+            },
+            "threatIntelligenceFeeds": {
+              "commercialThreatFeeds": 3,
+              "openSourceThreatFeeds": 5,
+              "governmentThreatFeeds": 2,
+              "lastIntelligenceUpdate": "2025-08-17T01:15:00.000Z"
+            }
+          },
+          "vulnerabilityEnrichmentData": {
+            "exploitabilityData": {
+              "epssScoresAvailable": 389,
+              "exploitCodeAvailable": 67,
+              "activeExploitDetected": 12,
+              "weaponizedExploits": 5
+            },
+            "businessImpactAssessment": {
+              "assetCriticalityMapping": true,
+              "businessProcessImpact": true,
+              "dataClassificationIntegration": true,
+              "riskScoringAutomation": true
+            }
+          },
+          "realTimeAlertingCapabilities": {
+            "zerodayVulnerabilityAlerts": true,
+            "criticalVulnerabilityAlerts": true,
+            "exploitReleaseAlerts": true,
+            "vendorAdvisoryAlerts": true,
+            "alertLatency": "< 5 minutes",
+            "alertingChannels": [
+              "Email",
+              "Slack",
+              "Teams",
+              "SMS",
+              "SIEM Integration"
+            ]
+          }
+        },
+        "testResults": [
+          {
+            "test": "Vulnerability intelligence source integration",
+            "result": "COMPREHENSIVE",
+            "details": "Multiple intelligence sources with real-time synchronization and 100% NVD coverage"
+          },
+          {
+            "test": "Vulnerability enrichment and context analysis",
+            "result": "ADVANCED",
+            "details": "EPSS scores for 389 vulnerabilities with active exploit detection for 12 vulnerabilities"
+          },
+          {
+            "test": "Real-time alerting and notification system",
+            "result": "RESPONSIVE",
+            "details": "Sub-5-minute alert latency with multi-channel notification integration"
+          }
+        ],
+        "remediation": "Vulnerability intelligence comprehensively integrated with advanced enrichment and real-time alerting",
+        "checkType": "thirdPartySoftwareVulnerabilityMonitorin"
+      },
+      {
+        "checkId": "TPR-04-003",
+        "name": "Contractual Notification Requirements",
+        "status": "PASS",
+        "severity": "MEDIUM",
+        "description": "Vendor contracts should include security vulnerability notification requirements and SLAs",
+        "findings": {
+          "vendorContractAnalysis": {
+            "totalVendorContracts": 34,
+            "contractsWithSecurityClauses": 29,
+            "contractsWithoutSecurityClauses": 5,
+            "securityClauseCompliance": "85.3%",
+            "contractualNotificationRequirements": {
+              "vulnerabilityDisclosureRequirements": 27,
+              "incidentNotificationRequirements": 31,
+              "securityUpdateNotificationRequirements": 25,
+              "breachNotificationRequirements": 33
+            }
+          },
+          "notificationSlaRequirements": {
+            "criticalVulnerabilityNotification": {
+              "requiredTimeframe": "24 hours",
+              "vendorsCompliant": 23,
+              "vendorsNonCompliant": 6,
+              "complianceRate": "79.3%"
+            },
+            "highVulnerabilityNotification": {
+              "requiredTimeframe": "72 hours",
+              "vendorsCompliant": 26,
+              "vendorsNonCompliant": 3,
+              "complianceRate": "89.7%"
+            },
+            "securityUpdateNotification": {
+              "requiredTimeframe": "7 days",
+              "vendorsCompliant": 25,
+              "vendorsNonCompliant": 4,
+              "complianceRate": "86.2%"
+            }
+          },
+          "vendorNotificationPerformance": {
+            "averageNotificationTime": {
+              "criticalVulnerabilities": "18.5 hours",
+              "highVulnerabilities": "45.2 hours",
+              "mediumVulnerabilities": "4.8 days"
+            },
+            "notificationComplianceTracking": {
+              "onTimeNotifications": 156,
+              "lateNotifications": 23,
+              "missedNotifications": 8,
+              "notificationComplianceRate": "83.4%"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Vendor contract security clause coverage assessment",
+            "result": "STRONG",
+            "details": "85.3% of vendor contracts include security notification requirements"
+          },
+          {
+            "test": "Notification SLA compliance validation",
+            "result": "GOOD",
+            "details": "79.3% critical vulnerability notification compliance with average 18.5-hour response"
+          },
+          {
+            "test": "Vendor notification performance tracking",
+            "result": "MONITORED",
+            "details": "83.4% overall notification compliance with systematic performance tracking"
+          }
+        ],
+        "remediation": "Contractual notification requirements well-established with strong vendor compliance monitoring",
+        "checkType": "thirdPartySoftwareVulnerabilityMonitorin"
+      },
+      {
+        "checkId": "TPR-04-004",
+        "name": "Incomplete Vulnerability Remediation Tracking",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Vulnerability remediation lacks comprehensive tracking and SLA enforcement",
+        "findings": {
+          "remediationTrackingGaps": {
+            "trackedVulnerabilities": 312,
+            "untrackedVulnerabilities": 144,
+            "remediationTrackingCoverage": "68.4%",
+            "remediationWorkflowAutomation": "Limited",
+            "remediationStatusAccuracy": "76.3%"
+          },
+          "remediationSlaCompliance": {
+            "criticalVulnerabilityRemediationSla": "7 days",
+            "highVulnerabilityRemediationSla": "30 days",
+            "mediumVulnerabilityRemediationSla": "90 days",
+            "slaComplianceTracking": {
+              "criticalSlaCompliance": "67.4%",
+              "highSlaCompliance": "72.1%",
+              "mediumSlaCompliance": "84.6%",
+              "overallSlaCompliance": "74.7%"
+            }
+          },
+          "remediationProcessDeficiencies": {
+            "averageRemediationTime": {
+              "criticalVulnerabilities": "12.3 days",
+              "highVulnerabilities": "45.7 days",
+              "mediumVulnerabilities": "123.4 days"
+            },
+            "remediationBottlenecks": [
+              "Manual vulnerability assessment",
+              "Limited development resources",
+              "Complex dependency conflicts",
+              "Testing and validation delays",
+              "Change management approval delays"
+            ],
+            "overdueVulnerabilities": {
+              "criticalOverdue": 8,
+              "highOverdue": 25,
+              "mediumOverdue": 47,
+              "totalOverdue": 80
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Vulnerability remediation tracking coverage assessment",
+            "result": "INSUFFICIENT",
+            "details": "68.4% tracking coverage with 144 untracked vulnerabilities"
+          },
+          {
+            "test": "Remediation SLA compliance evaluation",
+            "result": "BELOW_TARGET",
+            "details": "74.7% overall SLA compliance with 67.4% critical vulnerability compliance"
+          },
+          {
+            "test": "Remediation process efficiency analysis",
+            "result": "DELAYED",
+            "details": "80 overdue vulnerabilities with average 12.3-day critical remediation time"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive vulnerability remediation tracking for all 456 identified vulnerabilities, 2) Establish automated remediation workflows for low-risk vulnerabilities, 3) Improve critical vulnerability remediation to meet 7-day SLA target, 4) Address remediation bottlenecks through resource allocation and process optimization, 5) Implement automated testing and validation for vulnerability patches, 6) Establish escalation procedures for overdue critical vulnerabilities",
+        "checkType": "thirdPartySoftwareVulnerabilityMonitorin"
+      },
+      {
+        "checkId": "TPR-04-005",
+        "name": "Limited Vendor Security Communication",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Vendor security communication lacks standardization and proactive engagement",
+        "findings": {
+          "vendorCommunicationChannels": {
+            "establishedCommunicationChannels": 18,
+            "missingCommunicationChannels": 16,
+            "communicationChannelCoverage": "52.9%",
+            "proactiveVendorEngagement": "Limited",
+            "securityContactVerification": "Manual"
+          },
+          "securityAdvisoryReceival": {
+            "vendorsProvidingAdvisories": 21,
+            "vendorsNotProvidingAdvisories": 13,
+            "advisoryReceivalRate": "61.8%",
+            "advisoryResponseTime": {
+              "averageAcknowledgmentTime": "3.2 days",
+              "averageActionTime": "8.7 days"
+            }
+          },
+          "vendorSecurityCapabilityAssessment": {
+            "vendorsWithSecurityPrograms": 19,
+            "vendorsWithoutSecurityPrograms": 15,
+            "securityProgramCoverage": "55.9%",
+            "vendorSecurityMaturityAssessment": "Basic",
+            "vendorIncidentResponseCapability": "Limited verification"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Vendor security communication channel establishment",
+            "result": "INCOMPLETE",
+            "details": "52.9% communication channel coverage with 16 missing vendor connections"
+          },
+          {
+            "test": "Security advisory receival and response assessment",
+            "result": "BASIC",
+            "details": "61.8% vendor advisory coverage with 3.2-day average acknowledgment time"
+          },
+          {
+            "test": "Vendor security capability and maturity evaluation",
+            "result": "LIMITED",
+            "details": "55.9% vendor security program coverage with basic maturity assessment"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Establish security communication channels with all 34 vendors including emergency contact procedures, 2) Implement standardized vendor security advisory receival process with automated acknowledgment, 3) Conduct comprehensive vendor security capability assessments including incident response testing, 4) Establish vendor security scorecard with regular maturity assessments, 5) Implement proactive vendor security engagement program with regular security reviews, 6) Deploy vendor risk monitoring with continuous security posture assessment",
+        "checkType": "thirdPartySoftwareVulnerabilityMonitorin"
+      },
+      {
+        "checkId": "TPR-04-006",
+        "name": "Inadequate Threat Intelligence Integration",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Threat intelligence lacks integration with vulnerability management for contextual risk assessment",
+        "findings": {
+          "threatIntelligenceIntegration": {
+            "threatIntelligenceSources": 8,
+            "integratedSources": 4,
+            "integrationCoverage": "50.0%",
+            "threatContextEnrichment": "Limited",
+            "contextualRiskScoring": "Manual process"
+          },
+          "attackSurfaceAnalysis": {
+            "exposedThirdPartyComponents": 234,
+            "internetFacingComponents": 45,
+            "threatActorTargeting": "Basic tracking",
+            "exploitKitMonitoring": "Limited coverage",
+            "darkWebMonitoring": "Not implemented"
+          },
+          "threatLandscapeAwareness": {
+            "industrySpecificThreats": "Basic awareness",
+            "geopoliticalThreatFactors": "Limited consideration",
+            "supplyChainThreatIntelligence": "Manual collection",
+            "threatTrendAnalysis": "Quarterly reports",
+            "predictiveThreatModeling": "Not implemented"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Threat intelligence source integration assessment",
+            "result": "PARTIAL",
+            "details": "50% threat intelligence source integration with limited contextual enrichment"
+          },
+          {
+            "test": "Attack surface and exposure analysis",
+            "result": "BASIC",
+            "details": "234 exposed components identified with limited threat actor targeting analysis"
+          },
+          {
+            "test": "Threat landscape awareness and predictive capabilities",
+            "result": "LIMITED",
+            "details": "Basic industry threat awareness with no predictive threat modeling"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Integrate remaining 4 threat intelligence sources with automated enrichment capabilities, 2) Implement contextual risk scoring combining vulnerability data with threat intelligence, 3) Deploy attack surface monitoring with threat actor targeting analysis, 4) Establish dark web monitoring for leaked credentials and exploit kit tracking, 5) Implement predictive threat modeling for supply chain risk assessment, 6) Develop industry-specific threat landscape monitoring and analysis",
+        "checkType": "thirdPartySoftwareVulnerabilityMonitorin"
+      },
+      {
+        "checkId": "TPR-04-007",
+        "name": "Missing End-of-Life and Deprecation Tracking",
+        "status": "FAIL",
+        "severity": "LOW",
+        "description": "Third-party software end-of-life and deprecation status lacks systematic tracking and planning",
+        "findings": {
+          "endOfLifeTrackingCoverage": {
+            "totalThirdPartyComponents": 1845,
+            "trackedComponents": 456,
+            "untrackedComponents": 1389,
+            "trackingCoverage": "24.7%",
+            "automatedEolDetection": "Limited"
+          },
+          "deprecationStatusMonitoring": {
+            "deprecatedComponents": 23,
+            "eolComponents": 12,
+            "nearEolComponents": 34,
+            "supportEndDates": {
+              "within30Days": 3,
+              "within90Days": 8,
+              "within1Year": 23,
+              "beyond1Year": 12
+            }
+          },
+          "migrationPlanningDeficiencies": {
+            "componentsWithMigrationPlans": 12,
+            "componentsWithoutMigrationPlans": 35,
+            "migrationPlanCoverage": "25.5%",
+            "migrationTimelineTracking": "Manual",
+            "alternativeComponentIdentification": "Limited"
+          }
+        },
+        "testResults": [
+          {
+            "test": "End-of-life tracking coverage assessment",
+            "result": "INADEQUATE",
+            "details": "24.7% tracking coverage with 1389 untracked components"
+          },
+          {
+            "test": "Deprecation status monitoring evaluation",
+            "result": "BASIC",
+            "details": "47 deprecated/EOL components identified with 3 ending support within 30 days"
+          },
+          {
+            "test": "Migration planning and alternative identification",
+            "result": "INSUFFICIENT",
+            "details": "25.5% migration plan coverage with limited alternative component identification"
+          }
+        ],
+        "remediation": "LOW PRIORITY: 1) Implement automated end-of-life tracking for all 1845 third-party components with vendor lifecycle monitoring, 2) Establish deprecation status dashboard with automated alerts for approaching end-of-life dates, 3) Develop migration planning framework with alternative component identification and evaluation, 4) Implement automated migration timeline tracking with milestone management, 5) Create vendor lifecycle management process with proactive renewal and replacement planning, 6) Deploy component lifecycle analytics with predictive replacement recommendations",
+        "checkType": "thirdPartySoftwareVulnerabilityMonitorin"
+      }
+    ]
+  }
+}

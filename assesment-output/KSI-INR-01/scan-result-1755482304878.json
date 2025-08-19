@@ -1,0 +1,437 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-INR-01",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 5,
+      "passed": 3,
+      "failed": 2,
+      "warnings": 0
+    },
+    "incidentReportingVerificationMethods": {
+      "fedrampComplianceValidation": [
+        "FedRAMP incident reporting API integration: Automated compliance validation with mandatory field verification and timeline tracking",
+        "ServiceNow FedRAMP connector: Automated incident workflow with regulatory notification and audit trail maintenance",
+        "CISA coordination platform: Automated threat intelligence sharing with incident correlation and notification automation",
+        "Compliance dashboard monitoring: Real-time FedRAMP reporting status with deviation detection and corrective action tracking",
+        "Audit trail automation: Cryptographic integrity protection with tamper-evident incident reporting and investigation support"
+      ],
+      "cspPolicyCompliance": [
+        "Policy management platforms: Automated policy compliance validation with version control and distribution tracking",
+        "ServiceNow workflow automation: Policy-driven incident escalation with approval workflows and compliance measurement",
+        "Training management systems: Policy training completion tracking with competency validation and certification management",
+        "Document management integration: Policy document lifecycle management with automated updates and stakeholder notification",
+        "Compliance reporting automation: Policy adherence metrics with violation detection and remediation tracking"
+      ],
+      "automatedDetectionIntegration": [
+        "Microsoft Sentinel SIEM: Automated incident detection with correlation rules and threat intelligence integration",
+        "Azure Security Center integration: Security alert correlation with automated incident creation and enrichment",
+        "SOAR platform integration: Security orchestration with automated response workflows and investigation automation",
+        "Threat intelligence platforms: Automated threat attribution with contextual analysis and impact assessment",
+        "ML-based anomaly detection: Behavioral analysis with automated incident classification and priority assignment"
+      ],
+      "stakeholderNotificationAutomation": [
+        "Customer communication platforms: Automated notification with impact assessment and customized content delivery",
+        "Multi-channel notification systems: Email, SMS, portal with backup channels and delivery confirmation tracking",
+        "Stakeholder management platforms: Automated notification routing with role-based content and escalation procedures",
+        "Translation and accessibility services: Multi-lingual support with accessibility compliance and content adaptation",
+        "Communication effectiveness tracking: Delivery confirmation with response tracking and satisfaction measurement"
+      ],
+      "reportingAnalyticsAndMetrics": [
+        "Business intelligence platforms: Comprehensive reporting analytics with performance metrics and trend analysis",
+        "Compliance management systems: Automated compliance tracking with regulatory requirement mapping and audit support",
+        "Dashboard visualization tools: Real-time metrics visualization with stakeholder-specific views and drill-down capabilities",
+        "Benchmarking platforms: Industry comparison with best practice alignment and maturity assessment",
+        "Continuous improvement tools: Process optimization tracking with recommendation generation and effectiveness measurement"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "IR-6": "Incident Reporting",
+        "IR-8": "Incident Response Plan",
+        "AU-6": "Audit Review, Analysis, and Reporting"
+      },
+      "nist80053": {
+        "IR-6": "Incident Reporting",
+        "IR-8": "Incident Response Plan",
+        "AU-6": "Audit Review, Analysis, and Reporting",
+        "SI-4": "Information System Monitoring"
+      },
+      "iso27001": {
+        "A.16.1.2": "Reporting information security events",
+        "A.16.1.6": "Learning from information security incidents",
+        "A.16.1.4": "Assessment of and decision on information security events"
+      }
+    },
+    "checks": [
+      {
+        "checkId": "INR-01-001",
+        "name": "FedRAMP Incident Reporting Compliance",
+        "status": "PASS",
+        "severity": "CRITICAL",
+        "description": "Incidents should be reported according to FedRAMP requirements within mandated timeframes",
+        "findings": {
+          "fedrampComplianceImplementation": {
+            "incidentReportingPolicy": "FedRAMP aligned",
+            "reportingTimeframes": {
+              "immediateNotification": "Within 1 hour",
+              "preliminaryReport": "Within 2 hours",
+              "finalReport": "Within 7 days",
+              "complianceRate": "96.8%"
+            },
+            "reportingChannels": {
+              "fedrampIncidentReporting": "us-cert@cisa.dhs.gov",
+              "automatedReporting": true,
+              "backupReportingMethods": [
+                "Phone",
+                "Secure portal"
+              ],
+              "reportingSystemIntegration": "ServiceNow with FedRAMP connector"
+            }
+          },
+          "incidentClassificationAutomation": {
+            "automatedClassification": true,
+            "classificationAccuracy": "94.7%",
+            "incidentSeverityMapping": {
+              "critical": "Immediate notification + 1 hour report",
+              "high": "2 hour preliminary + 7 day final",
+              "medium": "24 hour report",
+              "low": "Weekly aggregated report"
+            },
+            "federalDataImpactClassification": "Automated",
+            "availabilityImpactAssessment": "Automated"
+          },
+          "reportingContentCompliance": {
+            "requiredFieldsValidation": "Automated",
+            "reportContentStandardization": "Template-driven",
+            "technicalDetailsCapture": "Comprehensive",
+            "businessImpactAssessment": "Automated",
+            "rootCauseAnalysisIntegration": true,
+            "remediationStatusTracking": "Real-time"
+          },
+          "regulatoryNotificationIntegration": {
+            "cisaNotification": "Automated",
+            "federalAgencyNotification": "Customer-specific automation",
+            "lawEnforcementCoordination": "Manual with escalation triggers",
+            "privacyOfficeNotification": "Automated for PII incidents",
+            "legalTeamNotification": "Automated for compliance incidents"
+          },
+          "reportingAuditTrail": {
+            "reportSubmissionTracking": "Comprehensive",
+            "acknowledgmentReceipts": "Automated",
+            "reportingTimestampValidation": "Cryptographic",
+            "reportContentIntegrity": "Hash-protected",
+            "reportingComplianceMetrics": "Dashboard available"
+          }
+        },
+        "testResults": [
+          {
+            "test": "FedRAMP reporting timeline compliance assessment",
+            "result": "COMPLIANT",
+            "details": "96.8% compliance rate with automated reporting within required timeframes"
+          },
+          {
+            "test": "Incident classification and content validation",
+            "result": "COMPREHENSIVE",
+            "details": "94.7% automated classification accuracy with standardized content templates"
+          },
+          {
+            "test": "Regulatory notification integration and audit trail",
+            "result": "ROBUST",
+            "details": "Automated CISA notification with comprehensive audit trail and integrity protection"
+          }
+        ],
+        "remediation": "FedRAMP incident reporting comprehensively implemented with automated compliance validation and robust audit trails",
+        "checkType": "incidentReportin"
+      },
+      {
+        "checkId": "INR-01-002",
+        "name": "Cloud Service Provider Policy Compliance",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Incident reporting should comply with internal cloud service provider policies and procedures",
+        "findings": {
+          "internalPolicyCompliance": {
+            "incidentReportingPolicy": "Version 3.2 - Current",
+            "lastPolicyUpdate": "2025-06-15T00:00:00.000Z",
+            "policyDistribution": "All staff trained",
+            "policyComplianceRate": "98.9%",
+            "policyValidationAutomation": true
+          },
+          "escalationProcedureImplementation": {
+            "escalationMatrix": "Role-based and severity-driven",
+            "escalationTimelines": {
+              "levelOne": "Within 15 minutes",
+              "levelTwo": "Within 30 minutes",
+              "levelThree": "Within 1 hour",
+              "executiveLevel": "Within 2 hours for critical incidents"
+            },
+            "escalationAutomation": "Fully automated",
+            "escalationComplianceRate": "97.4%"
+          },
+          "internalNotificationProcedures": {
+            "securityTeamNotification": "Immediate",
+            "operationsTeamNotification": "Immediate",
+            "legalTeamNotification": "Automated for applicable incidents",
+            "executiveTeamNotification": "Severity-based automation",
+            "customerCommunicationTeam": "Automated for customer-impacting incidents",
+            "notificationChannels": [
+              "Email",
+              "SMS",
+              "Teams",
+              "PagerDuty"
+            ]
+          },
+          "documentationRequirements": {
+            "incidentDocumentationStandards": "ISO 27035 aligned",
+            "evidenceCollectionProcedures": "Automated",
+            "documentRetentionCompliance": "7 years minimum",
+            "documentationQualityValidation": "Automated",
+            "documentationAuditTrail": "Comprehensive"
+          },
+          "reportingWorkflowAutomation": {
+            "workflowOrchestration": "ServiceNow-based",
+            "approvalWorkflows": "Multi-level for external reporting",
+            "statusTrackingAutomation": "Real-time",
+            "reportingDashboards": "Executive and operational",
+            "workflowComplianceMetrics": "Comprehensive"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Internal policy compliance and validation assessment",
+            "result": "COMPLIANT",
+            "details": "98.9% policy compliance rate with automated validation and current policy version"
+          },
+          {
+            "test": "Escalation procedure effectiveness and automation",
+            "result": "EFFECTIVE",
+            "details": "97.4% escalation compliance with fully automated severity-based escalation"
+          },
+          {
+            "test": "Documentation and workflow automation validation",
+            "result": "COMPREHENSIVE",
+            "details": "ISO 27035 aligned documentation with automated evidence collection and retention"
+          }
+        ],
+        "remediation": "Internal incident reporting policies comprehensively implemented with automated compliance validation and effective escalation procedures",
+        "checkType": "incidentReportin"
+      },
+      {
+        "checkId": "INR-01-003",
+        "name": "Automated Incident Detection and Reporting Integration",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Incident detection systems should be integrated with automated reporting capabilities for rapid response",
+        "findings": {
+          "siemIntegrationImplementation": {
+            "siemPlatform": "Microsoft Sentinel",
+            "incidentDetectionRules": 247,
+            "automatedIncidentCreation": true,
+            "falsePositiveRate": "3.2%",
+            "incidentCorrelationCapabilities": "Advanced",
+            "threatIntelligenceIntegration": "Real-time"
+          },
+          "automatedReportingCapabilities": {
+            "automaticReportGeneration": true,
+            "reportingTriggers": {
+              "severityThreshold": "Medium and above",
+              "federalDataInvolvement": "Any suspected involvement",
+              "businessImpact": "Customer-facing services",
+              "complianceImplications": "Regulatory requirements"
+            },
+            "reportingAccuracy": "96.3%",
+            "reportingLatency": "Average 3.7 minutes"
+          },
+          "incidentEnrichmentAutomation": {
+            "contextualDataEnrichment": "Automated",
+            "threatActorAttribution": "AI-assisted",
+            "impactAssessmentAutomation": true,
+            "forensicDataCollection": "Automated",
+            "timelineReconstructionCapabilities": "Advanced"
+          },
+          "integrationPointsAndApis": {
+            "serviceNowIntegration": "Bi-directional",
+            "fedrampApiIntegration": "Planned for Q4 2025",
+            "cisaIntegration": "Email and portal",
+            "thirdPartyToolIntegration": [
+              "CrowdStrike",
+              "Splunk",
+              "Azure Monitor"
+            ],
+            "customApiDevelopment": "Available"
+          },
+          "reportingQualityAssurance": {
+            "automatedQualityChecks": "Comprehensive",
+            "humanReviewTriggers": "High severity incidents",
+            "reportingTemplateValidation": "Automated",
+            "dataQualityMetrics": "Real-time monitoring",
+            "continuousImprovementFeedback": "ML-driven"
+          }
+        },
+        "testResults": [
+          {
+            "test": "SIEM integration and automated detection effectiveness",
+            "result": "EFFECTIVE",
+            "details": "247 detection rules with 3.2% false positive rate and advanced correlation capabilities"
+          },
+          {
+            "test": "Automated reporting accuracy and latency assessment",
+            "result": "RESPONSIVE",
+            "details": "96.3% reporting accuracy with 3.7-minute average latency for automated reports"
+          },
+          {
+            "test": "Integration and quality assurance validation",
+            "result": "COMPREHENSIVE",
+            "details": "Bi-directional ServiceNow integration with automated quality checks and ML-driven improvement"
+          }
+        ],
+        "remediation": "Automated incident detection and reporting comprehensively implemented with effective SIEM integration and quality assurance processes",
+        "checkType": "incidentReportin"
+      },
+      {
+        "checkId": "INR-01-004",
+        "name": "Incomplete Customer and Stakeholder Notification",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Customer and stakeholder notification processes lack automation and consistent execution for incident communication",
+        "findings": {
+          "customerNotificationGaps": {
+            "notificationAutomation": "Limited implementation",
+            "customerImpactAssessment": "Manual process",
+            "notificationTimeframes": {
+              "criticalIncidents": "Target: 30 minutes, Actual: 67 minutes average",
+              "highIncidents": "Target: 2 hours, Actual: 4.3 hours average",
+              "mediumIncidents": "Target: 24 hours, Actual: 31 hours average"
+            },
+            "customerNotificationMethods": [
+              "Email",
+              "Portal notifications"
+            ],
+            "notificationCustomization": "Limited customer-specific content"
+          },
+          "stakeholderCommunicationDeficiencies": {
+            "internalStakeholderNotification": "Partially automated",
+            "externalStakeholderNotification": "Manual process",
+            "regulatoryStakeholderNotification": "Automated for some requirements",
+            "partnerNotification": "Manual process",
+            "vendorNotification": "Ad-hoc basis"
+          },
+          "communicationContentLimitations": {
+            "communicationTemplates": "Basic templates only",
+            "technicalDetailCustomization": "Limited capability",
+            "businessImpactCommunication": "High-level only",
+            "remediationStatusCommunication": "Manual updates",
+            "timelineAndEtaCommunication": "Not standardized"
+          },
+          "communicationChannelGaps": {
+            "primaryChannels": "Email and phone",
+            "backupChannels": "Limited availability",
+            "emergencyChannels": "Not well defined",
+            "multilingualsupport": "English only",
+            "accessibilitySupport": "Limited implementation"
+          },
+          "notificationTrackingAndValidation": {
+            "deliveryConfirmation": "Email tracking only",
+            "readReceiptTracking": "Not implemented",
+            "responseTracking": "Manual process",
+            "notificationEffectivenessMetrics": "Not measured",
+            "communicationFeedbackCollection": "Limited capability"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Customer notification timeliness and automation assessment",
+            "result": "DELAYED",
+            "details": "Notification targets exceeded by 123% for critical incidents with limited automation"
+          },
+          {
+            "test": "Stakeholder communication coverage and effectiveness",
+            "result": "INCONSISTENT",
+            "details": "Manual processes for external stakeholders with ad-hoc vendor notification"
+          },
+          {
+            "test": "Communication tracking and validation capabilities",
+            "result": "LIMITED",
+            "details": "Basic email tracking with no response tracking or effectiveness measurement"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Implement automated customer notification with impact assessment and customized content delivery, 2) Establish comprehensive stakeholder notification automation for internal, external, and regulatory requirements, 3) Develop advanced communication templates with technical detail customization and business impact communication, 4) Create multi-channel communication capabilities with backup channels and accessibility support, 5) Deploy notification tracking and validation with delivery confirmation and effectiveness metrics, 6) Implement communication feedback collection and continuous improvement processes",
+        "checkType": "incidentReportin"
+      },
+      {
+        "checkId": "INR-01-005",
+        "name": "Insufficient Incident Reporting Analytics and Metrics",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Incident reporting lacks comprehensive analytics and metrics for performance measurement and continuous improvement",
+        "findings": {
+          "reportingMetricsGaps": {
+            "reportingPerformanceMetrics": {
+              "reportingTimelinessTracking": "Basic implementation",
+              "reportingQualityMetrics": "Not established",
+              "reportingCompletenessAssessment": "Manual review only",
+              "reportingAccuracyMeasurement": "Not systematic"
+            },
+            "complianceMetricsDeficiencies": {
+              "fedrampComplianceTracking": "Manual reporting",
+              "regulatoryComplianceMetrics": "Limited scope",
+              "policyComplianceMetrics": "Basic implementation",
+              "auditReadinessMetrics": "Not established"
+            }
+          },
+          "analyticsCapabilityLimitations": {
+            "trendAnalysisCapabilities": "Limited implementation",
+            "rootCauseAnalysisAutomation": "Not implemented",
+            "reportingEfficiencyAnalysis": "Not performed",
+            "stakeholderSatisfactionMetrics": "Not measured",
+            "costImpactAnalysis": "Not systematic"
+          },
+          "dashboardAndReportingGaps": {
+            "executiveDashboards": "Basic implementation",
+            "operationalDashboards": "Limited coverage",
+            "complianceDashboards": "Not available",
+            "stakeholderSpecificReporting": "Manual compilation",
+            "realTimeMetricsVisualization": "Limited capability"
+          },
+          "benchmarkingAndComparisonLimitations": {
+            "industryBenchmarking": "Not performed",
+            "historicalComparison": "Limited capability",
+            "peerComparison": "Not available",
+            "bestPracticeAlignment": "Not measured",
+            "maturityAssessment": "Not systematic"
+          },
+          "continuousImprovementIntegration": {
+            "improvementOpportunityIdentification": "Manual process",
+            "processOptimizationTracking": "Not implemented",
+            "trainingNeedsAnalysis": "Not systematic",
+            "technologyImprovementRecommendations": "Ad-hoc basis",
+            "reportingProcessMaturityTracking": "Not established"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Incident reporting metrics and analytics capability assessment",
+            "result": "UNDERDEVELOPED",
+            "details": "Basic metrics implementation with no systematic quality or accuracy measurement"
+          },
+          {
+            "test": "Dashboard and reporting effectiveness evaluation",
+            "result": "LIMITED",
+            "details": "Basic executive dashboards with no compliance visualization or stakeholder-specific reporting"
+          },
+          {
+            "test": "Continuous improvement integration and maturity tracking",
+            "result": "MANUAL",
+            "details": "Manual improvement processes with no systematic optimization tracking or maturity assessment"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Establish comprehensive reporting performance metrics with timeliness, quality, completeness, and accuracy measurement, 2) Implement automated compliance metrics tracking for FedRAMP and regulatory requirements with audit readiness indicators, 3) Deploy advanced analytics capabilities with trend analysis, root cause analysis automation, and efficiency measurement, 4) Create comprehensive dashboards for executive, operational, and compliance stakeholders with real-time visualization, 5) Establish benchmarking and comparison capabilities with industry standards and historical performance, 6) Integrate continuous improvement tracking with optimization recommendations and maturity assessment",
+        "checkType": "incidentReportin"
+      }
+    ]
+  }
+}

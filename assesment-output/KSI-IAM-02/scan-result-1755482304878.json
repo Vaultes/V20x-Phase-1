@@ -1,0 +1,601 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-IAM-02",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 6,
+      "passed": 2,
+      "failed": 4,
+      "warnings": 0
+    },
+    "passwordlessVerificationMethods": {
+      "windowsHello": [
+        "Get-WindowsHelloForBusinessPolicy (PowerShell)",
+        "dsregcmd /status (Device registration status)",
+        "Microsoft Intune: Devices > Configuration profiles > Windows Hello",
+        "Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\PassportForWork"
+      ],
+      "fido2SecurityKeys": [
+        "Azure Portal: Azure AD > Authentication methods > FIDO2 security key",
+        "Microsoft Graph API: /authenticationMethodsPolicy/authenticationMethodConfigurations",
+        "PowerShell: Get-AzureADMSAuthenticationMethodPolicy",
+        "Chrome: chrome://settings/securityKeys (for WebAuthn testing)"
+      ],
+      "passwordPolicies": [
+        "Get-AzureADPolicy -Type PasswordPolicyConfiguration",
+        "Azure Portal: Azure AD > Password reset > Authentication methods",
+        "Microsoft Graph API: /policies/passwordPolicyConfiguration",
+        "PowerShell: Get-MsolPasswordPolicy"
+      ],
+      "azureAdPasswordProtection": [
+        "Azure Portal: Azure AD > Authentication methods > Password protection",
+        "Event Logs: Microsoft-AzureADPasswordProtection-DCAgent",
+        "PowerShell: Get-AzureADPasswordProtectionPolicy",
+        "Registry: HKLM\\SOFTWARE\\Microsoft\\AzureADPasswordProtection"
+      ]
+    },
+    "passwordlessAuthenticationBestPractices": {
+      "deploymentStrategy": [
+        "Start with Windows Hello for Business for corporate devices",
+        "Deploy FIDO2 security keys for privileged users",
+        "Implement Microsoft Authenticator passwordless phone sign-in",
+        "Use certificate-based authentication for non-interactive accounts"
+      ],
+      "passwordPolicyModernization": [
+        "Remove forced password expiration policies",
+        "Increase minimum password length to 14+ characters",
+        "Enable Azure AD Password Protection",
+        "Implement smart lockout and risk-based policies"
+      ],
+      "userExperience": [
+        "Provide multiple passwordless options for different scenarios",
+        "Create comprehensive user training and support",
+        "Implement gradual rollout with pilot groups",
+        "Maintain secure fallback methods for edge cases"
+      ],
+      "securityControls": [
+        "Require device compliance for passwordless authentication",
+        "Implement phishing-resistant authentication methods",
+        "Monitor and alert on authentication anomalies",
+        "Regular security assessment of authentication methods"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "IA-5": "Authenticator Management",
+        "IA-5(1)": "Password-Based Authentication",
+        "IA-5(2)": "PKI-Based Authentication",
+        "IA-5(11)": "Hardware Token-Based Authentication"
+      },
+      "nist80053": {
+        "IA-5": "Authenticator Management",
+        "IA-5(1)": "Password-Based Authentication",
+        "IA-5(2)": "Public Key Infrastructure Certificates",
+        "IA-5(11)": "Hardware Token-Based Authentication"
+      },
+      "nist80063b": {
+        "section5": "Authenticator and Verifier Requirements",
+        "section8": "Threats and Security Considerations",
+        "appendixA": "Strength of Memorized Secrets"
+      }
+    },
+    "checks": [
+      {
+        "checkId": "IAM-02-001",
+        "name": "Windows Hello for Business Implementation",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Windows devices should use Windows Hello for Business for passwordless authentication",
+        "findings": {
+          "windowsHelloDeployment": {
+            "totalWindowsDevices": 123,
+            "windowsHelloEnabled": 118,
+            "deploymentRate": "95.9%",
+            "configurationMethod": "Microsoft Intune",
+            "policyEnforcement": "Required for corporate devices"
+          },
+          "biometricConfiguration": {
+            "fingerprintEnabled": true,
+            "faceRecognitionEnabled": true,
+            "irisRecognitionEnabled": false,
+            "pinComplexityRequired": true,
+            "biometricFallback": "PIN required",
+            "antiSpoofing": "Enhanced"
+          },
+          "certificateBasedAuth": {
+            "enabled": true,
+            "certificateAuthority": "Internal PKI",
+            "keyTrustLevel": "Hardware TPM",
+            "certificateValidation": "Full chain validation",
+            "revocationChecking": true
+          },
+          "deviceCompliance": {
+            "tpmRequired": true,
+            "secureBootRequired": true,
+            "deviceEncryptionRequired": true,
+            "complianceRate": "96.7%",
+            "nonCompliantDevices": 4
+          },
+          "userExperience": {
+            "enrollmentRate": "95.9%",
+            "userSatisfaction": "High",
+            "supportTickets": 12,
+            "fallbackToPassword": "2.1%"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Windows Hello deployment verification",
+            "result": "DEPLOYED",
+            "details": "95.9% of Windows devices have Windows Hello enabled"
+          },
+          {
+            "test": "Biometric security validation",
+            "result": "SECURE",
+            "details": "Enhanced anti-spoofing and TPM protection enabled"
+          },
+          {
+            "test": "User adoption assessment",
+            "result": "HIGH",
+            "details": "High user adoption with minimal fallback to passwords"
+          }
+        ],
+        "remediation": "Windows Hello for Business successfully deployed with high adoption",
+        "checkType": "passwordlessAndPasswordPolic"
+      },
+      {
+        "checkId": "IAM-02-002",
+        "name": "FIDO2 Security Key Implementation",
+        "status": "PASS",
+        "severity": "MEDIUM",
+        "description": "High-privilege users should have FIDO2 security keys for passwordless authentication",
+        "findings": {
+          "fido2Deployment": {
+            "totalPrivilegedUsers": 34,
+            "fido2EnabledUsers": 29,
+            "deploymentRate": "85.3%",
+            "securityKeyTypes": [
+              {
+                "manufacturer": "YubiKey",
+                "model": "YubiKey 5 Series",
+                "count": 18,
+                "attestation": "Verified"
+              },
+              {
+                "manufacturer": "Microsoft",
+                "model": "Surface Security Key",
+                "count": 11,
+                "attestation": "Verified"
+              }
+            ]
+          },
+          "securityConfiguration": {
+            "attestationRequired": true,
+            "residentKeyRequired": true,
+            "userVerificationRequired": true,
+            "allowedAAGUIDs": [
+              "YubiKey 5 Series",
+              "Surface Security Key",
+              "Titan Security Key"
+            ],
+            "blockedAAGUIDs": []
+          },
+          "conditionalAccessIntegration": {
+            "policyName": "FIDO2 for Privileged Users",
+            "enforcementMode": "Report-only for non-privileged, Enforce for privileged",
+            "fallbackMethods": [
+              "Windows Hello",
+              "Microsoft Authenticator"
+            ],
+            "sessionControls": "Sign-in frequency: 8 hours"
+          },
+          "usageStatistics": {
+            "fido2SignIns": {
+              "last30Days": 1247,
+              "successRate": "99.2%",
+              "averageSignInTime": "PT8S"
+            },
+            "userFeedback": {
+              "satisfaction": "High",
+              "reportedIssues": 3,
+              "trainingCompleted": "100%"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "FIDO2 security key deployment check",
+            "result": "DEPLOYED",
+            "details": "85.3% of privileged users have FIDO2 keys"
+          },
+          {
+            "test": "Security key attestation verification",
+            "result": "VERIFIED",
+            "details": "All security keys have verified attestation"
+          },
+          {
+            "test": "Passwordless authentication usage",
+            "result": "ACTIVE",
+            "details": "99.2% success rate for FIDO2 authentication"
+          }
+        ],
+        "remediation": "FIDO2 security keys successfully deployed for privileged users",
+        "checkType": "passwordlessAndPasswordPolic"
+      },
+      {
+        "checkId": "IAM-02-003",
+        "name": "Weak Password Policy Configuration",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Password policies do not meet security requirements and lack modern protections",
+        "findings": {
+          "passwordPolicyDeficiencies": {
+            "minimumLength": 8,
+            "recommendedLength": 14,
+            "complexityRequired": true,
+            "historyCount": 12,
+            "maxAge": "P90D",
+            "recommendedMaxAge": "P365D or passwordless",
+            "lockoutThreshold": 10,
+            "recommendedLockoutThreshold": 5
+          },
+          "modernPasswordProtections": {
+            "azureAdPasswordProtection": {
+              "enabled": false,
+              "issue": "Azure AD Password Protection not deployed"
+            },
+            "bannedPasswordList": {
+              "customBannedPasswords": 0,
+              "globalBannedPasswordsEnabled": false,
+              "issue": "No banned password protection"
+            },
+            "smartLockout": {
+              "enabled": false,
+              "issue": "Smart lockout not configured"
+            },
+            "riskBasedPasswordPolicy": {
+              "enabled": false,
+              "issue": "No risk-based password requirements"
+            }
+          },
+          "passwordAnalysis": {
+            "weakPasswordsDetected": 45,
+            "commonPasswordsUsed": 23,
+            "breachedPasswordsFound": 12,
+            "passwordReuseRate": "34%",
+            "complianceIssues": [
+              "Users able to set common passwords",
+              "No detection of breached passwords",
+              "Password complexity not enforced consistently",
+              "Frequent password changes forced (outdated practice)"
+            ]
+          },
+          "legacyPasswordIssues": {
+            "forcedPasswordChanges": {
+              "enabled": true,
+              "issue": "Forced 90-day password changes discourage strong passwords"
+            },
+            "passwordHints": {
+              "enabled": true,
+              "issue": "Password hints allowed, reducing security"
+            },
+            "caseInsensitivePasswords": false,
+            "reversibleEncryption": false
+          }
+        },
+        "testResults": [
+          {
+            "test": "Password policy strength assessment",
+            "result": "WEAK",
+            "details": "Password policy lacks modern security protections"
+          },
+          {
+            "test": "Azure AD Password Protection check",
+            "result": "DISABLED",
+            "details": "Azure AD Password Protection not enabled"
+          },
+          {
+            "test": "Weak password detection",
+            "result": "DETECTED",
+            "details": "45 weak passwords and 12 breached passwords found"
+          }
+        ],
+        "complianceGaps": [
+          {
+            "requirement": "NIST 800-63B Password Guidelines",
+            "status": "NON_COMPLIANT",
+            "issue": "Forced password changes and weak complexity requirements"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Enable Azure AD Password Protection, 2) Configure custom banned password list, 3) Enable smart lockout, 4) Remove forced password expiration, 5) Implement risk-based password policies, 6) Deploy password breach detection, 7) Increase minimum password length to 14 characters",
+        "checkType": "passwordlessAndPasswordPolic"
+      },
+      {
+        "checkId": "IAM-02-004",
+        "name": "Incomplete Passwordless Migration",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Organizations has not fully migrated to passwordless authentication where feasible",
+        "findings": {
+          "passwordlessMigrationStatus": {
+            "totalUsers": 247,
+            "passwordlessCapableUsers": 198,
+            "activePasswordlessUsers": 134,
+            "migrationRate": "54.3%",
+            "remainingPasswordUsers": 113
+          },
+          "migrationBarriers": {
+            "technicalLimitations": [
+              {
+                "application": "Legacy ERP System",
+                "users": 45,
+                "issue": "No modern authentication support",
+                "workaround": "Application passwords"
+              },
+              {
+                "application": "Third-party VPN Client",
+                "users": 23,
+                "issue": "Certificate-based auth only",
+                "workaround": "Certificate + PIN"
+              }
+            ],
+            "userAdoptionChallenges": [
+              {
+                "userGroup": "Remote contractors",
+                "count": 28,
+                "issue": "Personal device limitations",
+                "status": "Unresolved"
+              },
+              {
+                "userGroup": "Executives",
+                "count": 12,
+                "issue": "Multiple device management complexity",
+                "status": "In progress"
+              }
+            ]
+          },
+          "passwordDependencyAnalysis": {
+            "applicationsRequiringPasswords": 12,
+            "servicesWithPasswordAuth": 8,
+            "legacySystemDependencies": 6,
+            "migrationPlan": {
+              "phase1": "Modern applications (90% complete)",
+              "phase2": "Legacy application integration (45% complete)",
+              "phase3": "Third-party service migration (10% complete)",
+              "estimatedCompletion": "P270D"
+            }
+          },
+          "fallbackScenarios": {
+            "temporaryAccessPass": {
+              "enabled": true,
+              "usage": "Emergency access only",
+              "issueCount": 23,
+              "averageDuration": "PT1H"
+            },
+            "appPasswords": {
+              "enabled": true,
+              "activeCount": 67,
+              "applicationTypes": [
+                "Legacy email clients",
+                "VPN clients",
+                "ERP systems"
+              ],
+              "securityConcerns": "High"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Passwordless migration progress check",
+            "result": "INCOMPLETE",
+            "details": "54.3% migration rate with significant dependencies remaining"
+          },
+          {
+            "test": "Legacy application assessment",
+            "result": "BLOCKING",
+            "details": "12 applications still require password authentication"
+          },
+          {
+            "test": "User adoption evaluation",
+            "result": "MIXED",
+            "details": "Good adoption for corporate users, challenges with contractors"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Accelerate legacy application modernization, 2) Implement certificate-based authentication where passwordless not possible, 3) Address contractor device management challenges, 4) Reduce app password usage, 5) Establish clear passwordless migration timeline, 6) Create user training and support programs",
+        "checkType": "passwordlessAndPasswordPolic"
+      },
+      {
+        "checkId": "IAM-02-005",
+        "name": "Service Account Password Management Issues",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Service accounts use weak passwords and lack proper rotation policies",
+        "findings": {
+          "serviceAccountPasswordIssues": {
+            "totalServiceAccounts": 67,
+            "passwordBasedAccounts": 44,
+            "managedIdentityAccounts": 23,
+            "passwordPolicyExemptions": 44,
+            "weakPasswordsDetected": 18,
+            "staticPasswordsNeverChanged": 12
+          },
+          "passwordQualityAnalysis": {
+            "passwordStrengthDistribution": [
+              {
+                "strength": "Very Weak",
+                "count": 8,
+                "examples": [
+                  "service123",
+                  "password1",
+                  "admin2024"
+                ]
+              },
+              {
+                "strength": "Weak",
+                "count": 10,
+                "characteristics": "Dictionary words with numbers"
+              },
+              {
+                "strength": "Moderate",
+                "count": 15,
+                "characteristics": "Meeting minimum complexity only"
+              },
+              {
+                "strength": "Strong",
+                "count": 11,
+                "characteristics": "Long, complex, unique"
+              }
+            ],
+            "passwordReuseAnalysis": {
+              "duplicatePasswords": 6,
+              "similarPasswords": 14,
+              "defaultPasswords": 3
+            }
+          },
+          "rotationPolicyDeficiencies": {
+            "noRotationPolicy": 32,
+            "infrequentRotation": 8,
+            "manualRotationOnly": 44,
+            "averagePasswordAge": "P456D",
+            "oldestPassword": "P1247D",
+            "rotationFailures": {
+              "lastAttempt": 5,
+              "coordinationIssues": 3,
+              "applicationBreakage": 2
+            }
+          },
+          "alternativeAuthenticationOpportunities": {
+            "managedIdentityCompatible": 25,
+            "certificateAuthCompatible": 15,
+            "apiKeyCompatible": 8,
+            "remainingPasswordRequired": 19
+          }
+        },
+        "testResults": [
+          {
+            "test": "Service account password strength check",
+            "result": "WEAK",
+            "details": "18 service accounts have weak passwords"
+          },
+          {
+            "test": "Password rotation policy assessment",
+            "result": "INADEQUATE",
+            "details": "32 accounts have no rotation policy"
+          },
+          {
+            "test": "Alternative authentication evaluation",
+            "result": "OPPORTUNITY",
+            "details": "48 accounts could migrate to stronger authentication"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Migrate service accounts to managed identities where possible, 2) Implement certificate-based authentication for remaining accounts, 3) Generate strong random passwords for accounts requiring passwords, 4) Establish automated password rotation, 5) Remove default and weak passwords immediately, 6) Document and justify password-based authentication requirements",
+        "checkType": "passwordlessAndPasswordPolic"
+      },
+      {
+        "checkId": "IAM-02-006",
+        "name": "Mobile Application Authentication Weaknesses",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Mobile applications use weak authentication methods and lack passwordless options",
+        "findings": {
+          "mobileAuthenticationAnalysis": {
+            "totalMobileApps": 23,
+            "passwordlessCapableApps": 8,
+            "passwordOnlyApps": 15,
+            "authenticationMethods": [
+              {
+                "method": "Username/Password",
+                "appCount": 15,
+                "securityRating": "Low",
+                "issues": [
+                  "No MFA",
+                  "Password storage on device"
+                ]
+              },
+              {
+                "method": "Biometric + PIN",
+                "appCount": 8,
+                "securityRating": "High",
+                "issues": [
+                  "None"
+                ]
+              },
+              {
+                "method": "Certificate-based",
+                "appCount": 3,
+                "securityRating": "Medium",
+                "issues": [
+                  "Certificate management complexity"
+                ]
+              }
+            ]
+          },
+          "deviceSecurityGaps": {
+            "unsecuredDevices": {
+              "count": 34,
+              "issues": [
+                "No device encryption",
+                "No screen lock",
+                "Jailbroken/rooted devices",
+                "Outdated OS versions"
+              ]
+            },
+            "biometricBypass": {
+              "available": true,
+              "securityConcerns": "Biometric spoofing possible",
+              "fallbackMethod": "4-digit PIN"
+            },
+            "appSpecificPasswords": {
+              "count": 23,
+              "applications": [
+                "Email clients",
+                "Legacy mobile apps"
+              ],
+              "securityRisk": "High - long-lived credentials"
+            }
+          },
+          "mobileDeviceManagement": {
+            "enrolledDevices": 98,
+            "unenrolledDevices": 58,
+            "compliancePolicies": {
+              "enforced": true,
+              "compliance": "63%",
+              "commonViolations": [
+                "Outdated OS",
+                "Missing encryption",
+                "Weak passcode"
+              ]
+            },
+            "applicationManagement": {
+              "managedApps": 12,
+              "unmanagedApps": 11,
+              "dataLeakagePrevention": "Partial"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Mobile app authentication method assessment",
+            "result": "WEAK",
+            "details": "65% of mobile apps use password-only authentication"
+          },
+          {
+            "test": "Device security compliance check",
+            "result": "PARTIAL",
+            "details": "63% device compliance with security policies"
+          },
+          {
+            "test": "Passwordless capability evaluation",
+            "result": "LIMITED",
+            "details": "Only 35% of apps support passwordless authentication"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Migrate mobile apps to modern authentication (OAuth/SAML), 2) Implement mobile application management (MAM), 3) Enforce device compliance policies, 4) Deploy biometric authentication where possible, 5) Eliminate app-specific passwords, 6) Implement mobile device encryption requirements, 7) Regular mobile security assessments",
+        "checkType": "passwordlessAndPasswordPolic"
+      }
+    ]
+  }
+}

@@ -1,0 +1,671 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-IAM-03",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 6,
+      "passed": 2,
+      "failed": 4,
+      "warnings": 0
+    },
+    "nonUserAccountBestPractices": {
+      "managedIdentities": [
+        "Use system-assigned managed identities for single-resource scenarios",
+        "Use user-assigned managed identities for multi-resource scenarios",
+        "Migrate all Azure resources from service accounts to managed identities",
+        "Implement least privilege role assignments for managed identities"
+      ],
+      "servicePrincipals": [
+        "Use certificate-based authentication over password-based",
+        "Store certificates and secrets in Azure Key Vault",
+        "Implement automated credential rotation",
+        "Apply conditional access policies to service principals"
+      ],
+      "serviceAccounts": [
+        "Migrate to managed service accounts where possible",
+        "Implement strong password policies for remaining accounts",
+        "Apply principle of least privilege",
+        "Enable comprehensive auditing and monitoring"
+      ],
+      "emergencyAccess": [
+        "Limit emergency accounts to absolute minimum",
+        "Implement strong authentication and access controls",
+        "Require approval workflows for activation",
+        "Monitor all emergency account activities"
+      ]
+    },
+    "nonUserAccountVerificationMethods": {
+      "managedIdentities": [
+        "az identity list --query '[].{Name:name,Type:type,ResourceGroup:resourceGroup}'",
+        "Get-AzUserAssignedIdentity",
+        "Azure Portal: Managed Identities > Overview",
+        "Microsoft Graph API: /servicePrincipals?$filter=servicePrincipalType eq 'ManagedIdentity'"
+      ],
+      "servicePrincipals": [
+        "az ad sp list --query '[].{DisplayName:displayName,AppId:appId,AccountEnabled:accountEnabled}'",
+        "Get-AzADServicePrincipal",
+        "Azure Portal: Azure AD > App registrations",
+        "Microsoft Graph API: /servicePrincipals"
+      ],
+      "serviceAccounts": [
+        "Get-ADServiceAccount (PowerShell)",
+        "dsquery user -samid *$ (Domain service accounts)",
+        "net user (Local service accounts)",
+        "sc query (Windows services and their accounts)"
+      ],
+      "emergencyAccounts": [
+        "Azure Portal: Azure AD > Users > Filter by administrative roles",
+        "Get-AzRoleAssignment | Where-Object {$_.RoleDefinitionName -like '*Admin*'}",
+        "Microsoft Graph API: /directoryRoles/{role-id}/members",
+        "Azure AD PowerShell: Get-AzureADDirectoryRoleMember"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "AC-2": "Account Management",
+        "AC-6": "Least Privilege",
+        "IA-4": "Identifier Management",
+        "IA-8": "Identification and Authentication (Non-Organizational Users)"
+      },
+      "nist80053": {
+        "AC-2": "Account Management",
+        "AC-6": "Least Privilege",
+        "IA-4": "Identifier Management",
+        "IA-8": "Identification and Authentication (Non-Organizational Users)"
+      },
+      "iso27001": {
+        "A.9.2.1": "User registration and de-registration",
+        "A.9.2.2": "User access provisioning",
+        "A.9.2.5": "Review of user access rights",
+        "A.9.2.6": "Removal or adjustment of access rights"
+      }
+    },
+    "checks": [
+      {
+        "checkId": "IAM-03-001",
+        "name": "Managed Identity Implementation",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Azure resources should use managed identities instead of service accounts where possible",
+        "findings": {
+          "managedIdentityDeployment": {
+            "totalAzureResources": 67,
+            "managedIdentityEnabled": 45,
+            "deploymentRate": "67.2%",
+            "identityTypes": [
+              {
+                "type": "System-assigned",
+                "count": 32,
+                "resources": [
+                  "Virtual Machines",
+                  "App Services",
+                  "Function Apps"
+                ]
+              },
+              {
+                "type": "User-assigned",
+                "count": 13,
+                "resources": [
+                  "Container Instances",
+                  "Logic Apps",
+                  "Data Factory"
+                ]
+              }
+            ]
+          },
+          "securityBenefits": {
+            "credentialManagement": "Automatic rotation by Azure",
+            "secretStorage": "No secrets stored in application code",
+            "accessControl": "Azure RBAC integrated",
+            "auditability": "Full audit trail available",
+            "riskReduction": "Eliminates credential theft risk"
+          },
+          "roleAssignments": {
+            "principleOfLeastPrivilege": true,
+            "roleBasedAccess": true,
+            "customRoles": 8,
+            "builtInRoles": 24,
+            "overPrivilegedAssignments": 0,
+            "roleAssignmentReview": {
+              "lastReview": "2025-07-15T00:00:00.000Z",
+              "frequency": "Quarterly",
+              "automated": true
+            }
+          },
+          "integrationStatus": {
+            "keyVaultAccess": {
+              "managedIdentityUsage": true,
+              "secretRetrieval": "RBAC-based",
+              "certificateAccess": "RBAC-based"
+            },
+            "storageAccountAccess": {
+              "managedIdentityUsage": true,
+              "dataPlaneAccess": "Azure AD authenticated",
+              "blobAccess": "RBAC-controlled"
+            },
+            "databaseAccess": {
+              "azureSqlAuthentication": true,
+              "connectionStringFree": true,
+              "tokenBasedAuth": true
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Managed identity deployment verification",
+            "result": "DEPLOYED",
+            "details": "67.2% of Azure resources use managed identities"
+          },
+          {
+            "test": "Role assignment validation",
+            "result": "COMPLIANT",
+            "details": "All role assignments follow least privilege principle"
+          },
+          {
+            "test": "Service integration check",
+            "result": "INTEGRATED",
+            "details": "Key services integrated with managed identity authentication"
+          }
+        ],
+        "remediation": "Managed identities properly implemented with secure role assignments",
+        "checkType": "nonUserAccountSecurit"
+      },
+      {
+        "checkId": "IAM-03-002",
+        "name": "Service Principal Security Configuration",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Service principals should have proper security controls and monitoring",
+        "findings": {
+          "servicePrincipalInventory": {
+            "totalServicePrincipals": 34,
+            "applicationServicePrincipals": 23,
+            "managedServicePrincipals": 11,
+            "activeServicePrincipals": 28,
+            "inactiveServicePrincipals": 6
+          },
+          "securityConfiguration": {
+            "certificateAuthentication": {
+              "enabled": 18,
+              "secretAuthentication": 16,
+              "certificateExpiry": {
+                "within30Days": 2,
+                "within90Days": 5,
+                "expired": 0
+              }
+            },
+            "secretManagement": {
+              "keyVaultStored": 14,
+              "inlineSecrets": 2,
+              "rotationPolicies": 12,
+              "averageSecretAge": "P67D"
+            },
+            "accessRestrictions": {
+              "ipRestrictions": 8,
+              "conditionalAccess": 23,
+              "timeBasedAccess": 5,
+              "deviceRestrictions": 3
+            }
+          },
+          "privilegeManagement": {
+            "roleAssignments": {
+              "minimumPrivilege": true,
+              "customRoles": 12,
+              "builtInRoles": 22,
+              "scopeRestrictions": "Resource group or lower",
+              "overPrivilegedCount": 0
+            },
+            "permissionAnalysis": {
+              "readOnlyAccess": 18,
+              "writeAccess": 12,
+              "administrativeAccess": 4,
+              "justificationRequired": true
+            }
+          },
+          "monitoringAndAuditing": {
+            "signInLogging": true,
+            "operationLogging": true,
+            "alertingRules": [
+              {
+                "trigger": "Service principal sign-in from new location",
+                "severity": "Medium",
+                "enabled": true
+              },
+              {
+                "trigger": "Failed authentication attempts > 10",
+                "severity": "High",
+                "enabled": true
+              },
+              {
+                "trigger": "Privileged operation by service principal",
+                "severity": "Medium",
+                "enabled": true
+              }
+            ],
+            "regularReviews": {
+              "frequency": "Monthly",
+              "lastReview": "2025-08-01T00:00:00.000Z",
+              "automated": true
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Service principal security configuration check",
+            "result": "SECURE",
+            "details": "Strong authentication and access controls configured"
+          },
+          {
+            "test": "Privilege escalation assessment",
+            "result": "COMPLIANT",
+            "details": "No over-privileged service principals detected"
+          },
+          {
+            "test": "Monitoring and alerting validation",
+            "result": "ACTIVE",
+            "details": "Comprehensive monitoring and alerting in place"
+          }
+        ],
+        "remediation": "Service principals properly secured with appropriate controls",
+        "checkType": "nonUserAccountSecurit"
+      },
+      {
+        "checkId": "IAM-03-003",
+        "name": "Legacy Service Account Security Gaps",
+        "status": "FAIL",
+        "severity": "CRITICAL",
+        "description": "Legacy service accounts lack proper security controls and management",
+        "findings": {
+          "legacyServiceAccountInventory": {
+            "totalLegacyAccounts": 45,
+            "windowsServiceAccounts": 28,
+            "linuxServiceAccounts": 17,
+            "managedServiceAccounts": 8,
+            "standardUserAccounts": 37,
+            "privilegedAccounts": 12
+          },
+          "securityDeficiencies": {
+            "passwordManagement": {
+              "neverExpires": 23,
+              "weakPasswords": 18,
+              "sharedPasswords": 8,
+              "defaultPasswords": 3,
+              "lastPasswordChange": {
+                "over1Year": 15,
+                "over2Years": 8,
+                "unknown": 12
+              }
+            },
+            "privilegeEscalation": {
+              "localAdminRights": 12,
+              "domainAdminRights": 2,
+              "serviceLogonRights": 28,
+              "unnecessaryPrivileges": 19,
+              "privilegeJustification": "Missing for 19 accounts"
+            },
+            "accessControls": {
+              "noAccountLockout": 37,
+              "noLoginTimeRestrictions": 45,
+              "noIPRestrictions": 45,
+              "interactiveLogonAllowed": 23
+            }
+          },
+          "monitoringGaps": {
+            "auditingEnabled": false,
+            "signInLogging": "Basic only",
+            "privilegedOperationLogging": false,
+            "alerting": "None configured",
+            "regularReviews": "Annual only",
+            "lastSecurityAssessment": "2024-03-15T00:00:00.000Z"
+          },
+          "complianceViolations": {
+            "passwordPolicy": "Not enforced",
+            "accessReviews": "Overdue",
+            "privilegedAccessManagement": "Not implemented",
+            "separationOfDuties": "Violated",
+            "accountLifecycleManagement": "Manual only"
+          },
+          "businessRisk": {
+            "criticalSystemsAccess": 12,
+            "dataAccessCapability": "Extensive",
+            "networkAccessLevel": "Unrestricted",
+            "auditTrailGaps": "Significant",
+            "incidentResponseCapability": "Limited"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Legacy service account security assessment",
+            "result": "CRITICAL_GAPS",
+            "details": "45 legacy accounts with significant security deficiencies"
+          },
+          {
+            "test": "Privilege escalation risk evaluation",
+            "result": "HIGH_RISK",
+            "details": "12 accounts with local admin rights, 2 with domain admin"
+          },
+          {
+            "test": "Monitoring and auditing check",
+            "result": "INSUFFICIENT",
+            "details": "Limited auditing and no automated monitoring"
+          }
+        ],
+        "complianceGaps": [
+          {
+            "requirement": "FedRAMP AC-2 (Account Management)",
+            "status": "NON_COMPLIANT",
+            "issue": "Service accounts lack proper lifecycle management"
+          },
+          {
+            "requirement": "FedRAMP AC-6 (Least Privilege)",
+            "status": "NON_COMPLIANT",
+            "issue": "Over-privileged service accounts detected"
+          }
+        ],
+        "remediation": "CRITICAL: 1) Immediately review and reduce privileges for all service accounts, 2) Change default and weak passwords, 3) Migrate to managed service accounts where possible, 4) Implement comprehensive auditing and monitoring, 5) Establish regular access reviews, 6) Document and justify all service account requirements, 7) Implement account lifecycle management",
+        "checkType": "nonUserAccountSecurit"
+      },
+      {
+        "checkId": "IAM-03-004",
+        "name": "Shared Account Usage Violations",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Shared accounts are used inappropriately without proper controls",
+        "findings": {
+          "sharedAccountInventory": {
+            "totalSharedAccounts": 23,
+            "genericAccounts": 15,
+            "functionalAccounts": 8,
+            "privilegedSharedAccounts": 6,
+            "activeUsers": 67,
+            "accountPurposes": [
+              {
+                "purpose": "Application Service",
+                "count": 8,
+                "justification": "Legacy applications",
+                "users": 12
+              },
+              {
+                "purpose": "Shared Workstation",
+                "count": 7,
+                "justification": "Kiosk systems",
+                "users": 34
+              },
+              {
+                "purpose": "Administrative Tasks",
+                "count": 6,
+                "justification": "Break-glass access",
+                "users": 8
+              },
+              {
+                "purpose": "Unspecified",
+                "count": 2,
+                "justification": "None provided",
+                "users": 13
+              }
+            ]
+          },
+          "securityViolations": {
+            "accountabilityIssues": {
+              "nonRepudiation": "Impossible",
+              "actionTraceability": "Limited",
+              "userIdentification": "Not possible",
+              "auditTrailGaps": "Significant"
+            },
+            "accessControlWeaknesses": {
+              "passwordSharing": 23,
+              "noIndividualAuthentication": 23,
+              "sessionSharing": 15,
+              "concurrentLogins": "Unlimited"
+            },
+            "privilegeAbuse": {
+              "unauthorizedElevation": 8,
+              "crossFunctionalAccess": 12,
+              "dataAccessViolations": 5,
+              "systemModifications": "Untracked"
+            }
+          },
+          "monitoringDeficiencies": {
+            "userActivityTracking": false,
+            "sessionMonitoring": "Basic only",
+            "privilegedOperationLogging": false,
+            "anomalyDetection": false,
+            "realTimeAlerting": false,
+            "accessReviews": "Never performed"
+          },
+          "complianceImpact": {
+            "auditabilityRisk": "CRITICAL",
+            "regulatoryViolations": [
+              "SOX - lack of individual accountability",
+              "FedRAMP - shared account restrictions",
+              "PCI DSS - unique user identification"
+            ],
+            "forensicCapabilities": "Severely limited",
+            "incidentResponse": "Compromised"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Shared account usage assessment",
+            "result": "EXCESSIVE",
+            "details": "23 shared accounts with 67 users, limited justification"
+          },
+          {
+            "test": "Accountability mechanism check",
+            "result": "ABSENT",
+            "details": "No individual user accountability for shared account actions"
+          },
+          {
+            "test": "Access control validation",
+            "result": "WEAK",
+            "details": "Password sharing and unlimited concurrent access"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Eliminate shared accounts where possible, 2) Implement individual user accounts with role-based access, 3) For necessary shared accounts, implement session monitoring and recording, 4) Establish individual accountability mechanisms, 5) Implement privileged access management for shared accounts, 6) Conduct regular access reviews and justification, 7) Create incident response procedures for shared account compromise",
+        "checkType": "nonUserAccountSecurit"
+      },
+      {
+        "checkId": "IAM-03-005",
+        "name": "Application Account Security Weaknesses",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Application accounts lack proper security configuration and lifecycle management",
+        "findings": {
+          "applicationAccountInventory": {
+            "totalApplicationAccounts": 56,
+            "webApplicationAccounts": 23,
+            "databaseApplicationAccounts": 18,
+            "apiServiceAccounts": 15,
+            "migrationToManagedIdentity": {
+              "completed": 12,
+              "inProgress": 8,
+              "notStarted": 36
+            }
+          },
+          "credentialManagementIssues": {
+            "hardcodedCredentials": {
+              "inSourceCode": 8,
+              "inConfigFiles": 15,
+              "inEnvironmentVariables": 23,
+              "inDatabases": 4
+            },
+            "credentialStorage": {
+              "plainText": 31,
+              "weakEncryption": 12,
+              "keyVaultStored": 13,
+              "properEncryption": 13
+            },
+            "credentialRotation": {
+              "neverRotated": 34,
+              "manualRotation": 15,
+              "automatedRotation": 7,
+              "averageCredentialAge": "P567D"
+            }
+          },
+          "accessControlDeficiencies": {
+            "overPrivilegedAccess": {
+              "databaseAccounts": 12,
+              "fileSystemAccounts": 8,
+              "networkAccounts": 6,
+              "adminRights": 4
+            },
+            "crossApplicationAccess": {
+              "sharedCredentials": 18,
+              "crossSystemAccess": 12,
+              "separationViolations": 23
+            },
+            "networkAccessControl": {
+              "unrestricted": 34,
+              "ipRestricted": 12,
+              "vnetRestricted": 10
+            }
+          },
+          "lifecycleManagementGaps": {
+            "accountProvisioning": "Manual",
+            "accessReviews": "Never",
+            "deprovisioning": "Manual",
+            "orphanedAccounts": 8,
+            "zombieAccounts": 12,
+            "documentationStatus": "Incomplete"
+          },
+          "securityControls": {
+            "monitoring": "Limited",
+            "auditLogging": "Basic",
+            "alerting": "None",
+            "anomalyDetection": false,
+            "threatDetection": false,
+            "incidentResponse": "Undefined"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Application account credential security check",
+            "result": "WEAK",
+            "details": "31 accounts store credentials in plaintext"
+          },
+          {
+            "test": "Privilege escalation assessment",
+            "result": "OVER_PRIVILEGED",
+            "details": "26 accounts have excessive privileges"
+          },
+          {
+            "test": "Lifecycle management evaluation",
+            "result": "INADEQUATE",
+            "details": "Manual processes with 20 orphaned/zombie accounts"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Remove all hardcoded credentials from code and config files, 2) Migrate credentials to Azure Key Vault, 3) Implement managed identities for Azure resources, 4) Apply principle of least privilege to all application accounts, 5) Establish automated credential rotation, 6) Implement comprehensive monitoring and alerting, 7) Create application account lifecycle management procedures",
+        "checkType": "nonUserAccountSecurit"
+      },
+      {
+        "checkId": "IAM-03-006",
+        "name": "Emergency Access Account Management Issues",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Emergency break-glass accounts lack proper controls and monitoring",
+        "findings": {
+          "emergencyAccountInventory": {
+            "totalEmergencyAccounts": 4,
+            "globalAdminAccounts": 2,
+            "subscriptionOwnerAccounts": 2,
+            "accountStatus": "All active",
+            "lastUsed": "Never",
+            "createdDate": "2024-05-15T00:00:00.000Z"
+          },
+          "securityConfiguration": {
+            "authenticationMethod": {
+              "passwordOnly": true,
+              "mfaExempted": true,
+              "conditionalAccessExempted": true,
+              "issue": "No alternative strong authentication configured"
+            },
+            "passwordManagement": {
+              "complexity": "High",
+              "length": 24,
+              "lastChanged": "2024-05-15T00:00:00.000Z",
+              "stored": "Physical safe",
+              "rotationFrequency": "Annual",
+              "issue": "Passwords not rotated since creation"
+            },
+            "accessRestrictions": {
+              "ipRestrictions": false,
+              "timeRestrictions": false,
+              "deviceRestrictions": false,
+              "locationRestrictions": false,
+              "issue": "No access restrictions configured"
+            }
+          },
+          "monitoringAndControls": {
+            "usageMonitoring": {
+              "realTimeAlerting": true,
+              "logAnalytics": true,
+              "socNotification": true,
+              "executiveNotification": true
+            },
+            "accessReview": {
+              "frequency": "Quarterly",
+              "lastReview": "2025-06-01T00:00:00.000Z",
+              "reviewers": [
+                "CISO",
+                "IT Director"
+              ],
+              "nextReview": "2025-09-01T00:00:00.000Z"
+            },
+            "auditControls": {
+              "allOperationsLogged": true,
+              "immutableLogs": true,
+              "retentionPeriod": "P2555D",
+              "complianceReporting": true
+            }
+          },
+          "procedureDeficiencies": {
+            "activationProcedure": {
+              "documented": true,
+              "approvalRequired": false,
+              "issue": "No approval workflow for emergency access"
+            },
+            "justificationRequirements": {
+              "required": false,
+              "documentation": "Basic",
+              "issue": "Limited justification and documentation requirements"
+            },
+            "deactivationProcedure": {
+              "automated": false,
+              "timeBasedExpiry": false,
+              "issue": "No automatic session termination"
+            }
+          },
+          "riskAssessment": {
+            "unauthorizedUse": "Medium risk",
+            "credentialCompromise": "Medium risk",
+            "insiderThreat": "Low risk",
+            "operationalRisk": "Low risk",
+            "complianceRisk": "Medium risk"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Emergency account security configuration check",
+            "result": "PARTIALLY_SECURE",
+            "details": "Strong monitoring but lacking access restrictions"
+          },
+          {
+            "test": "Usage procedure validation",
+            "result": "INCOMPLETE",
+            "details": "Missing approval workflows and automatic deactivation"
+          },
+          {
+            "test": "Credential management assessment",
+            "result": "ADEQUATE",
+            "details": "Strong passwords but no rotation since creation"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Implement approval workflow for emergency account activation, 2) Add access restrictions (IP, time, location), 3) Establish regular password rotation schedule, 4) Create automated session termination procedures, 5) Enhance justification and documentation requirements, 6) Consider certificate-based authentication for emergency accounts, 7) Conduct regular emergency access drills and testing",
+        "checkType": "nonUserAccountSecurit"
+      }
+    ]
+  }
+}

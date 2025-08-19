@@ -1,0 +1,904 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-MLA-05",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 6,
+      "passed": 3,
+      "failed": 3,
+      "warnings": 0
+    },
+    "iacConfigurationTestingVerificationMethods": {
+      "infrastructureAsCodeScanning": [
+        "Azure Portal: Security Center > Recommendations for IaC security issues",
+        "Azure DevOps: Pipeline results for ARM/Bicep template validation",
+        "Terraform Cloud: Sentinel policy results and plan analysis",
+        "Checkov: Static analysis results in CI/CD pipeline logs",
+        "TFSec: Terraform security scanning reports and CI/CD integration"
+      ],
+      "configurationDriftDetection": [
+        "Azure Portal: Automation > State Configuration for compliance status",
+        "Azure Portal: Policy > Compliance for guest configuration results",
+        "Azure Resource Graph: Configuration drift queries and analysis",
+        "Terraform Cloud: Drift detection and plan comparison results",
+        "Configuration management tools: Puppet/Ansible compliance reports"
+      ],
+      "cicdConfigurationTesting": [
+        "Azure DevOps: Pipeline test results and deployment validation",
+        "GitHub Actions: Workflow results for infrastructure testing",
+        "Jenkins: Build logs for configuration testing and validation",
+        "CI/CD tools: Test coverage reports and security scan results",
+        "Deployment validation: Post-deployment configuration verification"
+      ],
+      "policyAsCode": [
+        "Azure Portal: Policy > Compliance for policy evaluation results",
+        "Terraform Cloud: Sentinel policy evaluation and enforcement logs",
+        "Open Policy Agent: Policy evaluation results and admission control",
+        "Azure Resource Manager: Template deployment policy violations",
+        "Policy frameworks: Custom policy testing and validation results"
+      ],
+      "configurationBaselines": [
+        "Azure Security Center: Secure Score and configuration recommendations",
+        "CIS Benchmarks: Compliance assessment results and gap analysis",
+        "Configuration management: Baseline compliance reports and drift analysis",
+        "CMDB systems: Configuration item tracking and change history",
+        "Audit tools: Configuration baseline validation and compliance reporting"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "CM-2": "Baseline Configuration",
+        "CM-3": "Configuration Change Control",
+        "CM-6": "Configuration Settings",
+        "SA-11": "Developer Security Testing and Evaluation"
+      },
+      "nist80053": {
+        "CM-2": "Baseline Configuration",
+        "CM-3": "Configuration Change Control",
+        "CM-6": "Configuration Settings",
+        "SA-11": "Developer Security Testing and Evaluation",
+        "SA-15": "Development Process, Standards, and Tools"
+      },
+      "iso27001": {
+        "A.12.1.2": "Change management",
+        "A.14.2.3": "Technical review of applications after operating platform changes",
+        "A.12.6.2": "Restrictions on software installation",
+        "A.14.1.3": "Protection of application services transactions"
+      }
+    },
+    "checks": [
+      {
+        "checkId": "MLA-05-001",
+        "name": "Infrastructure as Code Security Scanning",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Infrastructure as Code templates should undergo comprehensive security scanning and validation",
+        "findings": {
+          "iacSecurityScanning": {
+            "templateTypes": {
+              "armTemplates": {
+                "totalTemplates": 89,
+                "scannedTemplates": 89,
+                "coveragePercentage": "100%",
+                "securityChecks": 456,
+                "lastScanDate": "2025-08-16T21:45:00.000Z"
+              },
+              "bicepTemplates": {
+                "totalTemplates": 67,
+                "scannedTemplates": 67,
+                "coveragePercentage": "100%",
+                "securityChecks": 234,
+                "lastScanDate": "2025-08-16T21:45:00.000Z"
+              },
+              "terraformConfigurations": {
+                "totalConfigurations": 45,
+                "scannedConfigurations": 45,
+                "coveragePercentage": "100%",
+                "securityChecks": 567,
+                "lastScanDate": "2025-08-16T21:45:00.000Z"
+              }
+            },
+            "scanningTools": {
+              "azureSecurityCenter": {
+                "iacScanningEnabled": true,
+                "builtInPolicies": 234,
+                "customPolicies": 67,
+                "complianceFrameworks": [
+                  "CIS",
+                  "NIST",
+                  "ISO27001"
+                ],
+                "scanAccuracy": "96.7%"
+              },
+              "terraformSentinel": {
+                "enabled": true,
+                "policyAsCode": true,
+                "policies": 123,
+                "enforcementLevel": "Hard mandatory",
+                "integrationPoints": [
+                  "Terraform Cloud",
+                  "CI/CD"
+                ]
+              },
+              "checkov": {
+                "enabled": true,
+                "staticAnalysis": true,
+                "supportedFrameworks": [
+                  "Terraform",
+                  "ARM",
+                  "Bicep",
+                  "CloudFormation"
+                ],
+                "customRules": 45,
+                "cicdIntegration": true
+              },
+              "tfsec": {
+                "enabled": true,
+                "terraformSpecific": true,
+                "securityChecks": 234,
+                "cicdIntegration": true,
+                "reportGeneration": "Automated"
+              }
+            },
+            "securityCheckCategories": {
+              "accessControlValidation": {
+                "iamPolicyAnalysis": "Comprehensive",
+                "rbacValidation": "Automated",
+                "privilegeEscalationChecks": "Enabled",
+                "serviceAccountSecurity": "Validated",
+                "crossServicePermissions": "Analyzed"
+              },
+              "networkSecurityValidation": {
+                "networkSegmentation": "Validated",
+                "firewallRules": "Analyzed",
+                "publicEndpointExposure": "Flagged",
+                "encryptionInTransit": "Enforced",
+                "networkPolicyValidation": "Automated"
+              },
+              "dataProtectionValidation": {
+                "encryptionAtRest": "Validated",
+                "keyManagementSecurity": "Analyzed",
+                "dataClassification": "Checked",
+                "backupEncryption": "Validated",
+                "dataRetentionPolicies": "Verified"
+              },
+              "complianceValidation": {
+                "regulatoryCompliance": "Multi-framework",
+                "organizationalPolicies": "Custom validation",
+                "industryStandards": "CIS benchmarks",
+                "securityBaselines": "Automated comparison",
+                "auditTrailRequirements": "Validated"
+              }
+            }
+          },
+          "iacScanningMetrics": {
+            "scanPerformance": {
+              "averageScanTime": "PT8M30S",
+              "scanSuccessRate": "99.3%",
+              "scanCoverage": "100%",
+              "falsePositiveRate": "2.8%",
+              "autoRemediation": "65% of issues"
+            },
+            "vulnerabilityDetection": {
+              "totalFindings": 1456,
+              "criticalIssues": 8,
+              "highSeverityIssues": 34,
+              "mediumSeverityIssues": 156,
+              "lowSeverityIssues": 1258,
+              "informationalFindings": 89
+            },
+            "complianceMetrics": {
+              "cisComplianceScore": "94.2%",
+              "nistComplianceScore": "96.7%",
+              "customPolicyCompliance": "98.1%",
+              "organizationalStandardsCompliance": "97.3%",
+              "industryBenchmarkCompliance": "95.8%"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "IaC template security scanning coverage assessment",
+            "result": "COMPREHENSIVE",
+            "details": "100% coverage across ARM, Bicep, and Terraform templates with multiple scanning tools"
+          },
+          {
+            "test": "Security check effectiveness validation",
+            "result": "ROBUST",
+            "details": "1456 security findings across access control, network, data protection, and compliance"
+          },
+          {
+            "test": "Compliance framework validation",
+            "result": "EXCELLENT",
+            "details": "Multi-framework compliance with 94.2% CIS and 96.7% NIST compliance scores"
+          }
+        ],
+        "remediation": "Infrastructure as Code security scanning properly implemented with comprehensive coverage",
+        "checkType": "iacConfigurationTestin"
+      },
+      {
+        "checkId": "MLA-05-002",
+        "name": "Configuration Drift Detection and Management",
+        "status": "PASS",
+        "severity": "MEDIUM",
+        "description": "System configurations should be continuously monitored for drift from approved baselines",
+        "findings": {
+          "configurationDriftMonitoring": {
+            "driftDetectionCapabilities": {
+              "realTimeDriftDetection": true,
+              "scheduledDriftChecks": "Every 4 hours",
+              "baselineComparison": "Automated",
+              "multiSystemCorrelation": true,
+              "alertingThresholds": "Configurable by criticality"
+            },
+            "monitoredConfigurations": {
+              "operatingSystemConfigurations": {
+                "windowsSystems": 156,
+                "linuxSystems": 67,
+                "coveragePercentage": "100%",
+                "configurationItems": 2345,
+                "lastBaselineUpdate": "2025-08-10T14:30:00.000Z"
+              },
+              "applicationConfigurations": {
+                "webServers": 45,
+                "databaseServers": 23,
+                "middlewareApplications": 34,
+                "configurationParameters": 1234,
+                "customApplications": 67
+              },
+              "networkConfigurations": {
+                "firewallRules": 456,
+                "routingTables": 123,
+                "dnsConfigurations": 89,
+                "loadBalancerConfigurations": 34,
+                "networkSecurityGroups": 234
+              }
+            },
+            "driftDetectionTools": {
+              "azureAutomationStateConfiguration": {
+                "enabled": true,
+                "managedNodes": 223,
+                "configurationCompliance": "97.3%",
+                "autoRemediation": "Enabled for non-critical changes",
+                "lastComplianceCheck": "2025-08-16T20:15:00.000Z"
+              },
+              "azurePolicyGuestConfiguration": {
+                "enabled": true,
+                "policiesDeployed": 145,
+                "complianceScoring": "Automated",
+                "remediationTasks": "Automated where safe",
+                "auditingCapabilities": "Comprehensive"
+              },
+              "terraformCloudSentinel": {
+                "enabled": true,
+                "policyValidation": "Pre and post deployment",
+                "costEstimation": "Enabled",
+                "planAnalysis": "Automated",
+                "workspaceGovernance": "Enforced"
+              }
+            }
+          },
+          "driftManagementWorkflows": {
+            "driftIdentification": {
+              "automaticDetection": "Real-time",
+              "severityClassification": "Risk-based",
+              "impactAssessment": "Automated",
+              "rootCauseAnalysis": "Assisted",
+              "escalationProcedures": "Risk-appropriate"
+            },
+            "driftRemediation": {
+              "automaticRemediation": "65% of non-critical drift",
+              "manualApprovalRequired": "Critical infrastructure changes",
+              "rollbackCapabilities": "Automated",
+              "remediationValidation": "Post-change verification",
+              "changeDocumentation": "Automated logging"
+            },
+            "driftReporting": {
+              "realTimeDashboards": "Executive and operational views",
+              "trendAnalysis": "Historical drift patterns",
+              "complianceReporting": "Regulatory framework alignment",
+              "stakeholderNotifications": "Risk-based alerting",
+              "auditTrails": "Complete change history"
+            }
+          },
+          "driftMetrics": {
+            "driftDetectionMetrics": {
+              "averageDetectionTime": "PT15M",
+              "driftAccuracy": "98.7%",
+              "falsePositiveRate": "1.8%",
+              "coverageCompleteness": "100%",
+              "alertingEffectiveness": "96.2%"
+            },
+            "remediationMetrics": {
+              "autoRemediationSuccess": "97.8%",
+              "meanTimeToRemediation": "PT2H15M",
+              "manualRemediationTime": "PT8H30M",
+              "rollbackExecutionTime": "PT5M",
+              "remediationAccuracy": "99.1%"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Configuration drift detection coverage assessment",
+            "result": "COMPREHENSIVE",
+            "details": "100% system coverage with real-time detection and 15-minute average detection time"
+          },
+          {
+            "test": "Drift management workflow effectiveness validation",
+            "result": "EFFICIENT",
+            "details": "65% automatic remediation with 97.8% success rate and automated rollback"
+          },
+          {
+            "test": "Configuration baseline management evaluation",
+            "result": "MATURE",
+            "details": "Automated baseline comparison with 98.7% drift accuracy and comprehensive reporting"
+          }
+        ],
+        "remediation": "Configuration drift detection and management properly implemented with comprehensive automation",
+        "checkType": "iacConfigurationTestin"
+      },
+      {
+        "checkId": "MLA-05-003",
+        "name": "Automated Configuration Testing in CI/CD",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Configuration changes should be automatically tested and validated within CI/CD pipelines",
+        "findings": {
+          "cicdConfigurationTesting": {
+            "pipelineIntegration": {
+              "totalPipelines": 67,
+              "configurationTestingEnabled": 67,
+              "coveragePercentage": "100%",
+              "testingStages": [
+                "Pre-commit",
+                "Build",
+                "Pre-deployment",
+                "Post-deployment"
+              ],
+              "lastPipelineExecution": "2025-08-16T19:30:00.000Z"
+            },
+            "testingTools": {
+              "terraformValidate": {
+                "enabled": true,
+                "syntaxValidation": "Automated",
+                "planValidation": "Required",
+                "providerValidation": "Comprehensive",
+                "stateFileValidation": "Automated"
+              },
+              "armTemplateValidator": {
+                "enabled": true,
+                "syntaxValidation": "Automated",
+                "deploymentValidation": "Test deployments",
+                "resourceValidation": "Cross-resource dependencies",
+                "parameterValidation": "Type and constraint checking"
+              },
+              "bicepLinter": {
+                "enabled": true,
+                "codeQualityRules": 156,
+                "securityRules": 89,
+                "bestPracticeValidation": "Automated",
+                "styleGuideEnforcement": "Organizational standards"
+              },
+              "policyAsCodeTesting": {
+                "azurePolicyTesting": "Automated",
+                "complianceValidation": "Pre-deployment",
+                "policySimulation": "Environment-specific",
+                "exceptionHandling": "Documented",
+                "policyEffectivenessAnalysis": "Post-deployment"
+              }
+            },
+            "testingStages": {
+              "preCommitTesting": {
+                "localValidation": "Developer workstation",
+                "linting": "Code quality and security",
+                "unitTesting": "Infrastructure unit tests",
+                "secretsScanning": "Credential detection",
+                "staticAnalysis": "Security vulnerability scanning"
+              },
+              "buildStageTesting": {
+                "templateValidation": "Syntax and structure",
+                "dependencyAnalysis": "Cross-template dependencies",
+                "securityScanning": "Infrastructure security analysis",
+                "complianceChecking": "Policy validation",
+                "documentationGeneration": "Automated documentation"
+              },
+              "preDeploymentTesting": {
+                "testEnvironmentDeployment": "Isolated test environments",
+                "integrationTesting": "Cross-service integration",
+                "securityValidation": "Deployed configuration security",
+                "performanceTesting": "Infrastructure performance validation",
+                "disasterRecoveryTesting": "Backup and recovery validation"
+              },
+              "postDeploymentTesting": {
+                "deploymentVerification": "Successful deployment validation",
+                "configurationDriftCheck": "Immediate drift detection",
+                "functionalTesting": "Service functionality validation",
+                "securityPostureValidation": "Security configuration verification",
+                "monitoringValidation": "Logging and alerting verification"
+              }
+            }
+          },
+          "testingQualityMetrics": {
+            "testCoverage": {
+              "codePathCoverage": "94.7%",
+              "configurationParameterCoverage": "98.3%",
+              "securityRuleCoverage": "100%",
+              "compliancePolicyCoverage": "96.8%",
+              "errorScenarioCoverage": "87.2%"
+            },
+            "testingEffectiveness": {
+              "defectDetectionRate": "96.3%",
+              "falsePositiveRate": "2.1%",
+              "testExecutionTime": "Average 12 minutes",
+              "testReliability": "99.2%",
+              "automationPercentage": "95.7%"
+            },
+            "pipelineMetrics": {
+              "buildSuccessRate": "97.8%",
+              "deploymentSuccessRate": "98.9%",
+              "testFailureAnalysis": "Automated categorization",
+              "meanTimeToResolution": "PT1H45M",
+              "pipelineExecutionTime": "Average 25 minutes"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "CI/CD configuration testing integration assessment",
+            "result": "COMPLETE",
+            "details": "100% pipeline coverage with multi-stage testing and comprehensive tool integration"
+          },
+          {
+            "test": "Testing tool effectiveness and coverage validation",
+            "result": "COMPREHENSIVE",
+            "details": "96.3% defect detection rate with 98.3% configuration parameter coverage"
+          },
+          {
+            "test": "Pipeline quality and reliability evaluation",
+            "result": "HIGH_QUALITY",
+            "details": "97.8% build success rate with 25-minute average execution time"
+          }
+        ],
+        "remediation": "Automated configuration testing in CI/CD properly implemented with comprehensive coverage",
+        "checkType": "iacConfigurationTestin"
+      },
+      {
+        "checkId": "MLA-05-004",
+        "name": "Incomplete Infrastructure Testing Coverage",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Infrastructure testing lacks comprehensive coverage across all deployment scenarios and environments",
+        "findings": {
+          "testingCoverageGaps": {
+            "infrastructureComponentGaps": {
+              "networkingInfrastructure": {
+                "totalNetworkComponents": 156,
+                "testedComponents": 89,
+                "coveragePercentage": "57.1%",
+                "untestedComponents": [
+                  "VPN gateways",
+                  "ExpressRoute circuits",
+                  "Private DNS zones"
+                ],
+                "testingComplexity": "High complexity networking not covered"
+              },
+              "storageInfrastructure": {
+                "totalStorageResources": 78,
+                "testedResources": 34,
+                "coveragePercentage": "43.6%",
+                "untestedTypes": [
+                  "Data Lake Storage",
+                  "Archive storage",
+                  "Premium file shares"
+                ],
+                "dataProtectionTesting": "Limited backup and disaster recovery testing"
+              },
+              "computeInfrastructure": {
+                "totalComputeResources": 234,
+                "testedResources": 178,
+                "coveragePercentage": "76.1%",
+                "untestedTypes": [
+                  "GPU instances",
+                  "Spot instances",
+                  "Dedicated hosts"
+                ],
+                "scalingTesting": "Limited auto-scaling scenario testing"
+              }
+            },
+            "environmentTestingGaps": {
+              "productionEnvironmentTesting": {
+                "productionDeploymentTesting": "Limited",
+                "blueGreenDeploymentTesting": "Not implemented",
+                "canaryDeploymentTesting": "Basic testing only",
+                "rollbackTesting": "Manual process testing only",
+                "productionDataTesting": "Not performed due to data sensitivity"
+              },
+              "disasterRecoveryTesting": {
+                "drSiteFailoverTesting": "Annual only",
+                "backupRestoreTesting": "Quarterly",
+                "rpoRtoValidation": "Not systematically tested",
+                "crossRegionFailoverTesting": "Not performed",
+                "dataIntegrityValidation": "Limited scope"
+              },
+              "scalabilityTesting": {
+                "loadTesting": "Basic application load testing only",
+                "infrastructureScalingTesting": "Limited auto-scaling testing",
+                "performanceUnderLoad": "Not systematically tested",
+                "resourceConstraintTesting": "Not performed",
+                "costOptimizationTesting": "Not integrated with testing"
+              }
+            },
+            "securityTestingGaps": {
+              "penetrationTesting": {
+                "infrastructurePenetrationTesting": "Annual only",
+                "networkSegmentationTesting": "Not systematically tested",
+                "accessControlTesting": "Limited scope",
+                "encryptionValidationTesting": "Basic testing only",
+                "complianceValidationTesting": "Manual process"
+              },
+              "chaosEngineeringTesting": {
+                "faultToleranceTesting": "Not implemented",
+                "resilienceValidation": "Limited scope",
+                "securityFailureSimulation": "Not performed",
+                "networkPartitionTesting": "Not implemented",
+                "componentFailureSimulation": "Basic testing only"
+              }
+            }
+          },
+          "testingProcessGaps": {
+            "testDataManagement": {
+              "syntheticDataGeneration": "Limited capability",
+              "productionDataMasking": "Basic implementation",
+              "testDataPrivacy": "Manual processes",
+              "dataFreshness": "Inconsistent test data updates",
+              "crossEnvironmentDataSync": "Manual synchronization"
+            },
+            "testEnvironmentManagement": {
+              "environmentProvisioning": "Manual intensive",
+              "environmentParity": "Inconsistent with production",
+              "environmentLifecycle": "No systematic lifecycle management",
+              "costOptimization": "Environments not cost-optimized",
+              "environmentSecurity": "Basic security in test environments"
+            },
+            "testOrchestration": {
+              "crossServiceTesting": "Limited integration testing",
+              "endToEndTesting": "Basic scenarios only",
+              "userJourneyTesting": "Not infrastructure-focused",
+              "businessProcessTesting": "Limited business continuity testing",
+              "stakeholderAcceptanceTesting": "Manual processes"
+            }
+          },
+          "businessImpactOfGaps": {
+            "riskExposure": {
+              "productionDeploymentRisks": "Higher risk of production issues",
+              "scalabilityUnknowns": "Performance limitations not identified",
+              "securityVulnerabilities": "Infrastructure vulnerabilities not detected",
+              "disasterRecoveryUncertainty": "DR capabilities not validated",
+              "complianceRisks": "Compliance gaps not identified in testing"
+            },
+            "operationalChallenges": {
+              "longerIncidentResolution": "Infrastructure issues harder to diagnose",
+              "manualTestingOverhead": "Increased manual testing effort",
+              "delayedDeployments": "Issues discovered late in deployment cycle",
+              "increase\u0435\u0434Costs": "Higher costs due to production issues",
+              "reducedConfidence": "Lower confidence in infrastructure changes"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Infrastructure testing coverage assessment",
+            "result": "INCOMPLETE",
+            "details": "57.1% network, 43.6% storage, and 76.1% compute infrastructure testing coverage"
+          },
+          {
+            "test": "Environment and scenario testing evaluation",
+            "result": "LIMITED",
+            "details": "Inadequate production, DR, and scalability testing with annual-only comprehensive testing"
+          },
+          {
+            "test": "Security and resilience testing analysis",
+            "result": "INSUFFICIENT",
+            "details": "No chaos engineering, limited penetration testing, basic compliance validation"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive infrastructure testing covering all component types and scenarios, 2) Establish automated disaster recovery and failover testing procedures, 3) Deploy chaos engineering and fault tolerance testing frameworks, 4) Implement systematic production environment testing with blue-green deployments, 5) Establish automated scalability and performance testing for infrastructure, 6) Implement comprehensive security testing including penetration testing automation, 7) Deploy test environment management and orchestration platforms",
+        "checkType": "iacConfigurationTestin"
+      },
+      {
+        "checkId": "MLA-05-005",
+        "name": "Missing Policy as Code Implementation",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Security and compliance policies lack systematic implementation as code with automated enforcement",
+        "findings": {
+          "policyAsCodeGaps": {
+            "policyImplementationGaps": {
+              "securityPolicies": {
+                "totalSecurityRequirements": 234,
+                "implementedAsCode": 89,
+                "implementationPercentage": "38.0%",
+                "manualImplementation": 145,
+                "unenforced": 67
+              },
+              "compliancePolicies": {
+                "totalComplianceControls": 156,
+                "automatedControls": 45,
+                "implementationPercentage": "28.8%",
+                "manualValidation": 111,
+                "notImplemented": 23
+              },
+              "organizationalPolicies": {
+                "totalOrganizationalPolicies": 89,
+                "codifiedPolicies": 23,
+                "implementationPercentage": "25.8%",
+                "documentationOnly": 66,
+                "informalPolicies": 12
+              }
+            },
+            "policyFrameworkLimitations": {
+              "azurePolicyLimitations": {
+                "builtInPolicies": "Limited customization",
+                "customPolicies": "Limited development",
+                "policyInitiatives": "Basic grouping only",
+                "exemptionManagement": "Manual processes",
+                "policyTesting": "Limited validation capabilities"
+              },
+              "terraformSentinelGaps": {
+                "notImplemented": "Terraform Sentinel not deployed",
+                "policyAsCodeCapability": "Not utilized",
+                "costGovernance": "No automated cost policies",
+                "workspaceGovernance": "Manual governance only",
+                "planAnalysis": "Limited automated plan analysis"
+              },
+              "openPolicyAgentGaps": {
+                "notDeployed": "OPA not implemented",
+                "kubernetesAdmissionControl": "Manual processes",
+                "microserviceGovernance": "Limited policy enforcement",
+                "apiGovernance": "No automated API policy enforcement",
+                "crossPlatformPolicies": "Not implemented"
+              }
+            }
+          },
+          "policyDevelopmentGaps": {
+            "policyDevelopmentProcess": {
+              "policyCreationProcess": "Manual and ad hoc",
+              "stakeholderEngagement": "Limited engagement",
+              "requirementsGathering": "Informal processes",
+              "policyDesign": "Document-based only",
+              "policyValidation": "Manual review processes"
+            },
+            "policyLifecycleManagement": {
+              "versionControl": "No systematic version control",
+              "policyTesting": "No automated testing framework",
+              "policyDeployment": "Manual deployment processes",
+              "policyMonitoring": "Limited effectiveness monitoring",
+              "policyMaintenance": "Reactive maintenance only"
+            },
+            "policyDocumentation": {
+              "policyDocumentation": "Inconsistent documentation",
+              "implementationGuidance": "Limited guidance available",
+              "exemptionDocumentation": "Poor exemption documentation",
+              "policyRationale": "Limited business justification",
+              "stakeholderCommunication": "Ad hoc communication"
+            }
+          },
+          "policyEnforcementGaps": {
+            "enforcementMechanisms": {
+              "preventiveControls": "Limited preventive enforcement",
+              "detectiveControls": "Basic detective capabilities",
+              "correctiveControls": "Manual corrective actions",
+              "automatedRemediation": "Not implemented",
+              "realTimeEnforcement": "Limited real-time capabilities"
+            },
+            "enforcementCoverage": {
+              "resourceCoverage": "Limited resource type coverage",
+              "environmentCoverage": "Inconsistent across environments",
+              "crossSubscriptionEnforcement": "Manual coordination",
+              "multiCloudEnforcement": "Not implemented",
+              "edgeCaseHandling": "Limited edge case coverage"
+            },
+            "violationManagement": {
+              "violationDetection": "Basic detection capabilities",
+              "violationReporting": "Manual reporting processes",
+              "violationRemediation": "Manual remediation required",
+              "violationTracking": "Spreadsheet-based tracking",
+              "recurrencePerevention": "Limited prevention measures"
+            }
+          },
+          "governanceAndOversightGaps": {
+            "policyGovernance": {
+              "policyOwnership": "Unclear ownership structure",
+              "approvalProcesses": "Informal approval processes",
+              "changeManagement": "Ad hoc change management",
+              "qualityAssurance": "Limited quality assurance",
+              "performanceMetrics": "No systematic metrics"
+            },
+            "stakeholderEngagement": {
+              "businessStakeholders": "Limited engagement",
+              "technicalStakeholders": "Informal engagement",
+              "externalStakeholders": "Minimal engagement",
+              "feedbackMechanisms": "No formal feedback mechanisms",
+              "communicationChannels": "Ad hoc communication"
+            },
+            "continuousImprovement": {
+              "policyEffectivenessAssessment": "No systematic assessment",
+              "lessonsSearned": "Limited lessons learned capture",
+              "bestPracticeAdoption": "Slow adoption of best practices",
+              "industryBenchmarking": "No industry benchmarking",
+              "innovationIntegration": "Limited innovation adoption"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Policy as Code implementation coverage assessment",
+            "result": "MINIMAL",
+            "details": "38% security, 28.8% compliance, and 25.8% organizational policy implementation"
+          },
+          {
+            "test": "Policy framework and tooling evaluation",
+            "result": "LIMITED",
+            "details": "Basic Azure Policy only, no Terraform Sentinel or OPA implementation"
+          },
+          {
+            "test": "Policy lifecycle and governance maturity check",
+            "result": "IMMATURE",
+            "details": "Manual processes, no version control, informal governance structure"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive policy as code framework using Azure Policy, Terraform Sentinel, and OPA, 2) Establish systematic policy development lifecycle with version control and testing, 3) Deploy automated policy enforcement with preventive, detective, and corrective controls, 4) Implement policy governance framework with clear ownership and approval processes, 5) Establish policy monitoring and effectiveness measurement, 6) Deploy automated policy testing and validation frameworks, 7) Implement cross-platform policy management for multi-cloud environments",
+        "checkType": "iacConfigurationTestin"
+      },
+      {
+        "checkId": "MLA-05-006",
+        "name": "Limited Configuration Baseline Management",
+        "status": "FAIL",
+        "severity": "LOW",
+        "description": "System configuration baselines lack comprehensive management and enforcement capabilities",
+        "findings": {
+          "configurationBaselineGaps": {
+            "baselineCoverageGaps": {
+              "operatingSystemBaselines": {
+                "windowsBaselines": "Basic CIS benchmarks only",
+                "linuxBaselines": "Limited distribution coverage",
+                "customBaselines": "Not developed",
+                "organizationalStandards": "Not systematically implemented",
+                "industryBenchmarks": "Partial implementation"
+              },
+              "applicationBaselines": {
+                "webServerBaselines": "Basic security configurations",
+                "databaseBaselines": "Vendor defaults only",
+                "middlewareBaselines": "Not systematized",
+                "customApplicationBaselines": "Not developed",
+                "containerBaselines": "Limited container security baselines"
+              },
+              "networkBaselines": {
+                "networkDeviceBaselines": "Manual configurations",
+                "firewallBaselines": "Basic rule sets",
+                "routerBaselines": "Vendor recommendations only",
+                "switchBaselines": "Not standardized",
+                "wirelessBaselines": "Basic security configurations"
+              }
+            },
+            "baselineDevelopmentGaps": {
+              "standardizationProcess": {
+                "baselineDevelopmentProcess": "Ad hoc development",
+                "stakeholderEngagement": "Limited involvement",
+                "requirementsGathering": "Informal processes",
+                "riskAssessment": "Basic risk considerations",
+                "businessImpactAnalysis": "Limited analysis"
+              },
+              "baselineValidation": {
+                "securityValidation": "Basic security review",
+                "functionalValidation": "Limited functional testing",
+                "performanceValidation": "Not systematically tested",
+                "compatibilityValidation": "Ad hoc testing",
+                "usabilityValidation": "Limited user acceptance testing"
+              },
+              "baselineDocumentation": {
+                "configurationDocumentation": "Inconsistent documentation",
+                "implementationGuidance": "Limited guidance",
+                "rationale Documentation": "Poor justification documentation",
+                "troubleshootingGuidance": "Basic troubleshooting information",
+                "maintenanceDocumentation": "Limited maintenance guidance"
+              }
+            }
+          },
+          "baselineManagementGaps": {
+            "baselineLifecycleManagement": {
+              "versionControl": "No systematic version control",
+              "changeManagement": "Informal change processes",
+              "approvalWorkflows": "Basic approval processes",
+              "deploymentManagement": "Manual deployment processes",
+              "retirementManagement": "Ad hoc retirement processes"
+            },
+            "baselineEnforcement": {
+              "enforcementMechanisms": "Limited enforcement capabilities",
+              "complianceMonitoring": "Basic compliance checking",
+              "deviationDetection": "Manual deviation detection",
+              "automatedRemediation": "Not implemented",
+              "exceptionHandling": "Manual exception processes"
+            },
+            "baselineReporting": {
+              "complianceReporting": "Basic compliance reports",
+              "trendAnalysis": "Limited historical analysis",
+              "deviationReporting": "Manual deviation reports",
+              "performanceMetrics": "Basic metrics only",
+              "stakeholderCommunication": "Limited reporting automation"
+            }
+          },
+          "toolingAndAutomationGaps": {
+            "baselineTooling": {
+              "configurationManagementTools": "Basic tools only",
+              "baselineComparisonTools": "Limited comparison capabilities",
+              "automatedBaselineDeployment": "Manual processes",
+              "baselineTestingTools": "No systematic testing tools",
+              "baselineMonitoringTools": "Basic monitoring only"
+            },
+            "integrationGaps": {
+              "cmdbIntegration": "No CMDB integration",
+              "changeManagementIntegration": "Limited integration",
+              "securityToolIntegration": "Basic integration only",
+              "monitoringToolIntegration": "Limited monitoring integration",
+              "reportingToolIntegration": "Manual reporting processes"
+            },
+            "automationMaturity": {
+              "baselineAutomation": "Low automation maturity",
+              "workflowAutomation": "Manual workflows",
+              "reportingAutomation": "Limited automation",
+              "alertingAutomation": "Basic alerting only",
+              "remediationAutomation": "Not implemented"
+            }
+          },
+          "businessImpactOfGaps": {
+            "operationalChallenges": {
+              "configurationInconsistency": "Inconsistent system configurations",
+              "maintenanceComplexity": "Complex manual maintenance processes",
+              "troubleshootingDifficulty": "Difficult issue diagnosis",
+              "scalabilityLimitations": "Cannot scale baseline management",
+              "qualityVariability": "Inconsistent configuration quality"
+            },
+            "securityAndComplianceRisks": {
+              "securityMisconfigurations": "Increased risk of misconfigurations",
+              "complianceGaps": "Potential compliance violations",
+              "auditingDifficulties": "Complex audit processes",
+              "riskAssessmentLimitations": "Incomplete risk assessment",
+              "incidentResponseComplexity": "Difficult incident analysis"
+            },
+            "costAndEfficiencyImpact": {
+              "manualEffortCosts": "High manual maintenance costs",
+              "inconsistencysCosts": "Costs associated with configuration inconsistencies",
+              "troubleshootingCosts": "Higher troubleshooting effort",
+              "complianceCosts": "Higher compliance validation costs",
+              "opportunityCosts": "Missed automation opportunities"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Configuration baseline coverage and standardization assessment",
+            "result": "BASIC",
+            "details": "Limited baseline coverage with ad hoc development and basic CIS benchmarks only"
+          },
+          {
+            "test": "Baseline lifecycle management and enforcement evaluation",
+            "result": "MANUAL",
+            "details": "No systematic version control, manual enforcement, basic compliance checking"
+          },
+          {
+            "test": "Baseline management tooling and automation maturity check",
+            "result": "LOW_MATURITY",
+            "details": "Basic tools only with limited integration and low automation maturity"
+          }
+        ],
+        "remediation": "LOW PRIORITY: 1) Develop comprehensive configuration baseline framework with industry benchmarks and organizational standards, 2) Implement systematic baseline development, validation, and documentation processes, 3) Deploy automated baseline enforcement and compliance monitoring tools, 4) Establish baseline lifecycle management with version control and change management, 5) Integrate baseline management with CMDB and security tools, 6) Implement automated baseline deployment and drift remediation, 7) Establish baseline governance framework with stakeholder engagement and continuous improvement",
+        "checkType": "iacConfigurationTestin"
+      }
+    ]
+  }
+}

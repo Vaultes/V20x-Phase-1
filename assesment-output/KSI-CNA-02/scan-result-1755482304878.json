@@ -1,0 +1,181 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-CNA-02",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 6,
+      "passed": 5,
+      "failed": 1,
+      "warnings": 0
+    },
+    "detectionMethods": {
+      "azureResourceGraphQueries": [
+        "AuthorizationResources | where type == 'microsoft.authorization/roleassignments' | where properties.roleDefinitionId contains 'Contributor' or properties.roleDefinitionId contains 'Owner'",
+        "AuthorizationResources | where type == 'microsoft.authorization/roleassignments' | where properties.scope startswith '/subscriptions/' and properties.scope !contains '/resourceGroups/'"
+      ],
+      "powerShellCommands": [
+        "Get-AzRoleAssignment | Where-Object {$_.RoleDefinitionName -eq 'Owner' -or $_.RoleDefinitionName -eq 'Contributor'}",
+        "Get-AzKeyVaultAccessPolicy -VaultName 'fedramp20x-keyvault' | Where-Object {$_.PermissionsToSecrets -contains 'All'}"
+      ]
+    },
+    "checks": [
+      {
+        "checkId": "CNA-02-001",
+        "name": "Service Principal Role Assignment Review",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Service principals should have minimal required permissions",
+        "findings": {
+          "principalId": "sp-fedramp20x-app",
+          "assignedRoles": [
+            {
+              "roleName": "Storage Blob Data Reader",
+              "scope": "/subscriptions/12345/resourceGroups/fedramp-rg/providers/Microsoft.Storage/storageAccounts/fedramp20xstorage",
+              "justification": "Required for reading assessment documents"
+            },
+            {
+              "roleName": "Key Vault Secrets User",
+              "scope": "/subscriptions/12345/resourceGroups/fedramp-rg/providers/Microsoft.KeyVault/vaults/fedramp20x-keyvault",
+              "justification": "Required for application configuration secrets"
+            }
+          ],
+          "excessivePermissions": false,
+          "principleOfLeastPrivilege": true
+        },
+        "remediation": "Service principal permissions are appropriately scoped",
+        "checkType": "permissio"
+      },
+      {
+        "checkId": "CNA-02-002",
+        "name": "Managed Identity Permission Analysis",
+        "status": "PASS",
+        "severity": "MEDIUM",
+        "description": "Managed identities should not have overly broad permissions",
+        "findings": {
+          "identityName": "app-managed-identity",
+          "assignedRoles": [
+            {
+              "roleName": "Storage Blob Data Contributor",
+              "scope": "/subscriptions/12345/resourceGroups/fedramp-rg/providers/Microsoft.Storage/storageAccounts/fedramp20xstorage/blobServices/default/containers/fedramp-assessments",
+              "justification": "Required for uploading evidence documents"
+            }
+          ],
+          "scopeLevel": "Container",
+          "excessivePermissions": false
+        },
+        "remediation": "Managed identity permissions properly scoped to specific container",
+        "checkType": "permissio"
+      },
+      {
+        "checkId": "CNA-02-003",
+        "name": "Container Registry Access Control",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Container registry access should be restricted to authorized users only",
+        "findings": {
+          "publicNetworkAccess": "Disabled",
+          "privateEndpointEnabled": true,
+          "rbacAssignments": [
+            {
+              "principalType": "ServicePrincipal",
+              "roleName": "AcrPull",
+              "scope": "Registry",
+              "justification": "CI/CD pipeline needs pull access"
+            }
+          ],
+          "adminUserEnabled": false,
+          "anonymousAccess": false
+        },
+        "remediation": "Container registry access properly restricted",
+        "checkType": "permissio"
+      },
+      {
+        "checkId": "CNA-02-004",
+        "name": "Key Vault Access Policy Review",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Key Vault access should follow principle of least privilege",
+        "findings": {
+          "accessPolicies": [
+            {
+              "objectId": "app-managed-identity",
+              "permissions": {
+                "secrets": [
+                  "get",
+                  "list"
+                ],
+                "keys": [],
+                "certificates": []
+              },
+              "justification": "Application only needs to read configuration secrets"
+            }
+          ],
+          "rbacEnabled": true,
+          "publicNetworkAccess": "Disabled",
+          "excessivePermissions": false
+        },
+        "remediation": "Key Vault access policies properly configured",
+        "checkType": "permissio"
+      },
+      {
+        "checkId": "CNA-02-005",
+        "name": "Storage Account Permission Analysis",
+        "status": "PASS",
+        "severity": "MEDIUM",
+        "description": "Storage account access should be minimal and scoped appropriately",
+        "findings": {
+          "publicBlobAccess": "Disabled",
+          "rbacAssignments": [
+            {
+              "principalName": "app-managed-identity",
+              "roleName": "Storage Blob Data Contributor",
+              "scope": "Container: fedramp-assessments",
+              "justification": "Required for evidence document management"
+            }
+          ],
+          "sharedKeyAccess": "Disabled",
+          "anonymousAccess": false
+        },
+        "remediation": "Storage account permissions appropriately scoped",
+        "checkType": "permissio"
+      },
+      {
+        "checkId": "CNA-02-006",
+        "name": "Application Service Principal Excessive Permissions",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Service principal has overly broad permissions that violate least privilege",
+        "findings": {
+          "principalId": "sp-legacy-integration",
+          "assignedRoles": [
+            {
+              "roleName": "Contributor",
+              "scope": "/subscriptions/12345",
+              "issue": "Subscription-level Contributor role is excessive",
+              "riskLevel": "HIGH"
+            },
+            {
+              "roleName": "User Access Administrator",
+              "scope": "/subscriptions/12345/resourceGroups/fedramp-rg",
+              "issue": "Can manage access for other users - not required for application function",
+              "riskLevel": "CRITICAL"
+            }
+          ],
+          "excessivePermissions": true,
+          "principleOfLeastPrivilege": false,
+          "recommendedRoles": [
+            {
+              "roleName": "Storage Blob Data Reader",
+              "scope": "/subscriptions/12345/resourceGroups/fedramp-rg/providers/Microsoft.Storage/storageAccounts/fedramp20xstorage"
+            }
+          ]
+        },
+        "remediation": "Remove Contributor and User Access Administrator roles. Assign specific minimal roles: Storage Blob Data Reader for required storage account only.",
+        "checkType": "permissio"
+      }
+    ]
+  }
+}

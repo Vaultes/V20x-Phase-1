@@ -1,0 +1,878 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-MLA-01",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 7,
+      "passed": 3,
+      "failed": 4,
+      "warnings": 0
+    },
+    "siemSystemBestPractices": {
+      "deployment": [
+        "Deploy enterprise SIEM with centralized log management",
+        "Implement tamper-resistant logging with immutable storage",
+        "Establish comprehensive data retention and archival policies",
+        "Configure real-time log ingestion with minimal latency",
+        "Deploy redundant SIEM infrastructure for high availability"
+      ],
+      "dataCollection": [
+        "Connect all critical systems and security tools to SIEM",
+        "Implement standardized log formats and time synchronization",
+        "Deploy secure log transmission with encryption and authentication",
+        "Establish automated log parsing and normalization",
+        "Monitor log source health and connectivity status"
+      ],
+      "analytics": [
+        "Implement advanced correlation rules and machine learning",
+        "Deploy user and entity behavior analytics (UEBA)",
+        "Integrate threat intelligence for contextual analysis",
+        "Develop custom detection rules for organization-specific threats",
+        "Establish automated alert prioritization and deduplication"
+      ],
+      "operations": [
+        "Staff SOC with trained analysts for 24x7 monitoring",
+        "Implement automated incident response workflows",
+        "Establish performance metrics and SLA monitoring",
+        "Conduct regular SIEM health checks and optimization",
+        "Maintain current threat detection capabilities"
+      ]
+    },
+    "siemVerificationMethods": {
+      "deployment": [
+        "Azure Portal: Azure Sentinel workspace configuration",
+        "az monitor log-analytics workspace list",
+        "Get-AzOperationalInsightsWorkspace",
+        "Microsoft Graph API: /security/alerts",
+        "Azure Resource Manager: SIEM resource deployment validation"
+      ],
+      "dataConnectors": [
+        "Azure Portal: Sentinel > Data connectors",
+        "az sentinel data-connector list",
+        "Microsoft Graph API: /security/dataConnectors",
+        "Azure Monitor: Log ingestion metrics",
+        "KQL queries: Heartbeat and data freshness validation"
+      ],
+      "analytics": [
+        "Azure Portal: Sentinel > Analytics rules",
+        "az sentinel analytics-rule list",
+        "Microsoft Graph API: /security/alertRules",
+        "KQL queries: Alert generation and correlation testing",
+        "Azure Monitor: Analytics performance metrics"
+      ],
+      "operations": [
+        "Azure Portal: Sentinel > Incidents",
+        "Microsoft 365 Security Center: Incident management",
+        "Azure Monitor: SIEM performance dashboards",
+        "Microsoft Graph API: /security/incidents",
+        "SOC operational metrics and KPI dashboards"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "AU-3": "Audit and Accountability - Content of Audit Records",
+        "AU-6": "Audit and Accountability - Audit Review, Analysis, and Reporting",
+        "AU-12": "Audit and Accountability - Audit Generation",
+        "SI-4": "System and Information Integrity - Information System Monitoring"
+      },
+      "nist80053": {
+        "AU-3": "Audit and Accountability - Content of Audit Records",
+        "AU-6": "Audit and Accountability - Audit Review, Analysis, and Reporting",
+        "AU-12": "Audit and Accountability - Audit Generation",
+        "SI-4": "System and Information Integrity - Information System Monitoring",
+        "IR-4": "Incident Response - Incident Handling"
+      },
+      "iso27001": {
+        "A.12.4.1": "Event logging",
+        "A.12.4.2": "Protection of log information",
+        "A.12.4.3": "Administrator and operator logs",
+        "A.16.1.2": "Reporting information security events",
+        "A.16.1.4": "Assessment of and decision on information security events"
+      }
+    },
+    "checks": [
+      {
+        "checkId": "MLA-01-001",
+        "name": "Azure Sentinel SIEM Deployment and Configuration",
+        "status": "PASS",
+        "severity": "CRITICAL",
+        "description": "Azure Sentinel should be deployed as the primary SIEM with comprehensive data connector integration",
+        "findings": {
+          "sentinelDeployment": {
+            "deployed": true,
+            "licenseType": "Pay-as-you-go",
+            "dataRetention": "P730D",
+            "dailyIngestionVolume": "2.3 TB",
+            "costOptimization": "Enabled",
+            "workspaceRegion": "East US 2",
+            "redundancy": "Zone-redundant storage"
+          },
+          "dataConnectorIntegration": {
+            "totalConnectors": 45,
+            "activeConnectors": 42,
+            "connectorTypes": [
+              {
+                "type": "Azure Activity Logs",
+                "status": "Connected",
+                "dataVolume": "450 GB/day",
+                "lastSync": "2025-08-17T23:45:00.000Z"
+              },
+              {
+                "type": "Azure AD Sign-in Logs",
+                "status": "Connected",
+                "dataVolume": "280 GB/day",
+                "lastSync": "2025-08-17T23:45:00.000Z"
+              },
+              {
+                "type": "Office 365",
+                "status": "Connected",
+                "dataVolume": "320 GB/day",
+                "lastSync": "2025-08-17T23:44:00.000Z"
+              },
+              {
+                "type": "Microsoft Defender for Cloud",
+                "status": "Connected",
+                "dataVolume": "180 GB/day",
+                "lastSync": "2025-08-17T23:45:00.000Z"
+              },
+              {
+                "type": "Windows Security Events",
+                "status": "Connected",
+                "dataVolume": "890 GB/day",
+                "lastSync": "2025-08-17T23:44:00.000Z"
+              }
+            ],
+            "customConnectors": 8,
+            "apiConnectors": 12
+          },
+          "logIngestionAndProcessing": {
+            "realTimeIngestion": true,
+            "ingestionLatency": "< 60 seconds",
+            "processingLatency": "< 30 seconds",
+            "dataTransformation": "KQL-based",
+            "dataEnrichment": "Automated",
+            "dataCompression": "Enabled",
+            "ingestionHealthScore": "98.7%"
+          },
+          "tamperResistanceFeatures": {
+            "immutableStorage": true,
+            "writeOnceReadMany": true,
+            "legalHold": "Supported",
+            "accessControls": "RBAC-based",
+            "auditLogging": "Comprehensive",
+            "integrityChecking": "Automated",
+            "cryptographicHashing": "SHA-256"
+          },
+          "analyticsAndDetection": {
+            "analyticsRules": 234,
+            "activeRules": 218,
+            "customRules": 89,
+            "machineLearningModels": 23,
+            "behaviorAnalytics": true,
+            "threatIntelligence": "Integrated",
+            "entityBehaviorAnalytics": true
+          }
+        },
+        "testResults": [
+          {
+            "test": "SIEM deployment and connectivity verification",
+            "result": "OPERATIONAL",
+            "details": "Azure Sentinel fully deployed with 42 active data connectors"
+          },
+          {
+            "test": "Log ingestion performance assessment",
+            "result": "OPTIMAL",
+            "details": "2.3 TB daily ingestion with < 60 second latency"
+          },
+          {
+            "test": "Tamper resistance validation",
+            "result": "SECURE",
+            "details": "Immutable storage with cryptographic integrity checking"
+          }
+        ],
+        "remediation": "SIEM system properly deployed and configured with comprehensive monitoring",
+        "checkType": "siemSystemOperatio"
+      },
+      {
+        "checkId": "MLA-01-002",
+        "name": "Centralized Log Management and Correlation",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "All critical systems should send logs to centralized SIEM with proper correlation capabilities",
+        "findings": {
+          "logSourceCoverage": {
+            "totalLogSources": 156,
+            "connectedSources": 142,
+            "coveragePercentage": "91.0%",
+            "criticalSystemsCoverage": "98.2%",
+            "cloudServicesCoverage": "95.8%",
+            "onPremisesCoverage": "78.3%"
+          },
+          "logTypes": {
+            "securityLogs": {
+              "authenticationLogs": "Comprehensive",
+              "authorizationLogs": "Complete",
+              "auditLogs": "Detailed",
+              "threatDetectionLogs": "Real-time",
+              "incidentLogs": "Automated"
+            },
+            "systemLogs": {
+              "operatingSystemLogs": "Standard",
+              "applicationLogs": "Selective",
+              "networkLogs": "Comprehensive",
+              "databaseLogs": "Audit-focused",
+              "containerLogs": "Complete"
+            },
+            "businessLogs": {
+              "transactionLogs": "Business-critical only",
+              "userActivityLogs": "Privacy-aware",
+              "dataAccessLogs": "Sensitive data focused",
+              "changeManagementLogs": "All changes",
+              "complianceLogs": "Regulatory requirements"
+            }
+          },
+          "correlationCapabilities": {
+            "crossSystemCorrelation": true,
+            "temporalCorrelation": true,
+            "behavioralCorrelation": true,
+            "geospatialCorrelation": true,
+            "threatIntelligenceCorrelation": true,
+            "userEntityCorrelation": true,
+            "networkCorrelation": true
+          },
+          "alertGeneration": {
+            "realTimeAlerting": true,
+            "correlationBasedAlerts": true,
+            "machineLearningAlerts": true,
+            "thresholdBasedAlerts": true,
+            "anomalyBasedAlerts": true,
+            "alertPrioritization": "Risk-based",
+            "alertDeduplication": "Automated"
+          },
+          "performanceMetrics": {
+            "queryPerformance": "< 5 seconds avg",
+            "correlationSpeed": "< 10 seconds",
+            "alertGenerationTime": "< 30 seconds",
+            "dashboardLoadTime": "< 3 seconds",
+            "searchResponseTime": "< 2 seconds",
+            "dataAvailabilityUptime": "99.97%"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Log source connectivity assessment",
+            "result": "COMPREHENSIVE",
+            "details": "142 of 156 sources connected with 91% overall coverage"
+          },
+          {
+            "test": "Correlation engine effectiveness evaluation",
+            "result": "ADVANCED",
+            "details": "Multi-dimensional correlation with ML-based analytics"
+          },
+          {
+            "test": "Performance benchmarking",
+            "result": "HIGH_PERFORMANCE",
+            "details": "Sub-5 second query performance with 99.97% uptime"
+          }
+        ],
+        "remediation": "Centralized logging and correlation properly implemented with high coverage",
+        "checkType": "siemSystemOperatio"
+      },
+      {
+        "checkId": "MLA-01-003",
+        "name": "Security Operations Center (SOC) Integration",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "SIEM should be integrated with SOC processes and staffed for 24x7 monitoring",
+        "findings": {
+          "socConfiguration": {
+            "operationalModel": "24x7 staffed",
+            "staffingLevels": {
+              "tier1Analysts": 12,
+              "tier2Analysts": 6,
+              "tier3Specialists": 3,
+              "socManager": 1,
+              "threatHunters": 2
+            },
+            "shiftCoverage": {
+              "dayShift": "8 analysts",
+              "eveningShift": "6 analysts",
+              "nightShift": "4 analysts",
+              "weekendCoverage": "6 analysts",
+              "holidayCoverage": "Maintained"
+            },
+            "skillsCertifications": {
+              "securityCertifications": "Required",
+              "siemCertifications": "Microsoft Sentinel certified",
+              "incidentResponseCertifications": "GCIH, GCFA",
+              "continuousEducation": "Quarterly training",
+              "vendorTraining": "Regular updates"
+            }
+          },
+          "processIntegration": {
+            "incidentResponseIntegration": true,
+            "changeManagementIntegration": true,
+            "vulnerabilityManagementIntegration": true,
+            "threatIntelligenceIntegration": true,
+            "complianceReportingIntegration": true,
+            "businessProcessIntegration": "Limited"
+          },
+          "workflowAutomation": {
+            "automatedTriage": true,
+            "playbookExecution": "Extensive",
+            "escalationAutomation": true,
+            "notificationAutomation": true,
+            "responseOrchestration": true,
+            "reportingAutomation": "Partial"
+          },
+          "performanceMetrics": {
+            "meanTimeToDetection": "PT8M",
+            "meanTimeToResponse": "PT23M",
+            "meanTimeToContainment": "PT2H15M",
+            "meanTimeToResolution": "PT8H30M",
+            "falsePositiveRate": "12%",
+            "alertClosureRate": "94%",
+            "escalationAccuracy": "87%"
+          },
+          "toolsAndTechnologies": {
+            "siemPlatform": "Microsoft Sentinel",
+            "soarPlatform": "Azure Logic Apps",
+            "threatIntelligencePlatform": "Microsoft Defender Threat Intelligence",
+            "caseMangementSystem": "ServiceNow Security Incident Response",
+            "communicationTools": "Microsoft Teams, PagerDuty",
+            "forensicTools": "Integrated Azure tools"
+          }
+        },
+        "testResults": [
+          {
+            "test": "SOC operational readiness assessment",
+            "result": "FULLY_OPERATIONAL",
+            "details": "24x7 staffed SOC with certified analysts and comprehensive coverage"
+          },
+          {
+            "test": "Process integration evaluation",
+            "result": "WELL_INTEGRATED",
+            "details": "Strong integration with incident response and threat intelligence"
+          },
+          {
+            "test": "Performance metrics validation",
+            "result": "MEETING_TARGETS",
+            "details": "8-minute MTTD and 23-minute MTTR with 94% closure rate"
+          }
+        ],
+        "remediation": "SOC properly integrated with comprehensive 24x7 monitoring capabilities",
+        "checkType": "siemSystemOperatio"
+      },
+      {
+        "checkId": "MLA-01-004",
+        "name": "Incomplete Log Source Coverage",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Critical systems and applications lack comprehensive logging integration with SIEM",
+        "findings": {
+          "missingLogSources": {
+            "criticalSystems": [
+              {
+                "system": "Legacy Database Server",
+                "type": "SQL Server 2016",
+                "risk": "High-value target without monitoring",
+                "impact": "Blind spot for data access monitoring",
+                "reason": "Legacy system compatibility issues"
+              },
+              {
+                "system": "Industrial Control Systems",
+                "type": "SCADA/OT systems",
+                "risk": "Critical infrastructure without visibility",
+                "impact": "Cannot detect operational technology threats",
+                "reason": "Air-gapped network constraints"
+              },
+              {
+                "system": "Third-party SaaS Applications",
+                "type": "Multiple vendors",
+                "risk": "External services without monitoring",
+                "impact": "Limited visibility into data processing",
+                "reason": "API limitations and vendor restrictions"
+              }
+            ],
+            "networkingSystems": [
+              {
+                "system": "Physical network switches",
+                "coverage": "Partial",
+                "risk": "Network blind spots",
+                "impact": "Cannot detect network-based attacks"
+              },
+              {
+                "system": "Wireless access points",
+                "coverage": "Limited",
+                "risk": "Wireless security gaps",
+                "impact": "Unmonitored wireless access attempts"
+              },
+              {
+                "system": "VPN concentrators",
+                "coverage": "Basic connection logs only",
+                "risk": "Limited remote access visibility",
+                "impact": "Cannot detect VPN-based threats"
+              }
+            ],
+            "cloudServices": [
+              {
+                "service": "Multi-cloud environments",
+                "coverage": "AWS and GCP limited",
+                "risk": "Inconsistent multi-cloud monitoring",
+                "impact": "Fragmented security visibility"
+              },
+              {
+                "service": "Container orchestration logs",
+                "coverage": "Kubernetes cluster logs missing",
+                "risk": "Container security blind spots",
+                "impact": "Cannot detect container-based attacks"
+              }
+            ]
+          },
+          "logQualityIssues": {
+            "insufficientLogDetail": {
+              "applications": 23,
+              "systems": 18,
+              "networkDevices": 12,
+              "securityTools": 8,
+              "issue": "Logs lack sufficient detail for security analysis"
+            },
+            "inconsistentLogFormats": {
+              "standardizedFormats": "67%",
+              "customFormats": "33%",
+              "normalizationChallenges": "Significant",
+              "correlationDifficulties": "Format incompatibilities"
+            },
+            "logTimingIssues": {
+              "synchronizationProblems": "15 systems",
+              "timezoneMismatches": "8 systems",
+              "clockDriftIssues": "12 systems",
+              "correlationImpact": "Temporal analysis degraded"
+            }
+          },
+          "dataIntegrityRisks": {
+            "logManipulationRisk": {
+              "systemsWithoutProtection": 34,
+              "tamperDetectionGaps": "Significant",
+              "integrityVerificationMissing": "67% of sources",
+              "forensicReliabilityImpact": "Evidence integrity concerns"
+            },
+            "logLossRisks": {
+              "unreliableTransmission": "Network instability",
+              "bufferOverflowRisks": "High-volume systems",
+              "storageCapacityIssues": "Peak load periods",
+              "backupAndRecovery": "Incomplete procedures"
+            }
+          },
+          "complianceGaps": {
+            "regulatoryLogRequirements": {
+              "fedrampRequirements": "Partially met",
+              "cisaDirectives": "Some gaps identified",
+              "industryStandards": "ISO 27001 requirements lacking",
+              "auditableEventsGaps": "Critical events not logged"
+            },
+            "retentionPolicyGaps": {
+              "inconsistentRetention": "Different systems, different policies",
+              "insufficientRetention": "Some logs only 30 days",
+              "legalHoldCapabilities": "Manual processes only",
+              "complianceReporting": "Incomplete coverage"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Log source coverage assessment",
+            "result": "INCOMPLETE",
+            "details": "14 critical systems without logging integration"
+          },
+          {
+            "test": "Log quality evaluation",
+            "result": "INSUFFICIENT",
+            "details": "33% non-standardized formats with timing synchronization issues"
+          },
+          {
+            "test": "Data integrity verification",
+            "result": "AT_RISK",
+            "details": "67% of sources lack tamper detection and integrity verification"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Implement logging for all critical systems using secure log forwarding, 2) Standardize log formats and implement centralized time synchronization, 3) Deploy tamper-proof logging with integrity verification, 4) Establish comprehensive log retention policies, 5) Integrate third-party and cloud service logs through APIs and connectors, 6) Implement secure log transmission with encryption and authentication",
+        "checkType": "siemSystemOperatio"
+      },
+      {
+        "checkId": "MLA-01-005",
+        "name": "Inadequate Event Correlation and Analytics",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Event correlation capabilities lack sophistication and miss complex attack patterns",
+        "findings": {
+          "correlationLimitations": {
+            "basicCorrelationOnly": {
+              "simpleRuleBasedCorrelation": true,
+              "complexPatternDetection": false,
+              "multiStageAttackDetection": "Limited",
+              "behavioralCorrelation": "Basic",
+              "timeSeriesAnalysis": "Minimal"
+            },
+            "crossSystemCorrelationGaps": {
+              "siloed SystemAnalysis": "Each system analyzed independently",
+              "enterpriseWideCorrelation": false,
+              "cloudToOnPremisesCorrelation": "Limited",
+              "multiVendorCorrelation": "Inconsistent",
+              "thirdPartySystemCorrelation": "Not implemented"
+            },
+            "temporalAnalysisWeaknesses": {
+              "longTermTrendAnalysis": false,
+              "seasonalPatternRecognition": false,
+              "historicalContextLacking": true,
+              "predictiveAnalytics": "Not implemented",
+              "timeWindowOptimization": "Static settings"
+            }
+          },
+          "analyticsCapabilityGaps": {
+            "machineLearningLimitations": {
+              "advancedMlModels": "Not deployed",
+              "unsupervisedLearning": false,
+              "anomalyDetectionSophistication": "Basic statistical methods",
+              "behavioralBaselines": "Static thresholds",
+              "adaptiveLearning": false
+            },
+            "threatIntelligenceIntegration": {
+              "limitedThreatFeedIntegration": "Basic IOC matching only",
+              "contextualThreatInformation": "Not utilized",
+              "threatActorProfiling": "Not implemented",
+              "campaignDetection": false,
+              "threatHuntingCapabilities": "Manual only"
+            },
+            "entityBehaviorAnalytics": {
+              "userBehaviorAnalytics": "Limited",
+              "deviceBehaviorAnalytics": "Not implemented",
+              "applicationBehaviorAnalytics": false,
+              "networkBehaviorAnalytics": "Basic",
+              "dataAccessBehaviorAnalytics": false
+            }
+          },
+          "alertQualityIssues": {
+            "highFalsePositiveRates": {
+              "overallFalsePositiveRate": "34%",
+              "alertFatigue": "Significant analyst concern",
+              "alertPrioritization": "Basic severity only",
+              "contextualAlertingLacking": true,
+              "intelligentAlertSuppression": false
+            },
+            "missedThreatPatterns": {
+              "advancedPersistentThreats": "Limited detection",
+              "insiderThreats": "Basic capability",
+              "zeroDay exploits": "Signature-based only",
+              "livingOffTheLand": "Poor detection",
+              "supplyChainAttacks": "Not addressed"
+            },
+            "alertEnrichmentGaps": {
+              "limitedContextualInformation": "Basic metadata only",
+              "assetInformationMissing": "Not automatically enriched",
+              "threatIntelligenceEnrichment": "Manual lookup required",
+              "businessImpactAssessment": "Not automated",
+              "responseRecommendations": "Generic only"
+            }
+          },
+          "customRuleDevelopmentChallenges": {
+            "limitedCustomizationCapability": {
+              "ruleCustomization": "Basic templates only",
+              "organizationSpecificRules": "Few developed",
+              "businessLogicRules": "Not implemented",
+              "complianceSpecificRules": "Limited",
+              "industrySpecificRules": "Not addressed"
+            },
+            "ruleManagementIssues": {
+              "ruleMaintenance": "Manual and infrequent",
+              "ruleEffectivenessTracking": "Not implemented",
+              "ruleOptimization": "Ad hoc only",
+              "ruleVersionControl": "Basic",
+              "ruleTesting": "Limited validation"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Correlation sophistication assessment",
+            "result": "BASIC",
+            "details": "Simple rule-based correlation without advanced pattern detection"
+          },
+          {
+            "test": "Machine learning analytics evaluation",
+            "result": "MINIMAL",
+            "details": "No advanced ML models or unsupervised learning capabilities"
+          },
+          {
+            "test": "Alert quality analysis",
+            "result": "POOR",
+            "details": "34% false positive rate with limited contextual enrichment"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Implement advanced machine learning models for anomaly detection, 2) Deploy user and entity behavior analytics (UEBA), 3) Integrate comprehensive threat intelligence with contextual enrichment, 4) Develop custom correlation rules for organization-specific threats, 5) Implement advanced threat hunting capabilities, 6) Deploy predictive analytics for proactive threat detection, 7) Establish alert quality metrics and optimization processes",
+        "checkType": "siemSystemOperatio"
+      },
+      {
+        "checkId": "MLA-01-006",
+        "name": "Insufficient Backup and Disaster Recovery for SIEM",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "SIEM infrastructure lacks comprehensive backup and disaster recovery capabilities",
+        "findings": {
+          "backupConfigurationGaps": {
+            "dataBackupLimitations": {
+              "logDataBackup": "Limited to 90 days",
+              "configurationBackup": "Manual snapshots only",
+              "customContentBackup": "Not automated",
+              "analyticsRulesBackup": "Version control missing",
+              "dashboardBackup": "Manual export only"
+            },
+            "backupFrequencyIssues": {
+              "dailyBackups": "Logs only",
+              "configurationBackups": "Weekly manual",
+              "fullSystemBackups": "Monthly",
+              "incrementalBackups": "Not implemented",
+              "continuousBackup": false
+            },
+            "backupStorageRisks": {
+              "singleRegionStorage": true,
+              "encryptionAtRest": "Basic only",
+              "accessControls": "Limited",
+              "offSiteBackup": "Not implemented",
+              "airGappedBackups": false
+            }
+          },
+          "disasterRecoveryDeficiencies": {
+            "recoveryTimeObjectives": {
+              "defined": false,
+              "tested": false,
+              "achievable": "Unknown",
+              "businessAligned": false,
+              "measurementTracking": "Not implemented"
+            },
+            "recoveryPointObjectives": {
+              "defined": false,
+              "dataLossAcceptable": "Not assessed",
+              "businessImpactConsidered": false,
+              "technicallyFeasible": "Not validated",
+              "costOptimized": false
+            },
+            "disasterRecoveryPlan": {
+              "documentedPlan": "Basic only",
+              "regularlyTested": false,
+              "rolesAndResponsibilities": "Unclear",
+              "communicationPlan": "Informal",
+              "vendorContactInformation": "Outdated"
+            }
+          },
+          "businessContinuityRisks": {
+            "singlePointOfFailure": {
+              "primaryWorkspace": "No redundancy",
+              "dataIngestion": "Single pipeline",
+              "analyticsProcessing": "Single cluster",
+              "userAccess": "Single region",
+              "alertingSystem": "No backup mechanism"
+            },
+            "operationalImpact": {
+              "monitoringBlindness": "Total during outage",
+              "incidentResponseCapability": "Severely degraded",
+              "complianceReporting": "Cannot generate reports",
+              "forensicCapabilities": "Limited during recovery",
+              "businessProcessImpact": "Significant"
+            },
+            "recoveryComplexity": {
+              "dataRecoveryTime": "Estimated 24-48 hours",
+              "configurationRecovery": "4-8 hours manual work",
+              "customContentRecovery": "Significant redevelopment",
+              "integrationRecovery": "Requires reconfiguration",
+              "validationTesting": "Extensive effort required"
+            }
+          },
+          "alternativeMonitoringCapabilities": {
+            "backupMonitoringSystems": {
+              "nativeCloudMonitoring": "Basic only",
+              "thirdPartyTools": "Limited coverage",
+              "manualProcesses": "Time-consuming",
+              "reducedCapability": "Significant degradation",
+              "temporarySolution": "Not scalable"
+            },
+            "degradedModeOperations": {
+              "criticalAlertsOnly": "Manual monitoring",
+              "reducedAnalytics": "Basic correlation only",
+              "manualTriage": "Resource intensive",
+              "limitedForensics": "Basic log review",
+              "complianceRisk": "Temporary non-compliance"
+            }
+          },
+          "testingAndValidation": {
+            "recoveryTesting": {
+              "lastFullTest": "Never performed",
+              "partialTesting": "Informal only",
+              "automatedTesting": false,
+              "businessInvolvement": "Not included",
+              "lessonsLearnedCapture": "Not documented"
+            },
+            "performanceValidation": {
+              "recoveryTimeValidation": "Not tested",
+              "dataIntegrityValidation": "Not verified",
+              "functionalityValidation": "Not performed",
+              "capacityValidation": "Not assessed",
+              "userAcceptanceTesting": "Not conducted"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Backup comprehensiveness assessment",
+            "result": "INCOMPLETE",
+            "details": "Limited to 90-day log backup with manual configuration snapshots"
+          },
+          {
+            "test": "Disaster recovery preparedness evaluation",
+            "result": "UNPREPARED",
+            "details": "No defined RTOs/RPOs and never tested recovery procedures"
+          },
+          {
+            "test": "Business continuity risk analysis",
+            "result": "HIGH_RISK",
+            "details": "Single points of failure with 24-48 hour estimated recovery time"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive automated backup strategy for all SIEM components, 2) Establish multi-region SIEM deployment for high availability, 3) Define and document RTO/RPO objectives aligned with business requirements, 4) Develop and test detailed disaster recovery procedures, 5) Implement continuous data replication and automated failover, 6) Establish backup monitoring and alerting capabilities, 7) Conduct regular disaster recovery testing and validation exercises",
+        "checkType": "siemSystemOperatio"
+      },
+      {
+        "checkId": "MLA-01-007",
+        "name": "Limited Integration with External Security Tools",
+        "status": "FAIL",
+        "severity": "LOW",
+        "description": "SIEM lacks comprehensive integration with external security tools and threat intelligence sources",
+        "findings": {
+          "securityToolIntegrationGaps": {
+            "endpointSecurityTools": {
+              "edrIntegration": "Basic telemetry only",
+              "antivirusIntegration": "Alert forwarding only",
+              "dlpIntegration": "Not implemented",
+              "emailSecurityIntegration": "Limited",
+              "webSecurityIntegration": "Basic logs only"
+            },
+            "networkSecurityTools": {
+              "firewallIntegration": "Log forwarding only",
+              "ipsIntegration": "Alert correlation missing",
+              "networkMonitoringIntegration": "Limited",
+              "ddosProtectionIntegration": "Basic",
+              "networkForensicsIntegration": "Not implemented"
+            },
+            "cloudSecurityTools": {
+              "casIntegration": "Basic",
+              "cloudWorkloadProtection": "Partial",
+              "containerSecurityIntegration": "Limited",
+              "cloudConfigurationManagement": "Not integrated",
+              "multiCloudSecurityTools": "Inconsistent"
+            }
+          },
+          "threatIntelligenceIntegrationLimitations": {
+            "commercialThreatIntelligence": {
+              "feedIntegration": "Limited to 3 sources",
+              "realTimeUpdates": false,
+              "contextualInformation": "Basic indicators only",
+              "threatActorProfiling": "Not integrated",
+              "campaignTracking": "Manual correlation only"
+            },
+            "governmentThreatIntelligence": {
+              "cisaIntegration": "Alert feeds only",
+              "fbiBITSSintegration": "Not implemented",
+              "informationSharingIntegration": "Manual processes",
+              "classifiedIntelligence": "Separate systems",
+              "industryThreatSharing": "Limited participation"
+            },
+            "openSourceThreatIntelligence": {
+              "openSourceFeeds": "Inconsistent quality",
+              "communityThreatSharing": "Not active",
+              "researchIntegration": "Manual review only",
+              "vulnerabilityIntelligence": "Basic CVE integration",
+              "iocSharing": "Manual processes"
+            }
+          },
+          "orchestrationAndAutomationLimitations": {
+            "soarIntegration": {
+              "limitedPlaybookLibrary": "Basic response only",
+              "customWorkflowDevelopment": "Limited capability",
+              "multiSystemOrchestration": "Not implemented",
+              "approvalWorkflows": "Manual processes",
+              "escalationAutomation": "Basic only"
+            },
+            "ticketingSystemIntegration": {
+              "automaticTicketCreation": "Basic incidents only",
+              "bidirectionalUpdates": false,
+              "workflowIntegration": "Limited",
+              "slaTracking": "Not automated",
+              "closureAutomation": "Manual verification required"
+            },
+            "communicationToolIntegration": {
+              "chatbotIntegration": "Not implemented",
+              "alertNotificationCustomization": "Limited",
+              "executiveReporting": "Manual compilation",
+              "stakeholderNotification": "Email only",
+              "mobileIntegration": "Basic alerts only"
+            }
+          },
+          "dataExchangeAndApiLimitations": {
+            "standardizedDataExchange": {
+              "stixTaxiiSupport": "Not implemented",
+              "jsonStandardization": "Inconsistent",
+              "xmlDataExchange": "Limited",
+              "restApiCapabilities": "Basic only",
+              "webhookSupport": "Not implemented"
+            },
+            "realTimeDataSharing": {
+              "bidirectionalDataSharing": false,
+              "realTimeApiAccess": "Limited",
+              "dataStreamingCapabilities": "Not implemented",
+              "eventDrivenIntegration": "Manual triggers only",
+              "continuousDataSynchronization": false
+            }
+          },
+          "vendorLockInRisks": {
+            "proprietaryIntegrations": {
+              "vendorSpecificConnectors": "High dependency",
+              "customApiDevelopment": "Limited documentation",
+              "migrationComplexity": "High effort required",
+              "dataPortability": "Limited",
+              "standardsCompliance": "Partial"
+            },
+            "multiVendorStrategy": {
+              "vendorDiversification": "Limited",
+              "alternativeToolEvaluation": "Infrequent",
+              "exitStrategyPlanning": "Not developed",
+              "contingencyPlanning": "Basic only",
+              "riskMitigation": "Reactive approach"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Security tool integration assessment",
+            "result": "LIMITED",
+            "details": "Basic log forwarding with minimal correlation and automation"
+          },
+          {
+            "test": "Threat intelligence integration evaluation",
+            "result": "BASIC",
+            "details": "Limited to 3 commercial feeds without real-time updates"
+          },
+          {
+            "test": "Orchestration and automation capability check",
+            "result": "MINIMAL",
+            "details": "Basic playbooks without multi-system orchestration"
+          }
+        ],
+        "remediation": "LOW PRIORITY: 1) Expand security tool integration with comprehensive API connectivity, 2) Implement SOAR platform with advanced orchestration capabilities, 3) Integrate additional threat intelligence sources with real-time updates, 4) Develop standardized data exchange formats and APIs, 5) Implement bidirectional integration with ticketing and communication systems, 6) Establish multi-vendor strategy to reduce lock-in risks, 7) Create comprehensive integration testing and validation procedures",
+        "checkType": "siemSystemOperatio"
+      }
+    ]
+  }
+}

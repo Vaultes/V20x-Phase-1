@@ -1,0 +1,458 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-INR-03",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 6,
+      "passed": 2,
+      "failed": 4,
+      "warnings": 0
+    },
+    "afterActionReportVerificationMethods": {
+      "reportGenerationAutomation": [
+        "ServiceNow incident management: Automated after action report workflow with template generation and stakeholder assignment",
+        "Confluence knowledge management: Structured documentation with ISO 27035 templates and collaborative editing capabilities",
+        "Microsoft Teams integration: Stakeholder collaboration with automated review scheduling and approval workflows",
+        "Document management platforms: Version control with Git integration and automated archival processes",
+        "Workflow orchestration tools: Multi-level approval automation with timeline management and distribution capabilities"
+      ],
+      "lessonsLearnedManagement": [
+        "Knowledge management systems: Confluence-based lesson capture with structured templates and categorization",
+        "Search and discovery platforms: Full-text search with automated similarity matching and tagging capabilities",
+        "Analytics and usage tracking: Lesson effectiveness measurement with access analytics and improvement recommendations",
+        "Training integration platforms: LMS integration with curriculum updates and competency mapping capabilities",
+        "Policy management systems: Automated policy change recommendations with implementation tracking and validation"
+      ],
+      "operationalProcessIntegration": [
+        "Business process management: Lesson-to-process correlation with workflow modification tracking and automation",
+        "Change management platforms: Lesson-aware change requests with impact assessment and implementation validation",
+        "Performance measurement tools: Operational metrics correlation with effectiveness tracking and improvement measurement",
+        "Resource management systems: Implementation resource allocation with timeline management and progress monitoring",
+        "Continuous improvement platforms: Feedback loop automation with organizational maturity tracking and assessment"
+      ],
+      "trainingAndKnowledgeTransfer": [
+        "Learning management systems: Lesson-based training content with personalized delivery and effectiveness measurement",
+        "Competency management platforms: Skill gap identification with lesson correlation and development program integration",
+        "Knowledge retention tools: Validation testing with retention measurement and improvement recommendations",
+        "Succession planning systems: Critical knowledge identification with expert documentation and transfer planning",
+        "Cultural assessment platforms: Learning culture measurement with knowledge sharing incentives and promotion"
+      ],
+      "automationAndTechnologyIntegration": [
+        "AI/ML platforms: Natural language processing for lesson analysis with pattern recognition and categorization automation",
+        "Business intelligence tools: Advanced analytics with interactive dashboards and executive reporting automation",
+        "Integration platforms: Cross-system connectivity with standardized APIs and data exchange automation",
+        "Workflow automation tools: End-to-end process automation with implementation tracking and success validation",
+        "Recommendation engines: Automated improvement suggestions with predictive analytics and effectiveness forecasting"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "IR-4": "Incident Handling",
+        "IR-8": "Incident Response Plan",
+        "AT-3": "Role-Based Security Training"
+      },
+      "nist80053": {
+        "IR-4": "Incident Handling",
+        "IR-8": "Incident Response Plan",
+        "AT-3": "Role-Based Security Training",
+        "PM-6": "Information Security Measures of Performance"
+      },
+      "iso27001": {
+        "A.16.1.6": "Learning from information security incidents",
+        "A.7.2.2": "Information security awareness, education and training",
+        "A.18.2.3": "Technical compliance review"
+      }
+    },
+    "checks": [
+      {
+        "checkId": "INR-03-001",
+        "name": "After Action Report Generation and Documentation",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "After action reports should be generated for significant incidents with comprehensive documentation and analysis",
+        "findings": {
+          "afterActionReportGeneration": {
+            "totalIncidentsRequiringReports": 73,
+            "reportsGenerated": 68,
+            "reportGenerationRate": "93.2%",
+            "averageReportCompletionTime": "5.3 days",
+            "reportTemplateCompliance": "100%",
+            "reportQualityStandards": "ISO 27035 aligned"
+          },
+          "reportContentComprehensiveness": {
+            "incidentSummaryCompleteness": "Comprehensive",
+            "timelineDocumentationQuality": "Detailed",
+            "rootCauseAnalysisDepth": "Multi-level analysis",
+            "impactAssessmentIncluded": true,
+            "responseEffectivenessEvaluation": "Systematic",
+            "remediationActionsDocumentation": "Comprehensive"
+          },
+          "stakeholderInvolvementInReporting": {
+            "incidentResponseTeamParticipation": "100%",
+            "technicalTeamContributions": "95.6%",
+            "managementReview": "Executive sign-off required",
+            "customerInputCollected": "For customer-impacting incidents",
+            "externalStakeholderInput": "As required"
+          },
+          "reportApprovalAndDistribution": {
+            "approvalWorkflow": "Multi-level approval",
+            "approvalTimeframe": "Average 2.1 days",
+            "reportDistributionAutomation": "Role-based distribution",
+            "stakeholderAccessibility": "Secure portal access",
+            "reportArchivalProcess": "Automated with retention"
+          },
+          "reportStandardizationAndQuality": {
+            "templateStandardization": "Enterprise-wide templates",
+            "contentQualityReview": "Automated and manual validation",
+            "reportConsistencyMetrics": "95.7% template compliance",
+            "evidenceIntegration": "Automated attachment of logs and forensics",
+            "reportVersionControl": "Git-based with change tracking"
+          }
+        },
+        "testResults": [
+          {
+            "test": "After action report generation coverage and timeliness",
+            "result": "COMPREHENSIVE",
+            "details": "93.2% report generation rate with 5.3-day average completion and ISO 27035 alignment"
+          },
+          {
+            "test": "Report content quality and stakeholder involvement",
+            "result": "THOROUGH",
+            "details": "Multi-level root cause analysis with 100% incident response team participation and executive sign-off"
+          },
+          {
+            "test": "Report standardization and quality assurance",
+            "result": "STANDARDIZED",
+            "details": "95.7% template compliance with automated evidence integration and Git-based version control"
+          }
+        ],
+        "remediation": "After action report generation comprehensively implemented with strong quality assurance and stakeholder involvement",
+        "checkType": "afterActionReport"
+      },
+      {
+        "checkId": "INR-03-002",
+        "name": "Lessons Learned Capture and Documentation",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Lessons learned should be systematically captured, documented, and made accessible for organizational learning",
+        "findings": {
+          "lessonsLearnedCapture": {
+            "lessonsLearnedDatabase": "Confluence-based knowledge management",
+            "totalLessonsDocumented": 234,
+            "lastSixMonthsLessons": 47,
+            "lessonCategories": [
+              "Technical improvements",
+              "Process enhancements",
+              "Communication improvements",
+              "Training needs",
+              "Technology gaps"
+            ],
+            "lessonSourceDiversification": "Incidents, exercises, external events"
+          },
+          "lessonQualityAndStructure": {
+            "lessonDocumentationStandard": "Structured template with required fields",
+            "rootCauseAlignment": "Direct correlation with incident analysis",
+            "actionabilityAssessment": "Feasibility and impact scoring",
+            "implementationGuidance": "Step-by-step recommendations",
+            "successMetricsDefinition": "Measurable improvement indicators"
+          },
+          "lessonsLearnedAccessibility": {
+            "knowledgeBaseAccessibility": "Role-based access with search capabilities",
+            "searchAndDiscoveryCapabilities": "Full-text search with tagging",
+            "lessonCategorizationSystem": "Multi-dimensional taxonomy",
+            "relatedLessonLinking": "Automated similarity matching",
+            "lessonUsageTracking": "Analytics on accessed lessons"
+          },
+          "lessonValidationAndMaintenance": {
+            "lessonAccuracyValidation": "Subject matter expert review",
+            "lessonCurrencyMaintenance": "Quarterly review and updates",
+            "obsoleteLessonIdentification": "Automated aging analysis",
+            "lessonEffectivenessTracking": "Implementation success measurement",
+            "continuousImprovementIntegration": "Lesson refinement based on outcomes"
+          },
+          "organizationalLearningIntegration": {
+            "trainingProgramIntegration": "Lesson-based curriculum updates",
+            "policyUpdateIntegration": "Automated policy change recommendations",
+            "procedureImprovementIntegration": "Process optimization based on lessons",
+            "technologyRoadmapIntegration": "Technology gap identification and planning",
+            "culturalLearningPromotion": "Knowledge sharing incentives"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Lessons learned capture comprehensiveness and structure",
+            "result": "SYSTEMATIC",
+            "details": "234 lessons documented with structured templates and multi-dimensional categorization"
+          },
+          {
+            "test": "Knowledge accessibility and discovery capabilities",
+            "result": "ACCESSIBLE",
+            "details": "Full-text search with automated similarity matching and usage analytics"
+          },
+          {
+            "test": "Organizational learning integration and effectiveness",
+            "result": "INTEGRATED",
+            "details": "Training program integration with automated policy recommendations and cultural promotion"
+          }
+        ],
+        "remediation": "Lessons learned capture and documentation comprehensively implemented with strong organizational learning integration",
+        "checkType": "afterActionReport"
+      },
+      {
+        "checkId": "INR-03-003",
+        "name": "Limited Operational Process Integration",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Lessons learned lack comprehensive integration into operational processes for effective implementation and improvement",
+        "findings": {
+          "processIntegrationGaps": {
+            "operationalProcessMapping": "Limited lesson-to-process correlation",
+            "processImprovementImplementation": "Manual identification and implementation",
+            "workflowModificationTracking": "Not systematic",
+            "procedureUpdateAutomation": "Limited capability",
+            "processEffectivenessValidation": "Not performed"
+          },
+          "implementationTrackingDeficiencies": {
+            "lessonImplementationTracking": "Manual process",
+            "implementationTimelineManagement": "Not standardized",
+            "implementationResourceAllocation": "Ad-hoc basis",
+            "implementationProgressMonitoring": "Limited visibility",
+            "implementationSuccessValidation": "Not systematic"
+          },
+          "changeManagementIntegrationLimitations": {
+            "changeRequestIntegration": "Manual process",
+            "changeImpactAssessment": "Limited lesson correlation",
+            "changeApprovalWorkflow": "Not lesson-aware",
+            "changeImplementationValidation": "Manual verification",
+            "changeEffectivenessTracking": "Not comprehensive"
+          },
+          "operationalMetricsIntegrationGaps": {
+            "performanceMetricsCorrelation": "Not implemented",
+            "operationalEfficiencyMeasurement": "Not lesson-based",
+            "qualityImprovementTracking": "Limited correlation",
+            "costImpactMeasurement": "Not performed",
+            "riskReductionValidation": "Not systematic"
+          },
+          "continuousImprovementLimitations": {
+            "feedbackLoopImplementation": "Limited effectiveness",
+            "improvementCycleIntegration": "Not systematic",
+            "lessonsFromImprovementsCapture": "Not regular",
+            "improvementEffectivenessAssessment": "Manual process",
+            "organizationalMaturityTracking": "Not implemented"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Operational process integration and mapping assessment",
+            "result": "LIMITED",
+            "details": "Manual lesson-to-process correlation with no systematic workflow modification tracking"
+          },
+          {
+            "test": "Implementation tracking and change management integration",
+            "result": "MANUAL",
+            "details": "Ad-hoc implementation resource allocation with manual change request integration"
+          },
+          {
+            "test": "Operational metrics integration and continuous improvement",
+            "result": "NOT_IMPLEMENTED",
+            "details": "No performance metrics correlation with limited feedback loop effectiveness"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive operational process mapping with automated lesson-to-process correlation and workflow modification tracking, 2) Establish systematic implementation tracking with standardized timelines, resource allocation, and progress monitoring, 3) Integrate change management with lesson-aware approval workflows and effectiveness validation, 4) Deploy operational metrics correlation with performance measurement and cost impact analysis, 5) Create continuous improvement cycles with automated feedback loops and organizational maturity tracking, 6) Develop implementation success validation with systematic effectiveness assessment and improvement capture",
+        "checkType": "afterActionReport"
+      },
+      {
+        "checkId": "INR-03-004",
+        "name": "Insufficient Training and Knowledge Transfer",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Lessons learned lack effective integration into training programs and knowledge transfer processes",
+        "findings": {
+          "trainingProgramIntegrationGaps": {
+            "lessonBasedTrainingContent": "Limited integration",
+            "trainingCurriculumUpdates": "Manual process",
+            "trainingEffectivenessCorrelation": "Not measured",
+            "trainingDeliveryModalities": "Traditional classroom only",
+            "trainingPersonalization": "Not implemented"
+          },
+          "knowledgeTransferProcessLimitations": {
+            "newEmployeeOnboarding": "Generic training without lesson integration",
+            "roleSpecificKnowledgeTransfer": "Limited customization",
+            "expertKnowledgeCapture": "Ad-hoc documentation",
+            "knowledgeRetentionValidation": "Not performed",
+            "knowledgeSharingIncentives": "Not established"
+          },
+          "competencyDevelopmentGaps": {
+            "skillGapIdentification": "Not lesson-based",
+            "competencyMappingToLessons": "Not performed",
+            "skillDevelopmentProgramming": "Not integrated",
+            "competencyValidationTesting": "Limited implementation",
+            "professionalDevelopmentIntegration": "Manual coordination"
+          },
+          "organizationalMemoryDeficiencies": {
+            "institutionalKnowledgePreservation": "At risk during turnover",
+            "expertiseDocumentationProcesses": "Not systematic",
+            "knowledgeSuccessionPlanning": "Limited implementation",
+            "criticalKnowledgeIdentification": "Not performed",
+            "knowledgeLossRiskAssessment": "Not conducted"
+          },
+          "culturalLearningPromotion": {
+            "learningCultureAssessment": "Not performed",
+            "knowledgeSharingPromotion": "Limited initiatives",
+            "lessonsLearnedAwareness": "Basic communication",
+            "learningIncentivePrograms": "Not established",
+            "organizationalLearningMaturity": "Not measured"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Training program integration and knowledge transfer effectiveness",
+            "result": "LIMITED",
+            "details": "Manual training curriculum updates with generic onboarding and no lesson integration"
+          },
+          {
+            "test": "Competency development and organizational memory preservation",
+            "result": "AD_HOC",
+            "details": "No lesson-based skill gap identification with institutional knowledge at risk during turnover"
+          },
+          {
+            "test": "Cultural learning promotion and organizational maturity",
+            "result": "UNDERDEVELOPED",
+            "details": "Limited knowledge sharing initiatives with no learning incentive programs or maturity measurement"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Integrate lessons learned into training programs with automated curriculum updates and personalized delivery modalities, 2) Establish comprehensive knowledge transfer processes with role-specific customization and retention validation, 3) Implement competency development programs with lesson-based skill gap identification and validation testing, 4) Create systematic organizational memory preservation with expertise documentation and succession planning, 5) Promote learning culture with knowledge sharing incentives and organizational learning maturity measurement, 6) Develop automated knowledge transfer validation with effectiveness tracking and continuous improvement",
+        "checkType": "afterActionReport"
+      },
+      {
+        "checkId": "INR-03-005",
+        "name": "Missing Automation and Technology Integration",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Lessons learned processes lack automation and technology integration for efficient implementation and tracking",
+        "findings": {
+          "automationImplementationGaps": {
+            "lessonCaptureAutomation": "Manual documentation process",
+            "lessonAnalysisAutomation": "Limited AI/ML capabilities",
+            "implementationTrackingAutomation": "Manual monitoring",
+            "reportGenerationAutomation": "Basic template population",
+            "workflowOrchestrationAutomation": "Not implemented"
+          },
+          "technologyIntegrationLimitations": {
+            "itsmIntegration": "Limited ServiceNow integration",
+            "hrmsIntegration": "Not implemented",
+            "lmsIntegration": "Manual content updates",
+            "documentManagementIntegration": "Basic file storage",
+            "businessIntelligenceIntegration": "Not available"
+          },
+          "artificialIntelligenceCapabilityGaps": {
+            "naturalLanguageProcessing": "Not implemented for lesson analysis",
+            "patternRecognitionCapabilities": "Manual identification",
+            "recommendationEngineCapabilities": "Not available",
+            "predictiveAnalyticsIntegration": "Not implemented",
+            "automaticCategorizationCapabilities": "Manual classification"
+          },
+          "dataAnalyticsAndVisualizationLimitations": {
+            "lessonEffectivenessAnalytics": "Not implemented",
+            "implementationSuccessMetrics": "Manual calculation",
+            "trendAnalysisCapabilities": "Limited scope",
+            "interactiveDashboards": "Not available",
+            "executiveReportingAutomation": "Manual compilation"
+          },
+          "integrationAndInteroperabilityGaps": {
+            "crossPlatformIntegration": "Limited capability",
+            "apiDevelopmentAndManagement": "Basic implementation",
+            "dataExchangeStandardization": "Not established",
+            "systemInteroperabilityTesting": "Not performed",
+            "integrationMaintenanceProcesses": "Manual updates"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Automation implementation and technology integration",
+            "result": "MANUAL",
+            "details": "Manual documentation and monitoring with limited ServiceNow integration and basic template automation"
+          },
+          {
+            "test": "AI capabilities and data analytics implementation",
+            "result": "NOT_IMPLEMENTED",
+            "details": "No AI/ML capabilities with manual pattern recognition and limited trend analysis"
+          },
+          {
+            "test": "Integration and interoperability capabilities",
+            "result": "LIMITED",
+            "details": "Basic API implementation with no cross-platform integration or data exchange standardization"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive lesson capture and analysis automation with AI/ML capabilities for pattern recognition and categorization, 2) Establish technology integration with ITSM, HRMS, LMS, and business intelligence platforms for seamless workflow automation, 3) Deploy artificial intelligence capabilities including natural language processing for lesson analysis and recommendation engines, 4) Create advanced data analytics and visualization with effectiveness metrics and interactive executive dashboards, 5) Develop robust integration and interoperability with standardized APIs and cross-platform data exchange, 6) Establish automated workflow orchestration with implementation tracking and success validation",
+        "checkType": "afterActionReport"
+      },
+      {
+        "checkId": "INR-03-006",
+        "name": "Limited External Learning and Benchmarking",
+        "status": "FAIL",
+        "severity": "LOW",
+        "description": "Lessons learned processes lack integration with external learning sources and industry benchmarking for comprehensive improvement",
+        "findings": {
+          "externalLearningSourceIntegrationGaps": {
+            "industryBestPracticeIntegration": "Limited monitoring",
+            "peerOrganizationLearning": "Not systematic",
+            "academicResearchIntegration": "Not implemented",
+            "regulatoryGuidanceIntegration": "Manual monitoring",
+            "vendorRecommendationIntegration": "Ad-hoc basis"
+          },
+          "benchmarkingCapabilityLimitations": {
+            "industryBenchmarkingParticipation": "Not active",
+            "performanceComparisonAnalysis": "Not performed",
+            "maturityAssessmentComparison": "Not implemented",
+            "bestPracticeGapAnalysis": "Not systematic",
+            "competitiveIntelligenceIntegration": "Not available"
+          },
+          "knowledgeSharingAndCollaborationGaps": {
+            "industryCommunityParticipation": "Limited engagement",
+            "knowledgeSharingInitiatives": "Not established",
+            "expertNetworkAccess": "Limited connectivity",
+            "collaborativeLearningPlatforms": "Not utilized",
+            "thoughtLeadershipContributions": "Not active"
+          },
+          "externalValidationProcessLimitations": {
+            "externalExpertReview": "Not sought",
+            "peerReviewProcesses": "Not established",
+            "independentAssessmentCapabilities": "Not utilized",
+            "thirdPartyValidationSeeking": "Not systematic",
+            "expertiseGapIdentification": "Not performed"
+          },
+          "emergingTrendIntegrationDeficiencies": {
+            "emergingThreatLandscapeMonitoring": "Basic implementation",
+            "technologyTrendIntegration": "Limited awareness",
+            "regulatoryChangeLearning": "Reactive approach",
+            "innovationAdoptionLearning": "Not systematic",
+            "futureRiskPreparationLearning": "Not implemented"
+          }
+        },
+        "testResults": [
+          {
+            "test": "External learning source integration and benchmarking",
+            "result": "LIMITED",
+            "details": "Manual regulatory monitoring with no systematic peer learning or industry benchmarking"
+          },
+          {
+            "test": "Knowledge sharing and collaboration capabilities",
+            "result": "MINIMAL",
+            "details": "Limited industry engagement with no established knowledge sharing or expert network access"
+          },
+          {
+            "test": "External validation and emerging trend integration",
+            "result": "REACTIVE",
+            "details": "No external expert review with reactive regulatory change learning and limited threat monitoring"
+          }
+        ],
+        "remediation": "LOW PRIORITY: 1) Integrate external learning sources with systematic monitoring of industry best practices, peer organizations, and academic research, 2) Establish comprehensive benchmarking capabilities with industry participation and performance comparison analysis, 3) Create knowledge sharing and collaboration initiatives with expert networks and community engagement, 4) Implement external validation processes with peer review and independent assessment capabilities, 5) Deploy emerging trend integration with proactive threat landscape monitoring and innovation adoption learning, 6) Develop thought leadership contributions with expertise gap identification and future risk preparation",
+        "checkType": "afterActionReport"
+      }
+    ]
+  }
+}

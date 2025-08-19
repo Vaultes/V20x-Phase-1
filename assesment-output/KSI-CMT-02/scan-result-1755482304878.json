@@ -1,0 +1,799 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-CMT-02",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 7,
+      "passed": 4,
+      "failed": 3,
+      "warnings": 0
+    },
+    "immutableInfrastructureVerificationMethods": {
+      "infrastructureAsCode": [
+        "Azure Portal: Resource Manager > Deployments for IaC deployment history",
+        "Azure CLI: az deployment group list for deployment tracking",
+        "Git: Repository history for infrastructure template version control",
+        "Azure DevOps: Pipeline logs for automated deployment validation",
+        "Terraform: terraform plan/apply logs for infrastructure immutability"
+      ],
+      "containerImmutability": [
+        "Azure Container Registry: Image repositories for immutable image tracking",
+        "Docker: docker history for container image layer analysis",
+        "Kubernetes: kubectl describe for deployment immutability validation",
+        "Azure Security Center: Container security recommendations",
+        "Container scanning tools: Vulnerability and compliance scanning results"
+      ],
+      "applicationDeployment": [
+        "Azure App Service: Deployment slots for blue-green deployment validation",
+        "Azure DevOps: Release pipelines for deployment automation tracking",
+        "Application Insights: Deployment annotation and performance correlation",
+        "Azure Traffic Manager: Traffic routing for canary deployment validation",
+        "Azure Monitor: Application health and performance monitoring"
+      ],
+      "databaseMigrations": [
+        "Entity Framework: Migration history for database schema versioning",
+        "Azure SQL Database: Query Store for migration performance tracking",
+        "Database audit logs: Schema change tracking and validation",
+        "Azure DevOps: Pipeline logs for automated migration deployment",
+        "Database backup validation: Pre and post-migration backup verification"
+      ],
+      "configurationManagement": [
+        "Azure App Configuration: Configuration change history and versioning",
+        "Azure Key Vault: Secrets and certificate management audit logs",
+        "PowerShell DSC: Desired State Configuration compliance reports",
+        "Ansible: Playbook execution logs for configuration automation",
+        "Azure Policy: Configuration compliance and drift detection reports"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "CM-2": "Baseline Configuration",
+        "CM-3": "Configuration Change Control",
+        "CM-5": "Access Restrictions for Change",
+        "CM-6": "Configuration Settings",
+        "SI-2": "Flaw Remediation"
+      },
+      "nist80053": {
+        "CM-2": "Baseline Configuration",
+        "CM-3": "Configuration Change Control",
+        "CM-5": "Access Restrictions for Change",
+        "CM-6": "Configuration Settings",
+        "SI-2": "Flaw Remediation",
+        "SA-10": "Developer Configuration Management"
+      },
+      "iso27001": {
+        "A.12.1.2": "Change management",
+        "A.12.1.4": "Separation of development, testing and operational environments",
+        "A.14.2.2": "System change control procedures",
+        "A.14.2.3": "Technical review of applications after operating platform changes"
+      }
+    },
+    "checks": [
+      {
+        "checkId": "CMT-02-001",
+        "name": "Infrastructure as Code Immutable Deployment",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Infrastructure deployments should use immutable patterns with version-controlled templates",
+        "findings": {
+          "infrastructureAsCodeImplementation": {
+            "deploymentPatterns": {
+              "armTemplateDeployments": {
+                "totalDeployments": 156,
+                "immutableDeployments": 156,
+                "immutabilityPercentage": "100%",
+                "versionControlledTemplates": 156,
+                "templateParameterization": "Comprehensive",
+                "deploymentIdempotency": "Ensured"
+              },
+              "bicepTemplateDeployments": {
+                "totalDeployments": 89,
+                "immutableDeployments": 89,
+                "immutabilityPercentage": "100%",
+                "versionControlledTemplates": 89,
+                "moduleUsage": "Extensive",
+                "deploymentValidation": "Automated"
+              },
+              "terraformDeployments": {
+                "totalDeployments": 67,
+                "immutableDeployments": 67,
+                "immutabilityPercentage": "100%",
+                "stateFileManagement": "Remote backend with locking",
+                "planValidation": "Required before apply",
+                "workspaceIsolation": "Environment-specific"
+              }
+            },
+            "versionControlIntegration": {
+              "gitRepositoryStructure": {
+                "repositoryCount": 12,
+                "branchingStrategy": "GitFlow with feature branches",
+                "commitSigning": "Required",
+                "taggedReleases": "Semantic versioning",
+                "pullRequestRequirements": "Code review + automated testing"
+              },
+              "templateVersioning": {
+                "semanticVersioning": "Implemented",
+                "changelogMaintenance": "Automated",
+                "backwardCompatibility": "Maintained",
+                "deprecationManagement": "Systematic",
+                "versionControlPolicy": "Enforced"
+              }
+            },
+            "deploymentAutomation": {
+              "cicdPipelineIntegration": {
+                "azureDevOpsPipelines": 23,
+                "githubActionWorkflows": 12,
+                "automatedTesting": "Unit, integration, and end-to-end",
+                "approvalGates": "Environment-specific",
+                "deploymentFrequency": "Multiple daily deployments"
+              },
+              "deploymentValidation": {
+                "templateValidation": "Syntax and policy validation",
+                "whatIfAnalysis": "Required for production",
+                "driftDetection": "Pre-deployment verification",
+                "rollbackCapabilities": "Automated rollback procedures",
+                "deploymentTesting": "Post-deployment validation"
+              }
+            }
+          },
+          "immutabilityEnforcement": {
+            "resourceImmutability": {
+              "vmImageManagement": "Golden images with versioning",
+              "containerImageManagement": "Immutable container images",
+              "serverConfiguration": "Configuration as code",
+              "applicationDeployment": "Blue-green deployment patterns",
+              "dataStoreConfiguration": "Infrastructure-defined schemas"
+            },
+            "changePreventionMechanisms": {
+              "resourceLocks": "Applied to critical resources",
+              "rbacEnforcement": "Least privilege access",
+              "policyEnforcement": "Azure Policy and Terraform Sentinel",
+              "immutableStorageConfigurations": "WORM compliance",
+              "deploymentGateways": "Approval-based deployments"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Infrastructure as Code immutability assessment",
+            "result": "COMPREHENSIVE",
+            "details": "100% immutable deployments across ARM, Bicep, and Terraform with complete version control"
+          },
+          {
+            "test": "Version control integration effectiveness validation",
+            "result": "MATURE",
+            "details": "Semantic versioning with automated testing and systematic deprecation management"
+          },
+          {
+            "test": "Deployment automation and validation evaluation",
+            "result": "ADVANCED",
+            "details": "Multi-pipeline automation with comprehensive testing and automated rollback capabilities"
+          }
+        ],
+        "remediation": "Infrastructure as Code immutable deployment properly implemented with comprehensive automation",
+        "checkType": "immutableInfrastructur"
+      },
+      {
+        "checkId": "CMT-02-002",
+        "name": "Container Image Immutability",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Container deployments should use immutable images with proper versioning and security scanning",
+        "findings": {
+          "containerImageManagement": {
+            "imageRepositoryStructure": {
+              "totalRepositories": 45,
+              "immutableRepositories": 45,
+              "immutabilityEnforcement": "Registry-level policies",
+              "imageRetentionPolicies": "Lifecycle-based retention",
+              "imageVulnerabilityScanning": "Automated on push"
+            },
+            "imageVersioning": {
+              "semanticVersioning": "Enforced",
+              "tagImmutability": "Enabled",
+              "digestBasedDeployment": "Required",
+              "latestTagUsagePolicy": "Prohibited in production",
+              "imageSigningRequirement": "Content trust enabled"
+            },
+            "imageSecurityScanning": {
+              "vulnerabilityScanningEnabled": true,
+              "complianceScanningEnabled": true,
+              "malwareScanningEnabled": true,
+              "secretsDetectionEnabled": true,
+              "imagePolicyEnforcement": "Automated rejection of vulnerable images"
+            }
+          },
+          "containerDeploymentPatterns": {
+            "kubernetesDeployments": {
+              "deploymentStrategy": "Rolling updates with image immutability",
+              "imageUpdatePolicy": "Never pull",
+              "digestBasedSpecs": "Required",
+              "podSecurityStandards": "Restricted",
+              "runtimeSecurityEnforcement": "Admission controllers"
+            },
+            "containerInstanceDeployments": {
+              "imageUpdatePolicy": "Manual updates only",
+              "immutableDeploymentSpec": "Required",
+              "configurationAsCode": "ARM/Bicep templates",
+              "secretsManagement": "Azure Key Vault integration",
+              "networkIsolation": "VNET integration"
+            }
+          },
+          "containerRegistryConfiguration": {
+            "azureContainerRegistrySettings": {
+              "adminUserDisabled": true,
+              "publicNetworkAccessDenied": true,
+              "privateEndpointEnabled": true,
+              "contentTrustEnabled": true,
+              "quarantineEnabled": true,
+              "retentionPolicyEnabled": true
+            },
+            "accessControlAndSecurity": {
+              "rbacIntegration": "Azure AD integration",
+              "tokenBasedAccess": "Service principal tokens",
+              "webhookIntegration": "CI/CD pipeline triggers",
+              "geoReplication": "Cross-region availability",
+              "encryptionAtRest": "Customer-managed keys"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Container image immutability enforcement assessment",
+            "result": "COMPREHENSIVE",
+            "details": "100% immutable repositories with tag immutability and digest-based deployments"
+          },
+          {
+            "test": "Container security scanning and policy validation",
+            "result": "ROBUST",
+            "details": "Comprehensive vulnerability, compliance, and malware scanning with automated policy enforcement"
+          },
+          {
+            "test": "Container deployment pattern compliance evaluation",
+            "result": "COMPLIANT",
+            "details": "Rolling updates with immutable images, restricted pod security standards, and admission control"
+          }
+        ],
+        "remediation": "Container image immutability properly implemented with comprehensive security and deployment controls",
+        "checkType": "immutableInfrastructur"
+      },
+      {
+        "checkId": "CMT-02-003",
+        "name": "Application Deployment Immutability",
+        "status": "PASS",
+        "severity": "MEDIUM",
+        "description": "Application deployments should follow immutable patterns with blue-green or canary deployment strategies",
+        "findings": {
+          "applicationDeploymentPatterns": {
+            "deploymentStrategies": {
+              "blueGreenDeployments": {
+                "implementedApplications": 34,
+                "totalWebApplications": 45,
+                "implementationPercentage": "75.6%",
+                "trafficSwitchingAutomation": "Automated",
+                "rollbackCapabilities": "Instant rollback"
+              },
+              "canaryDeployments": {
+                "implementedApplications": 23,
+                "totalApiApplications": 34,
+                "implementationPercentage": "67.6%",
+                "trafficSplittingGranularity": "Percentage-based",
+                "healthCheckIntegration": "Automated health validation"
+              },
+              "immutableDeploymentUnits": {
+                "applicationPackaging": "Docker containers",
+                "configurationManagement": "External configuration",
+                "secretsManagement": "Azure Key Vault",
+                "dependencyManagement": "Packaged dependencies",
+                "environmentIsolation": "Container-based isolation"
+              }
+            },
+            "deploymentAutomation": {
+              "cicdPipelineIntegration": {
+                "automatedBuildPipelines": 45,
+                "automatedDeploymentPipelines": 45,
+                "testAutomation": "Unit, integration, and end-to-end",
+                "securityScanning": "SAST, DAST, and dependency scanning",
+                "qualityGates": "Code quality and security thresholds"
+              },
+              "deploymentOrchestration": {
+                "deploymentSlotUsage": "Staging and production slots",
+                "warmUpProcedures": "Automated warm-up",
+                "healthCheckValidation": "Comprehensive health checks",
+                "performanceValidation": "Load testing integration",
+                "userAcceptanceTesting": "Automated UAT"
+              }
+            }
+          },
+          "configurationManagement": {
+            "externalConfiguration": {
+              "azureAppConfiguration": "Centralized configuration management",
+              "featureFlagManagement": "Dynamic feature toggling",
+              "environmentSpecificConfiguration": "Environment-aware configuration",
+              "configurationVersioning": "Versioned configuration changes",
+              "configurationValidation": "Schema validation"
+            },
+            "secretsAndCertificateManagement": {
+              "azureKeyVaultIntegration": "Comprehensive secrets management",
+              "certificateManagement": "Automated certificate rotation",
+              "connectionStringManagement": "Secure connection management",
+              "apiKeyManagement": "Centralized API key management",
+              "encryptionKeyManagement": "Customer-managed keys"
+            }
+          },
+          "monitoringAndObservability": {
+            "deploymentMonitoring": {
+              "deploymentHealthTracking": "Real-time health monitoring",
+              "performanceMetricTracking": "Application performance monitoring",
+              "errorRateMonitoring": "Automated error detection",
+              "userExperienceMonitoring": "Real user monitoring",
+              "businessMetricTracking": "Business impact monitoring"
+            },
+            "alertingAndResponseAutomation": {
+              "deploymentAlerting": "Immediate deployment issue alerts",
+              "performanceDegradationAlerts": "Performance threshold alerts",
+              "automaticRollbackTriggers": "Health-based rollback",
+              "escalationProcedures": "Tiered alerting and escalation",
+              "incidentResponseIntegration": "Incident management integration"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Application deployment immutability pattern assessment",
+            "result": "COMPREHENSIVE",
+            "details": "75.6% blue-green and 67.6% canary deployment implementation with immutable deployment units"
+          },
+          {
+            "test": "Configuration and secrets management evaluation",
+            "result": "SECURE",
+            "details": "Centralized configuration with Azure Key Vault integration and comprehensive versioning"
+          },
+          {
+            "test": "Deployment monitoring and rollback capability validation",
+            "result": "ROBUST",
+            "details": "Real-time monitoring with automatic rollback triggers and comprehensive alerting"
+          }
+        ],
+        "remediation": "Application deployment immutability properly implemented with advanced deployment patterns and monitoring",
+        "checkType": "immutableInfrastructur"
+      },
+      {
+        "checkId": "CMT-02-004",
+        "name": "Database Schema Immutability",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Database schema changes should be executed through version-controlled migration scripts with rollback capabilities",
+        "findings": {
+          "databaseMigrationManagement": {
+            "migrationFrameworks": {
+              "entityFrameworkMigrations": {
+                "totalDatabases": 23,
+                "managedDatabases": 23,
+                "migrationCoverage": "100%",
+                "migrationVersioning": "Sequential versioning",
+                "rollbackScriptGeneration": "Automated"
+              },
+              "flywayMigrations": {
+                "totalDatabases": 12,
+                "managedDatabases": 12,
+                "migrationCoverage": "100%",
+                "checksumValidation": "Enabled",
+                "baselineManagement": "Systematic"
+              },
+              "customMigrationFramework": {
+                "totalDatabases": 8,
+                "managedDatabases": 8,
+                "migrationCoverage": "100%",
+                "scriptValidation": "Automated",
+                "transactionManagement": "Comprehensive"
+              }
+            },
+            "migrationVersionControl": {
+              "gitIntegration": {
+                "migrationScriptVersioning": "Complete version control",
+                "branchingStrategy": "Feature branch migrations",
+                "codeReviewRequirements": "DBA approval required",
+                "mergePolicyEnforcement": "Protected branch policies",
+                "migrationTagging": "Release-based tagging"
+              },
+              "migrationDocumentation": {
+                "schemaChangeDocumentation": "Automated documentation",
+                "dataImpactAssessment": "Required for data changes",
+                "performanceImpactAnalysis": "Query plan analysis",
+                "rollbackProcedureDocumentation": "Comprehensive rollback guides",
+                "migrationTestingDocumentation": "Test case documentation"
+              }
+            }
+          },
+          "migrationTestingAndValidation": {
+            "migrationTesting": {
+              "testEnvironmentMigrations": "Required before production",
+              "migrationPerformanceTesting": "Load testing migrations",
+              "dataIntegrityValidation": "Automated integrity checks",
+              "rollbackTesting": "Mandatory rollback validation",
+              "migrationScriptValidation": "Syntax and logic validation"
+            },
+            "deploymentAutomation": {
+              "cicdIntegration": {
+                "automatedMigrationDeployment": "Pipeline-driven deployments",
+                "environmentPromotionWorkflow": "Staged promotion",
+                "approvalGatesForProduction": "Multi-level approvals",
+                "migrationHealthChecks": "Post-migration validation",
+                "deploymentNotifications": "Stakeholder notifications"
+              },
+              "migrationMonitoring": {
+                "migrationExecutionTracking": "Real-time execution monitoring",
+                "performanceMetricTracking": "Migration performance tracking",
+                "lockingAndBlockingDetection": "Automated detection",
+                "migrationFailureDetection": "Immediate failure alerting",
+                "rollbackTriggerConditions": "Automated rollback triggers"
+              }
+            }
+          },
+          "dataConsistencyAndSafety": {
+            "backupAndRecoveryIntegration": {
+              "preMigrationBackups": "Automated backup creation",
+              "pointInTimeRecoveryCapability": "Available",
+              "backupValidation": "Backup integrity verification",
+              "retentionPolicyCompliance": "Long-term retention",
+              "crossRegionBackupReplication": "Geo-redundant backups"
+            },
+            "dataValidationAndIntegrity": {
+              "preMigrationDataValidation": "Data consistency checks",
+              "postMigrationDataValidation": "Comprehensive validation",
+              "dataIntegrityConstraints": "Constraint validation",
+              "businessRuleValidation": "Business logic verification",
+              "dataQualityAssessment": "Quality metric validation"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Database migration framework coverage assessment",
+            "result": "COMPLETE",
+            "details": "100% database coverage across Entity Framework, Flyway, and custom migration frameworks"
+          },
+          {
+            "test": "Migration version control and documentation validation",
+            "result": "COMPREHENSIVE",
+            "details": "Complete version control with automated documentation and mandatory DBA approval"
+          },
+          {
+            "test": "Migration testing and safety validation evaluation",
+            "result": "ROBUST",
+            "details": "Comprehensive testing with automated backups, integrity checks, and rollback capabilities"
+          }
+        ],
+        "remediation": "Database schema immutability properly implemented with comprehensive migration management and safety controls",
+        "checkType": "immutableInfrastructur"
+      },
+      {
+        "checkId": "CMT-02-005",
+        "name": "Incomplete Server Configuration Immutability",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Server configurations are modified directly rather than through immutable infrastructure patterns",
+        "findings": {
+          "serverConfigurationMutabilityIssues": {
+            "directServerModifications": {
+              "totalVirtualMachines": 89,
+              "directlyModifiedServers": 34,
+              "mutabilityPercentage": "38.2%",
+              "modificationTypes": [
+                "Manual configuration changes",
+                "In-place software updates",
+                "Direct registry modifications",
+                "File system modifications"
+              ],
+              "configurationDriftDetected": 28
+            },
+            "manualConfigurationChanges": {
+              "unTrackedConfigurations": 156,
+              "manualSoftwareInstallations": 67,
+              "adHocConfigurationChanges": 89,
+              "undocumentedModifications": 45,
+              "configurationInconsistencies": 23
+            },
+            "legacyServerManagement": {
+              "windowsUpdateDirectInstallation": "38% of Windows servers",
+              "manualPatchInstallation": "Manual patches on 23 servers",
+              "registryDirectModifications": "15 servers with direct registry changes",
+              "serviceConfigurationChanges": "Manual service configuration on 19 servers",
+              "securityPolicyManualChanges": "Manual security policy changes on 12 servers"
+            }
+          },
+          "immutableInfrastructureGaps": {
+            "goldenImageUsageGaps": {
+              "totalVmDeployments": 89,
+              "goldenImageDeployments": 55,
+              "goldenImageUsage": "61.8%",
+              "customImageCreation": "Ad hoc image creation",
+              "imageVersioning": "Inconsistent versioning",
+              "imageSecurityScanning": "Limited scanning"
+            },
+            "configurationManagementGaps": {
+              "configurationAsCodeAdoption": "Partial adoption",
+              "powershellDscUsage": "Limited PowerShell DSC implementation",
+              "ansibleAutomationGaps": "Ansible not systematically deployed",
+              "chefPuppetAlternatives": "Not implemented",
+              "cloudInitConfigurationGaps": "Limited cloud-init usage"
+            },
+            "deploymentAutomationGaps": {
+              "manualVmProvisioning": "34 VMs manually provisioned",
+              "adHocServerDeployment": "Server deployments outside CI/CD",
+              "configurationTemplateUsageGaps": "Inconsistent template usage",
+              "serverProvisioningDocumentationGaps": "Poor documentation",
+              "serverLifecycleManagementGaps": "Manual lifecycle management"
+            }
+          },
+          "complianceAndSecurityRisks": {
+            "configurationDriftRisks": {
+              "securityConfigurationDrift": "28 servers with security drift",
+              "complianceConfigurationDrift": "23 servers non-compliant",
+              "performanceConfigurationDrift": "19 servers with performance issues",
+              "operationalConfigurationDrift": "34 servers with operational drift",
+              "auditingConfigurationDrift": "Limited drift auditing"
+            },
+            "securityVulnerabilityRisks": {
+              "unPatchedSystems": "23 systems with missing patches",
+              "insecureConfigurations": "15 systems with insecure configurations",
+              "unauthorizedSoftware": "12 systems with unauthorized software",
+              "weakSecurityPolicies": "19 systems with weak security policies",
+              "missingSecurityControls": "34 systems missing security controls"
+            }
+          },
+          "businessImpactOfMutability": {
+            "operationalComplexity": {
+              "troubleshootingComplexity": "Complex troubleshooting due to configuration drift",
+              "maintenanceOverhead": "High manual maintenance overhead",
+              "scalabilityLimitations": "Limited ability to scale consistently",
+              "environmentInconsistencies": "Inconsistencies between environments",
+              "deploymentUnpredictability": "Unpredictable deployment outcomes"
+            },
+            "complianceAndAuditingChallenges": {
+              "auditTrailGaps": "Incomplete audit trails for changes",
+              "complianceValidationDifficulty": "Difficult compliance validation",
+              "changeDocumentationGaps": "Poor change documentation",
+              "configurationBaselineManagement": "Inconsistent baseline management",
+              "regulatoryReportingComplexity": "Complex regulatory reporting"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Server configuration immutability assessment",
+            "result": "INADEQUATE",
+            "details": "38.2% of servers modified directly with 156 untracked configuration changes"
+          },
+          {
+            "test": "Golden image and configuration as code adoption evaluation",
+            "result": "PARTIAL",
+            "details": "61.8% golden image usage with limited configuration management automation"
+          },
+          {
+            "test": "Configuration drift and security risk analysis",
+            "result": "HIGH_RISK",
+            "details": "28 servers with security drift, 23 unpached systems, 15 insecure configurations"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Implement comprehensive golden image strategy with automated image creation and versioning, 2) Deploy configuration management tools (PowerShell DSC, Ansible) for automated configuration, 3) Eliminate direct server modifications through policy and access controls, 4) Establish immutable server deployment patterns with Infrastructure as Code, 5) Implement comprehensive configuration drift detection and remediation, 6) Establish automated server lifecycle management with CI/CD integration, 7) Deploy server configuration baselines with automated compliance validation",
+        "checkType": "immutableInfrastructur"
+      },
+      {
+        "checkId": "CMT-02-006",
+        "name": "Inadequate Application Configuration Immutability",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "Application configurations are modified in-place rather than through externalized configuration management",
+        "findings": {
+          "applicationConfigurationIssues": {
+            "inPlaceConfigurationChanges": {
+              "totalApplications": 45,
+              "inPlaceModifiedApplications": 23,
+              "inPlaceModificationPercentage": "51.1%",
+              "configurationChangeTypes": [
+                "Web.config modifications",
+                "App settings changes",
+                "Connection string updates",
+                "Feature flag modifications"
+              ],
+              "environmentSpecificHardcoding": 19
+            },
+            "configurationManagementGaps": {
+              "externalConfigurationUsage": "Limited external configuration",
+              "azureAppConfigurationAdoption": "Partial adoption",
+              "environmentVariableManagement": "Inconsistent usage",
+              "secretsManagementIntegration": "Limited Key Vault integration",
+              "featureFlagExternalization": "Mixed implementation"
+            },
+            "deploymentTimeConfigurationChanges": {
+              "runtimeConfigurationModifications": "23 applications with runtime changes",
+              "hotConfigurationUpdates": "Manual hot updates",
+              "configurationValidationGaps": "Limited validation",
+              "configurationRollbackCapabilities": "Manual rollback only",
+              "configurationChangeAuditing": "Basic auditing"
+            }
+          },
+          "configurationVersioningAndControl": {
+            "configurationVersioningGaps": {
+              "configurationVersionControl": "Inconsistent version control",
+              "configurationBranching": "No systematic branching",
+              "configurationMergeConflicts": "Manual conflict resolution",
+              "configurationReleaseManagement": "Ad hoc release management",
+              "configurationChangeApproval": "Informal approval processes"
+            },
+            "environmentConfigurationManagement": {
+              "environmentConfigurationIsolation": "Limited isolation",
+              "configurationPromotionWorkflows": "Manual promotion",
+              "environmentSpecificValidation": "Basic validation",
+              "configurationConsistencyChecks": "Limited consistency checking",
+              "crossEnvironmentConfigurationTesting": "Minimal testing"
+            }
+          },
+          "secretsAndSensitiveDataManagement": {
+            "secretsExternalizationGaps": {
+              "hardCodedSecrets": "12 applications with hardcoded secrets",
+              "plaintextPasswordStorage": "8 applications with plaintext passwords",
+              "configFileSecretStorage": "15 applications storing secrets in config files",
+              "environmentVariableSecrets": "19 applications with secrets in environment variables",
+              "secretsVersioningGaps": "No systematic secrets versioning"
+            },
+            "keyVaultIntegrationGaps": {
+              "azureKeyVaultUsage": "Limited Key Vault usage",
+              "managedIdentityIntegration": "Partial managed identity usage",
+              "certificateManagementIntegration": "Limited certificate integration",
+              "keyRotationIntegration": "Manual key rotation",
+              "secretsAccessAuditing": "Basic access auditing"
+            }
+          },
+          "monitoringAndAlertingGaps": {
+            "configurationChangeMonitoring": {
+              "configurationChangeTracking": "Limited change tracking",
+              "configurationDriftDetection": "No systematic drift detection",
+              "configurationChangeAlerts": "Basic alerting",
+              "configurationPerformanceImpact": "No performance correlation",
+              "configurationSecurityImpactAnalysis": "Limited security analysis"
+            },
+            "configurationHealthMonitoring": {
+              "configurationValidationMonitoring": "Basic validation",
+              "configurationErrorDetection": "Reactive error detection",
+              "configurationAvailabilityMonitoring": "Limited availability monitoring",
+              "configurationDependencyMonitoring": "No dependency monitoring",
+              "configurationRollbackMonitoring": "Manual rollback monitoring"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Application configuration immutability assessment",
+            "result": "INADEQUATE",
+            "details": "51.1% of applications modified in-place with limited external configuration management"
+          },
+          {
+            "test": "Configuration versioning and environment management evaluation",
+            "result": "IMMATURE",
+            "details": "Inconsistent version control with manual promotion workflows and limited validation"
+          },
+          {
+            "test": "Secrets management and security assessment",
+            "result": "INSECURE",
+            "details": "12 applications with hardcoded secrets, 8 with plaintext passwords, limited Key Vault usage"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Implement comprehensive external configuration management with Azure App Configuration, 2) Eliminate in-place configuration modifications through policy and process controls, 3) Deploy Azure Key Vault integration for all secrets and sensitive data, 4) Establish configuration versioning and approval workflows, 5) Implement environment-specific configuration isolation and promotion, 6) Deploy configuration drift detection and validation automation, 7) Establish configuration change monitoring and alerting capabilities",
+        "checkType": "immutableInfrastructur"
+      },
+      {
+        "checkId": "CMT-02-007",
+        "name": "Limited Infrastructure Rollback Capabilities",
+        "status": "FAIL",
+        "severity": "LOW",
+        "description": "Infrastructure rollback procedures lack automation and comprehensive testing validation",
+        "findings": {
+          "rollbackCapabilityGaps": {
+            "automatedRollbackLimitations": {
+              "totalInfrastructureDeployments": 156,
+              "automatedRollbackCapability": 67,
+              "automatedRollbackPercentage": "42.9%",
+              "manualRollbackRequired": 89,
+              "rollbackTimeObjectives": "Not systematically defined",
+              "rollbackSuccessRate": "78.3%"
+            },
+            "rollbackTestingGaps": {
+              "rollbackTestingFrequency": "Quarterly only",
+              "rollbackScenarioCoverage": "Limited scenario coverage",
+              "rollbackValidationTesting": "Manual validation",
+              "rollbackPerformanceTesting": "Not systematically tested",
+              "rollbackDataIntegrityTesting": "Basic integrity testing"
+            },
+            "rollbackDocumentationGaps": {
+              "rollbackProcedureDocumentation": "Inconsistent documentation",
+              "rollbackDecisionCriteria": "Informal decision criteria",
+              "rollbackApprovalProcesses": "Ad hoc approval processes",
+              "rollbackCommunicationPlans": "Limited communication plans",
+              "rollbackLessonsLearnedCapture": "Not systematically captured"
+            }
+          },
+          "infrastructureRollbackComplexity": {
+            "stateManagementChallenges": {
+              "terraformStateRollback": "Complex state rollback procedures",
+              "azureResourceManagerRollback": "Limited ARM rollback capabilities",
+              "crossResourceDependencyRollback": "Complex dependency rollback",
+              "dataStoreRollbackIntegration": "Limited data rollback integration",
+              "externalSystemRollbackCoordination": "Manual coordination required"
+            },
+            "blueGreenDeploymentGaps": {
+              "blueGreenInfrastructureImplementation": "Limited blue-green infrastructure",
+              "environmentSwitchingAutomation": "Manual environment switching",
+              "trafficRoutingAutomation": "Basic traffic routing",
+              "environmentWarmUpProcedures": "Manual warm-up procedures",
+              "environmentResourceOptimization": "Not cost-optimized"
+            },
+            "rollbackImpactAssessment": {
+              "rollbackRiskAssessment": "Limited risk assessment",
+              "rollbackBusinessImpactAnalysis": "Not systematically conducted",
+              "rollbackDependencyAnalysis": "Limited dependency analysis",
+              "rollbackTimeEstimation": "Informal time estimation",
+              "rollbackResourceRequirementAssessment": "Not assessed"
+            }
+          },
+          "rollbackMonitoringAndValidation": {
+            "rollbackExecutionMonitoring": {
+              "rollbackProgressTracking": "Manual progress tracking",
+              "rollbackHealthValidation": "Basic health validation",
+              "rollbackPerformanceMonitoring": "Limited performance monitoring",
+              "rollbackErrorDetection": "Reactive error detection",
+              "rollbackCompletionValidation": "Manual completion validation"
+            },
+            "postRollbackValidation": {
+              "systemHealthValidation": "Basic health checks",
+              "dataIntegrityValidation": "Limited integrity validation",
+              "performanceValidation": "Manual performance validation",
+              "securityPostureValidation": "Not systematically validated",
+              "businessFunctionalityValidation": "Limited functionality validation"
+            }
+          },
+          "rollbackGovernanceAndProcess": {
+            "rollbackDecisionFramework": {
+              "rollbackTriggerCriteria": "Informal trigger criteria",
+              "rollbackApprovalAuthority": "Unclear approval authority",
+              "rollbackCommunicationProtocols": "Ad hoc communication",
+              "rollbackStakeholderNotification": "Limited stakeholder notification",
+              "rollbackEscalationProcedures": "Informal escalation"
+            },
+            "rollbackProcessMaturity": {
+              "rollbackProcessDocumentation": "Basic process documentation",
+              "rollbackTraining": "Limited rollback training",
+              "rollbackProcessImprovement": "No systematic improvement",
+              "rollbackBestPracticesAdoption": "Slow best practice adoption",
+              "rollbackMetricsCollection": "Limited metrics collection"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Automated rollback capability assessment",
+            "result": "LIMITED",
+            "details": "42.9% automated rollback capability with 78.3% success rate and quarterly testing"
+          },
+          {
+            "test": "Rollback process maturity and documentation evaluation",
+            "result": "IMMATURE",
+            "details": "Inconsistent documentation, informal decision criteria, ad hoc approval processes"
+          },
+          {
+            "test": "Rollback monitoring and validation capability check",
+            "result": "BASIC",
+            "details": "Manual progress tracking, basic health validation, limited post-rollback validation"
+          }
+        ],
+        "remediation": "LOW PRIORITY: 1) Implement comprehensive automated rollback capabilities for all infrastructure deployments, 2) Establish systematic rollback testing procedures with comprehensive scenario coverage, 3) Deploy blue-green infrastructure patterns for instant rollback capabilities, 4) Implement comprehensive rollback monitoring and validation automation, 5) Establish formal rollback decision frameworks and approval processes, 6) Deploy rollback performance and integrity validation automation, 7) Implement rollback metrics collection and process improvement programs",
+        "checkType": "immutableInfrastructur"
+      }
+    ]
+  }
+}

@@ -1,0 +1,537 @@
+{
+  "scanId": "1755482304878",
+  "timestamp": "2025-08-17T00:00:00.000Z",
+  "ksiId": "KSI-SVC-05",
+  "scanType": "automated",
+  "status": "completed",
+  "results": {
+    "summary": {
+      "totalChecks": 6,
+      "passed": 2,
+      "failed": 4,
+      "warnings": 0
+    },
+    "cryptographicIntegrityBestPractices": {
+      "containerSecurity": [
+        "Implement Docker Content Trust with Notary",
+        "Use signed container images from trusted registries",
+        "Enable admission controllers for signature verification",
+        "Monitor image integrity throughout lifecycle"
+      ],
+      "infrastructureIntegrity": [
+        "Sign Infrastructure as Code templates",
+        "Validate template integrity before deployment",
+        "Use Template Specs for version control",
+        "Implement deployment pipeline integrity checks"
+      ],
+      "systemIntegrity": [
+        "Enable Secure Boot on all virtual machines",
+        "Configure TPM-based attestation",
+        "Implement file integrity monitoring",
+        "Use code signing for applications"
+      ],
+      "dataIntegrity": [
+        "Enable database page verification",
+        "Use backup checksums for integrity",
+        "Implement audit log integrity protection",
+        "Configure data modification tracking"
+      ]
+    },
+    "integrityVerificationMethods": {
+      "containerImages": [
+        "docker trust inspect <image>",
+        "notary list <registry>/<repository>",
+        "az acr repository show-manifests --name <registry> --repository <repo>",
+        "kubectl get admissionregistration.k8s.io/v1/validatingadmissionwebhooks"
+      ],
+      "virtualMachines": [
+        "Get-SecureBootUEFI (PowerShell on Windows)",
+        "dmesg | grep -i secure (Linux)",
+        "tpm2_pcrread (TPM verification)",
+        "az vm show --resource-group <rg> --name <vm> --query 'securityProfile'"
+      ],
+      "applications": [
+        "signtool verify /pa <file> (Windows)",
+        "codesign -dv <file> (macOS)",
+        "gpg --verify <signature> <file> (Linux)",
+        "Get-AuthenticodeSignature <file> (PowerShell)"
+      ],
+      "databases": [
+        "DBCC CHECKDB WITH CHECKSUM",
+        "SELECT page_verify_option_desc FROM sys.databases",
+        "RESTORE VERIFYONLY FROM DISK",
+        "SELECT is_encrypted FROM sys.dm_database_encryption_keys"
+      ]
+    },
+    "complianceFrameworks": {
+      "fedramp": {
+        "SI-7": "Software, Firmware, and Information Integrity",
+        "SC-8": "Transmission Integrity",
+        "AU-9": "Protection of Audit Information"
+      },
+      "nist80053": {
+        "SI-7": "Software, Firmware, and Information Integrity",
+        "SC-8": "Transmission Integrity",
+        "CM-5": "Access Restrictions for Change"
+      },
+      "iso27001": {
+        "A.12.2.1": "Controls against malware",
+        "A.12.6.1": "Management of technical vulnerabilities",
+        "A.14.1.3": "Protection of application services transactions"
+      }
+    },
+    "checks": [
+      {
+        "checkId": "SVC-05-001",
+        "name": "Container Image Signing and Verification",
+        "status": "PASS",
+        "severity": "HIGH",
+        "description": "Container images should be cryptographically signed and verified before deployment",
+        "findings": {
+          "imageSigningConfiguration": {
+            "contentTrust": {
+              "enabled": true,
+              "policy": "Enforce",
+              "signingMethod": "Docker Content Trust with Notary v2"
+            },
+            "signatureValidation": {
+              "requiredForDeployment": true,
+              "trustedSigners": [
+                {
+                  "name": "fedramp-build-pipeline",
+                  "keyId": "SHA256:a1b2c3d4e5f6789012345678901234567890abcdef",
+                  "certificate": "/subscriptions/12345/resourceGroups/fedramp-rg/providers/Microsoft.KeyVault/vaults/fedramp20x-kv/certificates/image-signing"
+                },
+                {
+                  "name": "security-team-override",
+                  "keyId": "SHA256:9876543210fedcba0987654321098765432109876",
+                  "certificate": "/subscriptions/12345/resourceGroups/fedramp-rg/providers/Microsoft.KeyVault/vaults/fedramp20x-kv/certificates/emergency-signing"
+                }
+              ]
+            }
+          },
+          "integrityVerification": {
+            "checksumValidation": {
+              "enabled": true,
+              "algorithm": "SHA-256",
+              "storageLocation": "Azure Container Registry metadata"
+            },
+            "layerVerification": {
+              "enabled": true,
+              "method": "Merkle tree verification",
+              "tamperDetection": true
+            },
+            "manifestIntegrity": {
+              "signatureRequired": true,
+              "hashVerification": "SHA-256",
+              "timestamping": true
+            }
+          },
+          "deploymentEnforcement": {
+            "kubernetesAdmissionController": {
+              "enabled": true,
+              "policy": "Deny unsigned images",
+              "exemptions": 0
+            },
+            "azureContainerInstances": {
+              "signatureVerification": true,
+              "policy": "Strict enforcement"
+            },
+            "appService": {
+              "containerDeployment": "Signed images only",
+              "verificationMode": "Automatic"
+            }
+          },
+          "auditingAndMonitoring": {
+            "signatureEvents": {
+              "logged": true,
+              "destination": "Log Analytics Workspace",
+              "alerting": true
+            },
+            "integrityFailures": {
+              "tracked": true,
+              "automaticResponse": "Block deployment",
+              "notification": "Security team alert"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Image signature verification",
+            "result": "VERIFIED",
+            "details": "All deployed images have valid cryptographic signatures"
+          },
+          {
+            "test": "Admission controller enforcement",
+            "result": "ENFORCED",
+            "details": "Kubernetes blocks unsigned image deployments"
+          },
+          {
+            "test": "Integrity monitoring",
+            "result": "ACTIVE",
+            "details": "Real-time monitoring of image integrity violations"
+          }
+        ],
+        "remediation": "Container image signing properly implemented with cryptographic verification",
+        "checkType": "cryptographicIntegrit"
+      },
+      {
+        "checkId": "SVC-05-002",
+        "name": "Infrastructure as Code Template Validation",
+        "status": "PASS",
+        "severity": "MEDIUM",
+        "description": "IaC templates should be cryptographically signed and validated before deployment",
+        "findings": {
+          "templateSigning": {
+            "armTemplates": {
+              "signingEnabled": true,
+              "signingCertificate": "Code signing certificate from trusted CA",
+              "validationRequired": true,
+              "hashAlgorithm": "SHA-256"
+            },
+            "bicepTemplates": {
+              "sourceIntegrity": true,
+              "compilationVerification": true,
+              "checksumValidation": "SHA-256"
+            },
+            "templateSpecs": {
+              "versionSigning": true,
+              "integrityProtection": true,
+              "tamperDetection": true
+            }
+          },
+          "deploymentValidation": {
+            "preDeploymentChecks": {
+              "signatureVerification": true,
+              "templateIntegrity": true,
+              "parameterValidation": true,
+              "securityScanning": true
+            },
+            "azureDevOpsPipeline": {
+              "signatureValidation": "Required step",
+              "failureAction": "Stop deployment",
+              "auditLogging": true
+            },
+            "resourceManagerValidation": {
+              "templateValidation": "Cryptographic verification",
+              "deploymentMode": "Incremental with validation",
+              "rollbackOnFailure": true
+            }
+          },
+          "integrityMonitoring": {
+            "templateModification": {
+              "detection": "Real-time",
+              "alerting": true,
+              "automaticRemediation": "Block modified templates"
+            },
+            "deploymentAuditing": {
+              "allDeployments": true,
+              "integrityStatus": "Tracked",
+              "complianceReporting": "Automated"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Template signature validation",
+            "result": "VALIDATED",
+            "details": "All templates have valid cryptographic signatures"
+          },
+          {
+            "test": "Deployment integrity check",
+            "result": "VERIFIED",
+            "details": "Template integrity verified before each deployment"
+          },
+          {
+            "test": "Modification detection",
+            "result": "MONITORED",
+            "details": "Real-time detection of template tampering"
+          }
+        ],
+        "remediation": "Infrastructure templates properly signed and validated",
+        "checkType": "cryptographicIntegrit"
+      },
+      {
+        "checkId": "SVC-05-003",
+        "name": "Virtual Machine Boot Integrity Failures",
+        "status": "FAIL",
+        "severity": "CRITICAL",
+        "description": "Virtual machines lack proper boot integrity verification",
+        "findings": {
+          "bootIntegrityIssues": {
+            "secureBootStatus": {
+              "enabled": false,
+              "issue": "Secure Boot disabled on Generation 2 VMs",
+              "impact": "Boot process not cryptographically verified"
+            },
+            "trustedPlatformModule": {
+              "tpm2Enabled": false,
+              "attestationStatus": "Not configured",
+              "issue": "No TPM-based boot measurement"
+            },
+            "uefiConfiguration": {
+              "firmwareSigning": "Not verified",
+              "bootloaderSigning": "Not verified",
+              "issue": "UEFI components not cryptographically validated"
+            }
+          },
+          "osIntegrityValidation": {
+            "kernelSigning": {
+              "verified": false,
+              "issue": "Kernel modules loaded without signature verification"
+            },
+            "driverSigning": {
+              "enforced": false,
+              "issue": "Unsigned drivers can be loaded"
+            },
+            "systemFileIntegrity": {
+              "monitored": false,
+              "issue": "No real-time system file integrity checking"
+            }
+          },
+          "bootProcessSecurity": {
+            "measurementLog": {
+              "available": false,
+              "issue": "No TPM PCR measurements for boot integrity"
+            },
+            "attestationService": {
+              "configured": false,
+              "issue": "No remote attestation of boot integrity"
+            },
+            "bootPolicy": {
+              "enforced": false,
+              "issue": "No cryptographic boot policy enforcement"
+            }
+          },
+          "vulnerabilityExposure": {
+            "bootkitRisk": "HIGH",
+            "rootkitDetection": "Limited",
+            "firmwareAttacks": "Unprotected",
+            "bootloaderTampering": "Undetected"
+          }
+        },
+        "testResults": [
+          {
+            "test": "Secure Boot status check",
+            "result": "DISABLED",
+            "details": "Secure Boot not enabled on critical VMs"
+          },
+          {
+            "test": "TPM attestation verification",
+            "result": "UNAVAILABLE",
+            "details": "No TPM-based integrity measurement"
+          },
+          {
+            "test": "Boot integrity monitoring",
+            "result": "ABSENT",
+            "details": "No continuous boot integrity verification"
+          }
+        ],
+        "complianceGaps": [
+          {
+            "requirement": "FedRAMP SI-7 (Software, Firmware, and Information Integrity)",
+            "status": "NON_COMPLIANT",
+            "issue": "Boot process integrity not cryptographically verified"
+          }
+        ],
+        "remediation": "CRITICAL: 1) Enable Secure Boot on all Generation 2 VMs, 2) Configure TPM 2.0 for boot measurement, 3) Implement Azure Attestation service, 4) Enable kernel and driver signature verification, 5) Deploy boot integrity monitoring solutions, 6) Configure UEFI firmware protection",
+        "checkType": "cryptographicIntegrit"
+      },
+      {
+        "checkId": "SVC-05-004",
+        "name": "Application Code Integrity Gaps",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Application code lacks proper cryptographic integrity verification",
+        "findings": {
+          "codeSigningIssues": {
+            "applicationBinaries": {
+              "signed": false,
+              "issue": "Web application binaries not code signed",
+              "impact": "Cannot verify application integrity"
+            },
+            "deploymentPackages": {
+              "signed": false,
+              "issue": "Deployment packages lack cryptographic signatures",
+              "impact": "Potential tampering undetected"
+            },
+            "thirdPartyLibraries": {
+              "integrityChecked": false,
+              "issue": "npm/NuGet packages not integrity verified",
+              "impact": "Supply chain attack risk"
+            }
+          },
+          "runtimeIntegrityChecks": {
+            "assemblyVerification": {
+              "enabled": false,
+              "issue": "No runtime assembly integrity checking"
+            },
+            "dynamicLoadingValidation": {
+              "enforced": false,
+              "issue": "Dynamically loaded code not validated"
+            },
+            "memoryProtection": {
+              "implemented": "Basic",
+              "issue": "Advanced memory protection features disabled"
+            }
+          },
+          "deploymentIntegrity": {
+            "cicdPipeline": {
+              "integrityValidation": false,
+              "issue": "No cryptographic validation in deployment pipeline"
+            },
+            "artifactSigning": {
+              "implemented": false,
+              "issue": "Build artifacts not cryptographically signed"
+            },
+            "deploymentVerification": {
+              "automated": false,
+              "issue": "No post-deployment integrity verification"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Code signature verification",
+            "result": "UNSIGNED",
+            "details": "Application binaries lack cryptographic signatures"
+          },
+          {
+            "test": "Runtime integrity check",
+            "result": "DISABLED",
+            "details": "No runtime code integrity verification"
+          },
+          {
+            "test": "Deployment verification",
+            "result": "UNVERIFIED",
+            "details": "Deployment integrity not cryptographically validated"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Implement code signing for all application binaries, 2) Enable assembly verification in runtime, 3) Add package integrity verification to build process, 4) Configure deployment artifact signing, 5) Implement post-deployment integrity checks, 6) Enable advanced memory protection features",
+        "checkType": "cryptographicIntegrit"
+      },
+      {
+        "checkId": "SVC-05-005",
+        "name": "Database Integrity Protection Deficiencies",
+        "status": "FAIL",
+        "severity": "HIGH",
+        "description": "Database lacks comprehensive cryptographic integrity protection",
+        "findings": {
+          "dataIntegrityProtection": {
+            "checksumValidation": {
+              "enabled": false,
+              "issue": "No automatic checksum validation for data pages"
+            },
+            "transactionLogIntegrity": {
+              "verified": false,
+              "issue": "Transaction log integrity not cryptographically protected"
+            },
+            "backupIntegrity": {
+              "checksumEnabled": false,
+              "issue": "Database backups lack integrity verification"
+            }
+          },
+          "accessIntegrityControls": {
+            "auditingIntegrity": {
+              "tamperProof": false,
+              "issue": "Audit logs not cryptographically protected"
+            },
+            "schemaIntegrity": {
+              "monitored": false,
+              "issue": "No cryptographic verification of schema changes"
+            },
+            "dataModificationTracking": {
+              "implemented": false,
+              "issue": "Data modification integrity not tracked"
+            }
+          },
+          "replicationIntegrity": {
+            "dataConsistency": {
+              "verified": false,
+              "issue": "Replication data integrity not cryptographically verified"
+            },
+            "transmissionIntegrity": {
+              "protected": "TLS only",
+              "issue": "No additional integrity protection for replication"
+            }
+          }
+        },
+        "testResults": [
+          {
+            "test": "Data page integrity check",
+            "result": "UNVERIFIED",
+            "details": "No automatic data page checksum validation"
+          },
+          {
+            "test": "Backup integrity verification",
+            "result": "DISABLED",
+            "details": "Backup files lack integrity checksums"
+          },
+          {
+            "test": "Audit log integrity",
+            "result": "UNPROTECTED",
+            "details": "Audit logs not cryptographically protected"
+          }
+        ],
+        "remediation": "HIGH PRIORITY: 1) Enable page verification and checksums, 2) Configure backup compression with checksums, 3) Implement audit log integrity protection, 4) Enable change data capture with integrity tracking, 5) Configure Always On with integrity verification, 6) Implement database schema change auditing",
+        "checkType": "cryptographicIntegrit"
+      },
+      {
+        "checkId": "SVC-05-006",
+        "name": "File System Integrity Monitoring Gaps",
+        "status": "FAIL",
+        "severity": "MEDIUM",
+        "description": "File system lacks comprehensive integrity monitoring and protection",
+        "findings": {
+          "fileIntegrityMonitoring": {
+            "realTimeMonitoring": {
+              "enabled": false,
+              "issue": "No real-time file integrity monitoring deployed"
+            },
+            "baselineProtection": {
+              "established": false,
+              "issue": "No cryptographic baseline established for critical files"
+            },
+            "criticalFileProtection": {
+              "monitored": false,
+              "systemFiles": "Unmonitored",
+              "configurationFiles": "Unmonitored",
+              "applicationFiles": "Unmonitored"
+            }
+          },
+          "integrityVerificationMethods": {
+            "hashingAlgorithm": "None configured",
+            "digitalSignatures": "Not implemented",
+            "checksumValidation": "Manual only",
+            "tamperDetection": "Limited"
+          },
+          "responseCapabilities": {
+            "automaticRemediation": false,
+            "alertGeneration": false,
+            "forensicCapability": "Limited",
+            "rollbackCapability": false
+          }
+        },
+        "testResults": [
+          {
+            "test": "File integrity monitoring status",
+            "result": "DISABLED",
+            "details": "No automated file integrity monitoring solution"
+          },
+          {
+            "test": "Critical file protection check",
+            "result": "UNPROTECTED",
+            "details": "System and application files not monitored"
+          },
+          {
+            "test": "Tamper detection capability",
+            "result": "LIMITED",
+            "details": "No real-time tamper detection"
+          }
+        ],
+        "remediation": "MEDIUM PRIORITY: 1) Deploy file integrity monitoring solution (e.g., AIDE, Tripwire), 2) Establish cryptographic baselines for critical files, 3) Configure real-time monitoring for system files, 4) Implement automatic integrity verification, 5) Set up alerting for integrity violations, 6) Create automated remediation procedures",
+        "checkType": "cryptographicIntegrit"
+      }
+    ]
+  }
+}

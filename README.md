@@ -1,3 +1,4 @@
+![Vaultes company logo with a blue and black shield design and black text on white background spelling out Vaultes](images/Logo.jpg)
 # Overview
 
 Vaultes LLC is proud to submit **V20x** as part of the FedRAMP20x Phase 1 pilot. 

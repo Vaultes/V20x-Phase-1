@@ -9,7 +9,7 @@ V20x is a newly developed web-based toolset to expedite audit evidence collectio
 
 Audit evidence gathering is a slow, expensive, and error prone process. Once gathered evidence must be reviewed, and often regathered adding additional time, cost, and overhead to the process. As a FedRAMP and StateRAMP Third-Party Assessment Organization (3PAO) that has conducted over 150 cybersecurity audits and assesssments, Vaultes is deeply familiar with these costs and pain. We developed V20x to provide a faster, more modern approach to evidence gathering and submission.
 
-V20x aimed to solve three main problems:
+V20x solves three main problems:
 
 1. Allows for a secure, organized, upload of documentary evidence allowing an end user to quickly review what documentation was needed, what had been provided, and what had been reviewed and approved or rejected.
 1. Allows for attestation of compliance for controls that are not easily documented.

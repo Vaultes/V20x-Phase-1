@@ -1,0 +1,47 @@
+{
+  "analysis": {
+    "id": "KSI-MLA-05",
+    "statement": "Perform Infrastructure as Code and configuration evaluation and testing",
+    "checks": [
+      {
+        "checkId": "KSI-MLA-05.1",
+        "description": "Verify Azure Resource Manager template validation",
+        "request": "az deployment group validate --resource-group fedramp-prod-rg --template-file main.bicep --parameters @main.parameters.json --query '{ProvisioningState:properties.provisioningState, ValidationErrors:error}' --output json",
+        "response": {
+          "ProvisioningState": "Succeeded",
+          "ValidationErrors": null
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-MLA-05.2",
+        "description": "Verify Azure Policy compliance for IaC templates",
+        "request": "az policy state list --resource-group fedramp-prod-rg --filter \"ComplianceState eq 'NonCompliant'\" --query '[].{PolicyDefinitionName:policyDefinitionName, ComplianceState:complianceState, ResourceType:resourceType}' --output json",
+        "response": [],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-MLA-05.3",
+        "description": "Verify security scanning of IaC templates",
+        "request": "az security assessment list --query '[?metadata.displayName==`Vulnerabilities in Azure Container Registry images should be remediated`].{Name:metadata.displayName, Status:status.code}' --output json",
+        "response": [
+          {
+            "Name": "Vulnerabilities in Azure Container Registry images should be remediated",
+            "Status": "Healthy"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-MLA-05.4",
+        "description": "Verify IaC testing procedures and CI/CD integration",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify IaC testing procedures, automated testing in CI/CD pipelines, and configuration drift detection mechanisms",
+        "result": "false"
+      }
+    ],
+    "overall_result": "partial",
+    "timestamp": "2025-08-20T12:30:00Z",
+    "assessor": "kompleye"
+  }
+}

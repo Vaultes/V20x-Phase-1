@@ -1,0 +1,57 @@
+{
+  "analysis": {
+    "id": "KSI-RPL-04",
+    "statement": "Regularly test the capability to recover from incidents and contingencies",
+    "checks": [
+      {
+        "checkId": "KSI-RPL-04.1",
+        "description": "Verify disaster recovery testing execution",
+        "request": "az backup restore list --vault-name fedramp-recovery-vault --resource-group fedramp-prod-rg --query '[?contains(operation, `Restore`)].{ItemName:entityFriendlyName, Operation:operation, Status:status, StartTime:startTime}' --output json",
+        "response": [
+          {
+            "ItemName": "web-vm-01-test-restore",
+            "Operation": "Restore",
+            "Status": "Completed",
+            "StartTime": "2025-08-15T14:00:00Z"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-RPL-04.2",
+        "description": "Verify database failover testing",
+        "request": "az sql failover-group show --name fedramp-sql-failover-group --server fedramp-sqlserver --resource-group fedramp-prod-rg --query '{Name:name, ReplicationState:replicationState, LastFailoverTime:lastFailoverTime}' --output json",
+        "response": {
+          "Name": "fedramp-sql-failover-group",
+          "ReplicationState": "CATCH_UP",
+          "LastFailoverTime": "2025-08-10T10:00:00Z"
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-RPL-04.3",
+        "description": "Verify automated recovery runbook testing",
+        "request": "az automation job list --automation-account-name fedramp-automation --resource-group fedramp-prod-rg --query '[?contains(runbookName, `recovery`) && status==`Completed`].{RunbookName:runbookName, Status:status, StartTime:startTime, EndTime:endTime}' --output json",
+        "response": [
+          {
+            "RunbookName": "vm-recovery-runbook",
+            "Status": "Completed",
+            "StartTime": "2025-08-15T15:00:00Z",
+            "EndTime": "2025-08-15T15:30:00Z"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-RPL-04.4",
+        "description": "Verify recovery testing procedures and documentation",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify recovery testing procedures, testing schedules, results documentation, and lessons learned integration",
+        "result": "false"
+      }
+    ],
+    "overall_result": "partial",
+    "timestamp": "2025-08-20T14:10:00Z",
+    "assessor": "kompleye"
+  }
+}

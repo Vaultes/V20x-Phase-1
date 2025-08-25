@@ -1,0 +1,70 @@
+{
+  "analysis": {
+    "id": "KSI-RPL-01",
+    "statement": "Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)",
+    "checks": [
+      {
+        "checkId": "KSI-RPL-01.1",
+        "description": "Verify backup policies with defined RPO settings",
+        "request": "az backup policy list --vault-name fedramp-recovery-vault --resource-group fedramp-prod-rg --query '[].{Name:name, BackupManagementType:backupManagementType, SchedulePolicy:schedulePolicy.scheduleRunFrequency, RetentionPolicy:retentionPolicy.dailySchedule.retentionDuration}' --output json",
+        "response": [
+          {
+            "Name": "daily-vm-backup",
+            "BackupManagementType": "AzureIaasVM",
+            "SchedulePolicy": "Daily",
+            "RetentionPolicy": {
+              "count": 30,
+              "durationType": "Days"
+            }
+          },
+          {
+            "Name": "hourly-sql-backup",
+            "BackupManagementType": "AzureSQL",
+            "SchedulePolicy": "Hourly",
+            "RetentionPolicy": {
+              "count": 7,
+              "durationType": "Days"
+            }
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-RPL-01.2",
+        "description": "Verify geo-redundant storage configuration for defined RPO",
+        "request": "az storage account show --name fedrampstorageacct --resource-group fedramp-prod-rg --query '{Name:name, Sku:sku.name, GeoReplicationStats:geoReplicationStats}' --output json",
+        "response": {
+          "Name": "fedrampstorageacct",
+          "Sku": "Standard_GRS",
+          "GeoReplicationStats": {
+            "status": "Live",
+            "lastSyncTime": "2025-08-20T13:00:00Z",
+            "canFailover": true
+          }
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-RPL-01.3",
+        "description": "Verify database backup configuration aligns with RPO/RTO",
+        "request": "az sql db show --name fedramp-database --server fedramp-sqlserver --resource-group fedramp-prod-rg --query '{Name:name, BackupRetentionPolicyState:backupRetentionPolicy.state, PointInTimeRetentionDays:pointInTimeRetentionDays}' --output json",
+        "response": {
+          "Name": "fedramp-database",
+          "BackupRetentionPolicyState": "Enabled",
+          "PointInTimeRetentionDays": 7
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-RPL-01.4",
+        "description": "Verify RTO/RPO documentation and business alignment",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify RTO/RPO definitions, business requirements alignment, and formal approval of recovery objectives",
+        "result": "pending verification"
+      }
+    ],
+    "overall_result": "pending verification",
+    "timestamp": "2025-08-20T13:55:00Z",
+    "assessor": "automated-analysis"
+  }
+}

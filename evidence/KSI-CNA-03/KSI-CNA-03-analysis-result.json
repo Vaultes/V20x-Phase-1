@@ -1,0 +1,92 @@
+{
+  "analysis": {
+    "id": "KSI-CNA-03",
+    "statement": "Use logical networking and related capabilities to enforce traffic flow controls",
+    "checks": [
+      {
+        "checkId": "KSI-CNA-03.1",
+        "description": "Verify User Defined Routes (UDRs) are configured to control traffic flow",
+        "request": "az network route-table list --query '[].{Name:name, ResourceGroup:resourceGroup, Routes:routes[].{Name:name, AddressPrefix:addressPrefix, NextHopType:nextHopType, NextHopIpAddress:nextHopIpAddress}}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-route-table",
+            "ResourceGroup": "fedramp-prod-rg",
+            "Routes": [
+              {
+                "Name": "route-to-firewall",
+                "AddressPrefix": "0.0.0.0/0",
+                "NextHopType": "VirtualAppliance",
+                "NextHopIpAddress": "10.0.0.4"
+              },
+              {
+                "Name": "route-internal-traffic",
+                "AddressPrefix": "10.0.0.0/16",
+                "NextHopType": "VnetLocal",
+                "NextHopIpAddress": null
+              }
+            ]
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CNA-03.2",
+        "description": "Verify Azure Load Balancer rules for traffic distribution and access control",
+        "request": "az network lb list --query '[].{Name:name, ResourceGroup:resourceGroup, LoadBalancingRules:loadBalancingRules[].{Name:name, Protocol:protocol, FrontendPort:frontendPort, BackendPort:backendPort}}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-lb",
+            "ResourceGroup": "fedramp-prod-rg",
+            "LoadBalancingRules": [
+              {
+                "Name": "https-rule",
+                "Protocol": "Tcp",
+                "FrontendPort": 443,
+                "BackendPort": 443
+              },
+              {
+                "Name": "http-redirect",
+                "Protocol": "Tcp",
+                "FrontendPort": 80,
+                "BackendPort": 8080
+              }
+            ]
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CNA-03.3",
+        "description": "Verify Azure Application Gateway with WAF is configured",
+        "request": "az network application-gateway list --query '[].{Name:name, ResourceGroup:resourceGroup, WebApplicationFirewall:webApplicationFirewallConfiguration.enabled, UrlPathMaps:urlPathMaps[].name}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-appgw",
+            "ResourceGroup": "fedramp-prod-rg",
+            "WebApplicationFirewall": true,
+            "UrlPathMaps": ["api-path-map", "web-path-map"]
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CNA-03.4",
+        "description": "Verify Virtual Network peering is configured with appropriate controls",
+        "request": "az network vnet peering list --resource-group fedramp-prod-rg --vnet-name fedramp-vnet --query '[].{Name:name, PeeringState:peeringState, AllowVnetAccess:allowVirtualNetworkAccess, AllowForwardedTraffic:allowForwardedTraffic, AllowGatewayTransit:allowGatewayTransit}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-to-management",
+            "PeeringState": "Connected",
+            "AllowVnetAccess": true,
+            "AllowForwardedTraffic": false,
+            "AllowGatewayTransit": false
+          }
+        ],
+        "result": "pass"
+      }
+    ],
+    "overall_result": "pass",
+    "timestamp": "2025-08-20T10:40:00Z",
+    "assessor": "automated-analysis"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "analysis": {
+    "id": "KSI-SVC-02",
+    "statement": "Encrypt or otherwise secure network traffic",
+    "checks": [
+      {
+        "checkId": "KSI-SVC-02.1",
+        "description": "Verify Application Gateway uses TLS 1.2 or higher",
+        "request": "az network application-gateway show --name fedramp-appgw --resource-group fedramp-prod-rg --query '{Name:name, SslPolicy:sslPolicy.policyType, MinProtocolVersion:sslPolicy.minProtocolVersion, CipherSuites:sslPolicy.cipherSuites}' --output json",
+        "response": {
+          "Name": "fedramp-appgw",
+          "SslPolicy": "Predefined",
+          "MinProtocolVersion": "TLSv1_2",
+          "CipherSuites": null
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-02.2",
+        "description": "Verify Load Balancer uses SSL/TLS for health probes where applicable",
+        "request": "az network lb probe list --lb-name fedramp-lb --resource-group fedramp-prod-rg --query '[].{Name:name, Protocol:protocol, Port:port, RequestPath:requestPath}' --output json",
+        "response": [
+          {
+            "Name": "https-health-probe",
+            "Protocol": "Https",
+            "Port": 443,
+            "RequestPath": "/health"
+          },
+          {
+            "Name": "tcp-health-probe",
+            "Protocol": "Tcp",
+            "Port": 8080,
+            "RequestPath": null
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-02.3",
+        "description": "Verify VPN Gateway uses appropriate encryption",
+        "request": "az network vnet-gateway list --resource-group fedramp-prod-rg --query '[].{Name:name, VpnType:vpnType, Sku:sku.name, IkeEncryption:vpnClientConfiguration.vpnClientIpsecPolicies[0].ikeEncryption}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-vpn-gateway",
+            "VpnType": "RouteBased",
+            "Sku": "VpnGw2",
+            "IkeEncryption": "AES256"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-02.4",
+        "description": "Verify Storage Account requires secure transfer",
+        "request": "az storage account list --resource-group fedramp-prod-rg --query '[].{Name:name, EnableHttpsTrafficOnly:enableHttpsTrafficOnly, MinimumTlsVersion:minimumTlsVersion}' --output json",
+        "response": [
+          {
+            "Name": "fedrampstorageacct",
+            "EnableHttpsTrafficOnly": true,
+            "MinimumTlsVersion": "TLS1_2"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-02.5",
+        "description": "Verify SQL Database uses encrypted connections",
+        "request": "az sql server show --name fedramp-sqlserver --resource-group fedramp-prod-rg --query '{Name:name, MinimalTlsVersion:minimalTlsVersion, PublicNetworkAccess:publicNetworkAccess}' --output json",
+        "response": {
+          "Name": "fedramp-sqlserver",
+          "MinimalTlsVersion": "1.2",
+          "PublicNetworkAccess": "Disabled"
+        },
+        "result": "pass"
+      }
+    ],
+    "overall_result": "true",
+    "timestamp": "2025-08-20T11:10:00Z",
+    "assessor": "kompleye"
+  }
+}

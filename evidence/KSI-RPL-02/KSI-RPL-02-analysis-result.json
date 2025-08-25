@@ -1,0 +1,67 @@
+{
+  "analysis": {
+    "id": "KSI-RPL-02",
+    "statement": "Develop and maintain a recovery plan that aligns with the defined recovery objectives",
+    "checks": [
+      {
+        "checkId": "KSI-RPL-02.1",
+        "description": "Verify Azure Site Recovery configuration for disaster recovery",
+        "request": "az backup recovery-services-backup-protection list --vault-name fedramp-recovery-vault --resource-group fedramp-prod-rg --query '[].{Name:name, BackupManagementType:backupManagementType, ProtectionState:protectionState}' --output json",
+        "response": [
+          {
+            "Name": "web-vm-01",
+            "BackupManagementType": "AzureIaasVM",
+            "ProtectionState": "Protected"
+          },
+          {
+            "Name": "app-vm-01",
+            "BackupManagementType": "AzureIaasVM",
+            "ProtectionState": "Protected"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-RPL-02.2",
+        "description": "Verify automated failover configuration",
+        "request": "az sql failover-group list --server fedramp-sqlserver --resource-group fedramp-prod-rg --query '[].{Name:name, ReplicationState:replicationState, FailoverPolicy:readWriteEndpoint.failoverPolicy}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-sql-failover-group",
+            "ReplicationState": "CATCH_UP",
+            "FailoverPolicy": "Automatic"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-RPL-02.3",
+        "description": "Verify recovery automation and runbooks",
+        "request": "az automation runbook list --automation-account-name fedramp-automation --resource-group fedramp-prod-rg --query '[?contains(name, `recovery`) || contains(name, `failover`)].{Name:name, State:state, RunbookType:runbookType}' --output json",
+        "response": [
+          {
+            "Name": "sql-failover-runbook",
+            "State": "Published",
+            "RunbookType": "PowerShell"
+          },
+          {
+            "Name": "vm-recovery-runbook",
+            "State": "Published",
+            "RunbookType": "PowerShell"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-RPL-02.4",
+        "description": "Verify recovery plan documentation and maintenance procedures",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify recovery plan documentation, maintenance procedures, and alignment with business continuity requirements",
+        "result": "pending verification"
+      }
+    ],
+    "overall_result": "pending verification",
+    "timestamp": "2025-08-20T14:00:00Z",
+    "assessor": "automated-analysis"
+  }
+}

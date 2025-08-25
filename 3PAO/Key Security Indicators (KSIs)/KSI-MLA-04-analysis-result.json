@@ -1,0 +1,64 @@
+{
+  "analysis": {
+    "id": "KSI-MLA-04",
+    "statement": "Perform authenticated vulnerability scanning on information resources",
+    "checks": [
+      {
+        "checkId": "KSI-MLA-04.1",
+        "description": "Verify authenticated vulnerability scanning agents are deployed",
+        "request": "az vm extension list --vm-name web-vm-01 --resource-group fedramp-prod-rg --query '[?contains(name, `QualysVulnerabilityManagement`) || contains(name, `NessusAgent`)].{Name:name, Publisher:publisher, ProvisioningState:provisioningState}' --output json",
+        "response": [
+          {
+            "Name": "QualysVulnerabilityManagement",
+            "Publisher": "Qualys",
+            "ProvisioningState": "Succeeded"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-MLA-04.2",
+        "description": "Verify container vulnerability scanning in Azure Container Registry",
+        "request": "az acr task list --registry fedrampregistry --query '[].{Name:name, Status:status, Platform:platform.os, IsSystemTask:isSystemTask}' --output json",
+        "response": [
+          {
+            "Name": "vulnerability-scan-task",
+            "Status": "Enabled",
+            "Platform": "Linux",
+            "IsSystemTask": false
+          },
+          {
+            "Name": "base-image-scan-task",
+            "Status": "Enabled",
+            "Platform": "Linux",
+            "IsSystemTask": true
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-MLA-04.3",
+        "description": "Verify database vulnerability assessment is enabled",
+        "request": "az sql server ad-admin list --server-name fedramp-sqlserver --resource-group fedramp-prod-rg --query '[].{Login:login, Sid:sid, TenantId:tenantId}' --output json",
+        "response": [
+          {
+            "Login": "security@fedramp.onmicrosoft.com",
+            "Sid": "12345678-1234-1234-1234-123456789012",
+            "TenantId": "87654321-4321-4321-4321-210987654321"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-MLA-04.4",
+        "description": "Verify authenticated scanning credentials management and rotation",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify authenticated scanning credential management, rotation procedures, and scanning account privilege levels",
+        "result": "false"
+      }
+    ],
+    "overall_result": "partial",
+    "timestamp": "2025-08-20T12:25:00Z",
+    "assessor": "kompleye"
+  }
+}

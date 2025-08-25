@@ -1,0 +1,69 @@
+{
+  "analysis": {
+    "id": "KSI-INR-03",
+    "statement": "Generate after action reports and regularly incorporate lessons learned into operations",
+    "checks": [
+      {
+        "checkId": "KSI-INR-03.1",
+        "description": "Verify incident closure and documentation procedures",
+        "request": "az sentinel incident list --workspace-name fedramp-sentinel-workspace --resource-group fedramp-security-rg --query '[?status==`Closed`].{Title:title, Status:status, ClosedTime:closedTime, Classification:classification}' --output json",
+        "response": [
+          {
+            "Title": "Suspicious login activity detected",
+            "Status": "Closed",
+            "ClosedTime": "2025-08-19T16:00:00Z",
+            "Classification": "FalsePositive"
+          },
+          {
+            "Title": "Failed authentication attempts",
+            "Status": "Closed",
+            "ClosedTime": "2025-08-18T11:30:00Z",
+            "Classification": "TruePositive"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-INR-03.2",
+        "description": "Verify lessons learned integration into Azure Policy",
+        "request": "az policy assignment list --query '[?contains(name, `lessons-learned`) || contains(displayName, `post-incident`)].{Name:name, DisplayName:displayName, PolicyDefinitionId:policyDefinitionId}' --output json",
+        "response": [
+          {
+            "Name": "post-incident-hardening",
+            "DisplayName": "Post-Incident Security Hardening Policy",
+            "PolicyDefinitionId": "/subscriptions/12345678-1234-1234-1234-123456789012/providers/Microsoft.Authorization/policyDefinitions/custom-post-incident-policy"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-INR-03.3",
+        "description": "Verify improvement tracking through Azure DevOps work items",
+        "request": "az boards work-item list --organization https://dev.azure.com/fedramp --project fedramp-project --query '[?fields.\"System.WorkItemType\"==`Improvement` && contains(fields.\"System.Title\", `incident`)].{Id:id, Title:fields.\"System.Title\", State:fields.\"System.State\"}' --output json",
+        "response": [
+          {
+            "Id": 7890,
+            "Title": "Implement enhanced monitoring based on incident INC-2025-0034",
+            "State": "Resolved"
+          },
+          {
+            "Id": 7891,
+            "Title": "Update authentication policies from lessons learned",
+            "State": "Active"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-INR-03.4",
+        "description": "Verify after action report procedures and lessons learned documentation",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify after action report procedures, lessons learned documentation, and operational improvement implementation tracking",
+        "result": "false"
+      }
+    ],
+    "overall_result": "false",
+    "timestamp": "2025-08-20T14:25:00Z",
+    "assessor": "Kompleye"
+  }
+}

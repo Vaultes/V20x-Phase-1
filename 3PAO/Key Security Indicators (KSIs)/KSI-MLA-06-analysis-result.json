@@ -1,0 +1,96 @@
+{
+  "analysis": {
+    "id": "KSI-MLA-06",
+    "statement": "Centrally track and prioritize the mitigation and/or remediation of identified vulnerabilities",
+    "checks": [
+      {
+        "checkId": "KSI-MLA-06.1",
+        "description": "Verify Azure Security Center recommendations tracking",
+        "request": "az security assessment list --query '[].{Name:metadata.displayName, Severity:metadata.severity, Status:status.code, ResourceCount:length(resourceDetails)}' --output json",
+        "response": [
+          {
+            "Name": "System updates should be installed on your machines",
+            "Severity": "High",
+            "Status": "Healthy",
+            "ResourceCount": 3
+          },
+          {
+            "Name": "Endpoint protection should be installed on your machines",
+            "Severity": "Medium",
+            "Status": "Healthy",
+            "ResourceCount": 3
+          },
+          {
+            "Name": "Storage accounts should restrict network access",
+            "Severity": "Medium",
+            "Status": "Healthy",
+            "ResourceCount": 1
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-MLA-06.2",
+        "description": "Verify vulnerability management workflow automation",
+        "request": "az logic workflow list --resource-group fedramp-security-rg --query '[].{Name:name, State:state, Triggers:definition.triggers}' --output json",
+        "response": [
+          {
+            "Name": "vulnerability-tracking-workflow",
+            "State": "Enabled",
+            "Triggers": {
+              "when_security_alert_created": {
+                "type": "ApiConnection",
+                "inputs": {
+                  "host": {
+                    "connection": {
+                      "name": "@parameters('$connections')['azuresentinel']['connectionId']"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-MLA-06.3",
+        "description": "Verify integration with ticketing systems for vulnerability tracking",
+        "request": "az logic workflow show --name vulnerability-tracking-workflow --resource-group fedramp-security-rg --query '{Name:name, Actions:definition.actions}' --output json",
+        "response": {
+          "Name": "vulnerability-tracking-workflow",
+          "Actions": {
+            "create_ticket": {
+              "type": "Http",
+              "inputs": {
+                "method": "POST",
+                "uri": "https://fedramp.service-now.com/api/now/table/incident"
+              }
+            },
+            "send_notification": {
+              "type": "ApiConnection",
+              "inputs": {
+                "host": {
+                  "connection": {
+                    "name": "@parameters('$connections')['teams']['connectionId']"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-MLA-06.4",
+        "description": "Verify vulnerability prioritization criteria and SLA compliance",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify vulnerability prioritization criteria, SLA compliance tracking, and remediation verification procedures",
+        "result": "false"
+      }
+    ],
+    "overall_result": "partial",
+    "timestamp": "2025-08-20T12:35:00Z",
+    "assessor": "kompleye"
+  }
+}

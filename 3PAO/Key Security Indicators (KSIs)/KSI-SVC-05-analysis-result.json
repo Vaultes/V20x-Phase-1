@@ -1,0 +1,59 @@
+{
+  "analysis": {
+    "id": "KSI-SVC-05",
+    "statement": "Enforce system and information resource integrity through cryptographic means",
+    "checks": [
+      {
+        "checkId": "KSI-SVC-05.1",
+        "description": "Verify Azure Code Signing certificates are used for applications",
+        "request": "az keyvault certificate list --vault-name fedramp-keyvault --query '[].{Name:name, Enabled:attributes.enabled, KeyType:kid}' --output json",
+        "response": [
+          {
+            "Name": "code-signing-cert",
+            "Enabled": true,
+            "KeyType": "https://fedramp-keyvault.vault.azure.net/keys/code-signing-cert/v1.0"
+          },
+          {
+            "Name": "ssl-certificate",
+            "Enabled": true,
+            "KeyType": "https://fedramp-keyvault.vault.azure.net/keys/ssl-certificate/v1.0"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-05.2",
+        "description": "Verify container image signing and verification",
+        "request": "az acr repository show --name fedrampregistry --repository webapp --query '{Name:name, SigningEnabled:signingEnabled}' --output json",
+        "response": {
+          "Name": "webapp",
+          "SigningEnabled": true
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-05.3",
+        "description": "Verify Azure Security Center file integrity monitoring",
+        "request": "az security assessment list --query '[?metadata.displayName==`File integrity monitoring should be enabled on machines`].{Name:metadata.displayName, Status:status.code, Resources:length(resourceDetails)}' --output json",
+        "response": [
+          {
+            "Name": "File integrity monitoring should be enabled on machines",
+            "Status": "Healthy",
+            "Resources": 5
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-05.4",
+        "description": "Verify cryptographic hash verification processes",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify cryptographic hash verification processes for software deployments, file integrity checks, and digital signatures validation procedures",
+        "result": "false"
+      }
+    ],
+    "overall_result": "partial",
+    "timestamp": "2025-08-20T11:25:00Z",
+    "assessor": "kompleye"
+  }
+}

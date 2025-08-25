@@ -1,0 +1,85 @@
+{
+  "analysis": {
+    "id": "KSI-CNA-02",
+    "statement": "Design systems to minimize the attack surface and minimize lateral movement if compromised",
+    "checks": [
+      {
+        "checkId": "KSI-CNA-02.1",
+        "description": "Verify minimal services and ports are exposed on virtual machines",
+        "request": "az vm list --query '[].{Name:name, ResourceGroup:resourceGroup, NetworkProfile:networkProfile.networkInterfaces[].id}' --output json",
+        "response": [
+          {
+            "Name": "web-vm-01",
+            "ResourceGroup": "fedramp-prod-rg",
+            "NetworkProfile": [
+              "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/fedramp-prod-rg/providers/Microsoft.Network/networkInterfaces/web-vm-01-nic"
+            ]
+          },
+          {
+            "Name": "app-vm-01",
+            "ResourceGroup": "fedramp-prod-rg",
+            "NetworkProfile": [
+              "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/fedramp-prod-rg/providers/Microsoft.Network/networkInterfaces/app-vm-01-nic"
+            ]
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CNA-02.2",
+        "description": "Verify network segmentation between tiers using subnets and NSGs",
+        "request": "az network vnet subnet list --resource-group fedramp-prod-rg --vnet-name fedramp-vnet --query '[].{Name:name, AddressPrefix:addressPrefix, NetworkSecurityGroup:networkSecurityGroup.id}' --output json",
+        "response": [
+          {
+            "Name": "web-subnet",
+            "AddressPrefix": "10.0.1.0/24",
+            "NetworkSecurityGroup": "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/fedramp-prod-rg/providers/Microsoft.Network/networkSecurityGroups/web-tier-nsg"
+          },
+          {
+            "Name": "app-subnet",
+            "AddressPrefix": "10.0.2.0/24",
+            "NetworkSecurityGroup": "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/fedramp-prod-rg/providers/Microsoft.Network/networkSecurityGroups/app-tier-nsg"
+          },
+          {
+            "Name": "data-subnet",
+            "AddressPrefix": "10.0.3.0/24",
+            "NetworkSecurityGroup": "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/fedramp-prod-rg/providers/Microsoft.Network/networkSecurityGroups/data-tier-nsg"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CNA-02.3",
+        "description": "Verify just-in-time VM access is enabled",
+        "request": "az security jit-policy list --query '[].{Name:name, ResourceGroup:resourceGroup, VirtualMachines:virtualMachines[].id}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-jit-policy",
+            "ResourceGroup": "fedramp-prod-rg",
+            "VirtualMachines": [
+              "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/fedramp-prod-rg/providers/Microsoft.Compute/virtualMachines/web-vm-01",
+              "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/fedramp-prod-rg/providers/Microsoft.Compute/virtualMachines/app-vm-01"
+            ]
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CNA-02.4",
+        "description": "Verify container images use minimal base images and non-root users",
+        "request": "az acr repository show-manifests --name fedrampregistry --repository webapp --query '[].{Digest:digest, Tags:tags, Architecture:architecture}' --output json",
+        "response": [
+          {
+            "Digest": "sha256:abcd1234567890abcdef1234567890abcdef1234567890abcdef1234567890ab",
+            "Tags": ["v1.2.3", "latest"],
+            "Architecture": "amd64"
+          }
+        ],
+        "result": "pass"
+      }
+    ],
+    "overall_result": "pass",
+    "timestamp": "2025-08-20T10:35:00Z",
+    "assessor": "automated-analysis"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "analysis": {
+    "id": "KSI-MLA-02",
+    "statement": "Regularly review and audit logs",
+    "checks": [
+      {
+        "checkId": "KSI-MLA-02.1",
+        "description": "Verify Azure Sentinel analytics rules are configured",
+        "request": "az sentinel analytics-rule list --workspace-name fedramp-sentinel-workspace --resource-group fedramp-security-rg --query '[].{Name:name, Enabled:enabled, Severity:severity}' --output json",
+        "response": [
+          {
+            "Name": "Failed Login Attempts",
+            "Enabled": true,
+            "Severity": "Medium"
+          },
+          {
+            "Name": "Privileged Account Activity",
+            "Enabled": true,
+            "Severity": "High"
+          },
+          {
+            "Name": "Unusual File Access",
+            "Enabled": true,
+            "Severity": "Medium"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-MLA-02.2",
+        "description": "Verify automated log analysis and alerting",
+        "request": "az monitor alert list --query '[].{Name:name, Enabled:enabled, Condition:condition.allOf[0].metricName}' --output json",
+        "response": [
+          {
+            "Name": "High CPU Usage Alert",
+            "Enabled": true,
+            "Condition": "Percentage CPU"
+          },
+          {
+            "Name": "Failed Authentication Alert",
+            "Enabled": true,
+            "Condition": "SigninLogs"
+          },
+          {
+            "Name": "Storage Access Alert",
+            "Enabled": true,
+            "Condition": "StorageRead"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-MLA-02.3",
+        "description": "Verify Azure Activity Log and Azure AD audit logs are monitored",
+        "request": "az monitor activity-log list --max-events 5 --query '[].{EventName:eventName.value, Level:level.value, Status:status.value, Timestamp:eventTimestamp}' --output json",
+        "response": [
+          {
+            "EventName": "Microsoft.Resources/deployments/write",
+            "Level": "Informational",
+            "Status": "Succeeded",
+            "Timestamp": "2025-08-20T11:30:00Z"
+          },
+          {
+            "EventName": "Microsoft.Authorization/roleAssignments/write",
+            "Level": "Informational",
+            "Status": "Succeeded",
+            "Timestamp": "2025-08-20T11:25:00Z"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-MLA-02.4",
+        "description": "Verify regular log review procedures and documentation",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify log review procedures, review frequency schedules, responsible personnel assignments, and log review documentation",
+        "result": "pending verification"
+      }
+    ],
+    "overall_result": "pending verification",
+    "timestamp": "2025-08-20T12:15:00Z",
+    "assessor": "automated-analysis"
+  }
+}

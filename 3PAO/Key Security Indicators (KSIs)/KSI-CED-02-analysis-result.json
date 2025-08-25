@@ -1,0 +1,65 @@
+{
+  "analysis": {
+    "id": "KSI-CED-02",
+    "statement": "Require role-specific training for high risk roles, including at least roles with privileged access",
+    "checks": [
+      {
+        "checkId": "KSI-CED-02.1",
+        "description": "Verify privileged role assignments and training requirements",
+        "request": "az ad privileged-access list --query '[].{RoleName:roleDefinition.displayName, UserName:subject.displayName, State:state, AssignmentType:assignmentType}' --output json",
+        "response": [
+          {
+            "RoleName": "Global Administrator",
+            "UserName": "admin@fedramp.onmicrosoft.com",
+            "State": "eligible",
+            "AssignmentType": "Assigned"
+          },
+          {
+            "RoleName": "Security Administrator",
+            "UserName": "security@fedramp.onmicrosoft.com",
+            "State": "eligible",
+            "AssignmentType": "Assigned"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CED-02.2",
+        "description": "Verify conditional access for privileged users training compliance",
+        "request": "az ad policy list --query '[?contains(definition.displayName, `Privileged`) && contains(definition.displayName, `Training`)].{Name:definition.displayName, State:definition.state, Conditions:definition.conditions}' --output json",
+        "response": [
+          {
+            "Name": "Privileged User Training Compliance",
+            "State": "enabled",
+            "Conditions": {
+              "users": {
+                "includeRoles": [
+                  "62e90394-69f5-4237-9190-012177145e10",
+                  "194ae4cb-b126-40b2-bd5b-6091b380977d"
+                ]
+              }
+            }
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CED-02.3",
+        "description": "Verify role-specific training curriculum and tracking",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify role-specific training curriculum, completion tracking for high-risk roles, and specialized security training requirements",
+        "result": "false"
+      },
+      {
+        "checkId": "KSI-CED-02.4",
+        "description": "Verify privileged access training governance and compliance monitoring",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify privileged access training governance, compliance monitoring procedures, and remediation for non-compliant privileged users",
+        "result": "false"
+      }
+    ],
+    "overall_result": "false",
+    "timestamp": "2025-08-20T13:50:00Z",
+    "assessor": "Kompleye"
+  }
+}

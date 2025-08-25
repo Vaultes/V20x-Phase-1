@@ -1,0 +1,65 @@
+{
+  "analysis": {
+    "id": "KSI-PIY-02",
+    "statement": "Have policies outlining the security objectives of all information resources",
+    "checks": [
+      {
+        "checkId": "KSI-PIY-02.1",
+        "description": "Verify Azure Policy assignments for security objectives",
+        "request": "az policy assignment list --query '[].{Name:name, PolicyDefinitionId:policyDefinitionId, Scope:scope, EnforcementMode:enforcementMode}' --output json",
+        "response": [
+          {
+            "Name": "security-baseline-assignment",
+            "PolicyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/89c6cddc-1c73-4ac1-b19c-54d1a15a42f2",
+            "Scope": "/subscriptions/12345678-1234-1234-1234-123456789012",
+            "EnforcementMode": "Default"
+          },
+          {
+            "Name": "encryption-policy-assignment",
+            "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/404c3081-a854-4457-ae30-26a93ef643f9",
+            "Scope": "/subscriptions/12345678-1234-1234-1234-123456789012",
+            "EnforcementMode": "Default"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-PIY-02.2",
+        "description": "Verify resource tagging for security classification",
+        "request": "az resource list --resource-group fedramp-prod-rg --query '[].{Name:name, Type:type, SecurityClassification:tags.SecurityClassification, DataClassification:tags.DataClassification}' --output json",
+        "response": [
+          {
+            "Name": "fedrampstorageacct",
+            "Type": "Microsoft.Storage/storageAccounts",
+            "SecurityClassification": "FIPS-199-Low",
+            "DataClassification": "Internal"
+          },
+          {
+            "Name": "fedramp-sqlserver",
+            "Type": "Microsoft.Sql/servers",
+            "SecurityClassification": "FIPS-199-Low",
+            "DataClassification": "Internal"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-PIY-02.3",
+        "description": "Verify policy compliance monitoring",
+        "request": "az policy state list --filter \"ComplianceState eq 'NonCompliant'\" --query 'length(@)' --output json",
+        "response": 0,
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-PIY-02.4",
+        "description": "Verify security policy documentation and governance",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify security policy documentation, governance procedures, and policy review/update processes",
+        "result": "pending verification"
+      }
+    ],
+    "overall_result": "pending verification",
+    "timestamp": "2025-08-20T13:10:00Z",
+    "assessor": "automated-analysis"
+  }
+}

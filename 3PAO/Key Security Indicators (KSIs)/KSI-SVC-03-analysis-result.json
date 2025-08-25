@@ -1,0 +1,86 @@
+{
+  "analysis": {
+    "id": "KSI-SVC-03",
+    "statement": "Encrypt all federal and sensitive information at rest",
+    "checks": [
+      {
+        "checkId": "KSI-SVC-03.1",
+        "description": "Verify Storage Account encryption is enabled with customer-managed keys",
+        "request": "az storage account show --name fedrampstorageacct --resource-group fedramp-prod-rg --query '{Name:name, Encryption:encryption.services, KeySource:encryption.keySource, KeyVaultProperties:encryption.keyVaultProperties}' --output json",
+        "response": {
+          "Name": "fedrampstorageacct",
+          "Encryption": {
+            "blob": {
+              "enabled": true,
+              "keyType": "Account",
+              "lastEnabledTime": "2025-08-01T10:00:00.000000+00:00"
+            },
+            "file": {
+              "enabled": true,
+              "keyType": "Account",
+              "lastEnabledTime": "2025-08-01T10:00:00.000000+00:00"
+            }
+          },
+          "KeySource": "Microsoft.Keyvault",
+          "KeyVaultProperties": {
+            "keyName": "storage-encryption-key",
+            "keyVaultUri": "https://fedramp-keyvault.vault.azure.net/",
+            "keyVersion": "v1.0"
+          }
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-03.2",
+        "description": "Verify SQL Database Transparent Data Encryption (TDE) is enabled",
+        "request": "az sql db tde show --database fedramp-database --server fedramp-sqlserver --resource-group fedramp-prod-rg --query '{Status:status, EncryptionProtector:encryptionProtector}' --output json",
+        "response": {
+          "Status": "Enabled",
+          "EncryptionProtector": "ServiceManaged"
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-03.3",
+        "description": "Verify VM disk encryption is enabled",
+        "request": "az vm encryption show --name web-vm-01 --resource-group fedramp-prod-rg --query '{OsVolumeEncrypted:osDisk, DataVolumesEncrypted:dataDisk}' --output json",
+        "response": {
+          "OsVolumeEncrypted": "Encrypted",
+          "DataVolumesEncrypted": "Encrypted"
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-03.4",
+        "description": "Verify Key Vault has proper access policies and soft delete enabled",
+        "request": "az keyvault show --name fedramp-keyvault --resource-group fedramp-prod-rg --query '{Name:name, EnableSoftDelete:properties.enableSoftDelete, EnablePurgeProtection:properties.enablePurgeProtection, HsmPoolResourceId:properties.hsmPoolResourceId}' --output json",
+        "response": {
+          "Name": "fedramp-keyvault",
+          "EnableSoftDelete": true,
+          "EnablePurgeProtection": true,
+          "HsmPoolResourceId": null
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-03.5",
+        "description": "Verify backup encryption is configured",
+        "request": "az backup vault show --name fedramp-recovery-vault --resource-group fedramp-prod-rg --query '{Name:name, EncryptionSettings:properties.encryptionSettings}' --output json",
+        "response": {
+          "Name": "fedramp-recovery-vault",
+          "EncryptionSettings": {
+            "encryptionKeyState": "Enabled",
+            "kekDetails": {
+              "keyUrl": "https://fedramp-keyvault.vault.azure.net/keys/backup-encryption-key/v1.0",
+              "keyVaultId": "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/fedramp-prod-rg/providers/Microsoft.KeyVault/vaults/fedramp-keyvault"
+            }
+          }
+        },
+        "result": "pass"
+      }
+    ],
+    "overall_result": "true",
+    "timestamp": "2025-08-20T11:15:00Z",
+    "assessor": "kompleye"
+  }
+}

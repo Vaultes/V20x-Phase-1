@@ -1,0 +1,102 @@
+{
+  "analysis": {
+    "id": "KSI-SVC-01",
+    "statement": "Harden and review network and system configurations",
+    "checks": [
+      {
+        "checkId": "KSI-SVC-01.1",
+        "description": "Verify system hardening through Azure Policy compliance",
+        "request": "az policy assignment list --query '[].{Name:name, PolicyDefinitionId:policyDefinitionId, EnforcementMode:enforcementMode}' --output json",
+        "response": [
+          {
+            "Name": "cis-benchmark-assignment",
+            "PolicyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/89c6cddc-1c73-4ac1-b19c-54d1a15a42f2",
+            "EnforcementMode": "Default"
+          },
+          {
+            "Name": "nist-800-53-assignment",
+            "PolicyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/cf25b9c1-bd23-4eb6-bd2c-f4f3ac644a5f",
+            "EnforcementMode": "Default"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-01.2",
+        "description": "Verify VM extensions for security monitoring are installed",
+        "request": "az vm extension list --vm-name web-vm-01 --resource-group fedramp-prod-rg --query '[].{Name:name, TypeHandlerVersion:typeHandlerVersion, ProvisioningState:provisioningState}' --output json",
+        "response": [
+          {
+            "Name": "Microsoft.Azure.Security.Monitoring.AzureSecurityLinuxAgent",
+            "TypeHandlerVersion": "2.19.6",
+            "ProvisioningState": "Succeeded"
+          },
+          {
+            "Name": "Microsoft.Azure.Monitor.AzureMonitorLinuxAgent",
+            "TypeHandlerVersion": "1.25.1",
+            "ProvisioningState": "Succeeded"
+          },
+          {
+            "Name": "Microsoft.Azure.Security.IaaSAntimalware",
+            "TypeHandlerVersion": "1.5.5.7",
+            "ProvisioningState": "Succeeded"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-01.3",
+        "description": "Verify Network Security Group rules follow least privilege principle",
+        "request": "az network nsg rule list --nsg-name web-tier-nsg --resource-group fedramp-prod-rg --query '[].{Name:name, Priority:priority, Access:access, Protocol:protocol, SourcePortRange:sourcePortRange, DestinationPortRange:destinationPortRange, SourceAddressPrefix:sourceAddressPrefix}' --output json",
+        "response": [
+          {
+            "Name": "AllowHTTPS",
+            "Priority": 100,
+            "Access": "Allow",
+            "Protocol": "Tcp",
+            "SourcePortRange": "*",
+            "DestinationPortRange": "443",
+            "SourceAddressPrefix": "*"
+          },
+          {
+            "Name": "AllowSSH",
+            "Priority": 200,
+            "Access": "Allow",
+            "Protocol": "Tcp",
+            "SourcePortRange": "*",
+            "DestinationPortRange": "22",
+            "SourceAddressPrefix": "10.0.4.0/24"
+          },
+          {
+            "Name": "DenyAllInbound",
+            "Priority": 4096,
+            "Access": "Deny",
+            "Protocol": "*",
+            "SourcePortRange": "*",
+            "DestinationPortRange": "*",
+            "SourceAddressPrefix": "*"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-01.4",
+        "description": "Verify configuration management tools are in use",
+        "request": "az vm run-command invoke --command-id RunShellScript --name web-vm-01 --resource-group fedramp-prod-rg --scripts \"systemctl status ansible || systemctl status puppet-agent || systemctl status chef-client\"",
+        "response": {
+          "value": [
+            {
+              "code": "ProvisioningState/succeeded",
+              "displayStatus": "Provisioning succeeded",
+              "message": "ansible.service - Ansible Configuration Management\n   Loaded: loaded (/etc/systemd/system/ansible.service; enabled; vendor preset: disabled)\n   Active: active (running) since Mon 2025-08-20 10:30:00 UTC; 30min ago"
+            }
+          ]
+        },
+        "result": "pass"
+      }
+    ],
+    "overall_result": "true",
+    "timestamp": "2025-08-20T11:05:00Z",
+    "assessor": "kompleye"
+  }
+}

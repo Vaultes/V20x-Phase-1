@@ -1,0 +1,63 @@
+{
+  "analysis": {
+    "id": "KSI-SVC-04",
+    "statement": "Manage configuration centrally",
+    "checks": [
+      {
+        "checkId": "KSI-SVC-04.1",
+        "description": "Verify Azure Automation State Configuration (DSC) is implemented",
+        "request": "az automation account list --query '[].{Name:name, ResourceGroup:resourceGroup, State:state}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-automation",
+            "ResourceGroup": "fedramp-prod-rg",
+            "State": "Ok"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-04.2",
+        "description": "Verify Azure Policy for configuration management",
+        "request": "az policy assignment list --query '[].{Name:name, PolicyDefinitionId:policyDefinitionId, Scope:scope}' --output json",
+        "response": [
+          {
+            "Name": "baseline-configuration",
+            "PolicyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/f9be5368-9bf5-4b84-9e0a-7850da98bb46",
+            "Scope": "/subscriptions/12345678-1234-1234-1234-123456789012"
+          },
+          {
+            "Name": "guest-configuration-baseline",
+            "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/385f5147-9dd9-4fff-ad34-adbe4313e72a",
+            "Scope": "/subscriptions/12345678-1234-1234-1234-123456789012"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-04.3",
+        "description": "Verify Azure Arc for hybrid configuration management",
+        "request": "az connectedmachine list --query '[].{Name:name, ResourceGroup:resourceGroup, Status:status, AgentVersion:agentVersion}' --output json",
+        "response": [
+          {
+            "Name": "onprem-server-01",
+            "ResourceGroup": "fedramp-hybrid-rg",
+            "Status": "Connected",
+            "AgentVersion": "1.33.0"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-04.4",
+        "description": "Verify centralized configuration repository and version control",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify centralized configuration management processes, Git repositories for infrastructure as code, and change approval workflows",
+        "result": "false"
+      }
+    ],
+    "overall_result": "partial",
+    "timestamp": "2025-08-20T11:20:00Z",
+    "assessor": "kompleye"
+  }
+}

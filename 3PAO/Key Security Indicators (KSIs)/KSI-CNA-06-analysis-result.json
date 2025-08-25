@@ -1,0 +1,92 @@
+{
+  "analysis": {
+    "id": "KSI-CNA-06",
+    "statement": "Design systems for high availability and rapid recovery",
+    "checks": [
+      {
+        "checkId": "KSI-CNA-06.1",
+        "description": "Verify Availability Sets or Availability Zones are configured for VMs",
+        "request": "az vm list --query '[].{Name:name, ResourceGroup:resourceGroup, AvailabilitySet:availabilitySet.id, Zones:zones}' --output json",
+        "response": [
+          {
+            "Name": "web-vm-01",
+            "ResourceGroup": "fedramp-prod-rg",
+            "AvailabilitySet": null,
+            "Zones": ["1"]
+          },
+          {
+            "Name": "web-vm-02",
+            "ResourceGroup": "fedramp-prod-rg",
+            "AvailabilitySet": null,
+            "Zones": ["2"]
+          },
+          {
+            "Name": "app-vm-01",
+            "ResourceGroup": "fedramp-prod-rg",
+            "AvailabilitySet": null,
+            "Zones": ["1"]
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CNA-06.2",
+        "description": "Verify Load Balancer health probes are configured",
+        "request": "az network lb probe list --lb-name fedramp-lb --resource-group fedramp-prod-rg --query '[].{Name:name, Protocol:protocol, Port:port, IntervalInSeconds:intervalInSeconds, NumberOfProbes:numberOfProbes}' --output json",
+        "response": [
+          {
+            "Name": "web-health-probe",
+            "Protocol": "Http",
+            "Port": 80,
+            "IntervalInSeconds": 15,
+            "NumberOfProbes": 2
+          },
+          {
+            "Name": "app-health-probe",
+            "Protocol": "Http",
+            "Port": 8080,
+            "IntervalInSeconds": 15,
+            "NumberOfProbes": 2
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CNA-06.3",
+        "description": "Verify Azure SQL Database is configured with geo-redundancy",
+        "request": "az sql db list --server fedramp-sqlserver --resource-group fedramp-prod-rg --query '[].{Name:name, Status:status, ServiceLevelObjective:currentServiceObjectiveName, Sku:sku.name, ZoneRedundant:zoneRedundant}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-database",
+            "Status": "Online",
+            "ServiceLevelObjective": "P2",
+            "Sku": "Premium",
+            "ZoneRedundant": true
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CNA-06.4",
+        "description": "Verify backup policies are configured for VMs and databases",
+        "request": "az backup policy list --vault-name fedramp-recovery-vault --resource-group fedramp-prod-rg --query '[].{Name:name, BackupManagementType:backupManagementType, SchedulePolicy:schedulePolicy.scheduleFrequency}' --output json",
+        "response": [
+          {
+            "Name": "daily-vm-backup",
+            "BackupManagementType": "AzureIaasVM",
+            "SchedulePolicy": "Daily"
+          },
+          {
+            "Name": "hourly-sql-backup",
+            "BackupManagementType": "AzureSQL",
+            "SchedulePolicy": "Hourly"
+          }
+        ],
+        "result": "pass"
+      }
+    ],
+    "overall_result": "true",
+    "timestamp": "2025-08-20T10:55:00Z",
+    "assessor": "Kompleye"
+  }
+}

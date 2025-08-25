@@ -1,0 +1,65 @@
+{
+  "analysis": {
+    "id": "KSI-CNA-05",
+    "statement": "Have denial of service protection",
+    "checks": [
+      {
+        "checkId": "KSI-CNA-05.1",
+        "description": "Verify Azure DDoS Protection is enabled on virtual networks",
+        "request": "az network ddos-protection list --query '[].{Name:name, ResourceGroup:resourceGroup, ProvisioningState:provisioningState}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-ddos-plan",
+            "ResourceGroup": "fedramp-prod-rg",
+            "ProvisioningState": "Succeeded"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CNA-05.2",
+        "description": "Verify virtual networks are associated with DDoS protection plan",
+        "request": "az network vnet list --query '[].{Name:name, ResourceGroup:resourceGroup, DdosProtectionPlan:ddosProtectionPlan.id, EnableDdosProtection:enableDdosProtection}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-vnet",
+            "ResourceGroup": "fedramp-prod-rg",
+            "DdosProtectionPlan": "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/fedramp-prod-rg/providers/Microsoft.Network/ddosProtectionPlans/fedramp-ddos-plan",
+            "EnableDdosProtection": true
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CNA-05.3",
+        "description": "Verify Azure Front Door with rate limiting is configured",
+        "request": "az afd profile list --query '[].{Name:name, ResourceGroup:resourceGroup, Sku:sku.name}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-frontdoor",
+            "ResourceGroup": "fedramp-prod-rg",
+            "Sku": "Premium_AzureFrontDoor"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CNA-05.4",
+        "description": "Verify Web Application Firewall policies include DDoS protection rules",
+        "request": "az network application-gateway waf-policy list --query '[].{Name:name, ResourceGroup:resourceGroup, PolicySettings:policySettings.state, ManagedRules:managedRules.managedRuleSets[].ruleSetType}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-waf-policy",
+            "ResourceGroup": "fedramp-prod-rg",
+            "PolicySettings": "Enabled",
+            "ManagedRules": ["OWASP", "Microsoft_BotManagerRuleSet"]
+          }
+        ],
+        "result": "pass"
+      }
+    ],
+    "overall_result": "true",
+    "timestamp": "2025-08-20T10:50:00Z",
+    "assessor": "Kompleye"
+  }
+}

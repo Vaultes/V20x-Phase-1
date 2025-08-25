@@ -1,0 +1,60 @@
+{
+  "analysis": {
+    "id": "KSI-IAM-06",
+    "statement": "Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity",
+    "checks": [
+      {
+        "checkId": "KSI-IAM-06.1",
+        "description": "Verify Azure AD Identity Protection policies for risky users",
+        "request": "az ad policy list --query '[?definition.displayName==`Identity Protection User Risk Policy`].{Name:definition.displayName, State:definition.state, Actions:definition.grantControls.builtInControls}' --output json",
+        "response": [
+          {
+            "Name": "Identity Protection User Risk Policy",
+            "State": "enabled",
+            "Actions": ["blockAccess", "requirePasswordChange"]
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-IAM-06.2",
+        "description": "Verify Azure AD Sign-in Risk Policy for suspicious sign-ins",
+        "request": "az ad policy list --query '[?definition.displayName==`Identity Protection Sign-in Risk Policy`].{Name:definition.displayName, State:definition.state, Actions:definition.grantControls.builtInControls}' --output json",
+        "response": [
+          {
+            "Name": "Identity Protection Sign-in Risk Policy",
+            "State": "enabled",
+            "Actions": ["blockAccess", "requireMultiFactorAuthentication"]
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-IAM-06.3",
+        "description": "Verify automated response to Azure Security Center alerts",
+        "request": "az security automation list --query '[].{Name:name, ResourceGroup:resourceGroup, IsEnabled:isEnabled, Actions:actions[].logicApp.resourceId}' --output json",
+        "response": [
+          {
+            "Name": "security-alert-automation",
+            "ResourceGroup": "fedramp-security-rg",
+            "IsEnabled": true,
+            "Actions": [
+              "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/fedramp-security-rg/providers/Microsoft.Logic/workflows/disable-user-workflow"
+            ]
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-IAM-06.4",
+        "description": "Verify incident response procedures for privileged account compromise",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify incident response procedures for privileged account compromise, automated account lockout procedures, and emergency access protocols",
+        "result": "pending verification"
+      }
+    ],
+    "overall_result": "pending verification",
+    "timestamp": "2025-08-20T12:05:00Z",
+    "assessor": "automated-analysis"
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$id": "https://fedramp.gov/schemas/ksi-analysis-result.json",
+  "title": "FedRAMP 20x KSI Analysis Result Schema",
+  "description": "Schema for FedRAMP 20x Key Security Indicator (KSI) analysis result documents",
+  "type": "object",
+  "required": ["analysis"],
+  "properties": {
+    "analysis": {
+      "type": "object",
+      "description": "Root analysis object containing all assessment data",
+      "required": ["id", "statement", "checks", "overall_result", "timestamp", "assessor"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^KSI-[A-Z]{3}-[0-9]{2}$",
+          "description": "Unique KSI identifier following the pattern KSI-XXX-NN",
+          "examples": ["KSI-CNA-01", "KSI-IAM-03", "KSI-SVC-07"]
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 10,
+          "description": "The official KSI requirement statement"
+        },
+        "checks": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Array of individual security checks performed for this KSI",
+          "items": {
+            "type": "object",
+            "required": ["checkId", "description", "request", "response", "result"],
+            "properties": {
+              "checkId": {
+                "type": "string",
+                "pattern": "^KSI-[A-Z]{3}-[0-9]{2}\\.[0-9]+$",
+                "description": "Unique identifier for this specific check",
+                "examples": ["KSI-CNA-01.1", "KSI-IAM-03.2"]
+              },
+              "description": {
+                "type": "string",
+                "minLength": 10,
+                "description": "Human-readable description of what this check validates"
+              },
+              "request": {
+                "type": "string",
+                "minLength": 5,
+                "description": "The specific command, API call, or verification method used. Use 'Manual verification required' for non-automated checks"
+              },
+              "response": {
+                "description": "The response from the request - can be JSON object, array, string, or number depending on the check type",
+                "oneOf": [
+                  { "type": "object" },
+                  { "type": "array" },
+                  { "type": "string" },
+                  { "type": "number" },
+                  { "type": "boolean" }
+                ]
+              },
+              "result": {
+                "type": "string",
+                "enum": ["pass", "fail", "pending verification"],
+                "description": "The assessment result: 'pass' if check succeeded, 'fail' if check failed, 'pending verification' if manual review is required"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "overall_result": {
+          "type": "string",
+          "enum": ["pass", "fail", "pending verification"],
+          "description": "Overall assessment result for the entire KSI. Should be 'pending verification' if any individual check requires manual verification"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp when the analysis was performed",
+          "examples": ["2025-08-20T13:05:00Z"]
+        },
+        "assessor": {
+          "type": "string",
+          "enum": [
+            "automated-analysis",
+            "manual-review-required",
+            "manual-review",
+            "third-party-assessment"
+          ],
+          "description": "Indicates who or what performed the assessment"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "examples": [
+    {
+      "analysis": {
+        "id": "KSI-CNA-01",
+        "statement": "Configure ALL information resources to limit inbound and outbound traffic",
+        "checks": [
+          {
+            "checkId": "KSI-CNA-01.1",
+            "description": "Verify Network Security Groups (NSGs) are configured with restrictive rules",
+            "request": "az network nsg list --query '[].{Name:name, ResourceGroup:resourceGroup}' --output json",
+            "response": [
+              {
+                "Name": "web-tier-nsg",
+                "ResourceGroup": "fedramp-prod-rg"
+              }
+            ],
+            "result": "pass"
+          },
+          {
+            "checkId": "KSI-CNA-01.2",
+            "description": "Verify security policy documentation",
+            "request": "Manual verification required",
+            "response": "Documentation review required to verify network security policies and procedures",
+            "result": "pending verification"
+          }
+        ],
+        "overall_result": "pending verification",
+        "timestamp": "2025-08-20T13:05:00Z",
+        "assessor": "automated-analysis"
+      }
+    }
+  ],
+  "definitions": {
+    "ksi_categories": {
+      "description": "Valid KSI category codes",
+      "enum": ["CNA", "SVC", "IAM", "MLA", "CMT", "PIY", "TPR", "CED", "RPL", "INR"]
+    },
+    "assessment_results": {
+      "description": "Valid assessment result values",
+      "enum": ["pass", "fail", "pending verification"]
+    },
+    "assessor_types": {
+      "description": "Valid assessor type values",
+      "enum": [
+        "automated-analysis",
+        "manual-review-required",
+        "manual-review",
+        "third-party-assessment"
+      ]
+    }
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "created": "2025-08-20",
+    "author": "FedRAMP 20x Pilot Program",
+    "purpose": "Standardize the format of KSI analysis result documents for FedRAMP 20x assessments",
+    "related_documents": [
+      "FRMR.KSI.key-security-indicators.json",
+      "FedRAMP 20x Phase One Requirements"
+    ]
+  }
+}

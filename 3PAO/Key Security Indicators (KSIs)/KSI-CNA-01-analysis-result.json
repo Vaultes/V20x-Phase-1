@@ -1,0 +1,128 @@
+{
+  "analysis": {
+    "id": "KSI-CNA-01",
+    "statement": "Configure ALL information resources to limit inbound and outbound traffic",
+    "checks": [
+      {
+        "checkId": "KSI-CNA-01.1",
+        "description": "Verify Network Security Groups (NSGs) are configured with restrictive rules",
+        "request": "az network nsg list --query '[].{Name:name, ResourceGroup:resourceGroup, Rules:securityRules[].{Name:name, Priority:priority, Direction:direction, Access:access, Protocol:protocol, SourceAddressPrefix:sourceAddressPrefix, DestinationAddressPrefix:destinationAddressPrefix, SourcePortRange:sourcePortRange, DestinationPortRange:destinationPortRange}}' --output json",
+        "response": [
+          {
+            "Name": "web-tier-nsg",
+            "ResourceGroup": "fedramp-prod-rg",
+            "Rules": [
+              {
+                "Name": "AllowHTTPS",
+                "Priority": 100,
+                "Direction": "Inbound",
+                "Access": "Allow",
+                "Protocol": "Tcp",
+                "SourceAddressPrefix": "*",
+                "DestinationAddressPrefix": "*",
+                "SourcePortRange": "*",
+                "DestinationPortRange": "443"
+              },
+              {
+                "Name": "DenyAllInbound",
+                "Priority": 4096,
+                "Direction": "Inbound",
+                "Access": "Deny",
+                "Protocol": "*",
+                "SourceAddressPrefix": "*",
+                "DestinationAddressPrefix": "*",
+                "SourcePortRange": "*",
+                "DestinationPortRange": "*"
+              }
+            ]
+          },
+          {
+            "Name": "app-tier-nsg",
+            "ResourceGroup": "fedramp-prod-rg",
+            "Rules": [
+              {
+                "Name": "AllowWebTier",
+                "Priority": 100,
+                "Direction": "Inbound",
+                "Access": "Allow",
+                "Protocol": "Tcp",
+                "SourceAddressPrefix": "10.0.1.0/24",
+                "DestinationAddressPrefix": "*",
+                "SourcePortRange": "*",
+                "DestinationPortRange": "8080"
+              },
+              {
+                "Name": "DenyAllInbound",
+                "Priority": 4096,
+                "Direction": "Inbound",
+                "Access": "Deny",
+                "Protocol": "*",
+                "SourceAddressPrefix": "*",
+                "DestinationAddressPrefix": "*",
+                "SourcePortRange": "*",
+                "DestinationPortRange": "*"
+              }
+            ]
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CNA-01.2",
+        "description": "Verify Application Security Groups (ASGs) are implemented for micro-segmentation",
+        "request": "az network asg list --query '[].{Name:name, ResourceGroup:resourceGroup}' --output json",
+        "response": [
+          {
+            "Name": "web-servers-asg",
+            "ResourceGroup": "fedramp-prod-rg"
+          },
+          {
+            "Name": "app-servers-asg",
+            "ResourceGroup": "fedramp-prod-rg"
+          },
+          {
+            "Name": "db-servers-asg",
+            "ResourceGroup": "fedramp-prod-rg"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CNA-01.3",
+        "description": "Verify Azure Firewall or third-party firewall is configured for outbound traffic control",
+        "request": "az network firewall list --query '[].{Name:name, ResourceGroup:resourceGroup, ThreatIntelMode:threatIntelMode, ApplicationRuleCollections:applicationRuleCollections[].name, NetworkRuleCollections:networkRuleCollections[].name}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-firewall",
+            "ResourceGroup": "fedramp-prod-rg",
+            "ThreatIntelMode": "Alert",
+            "ApplicationRuleCollections": ["allow-gov-sites", "allow-security-updates"],
+            "NetworkRuleCollections": ["allow-dns", "allow-ntp"]
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CNA-01.4",
+        "description": "Verify Service Endpoints or Private Endpoints are configured for Azure services",
+        "request": "az network vnet subnet list --resource-group fedramp-prod-rg --vnet-name fedramp-vnet --query '[].{Name:name, ServiceEndpoints:serviceEndpoints[].service, PrivateEndpoints:privateEndpoints[].name}' --output json",
+        "response": [
+          {
+            "Name": "web-subnet",
+            "ServiceEndpoints": ["Microsoft.Storage", "Microsoft.KeyVault"],
+            "PrivateEndpoints": []
+          },
+          {
+            "Name": "app-subnet",
+            "ServiceEndpoints": ["Microsoft.Sql", "Microsoft.Storage"],
+            "PrivateEndpoints": ["sqlserver-private-endpoint"]
+          }
+        ],
+        "result": "pass"
+      }
+    ],
+    "overall_result": "true",
+    "timestamp": "2025-08-20T10:30:00Z",
+    "assessor": "Kompleye"
+  }
+}

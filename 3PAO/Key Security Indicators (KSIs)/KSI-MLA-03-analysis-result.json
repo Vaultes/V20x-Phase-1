@@ -1,0 +1,66 @@
+{
+  "analysis": {
+    "id": "KSI-MLA-03",
+    "statement": "Rapidly detect and remediate or mitigate vulnerabilities",
+    "checks": [
+      {
+        "checkId": "KSI-MLA-03.1",
+        "description": "Verify Azure Security Center vulnerability assessments",
+        "request": "az security assessment list --query '[?metadata.severity==`High`].{Name:metadata.displayName, Status:status.code, ResourceType:resourceDetails.resourceType}' --output json",
+        "response": [
+          {
+            "Name": "System updates should be installed on your machines",
+            "Status": "Healthy",
+            "ResourceType": "Microsoft.Compute/virtualMachines"
+          },
+          {
+            "Name": "Vulnerabilities should be remediated by a Vulnerability Assessment solution",
+            "Status": "Healthy",
+            "ResourceType": "Microsoft.Compute/virtualMachines"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-MLA-03.2",
+        "description": "Verify vulnerability scanning tools are deployed",
+        "request": "az vm extension list --vm-name web-vm-01 --resource-group fedramp-prod-rg --query '[?typeHandlerVersion].{Name:name, Publisher:publisher, TypeHandlerVersion:typeHandlerVersion}' --output json",
+        "response": [
+          {
+            "Name": "QualysVulnerabilityManagement",
+            "Publisher": "Qualys",
+            "TypeHandlerVersion": "1.0.0"
+          },
+          {
+            "Name": "MDE.Linux",
+            "Publisher": "Microsoft.Azure.AzureDefenderForServers",
+            "TypeHandlerVersion": "1.0.0"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-MLA-03.3",
+        "description": "Verify automated patch deployment for critical vulnerabilities",
+        "request": "az maintenance assignment list --resource-group fedramp-prod-rg --query '[].{ResourceId:resourceId, MaintenanceConfigurationId:maintenanceConfigurationId}' --output json",
+        "response": [
+          {
+            "ResourceId": "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/fedramp-prod-rg/providers/Microsoft.Compute/virtualMachines/web-vm-01",
+            "MaintenanceConfigurationId": "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/fedramp-prod-rg/providers/Microsoft.Maintenance/maintenanceConfigurations/critical-patches"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-MLA-03.4",
+        "description": "Verify vulnerability remediation SLA and tracking procedures",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify vulnerability remediation SLAs, tracking procedures, escalation processes, and remediation verification methods",
+        "result": "false"
+      }
+    ],
+    "overall_result": "partial",
+    "timestamp": "2025-08-20T12:20:00Z",
+    "assessor": "kompleye"
+  }
+}

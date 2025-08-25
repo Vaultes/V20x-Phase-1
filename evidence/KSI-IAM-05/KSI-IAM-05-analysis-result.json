@@ -1,0 +1,74 @@
+{
+  "analysis": {
+    "id": "KSI-IAM-05",
+    "statement": "Apply zero trust design principles",
+    "checks": [
+      {
+        "checkId": "KSI-IAM-05.1",
+        "description": "Verify network micro-segmentation with zero trust architecture",
+        "request": "az network nsg list --query '[].{Name:name, ResourceGroup:resourceGroup, DefaultSecurityRules:length(defaultSecurityRules), SecurityRules:length(securityRules)}' --output json",
+        "response": [
+          {
+            "Name": "web-tier-nsg",
+            "ResourceGroup": "fedramp-prod-rg",
+            "DefaultSecurityRules": 6,
+            "SecurityRules": 3
+          },
+          {
+            "Name": "app-tier-nsg",
+            "ResourceGroup": "fedramp-prod-rg",
+            "DefaultSecurityRules": 6,
+            "SecurityRules": 4
+          },
+          {
+            "Name": "data-tier-nsg",
+            "ResourceGroup": "fedramp-prod-rg",
+            "DefaultSecurityRules": 6,
+            "SecurityRules": 2
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-IAM-05.2",
+        "description": "Verify continuous identity verification and risk-based access",
+        "request": "az ad policy list --query '[?definition.displayName==`Risk-based Conditional Access`].{Name:definition.displayName, State:definition.state, Conditions:definition.conditions}' --output json",
+        "response": [
+          {
+            "Name": "Risk-based Conditional Access",
+            "State": "enabled",
+            "Conditions": {
+              "signInRiskLevels": ["medium", "high"],
+              "userRiskLevels": ["medium", "high"],
+              "locations": "untrusted"
+            }
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-IAM-05.3",
+        "description": "Verify device compliance and conditional access policies",
+        "request": "az ad policy list --query '[?definition.displayName==`Device Compliance Policy`].{Name:definition.displayName, State:definition.state, DeviceStates:definition.deviceStates}' --output json",
+        "response": [
+          {
+            "Name": "Device Compliance Policy",
+            "State": "enabled",
+            "DeviceStates": ["compliant", "domainJoined"]
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-IAM-05.4",
+        "description": "Verify zero trust network access (ZTNA) implementation",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify zero trust network access implementation, device trust verification, and application-specific access controls",
+        "result": "pending verification"
+      }
+    ],
+    "overall_result": "pending verification",
+    "timestamp": "2025-08-20T12:00:00Z",
+    "assessor": "automated-analysis"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "analysis": {
+    "id": "KSI-PIY-03",
+    "statement": "Maintain a vulnerability disclosure program",
+    "checks": [
+      {
+        "checkId": "KSI-PIY-03.1",
+        "description": "Verify public vulnerability disclosure policy accessibility",
+        "request": "curl -s -o /dev/null -w \"%{http_code}\" https://fedramp.example.com/.well-known/security.txt",
+        "response": "200",
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-PIY-03.2",
+        "description": "Verify vulnerability reporting contact mechanisms",
+        "request": "curl -s https://fedramp.example.com/.well-known/security.txt | grep -E \"Contact|Email\"",
+        "response": "Contact: mailto:security@fedramp.example.com\nContact: https://fedramp.example.com/security/report",
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-PIY-03.3",
+        "description": "Verify vulnerability disclosure response procedures",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify vulnerability disclosure response procedures, SLA commitments, and responsible disclosure guidelines",
+        "result": "false"
+      },
+      {
+        "checkId": "KSI-PIY-03.4",
+        "description": "Verify vulnerability disclosure program governance and training",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify vulnerability disclosure program governance, staff training, and coordination with legal and communications teams",
+        "result": "false"
+      }
+    ],
+    "overall_result": "partial",
+    "timestamp": "2025-08-20T13:15:00Z",
+    "assessor": "kompleye"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "analysis": {
+    "id": "KSI-TPR-04",
+    "statement": "Monitor third party software information resources for upstream vulnerabilities, with contractual notification requirements or active monitoring services",
+    "checks": [
+      {
+        "checkId": "KSI-TPR-04.1",
+        "description": "Verify automated vulnerability scanning for third-party components",
+        "request": "az security assessment list --query '[?contains(metadata.displayName, `vulnerabilities`) && contains(metadata.displayName, `images`)].{Name:metadata.displayName, Status:status.code}' --output json",
+        "response": [
+          {
+            "Name": "Vulnerabilities in Azure Container Registry images should be remediated",
+            "Status": "Healthy"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-TPR-04.2",
+        "description": "Verify container image vulnerability monitoring",
+        "request": "az acr task list --registry fedrampregistry --query '[?contains(name, `vulnerability`) || contains(name, `scan`)].{Name:name, Status:status, TriggerEnabled:trigger.baseImageTrigger.status}' --output json",
+        "response": [
+          {
+            "Name": "vulnerability-scan-task",
+            "Status": "Enabled",
+            "TriggerEnabled": "Enabled"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-TPR-04.3",
+        "description": "Verify software composition analysis integration",
+        "request": "az vm extension list --vm-name web-vm-01 --resource-group fedramp-prod-rg --query '[?contains(name, `Dependency`) || contains(name, `SCA`)].{Name:name, Publisher:publisher}' --output json",
+        "response": [
+          {
+            "Name": "DependencyAgentLinux",
+            "Publisher": "Microsoft.Azure.Monitoring.DependencyAgent"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-TPR-04.4",
+        "description": "Verify vendor notification procedures and vulnerability monitoring contracts",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify vendor notification procedures, contractual vulnerability monitoring requirements, and upstream vulnerability tracking processes",
+        "result": "false"
+      }
+    ],
+    "overall_result": "partial",
+    "timestamp": "2025-08-20T13:40:00Z",
+    "assessor": "kompleye"
+  }
+}

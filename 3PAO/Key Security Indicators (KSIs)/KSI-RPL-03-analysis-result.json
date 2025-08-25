@@ -1,0 +1,79 @@
+{
+  "analysis": {
+    "id": "KSI-RPL-03",
+    "statement": "Perform system backups aligned with recovery objectives",
+    "checks": [
+      {
+        "checkId": "KSI-RPL-03.1",
+        "description": "Verify backup job execution and success rates",
+        "request": "az backup job list --vault-name fedramp-recovery-vault --resource-group fedramp-prod-rg --query '[?status==`Completed`].{ItemName:entityFriendlyName, Operation:operation, Status:status, StartTime:startTime, Duration:duration}' --output json",
+        "response": [
+          {
+            "ItemName": "web-vm-01",
+            "Operation": "Backup",
+            "Status": "Completed",
+            "StartTime": "2025-08-20T02:00:00Z",
+            "Duration": "PT45M"
+          },
+          {
+            "ItemName": "app-vm-01",
+            "Operation": "Backup",
+            "Status": "Completed",
+            "StartTime": "2025-08-20T02:30:00Z",
+            "Duration": "PT40M"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-RPL-03.2",
+        "description": "Verify database backup completion and retention",
+        "request": "az sql db list-backups --name fedramp-database --server fedramp-sqlserver --resource-group fedramp-prod-rg --query '[0:3].{BackupType:type, CreationDate:creationDate, ExpirationDate:expirationDate}' --output json",
+        "response": [
+          {
+            "BackupType": "FULL",
+            "CreationDate": "2025-08-20T01:00:00Z",
+            "ExpirationDate": "2025-08-27T01:00:00Z"
+          },
+          {
+            "BackupType": "DIFF",
+            "CreationDate": "2025-08-20T07:00:00Z",
+            "ExpirationDate": "2025-08-27T07:00:00Z"
+          },
+          {
+            "BackupType": "LOG",
+            "CreationDate": "2025-08-20T13:00:00Z",
+            "ExpirationDate": "2025-08-27T13:00:00Z"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-RPL-03.3",
+        "description": "Verify backup storage encryption and geo-redundancy",
+        "request": "az backup vault show --name fedramp-recovery-vault --resource-group fedramp-prod-rg --query '{Name:name, EncryptionSettings:properties.encryptionSettings, StorageModelType:properties.storageModelType}' --output json",
+        "response": {
+          "Name": "fedramp-recovery-vault",
+          "EncryptionSettings": {
+            "encryptionKeyState": "Enabled",
+            "kekDetails": {
+              "keyUrl": "https://fedramp-keyvault.vault.azure.net/keys/backup-encryption-key/v1.0"
+            }
+          },
+          "StorageModelType": "GeoRedundant"
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-RPL-03.4",
+        "description": "Verify backup monitoring and alerting procedures",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify backup monitoring procedures, failure alerting, and backup verification processes",
+        "result": "false"
+      }
+    ],
+    "overall_result": "partial",
+    "timestamp": "2025-08-20T14:05:00Z",
+    "assessor": "kompleye"
+  }
+}

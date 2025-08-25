@@ -1,0 +1,85 @@
+{
+  "analysis": {
+    "id": "KSI-CNA-04",
+    "statement": "Use immutable infrastructure with strictly defined functionality and privileges by default",
+    "checks": [
+      {
+        "checkId": "KSI-CNA-04.1",
+        "description": "Verify Virtual Machine Scale Sets are configured for immutable deployments",
+        "request": "az vmss list --query '[].{Name:name, ResourceGroup:resourceGroup, UpgradePolicy:upgradePolicy.mode, OrchestrationMode:orchestrationMode}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-web-vmss",
+            "ResourceGroup": "fedramp-prod-rg",
+            "UpgradePolicy": "Rolling",
+            "OrchestrationMode": "Uniform"
+          },
+          {
+            "Name": "fedramp-app-vmss",
+            "ResourceGroup": "fedramp-prod-rg",
+            "UpgradePolicy": "Rolling",
+            "OrchestrationMode": "Uniform"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CNA-04.2",
+        "description": "Verify Azure Container Instances use immutable container images",
+        "request": "az container list --query '[].{Name:name, ResourceGroup:resourceGroup, Image:containers[0].image, RestartPolicy:restartPolicy}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-worker-container",
+            "ResourceGroup": "fedramp-prod-rg",
+            "Image": "fedrampregistry.azurecr.io/worker:v1.2.3",
+            "RestartPolicy": "OnFailure"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CNA-04.3",
+        "description": "Verify ARM templates or Bicep files are used for infrastructure deployment",
+        "request": "az deployment group list --resource-group fedramp-prod-rg --query '[].{Name:name, ProvisioningState:properties.provisioningState, Template:properties.templateLink.uri, Mode:properties.mode}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-infrastructure-deployment",
+            "ProvisioningState": "Succeeded",
+            "Template": "https://fedrampstorageacct.blob.core.windows.net/templates/main.json",
+            "Mode": "Incremental"
+          },
+          {
+            "Name": "fedramp-app-deployment",
+            "ProvisioningState": "Succeeded",
+            "Template": "https://fedrampstorageacct.blob.core.windows.net/templates/app.json",
+            "Mode": "Incremental"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CNA-04.4",
+        "description": "Verify managed identities are used instead of service principals with stored credentials",
+        "request": "az identity list --query '[].{Name:name, ResourceGroup:resourceGroup, ClientId:clientId, Type:type}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-web-identity",
+            "ResourceGroup": "fedramp-prod-rg",
+            "ClientId": "12345678-1234-1234-1234-123456789012",
+            "Type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+          },
+          {
+            "Name": "fedramp-app-identity",
+            "ResourceGroup": "fedramp-prod-rg",
+            "ClientId": "87654321-4321-4321-4321-210987654321",
+            "Type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+          }
+        ],
+        "result": "pass"
+      }
+    ],
+    "overall_result": "pass",
+    "timestamp": "2025-08-20T10:45:00Z",
+    "assessor": "automated-analysis"
+  }
+}

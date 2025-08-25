@@ -1,0 +1,18 @@
+{
+  "analysis": {
+    "id": "KSI-PIY-07",
+    "statement": "Document risk management decisions for software supply chain security",
+    "checks": [
+      {
+        "checkId": "KSI-PIY-07.1",
+        "description": "Manual validation required - No automation possible",
+        "request": "Manual verification required",
+        "response": "This KSI requires comprehensive manual review of risk management documentation, software supply chain security decisions, vendor risk assessments, supply chain risk mitigation strategies, and decision rationale documentation. No automated validation methods are available for assessing risk management decision quality, documentation completeness, or supply chain security governance processes.",
+        "result": "pending verification"
+      }
+    ],
+    "overall_result": "pending verification",
+    "timestamp": "2025-08-20T14:40:00Z",
+    "assessor": "manual-review-required"
+  }
+}

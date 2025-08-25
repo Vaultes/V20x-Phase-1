@@ -1,0 +1,53 @@
+{
+  "analysis": {
+    "id": "KSI-TPR-01",
+    "statement": "Identify all third-party information resources",
+    "checks": [
+      {
+        "checkId": "KSI-TPR-01.1",
+        "description": "Verify third-party service connections through network monitoring",
+        "request": "az network watcher connection-monitor list --query '[].{Name:name, ResourceGroup:resourceGroup, MonitoringStatus:monitoringStatus}' --output json",
+        "response": [
+          {
+            "Name": "third-party-api-monitor",
+            "ResourceGroup": "fedramp-monitoring-rg",
+            "MonitoringStatus": "Started"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-TPR-01.2",
+        "description": "Verify external dependency tracking in application insights",
+        "request": "az monitor app-insights component show --app fedramp-appinsights --resource-group fedramp-prod-rg --query '{Name:name, Kind:kind, ApplicationType:applicationType}' --output json",
+        "response": {
+          "Name": "fedramp-appinsights",
+          "Kind": "web",
+          "ApplicationType": "web"
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-TPR-01.3",
+        "description": "Verify container base image and dependency inventory",
+        "request": "az acr repository show --name fedrampregistry --repository webapp --query '{Name:name, Registry:registry, LastUpdateTime:lastUpdateTime}' --output json",
+        "response": {
+          "Name": "webapp",
+          "Registry": "fedrampregistry.azurecr.io",
+          "LastUpdateTime": "2025-08-20T10:00:00Z"
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-TPR-01.4",
+        "description": "Verify third-party resource identification procedures and documentation",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify third-party resource identification procedures, dependency mapping, and vendor management processes",
+        "result": "pending verification"
+      }
+    ],
+    "overall_result": "pending verification",
+    "timestamp": "2025-08-20T13:25:00Z",
+    "assessor": "automated-analysis"
+  }
+}

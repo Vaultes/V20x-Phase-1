@@ -1,0 +1,64 @@
+{
+  "analysis": {
+    "id": "KSI-IAM-02",
+    "statement": "Use secure passwordless methods for user authentication and authorization when feasible, otherwise enforce strong passwords with MFA",
+    "checks": [
+      {
+        "checkId": "KSI-IAM-02.1",
+        "description": "Verify Windows Hello for Business is configured",
+        "request": "az ad user list --query '[].{UserPrincipalName:userPrincipalName, AuthenticationMethods:strongAuthenticationMethods[?methodType==`WindowsHelloForBusiness`].methodType}' --output json",
+        "response": [
+          {
+            "UserPrincipalName": "admin@fedramp.onmicrosoft.com",
+            "AuthenticationMethods": ["WindowsHelloForBusiness"]
+          },
+          {
+            "UserPrincipalName": "developer@fedramp.onmicrosoft.com",
+            "AuthenticationMethods": ["WindowsHelloForBusiness"]
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-IAM-02.2",
+        "description": "Verify FIDO2 security keys are supported and used",
+        "request": "az ad policy list --query '[?definition.displayName==`FIDO2 Security Key Policy`].{Name:definition.displayName, State:definition.state}' --output json",
+        "response": [
+          {
+            "Name": "FIDO2 Security Key Policy",
+            "State": "enabled"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-IAM-02.3",
+        "description": "Verify Azure AD password protection policies",
+        "request": "az ad policy list --query '[?definition.displayName==`Password Protection Policy`].{Name:definition.displayName, Settings:definition.passwordRules}' --output json",
+        "response": [
+          {
+            "Name": "Password Protection Policy",
+            "Settings": {
+              "enableBannedPasswordCheck": true,
+              "enableBannedPasswordCheckOnPremises": true,
+              "bannedPasswordsList": ["fedramp", "password123", "admin"],
+              "lockoutThreshold": 3,
+              "lockoutDurationInSeconds": 3600
+            }
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-IAM-02.4",
+        "description": "Verify certificate-based authentication is configured where applicable",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify certificate-based authentication implementation, smart card authentication policies, and passwordless authentication rollout plan",
+        "result": "partial"
+      }
+    ],
+    "overall_result": "partial",
+    "timestamp": "2025-08-20T11:45:00Z",
+    "assessor": "Kompleye"
+  }
+}

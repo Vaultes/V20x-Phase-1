@@ -1,0 +1,74 @@
+{
+  "analysis": {
+    "id": "KSI-INR-01",
+    "statement": "Report incidents according to FedRAMP requirements and cloud service provider policies",
+    "checks": [
+      {
+        "checkId": "KSI-INR-01.1",
+        "description": "Verify incident reporting automation through Azure Logic Apps",
+        "request": "az logic workflow list --resource-group fedramp-security-rg --query '[?contains(name, `incident`) || contains(name, `report`)].{Name:name, State:state}' --output json",
+        "response": [
+          {
+            "Name": "incident-reporting-workflow",
+            "State": "Enabled"
+          },
+          {
+            "Name": "fedramp-notification-workflow",
+            "State": "Enabled"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-INR-01.2",
+        "description": "Verify Azure Sentinel incident management integration",
+        "request": "az sentinel incident list --workspace-name fedramp-sentinel-workspace --resource-group fedramp-security-rg --query '[0:3].{Title:title, Status:status, Severity:severity, CreatedTimeUtc:createdTimeUtc}' --output json",
+        "response": [
+          {
+            "Title": "Suspicious login activity detected",
+            "Status": "Closed",
+            "Severity": "Medium",
+            "CreatedTimeUtc": "2025-08-19T14:30:00Z"
+          },
+          {
+            "Title": "Failed authentication attempts",
+            "Status": "Closed",
+            "Severity": "Low",
+            "CreatedTimeUtc": "2025-08-18T09:15:00Z"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-INR-01.3",
+        "description": "Verify incident escalation and notification procedures",
+        "request": "az monitor action-group list --query '[].{Name:name, Enabled:enabled, EmailReceivers:length(emailReceivers), SmsReceivers:length(smsReceivers)}' --output json",
+        "response": [
+          {
+            "Name": "security-incident-notifications",
+            "Enabled": true,
+            "EmailReceivers": 3,
+            "SmsReceivers": 2
+          },
+          {
+            "Name": "fedramp-escalation-group",
+            "Enabled": true,
+            "EmailReceivers": 5,
+            "SmsReceivers": 1
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-INR-01.4",
+        "description": "Verify FedRAMP incident reporting compliance procedures",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify FedRAMP incident reporting procedures, timeline compliance, and regulatory notification requirements",
+        "result": "pending verification"
+      }
+    ],
+    "overall_result": "pending verification",
+    "timestamp": "2025-08-20T14:15:00Z",
+    "assessor": "automated-analysis"
+  }
+}

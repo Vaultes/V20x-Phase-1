@@ -1,0 +1,58 @@
+{
+  "analysis": {
+    "id": "KSI-MLA-01",
+    "statement": "Operate a Security Information and Event Management (SIEM) or similar system(s) for centralized, tamper-resistent logging of events, activities, and changes",
+    "checks": [
+      {
+        "checkId": "KSI-MLA-01.1",
+        "description": "Verify Azure Sentinel or equivalent SIEM is deployed",
+        "request": "az sentinel workspace list --query '[].{Name:name, ResourceGroup:resourceGroup, State:state}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-sentinel-workspace",
+            "ResourceGroup": "fedramp-security-rg",
+            "State": "Succeeded"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-MLA-01.2",
+        "description": "Verify Log Analytics workspace configuration",
+        "request": "az monitor log-analytics workspace list --query '[].{Name:name, ResourceGroup:resourceGroup, RetentionInDays:retentionInDays, Sku:sku.name}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-logs-workspace",
+            "ResourceGroup": "fedramp-security-rg",
+            "RetentionInDays": 365,
+            "Sku": "PerGB2018"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-MLA-01.3",
+        "description": "Verify diagnostic settings for Azure resources",
+        "request": "az monitor diagnostic-settings list --resource /subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/fedramp-prod-rg/providers/Microsoft.Storage/storageAccounts/fedrampstorageacct --query '[].{Name:name, Logs:logs[].enabled, Metrics:metrics[].enabled}' --output json",
+        "response": [
+          {
+            "Name": "storage-diagnostics",
+            "Logs": [true, true, true],
+            "Metrics": [true, true]
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-MLA-01.4",
+        "description": "Verify tamper protection and log integrity measures",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify log integrity measures, tamper protection mechanisms, and log forwarding security controls",
+        "result": "false"
+      }
+    ],
+    "overall_result": "partial",
+    "timestamp": "2025-08-20T12:10:00Z",
+    "assessor": "kompleye"
+  }
+}

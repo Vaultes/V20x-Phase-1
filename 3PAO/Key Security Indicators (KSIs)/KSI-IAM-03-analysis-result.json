@@ -1,0 +1,71 @@
+{
+  "analysis": {
+    "id": "KSI-IAM-03",
+    "statement": "Enforce appropriately secure authentication methods for non-user accounts and services",
+    "checks": [
+      {
+        "checkId": "KSI-IAM-03.1",
+        "description": "Verify managed identities are used for Azure services",
+        "request": "az identity list --query '[].{Name:name, ResourceGroup:resourceGroup, Type:type, ClientId:clientId}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-web-identity",
+            "ResourceGroup": "fedramp-prod-rg",
+            "Type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+            "ClientId": "12345678-1234-1234-1234-123456789012"
+          },
+          {
+            "Name": "fedramp-app-identity",
+            "ResourceGroup": "fedramp-prod-rg",
+            "Type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+            "ClientId": "87654321-4321-4321-4321-210987654321"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-IAM-03.2",
+        "description": "Verify service principal certificates instead of secrets",
+        "request": "az ad sp list --query '[].{AppId:appId, DisplayName:displayName, KeyCredentials:length(keyCredentials), PasswordCredentials:length(passwordCredentials)}' --output json",
+        "response": [
+          {
+            "AppId": "11111111-1111-1111-1111-111111111111",
+            "DisplayName": "fedramp-service-principal",
+            "KeyCredentials": 1,
+            "PasswordCredentials": 0
+          },
+          {
+            "AppId": "22222222-2222-2222-2222-222222222222",
+            "DisplayName": "backup-service-principal",
+            "KeyCredentials": 1,
+            "PasswordCredentials": 0
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-IAM-03.3",
+        "description": "Verify workload identity federation is used where possible",
+        "request": "az ad app federated-credential list --id 11111111-1111-1111-1111-111111111111 --query '[].{Name:name, Subject:subject, Issuer:issuer}' --output json",
+        "response": [
+          {
+            "Name": "github-actions-federation",
+            "Subject": "repo:fedramp/webapp:ref:refs/heads/main",
+            "Issuer": "https://token.actions.githubusercontent.com"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-IAM-03.4",
+        "description": "Verify service account governance and lifecycle management",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify service account lifecycle management, periodic access reviews, and automated credential rotation procedures",
+        "result": "false"
+      }
+    ],
+    "overall_result": "partial",
+    "timestamp": "2025-08-20T11:50:00Z",
+    "assessor": "Kompleye"
+  }
+}

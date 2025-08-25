@@ -1,0 +1,50 @@
+{
+  "analysis": {
+    "id": "KSI-PIY-05",
+    "statement": "Document methods used to evaluate information resource implementations",
+    "checks": [
+      {
+        "checkId": "KSI-PIY-05.1",
+        "description": "Verify Azure Security Center security score methodology",
+        "request": "az security secure-scores list --query '[].{Name:name, CurrentScore:currentScore.current, MaxScore:currentScore.max, Percentage:currentScore.percentage}' --output json",
+        "response": [
+          {
+            "Name": "Azure subscription security score",
+            "CurrentScore": 42,
+            "MaxScore": 50,
+            "Percentage": 84.0
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-PIY-05.2",
+        "description": "Verify policy compliance evaluation methods",
+        "request": "az policy state summarize --query '{NonCompliantResources:results.nonCompliantResources, TotalResources:results.resourceDetails.totalResources, CompliancePercentage:results.policyGroupDetails[0].compliancePercentage}' --output json",
+        "response": {
+          "NonCompliantResources": 0,
+          "TotalResources": 25,
+          "CompliancePercentage": 100.0
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-PIY-05.3",
+        "description": "Verify vulnerability assessment evaluation criteria",
+        "request": "az security assessment list --query 'length([?status.code==`Healthy`])' --output json",
+        "response": 15,
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-PIY-05.4",
+        "description": "Verify evaluation methodology documentation and validation procedures",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify evaluation methodology documentation, validation procedures, and assessment criteria definitions",
+        "result": "pending verification"
+      }
+    ],
+    "overall_result": "pending verification",
+    "timestamp": "2025-08-20T13:20:00Z",
+    "assessor": "automated-analysis"
+  }
+}

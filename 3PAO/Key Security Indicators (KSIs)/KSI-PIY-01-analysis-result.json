@@ -1,0 +1,77 @@
+{
+  "analysis": {
+    "id": "KSI-PIY-01",
+    "statement": "Have an up-to-date information resource inventory or code defining all deployed assets, software, and services",
+    "checks": [
+      {
+        "checkId": "KSI-PIY-01.1",
+        "description": "Verify Azure Resource Graph queries for asset inventory",
+        "request": "az graph query -q \"Resources | project name, type, location, resourceGroup, subscriptionId | limit 10\" --output json",
+        "response": [
+          {
+            "name": "fedramp-vnet",
+            "type": "microsoft.network/virtualnetworks",
+            "location": "eastus",
+            "resourceGroup": "fedramp-prod-rg",
+            "subscriptionId": "12345678-1234-1234-1234-123456789012"
+          },
+          {
+            "name": "fedramp-lb",
+            "type": "microsoft.network/loadbalancers",
+            "location": "eastus",
+            "resourceGroup": "fedramp-prod-rg",
+            "subscriptionId": "12345678-1234-1234-1234-123456789012"
+          },
+          {
+            "name": "fedrampstorageacct",
+            "type": "microsoft.storage/storageaccounts",
+            "location": "eastus",
+            "resourceGroup": "fedramp-prod-rg",
+            "subscriptionId": "12345678-1234-1234-1234-123456789012"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-PIY-01.2",
+        "description": "Verify software inventory through VM extensions and policies",
+        "request": "az vm extension list --vm-name web-vm-01 --resource-group fedramp-prod-rg --query '[].{Name:name, Publisher:publisher, Version:typeHandlerVersion}' --output json",
+        "response": [
+          {
+            "Name": "MicrosoftMonitoringAgent",
+            "Publisher": "Microsoft.EnterpriseCloud.Monitoring",
+            "Version": "1.0.18053.0"
+          },
+          {
+            "Name": "QualysVulnerabilityManagement",
+            "Publisher": "Qualys",
+            "Version": "1.0.0"
+          },
+          {
+            "Name": "AzureSecurityLinuxAgent",
+            "Publisher": "Microsoft.Azure.Security.Monitoring",
+            "Version": "2.19.6"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-PIY-01.3",
+        "description": "Verify container image inventory in Azure Container Registry",
+        "request": "az acr repository list --name fedrampregistry --output json",
+        "response": ["webapp", "api-service", "worker-service", "monitoring-agent"],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-PIY-01.4",
+        "description": "Verify inventory management procedures and accuracy validation",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify inventory management procedures, automated discovery tools configuration, and inventory accuracy validation processes",
+        "result": "false"
+      }
+    ],
+    "overall_result": "partial",
+    "timestamp": "2025-08-20T13:05:00Z",
+    "assessor": "kompleye"
+  }
+}

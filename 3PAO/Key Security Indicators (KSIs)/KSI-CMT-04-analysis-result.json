@@ -1,0 +1,71 @@
+{
+  "analysis": {
+    "id": "KSI-CMT-04",
+    "statement": "Have a documented change management procedure",
+    "checks": [
+      {
+        "checkId": "KSI-CMT-04.1",
+        "description": "Verify Azure DevOps work item tracking for changes",
+        "request": "az boards work-item list --organization https://dev.azure.com/fedramp --project fedramp-project --query '[?fields.\"System.WorkItemType\"==`Change Request`].{Id:id, Title:fields.\"System.Title\", State:fields.\"System.State\", AssignedTo:fields.\"System.AssignedTo\".displayName}' --output json",
+        "response": [
+          {
+            "Id": 5678,
+            "Title": "Update security baseline configuration",
+            "State": "Closed",
+            "AssignedTo": "security@fedramp.onmicrosoft.com"
+          },
+          {
+            "Id": 5679,
+            "Title": "Deploy application version 2.1.0",
+            "State": "Resolved",
+            "AssignedTo": "developer@fedramp.onmicrosoft.com"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CMT-04.2",
+        "description": "Verify change approval workflow implementation",
+        "request": "az pipelines release list --organization https://dev.azure.com/fedramp --project fedramp-project --query '[0:2].{Id:id, Status:status, Environments:environments[].{Name:name, Status:status}}' --output json",
+        "response": [
+          {
+            "Id": 456,
+            "Status": "active",
+            "Environments": [
+              {
+                "Name": "Development",
+                "Status": "succeeded"
+              },
+              {
+                "Name": "Staging",
+                "Status": "succeeded"
+              },
+              {
+                "Name": "Production",
+                "Status": "inProgress"
+              }
+            ]
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CMT-04.3",
+        "description": "Verify emergency change procedures are documented",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify emergency change procedures, escalation paths, and post-implementation reviews",
+        "result": "false"
+      },
+      {
+        "checkId": "KSI-CMT-04.4",
+        "description": "Verify change management policy documentation and training",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify change management policy documentation, staff training records, and procedure compliance monitoring",
+        "result": "false"
+      }
+    ],
+    "overall_result": "partial",
+    "timestamp": "2025-08-20T12:55:00Z",
+    "assessor": "Kompleye"
+  }
+}

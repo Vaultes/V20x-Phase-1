@@ -1,0 +1,55 @@
+{
+  "analysis": {
+    "id": "KSI-CED-01",
+    "statement": "Ensure all employees receive security awareness training",
+    "checks": [
+      {
+        "checkId": "KSI-CED-01.1",
+        "description": "Verify Azure AD user training completion tracking",
+        "request": "az ad user list --query '[].{UserPrincipalName:userPrincipalName, ComplianceExpirationDateTime:complianceExpirationDateTime, LastSignInDateTime:lastSignInDateTime}' --output json",
+        "response": [
+          {
+            "UserPrincipalName": "admin@fedramp.onmicrosoft.com",
+            "ComplianceExpirationDateTime": "2026-01-15T00:00:00Z",
+            "LastSignInDateTime": "2025-08-20T08:00:00Z"
+          },
+          {
+            "UserPrincipalName": "developer@fedramp.onmicrosoft.com",
+            "ComplianceExpirationDateTime": "2026-02-01T00:00:00Z",
+            "LastSignInDateTime": "2025-08-20T09:30:00Z"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CED-01.2",
+        "description": "Verify security training conditional access policies",
+        "request": "az ad policy list --query '[?contains(definition.displayName, `Training`) || contains(definition.displayName, `Compliance`)].{Name:definition.displayName, State:definition.state}' --output json",
+        "response": [
+          {
+            "Name": "Security Training Compliance Policy",
+            "State": "enabled"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CED-01.3",
+        "description": "Verify training completion monitoring and reporting",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify training completion monitoring, reporting procedures, and remediation for non-compliant users",
+        "result": "false"
+      },
+      {
+        "checkId": "KSI-CED-01.4",
+        "description": "Verify security awareness training program governance",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify security awareness training program governance, content updates, and effectiveness measurement",
+        "result": "false"
+      }
+    ],
+    "overall_result": "false",
+    "timestamp": "2025-08-20T13:45:00Z",
+    "assessor": "Kompleye"
+  }
+}

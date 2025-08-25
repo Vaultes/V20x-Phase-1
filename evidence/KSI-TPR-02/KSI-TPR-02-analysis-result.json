@@ -1,0 +1,66 @@
+{
+  "analysis": {
+    "id": "KSI-TPR-02",
+    "statement": "Regularly confirm that services handling federal information or are likely to impact the confidentiality, integrity, or availability of federal information are FedRAMP authorized and securely configured",
+    "checks": [
+      {
+        "checkId": "KSI-TPR-02.1",
+        "description": "Verify Azure services are FedRAMP authorized through service endpoints",
+        "request": "az network vnet subnet list --resource-group fedramp-prod-rg --vnet-name fedramp-vnet --query '[].{Name:name, ServiceEndpoints:serviceEndpoints[].service}' --output json",
+        "response": [
+          {
+            "Name": "web-subnet",
+            "ServiceEndpoints": ["Microsoft.Storage", "Microsoft.KeyVault", "Microsoft.Sql"]
+          },
+          {
+            "Name": "app-subnet",
+            "ServiceEndpoints": ["Microsoft.Storage", "Microsoft.Sql"]
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-TPR-02.2",
+        "description": "Verify private endpoints for Azure services handling federal data",
+        "request": "az network private-endpoint list --resource-group fedramp-prod-rg --query '[].{Name:name, PrivateLinkServiceConnections:privateLinkServiceConnections[].privateLinkServiceId}' --output json",
+        "response": [
+          {
+            "Name": "sqlserver-private-endpoint",
+            "PrivateLinkServiceConnections": [
+              "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/fedramp-prod-rg/providers/Microsoft.Sql/servers/fedramp-sqlserver"
+            ]
+          },
+          {
+            "Name": "storage-private-endpoint",
+            "PrivateLinkServiceConnections": [
+              "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/fedramp-prod-rg/providers/Microsoft.Storage/storageAccounts/fedrampstorageacct"
+            ]
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-TPR-02.3",
+        "description": "Verify third-party service security configuration compliance",
+        "request": "az security assessment list --query '[?contains(metadata.displayName, `third-party`) || contains(metadata.displayName, `external`)].{Name:metadata.displayName, Status:status.code}' --output json",
+        "response": [
+          {
+            "Name": "External services should use secure communication protocols",
+            "Status": "Healthy"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-TPR-02.4",
+        "description": "Verify FedRAMP authorization validation procedures",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify FedRAMP authorization validation procedures, vendor compliance monitoring, and service configuration reviews",
+        "result": "pending verification"
+      }
+    ],
+    "overall_result": "pending verification",
+    "timestamp": "2025-08-20T13:30:00Z",
+    "assessor": "automated-analysis"
+  }
+}

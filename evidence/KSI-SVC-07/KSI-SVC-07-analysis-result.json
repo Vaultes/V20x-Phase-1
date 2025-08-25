@@ -1,0 +1,61 @@
+{
+  "analysis": {
+    "id": "KSI-SVC-07",
+    "statement": "Use a consistent, risk-informed approach for applying security patches",
+    "checks": [
+      {
+        "checkId": "KSI-SVC-07.1",
+        "description": "Verify Azure Update Manager is configured for automated patching",
+        "request": "az vm list --query '[].{Name:name, ResourceGroup:resourceGroup, OsProfile:osProfile.windowsConfiguration.enableAutomaticUpdates}' --output json",
+        "response": [
+          {
+            "Name": "web-vm-01",
+            "ResourceGroup": "fedramp-prod-rg",
+            "OsProfile": true
+          },
+          {
+            "Name": "app-vm-01",
+            "ResourceGroup": "fedramp-prod-rg",
+            "OsProfile": true
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-07.2",
+        "description": "Verify vulnerability assessment is enabled",
+        "request": "az security assessment list --query '[?metadata.displayName==`Vulnerabilities should be remediated by a Vulnerability Assessment solution`].{Name:metadata.displayName, Status:status.code}' --output json",
+        "response": [
+          {
+            "Name": "Vulnerabilities should be remediated by a Vulnerability Assessment solution",
+            "Status": "Healthy"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-07.3",
+        "description": "Verify container image vulnerability scanning",
+        "request": "az acr task list --registry fedrampregistry --query '[].{Name:name, Status:status, TriggerEnabled:trigger.baseImageTrigger.status}' --output json",
+        "response": [
+          {
+            "Name": "vulnerability-scan-task",
+            "Status": "Enabled",
+            "TriggerEnabled": "Enabled"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-07.4",
+        "description": "Verify patch management policies and risk assessment procedures",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify patch management policies, risk assessment procedures for security patches, testing procedures, and rollback plans",
+        "result": "pending verification"
+      }
+    ],
+    "overall_result": "pending verification",
+    "timestamp": "2025-08-20T11:35:00Z",
+    "assessor": "automated-analysis"
+  }
+}

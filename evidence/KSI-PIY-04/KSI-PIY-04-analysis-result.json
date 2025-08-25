@@ -1,0 +1,18 @@
+{
+  "analysis": {
+    "id": "KSI-PIY-04",
+    "statement": "Build security considerations into the Software Development Lifecycle and align with CISA Secure By Design principles",
+    "checks": [
+      {
+        "checkId": "KSI-PIY-04.1",
+        "description": "Manual validation required - No automation possible",
+        "request": "Manual verification required",
+        "response": "This KSI requires comprehensive manual review of Software Development Lifecycle (SDLC) processes, secure coding practices, design review procedures, threat modeling processes, and alignment with CISA Secure by Design principles. No automated validation methods are available for assessing SDLC integration and design philosophy compliance.",
+        "result": "pending verification"
+      }
+    ],
+    "overall_result": "pending verification",
+    "timestamp": "2025-08-20T14:30:00Z",
+    "assessor": "manual-review-required"
+  }
+}

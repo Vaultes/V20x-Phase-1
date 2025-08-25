@@ -1,0 +1,52 @@
+{
+  "analysis": {
+    "id": "KSI-INR-02",
+    "statement": "Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities",
+    "checks": [
+      {
+        "checkId": "KSI-INR-02.1",
+        "description": "Verify incident logging in Azure Sentinel",
+        "request": "az sentinel incident list --workspace-name fedramp-sentinel-workspace --resource-group fedramp-security-rg --query 'length(@)' --output json",
+        "response": 45,
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-INR-02.2",
+        "description": "Verify incident pattern analysis through Azure Monitor",
+        "request": "az monitor log-analytics query --workspace fedramp-logs-workspace --analytics-query \"SecurityIncident | summarize count() by bin(TimeGenerated, 7d), IncidentSeverity | order by TimeGenerated desc\" --query 'tables[0].rows[0:3]' --output json",
+        "response": [
+          ["2025-08-20T00:00:00Z", "Medium", 3],
+          ["2025-08-13T00:00:00Z", "Low", 5],
+          ["2025-08-06T00:00:00Z", "High", 1]
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-INR-02.3",
+        "description": "Verify incident correlation and trend analysis",
+        "request": "az sentinel analytics-rule list --workspace-name fedramp-sentinel-workspace --resource-group fedramp-security-rg --query '[?contains(displayName, `correlation`) || contains(displayName, `pattern`)].{Name:displayName, Enabled:enabled}' --output json",
+        "response": [
+          {
+            "Name": "Multiple failed login correlation",
+            "Enabled": true
+          },
+          {
+            "Name": "Anomalous access pattern detection",
+            "Enabled": true
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-INR-02.4",
+        "description": "Verify periodic incident review procedures and pattern identification",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify periodic incident review procedures, pattern identification processes, and trend analysis reporting",
+        "result": "pending verification"
+      }
+    ],
+    "overall_result": "pending verification",
+    "timestamp": "2025-08-20T14:20:00Z",
+    "assessor": "automated-analysis"
+  }
+}

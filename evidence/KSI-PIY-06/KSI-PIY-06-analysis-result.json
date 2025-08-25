@@ -1,0 +1,18 @@
+{
+  "analysis": {
+    "id": "KSI-PIY-06",
+    "statement": "Have a dedicated staff and budget for security with executive support, commensurate with the size, complexity, scope, and risk of the service offering",
+    "checks": [
+      {
+        "checkId": "KSI-PIY-06.1",
+        "description": "Manual validation required - No automation possible",
+        "request": "Manual verification required",
+        "response": "This KSI requires comprehensive manual review of organizational structure, staffing levels, budget allocation, executive support documentation, security team roles and responsibilities, and assessment of adequacy relative to service offering complexity. No automated validation methods are available for assessing organizational governance, staffing adequacy, or executive commitment.",
+        "result": "pending verification"
+      }
+    ],
+    "overall_result": "pending verification",
+    "timestamp": "2025-08-20T14:35:00Z",
+    "assessor": "manual-review-required"
+  }
+}

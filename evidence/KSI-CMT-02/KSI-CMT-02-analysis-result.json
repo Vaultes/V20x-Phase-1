@@ -1,0 +1,67 @@
+{
+  "analysis": {
+    "id": "KSI-CMT-02",
+    "statement": "Execute changes through redeployment of version controlled immutable resources rather than direct modification wherever possible",
+    "checks": [
+      {
+        "checkId": "KSI-CMT-02.1",
+        "description": "Verify Infrastructure as Code deployment history",
+        "request": "az deployment group list --resource-group fedramp-prod-rg --query '[].{Name:name, ProvisioningState:properties.provisioningState, Timestamp:properties.timestamp, Mode:properties.mode}' --output json",
+        "response": [
+          {
+            "Name": "infrastructure-deployment-v1.2.3",
+            "ProvisioningState": "Succeeded",
+            "Timestamp": "2025-08-20T10:00:00Z",
+            "Mode": "Incremental"
+          },
+          {
+            "Name": "app-deployment-v2.1.0",
+            "ProvisioningState": "Succeeded",
+            "Timestamp": "2025-08-20T11:30:00Z",
+            "Mode": "Incremental"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CMT-02.2",
+        "description": "Verify container image versioning and immutability",
+        "request": "az acr repository show-tags --name fedrampregistry --repository webapp --orderby time_desc --query '[0:5]' --output json",
+        "response": ["v2.1.0", "v2.0.3", "v2.0.2", "v2.0.1", "v2.0.0"],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CMT-02.3",
+        "description": "Verify Virtual Machine Scale Set rolling update configuration",
+        "request": "az vmss show --name fedramp-web-vmss --resource-group fedramp-prod-rg --query '{Name:name, UpgradePolicy:upgradePolicy, AutomaticOSUpgradePolicy:automaticOSUpgradePolicy}' --output json",
+        "response": {
+          "Name": "fedramp-web-vmss",
+          "UpgradePolicy": {
+            "mode": "Rolling",
+            "rollingUpgradePolicy": {
+              "maxBatchInstancePercent": 20,
+              "maxUnhealthyInstancePercent": 20,
+              "maxUnhealthyUpgradedInstancePercent": 20,
+              "pauseTimeBetweenBatches": "PT0S"
+            }
+          },
+          "AutomaticOSUpgradePolicy": {
+            "enableAutomaticOSUpgrade": true,
+            "disableAutomaticRollback": false
+          }
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CMT-02.4",
+        "description": "Verify version control and change approval processes",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify version control procedures, change approval workflows, and immutable deployment practices",
+        "result": "pending verification"
+      }
+    ],
+    "overall_result": "pending verification",
+    "timestamp": "2025-08-20T12:45:00Z",
+    "assessor": "automated-analysis"
+  }
+}

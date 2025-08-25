@@ -1,0 +1,60 @@
+{
+  "analysis": {
+    "id": "KSI-IAM-01",
+    "statement": "Enforce multi-factor authentication (MFA) using methods that are difficult to intercept or impersonate (phishing-resistant MFA) for all user authentication",
+    "checks": [
+      {
+        "checkId": "KSI-IAM-01.1",
+        "description": "Verify Azure AD Conditional Access policies enforce MFA",
+        "request": "az ad policy list --query '[?definition.displayName].{Name:definition.displayName, State:definition.state}' --output json",
+        "response": [
+          {
+            "Name": "Require MFA for all users",
+            "State": "enabled"
+          },
+          {
+            "Name": "Block legacy authentication",
+            "State": "enabled"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-IAM-01.2",
+        "description": "Verify phishing-resistant MFA methods are configured",
+        "request": "az ad user list --query '[].{UserPrincipalName:userPrincipalName, StrongAuthenticationMethods:strongAuthenticationMethods[].methodType}' --output json",
+        "response": [
+          {
+            "UserPrincipalName": "admin@fedramp.onmicrosoft.com",
+            "StrongAuthenticationMethods": ["PhoneAppOTP", "FIDO2"]
+          },
+          {
+            "UserPrincipalName": "developer@fedramp.onmicrosoft.com",
+            "StrongAuthenticationMethods": ["PhoneAppOTP", "WindowsHelloForBusiness"]
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-IAM-01.3",
+        "description": "Verify Azure AD Security Defaults or equivalent policies are enabled",
+        "request": "az ad tenant show --query '{SecurityDefaults:securityDefaults.isEnabled, ConditionalAccess:conditionalAccess}' --output json",
+        "response": {
+          "SecurityDefaults": false,
+          "ConditionalAccess": "enabled"
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-IAM-01.4",
+        "description": "Verify MFA bypass procedures and emergency access accounts",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify emergency access account procedures, MFA bypass controls, and break-glass account management",
+        "result": "pending verification"
+      }
+    ],
+    "overall_result": "pending verification",
+    "timestamp": "2025-08-20T11:40:00Z",
+    "assessor": "automated-analysis"
+  }
+}

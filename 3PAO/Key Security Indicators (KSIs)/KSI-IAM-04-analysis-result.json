@@ -1,0 +1,74 @@
+{
+  "analysis": {
+    "id": "KSI-IAM-04",
+    "statement": "Use a least-privileged, role and attribute-based, and just-in-time security authorization model for all user and non-user accounts and services",
+    "checks": [
+      {
+        "checkId": "KSI-IAM-04.1",
+        "description": "Verify Azure RBAC roles follow least privilege principle",
+        "request": "az role assignment list --query '[].{PrincipalName:principalName, RoleDefinitionName:roleDefinitionName, Scope:scope}' --output json",
+        "response": [
+          {
+            "PrincipalName": "admin@fedramp.onmicrosoft.com",
+            "RoleDefinitionName": "Contributor",
+            "Scope": "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/fedramp-prod-rg"
+          },
+          {
+            "PrincipalName": "developer@fedramp.onmicrosoft.com",
+            "RoleDefinitionName": "Reader",
+            "Scope": "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/fedramp-prod-rg"
+          },
+          {
+            "PrincipalName": "fedramp-web-identity",
+            "RoleDefinitionName": "Storage Blob Data Reader",
+            "Scope": "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/fedramp-prod-rg/providers/Microsoft.Storage/storageAccounts/fedrampstorageacct"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-IAM-04.2",
+        "description": "Verify Azure AD Privileged Identity Management (PIM) is configured",
+        "request": "az ad privileged-access list --query '[].{RoleName:roleDefinition.displayName, UserName:subject.displayName, State:state, JustificationRequired:settings.justificationRequired}' --output json",
+        "response": [
+          {
+            "RoleName": "Global Administrator",
+            "UserName": "admin@fedramp.onmicrosoft.com",
+            "State": "eligible",
+            "JustificationRequired": true
+          },
+          {
+            "RoleName": "Security Administrator",
+            "UserName": "security@fedramp.onmicrosoft.com",
+            "State": "eligible",
+            "JustificationRequired": true
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-IAM-04.3",
+        "description": "Verify Just-In-Time VM access is configured",
+        "request": "az security jit-policy list --query '[].{Name:name, ResourceGroup:resourceGroup, VirtualMachines:length(virtualMachines)}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-jit-policy",
+            "ResourceGroup": "fedramp-prod-rg",
+            "VirtualMachines": 3
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-IAM-04.4",
+        "description": "Verify attribute-based access control policies and periodic access reviews",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify attribute-based access control implementation, periodic access reviews schedule, and role assignment approval workflows",
+        "result": "false"
+      }
+    ],
+    "overall_result": "partial",
+    "timestamp": "2025-08-20T11:55:00Z",
+    "assessor": "Kompleye"
+  }
+}

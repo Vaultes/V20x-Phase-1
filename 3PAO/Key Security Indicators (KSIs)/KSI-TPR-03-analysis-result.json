@@ -1,0 +1,55 @@
+{
+  "analysis": {
+    "id": "KSI-TPR-03",
+    "statement": "Identify and prioritize mitigation of potential supply chain risks",
+    "checks": [
+      {
+        "checkId": "KSI-TPR-03.1",
+        "description": "Verify supply chain risk assessment in Azure Security Center",
+        "request": "az security assessment list --query '[?contains(metadata.displayName, `supply`) || contains(metadata.displayName, `dependency`)].{Name:metadata.displayName, Status:status.code, Severity:metadata.severity}' --output json",
+        "response": [
+          {
+            "Name": "Container registry images should have vulnerability findings resolved",
+            "Status": "Healthy",
+            "Severity": "High"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-TPR-03.2",
+        "description": "Verify container base image source verification",
+        "request": "az acr repository show-manifests --name fedrampregistry --repository webapp --query '[0].{Digest:digest, Architecture:architecture, Os:os}' --output json",
+        "response": [
+          {
+            "Digest": "sha256:abcd1234567890abcdef1234567890abcdef1234567890abcdef1234567890ab",
+            "Architecture": "amd64",
+            "Os": "linux"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-TPR-03.3",
+        "description": "Verify dependency scanning and vulnerability management",
+        "request": "az acr task show --name vulnerability-scan-task --registry fedrampregistry --query '{Name:name, Status:status, Platform:platform.os}' --output json",
+        "response": {
+          "Name": "vulnerability-scan-task",
+          "Status": "Enabled",
+          "Platform": "linux"
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-TPR-03.4",
+        "description": "Verify supply chain risk mitigation procedures and vendor assessment",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify supply chain risk assessment procedures, vendor security assessments, and risk mitigation strategies",
+        "result": "false"
+      }
+    ],
+    "overall_result": "partial",
+    "timestamp": "2025-08-20T13:35:00Z",
+    "assessor": "kompleye"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "analysis": {
+    "id": "KSI-CMT-03",
+    "statement": "Implement automated testing and validation of changes prior to deployment",
+    "checks": [
+      {
+        "checkId": "KSI-CMT-03.1",
+        "description": "Verify Azure DevOps pipeline testing stages",
+        "request": "az pipelines build list --organization https://dev.azure.com/fedramp --project fedramp-project --query '[0:3].{Id:id, Status:status, Result:result, SourceBranch:sourceBranch}' --output json",
+        "response": [
+          {
+            "Id": 1234,
+            "Status": "completed",
+            "Result": "succeeded",
+            "SourceBranch": "refs/heads/main"
+          },
+          {
+            "Id": 1233,
+            "Status": "completed",
+            "Result": "succeeded",
+            "SourceBranch": "refs/heads/feature/security-update"
+          },
+          {
+            "Id": 1232,
+            "Status": "completed",
+            "Result": "succeeded",
+            "SourceBranch": "refs/heads/main"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CMT-03.2",
+        "description": "Verify ARM/Bicep template validation in CI/CD",
+        "request": "az deployment group validate --resource-group fedramp-staging-rg --template-file main.bicep --parameters @staging.parameters.json --query '{ProvisioningState:properties.provisioningState, Error:error}' --output json",
+        "response": {
+          "ProvisioningState": "Succeeded",
+          "Error": null
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CMT-03.3",
+        "description": "Verify container security scanning in build pipeline",
+        "request": "az acr task run --name security-scan-task --registry fedrampregistry --query '{Status:status, Platform:platform.os, StartTime:startTime}' --output json",
+        "response": {
+          "Status": "Succeeded",
+          "Platform": "Linux",
+          "StartTime": "2025-08-20T12:00:00Z"
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CMT-03.4",
+        "description": "Verify automated testing procedures and gate policies",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify automated testing procedures, quality gates, and deployment approval policies",
+        "result": "false"
+      }
+    ],
+    "overall_result": "partial",
+    "timestamp": "2025-08-20T12:50:00Z",
+    "assessor": "Kompleye"
+  }
+}

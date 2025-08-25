@@ -1,0 +1,57 @@
+{
+  "analysis": {
+    "id": "KSI-CMT-05",
+    "statement": "Evaluate the risk and potential impact of any change",
+    "checks": [
+      {
+        "checkId": "KSI-CMT-05.1",
+        "description": "Verify change impact assessment in Azure DevOps",
+        "request": "az boards work-item show --id 5678 --organization https://dev.azure.com/fedramp --project fedramp-project --query '{Title:fields.\"System.Title\", RiskAssessment:fields.\"Custom.RiskAssessment\", ImpactAnalysis:fields.\"Custom.ImpactAnalysis\"}' --output json",
+        "response": {
+          "Title": "Update security baseline configuration",
+          "RiskAssessment": "Low - Configuration change follows established baseline",
+          "ImpactAnalysis": "Medium - Affects all virtual machines in production environment"
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CMT-05.2",
+        "description": "Verify staging environment testing before production deployment",
+        "request": "az deployment group list --resource-group fedramp-staging-rg --query '[0:2].{Name:name, ProvisioningState:properties.provisioningState, Timestamp:properties.timestamp}' --output json",
+        "response": [
+          {
+            "Name": "staging-deployment-test-v2.1.0",
+            "ProvisioningState": "Succeeded",
+            "Timestamp": "2025-08-20T11:00:00Z"
+          },
+          {
+            "Name": "staging-security-config-test",
+            "ProvisioningState": "Succeeded",
+            "Timestamp": "2025-08-20T10:30:00Z"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CMT-05.3",
+        "description": "Verify rollback plans are documented for changes",
+        "request": "az pipelines release show --id 456 --organization https://dev.azure.com/fedramp --project fedramp-project --query '{ReleaseDefinition:releaseDefinition.name, RollbackTrigger:environments[?name==`Production`].deployPhases[0].deploymentInput.condition}' --output json",
+        "response": {
+          "ReleaseDefinition": "fedramp-app-release",
+          "RollbackTrigger": ["ReleaseStarted"]
+        },
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CMT-05.4",
+        "description": "Verify risk assessment criteria and approval thresholds",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify risk assessment criteria, approval thresholds for different risk levels, and change advisory board procedures",
+        "result": "false"
+      }
+    ],
+    "overall_result": "partial",
+    "timestamp": "2025-08-20T13:00:00Z",
+    "assessor": "Kompleye"
+  }
+}

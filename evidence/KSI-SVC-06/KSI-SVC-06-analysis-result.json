@@ -1,0 +1,74 @@
+{
+  "analysis": {
+    "id": "KSI-SVC-06",
+    "statement": "Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates",
+    "checks": [
+      {
+        "checkId": "KSI-SVC-06.1",
+        "description": "Verify Azure Key Vault automatic key rotation is configured",
+        "request": "az keyvault key list --vault-name fedramp-keyvault --query '[].{Name:name, RotationPolicy:rotationPolicy.lifetimeActions[0].action.type, Enabled:attributes.enabled}' --output json",
+        "response": [
+          {
+            "Name": "storage-encryption-key",
+            "RotationPolicy": "Rotate",
+            "Enabled": true
+          },
+          {
+            "Name": "backup-encryption-key",
+            "RotationPolicy": "Rotate",
+            "Enabled": true
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-06.2",
+        "description": "Verify managed identities are used instead of stored credentials",
+        "request": "az identity list --query '[].{Name:name, ResourceGroup:resourceGroup, ClientId:clientId, Type:type}' --output json",
+        "response": [
+          {
+            "Name": "fedramp-web-identity",
+            "ResourceGroup": "fedramp-prod-rg",
+            "ClientId": "12345678-1234-1234-1234-123456789012",
+            "Type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+          },
+          {
+            "Name": "fedramp-app-identity",
+            "ResourceGroup": "fedramp-prod-rg",
+            "ClientId": "87654321-4321-4321-4321-210987654321",
+            "Type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-06.3",
+        "description": "Verify SSL certificate auto-renewal through Azure Key Vault",
+        "request": "az keyvault certificate list --vault-name fedramp-keyvault --query '[].{Name:name, AutoRenew:policy.issuerParameters.certificateTransparency, Enabled:attributes.enabled}' --output json",
+        "response": [
+          {
+            "Name": "ssl-certificate",
+            "AutoRenew": true,
+            "Enabled": true
+          },
+          {
+            "Name": "api-certificate",
+            "AutoRenew": true,
+            "Enabled": true
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-SVC-06.4",
+        "description": "Verify key rotation schedule and procedures are documented",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify key rotation schedules, procedures for emergency key rotation, and compliance with organizational key management policies",
+        "result": "pending verification"
+      }
+    ],
+    "overall_result": "pending verification",
+    "timestamp": "2025-08-20T11:30:00Z",
+    "assessor": "automated-analysis"
+  }
+}

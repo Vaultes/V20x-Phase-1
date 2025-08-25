@@ -1,0 +1,66 @@
+{
+  "analysis": {
+    "id": "KSI-CMT-01",
+    "statement": "Log and monitor system modifications",
+    "checks": [
+      {
+        "checkId": "KSI-CMT-01.1",
+        "description": "Verify Azure Activity Log captures system modifications",
+        "request": "az monitor activity-log list --max-events 10 --query '[?contains(eventName.value, `write`) || contains(eventName.value, `delete`)].{EventName:eventName.value, Level:level.value, Status:status.value, Caller:caller, Timestamp:eventTimestamp}' --output json",
+        "response": [
+          {
+            "EventName": "Microsoft.Compute/virtualMachines/write",
+            "Level": "Informational",
+            "Status": "Succeeded",
+            "Caller": "admin@fedramp.onmicrosoft.com",
+            "Timestamp": "2025-08-20T11:45:00Z"
+          },
+          {
+            "EventName": "Microsoft.Network/networkSecurityGroups/securityRules/write",
+            "Level": "Informational",
+            "Status": "Succeeded",
+            "Caller": "security@fedramp.onmicrosoft.com",
+            "Timestamp": "2025-08-20T11:30:00Z"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CMT-01.2",
+        "description": "Verify Azure Policy guest configuration for OS-level changes",
+        "request": "az policy assignment list --query '[?contains(policyDefinitionId, `guestConfiguration`)].{Name:name, PolicyDefinitionId:policyDefinitionId, EnforcementMode:enforcementMode}' --output json",
+        "response": [
+          {
+            "Name": "guest-configuration-baseline",
+            "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/385f5147-9dd9-4fff-ad34-adbe4313e72a",
+            "EnforcementMode": "Default"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CMT-01.3",
+        "description": "Verify change tracking solution is deployed",
+        "request": "az vm extension list --vm-name web-vm-01 --resource-group fedramp-prod-rg --query '[?contains(name, `ChangeTracking`) || contains(name, `MMA`)].{Name:name, Publisher:publisher, ProvisioningState:provisioningState}' --output json",
+        "response": [
+          {
+            "Name": "MicrosoftMonitoringAgent",
+            "Publisher": "Microsoft.EnterpriseCloud.Monitoring",
+            "ProvisioningState": "Succeeded"
+          }
+        ],
+        "result": "pass"
+      },
+      {
+        "checkId": "KSI-CMT-01.4",
+        "description": "Verify change logging procedures and retention policies",
+        "request": "Manual verification required",
+        "response": "Documentation review required to verify change logging procedures, log retention policies, and change approval audit trails",
+        "result": "false"
+      }
+    ],
+    "overall_result": "partial",
+    "timestamp": "2025-08-20T12:40:00Z",
+    "assessor": "Kompleye"
+  }
+}
